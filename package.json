@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7"
+  },
+  "name": "kokonoe-discordbot",
+  "version": "1.0.0",
+  "description": "Discord bot for returning technical (character) data for the BlazBlue series, inspired by https://github.com/Darkened12/trinity-bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Noel_FGC",
+  "license": "GPL-2.0"
+}
