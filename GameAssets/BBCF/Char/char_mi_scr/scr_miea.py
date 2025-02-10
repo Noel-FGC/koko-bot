@@ -5,9 +5,10 @@ def Funnel_Pallet():
     else:
         PaletteIndex(0)
 
+
 @Subroutine
 def Funnel_Disp():
-    if SLOT_30:
+    if SLOT_IsInHitstun:
         Visibility(1)
         DeleteObject(4)
         DeleteObject(5)
@@ -21,13 +22,14 @@ def Funnel_Disp():
 
     def upon_39():
         SLOT_51 = 1
-        ObjectUpon(4, 39)
+        ObjectUpon(FALLING, 39)
         ObjectUpon(5, 39)
 
     def upon_40():
         SLOT_51 = 0
-        ObjectUpon(4, 40)
+        ObjectUpon(FALLING, 40)
         ObjectUpon(5, 40)
+
 
 @Subroutine
 def TimeStop_Atk():
@@ -44,8 +46,9 @@ def TimeStop_Atk():
         EnemyHitstopAddition(0, 9999, 9999)
         ShutUp(1)
         CopyFromRightToLeft(23, 2, 67, 22, 2, 38)
-        if (SLOT_38 == SLOT_67):
+        if SLOT_IsFacingRight == SLOT_67:
             FlipOnHit(1)
+
 
 @Subroutine
 def Func_FunnelC():
@@ -73,6 +76,7 @@ def Func_FunnelC():
         SLOT_33 = 0
     ContinueState(120)
 
+
 @Subroutine
 def Func_FunnelD():
     Unknown30007(1)
@@ -98,21 +102,21 @@ def Func_FunnelD():
     AddY(250000)
     ContinueState(150)
 
-    def upon_44():
+    def upon_PLAYER_DAMAGED():
         DeleteObject(23)
 
-    def upon_47():
+    def upon_PLAYER_BLOCKS():
         DeleteObject(23)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         AttackOff()
     RunLoopUpon(17, 180)
 
     def upon_17():
         DeleteObject(23)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_33):
+    def upon_EVERY_FRAME():
+        if not SLOT_33:
             DeleteObject(23)
 
     def upon_STATE_END():
@@ -123,6 +127,7 @@ def Func_FunnelD():
 
     def upon_41():
         DeleteObject(23)
+
 
 @State
 def EMB():
@@ -145,6 +150,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_OD():
 
@@ -166,6 +172,7 @@ def EMB_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_MI_AH():
 
@@ -186,6 +193,7 @@ def EMB_MI_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def ModelMagicCircle1():
 
@@ -196,6 +204,7 @@ def ModelMagicCircle1():
         ColorFromPaletteIndex(224)
         IgnoreScreenfreeze(1)
     sprite('null', 74)
+
 
 @Subroutine
 def FU_ActReset():
@@ -210,59 +219,61 @@ def FU_ActReset():
         EndMomentum(1)
         XPositionRelativeFacing(0)
         AbsoluteY(0)
-    sendToLabelUpon(41, 99)
+    uponSendToLabel(41, 99)
     callSubroutine('FunnelSignalSetup')
+
 
 @Subroutine
 def FunnelSignalSetup():
 
-    def upon_43():
-        if (SLOT_48 == 100):
+    def upon_VALUE_RECEIVED():
+        if SLOT_ReceivedValue == 100:
             PrivateFunction2('FunnelNeutral', 900)
-        if (SLOT_48 == 1100):
+        if SLOT_ReceivedValue == 1100:
             PrivateFunction2('FunnelNeutral_Open', 900)
-        if (SLOT_48 == 101):
+        if SLOT_ReceivedValue == 101:
             PrivateFunction2('FunnelReaction', 1000)
-        if (SLOT_48 == 103):
+        if SLOT_ReceivedValue == 103:
             PrivateFunction2('FunnelTurn', 1000)
-        if (SLOT_48 == 1103):
+        if SLOT_ReceivedValue == 1103:
             PrivateFunction2('FunnelTurn_Open', 1000)
-        if (SLOT_48 == 132):
+        if SLOT_ReceivedValue == 132:
             PrivateFunction2('FunnelFDash', 1000)
-        if (SLOT_48 == 311):
+        if SLOT_ReceivedValue == 311:
             PrivateFunction2('FunnelFThrow', 1000)
-        if (SLOT_48 == 313):
+        if SLOT_ReceivedValue == 313:
             PrivateFunction2('FunnelBThrow', 1000)
-        if (SLOT_48 == 321):
+        if SLOT_ReceivedValue == 321:
             PrivateFunction2('FunnelAThrow', 1000)
-        if (SLOT_48 == 333):
+        if SLOT_ReceivedValue == 333:
             PrivateFunction2('FunnelOD', 2000)
-        if (SLOT_48 == 404):
+        if SLOT_ReceivedValue == 404:
             PrivateFunction2('FunnelBarrier', 1000)
-        if (SLOT_48 == 1404):
+        if SLOT_ReceivedValue == 1404:
             PrivateFunction2('FunnelBarrier_Open', 1000)
-        if (SLOT_48 == 203):
+        if SLOT_ReceivedValue == 203:
             PrivateFunction2('Funnel5D', 1000)
-        if (SLOT_48 == 204):
+        if SLOT_ReceivedValue == 204:
             PrivateFunction2('Funnel5DD', 1000)
-        if (SLOT_48 == 205):
+        if SLOT_ReceivedValue == 205:
             PrivateFunction2('Funnel6D', 1000)
-        if (SLOT_48 == 206):
+        if SLOT_ReceivedValue == 206:
             PrivateFunction2('Funnel4D', 1000)
-        if (SLOT_48 == 207):
+        if SLOT_ReceivedValue == 207:
             PrivateFunction2('Funnel2D', 1000)
-        if (SLOT_48 == 407):
+        if SLOT_ReceivedValue == 407:
             PrivateFunction2('FunnelLaser', 1000)
-        if (SLOT_48 == 408):
+        if SLOT_ReceivedValue == 408:
             PrivateFunction2('FunnelSaws', 1000)
-        if (SLOT_48 == 431):
+        if SLOT_ReceivedValue == 431:
             PrivateFunction2('FunnelTimeStopThrow', 1000)
-        if (SLOT_48 == 1431):
+        if SLOT_ReceivedValue == 1431:
             PrivateFunction2('FunnelTimeStopThrow_Open', 1000)
-        if (SLOT_48 == 615):
+        if SLOT_ReceivedValue == 615:
             PrivateFunction2('FunnelRoundWin', 1000)
-        if (SLOT_48 == 611):
+        if SLOT_ReceivedValue == 611:
             PrivateFunction2('FunnelMatchWin2', 1000)
+
 
 @State
 def FunnelCreate():
@@ -277,25 +288,26 @@ def FunnelCreate():
     sprite('null', 10)
     enterState('FunnelNeutral')
 
+
 @State
 def FunnelNeutral():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
         clearUponHandler(41)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
         E0EAEffectPositionCenter(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CopyFromRightToLeft(23, 2, 60, 3, 2, 60)
-            if (SLOT_60 == 1):
+            if SLOT_60 == 1:
                 PrivateFunction3(3, 0, 150000, 100, 0)
-            if (SLOT_60 == 2):
+            if SLOT_60 == 2:
                 PrivateFunction3(3, 0, 0, 100, 0)
-            if (SLOT_60 == 3):
+            if SLOT_60 == 3:
                 PrivateFunction3(3, 0, 50000, 100, 0)
-            if (not SLOT_60):
-                if (not Unknown68(1, 0, 0, 0, 0)):
+            if not SLOT_60:
+                if not SLOT_60 == 3:
                     PrivateFunction3(3, 0, 200000, 100, 0)
                 else:
                     PrivateFunction3(3, 0, 50000, 100, 0)
@@ -309,7 +321,8 @@ def FunnelNeutral():
     label(1)
     sprite('mi000_f00', 6)
     loopRest()
-    GotoIf0(10, 2, 38)
+    if not SLOT_IsFacingRight:
+        notConditionalSendToLabel(10)
     label(0)
     sprite('mi000_f11', 6)
     sprite('mi000_f10', 6)
@@ -341,6 +354,7 @@ def FunnelNeutral():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def FunnelNeutral_Open():
 
@@ -355,16 +369,16 @@ def FunnelNeutral_Open():
         def upon_32():
             CreateObject('Funnel_Mhoujin', -1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CopyFromRightToLeft(23, 2, 60, 3, 2, 60)
-            if (SLOT_60 == 1):
+            if SLOT_60 == 1:
                 PrivateFunction3(3, 0, 130000, 100, 0)
-            if (SLOT_60 == 2):
+            if SLOT_60 == 2:
                 PrivateFunction3(3, 0, 80000, 100, 0)
-            if (SLOT_60 == 3):
+            if SLOT_60 == 3:
                 PrivateFunction3(3, 0, 100000, 100, 0)
-            if (not SLOT_60):
-                if (not Unknown68(1, 0, 0, 0, 0)):
+            if not SLOT_60:
+                if not SLOT_60 == 3:
                     PrivateFunction3(3, 0, 160000, 100, 0)
                 else:
                     PrivateFunction3(3, 0, 100000, 100, 0)
@@ -372,7 +386,7 @@ def FunnelNeutral_Open():
             callSubroutine('Funnel_Pallet')
 
         def upon_45():
-            if (not SLOT_7):
+            if not SLOT_7:
                 PrivateFunction2('FunnelNeutral', 100)
     label(0)
     sprite('mi000_f12ex00', 3)
@@ -382,13 +396,14 @@ def FunnelNeutral_Open():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def FunnelReaction():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_33:
                 SetActionMark(1)
             elif SLOT_2:
@@ -409,6 +424,7 @@ def FunnelReaction():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def FunnelThudenrEffTenkai():
 
@@ -419,7 +435,7 @@ def FunnelThudenrEffTenkai():
         ParticleLayer(11)
         Eff3DEffect('mieff_bitchange00', '')
         TeleportToObject(3)
-        if (not Unknown68(1, 0, 0, 0, 0)):
+        if not SLOT_60 == 3:
             AddY(180000)
         else:
             AddY(130000)
@@ -434,6 +450,7 @@ def FunnelThudenrEffTenkai():
         PaletteIndex(0)
         ColorFromPaletteIndex(64)
 
+
 @State
 def Funnel_Mhoujin():
 
@@ -445,21 +462,21 @@ def Funnel_Mhoujin():
         IgnoreScreenfreeze(1)
         callSubroutine('Funnel_Pallet')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CopyFromRightToLeft(23, 2, 60, 3, 2, 60)
-            if (SLOT_60 == 1):
+            if SLOT_60 == 1:
                 PrivateFunction3(3, 0, 130000, 100, 0)
-            if (SLOT_60 == 2):
+            if SLOT_60 == 2:
                 PrivateFunction3(3, 0, 80000, 100, 0)
-            if (not SLOT_60):
-                if (not Unknown68(1, 0, 0, 0, 0)):
+            if not SLOT_60:
+                if not SLOT_60 == 2:
                     PrivateFunction3(3, 0, 160000, 100, 0)
                 else:
                     PrivateFunction3(3, 0, 100000, 100, 0)
             if SLOT_33:
-                if (SLOT_33 <= 5):
+                if SLOT_33 <= 5:
                     sendToLabel(9)
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
 
         def upon_STATE_END():
             SLOT_33 = 0
@@ -486,6 +503,7 @@ def Funnel_Mhoujin():
     CreateObject('BitEffct', 1)
     CreateObject('BitEffct', 2)
 
+
 @State
 def BitEffct():
 
@@ -496,6 +514,7 @@ def BitEffct():
         LinkParticle('mief_bitDel2')
     sprite('null', 40)
     PrivateSE('mise_16')
+
 
 @State
 def FunnelThudenrEff():
@@ -530,6 +549,7 @@ def FunnelThudenrEff():
             AlphaValue(255)
     sprite('null', 32767)
 
+
 @State
 def FunnelThudenrEffSub():
 
@@ -549,6 +569,7 @@ def FunnelThudenrEffSub():
             AlphaValue(255)
     sprite('null', 32767)
 
+
 @State
 def FunnelEmptyEff():
 
@@ -557,6 +578,7 @@ def FunnelEmptyEff():
         E0EAEffectPosition(2)
         LinkParticle('mief_emptybit')
     sprite('null', 32767)
+
 
 @State
 def FunnelThudenrEffShunou():
@@ -574,7 +596,7 @@ def FunnelThudenrEffShunou():
         TeleportToObject(3)
         AddX(-54000)
         Size(1150)
-        if (not Unknown68(1, 0, 0, 0, 0)):
+        if not SLOT_33 <= 5:
             AddY(360000)
         else:
             AddY(260000)
@@ -589,13 +611,14 @@ def FunnelThudenrEffShunou():
         PaletteIndex(0)
         ColorFromPaletteIndex(64)
 
+
 @State
 def FunnelTurn():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_33:
                 SetActionMark(1)
             elif SLOT_2:
@@ -608,6 +631,7 @@ def FunnelTurn():
     label(99)
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
+
 
 @State
 def FunnelTurn_Open():
@@ -622,12 +646,12 @@ def FunnelTurn_Open():
         def upon_32():
             CreateObject('Funnel_Mhoujin', -1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             callSubroutine('Funnel_Disp')
             callSubroutine('Funnel_Pallet')
 
         def upon_45():
-            if (not SLOT_7):
+            if not SLOT_7:
                 PrivateFunction2('FunnelNeutral', 100)
     sprite('mi003_f02', 3)
     sprite('mi003_f03', 3)
@@ -635,6 +659,7 @@ def FunnelTurn_Open():
     label(99)
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral_Open', 100)
+
 
 @State
 def FunnelThudenrEff2():
@@ -660,6 +685,7 @@ def FunnelThudenrEff2():
     AddX(-60000)
     sprite('null', 10)
 
+
 @State
 def FunnelThudenrEff2Sub():
 
@@ -678,13 +704,14 @@ def FunnelThudenrEff2Sub():
     AddX(-60000)
     sprite('null', 10)
 
+
 @State
 def FunnelFDash():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_33:
                 SetActionMark(1)
             elif SLOT_2:
@@ -692,7 +719,8 @@ def FunnelFDash():
                 SetActionMark(0)
             callSubroutine('Funnel_Disp')
     sprite('keep', 1)
-    GotoIf0(10, 2, 38)
+    if not SLOT_IsFacingRight:
+        notConditionalSendToLabel(10)
     label(0)
     sprite('mi032_f08', 3)
     sprite('mi032_f07', 3)
@@ -719,13 +747,14 @@ def FunnelFDash():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def FunnelFThrow():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             callSubroutine('Funnel_Disp')
 
         def upon_STATE_END():
@@ -758,6 +787,7 @@ def FunnelFThrow():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def FunnelBThrow():
 
@@ -765,7 +795,7 @@ def FunnelBThrow():
         callSubroutine('FU_ActReset')
         E0EAEffectDirection(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             callSubroutine('Funnel_Disp')
 
         def upon_STATE_END():
@@ -800,12 +830,13 @@ def FunnelBThrow():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def FunnelAThrow():
 
     def upon_IMMEDIATE():
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             callSubroutine('Funnel_Disp')
         callSubroutine('FU_ActReset')
     sprite('mi321_f00', 4)
@@ -824,6 +855,7 @@ def FunnelAThrow():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def FunnelOD():
 
@@ -838,14 +870,15 @@ def FunnelOD():
     SLOT_7 = 0
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def FunnelBarrier():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             callSubroutine('Funnel_Disp')
             callSubroutine('Funnel_Pallet')
     sprite('mi003_f00ex01', 4)
@@ -855,6 +888,7 @@ def FunnelBarrier():
     label(99)
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
+
 
 @State
 def FunnelBarrier_Open():
@@ -869,7 +903,7 @@ def FunnelBarrier_Open():
         def upon_32():
             CreateObject('Funnel_Mhoujin', -1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             E0EAEffectPositionCenter(0)
             PrivateFunction3(3, 0, 160000, 100, 0)
             callSubroutine('Funnel_Disp')
@@ -880,6 +914,7 @@ def FunnelBarrier_Open():
     label(99)
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral_Open', 100)
+
 
 @State
 def FunnelThudenrEff3():
@@ -901,6 +936,7 @@ def FunnelThudenrEff3():
         ColorFromPaletteIndex(64)
     AddX(60000)
 
+
 @State
 def FunnelThudenrEff3Sub():
 
@@ -914,6 +950,7 @@ def FunnelThudenrEff3Sub():
         Eff3DEffect('mieff_bitatk01', '')
     sprite('null', 32767)
     AddX(60000)
+
 
 @State
 def Funnel5D():
@@ -930,6 +967,7 @@ def Funnel5D():
     sprite('keep', 10)
     SLOT_7 = 1
     PrivateFunction2('FunnelNeutral_Open', 100)
+
 
 @State
 def Funnel5DD():
@@ -948,6 +986,7 @@ def Funnel5DD():
     SLOT_7 = 0
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def Funnel6D():
 
@@ -956,14 +995,14 @@ def Funnel6D():
         AttackLevel_(2)
         Damage(400)
         Hitstop(3)
-        if (not SLOT_11):
+        if not SLOT_11:
             PushbackX(30400)
         AddX(-50000)
         WallCollisionDetection(1)
         Unknown1111(12000, 22)
         CopyFromRightToLeft(23, 2, 51, 3, 2, 23)
         CopyFromRightToLeft(23, 2, 52, 22, 2, 23)
-        if (not op(1, 2, 51, 2, 52)):
+        if not op(1, 2, 51, 2, 52):
             RotationAngle(0)
             physicsXImpulse(12000)
             physicsYImpulse(0)
@@ -1002,7 +1041,7 @@ def Funnel6D():
     CreateObject('mi6DParticle', -1)
     CreateObject('mi6DWind', -1)
     sprite('mi203_f08', 2)
-    PassbackAddActionMarkToFunction('mi6DParticle', 32)
+    TriggerUponForState('mi6DParticle', 32)
     RefreshMultihit()
     XImpulseAcceleration(4000)
     YAccel(4000)
@@ -1022,7 +1061,7 @@ def Funnel6D():
     gotoLabel(0)
     label(1)
     sprite('mi203_f08ex01', 4)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     XImpulseAcceleration(50)
     YAccel(50)
     ConstantAlphaModifier(-10)
@@ -1044,8 +1083,9 @@ def Funnel6D():
     EndMomentum(1)
     AttackOff()
     CreateObject('mi408_DelEff', -1)
-    PassbackAddActionMarkToFunction('mi6DWind', 32)
+    TriggerUponForState('mi6DWind', 32)
     DespawnEAEffect('mi6DParticle')
+
 
 @State
 def mi6DWind():
@@ -1059,7 +1099,7 @@ def mi6DWind():
         callSubroutine('Funnel_Pallet')
         E0EAEffectRotation(2)
         Eff3DEffect('mieff6D_wind00', '')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 3)
     AddScaleY(-350)
@@ -1071,6 +1111,7 @@ def mi6DWind():
     ConstantAlphaModifier(-40)
     loopRest()
 
+
 @State
 def mi6DParticle():
 
@@ -1079,7 +1120,7 @@ def mi6DParticle():
         IgnorePauses(2)
         RemoveOnCallStateEnd(2)
         callSubroutine('Funnel_Pallet')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 4)
     ParticleSize(900)
@@ -1093,6 +1134,7 @@ def mi6DParticle():
     CallCustomizableParticle('mief_bitnokosi_back3', -1)
     gotoLabel(1)
 
+
 @State
 def Funnel4D():
 
@@ -1101,7 +1143,7 @@ def Funnel4D():
         AttackLevel_(1)
         Damage(400)
         Hitstop(0)
-        if (not SLOT_11):
+        if not SLOT_11:
             PushbackX(19800)
 
         def upon_32():
@@ -1129,7 +1171,7 @@ def Funnel4D():
     sprite('mi203_f05ex01', 4)
     physicsXImpulse(10000)
     RefreshMultihit()
-    PassbackAddActionMarkToFunction('mi4DParticle', 32)
+    TriggerUponForState('mi4DParticle', 32)
     sprite('mi203_f05ex02', 4)
     E0EAEffectPosition(0)
     XImpulseAcceleration(600)
@@ -1140,7 +1182,7 @@ def Funnel4D():
     gotoLabel(99)
     label(1)
     sprite('mi203_f05', 4)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     XImpulseAcceleration(60)
     YAccel(60)
     ConstantAlphaModifier(-10)
@@ -1154,6 +1196,7 @@ def Funnel4D():
     CreateObject('miBit_DelEff', -1)
     DespawnEAEffect('mi4DParticle')
 
+
 @State
 def mi4DParticle():
 
@@ -1162,7 +1205,7 @@ def mi4DParticle():
         IgnorePauses(2)
         RemoveOnCallStateEnd(2)
         callSubroutine('Funnel_Pallet')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 4)
     ParticleSize(600)
@@ -1176,6 +1219,7 @@ def mi4DParticle():
     CallCustomizableParticle('mief_bitnokosi_back3', -1)
     gotoLabel(1)
 
+
 @State
 def Funnel2D():
 
@@ -1184,7 +1228,7 @@ def Funnel2D():
         AttackLevel_(1)
         Damage(400)
         Hitstop(0)
-        if (not SLOT_11):
+        if not SLOT_11:
             PushbackX(19800)
 
         def upon_32():
@@ -1251,7 +1295,7 @@ def Funnel2D():
     XImpulseAcceleration(1000)
     YAccel(1000)
     Visibility(0)
-    PassbackAddActionMarkToFunction('mi4DParticle', 32)
+    TriggerUponForState('mi4DParticle', 32)
     sprite('mi203_f05ex02', 4)
     XImpulseAcceleration(500)
     YAccel(500)
@@ -1262,7 +1306,7 @@ def Funnel2D():
     gotoLabel(0)
     label(1)
     sprite('mi203_f05', 8)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     XImpulseAcceleration(60)
     YAccel(60)
     ConstantAlphaModifier(-10)
@@ -1277,6 +1321,7 @@ def Funnel2D():
     CreateObject('miBit_DelEff', -1)
     DespawnEAEffect('mi4DParticle')
 
+
 @State
 def miBit_DelEff():
 
@@ -1288,6 +1333,7 @@ def miBit_DelEff():
         Size(700)
     sprite('null', 60)
     CreateObject('miBit_DelEffSub', -1)
+
 
 @State
 def miBit_DelEffSub():
@@ -1305,6 +1351,7 @@ def miBit_DelEffSub():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def miBit_DelEffSub2():
 
@@ -1320,6 +1367,7 @@ def miBit_DelEffSub2():
     Unknown3059(-2000)
     SetScaleSpeed(-20)
 
+
 @State
 def Funnel5C():
 
@@ -1328,7 +1376,7 @@ def Funnel5C():
         AttackLevel_(3)
         Damage(600)
         Hitstop(7)
-        if (not SLOT_11):
+        if not SLOT_11:
             GroundedHitstunAnimation(2)
             AirUntechableTime(29)
             AirPushbackY(20000)
@@ -1362,6 +1410,7 @@ def Funnel5C():
     EnableAfterimage(0)
     DespawnEAEffect('mi232Particle')
 
+
 @State
 def Funnel2C():
 
@@ -1370,7 +1419,7 @@ def Funnel2C():
         AttackLevel_(3)
         Damage(600)
         Hitstop(7)
-        if (not SLOT_11):
+        if not SLOT_11:
             GroundedHitstunAnimation(6)
             AirHitstunAnimation(18)
             PushbackX(-39900)
@@ -1408,6 +1457,7 @@ def Funnel2C():
     sprite('mi232_f09', 2)
     EndMomentum(1)
 
+
 @State
 def Funnel6C():
 
@@ -1416,7 +1466,7 @@ def Funnel6C():
         AttackLevel_(4)
         Damage(600)
         BonusProration(110)
-        if (not SLOT_11):
+        if not SLOT_11:
             GroundedHitstunAnimation(11)
             AirHitstunAnimation(11)
             AirPushbackX(0)
@@ -1427,11 +1477,11 @@ def Funnel6C():
         AddY(200000)
         SetZVal(500)
 
-        def upon_FRAME_STEP():
-            if (SLOT_23 <= 0):
+        def upon_EVERY_FRAME():
+            if SLOT_YDistanceFromFloor <= 0:
                 EndMomentum(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(10)
             YAccel(10)
     sprite('mi212_f00', 4)
@@ -1465,6 +1515,7 @@ def Funnel6C():
     sprite('mi212_f11', 2)
     sprite('mi212_f12', 2)
 
+
 @State
 def FunnelAir5C():
 
@@ -1474,7 +1525,7 @@ def FunnelAir5C():
         Damage(600)
         AttackP1(80)
         MoveAttributes(1, 0, 0, 0, 0)
-        if (not SLOT_11):
+        if not SLOT_11:
             AirPushbackY(-40000)
             AirUntechableTime(30)
         WallCollisionDetection(0)
@@ -1483,12 +1534,12 @@ def FunnelAir5C():
         IgnorePauses(3)
         RemoveOnCallStateEnd(3)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             RemoveOnCallStateEnd(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CopyFromRightToLeft(23, 2, 52, 3, 2, 52)
-            if (not SLOT_52):
+            if not SLOT_52:
                 DeleteObject(23)
     sprite('mi252_f00', 2)
     CommonSE('006_swing_blade_2')
@@ -1513,6 +1564,7 @@ def FunnelAir5C():
     sprite('mi252_f05', 6)
     E0EAEffectPosition(0)
     EndMomentum(1)
+
 
 @State
 def FuncAir2C():
@@ -1551,6 +1603,7 @@ def FuncAir2C():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def FunnelLaser():
 
@@ -1580,7 +1633,7 @@ def FunnelLaser():
         AddY(200000)
 
         def upon_45():
-            if (SLOT_33 <= 10):
+            if SLOT_33 <= 10:
                 SLOT_33 = 10
 
         def upon_STATE_END():
@@ -1590,11 +1643,11 @@ def FunnelLaser():
         if SLOT_11:
             PaletteIndex(2)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             DeleteObject(23)
         Unknown23170('ShotLaser')
     if SLOT_7:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('mi407_f00', 3)
     PrivateSE('mise_06')
     sprite('mi407_f01', 3)
@@ -1626,10 +1679,10 @@ def FunnelLaser():
     sprite('mi407_f05', 3)
     Visibility(0)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         PrivateFunction3(22, 0, 0, 30, 1)
-        if (SLOT_23 <= 200000):
-            SLOT_23 = 200000
+        if SLOT_YDistanceFromFloor <= 200000:
+            SLOT_YDistanceFromFloor = 200000
     sprite('mi407_f06', 3)
     sprite('mi407_f07', 3)
     sprite('mi407_f08', 3)
@@ -1638,7 +1691,7 @@ def FunnelLaser():
     sprite('mi407_f07', 3)
     sprite('mi407_f08', 3)
     sprite('mi407_f05', 3)
-    sendToLabelUpon(26, 9)
+    uponSendToLabel(RELEASE_D, 9)
     sprite('mi407_f06', 3)
     sprite('mi407_f07', 3)
     sprite('mi407_f08', 3)
@@ -1649,8 +1702,8 @@ def FunnelLaser():
     sprite('mi407_f05', 3)
     label(9)
     sprite('mi407_f10', 3)
-    clearUponHandler(3)
-    clearUponHandler(26)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(RELEASE_D)
     sprite('mi407_f11', 3)
     sprite('mi407_f12', 3)
     sprite('mi407_f13', 3)
@@ -1669,17 +1722,18 @@ def FunnelLaser():
     sprite('mi407_f13', 31)
     Visibility(1)
     CreateObject('mi408_DelEff', 0)
-    ApplyFunctionsToObjects(1)
-    Size(825)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(825)
     CreateObject('mi408_DelEff', 1)
-    ApplyFunctionsToObjects(1)
-    Size(825)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(825)
     CreateObject('mi408_DelEff', 2)
-    ApplyFunctionsToObjects(1)
-    Size(825)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(825)
+
 
 @State
 def FunnelSaws():
@@ -1710,18 +1764,18 @@ def FunnelSaws():
         AddY(300000)
         AddX(150000)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 >= 90):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration >= 90:
                 SetActionMark(0)
                 sendToLabel(9)
             if SLOT_51:
-                if CheckInput(0x1c):
+                if CheckInput(INPUT_HOLD_D):
                     if CheckInput(0x92):
-                        if (not SLOT_2):
+                        if not SLOT_2:
                             SLOT_2 = 1
                             YSpeed(5000)
                     elif CheckInput(0x44):
-                        if (not SLOT_2):
+                        if not SLOT_2:
                             SLOT_2 = 1
                             YSpeed(-5000)
                     else:
@@ -1729,14 +1783,14 @@ def FunnelSaws():
                         YSpeed(0)
                 else:
                     SLOT_51 = 0
-            if (SLOT_23 <= 100000):
+            if SLOT_YDistanceFromFloor <= 100000:
                 AbsoluteY(100000)
 
         def upon_45():
-            if (SLOT_33 <= 10):
+            if SLOT_33 <= 10:
                 SLOT_33 = 10
         HitsPerCall(6, 1, 1, 1, 1, 0, 0, 0)
-        sendToLabelUpon(54, 9)
+        uponSendToLabel(54, 9)
 
         def upon_STATE_END():
             SLOT_7 = 0
@@ -1744,7 +1798,7 @@ def FunnelSaws():
         if SLOT_11:
             PaletteIndex(2)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             DeleteObject(23)
         Unknown23170('ShotSaws')
     sprite('null', 5)
@@ -1764,13 +1818,13 @@ def FunnelSaws():
     sprite('mi408_f07', 2)
     SLOT_51 = 1
 
-    def upon_D_RELEASED():
+    def upon_RELEASE_D():
         SLOT_52 = 1
     label(0)
     sprite('mi408_f04', 2)
     if SLOT_52:
         XImpulseAcceleration(50)
-    if (not SLOT_51):
+    if not SLOT_51:
         YAccel(70)
     YAccel(70)
     PerGravity(50)
@@ -1785,7 +1839,7 @@ def FunnelSaws():
     gotoLabel(0)
     label(9)
     sprite('mi408_f06', 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     clearUponHandler(54)
     EndAttack()
     SLOT_51 = 0
@@ -1802,6 +1856,7 @@ def FunnelSaws():
     sprite('null', 32)
     CreateObject('mi408_DelEff', 0)
 
+
 @State
 def mi408_DelEff():
 
@@ -1811,6 +1866,7 @@ def mi408_DelEff():
         LinkParticle('mief408_del')
     sprite('null', 60)
     CreateObject('mi408_DelEffSub', -1)
+
 
 @State
 def mi408_DelEffSub():
@@ -1824,6 +1880,7 @@ def mi408_DelEffSub():
     CreateObject('mi408_DelEffSub2', -1)
     sprite('null', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def mi408_DelEffSub2():
@@ -1839,6 +1896,7 @@ def mi408_DelEffSub2():
     Unknown3059(-1000)
     SetScaleSpeed(-20)
 
+
 @State
 def mi408_CreateEff():
 
@@ -1850,14 +1908,14 @@ def mi408_CreateEff():
         CallPrivateEffect('mief408_del')
         Eff3DEffect('mieff408_deleff01', '')
         CopyFromRightToLeft(23, 2, 60, 3, 2, 60)
-        if (SLOT_60 == 1):
+        if SLOT_60 == 1:
             PrivateFunction3(3, -50000, 310000, 100, 0)
-        if (SLOT_60 == 2):
+        if SLOT_60 == 2:
             PrivateFunction3(3, -50000, 160000, 100, 0)
-        if (SLOT_60 == 3):
+        if SLOT_60 == 3:
             PrivateFunction3(3, -50000, 210000, 100, 0)
-        if (not SLOT_60):
-            if (not Unknown68(1, 0, 0, 0, 0)):
+        if not SLOT_60:
+            if not SLOT_60 == 3:
                 PrivateFunction3(3, -50000, 360000, 100, 0)
             else:
                 PrivateFunction3(3, -50000, 210000, 100, 0)
@@ -1868,19 +1926,20 @@ def mi408_CreateEff():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def FunnelTimeStopThrow():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
         clearUponHandler(41)
-        clearUponHandler(43)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(44, 99)
+        clearUponHandler(VALUE_RECEIVED)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             callSubroutine('Funnel_Disp')
             callSubroutine('Funnel_Pallet')
 
@@ -1912,19 +1971,20 @@ def FunnelTimeStopThrow():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def FunnelTimeStopThrow_Open():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
         clearUponHandler(41)
-        clearUponHandler(43)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(44, 99)
+        clearUponHandler(VALUE_RECEIVED)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             callSubroutine('Funnel_Disp')
             callSubroutine('Funnel_Pallet')
 
@@ -1970,12 +2030,13 @@ def FunnelTimeStopThrow_Open():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral_Open', 100)
 
+
 @State
 def FunnelMatchWin2():
 
     def upon_IMMEDIATE():
         callSubroutine('FU_ActReset')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 2000)
     label(0)
     sprite('mi611_f12', 7)
@@ -1991,6 +2052,7 @@ def FunnelMatchWin2():
     label(99)
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
+
 
 @State
 def FunnelRoundWin():
@@ -2019,6 +2081,7 @@ def FunnelRoundWin():
     sprite('keep', 10)
     PrivateFunction2('FunnelNeutral', 100)
 
+
 @State
 def test00sub():
 
@@ -2034,6 +2097,7 @@ def test00sub():
     AlphaValue(255)
     ConstantAlphaModifier(-12)
     CreateObject('test00add', -1)
+
 
 @State
 def test00add():
@@ -2052,6 +2116,7 @@ def test00add():
     ConstantRedModifier(-25)
     sprite('vr_test00_00', 10)
     ConstantGreenModifier(-25)
+
 
 @State
 def mi202eff():
@@ -2074,6 +2139,7 @@ def mi202eff():
     sprite('vrmi202_13', 2)
     sprite('vrmi202_14', 2)
 
+
 @State
 def mi202sub():
 
@@ -2092,6 +2158,7 @@ def mi202sub():
     ConstantAlphaModifier(-42)
     sprite('vrmi202_03', 2)
     sprite('vrmi202_04', 2)
+
 
 @State
 def mi212eff():
@@ -2115,6 +2182,7 @@ def mi212eff():
     ConstantAlphaModifier(-35)
     sprite('vrmi212_11', 2)
 
+
 @State
 def mi212sub():
 
@@ -2128,6 +2196,7 @@ def mi212sub():
     sprite('vrmi212_01', 4)
     ConstantAlphaModifier(-51)
     sprite('vrmi212_01', 2)
+
 
 @State
 def mi212eff2():
@@ -2149,6 +2218,7 @@ def mi212eff2():
     sprite('vrmi212_18', 4)
     SetScaleSpeed(60)
 
+
 @State
 def mi212sub2():
 
@@ -2165,6 +2235,7 @@ def mi212sub2():
     SetScaleSpeed(20)
     sprite('vrmi212_08', 4)
     SetScaleSpeed(60)
+
 
 @State
 def mi232():
@@ -2184,6 +2255,7 @@ def mi232():
     sprite('vrmi232_03', 2)
     AlphaValue(175)
 
+
 @State
 def mi232Particle():
 
@@ -2197,6 +2269,7 @@ def mi232Particle():
     ParticleColorFromPalette(64, 64, 64)
     CallCustomizableParticle('mief_bitnokosi_back', -1)
     gotoLabel(0)
+
 
 @State
 def mi232Sub():
@@ -2213,6 +2286,7 @@ def mi232Sub():
     sprite('vrmi232_11', 3)
     sprite('vrmi232_12', 3)
     sprite('vrmi232_13', 2)
+
 
 @State
 def mi252eff():
@@ -2236,6 +2310,7 @@ def mi252eff():
     sprite('vrmi202_13', 2)
     sprite('vrmi202_14', 2)
 
+
 @State
 def mi252sub():
 
@@ -2255,6 +2330,7 @@ def mi252sub():
     sprite('vrmi202_03', 2)
     sprite('vrmi202_04', 2)
 
+
 @State
 def mi252Particle():
 
@@ -2268,6 +2344,7 @@ def mi252Particle():
     ParticleColorFromPalette(64, 64, 64)
     CallCustomizableParticle('mief_bitnokosi', -1)
     gotoLabel(0)
+
 
 @State
 def mi311eff():
@@ -2286,6 +2363,7 @@ def mi311eff():
     sprite('vrmi311_11', 2)
     sprite('vrmi311_12', 2)
     sprite('vrmi311_13', 2)
+
 
 @State
 def mi311sub():
@@ -2308,6 +2386,7 @@ def mi311sub():
     sprite('vrmi311_03', 2)
     AlphaValue(100)
 
+
 @State
 def mi312():
 
@@ -2326,6 +2405,7 @@ def mi312():
     sprite('vrmi232_03', 2)
     AlphaValue(145)
 
+
 @State
 def mi312Sub():
 
@@ -2341,6 +2421,7 @@ def mi312Sub():
     sprite('vrmi232_12', 3)
     sprite('vrmi232_13', 2)
 
+
 @State
 def huyu():
 
@@ -2350,11 +2431,11 @@ def huyu():
         E0EAEffectPosition(2)
         LinkParticle('mief_huyu')
         Size(200)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_31 <= 30):
+        def upon_EVERY_FRAME():
+            if SLOT_31 <= 30:
                 sendToLabel(10)
     sprite('null', 10)
     AlphaValue(0)
@@ -2374,17 +2455,18 @@ def huyu():
     SetScaleSpeed(0)
     label(10)
     sprite('null', 32767)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     CreateObject('mief_huyu_pinti', -1)
     AlphaValue(0)
     label(1)
     sprite('null', 5)
-    PassbackAddActionMarkToFunction('mief_huyu_pinti', 32)
+    TriggerUponForState('mief_huyu_pinti', 32)
     E0EAEffectPosition(0)
     SLOT_4 = 0
     ConstantAlphaModifier(-51)
     SetScaleSpeed(60)
     loopRest()
+
 
 @State
 def mief_huyu_pinti():
@@ -2394,7 +2476,7 @@ def mief_huyu_pinti():
         IgnoreScreenfreeze(1)
         E0EAEffectPosition(2)
         LinkParticle('mief_huyu_pinti')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 10)
     AlphaValue(255)
@@ -2406,6 +2488,7 @@ def mief_huyu_pinti():
     AlphaValue(0)
     CreateParticle('mief_huyu_pintiEnd', -1)
 
+
 @State
 def mi400_effMato():
 
@@ -2415,20 +2498,21 @@ def mi400_effMato():
         CancelIfPlayerHit(3)
         BlendMode_Normal()
         AddX(-12500)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
     sprite('null', 5)
     CreateObject('mi400_eff2', -1)
     sprite('null', 9)
     CreateObject('mi400_eff3', -1)
     sprite('null', 20)
     CreateObject('mi400_eff', -1)
-    PassbackAddActionMarkToFunction('mi400_eff3', 32)
+    TriggerUponForState('mi400_eff3', 32)
     sprite('null', 32767)
     label(1)
     sprite('null', 1)
     ScreenShake(10000, 10000)
-    PassbackAddActionMarkToFunction('mi400_eff2', 32)
-    PassbackAddActionMarkToFunction('mi400_eff', 32)
+    TriggerUponForState('mi400_eff2', 32)
+    TriggerUponForState('mi400_eff', 32)
+
 
 @State
 def mi400_eff():
@@ -2464,49 +2548,49 @@ def mi400_eff():
         WallCollisionDetection(1)
         SLOT_51 = 0
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 45):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 45:
                 CreateParticle('mief400_lvup', -1)
                 Size(800)
                 AddY(10000)
                 RefreshMultihit()
-                if (not SLOT_11):
+                if not SLOT_11:
                     Damage(600)
                 SLOT_51 = 1
                 PrivateSE('mise_09')
-            if (SLOT_18 == 75):
+            if SLOT_StateDuration == 75:
                 CreateParticle('mief400_lvup', -1)
                 Size(900)
                 AddY(10000)
                 RefreshMultihit()
-                if (not SLOT_11):
+                if not SLOT_11:
                     Damage(700)
                 SLOT_51 = 2
                 PrivateSE('mise_09')
-            if (SLOT_18 == 105):
+            if SLOT_StateDuration == 105:
                 CreateParticle('mief400_lvup', -1)
                 Size(1050)
                 AddY(10000)
                 RefreshMultihit()
-                if (not SLOT_11):
+                if not SLOT_11:
                     Damage(800)
                 SLOT_51 = 3
                 PrivateSE('mise_09')
-            if (SLOT_18 >= 165):
-                PassbackAddActionMarkToFunction('SpecialShot', 32)
+            if SLOT_StateDuration >= 165:
+                TriggerUponForState('SpecialShot', 32)
 
         def upon_32():
             SetActionMark(1)
             sendToLabel(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
         ContinueState(600)
         SLOT_8 = 1
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             SLOT_8 = 0
             DeleteObject(23)
         CopyFromRightToLeft(23, 2, 55, 3, 2, 55)
-        if (not SLOT_55):
+        if not SLOT_55:
             SLOT_8 = 0
             DeleteObject(23)
     sprite('vrmi400', 5)
@@ -2525,12 +2609,12 @@ def mi400_eff():
     label(1)
     sprite('vrmi400', 4)
     E0EAEffectPosition(0)
-    clearUponHandler(3)
-    clearUponHandler(11)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
     Damage(300)
     HitBackReturnObject(0)
     Unknown9219(0)
-    if (not SLOT_11):
+    if not SLOT_11:
         AirPushbackY(-12000)
         PushbackX(8000)
         Floorslide(10)
@@ -2540,15 +2624,15 @@ def mi400_eff():
         physicsXImpulse(7500)
         RotationAngle(-30000)
     else:
-        if (SLOT_19 >= 500000):
-            SLOT_12 = (SLOT_12 + SLOT_19)
+        if SLOT_19 >= 500000:
+            SLOT_XVelocity = SLOT_XVelocity + SLOT_19
         else:
-            SLOT_12 = 500000
-        SLOT_13 = (SLOT_13 + SLOT_23)
+            SLOT_XVelocity = 500000
+        SLOT_YVelocity = SLOT_YVelocity + SLOT_YDistanceFromFloor
         XImpulseAcceleration(1)
         YAccel(-1)
         RotationSomething(0)
-        PassbackAddActionMarkToFunction('mi400_Ball', 32)
+        TriggerUponForState('mi400_Ball', 32)
     if SLOT_51:
         SmartVoiceline('mi201')
     sprite('vrmi400', 4)
@@ -2570,16 +2654,16 @@ def mi400_eff():
     label(10)
     sprite('vrmi400', 4)
     RefreshMultihit()
-    if (SLOT_51 <= 0):
+    if SLOT_51 <= 0:
         XImpulseAcceleration(110)
         YAccel(110)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         XImpulseAcceleration(107)
         YAccel(107)
-    if (SLOT_51 == 2):
+    if SLOT_51 == 2:
         XImpulseAcceleration(104)
         YAccel(104)
-    if (SLOT_51 >= 3):
+    if SLOT_51 >= 3:
         XImpulseAcceleration(101)
         YAccel(101)
     loopRest()
@@ -2596,6 +2680,7 @@ def mi400_eff():
     SetScaleSpeed(120)
     ScreenShake(20000, 20000)
 
+
 @State
 def mi400_Ball():
 
@@ -2609,7 +2694,7 @@ def mi400_Ball():
         PaletteIndex(3)
         EnableAfterimage(1)
         AfterimageCount(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrmi400_20', 1)
     CreateObject('mi400_BallSub', -1)
     label(0)
@@ -2663,6 +2748,7 @@ def mi400_Ball():
     CreateObject('mi400_BallEnd', 4)
     gotoLabel(2)
 
+
 @State
 def mi400_BallSub():
 
@@ -2677,6 +2763,7 @@ def mi400_BallSub():
         EnableAfterimage(1)
     sprite('vrmi400_30', 32767)
     Size(1200)
+
 
 @State
 def mi400_BallEnd():
@@ -2699,11 +2786,12 @@ def mi400_BallEnd():
     sprite('vrmi400_64', 2)
     sprite('vrmi400_65', 2)
 
+
 @State
 def mi400_AuraRenzoku():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         CancelIfPlayerHit(3)
@@ -2711,6 +2799,7 @@ def mi400_AuraRenzoku():
     sprite('null', 5)
     CreateObject('mi400_Aura', -1)
     gotoLabel(0)
+
 
 @State
 def mi400_Aura():
@@ -2728,6 +2817,7 @@ def mi400_Aura():
     SetScaleSpeed(120)
     ConstantAlphaModifier(-17)
 
+
 @State
 def mi400_BallCircle():
 
@@ -2742,6 +2832,7 @@ def mi400_BallCircle():
         Rotation(-3000)
     sprite('null', 32767)
 
+
 @State
 def mi400_eff2():
 
@@ -2750,7 +2841,7 @@ def mi400_eff2():
         E0EAEffectPosition(3)
         RemoveOnCallStateEnd(3)
         E0EAEffectScale(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 15)
     CreateObject('mi400_effsub', -1)
@@ -2758,6 +2849,7 @@ def mi400_eff2():
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi400_effsub():
@@ -2775,6 +2867,7 @@ def mi400_effsub():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def mi400_eff3():
 
@@ -2786,13 +2879,14 @@ def mi400_eff3():
         CancelIfPlayerHit(3)
         E0EAEffectPosition(2)
         E0EAEffectScale(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     SetScaleSpeed(15)
     label(1)
     sprite('null', 5)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi400_tyakuti():
@@ -2822,16 +2916,16 @@ def mi400_tyakuti():
         AddY(-20000)
         AlphaValue(200)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             DeleteObject(23)
         CopyFromRightToLeft(23, 2, 51, 2, 2, 51)
-        if (SLOT_51 == 1):
+        if SLOT_51 == 1:
             SetScaleY(1000)
             SetActionMark(1)
-        if (SLOT_51 == 2):
+        if SLOT_51 == 2:
             SetScaleY(1200)
             SetActionMark(2)
-        if (SLOT_51 >= 3):
+        if SLOT_51 >= 3:
             SetScaleY(1400)
             SetActionMark(3)
         SLOT_8 = 1
@@ -2860,7 +2954,7 @@ def mi400_tyakuti():
         RefreshMultihit()
         AddActionMark(-1)
     sprite('vrmi400_52', 3)
-    PassbackAddActionMarkToFunction('mi400_tyakutiSub', 32)
+    TriggerUponForState('mi400_tyakutiSub', 32)
     ConstantAlphaModifier(-13)
     CreateObject('mi400_End', 0)
     CreateObject('mi400_End2', 1)
@@ -2882,6 +2976,7 @@ def mi400_tyakuti():
     loopRest()
     SLOT_8 = 0
 
+
 @State
 def mi400_tyakutiSub():
 
@@ -2895,7 +2990,7 @@ def mi400_tyakutiSub():
         IgnorePauses(2)
         EnableAfterimage(1)
         AfterimageCount(3)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrmi400_40', 5)
     CreateObject('mi400_tyakutiSub2', -1)
     sprite('vrmi400_41', 5)
@@ -2907,11 +3002,12 @@ def mi400_tyakutiSub():
     gotoLabel(0)
     label(1)
     sprite('vrmi400_42', 3)
-    PassbackAddActionMarkToFunction('mi400_tyakutiSub2', 32)
+    TriggerUponForState('mi400_tyakutiSub2', 32)
     ConstantAlphaModifier(-21)
     sprite('vrmi400_43', 3)
     sprite('vrmi400_44', 3)
     sprite('vrmi400_45', 3)
+
 
 @State
 def mi400_tyakutiSub2():
@@ -2923,7 +3019,7 @@ def mi400_tyakutiSub2():
         E0EAEffectPosition(2)
         Eff3DEffect('mieff400_aura03', '')
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 10)
     sprite('null', 1)
     ConstantAlphaModifier(26)
@@ -2936,6 +3032,7 @@ def mi400_tyakutiSub2():
     SetScaleSpeedY(500)
     ConstantAlphaModifier(-26)
     loopRest()
+
 
 @State
 def mi400_tyakutiSub3():
@@ -2955,6 +3052,7 @@ def mi400_tyakutiSub3():
     SetScaleSpeed(-40)
     sprite('null', 10)
 
+
 @State
 def mi400_HitEffect():
 
@@ -2966,6 +3064,7 @@ def mi400_HitEffect():
     CreateObject('mi400_HitEffect2', -1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def mi400_HitEffect2():
@@ -2988,6 +3087,7 @@ def mi400_HitEffect2():
     sprite('vrmi400_64', 3)
     sprite('vrmi400_65', 3)
 
+
 @State
 def mi400_End():
 
@@ -3007,6 +3107,7 @@ def mi400_End():
     CreateParticle('mief400_endtb', -1)
     sprite('vrmi400_64', 4)
     sprite('vrmi400_65', 4)
+
 
 @State
 def mi400_End2():
@@ -3028,6 +3129,7 @@ def mi400_End2():
     CreateParticle('mief400_endtb', -1)
     sprite('vrmi400_64', 5)
     sprite('vrmi400_65', 5)
+
 
 @State
 def mi402_eff():
@@ -3056,7 +3158,7 @@ def mi402_eff():
         AlphaValue(220)
         WallCollisionDetection(1)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             DeleteObject(23)
 
         def upon_56():
@@ -3064,18 +3166,18 @@ def mi402_eff():
             IgnorePauses(0)
     sprite('null', 9)
     CreateObject('mi402_eff2', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleX(-800)
-    SetScaleY(800)
-    AddY(30000)
-    AddX(-140000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleX(-800)
+        SetScaleY(800)
+        AddY(30000)
+        AddX(-140000)
     CreateObject('mi402_eff2', -1)
     sprite('vrmi402_00', 4)
     CreateObject('mi402_effpoint', -1)
     ParticleSize(850)
     CallCustomizableParticle('mief402_skullwave', -1)
-    PassbackAddActionMarkToFunction('mi402_eff2', 32)
+    TriggerUponForState('mi402_eff2', 32)
     physicsXImpulse(20000)
     ScreenShake(10000, 10000)
     sprite('vrmi402_01', 4)
@@ -3089,6 +3191,7 @@ def mi402_eff():
     sprite('vrmi402_04', 10)
     ConstantAlphaModifier(-51)
     CreateObject('mi402_EndEff', -1)
+
 
 @State
 def mi402_EndEff():
@@ -3114,6 +3217,7 @@ def mi402_EndEff():
     Eff3DEffect('mieff402_end01', '')
     sprite('null', 11)
 
+
 @State
 def mi402_AuraEff():
 
@@ -3134,6 +3238,7 @@ def mi402_AuraEff():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi402_gsand():
 
@@ -3146,6 +3251,7 @@ def mi402_gsand():
     sprite('null', 10)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi401_shockMato():
@@ -3161,6 +3267,7 @@ def mi401_shockMato():
     sprite('null', 4)
     CreateObject('mi401_shock', -1)
     gotoLabel(0)
+
 
 @State
 def mi401_shock():
@@ -3182,6 +3289,7 @@ def mi401_shock():
     sprite('vrmi401_03', 2)
     sprite('vrmi401_04', 2)
 
+
 @State
 def mi401_shotei2():
 
@@ -3202,6 +3310,7 @@ def mi401_shotei2():
     sprite('vrmi401_25', 2)
     sprite('vrmi401_26', 2)
 
+
 @State
 def mi401_shoteiAdd2():
 
@@ -3217,6 +3326,7 @@ def mi401_shoteiAdd2():
     sprite('vrmi401_14', 2)
     sprite('vrmi401_15', 2)
     sprite('vrmi401_16', 2)
+
 
 @State
 def mi401_shotei():
@@ -3244,6 +3354,7 @@ def mi401_shotei():
     CallCustomizableParticle('mief401_bst', 2)
     sprite('vrmi401_23', 2)
 
+
 @State
 def mi401_shoteiAdd():
 
@@ -3257,6 +3368,7 @@ def mi401_shoteiAdd():
     sprite('vrmi401_11', 6)
     sprite('vrmi401_12', 6)
     sprite('vrmi401_13', 2)
+
 
 @State
 def mi401_Gedan():
@@ -3281,6 +3393,7 @@ def mi401_Gedan():
     sprite('vrmi401_43', 2)
     gotoLabel(0)
 
+
 @State
 def mi401_GendanAdd():
 
@@ -3298,6 +3411,7 @@ def mi401_GendanAdd():
     sprite('vrmi401_32', 2)
     sprite('vrmi401_33', 2)
     gotoLabel(0)
+
 
 @State
 def mi401_Gedan2():
@@ -3321,6 +3435,7 @@ def mi401_Gedan2():
     sprite('vrmi401_41', 2)
     gotoLabel(0)
 
+
 @State
 def mi401_GendanAdd2():
 
@@ -3339,6 +3454,7 @@ def mi401_GendanAdd2():
     sprite('vrmi401_31', 2)
     gotoLabel(0)
 
+
 @State
 def mi401_Nokosi():
 
@@ -3354,13 +3470,14 @@ def mi401_Nokosi():
     sprite('null', 12)
     ConstantAlphaModifier(-13)
 
+
 @State
 def mi402_eff2():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(2)
         LinkParticle('mief402_skull')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 10)
     ConstantAlphaModifier(17)
@@ -3371,6 +3488,7 @@ def mi402_eff2():
     AlphaValue(0)
     CreateParticle('mief402_skullfly_ippai', -1)
     loopRest()
+
 
 @State
 def mi402_effpoint():
@@ -3392,6 +3510,7 @@ def mi402_effpoint():
     CreateParticle('mief402_end_aura', 3)
     sprite('vrmi402_expoint', 3)
     CreateParticle('mief402_end_aura', 4)
+
 
 @State
 def mi403Eff():
@@ -3419,6 +3538,7 @@ def mi403Eff():
     IgnoreScreenfreeze(1)
     CreateObject('mi403EffEnd', -1)
 
+
 @State
 def mi403EffEnd():
 
@@ -3435,6 +3555,7 @@ def mi403EffEnd():
     SetScaleSpeedY(7)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def mi403EffParticle():
@@ -3454,6 +3575,7 @@ def mi403EffParticle():
     CreateParticle('mief403_aura', 3)
     gotoLabel(0)
 
+
 @State
 def mi404_eff():
 
@@ -3470,13 +3592,13 @@ def mi404_eff():
         SLOT_6 = 600
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_6):
+        def upon_EVERY_FRAME():
+            if not SLOT_6:
                 sendToLabel(1)
-            if (SLOT_6 <= 0):
+            if SLOT_6 <= 0:
                 sendToLabel(1)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             sendToLabel(1)
     sprite('vrmi404_03', 27)
     CreateObject('mi404_effStart', -1)
@@ -3546,10 +3668,10 @@ def mi404_eff():
     sprite('vrmi404_01', 1)
     SLOT_6 = 0
     clearUponHandler(16)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     clearUponHandler(33)
-    clearUponHandler(44)
-    clearUponHandler(1)
+    clearUponHandler(PLAYER_DAMAGED)
+    clearUponHandler(STATE_END)
     SLOT_6 = 0
     IgnoreFinishStop(1)
     IgnoreScreenfreeze(1)
@@ -3558,6 +3680,7 @@ def mi404_eff():
     sprite('vrmi404_01', 5)
     RemoveOnCallStateEnd(3)
     sprite('vrmi404_02', 6)
+
 
 @State
 def mi404_effStart():
@@ -3577,6 +3700,7 @@ def mi404_effStart():
     sprite('null', 15)
     SetScaleSpeed(40)
 
+
 @State
 def mi404_effEnd():
 
@@ -3585,14 +3709,15 @@ def mi404_effEnd():
         IgnoreScreenfreeze(1)
     sprite('null', 4)
     CreateObject('mi404_endaura', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(100000)
     sprite('null', 4)
     sprite('null', 12)
     CreateObject('mi404_endaura', -1)
     sprite('null', 3)
     CreateObject('mi404_endaura2', -1)
+
 
 @State
 def mi404_effImp():
@@ -3608,6 +3733,7 @@ def mi404_effImp():
     SetScaleSpeed(52)
     physicsYImpulse(-8000)
     ConstantAlphaModifier(-13)
+
 
 @State
 def mi404_effImp2():
@@ -3626,6 +3752,7 @@ def mi404_effImp2():
     SetScaleSpeed(30)
     sprite('null', 20)
     ConstantAlphaModifier(-13)
+
 
 @State
 def mi404_endaura():
@@ -3649,6 +3776,7 @@ def mi404_endaura():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi404_endaura2():
 
@@ -3670,6 +3798,7 @@ def mi404_endaura2():
     physicsYImpulse(-1500)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi406_Kyuketu():
@@ -3702,6 +3831,7 @@ def mi406_Kyuketu():
     sprite('mief406_07', 7)
     ConstantAlphaModifier(-25)
 
+
 @State
 def mi406_KyuketuSub():
 
@@ -3722,6 +3852,7 @@ def mi406_KyuketuSub():
     sprite('mief406_16', 3)
     sprite('mief406_17', 7)
 
+
 @State
 def mi407_effStart():
 
@@ -3733,6 +3864,7 @@ def mi407_effStart():
     sprite('mi407_fbeam03', 3)
     sprite('mi407_fbeam04', 2)
     sprite('mi407_fbeam05', 2)
+
 
 @State
 def mi431_KyushuSoul():
@@ -3806,6 +3938,7 @@ def mi431_KyushuSoul():
     CreateParticle('mief431_aura', 0)
     CreateParticle('mief431_aura', 1)
 
+
 @State
 def mi430_KickEff():
 
@@ -3821,6 +3954,7 @@ def mi430_KickEff():
     sprite('null', 10)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi430_HitEff():
@@ -3839,6 +3973,7 @@ def mi430_HitEff():
     ConstantAlphaModifier(-51)
     SetScaleSpeed(120)
 
+
 @State
 def mi430_HitEffBG():
 
@@ -3847,6 +3982,7 @@ def mi430_HitEffBG():
         Eff3DEffect('mieff430_hiteff01', '')
         Size(500)
     sprite('null', 33)
+
 
 @State
 def mi430_HitEff2():
@@ -3865,6 +4001,7 @@ def mi430_HitEff2():
     CreateParticle('mief430_himatu', -1)
     CreateObject('mi430_HitEffBG', -1)
 
+
 @State
 def mi430_Smoke():
 
@@ -3881,6 +4018,7 @@ def mi430_Smoke():
     sprite('null', 10)
     ConstantAlphaModifier(-20)
 
+
 @State
 def mi430_Sand():
 
@@ -3893,15 +4031,16 @@ def mi430_Sand():
     CreateParticle('mief430_sand00', -1)
     AlphaValue(0)
     ConstantAlphaModifier(51)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(-51)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(-51)
     sprite('null', 7)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi430_Sand2():
@@ -3915,14 +4054,15 @@ def mi430_Sand2():
     sprite('null', 5)
     AlphaValue(0)
     ConstantAlphaModifier(51)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(-51)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(-51)
     sprite('null', 5)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(0)
     sprite('null', 10)
+
 
 @State
 def mi430_Sand3():
@@ -3936,14 +4076,15 @@ def mi430_Sand3():
     sprite('null', 5)
     AlphaValue(0)
     ConstantAlphaModifier(51)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(-51)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(-51)
     sprite('null', 5)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(0)
     sprite('null', 10)
+
 
 @State
 def mi430_Sand4():
@@ -3957,14 +4098,15 @@ def mi430_Sand4():
     sprite('null', 5)
     AlphaValue(0)
     ConstantAlphaModifier(51)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(-51)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(-51)
     sprite('null', 5)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(0)
     sprite('null', 10)
+
 
 @State
 def mi430_Sand5():
@@ -3978,15 +4120,16 @@ def mi430_Sand5():
     sprite('null', 5)
     AlphaValue(0)
     ConstantAlphaModifier(51)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(-51)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(-51)
     sprite('null', 5)
-    ApplyFunctionsToObjects(3)
-    ConstantAlphaModifier(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_3():
+        ConstantAlphaModifier(0)
     sprite('null', 20)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi432_HitEffBG():
@@ -4006,6 +4149,7 @@ def mi432_HitEffBG():
     SetScaleXPerFrame(20)
     ConstantAlphaModifier(0)
 
+
 @State
 def mi432_Tame():
 
@@ -4015,7 +4159,7 @@ def mi432_Tame():
         E0EAEffectPosition(2)
         AddY(250000)
         Size(850)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 5)
     SetScaleSpeed(-4)
@@ -4025,6 +4169,7 @@ def mi432_Tame():
     label(1)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def mi432_TameSub():
@@ -4041,6 +4186,7 @@ def mi432_TameSub():
     Unknown3059(-1500)
     SetScaleSpeed(-60)
 
+
 @State
 def mi432_Kaiho():
 
@@ -4049,12 +4195,13 @@ def mi432_Kaiho():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         AddY(250000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 15)
     CreateObject('mi432_KaihoSub', -1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi432_KaihoSub():
@@ -4071,6 +4218,7 @@ def mi432_KaihoSub():
     Unknown3059(-6000)
     sprite('vrmi432_yugami', 30)
     SetScaleSpeed(120)
+
 
 @State
 def TimeStopFinish():
@@ -4100,12 +4248,13 @@ def TimeStopFinish():
         AutoHitSignalSending(0)
         AttackDirection(1)
         CopyFromRightToLeft(23, 2, 2, 22, 2, 38)
-        if (SLOT_38 == SLOT_2):
+        if SLOT_IsFacingRight == SLOT_2:
             FlipOnHit(1)
         Visibility(1)
         SLOT_11 = 0
     sprite('vrmi400', 1)
     PrivateSE('mise_14')
+
 
 @State
 def mi440_juso():
@@ -4113,84 +4262,85 @@ def mi440_juso():
     def upon_IMMEDIATE():
         BlendMode_Normal()
         TeleportToObject(22)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 2)
     CreateObject('mi440_jusoFire', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(350000)
-    AddX(105000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(350000)
+        AddX(105000)
     CommonSE('016_explode_1')
     CommonSE('016_explode_1')
     CreateObject('mi440_jusoSub', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(350000)
-    RotationAngle(12000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(350000)
+        RotationAngle(12000)
     sprite('null', 2)
     CreateObject('mi440_jusoFire', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(-130000)
-    ApplyFunctionsToSelf()
-    sprite('null', 2)
-    CreateObject('mi440_jusoSub', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(250000)
-    RotationAngle(10000)
-    AddScale(-200)
-    ApplyFunctionsToSelf()
-    CreateObject('mi440_jusoFire', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(160000)
-    ApplyFunctionsToSelf()
-    sprite('null', 2)
-    CreateObject('mi440_jusoFire', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(200000)
-    AddX(200000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(-130000)
     sprite('null', 2)
     CreateObject('mi440_jusoSub', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(120000)
-    AddX(2000)
-    RotationAngle(10000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(250000)
+        RotationAngle(10000)
+        AddScale(-200)
     CreateObject('mi440_jusoFire', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(25000)
-    AddX(-120000)
-    AddScale(100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(160000)
+    sprite('null', 2)
+    CreateObject('mi440_jusoFire', -1)
+
+    def RunOnObject_1():
+        AddY(200000)
+        AddX(200000)
+    sprite('null', 2)
+    CreateObject('mi440_jusoSub', -1)
+
+    def RunOnObject_1():
+        AddY(120000)
+        AddX(2000)
+        RotationAngle(10000)
+    CreateObject('mi440_jusoFire', -1)
+
+    def RunOnObject_1():
+        AddY(25000)
+        AddX(-120000)
+        AddScale(100)
     CreateObject('mi440_jusoFireBG', -1)
     sprite('null', 2)
     CreateObject('mi440_jusoFire', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(60000)
-    AddX(120000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(60000)
+        AddX(120000)
     CreateObject('mi440_jusoFireG', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(100)
-    AddScaleY(200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(100)
+        AddScaleY(200)
     CommonSE('015_blaze_2')
     CommonSE('015_blaze_2')
     sprite('null', 32767)
     label(1)
     sprite('null', 5)
-    PassbackAddActionMarkToFunction('mi440_jusoFire', 32)
+    TriggerUponForState('mi440_jusoFire', 32)
     CommonSE('016_explode_0')
     CommonSE('016_explode_0')
     sprite('null', 20)
-    PassbackAddActionMarkToFunction('mi440_jusoFireBG', 32)
-    PassbackAddActionMarkToFunction('mi440_jusoFireG', 32)
-    PassbackAddActionMarkToFunction('mi440_jusoSub', 32)
+    TriggerUponForState('mi440_jusoFireBG', 32)
+    TriggerUponForState('mi440_jusoFireG', 32)
+    TriggerUponForState('mi440_jusoSub', 32)
     CommonSE('016_explode_0')
     CommonSE('015_blaze_2')
     sprite('null', 32767)
-    PassbackAddActionMarkToFunction('mi440_jusoSub', 33)
+    TriggerUponForState('mi440_jusoSub', 33)
+
 
 @State
 def mi440_jusoSub():
@@ -4202,8 +4352,8 @@ def mi440_jusoSub():
         PaletteIndex(1)
         ColorFromPaletteIndex(120)
         Size(1000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 15)
     sprite('null', 32767)
     label(0)
@@ -4215,6 +4365,7 @@ def mi440_jusoSub():
     ConstantAlphaModifier(-26)
     loopRest()
 
+
 @State
 def mi440_jusoFire():
 
@@ -4224,7 +4375,7 @@ def mi440_jusoFire():
         Eff3DEffect('mieff440_jusoFire00', '')
         Size(750)
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 15)
     ConstantAlphaModifier(9)
     label(0)
@@ -4252,6 +4403,7 @@ def mi440_jusoFire():
     ConstantAlphaModifier(-13)
     loopRest()
 
+
 @State
 def mi440_jusoFireG():
 
@@ -4263,7 +4415,7 @@ def mi440_jusoFireG():
         Size(750)
         SetScaleY(150)
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 15)
     ConstantAlphaModifier(13)
     SetScaleSpeedY(25)
@@ -4281,6 +4433,7 @@ def mi440_jusoFireG():
     SetScaleSpeedZ(10)
     loopRest()
 
+
 @State
 def mi440_jusoFireBG():
 
@@ -4291,7 +4444,7 @@ def mi440_jusoFireBG():
         Eff3DEffect('mieff440_bg00', '')
         Size(1000)
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 30)
     ConstantAlphaModifier(8)
     label(0)
@@ -4305,6 +4458,7 @@ def mi440_jusoFireBG():
     ConstantAlphaModifier(-13)
     loopRest()
 
+
 @State
 def mi440_GaikotuEx():
 
@@ -4315,8 +4469,8 @@ def mi440_GaikotuEx():
         Size(1000)
         AddScaleY(200)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         TeleportToObject(22)
     sprite('null', 25)
     SetScaleSpeed(40)
@@ -4335,7 +4489,7 @@ def mi440_GaikotuEx():
     gotoLabel(0)
     label(1)
     sprite('null', 32767)
-    PassbackAddActionMarkToFunction('mi440_GaikotuAura', 32)
+    TriggerUponForState('mi440_GaikotuAura', 32)
     Eff3DEffect('mieff440_gaikotu01', '')
     loopRest()
     label(2)
@@ -4343,6 +4497,7 @@ def mi440_GaikotuEx():
     PaletteIndex(1)
     ColorFromPaletteIndex(194)
     loopRest()
+
 
 @State
 def mi440_Gaikotu():
@@ -4354,7 +4509,7 @@ def mi440_Gaikotu():
         Size(1000)
         AddScaleY(200)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         TeleportToObject(22)
     sprite('null', 25)
     SetScaleSpeed(40)
@@ -4373,9 +4528,10 @@ def mi440_Gaikotu():
     gotoLabel(0)
     label(1)
     sprite('null', 32767)
-    PassbackAddActionMarkToFunction('mi440_GaikotuAura', 32)
+    TriggerUponForState('mi440_GaikotuAura', 32)
     Eff3DEffect('mieff440_gaikotu01', '')
     loopRest()
+
 
 @State
 def mi440_GaikotuAura():
@@ -4385,13 +4541,14 @@ def mi440_GaikotuAura():
         Size(1100)
         LinkParticle('mief440_ground')
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 1)
     PrivateSE('mise_15')
     PrivateSE('mise_15')
     PrivateSE('mise_14')
+
 
 @State
 def mi440_GaikotuSotoba():
@@ -4403,8 +4560,8 @@ def mi440_GaikotuSotoba():
         Size(1800)
         AddScaleY(200)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         TeleportToObject(22)
     label(0)
     sprite('null', 2)
@@ -4425,6 +4582,7 @@ def mi440_GaikotuSotoba():
     ColorFromPaletteIndex(194)
     loopRest()
 
+
 @State
 def mi440_BlackBG():
 
@@ -4432,12 +4590,13 @@ def mi440_BlackBG():
         BlendMode_Sub()
         RemoveOnCallStateEnd(2)
         Eff3DEffect('mieff440_bg01', '')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     label(1)
     sprite('null', 26)
     ConstantAlphaModifier(-26)
     loopRest()
+
 
 @State
 def mi440_Flash():
@@ -4453,6 +4612,7 @@ def mi440_Flash():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
     loopRest()
+
 
 @State
 def mi440_Blood():
@@ -4477,6 +4637,7 @@ def mi440_Blood():
     sprite('mief406_16', 3)
     sprite('mief406_17', 3)
 
+
 @State
 def mi440_BloodBig():
 
@@ -4494,7 +4655,7 @@ def mi440_BloodBig():
         Size(1200)
         RenderLayer(1)
         Flip()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 4)
     ScreenShake(10000, 10000)
@@ -4506,6 +4667,7 @@ def mi440_BloodBig():
     sprite('null', 10)
     ConstantAlphaModifier(-51)
     loopRest()
+
 
 @State
 def mi440_BloodBigEX():
@@ -4524,7 +4686,7 @@ def mi440_BloodBigEX():
         Size(2000)
         RenderLayer(1)
         Flip()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 4)
     ScreenShake(10000, 10000)
@@ -4541,6 +4703,7 @@ def mi440_BloodBigEX():
     ConstantAlphaModifier(-51)
     loopRest()
 
+
 @State
 def mi440_Camera():
 
@@ -4549,8 +4712,8 @@ def mi440_Camera():
         IgnoreFinishStop(1)
         IgnoreScreenfreeze(1)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
     label(0)
     sprite('null', 32767)
     TeleportToObject(22)
@@ -4564,6 +4727,7 @@ def mi440_Camera():
     sprite('null', 1)
     CameraControlInfinity(0)
 
+
 @State
 def mi440_Juwa():
 
@@ -4576,7 +4740,7 @@ def mi440_Juwa():
         AddY(300000)
         SetScaleX(850)
         SetScaleY(900)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 55)
     sprite('null', 32767)
     Eff3DEffect('mieff440_bg01', '')
@@ -4584,6 +4748,7 @@ def mi440_Juwa():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
     loopRest()
+
 
 @State
 def mi450_Start():
@@ -4601,7 +4766,7 @@ def mi450_Start():
         AlphaValue(200)
         ContinueState(300)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             DeleteObject(23)
     sprite('null', 10)
     CreateParticle('mief450_atkfirst00_blm', -1)
@@ -4611,6 +4776,7 @@ def mi450_Start():
     CreateObject('mi450_StartSub', -1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def mi450_StartSub():
@@ -4629,7 +4795,7 @@ def mi450_StartSub():
         ColorFromPaletteIndex(84)
         IgnoreScreenfreeze(1)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             DeleteObject(23)
     sprite('null', 10)
     ConstantAlphaModifier(26)
@@ -4641,6 +4807,7 @@ def mi450_StartSub():
     SetScaleSpeedZ(-8)
     ConstantAlphaModifier(-26)
 
+
 @State
 def AstralCamera():
 
@@ -4649,12 +4816,12 @@ def AstralCamera():
         CameraControlEnable(1)
         CameraNoCeiling(1)
         CameraNoScreenCollision(1)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 5)
-        sendToLabelUpon(37, 6)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 5)
+        uponSendToLabel(37, 6)
     sprite('null', 32767)
     CameraPosition(1500)
     E0EAEffectPosition(3)
@@ -4665,16 +4832,16 @@ def AstralCamera():
     CreateObject('mi450_OnryoBasiraCamera', -1)
     sprite('null', 32767)
     CreateObject('mi450_OnryoBasiraCamera', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-180000)
-    AddScale(100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-180000)
+        AddScale(100)
     TeleportToObject(22)
     physicsYImpulse(24200)
     CameraPosition(1000)
     label(1)
     sprite('null', 32767)
-    PassbackAddActionMarkToFunction('mi450_OnryoBasiraCamera', 32)
+    TriggerUponForState('mi450_OnryoBasiraCamera', 32)
     EndMomentum(1)
     CameraPosition(1600)
     label(2)
@@ -4714,6 +4881,7 @@ def AstralCamera():
     sprite('null', 32767)
     CameraPosition(1100)
 
+
 @State
 def mi450_OnryoBasiraCamera():
 
@@ -4729,7 +4897,7 @@ def mi450_OnryoBasiraCamera():
         AlphaValue(0)
         RandAddScaleX(-400, 0)
         AddY(-400000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 30)
     CreateObject('mi450_OnryoBasiraBG2', -1)
     ConstantAlphaModifier(7)
@@ -4746,6 +4914,7 @@ def mi450_OnryoBasiraCamera():
     SetScaleSpeedZ(60)
     sprite('null', 20)
     CreateObject('mi450_OnryoBasiraEnd', -1)
+
 
 @State
 def mi450_OnryoBasiraSub3():
@@ -4770,6 +4939,7 @@ def mi450_OnryoBasiraSub3():
     SetScaleSpeedZ(25)
     SetScaleXPerFrame(25)
 
+
 @State
 def mi450_OnryoBasiraCameraSub():
 
@@ -4792,6 +4962,7 @@ def mi450_OnryoBasiraCameraSub():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi450_OnryoBasiraEnd():
 
@@ -4809,6 +4980,7 @@ def mi450_OnryoBasiraEnd():
     sprite('null', 20)
     ConstantAlphaModifier(-13)
 
+
 @State
 def mi450_OnryoBasira():
 
@@ -4819,7 +4991,7 @@ def mi450_OnryoBasira():
         Size(1500)
         AlphaValue(0)
         AddY(-400000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         RemoveOnCallStateEnd(2)
         Eff3DEffect('mieff450_onryo_hasira01', '')
         SetScaleX(1500)
@@ -4827,15 +4999,15 @@ def mi450_OnryoBasira():
     sprite('null', 12)
     ConstantAlphaModifier(51)
     CreateObject('mi450_OnryoStart', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(1400)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(1400)
     sprite('null', 6)
     CreateObject('mi450_OnryoBasiraSub', -1)
     CreateObject('mi450_OnryoStart', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(1250)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(1250)
     ScreenShake(10000, 10000)
     sprite('null', 6)
     ScreenShake(10000, 10000)
@@ -4848,9 +5020,9 @@ def mi450_OnryoBasira():
     sprite('null', 6)
     CreateObject('mi450_OnryoBasiraSub', -1)
     CreateObject('mi450_OnryoStart', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(1250)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(1250)
     ScreenShake(10000, 10000)
     sprite('null', 6)
     ScreenShake(10000, 10000)
@@ -4862,6 +5034,7 @@ def mi450_OnryoBasira():
     gotoLabel(0)
     label(1)
     sprite('null', 1)
+
 
 @State
 def mi450_OnryoBasiraBG2():
@@ -4878,6 +5051,7 @@ def mi450_OnryoBasiraBG2():
         ConstantAlphaModifier(10)
         physicsYImpulse(10500)
     sprite('null', 32767)
+
 
 @State
 def mi450_OnryoBasiraSub():
@@ -4899,6 +5073,7 @@ def mi450_OnryoBasiraSub():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi450_OnryoBasiraSub2():
 
@@ -4917,6 +5092,7 @@ def mi450_OnryoBasiraSub2():
     sprite('null', 120)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi450_OnryoStart():
@@ -4939,6 +5115,7 @@ def mi450_OnryoStart():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi450_Kirikae():
 
@@ -4949,6 +5126,7 @@ def mi450_Kirikae():
         Eff3DEffect('mieff450_onryo_Scroll', '')
         E0EAEffectPosition(2)
     sprite('null', 99)
+
 
 @State
 def mi450_Kirikae2():
@@ -4964,13 +5142,14 @@ def mi450_Kirikae2():
         E0EAEffectPosition(2)
     sprite('null', 39)
 
+
 @State
 def mi450_CutTest():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(2)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Size(1600)
         AddY(340000)
         AddX(-50000)
@@ -4989,10 +5168,11 @@ def mi450_CutTest():
     sprite('mi450cutin_00', 32767)
     label(0)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('mi450_CutTestGrow', 32)
-    PassbackAddActionMarkToFunction('mi450_CutTest2', 32)
+    TriggerUponForState('mi450_CutTestGrow', 32)
+    TriggerUponForState('mi450_CutTest2', 32)
     SetScaleSpeed(100)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi450_CutTest2():
@@ -5002,7 +5182,7 @@ def mi450_CutTest2():
         RenderLayer(1)
         E0EAEffectPosition(2)
         E0EAEffectScale(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         PaletteIndex(3)
     sprite('mi450cutin_mask00', 20)
     CreateObject('mi450_CutInBG', -1)
@@ -5018,6 +5198,7 @@ def mi450_CutTest2():
     ConstantAlphaModifier(-13)
     DespawnEAEffect('mi450_CutInBG')
 
+
 @State
 def mi450_CutTestGrow():
 
@@ -5029,7 +5210,7 @@ def mi450_CutTestGrow():
         E0EAEffectScale(2)
         RemoveOnCallStateEnd(2)
         PaletteIndex(3)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('mi450cutin_mask01', 20)
     AlphaValue(0)
     ConstantAlphaModifier(3)
@@ -5038,6 +5219,7 @@ def mi450_CutTestGrow():
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mi450_CutInBG():
@@ -5059,6 +5241,7 @@ def mi450_CutInBG():
     AddScaleY(2)
     gotoLabel(0)
 
+
 @State
 def mi450_BigOnryo():
 
@@ -5068,7 +5251,7 @@ def mi450_BigOnryo():
         Eff3DEffect('mieff450_gaikotu1_start00', '')
         Size(2750)
         AddY(900000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 1)
     AlphaValue(0)
     PrivateSE('mise_07')
@@ -5080,6 +5263,7 @@ def mi450_BigOnryo():
     sprite('null', 10)
     physicsYImpulse(-80000)
 
+
 @State
 def mi450_BigOnryo2():
 
@@ -5089,7 +5273,7 @@ def mi450_BigOnryo2():
         Eff3DEffect('mieff450_gaikotu2_start00', '')
         Size(3000)
         AddY(600000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 1)
     AlphaValue(0)
     sprite('null', 118)
@@ -5108,6 +5292,7 @@ def mi450_BigOnryo2():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi450_BigOnryo3():
 
@@ -5117,7 +5302,7 @@ def mi450_BigOnryo3():
         Eff3DEffect('mieff450_gaikotu3_start00', '')
         Size(3000)
         AddY(80000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 1)
     AlphaValue(0)
     sprite('null', 138)
@@ -5127,6 +5312,7 @@ def mi450_BigOnryo3():
     label(0)
     sprite('null', 15)
     physicsYImpulse(-70000)
+
 
 @State
 def mi450_GamenAura00():
@@ -5139,6 +5325,7 @@ def mi450_GamenAura00():
         AddScaleZ(300)
     sprite('null', 32767)
 
+
 @State
 def mi450_GroundAura():
 
@@ -5150,7 +5337,7 @@ def mi450_GroundAura():
         Size(1500)
         AddScaleY(300)
         AbsoluteY(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 5)
     CreateObject('mi450_GroundAuraCircle', -1)
@@ -5169,6 +5356,7 @@ def mi450_GroundAura():
     ScreenShake(25000, 25000)
     CreateParticle('mief450_spark', -1)
 
+
 @State
 def mi450_GroundAuraCircle():
 
@@ -5183,6 +5371,7 @@ def mi450_GroundAuraCircle():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi450_fallspeed():
 
@@ -5196,6 +5385,7 @@ def mi450_fallspeed():
         SetScaleX(2000)
         SetScaleY(2000)
     sprite('null', 32767)
+
 
 @State
 def mi450_EndAura():
@@ -5215,6 +5405,7 @@ def mi450_EndAura():
     SetScaleSpeedY(-40)
     SetScaleXPerFrame(40)
 
+
 @State
 def mi450_EndAnim():
 
@@ -5225,6 +5416,7 @@ def mi450_EndAnim():
         RenderLayer(1)
         AddY(400000)
     sprite('null', 24)
+
 
 @State
 def mi600_Cicle():
@@ -5252,6 +5444,7 @@ def mi600_Cicle():
     Visibility(1)
     CreateObject('mi600_CicleAdd', 6)
 
+
 @State
 def mi600_CicleA():
 
@@ -5264,6 +5457,7 @@ def mi600_CicleA():
         AddX(-50000)
     sprite('mief600_00a', 10)
     SetScaleSpeed(60)
+
 
 @State
 def mi600_CicleAdd():
@@ -5279,6 +5473,7 @@ def mi600_CicleAdd():
     CallPrivateEffect('mief600_ray')
     sprite('null', 15)
     ConstantAlphaModifier(-17)
+
 
 @State
 def mi600_Ray():
@@ -5302,6 +5497,7 @@ def mi600_Ray():
     sprite('null', 20)
     ConstantAlphaModifier(-13)
 
+
 @State
 def mi600_Huku():
 
@@ -5320,6 +5516,7 @@ def mi600_Huku():
     sprite('mi600_07y', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def mi600_HukuGround():
 
@@ -5331,6 +5528,7 @@ def mi600_HukuGround():
     sprite('null', 30)
     ConstantAlphaModifier(-8)
     loopRest()
+
 
 @State
 def mi601_doro():
@@ -5382,6 +5580,7 @@ def mi601_doro():
     BlendMode_Normal()
     ConstantAlphaModifier(-26)
 
+
 @State
 def mi601_Smoke():
 
@@ -5400,6 +5599,7 @@ def mi601_Smoke():
     SetScaleXPerFrame(55)
     SetScaleSpeedZ(55)
 
+
 @State
 def mi601_doro3D():
 
@@ -5414,6 +5614,7 @@ def mi601_doro3D():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def mi611_Camera():
 
@@ -5426,6 +5627,7 @@ def mi611_Camera():
         AddY(300000)
     sprite('null', 32767)
     SetBackground(2)
+
 
 @State
 def mi611_RayColor():
@@ -5443,6 +5645,7 @@ def mi611_RayColor():
     ConstantAlphaModifier(26)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
+
 
 @State
 def mi611_Ray():
@@ -5469,6 +5672,7 @@ def mi611_Ray():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def mi611_Soul():
 
@@ -5484,6 +5688,7 @@ def mi611_Soul():
     sprite('null', 32767)
     CreateObject('mi611_SoulCore', -1)
 
+
 @State
 def mi611_SoulCore():
 
@@ -5496,6 +5701,7 @@ def mi611_SoulCore():
     sprite('null', 32767)
     LinkParticle('mief600_soul')
     CreateObject('mi611_SoulCoreYugami', -1)
+
 
 @State
 def mi611_SoulCoreYugami():
@@ -5511,6 +5717,7 @@ def mi611_SoulCoreYugami():
     label(0)
     sprite('vrmi408_yugami', 15)
     gotoLabel(0)
+
 
 @State
 def mi610_Kaiho():
@@ -5528,6 +5735,7 @@ def mi610_Kaiho():
     sprite('vrmi432_yugami', 8)
     SetScaleSpeed(50)
 
+
 @State
 def mi900_Fire():
 
@@ -5537,13 +5745,14 @@ def mi900_Fire():
         Eff3DEffect('mieff440_jusoFire00', '')
         Size(160)
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 15)
     sprite('null', 60)
     ConstantAlphaModifier(4)
     label(0)
     sprite('null', 2)
     gotoLabel(0)
+
 
 @State
 def mi900_Gaikotu():
@@ -5569,6 +5778,7 @@ def mi900_Gaikotu():
     sprite('mief900_03', 3)
     gotoLabel(0)
 
+
 @State
 def mi900_Gaikotu2():
 
@@ -5591,6 +5801,7 @@ def mi900_Gaikotu2():
     sprite('mief900_02', 4)
     sprite('mief900_03', 4)
     gotoLabel(0)
+
 
 @State
 def mi900_Gaikotu3():
@@ -5615,6 +5826,7 @@ def mi900_Gaikotu3():
     sprite('mief900_01', 4)
     gotoLabel(0)
 
+
 @State
 def mi900_HinoTama():
 
@@ -5635,6 +5847,7 @@ def mi900_HinoTama():
     sprite('mief900_18', 5)
     gotoLabel(0)
 
+
 @State
 def mi900_HinoTama2():
 
@@ -5654,6 +5867,7 @@ def mi900_HinoTama2():
     sprite('mief900_11', 5)
     sprite('mief900_12', 5)
     gotoLabel(0)
+
 
 @State
 def mi900_HinoTama3():
@@ -5676,6 +5890,7 @@ def mi900_HinoTama3():
     sprite('mief900_15', 5)
     gotoLabel(0)
 
+
 @State
 def mi900_bloom():
 
@@ -5686,6 +5901,7 @@ def mi900_bloom():
         BlendMode_Add()
         Unknown23180(1)
     sprite('vr_mief900_90', 32767)
+
 
 @State
 def Act3Event_EffWarpOut():

@@ -15,7 +15,7 @@ def NV_ActReset():
     SetZVal(500)
     IgnoreScreenfreeze(0)
     SLOT_7 = 0
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         EnableAfterimage(1)
         AfterimageInterval(3)
         AfterimageCount(3)
@@ -28,6 +28,7 @@ def NV_ActReset():
     def upon_53():
         CreateParticle('caef_warp_in', -1)
         EndObject()
+
 
 @State
 def NirvanaCreate():
@@ -46,6 +47,7 @@ def NirvanaCreate():
     sprite('ca870_07', 2)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaRest():
 
@@ -53,7 +55,7 @@ def NirvanaRest():
         callSubroutine('NV_ActReset')
         ModifyVar_(8, 2, 51, 0, 1)
         ModifyVar_(8, 2, 51, 0, 1024)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_52 = 1
             SLOT_53 = 11
         else:
@@ -75,6 +77,7 @@ def NirvanaRest():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaPowerTurnOff():
 
@@ -90,6 +93,7 @@ def NirvanaPowerTurnOff():
     sprite('ca871_00', 7)
     sprite('keep', 100)
     enterState('NirvanaRest')
+
 
 @State
 def NirvanaStarting():
@@ -130,6 +134,7 @@ def NirvanaStarting():
     sprite('ca871_03', 4)
     sprite('keep', 100)
     enterState('NirvanaControl')
+
 
 @State
 def NirvanaControl():
@@ -178,6 +183,7 @@ def NirvanaControl():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaFWalk():
 
@@ -211,7 +217,7 @@ def NirvanaFWalk():
         Unknown23114(-48)
     label(0)
     sprite('ca806_00', 6)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         physicsXImpulse(12000)
     else:
         physicsXImpulse(8000)
@@ -227,6 +233,7 @@ def NirvanaFWalk():
     sprite('ca806_09', 6)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaBWalk():
@@ -261,7 +268,7 @@ def NirvanaBWalk():
         Unknown23114(-48)
     label(0)
     sprite('ca807_00', 6)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         physicsXImpulse(-10500)
     else:
         physicsXImpulse(-7000)
@@ -279,6 +286,7 @@ def NirvanaBWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaCarlDamage():
 
@@ -294,6 +302,7 @@ def NirvanaCarlDamage():
     sprite('ca873_05', 3)
     sprite('keep', 100)
     enterState('NirvanaRest')
+
 
 @State
 def NirvanaTurn():
@@ -330,6 +339,7 @@ def NirvanaTurn():
     sprite('keep', 100)
     enterState('NirvanaControl')
 
+
 @State
 def NirvanaDamageBody():
 
@@ -340,6 +350,7 @@ def NirvanaDamageBody():
     sprite('ca802_02', 1)
     sprite('ca802_03', 1)
     sprite('ca802_04', 32767)
+
 
 @State
 def NirvanaDamageBodyEnd():
@@ -354,6 +365,7 @@ def NirvanaDamageBodyEnd():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaDamageLeg():
 
@@ -364,6 +376,7 @@ def NirvanaDamageLeg():
     sprite('ca803_02', 1)
     sprite('ca803_03', 1)
     sprite('ca803_04', 32767)
+
 
 @State
 def NirvanaDamageLegEnd():
@@ -378,6 +391,7 @@ def NirvanaDamageLegEnd():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaSwitchCheck():
 
@@ -387,6 +401,7 @@ def NirvanaSwitchCheck():
         ModifyVar_(8, 2, 51, 0, 1024)
     sprite('ca801_00', 32767)
 
+
 @State
 def NirvanaSwitchCheck2():
 
@@ -394,6 +409,7 @@ def NirvanaSwitchCheck2():
         callSubroutine('NV_ActReset')
         ModifyVar_(8, 2, 51, 0, 1024)
     sprite('ca801_00', 32767)
+
 
 @State
 def NirvanaDie():
@@ -404,8 +420,8 @@ def NirvanaDie():
         ResourceBarColor(0, 4288675840)
         ResourceGaugeX(0, 1)
 
-        def upon_FRAME_STEP():
-            if SLOT_110:
+        def upon_EVERY_FRAME():
+            if SLOT_OverdriveTimer:
                 SLOT_54 = 25
             else:
                 SLOT_54 = 7
@@ -429,6 +445,7 @@ def NirvanaDie():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaDieForStory():
 
@@ -443,6 +460,7 @@ def NirvanaDieForStory():
     CreateParticle('caef_ni_break', 0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaRevive():
@@ -468,11 +486,13 @@ def NirvanaRevive():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @Subroutine
 def NirvanaOverDrive():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_7 = 1
         SLOT_55 = 0
+
 
 @Subroutine
 def NirvanaOverDriveAttackParam():
@@ -481,6 +501,7 @@ def NirvanaOverDriveAttackParam():
 
         def upon_OPPONENT_HIT():
             ScreenShake(20000, 0)
+
 
 @State
 def NirvanaAtk6D():
@@ -613,6 +634,7 @@ def NirvanaAtk6D():
     sprite('ca810_16', 3)
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def NirvanaAtk2D():
@@ -759,6 +781,7 @@ def NirvanaAtk2D():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaAtk3D():
 
@@ -791,7 +814,7 @@ def NirvanaAtk3D():
 
         def upon_OPPONENT_HIT():
             AddActionMark(1)
-            if (SLOT_2 == 4):
+            if SLOT_2 == 4:
                 GroundedHitstunAnimation(3)
         setInvincible(1)
         GuardPoint_(1)
@@ -896,6 +919,7 @@ def NirvanaAtk3D():
     sprite('ca812_25', 2)
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def NirvanaAtk4D():
@@ -1020,6 +1044,7 @@ def NirvanaAtk4D():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaAtk8D():
 
@@ -1105,6 +1130,7 @@ def NirvanaAtk8D():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaSonic():
 
@@ -1122,7 +1148,7 @@ def NirvanaSonic():
         StarterRating(2)
         CancelIfPlayerHit(2)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             DeleteObject(23)
         AirHitstunAnimation(9)
         AirUntechableTime(100)
@@ -1143,12 +1169,14 @@ def NirvanaSonic():
     SetScaleSpeed(-5)
     ConstantAlphaModifier(-25)
 
+
 @State
 def NirvanaShot_MagicCircle():
     sprite('null', 1)
     AddX(200000)
     AbsoluteY(256000)
     CreateParticle('caef_nirshot_start', -1)
+
 
 @State
 def NirvanaShot_AttackObj():
@@ -1174,7 +1202,7 @@ def NirvanaShot_AttackObj():
         if SLOT_7:
             ProjectileLevel(2)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 1)
+        uponSendToLabel(54, 1)
         ContinueState(200)
         AddX(200000)
         AbsoluteY(256000)
@@ -1202,6 +1230,7 @@ def NirvanaShot_AttackObj():
     SetScaleSpeed(-100)
     AlphaValue(250)
     ConstantAlphaModifier(-10)
+
 
 @State
 def NirvanaAtk236D():
@@ -1243,7 +1272,7 @@ def NirvanaAtk236D():
             if SLOT_7:
                 ScreenShake(5000, 5000)
             AddActionMark(1)
-            if (SLOT_2 == 5):
+            if SLOT_2 == 5:
                 OppPositionOnHit(1, 200000, 50000)
                 GroundedHitstunAnimation(12)
                 AirHitstunAnimation(12)
@@ -1418,6 +1447,7 @@ def NirvanaAtk236D():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaAtk22D():
 
@@ -1541,6 +1571,7 @@ def NirvanaAtk22D():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaAtkSpecialShot():
 
@@ -1628,6 +1659,7 @@ def NirvanaAtkSpecialShot():
     sprite('ca837_21', 1)
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def NirvanaAtk623D():
@@ -1738,6 +1770,7 @@ def NirvanaAtk623D():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaAtk46D_claw():
 
@@ -1758,6 +1791,7 @@ def NirvanaAtk46D_claw():
     sprite('vrcaef838_02', 3)
     sprite('vrcaef838_03', 3)
 
+
 @State
 def NirvanaAtk880_claw():
 
@@ -1776,6 +1810,7 @@ def NirvanaAtk880_claw():
     sprite('vrcaef880_00', 3)
     sprite('vrcaef880_01', 3)
 
+
 @State
 def NirvanaAtk880_claw2():
 
@@ -1793,6 +1828,7 @@ def NirvanaAtk880_claw2():
         RenderLayer(6)
     sprite('vrcaef880_10', 3)
     sprite('vrcaef880_11', 3)
+
 
 @State
 def NirvanaAtk214D():
@@ -1825,10 +1861,10 @@ def NirvanaAtk214D():
         IgnoreBurst(1)
         DamageEffect(5, '')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_19 < 180000):
-                    clearUponHandler(3)
+                if SLOT_19 < 180000:
+                    clearUponHandler(EVERY_FRAME)
                     SetActionMark(0)
                     sendToLabel(1)
 
@@ -1934,6 +1970,7 @@ def NirvanaAtk214D():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def Nirvana214D_Catch():
 
@@ -1965,6 +2002,7 @@ def Nirvana214D_Catch():
     sprite('ca832_34', 8)
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def Nirvana214D_Exe():
@@ -2021,9 +2059,9 @@ def Nirvana214D_Exe():
     ScreenShake(0, 15000)
     OppThrowAnimation(14, 0)
     OppThrowPosition(0, 1, 1, 0, 0)
-    ApplyFunctionsToObjects(22)
-    AbsoluteY(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AbsoluteY(1)
     sprite('ca832_21', 7)
     sprite('ca832_22', 7)
     sprite('ca832_23', 7)
@@ -2034,6 +2072,7 @@ def Nirvana214D_Exe():
     Flip()
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def Nirvana214D_Catch_OD():
@@ -2066,6 +2105,7 @@ def Nirvana214D_Catch_OD():
     sprite('ca832_34', 4)
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def Nirvana214D_Exe_OD():
@@ -2123,9 +2163,9 @@ def Nirvana214D_Exe_OD():
     ScreenShake(0, 15000)
     OppThrowAnimation(14, 0)
     OppThrowPosition(0, 1, 1, 0, 0)
-    ApplyFunctionsToObjects(22)
-    AbsoluteY(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AbsoluteY(1)
     sprite('ca832_21', 7)
     sprite('ca832_22', 7)
     sprite('ca832_23', 7)
@@ -2136,6 +2176,7 @@ def Nirvana214D_Exe_OD():
     Flip()
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def NirvanaRush():
@@ -2163,7 +2204,7 @@ def NirvanaRush():
         MoveAttributes(0, 1, 0, 0, 0)
         IgnoreScreenfreeze(1)
         SetActionMark(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
         setInvincible(1)
         GuardPoint_(1)
@@ -2646,6 +2687,7 @@ def NirvanaRush():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaStrike():
 
@@ -2675,7 +2717,7 @@ def NirvanaStrike():
         PassByArmor(1)
         IgnoreScreenfreeze(1)
         SetActionMark(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
         setInvincible(1)
         GuardPoint_(1)
@@ -2798,6 +2840,7 @@ def NirvanaStrike():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaStrikeODEff():
 
@@ -2812,6 +2855,7 @@ def NirvanaStrikeODEff():
     sprite('vrcaef432_02', 4)
     sprite('vrcaef432_03', 4)
 
+
 @State
 def NirvanaStrikeODTameEff():
 
@@ -2821,6 +2865,7 @@ def NirvanaStrikeODTameEff():
         LinkParticle('caef_strikeOD')
         IgnoreScreenfreeze(1)
     sprite('null', 32767)
+
 
 @State
 def AstralGear():
@@ -2840,13 +2885,14 @@ def AstralGear():
     Size(1100)
     SetScaleSpeed(-20)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('AstralGearParts1', 32)
+    TriggerUponForState('AstralGearParts1', 32)
     Size(1000)
     SetScaleSpeed(0)
     sprite('null', 20)
-    PassbackAddActionMarkToFunction('AstralGearParts1', 33)
+    TriggerUponForState('AstralGearParts1', 33)
     sprite('null', 25)
     SetScaleSpeed(-40)
+
 
 @State
 def AstralGearParts1():
@@ -2880,11 +2926,12 @@ def AstralGearParts1():
             EndAttack()
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             AstralHeatCleanup(1, 0)
             PlayPlayAstralBGM(1)
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
     sprite('vrcaef450_00', 32767)
+
 
 @State
 def AstralGearParts2():
@@ -2897,6 +2944,7 @@ def AstralGearParts2():
         AddRotationPerFrame(-1250)
     sprite('vrcaef450_01', 32767)
 
+
 @State
 def AstralGearParts3():
 
@@ -2907,6 +2955,7 @@ def AstralGearParts3():
         E0EAEffectPosition(2)
         AddRotationPerFrame(-5000)
     sprite('vrcaef450_02', 32767)
+
 
 @State
 def NirvanaBomb():
@@ -2977,8 +3026,8 @@ def NirvanaBomb():
     sprite('ca836_07', 5)
     sprite('ca836_06', 5)
     sprite('ca836_05', 5)
-    PassbackAddActionMarkToFunction('AstHaracore', 32)
-    PassbackAddActionMarkToFunction('AstralHeat', 33)
+    TriggerUponForState('AstHaracore', 32)
+    TriggerUponForState('AstralHeat', 33)
     sprite('ca836_04', 5)
     sprite('ca836_03', 5)
     sprite('ca836_02', 5)
@@ -2997,7 +3046,7 @@ def NirvanaBomb():
     sprite('ca836_14', 5)
     sprite('ca836_15', 5)
     sprite('ca836_16', 5)
-    PassbackAddActionMarkToFunction('AstHaracore', 32)
+    TriggerUponForState('AstHaracore', 32)
     sprite('ca836_17', 5)
     sprite('ca836_18', 5)
     CreateObject('AstCartain00', -1)
@@ -3010,11 +3059,11 @@ def NirvanaBomb():
     CreateObject('AstCartain01', -1)
     sprite('ca836_20', 5)
     sprite('ca836_20', 1)
-    ApplyFunctionsToObjects(22)
-    SetPosXByScreenPer(50)
-    Visibility(0)
-    FaceLeft()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        SetPosXByScreenPer(50)
+        Visibility(0)
+        FaceLeft()
     TeleportToObject(22)
     AddY(50000)
     loopRest()
@@ -3047,13 +3096,15 @@ def NirvanaBomb():
     sprite('ca836_27', 7)
     loopRest()
     label(10)
-    GotoIf0(12, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(12)
     sprite('ca836_28', 7)
     SetBackground(0)
     CreateParticle('caef_ni_break', 0)
     loopRest()
     label(11)
-    GotoIf0(12, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(12)
     sprite('ca836_28', 7)
     CreateParticle('caef_ni_break', 0)
     loopRest()
@@ -3077,6 +3128,7 @@ def NirvanaBomb():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def LookAtMeAstStart():
 
@@ -3092,6 +3144,7 @@ def LookAtMeAstStart():
     CameraFast(0)
     CameraPosition(1200)
 
+
 @State
 def AstKyushu():
 
@@ -3105,6 +3158,7 @@ def AstKyushu():
     sprite('null', 22)
     physicsXImpulse(-4000)
     physicsYImpulse(5000)
+
 
 @State
 def AstCartain00():
@@ -3122,6 +3176,7 @@ def AstCartain00():
     physicsXImpulse(0)
     ConstantAlphaModifier(-26)
 
+
 @State
 def AstCartain01():
 
@@ -3135,6 +3190,7 @@ def AstCartain01():
     sprite('null', 10)
     ConstantAlphaModifier(26)
     sprite('null', 135)
+
 
 @State
 def AstralGearAtkObj():
@@ -3161,10 +3217,10 @@ def AstralGearAtkObj():
     sprite('vrdmy_jibaku', 1)
     RefreshMultihit()
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(22)
-    AlphaValue(0)
-    FloorCollision(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AlphaValue(0)
+        FloorCollision(0)
     sprite('vrdmy_jibaku', 1)
     Hitstop(9)
     RefreshMultihit()
@@ -3228,6 +3284,7 @@ def AstralGearAtkObj():
     DamageEffect(1, '')
     sprite('vrdmy_jibaku', 32767)
 
+
 @State
 def AstHit():
 
@@ -3236,6 +3293,7 @@ def AstHit():
         ParticleLayer(4)
         CallPrivateEffect('caef_AHhiteff_08')
     sprite('null', 30)
+
 
 @State
 def AstAnten():
@@ -3253,6 +3311,7 @@ def AstAnten():
     sprite('null', 40)
     ConstantAlphaModifier(-7)
 
+
 @State
 def AstHaracore():
 
@@ -3260,13 +3319,14 @@ def AstHaracore():
         BlendMode_Normal()
         IgnoreScreenfreeze(1)
         LinkParticle('caef_AHnircore_tubu')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(255)
     sprite('null', 10)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def AstralHeatOld():
@@ -3564,7 +3624,8 @@ def AstralHeatOld():
     sprite('ca836_13', 5)
     ScreenShake(0, 2000)
     loopRest()
-    GotoIf0(1, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(1)
     sprite('ca836_14', 5)
     SetBackground(2)
     ScreenShake(0, 2000)
@@ -3700,13 +3761,15 @@ def AstralHeatOld():
     ColorTransition(4282400832, 30)
     loopRest()
     label(10)
-    GotoIf0(12, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(12)
     sprite('ca836_28', 7)
     SetBackground(0)
     CreateParticle('caef_ni_break', 0)
     loopRest()
     label(11)
-    GotoIf0(12, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(12)
     sprite('ca836_28', 7)
     CreateParticle('caef_ni_break', 0)
     loopRest()
@@ -3729,6 +3792,7 @@ def AstralHeatOld():
     sprite('ca836_33', 5)
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def NirvanaEntry1():
@@ -3757,6 +3821,7 @@ def NirvanaEntry1():
     sprite('ca871_00', 8)
     sprite('keep', 100)
     enterState('NirvanaRest')
+
 
 @State
 def NirvanaEntry2():
@@ -3809,11 +3874,13 @@ def NirvanaEntry2():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEntry3():
     sprite('keep', 100)
     NoDamageAction(1)
     enterState('NirvanaRest')
+
 
 @State
 def NirvanaEntryVsTb0():
@@ -3935,6 +4002,7 @@ def NirvanaEntryVsTb0():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEntryVsTb1():
 
@@ -3984,6 +4052,7 @@ def NirvanaEntryVsTb1():
     sprite('ca830_16', 4)
     sprite('keep', 100)
     enterState('NirvanaRest')
+
 
 @State
 def NirvanaEntryVsRl0():
@@ -4049,9 +4118,10 @@ def NirvanaEntryVsRl0():
     sprite('ca835_36', 4)
     sprite('ca835_37', 4)
     sprite('keep', 100)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     enterState('NirvanaRest')
     loopRest()
+
 
 @State
 def NirvanaEntryVsRl1():
@@ -4103,6 +4173,7 @@ def NirvanaEntryVsRl1():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEntryVsBn0():
 
@@ -4116,7 +4187,7 @@ def NirvanaEntryVsBn0():
     sprite('ca870_07', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('ca870_07', 7)
     sprite('ca870_08', 7)
     sprite('ca870_09', 7)
@@ -4152,6 +4223,7 @@ def NirvanaEntryVsBn0():
     sprite('ca831_13', 5)
     sprite('keep', 100)
     enterState('NirvanaRest')
+
 
 @State
 def NirvanaWinner1():
@@ -4207,7 +4279,8 @@ def NirvanaWinner1():
     sprite('ca850_06', 6)
     sprite('ca850_07', 6)
     sprite('ca850_08', 32767)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
+
 
 @State
 def NirvanaWinner1_Jump():
@@ -4227,6 +4300,7 @@ def NirvanaWinner1_Jump():
     sprite('ca850_12', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaWinner2():
@@ -4271,17 +4345,20 @@ def NirvanaWinner2():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaWinner3():
     sprite('keep', 100)
     NoDamageAction(1)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaRoundWinner():
     sprite('keep', 100)
     NoDamageAction(1)
     enterState('NirvanaSwitchCheck')
+
 
 @State
 def NirvanaTimeUpLose():
@@ -4325,11 +4402,12 @@ def NirvanaTimeUpLose():
     sprite('ca860_03', 7)
     sprite('ca860_04', 7)
     sprite('ca860_05', 7)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
     label(0)
     sprite('ca860_05', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventStandArmor():
@@ -4345,6 +4423,7 @@ def NirvanaEventStandArmor():
     sprite('ca841_00', 6)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventStandArmorOpen():
@@ -4392,6 +4471,7 @@ def NirvanaEventStandArmorOpen():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEventStandArmorClose():
     sprite('ca870_06', 4)
@@ -4432,6 +4512,7 @@ def NirvanaEventStandArmorClose():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaEventStand():
 
@@ -4462,6 +4543,7 @@ def NirvanaEventStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaEventLineStand():
 
@@ -4476,6 +4558,7 @@ def NirvanaEventLineStand():
     sprite('ca800_00', 6)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventLineStand2Rest():
@@ -4493,6 +4576,7 @@ def NirvanaEventLineStand2Rest():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEventCrouch():
 
@@ -4507,6 +4591,7 @@ def NirvanaEventCrouch():
     sprite('ca860_05', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventVsNo00():
@@ -4527,7 +4612,8 @@ def NirvanaEventVsNo00():
     sprite('ca850_06', 6)
     sprite('ca850_07', 6)
     sprite('ca850_08', 32767)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
+
 
 @State
 def NirvanaEventVsNo01():
@@ -4548,12 +4634,14 @@ def NirvanaEventVsNo01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaEventVsNo02():
     label(0)
     sprite('ca841_00', 6)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventVsRc00():
@@ -4570,6 +4658,7 @@ def NirvanaEventVsRc00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaEventVsRc01():
     sprite('ca840_01', 8)
@@ -4584,10 +4673,12 @@ def NirvanaEventVsRc01():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEventVsRc02():
     sprite('keep', 100)
     enterState('NirvanaRest')
+
 
 @State
 def NirvanaEventVsNyEntryWait():
@@ -4603,6 +4694,7 @@ def NirvanaEventVsNyEntryWait():
     sprite('ca840_00', 6)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventVsNyEntryStand():
@@ -4620,6 +4712,7 @@ def NirvanaEventVsNyEntryStand():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEventVsLcWinner0():
 
@@ -4635,6 +4728,7 @@ def NirvanaEventVsLcWinner0():
     CreateParticle('caef_ni_break', 0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventVsLcWinner1():
@@ -4672,6 +4766,7 @@ def NirvanaEventVsLcWinner1():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaEventVsLcWinner2_0():
 
@@ -4686,7 +4781,8 @@ def NirvanaEventVsLcWinner2_0():
     sprite('ca850_06', 6)
     sprite('ca850_07', 6)
     sprite('ca850_08', 32767)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
+
 
 @State
 def NirvanaEventVsLcWinner2_1():
@@ -4706,6 +4802,7 @@ def NirvanaEventVsLcWinner2_1():
     sprite('ca850_12', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaShot_Entry():
@@ -4735,6 +4832,7 @@ def NirvanaShot_Entry():
     AlphaValue(250)
     ConstantAlphaModifier(-10)
 
+
 @State
 def NirvanaEventVsHz00():
 
@@ -4756,6 +4854,7 @@ def NirvanaEventVsHz00():
     sprite('ca870_08', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NirvanaEventVsHz01():
@@ -4800,6 +4899,7 @@ def NirvanaEventVsHz01():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEventVsRl00():
 
@@ -4816,6 +4916,7 @@ def NirvanaEventVsRl00():
         EnableCollision(0)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def NirvanaEventVsRl01():
@@ -4939,6 +5040,7 @@ def NirvanaEventVsRl01():
     sprite('keep', 100)
     enterState('NirvanaRest')
 
+
 @State
 def NirvanaEventVsRl02():
 
@@ -4966,6 +5068,7 @@ def NirvanaEventVsRl02():
     sprite('ca871_03', 4)
     sprite('keep', 100)
     enterState('NirvanaControl')
+
 
 @State
 def NirvanaEventVsRl03():
@@ -5106,6 +5209,7 @@ def NirvanaEventVsRl03():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaEventVsRl04():
     sprite('ca870_07', 7)
@@ -5123,6 +5227,7 @@ def NirvanaEventVsRl04():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def NirvanaEventVsCe00():
 
@@ -5131,6 +5236,7 @@ def NirvanaEventVsCe00():
         EnableCollision(0)
         Visibility(1)
     sprite('null', 32767)
+
 
 @State
 def NirvanaEventVsCe01():
@@ -5154,6 +5260,7 @@ def NirvanaEventVsCe01():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def EMB_CA():
 
@@ -5174,6 +5281,7 @@ def EMB_CA():
     sprite('null', 10)
     ColorTransition(4286625023, 10)
     sprite('null', 80)
+
 
 @State
 def EMB_CA_OD():
@@ -5196,6 +5304,7 @@ def EMB_CA_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_CA_AH():
 
@@ -5215,6 +5324,7 @@ def EMB_CA_AH():
     sprite('null', 10)
     ColorTransition(4294901760, 10)
     sprite('null', 80)
+
 
 @State
 def AstralBomb_Count():
@@ -5252,6 +5362,7 @@ def AstralBomb_Count():
     sprite('vrcaef836_12', 22)
     CreateObject('AstralBomb_Count00', -1)
 
+
 @State
 def AstralBomb_Count13():
 
@@ -5260,6 +5371,7 @@ def AstralBomb_Count13():
         SetZVal(-1022)
         RemoveOnCallStateEnd(2)
     sprite('vrcaef836_13', 540)
+
 
 @State
 def AstralBomb_Count11():
@@ -5311,6 +5423,7 @@ def AstralBomb_Count11():
     sprite('vrcaef836_11', 45)
     AddRotationPerFrame(-500)
 
+
 @State
 def AstralBomb_Count14():
 
@@ -5360,6 +5473,7 @@ def AstralBomb_Count14():
     sprite('vrcaef836_14', 15)
     AddRotationPerFrame(0)
 
+
 @State
 def AstralBomb_Count10():
 
@@ -5372,6 +5486,7 @@ def AstralBomb_Count10():
     sprite('vrcaef836_10', 10)
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
+
 
 @State
 def AstralBomb_Count09():
@@ -5393,6 +5508,7 @@ def AstralBomb_Count09():
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
 
+
 @State
 def AstralBomb_Count08():
 
@@ -5412,6 +5528,7 @@ def AstralBomb_Count08():
     sprite('vrcaef836_08', 10)
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
+
 
 @State
 def AstralBomb_Count07():
@@ -5433,6 +5550,7 @@ def AstralBomb_Count07():
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
 
+
 @State
 def AstralBomb_Count06():
 
@@ -5452,6 +5570,7 @@ def AstralBomb_Count06():
     sprite('vrcaef836_06', 10)
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
+
 
 @State
 def AstralBomb_Count05():
@@ -5473,6 +5592,7 @@ def AstralBomb_Count05():
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
 
+
 @State
 def AstralBomb_Count04():
 
@@ -5492,6 +5612,7 @@ def AstralBomb_Count04():
     sprite('vrcaef836_04', 10)
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
+
 
 @State
 def AstralBomb_Count03():
@@ -5513,6 +5634,7 @@ def AstralBomb_Count03():
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
 
+
 @State
 def AstralBomb_Count02():
 
@@ -5532,6 +5654,7 @@ def AstralBomb_Count02():
     sprite('vrcaef836_02', 10)
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
+
 
 @State
 def AstralBomb_Count01():
@@ -5553,6 +5676,7 @@ def AstralBomb_Count01():
     ConstantAlphaModifier(-24)
     physicsXImpulse(-6400)
 
+
 @State
 def AstralBomb_Count00():
 
@@ -5569,6 +5693,7 @@ def AstralBomb_Count00():
     sprite('vrcaef836_00', 45)
     ConstantAlphaModifier(0)
     physicsXImpulse(0)
+
 
 @State
 def AstralBombAtkObj():
@@ -5607,6 +5732,7 @@ def AstralBombAtkObj():
     RefreshMultihit()
     SetScaleSpeed(0)
 
+
 @State
 def carl_ah_A():
 
@@ -5624,6 +5750,7 @@ def carl_ah_A():
     AlphaValue(255)
     ConstantAlphaModifier(-5)
 
+
 @State
 def carl_ah_B():
 
@@ -5638,6 +5765,7 @@ def carl_ah_B():
     sprite('null', 100)
     ConstantAlphaModifier(-3)
 
+
 @State
 def carl_ah_C():
 
@@ -5651,6 +5779,7 @@ def carl_ah_C():
     sprite('null', 100)
     ConstantAlphaModifier(-5)
 
+
 @State
 def carl_ah_D():
 
@@ -5662,6 +5791,7 @@ def carl_ah_D():
         Eff3DEffect('carl_ah_D.DIG', 'carl_ah_D_mt_000.mmot')
     sprite('null', 220)
 
+
 @State
 def carl_ah_E():
 
@@ -5672,6 +5802,7 @@ def carl_ah_E():
         Eff3DEffect('carl_ah_E.DIG', 'carl_ah_E_mt_000.mmot')
     sprite('null', 220)
 
+
 @Subroutine
 def AirAssaultInit():
     AttackDefaults_SpecialProjectile()
@@ -5679,6 +5810,7 @@ def AirAssaultInit():
     CancelIfPlayerHit(3)
     E0EAEffectPosition(3)
     AttackOff()
+
 
 @State
 def multi_pawn():
@@ -5709,6 +5841,7 @@ def multi_pawn():
     physicsYImpulse(0)
     sprite('null', 1)
 
+
 @State
 def multi_bishop():
 
@@ -5733,6 +5866,7 @@ def multi_bishop():
     sprite('vrcaef406_bi_03', 1)
     physicsXImpulse(0)
     sprite('null', 1)
+
 
 @State
 def multi_knight():
@@ -5767,6 +5901,7 @@ def multi_knight():
     physicsYImpulse(0)
     sprite('null', 1)
 
+
 @State
 def Throw_Pawn15():
 
@@ -5788,23 +5923,23 @@ def Throw_Pawn15():
         Hitstop(0)
         AttackP2(92)
         StrikeProjectileLevel(1)
-        sendToLabelUpon(44, 1)
+        uponSendToLabel(PLAYER_DAMAGED, 1)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
-            clearUponHandler(10)
+            clearUponHandler(OPPONENT_HIT)
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             sendToLabel(123)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             sendToLabel(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_50 < 140000):
-                    ObjectUpon(3, 32)
+                if SLOT_50 < 140000:
+                    ObjectUpon(EVERY_FRAME, 32)
                     EndObject()
             if SLOT_51:
-                if (SLOT_50 < 140000):
+                if SLOT_50 < 140000:
                     EndObject()
         AttackOff()
     sprite('vrcaef405_00', 2)
@@ -5829,7 +5964,7 @@ def Throw_Pawn15():
     physicsXImpulse(3000)
     DashEffects(100, 1, 0)
     label(1)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     sprite('vrcaef405_18', 3)
     physicsXImpulse(10000)
     sprite('vrcaef405_19', 3)
@@ -5846,8 +5981,8 @@ def Throw_Pawn15():
     loopRest()
     gotoLabel(503)
     label(123)
-    clearUponHandler(44)
-    ObjectUpon(3, 33)
+    clearUponHandler(PLAYER_DAMAGED)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('vrcaef405_06', 3)
     physicsXImpulse(0)
     AbsoluteY(0)
@@ -5884,6 +6019,7 @@ def Throw_Pawn15():
     loopRest()
     gotoLabel(11)
 
+
 @State
 def Wave_Pawn_Hands():
 
@@ -5891,7 +6027,7 @@ def Wave_Pawn_Hands():
         AttackDefaults_SpecialProjectile()
         FloorCollision(1)
         setGravity(1000)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         NoDamageAction(1)
         CreateDecalOn(1)
     label(0)
@@ -5911,6 +6047,7 @@ def Wave_Pawn_Hands():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def ca_gear():
 
@@ -5926,6 +6063,7 @@ def ca_gear():
     physicsXImpulse(12000)
     sprite('null', 150)
     physicsXImpulse(0)
+
 
 @State
 def ca_gear_collision():
@@ -5950,7 +6088,7 @@ def ca_gear_collision():
         if SLOT_137:
             DamageMultiplier(80)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         TeleportToObject(2)
     sprite('vrcaef430', 10)
     SetBackground(1)
@@ -6049,6 +6187,7 @@ def ca_gear_collision():
     PrivateSE('case_06')
     CreateParticle('caef_DD_vanish', 0)
 
+
 @State
 def ca_gearOD():
 
@@ -6069,9 +6208,10 @@ def ca_gearOD():
     sprite('null', 10)
     SetScaleSpeedY(75)
     SetScaleXPerFrame(-90)
-    PassbackAddActionMarkToFunction('ca_gearODSub', 32)
-    PassbackAddActionMarkToFunction('ca_gearODSub2', 32)
-    PassbackAddActionMarkToFunction('ca_gearODSub3', 32)
+    TriggerUponForState('ca_gearODSub', 32)
+    TriggerUponForState('ca_gearODSub2', 32)
+    TriggerUponForState('ca_gearODSub3', 32)
+
 
 @State
 def ca_gearODSub():
@@ -6082,7 +6222,7 @@ def ca_gearODSub():
         E0EAEffectPosition(2)
         Eff3DEffect('ca_gear_OD.DIG', '')
         Size(50)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 20)
     SetScaleSpeed(26)
     sprite('null', 32767)
@@ -6091,6 +6231,7 @@ def ca_gearODSub():
     sprite('null', 5)
     SetScaleSpeedY(75)
     SetScaleXPerFrame(-110)
+
 
 @State
 def ca_gearODSub2():
@@ -6103,7 +6244,7 @@ def ca_gearODSub2():
         Eff3DEffect('ca_gear_ODsub.DIG', '')
         SetScaleX(500)
         SetScaleY(-290)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 20)
     SetScaleSpeed(-4)
     sprite('null', 32767)
@@ -6113,6 +6254,7 @@ def ca_gearODSub2():
     physicsYImpulse(-14000)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ca_gearODSub3():
@@ -6125,7 +6267,7 @@ def ca_gearODSub3():
         Eff3DEffect('ca_gear_ODsub.DIG', '')
         SetScaleX(340)
         SetScaleY(300)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 20)
     SetScaleSpeed(5)
     sprite('null', 32767)
@@ -6135,6 +6277,7 @@ def ca_gearODSub3():
     physicsYImpulse(14000)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ca_gear_collisionOD():
@@ -6160,7 +6303,7 @@ def ca_gear_collisionOD():
         if SLOT_137:
             DamageMultiplier(80)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         TeleportToObject(2)
     sprite('vrcaef430', 10)
     SetBackground(1)
@@ -6265,6 +6408,7 @@ def ca_gear_collisionOD():
     sprite('vrcaef430', 10)
     PrivateSE('case_06')
     CreateParticle('caef_DD_vanish', 0)
+
 
 @State
 def NirvanaLock():
@@ -6353,8 +6497,8 @@ def NirvanaLock():
     sprite('ca810_04', 2)
     sprite('ca810_05', 3)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 600000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 600000:
             sendToLabel(30)
     CreateObject('NirvanaLock_TosshinObj', -1)
     RegisterObject(5, 1)
@@ -6369,8 +6513,8 @@ def NirvanaLock():
     CommonSE('000_airdash_2')
     label(30)
     sprite('ca810_06', 7)
-    clearUponHandler(3)
-    sendToLabelUpon(12, 40)
+    clearUponHandler(EVERY_FRAME)
+    uponSendToLabel(OPPONENT_HIT, 40)
     XImpulseAcceleration(50)
     sprite('ca810_06', 2)
     XImpulseAcceleration(20)
@@ -6393,8 +6537,8 @@ def NirvanaLock():
     CreateObject('NirvanaLock_AttackObj', -1)
     CreateParticle('caef_ca810', 0)
     sprite('ca810_08', 3)
-    ObjectUpon(3, 33)
-    PassbackAddActionMarkToFunction('NirvanaLock_AttackObj', 33)
+    ObjectUpon(EVERY_FRAME, 33)
+    TriggerUponForState('NirvanaLock_AttackObj', 33)
     SetZVal(500)
     XImpulseAcceleration(10)
     EnableCollision(1)
@@ -6419,16 +6563,16 @@ def NirvanaLock():
     Hitstun(30)
     AutoHitSignalSending(1)
     physicsXImpulse(0)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     ScreenShake(10000, 10000)
     sprite('ca810_07', 3)
-    ObjectUpon(3, 32)
-    PassbackAddActionMarkToFunction('NirvanaLock_AttackObj', 32)
+    ObjectUpon(EVERY_FRAME, 32)
+    TriggerUponForState('NirvanaLock_AttackObj', 32)
     SetZVal(500)
-    ApplyFunctionsToObjects(23)
-    TeleportToObject(22)
-    AddX(-350000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_23():
+        TeleportToObject(22)
+        AddX(-350000)
     sprite('ca810_07', 4)
     sprite('ca810_07', 4)
     ScreenShake(0, 5000)
@@ -6527,6 +6671,7 @@ def NirvanaLock():
     sprite('keep', 100)
     enterState('NirvanaSwitchCheck')
 
+
 @State
 def NirvanaLock_MagicCircle():
 
@@ -6538,6 +6683,7 @@ def NirvanaLock_MagicCircle():
     CreateParticle('caef_nirshot_start', -1)
     sprite('null', 1)
     CreateParticle('caef_nirshot_after', -1)
+
 
 @State
 def NirvanaLock_HasseiObj():
@@ -6561,6 +6707,7 @@ def NirvanaLock_HasseiObj():
     Size(500)
     Visibility(1)
 
+
 @State
 def NirvanaLock_TosshinObj():
 
@@ -6572,7 +6719,7 @@ def NirvanaLock_TosshinObj():
         physicsXImpulse(0)
         Size(500)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 1)
     label(0)
     sprite('null', 4)
@@ -6580,6 +6727,7 @@ def NirvanaLock_TosshinObj():
     gotoLabel(0)
     label(1)
     sprite('null', 2)
+
 
 @State
 def NirvanaLock_AttackObj():
@@ -6594,8 +6742,8 @@ def NirvanaLock_AttackObj():
         Size(500)
         physicsXImpulse(0)
         AlphaValue(250)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 10)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 10)
     sprite('null', 30)
     label(1)
     sprite('null', 10)
@@ -6606,7 +6754,7 @@ def NirvanaLock_AttackObj():
     sprite('null', 10)
     sprite('null', 5)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('NirvanaLock_3DLock', 33)
+    TriggerUponForState('NirvanaLock_3DLock', 33)
     sprite('null', 30)
     loopRest()
     ExitState()
@@ -6619,6 +6767,7 @@ def NirvanaLock_AttackObj():
     loopRest()
     ExitState()
 
+
 @State
 def NirvanaLock_3DLock():
 
@@ -6628,7 +6777,7 @@ def NirvanaLock_3DLock():
         BlendMode_Add()
         Size(120)
         AlphaValue(0)
-        sendToLabelUpon(33, 10)
+        uponSendToLabel(33, 10)
     sprite('null', 15)
     SetScaleSpeed(65)
     ConstantAlphaModifier(20)
@@ -6651,6 +6800,7 @@ def NirvanaLock_3DLock():
     CreateParticle('caef_nirshot_perge', -1)
     sprite('null', 1)
 
+
 @State
 def NirvanaLock_HitCharge():
 
@@ -6662,11 +6812,12 @@ def NirvanaLock_HitCharge():
         LinkParticle('caef_nirshot_charge')
         physicsXImpulse(0)
         Size(1200)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 120)
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-25)
+
 
 @State
 def RLAstString():
@@ -6681,6 +6832,7 @@ def RLAstString():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def RLAstString_nl():
 
@@ -6694,6 +6846,7 @@ def RLAstString_nl():
     ConstantAlphaModifier(2)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
+
 
 @State
 def BurstDDAtkBishop():
@@ -6747,6 +6900,7 @@ def BurstDDAtkBishop():
     sprite('ca440_bi11', 6)
     sprite('ca440_bi12', 6)
 
+
 @State
 def BurstDDAtkPawn():
 
@@ -6778,7 +6932,7 @@ def BurstDDAtkPawn():
         KeepBounceGravity(1)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
             sendToLabel(1)
 
@@ -6788,11 +6942,11 @@ def BurstDDAtkPawn():
 
         def upon_33():
             clearUponHandler(33)
-            clearUponHandler(2)
-            clearUponHandler(4)
+            clearUponHandler(LANDING)
+            clearUponHandler(FALLING)
             sendToLabel(99)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 PrivateFunction3(3, -50000, 100000, 10, 0)
     sprite('vrcaef611_00ex01', 32767)
@@ -6806,12 +6960,12 @@ def BurstDDAtkPawn():
     setGravity(1200)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
         sendToLabel(1)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         setGravity(5000)
     sprite('vrcaef611_00ex06', 3)
     sprite('vrcaef611_00ex01', 3)
@@ -6848,6 +7002,7 @@ def BurstDDAtkPawn():
     SetActionMark(1)
     sprite('keep', 1)
 
+
 @State
 def BurstDDAtkPawnPowerUp():
 
@@ -6877,7 +7032,7 @@ def BurstDDAtkPawnPowerUp():
         WallCollisionDetection(1)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
             sendToLabel(1)
 
@@ -6887,11 +7042,11 @@ def BurstDDAtkPawnPowerUp():
 
         def upon_33():
             clearUponHandler(33)
-            clearUponHandler(2)
-            clearUponHandler(4)
+            clearUponHandler(LANDING)
+            clearUponHandler(FALLING)
             sendToLabel(99)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 PrivateFunction3(3, -50000, 100000, 10, 0)
     sprite('vrcaef611_00ex01', 32767)
@@ -6905,12 +7060,12 @@ def BurstDDAtkPawnPowerUp():
     setGravity(1200)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
         sendToLabel(3)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         setGravity(5000)
     sprite('vrcaef611_00ex06', 3)
     sprite('vrcaef611_00ex01', 3)
@@ -6929,12 +7084,12 @@ def BurstDDAtkPawnPowerUp():
     setGravity(1200)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
         sendToLabel(5)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         setGravity(5000)
     sprite('vrcaef611_00ex06', 3)
     sprite('vrcaef611_00ex01', 3)
@@ -6953,12 +7108,12 @@ def BurstDDAtkPawnPowerUp():
     setGravity(1200)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
         sendToLabel(7)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         setGravity(5000)
     sprite('vrcaef611_00ex06', 3)
     sprite('vrcaef611_00ex01', 3)
@@ -7023,6 +7178,7 @@ def BurstDDAtkPawnPowerUp():
     SetActionMark(1)
     sprite('keep', 1)
 
+
 @State
 def BurstDDAtkRook():
 
@@ -7058,7 +7214,7 @@ def BurstDDAtkRook():
         AttackOff()
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
             sendToLabel(1)
 
@@ -7079,6 +7235,7 @@ def BurstDDAtkRook():
     label(2)
     sprite('ca440_ro00ex03', 8)
     sprite('ca440_ro00ex04', 6)
+
 
 @State
 def ca440_ExEff():
@@ -7101,6 +7258,7 @@ def ca440_ExEff():
     SetScaleSpeed(50)
     sprite('vrcaef440_05', 5)
 
+
 @State
 def Act2Event_Fade():
 
@@ -7118,14 +7276,15 @@ def Act2Event_Fade():
     ConstantAlphaModifier(0)
     AlphaValue(255)
 
+
 @State
 def Act2EventNirvanaAtk6D():
 
     def upon_IMMEDIATE():
         NoDamageAction(1)
         AddX(-200000)
-        sendToLabelUpon(33, 2)
-        sendToLabelUpon(34, 3)
+        uponSendToLabel(33, 2)
+        uponSendToLabel(34, 3)
         WallCollisionDetection(0)
         EnableCollision(0)
     label(0)
@@ -7198,6 +7357,7 @@ def Act2EventNirvanaAtk6D():
     AddX(-100000)
     AbsoluteY(0)
 
+
 @State
 def Act2EventNirvanaAtk6DEff():
 
@@ -7208,13 +7368,14 @@ def Act2EventNirvanaAtk6DEff():
     ParticleColor(4278223103, 4278202623, 4278190335)
     CallCustomizableParticle('ef_girdm', 103)
 
+
 @State
 def Act3Event_Nirvana22D():
 
     def upon_IMMEDIATE():
         NoDamageAction(1)
         AddX(-200000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         EnableCollision(0)
         SetZVal(500)
     label(0)
@@ -7249,20 +7410,21 @@ def Act3Event_Nirvana22D():
     AddX(-100000)
     AbsoluteY(0)
 
+
 @State
 def Act3Event_CAvsLC01():
 
     def upon_IMMEDIATE():
         NoDamageAction(1)
         AddX(200000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('ca838_09', 2)
     CommonSE('005_swing_grap_2_1')
     sprite('ca838_10', 2)
     CreateParticle('caef_ca813', 0)
     CreateObject('NirvanaAtk46D_claw', -1)
     sprite('ca838_11', 12)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     sprite('ca838_12', 2)
     sprite('ca838_13', 4)
     sprite('ca838_14', 4)
@@ -7313,14 +7475,15 @@ def Act3Event_CAvsLC01():
     AddX(-100000)
     AbsoluteY(0)
 
+
 @State
 def Act3Event_tgvsca_00():
 
     def upon_IMMEDIATE():
         SetZVal(750)
         XPositionRelativeFacing(-350000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('ca805_00', 7)
     CommonSE('014_electric_l')
     sprite('ca805_01', 7)
@@ -7363,7 +7526,7 @@ def Act3Event_tgvsca_00():
     sprite('ca850_06', 3)
     sprite('ca850_07', 3)
     sprite('ca850_08', 32767)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
     label(1)
     sprite('ca850_08', 4)
     NoDamageAction(1)
@@ -7382,14 +7545,15 @@ def Act3Event_tgvsca_00():
     loopRest()
     gotoLabel(99)
 
+
 @State
 def Act3Event_phvsca_00():
 
     def upon_IMMEDIATE():
         SetZVal(750)
         XPositionRelativeFacing(-1660000)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 100)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 100)
         EnableAfterimage(1)
         AfterimageInterval(2)
         AfterimageCount(4)
@@ -7441,7 +7605,7 @@ def Act3Event_phvsca_00():
     CreateParticle('ef_offset', 0)
     ScreenShake(50000, 50000)
     sprite('ca830_00', 6)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     physicsXImpulse(-50000)
     physicsYImpulse(-50000)
     sprite('ca830_01', 6)
@@ -7487,14 +7651,15 @@ def Act3Event_phvsca_00():
     label(100)
     loopRest()
 
+
 @State
 def Act3Event_phvsca_01():
 
     def upon_IMMEDIATE():
         SetZVal(750)
         XPositionRelativeFacing(-350000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('ca805_00', 7)
     CommonSE('014_electric_l')
     sprite('ca805_01', 7)
@@ -7537,7 +7702,7 @@ def Act3Event_phvsca_01():
     sprite('ca850_06', 3)
     sprite('ca850_07', 3)
     sprite('ca850_08', 32767)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
     label(1)
     sprite('ca850_08', 4)
     Flip()
@@ -7557,6 +7722,7 @@ def Act3Event_phvsca_01():
     loopRest()
     gotoLabel(99)
 
+
 @State
 def Act3Event_Fuoco():
 
@@ -7567,11 +7733,11 @@ def Act3Event_Fuoco():
         XPositionRelativeFacing(-1000000)
         ScreenCollision(0)
         EnableCollision(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
 
-            def upon_ON_HIT_OR_BLOCK():
+            def upon_OPPONENT_HIT_OR_BLOCK():
                 XImpulseAcceleration(45)
                 PushSpeedX()
                 ScreenShake(0, 20000)

@@ -2,6 +2,7 @@
 def PreInit():
     CharacterID('vh')
 
+
 @Subroutine
 def MatchInit():
     Health(10500)
@@ -253,7 +254,7 @@ def MatchInit():
     DamageStunPriority(2000)
     SkillEstimateRange(-50000, 300000, -400000, 250000, 1000, 50)
     Move_EndRegister()
-    Move_Register('SP_cancel6D', 0x2)
+    Move_Register('SP_cancel6D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -264,7 +265,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 500, 1000, 0, 1000)
     SkillEstimateRange(-400000, 400000, -200000, 350000, 100, 10)
     Move_EndRegister()
-    Move_Register('SP_cancel8D', 0x2)
+    Move_Register('SP_cancel8D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -276,7 +277,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 500, 1000, 0, 1000)
     SkillEstimateRange(-50000, 400000, -200000, 350000, 100, 10)
     Move_EndRegister()
-    Move_Register('SP_cancel4D', 0x2)
+    Move_Register('SP_cancel4D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -289,7 +290,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 500, 1000, 0, 1000)
     SkillEstimateRange(-50000, 400000, -200000, 350000, 100, 10)
     Move_EndRegister()
-    Move_Register('SP_cancel2D', 0x2)
+    Move_Register('SP_cancel2D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -304,7 +305,7 @@ def MatchInit():
     SkillEstimateRange(-50000, 400000, -200000, 350000, 100, 10)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('SP_cancel9D', 0x2)
+    Move_Register('SP_cancel9D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -316,7 +317,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 500, 1000, 0, 1000)
     SkillEstimateRange(-50000, 400000, -200000, 350000, 100, 10)
     Move_EndRegister()
-    Move_Register('SP_cancel7D', 0x2)
+    Move_Register('SP_cancel7D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -328,7 +329,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 500, 1000, 0, 1000)
     SkillEstimateRange(-50000, 400000, -200000, 350000, 100, 10)
     Move_EndRegister()
-    Move_Register('SP_cancel1D', 0x2)
+    Move_Register('SP_cancel1D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -343,7 +344,7 @@ def MatchInit():
     SkillEstimateRange(-50000, 400000, -200000, 350000, 50, 5)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('SP_cancel3D', 0x2)
+    Move_Register('SP_cancel3D', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x3009)
     FollowupOnly(1)
@@ -357,7 +358,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 500, 1000, 0, 1000)
     SkillEstimateRange(-50000, 400000, -200000, 350000, 50, 5)
     Move_EndRegister()
-    Move_Register('Wolf_NmlAtkStop', 0x2)
+    Move_Register('Wolf_NmlAtkStop', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     FollowupOnly(1)
     Move_Input_(0x5f)
@@ -409,7 +410,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(100000, 250000, 0, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('Assault', 0x2)
+    Move_Register('Assault', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
@@ -418,7 +419,7 @@ def MatchInit():
     DamageStunPriority(2000)
     SkillEstimateRange(150000, 450000, -200000, 250000, 500, 10)
     Move_EndRegister()
-    Move_Register('LowAssault', 0x2)
+    Move_Register('LowAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
@@ -426,7 +427,7 @@ def MatchInit():
     MoveLow()
     SkillEstimateRange(0, 450000, -150000, 150000, 500, 10)
     Move_EndRegister()
-    Move_Register('LowAssault2nd', 0x2)
+    Move_Register('LowAssault2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -435,21 +436,21 @@ def MatchInit():
     MoveComboPriority(50000)
     SkillEstimateRange(0, 450000, -150000, 150000, 1000, 50)
     Move_EndRegister()
-    Move_Register('MidAssault', 0x2)
+    Move_Register('MidAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
     SkillEstimateRange(50000, 500000, -100000, 300000, 200, 10)
     Move_EndRegister()
-    Move_Register('AirAssault', 0x2)
+    Move_Register('AirAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x3008)
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
     SkillEstimateRange(0, 350000, -50000, 300000, 250, 0)
     Move_EndRegister()
-    Move_Register('BeastCannon_H', 0x2)
+    Move_Register('BeastCannon_H', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2000)
@@ -459,7 +460,7 @@ def MatchInit():
     MoveCancellableFrames(28, 30)
     SkillEstimateRange(250000, 1000000, -200000, 250000, 400, 0)
     Move_EndRegister()
-    Move_Register('BeastCannon_V', 0x2)
+    Move_Register('BeastCannon_V', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2000)
@@ -470,7 +471,7 @@ def MatchInit():
     AirborneOpponentPriority(2500)
     SkillEstimateRange(-550000, 550000, 200000, 600000, 400, 0)
     Move_EndRegister()
-    Move_Register('BeastCannon_U', 0x2)
+    Move_Register('BeastCannon_U', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2000)
@@ -481,7 +482,7 @@ def MatchInit():
     AirborneOpponentPriority(5000)
     SkillEstimateRange(-650000, 650000, 200000, 600000, 50, 0)
     Move_EndRegister()
-    Move_Register('BeastCannonAIR_H', 0x2)
+    Move_Register('BeastCannonAIR_H', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -491,7 +492,7 @@ def MatchInit():
     MoveCancellableFrames(36, 37)
     SkillEstimateRange(300000, 650000, -350000, 500000, 0, 250)
     Move_EndRegister()
-    Move_Register('BeastCannonAIR_V', 0x2)
+    Move_Register('BeastCannonAIR_V', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -501,7 +502,7 @@ def MatchInit():
     MoveCancellableFrames(45, 47)
     SkillEstimateRange(-600000, 600000, 200000, 600000, 250, 0)
     Move_EndRegister()
-    Move_Register('BeastCannonAIR_U', 0x2)
+    Move_Register('BeastCannonAIR_U', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -511,7 +512,7 @@ def MatchInit():
     MoveCancellableFrames(45, 47)
     SkillEstimateRange(-200000, 200000, 200000, 600000, 250, 0)
     Move_EndRegister()
-    Move_Register('BeastCannonAIR_V2', 0x2)
+    Move_Register('BeastCannonAIR_V2', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -519,7 +520,7 @@ def MatchInit():
     Move_Input_(INPUT_PRESS_A)
     SkillEstimateRange(50000, 450000, 100000, -600000, 50, 10)
     Move_EndRegister()
-    Move_Register('BeastCannonAIR_V3', 0x2)
+    Move_Register('BeastCannonAIR_V3', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -530,7 +531,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(-50000, 250000, 100000, -600000, 50, 10)
     Move_EndRegister()
-    Move_Register('BeastCannonAIR_V4', 0x2)
+    Move_Register('BeastCannonAIR_V4', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -561,7 +562,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 200000, -200000, 200000, 250, 1)
     Move_EndRegister()
-    Move_Register('UltimateAssault', 0x606)
+    Move_Register('UltimateAssault', INPUT_DISTORTION)
     Move_Condition(0x3008)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
@@ -571,7 +572,7 @@ def MatchInit():
     SkillEstimateRange(0, 500000, -200000, 200000, 400, 0)
     Move_Condition(0x3072)
     Move_EndRegister()
-    Move_Register('UltimateAssault_OD', 0x606)
+    Move_Register('UltimateAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x3008)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
@@ -582,7 +583,7 @@ def MatchInit():
     SkillEstimateRange(0, 500000, -200000, 200000, 400, 0)
     Move_Condition(0x3072)
     Move_EndRegister()
-    Move_Register('UltimateAirAssault', 0x606)
+    Move_Register('UltimateAirAssault', INPUT_DISTORTION)
     Move_Condition(0x3008)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
@@ -593,7 +594,7 @@ def MatchInit():
     SkillEstimateRange(100000, 450000, -500000, -150000, 200, 0)
     Move_Condition(0x3072)
     Move_EndRegister()
-    Move_Register('UltimateAirAssault_OD', 0x606)
+    Move_Register('UltimateAirAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x3008)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
@@ -605,7 +606,7 @@ def MatchInit():
     SkillEstimateRange(100000, 450000, -500000, -150000, 350, 0)
     Move_Condition(0x3072)
     Move_EndRegister()
-    Move_Register('UltimateWolfAirAssault', 0x606)
+    Move_Register('UltimateWolfAirAssault', INPUT_DISTORTION)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -617,7 +618,7 @@ def MatchInit():
     SkillEstimateRange(100000, 450000, -500000, -150000, 200, 0)
     Move_Condition(0x3072)
     Move_EndRegister()
-    Move_Register('UltimateWolfAirAssault_OD', 0x606)
+    Move_Register('UltimateWolfAirAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x3000)
     Move_Condition(0x304d)
     Move_Condition(0x2001)
@@ -630,7 +631,7 @@ def MatchInit():
     SkillEstimateRange(100000, 450000, -500000, -150000, 350, 0)
     Move_Condition(0x3072)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x3008)
     Move_Condition(0x304a)
     Move_Condition(0x2000)
@@ -639,12 +640,12 @@ def MatchInit():
     MovePriority(1)
     SkillEstimateRange(-100000, 200000, 0, 400000, 10000, 50)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3008)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
@@ -653,7 +654,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -667,7 +668,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -839,110 +840,114 @@ def MatchInit():
     HitSprites(37, 'vh077_01ex03')
     HitSprites(24, 'vh073_01')
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def MatchInit2():
     SLOT_5 = 0
 
+
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_81):
+    if not SLOT_81:
         if SLOT_21:
-            if (not SLOT_5):
-                if (not SLOT_61):
+            if not SLOT_5:
+                if not SLOT_61:
                     if SLOT_4:
-                        if SLOT_110:
-                            if SLOT_37:
-                                SLOT_31 = (SLOT_31 + 4)
-                            if SLOT_36:
-                                SLOT_31 = (SLOT_31 + 0)
+                        if SLOT_OverdriveTimer:
+                            if SLOT_IsGrounded:
+                                SLOT_31 = SLOT_31 + 4
+                            if SLOT_IsAirborne:
+                                SLOT_31 = SLOT_31 + 0
                         else:
-                            if SLOT_37:
-                                SLOT_31 = (SLOT_31 + 0)
-                            if SLOT_36:
-                                SLOT_31 = (SLOT_31 + (-2))
-                            SLOT_31 = (SLOT_31 - SLOT_58)
+                            if SLOT_IsGrounded:
+                                SLOT_31 = SLOT_31 + 0
+                            if SLOT_IsAirborne:
+                                SLOT_31 = SLOT_31 + -2
+                            SLOT_31 = SLOT_31 - SLOT_58
                         SLOT_60 = 180
                         ResourceBarFlashIfFull(0, 1)
                         ResourceGaugeFlash(0, 1)
                     else:
-                        if SLOT_110:
-                            if SLOT_37:
-                                SLOT_31 = (SLOT_31 + 9)
-                            if SLOT_36:
-                                SLOT_31 = (SLOT_31 + 3)
+                        if SLOT_OverdriveTimer:
+                            if SLOT_IsGrounded:
+                                SLOT_31 = SLOT_31 + 9
+                            if SLOT_IsAirborne:
+                                SLOT_31 = SLOT_31 + 3
                         else:
-                            SLOT_60 = (SLOT_60 + 1)
-                            if (SLOT_60 <= 120):
-                                if SLOT_37:
-                                    SLOT_31 = (SLOT_31 + 1)
-                                if SLOT_36:
-                                    SLOT_31 = (SLOT_31 + 0)
+                            SLOT_60 = SLOT_60 + 1
+                            if SLOT_60 <= 120:
+                                if SLOT_IsGrounded:
+                                    SLOT_31 = SLOT_31 + 1
+                                if SLOT_IsAirborne:
+                                    SLOT_31 = SLOT_31 + 0
                             else:
-                                if SLOT_37:
-                                    SLOT_31 = (SLOT_31 + 3)
-                                if SLOT_36:
-                                    SLOT_31 = (SLOT_31 + 0)
+                                if SLOT_IsGrounded:
+                                    SLOT_31 = SLOT_31 + 3
+                                if SLOT_IsAirborne:
+                                    SLOT_31 = SLOT_31 + 0
                         ResourceGaugeFlash(0, 1)
                         ResourceBarFlashIfFull(0, 0)
-                        if SLOT_90:
+                        if SLOT_InNeutral:
                             TrainingModeSLOT('TRI_ValkenhaynsWolf', 2, 67)
                             if SLOT_67:
-                                SLOT_31 = (SLOT_31 + 999999)
-            if (not SLOT_31):
+                                SLOT_31 = SLOT_31 + 999999
+            if not SLOT_31:
                 if SLOT_4:
                     SLOT_5 = 1
             if SLOT_5:
-                if (not SLOT_4):
-                    if SLOT_90:
+                if not SLOT_4:
+                    if SLOT_InNeutral:
                         TrainingModeSLOT('TRI_ValkenhaynsWolf', 2, 67)
                         if SLOT_67:
-                            SLOT_31 = (SLOT_31 + 999999)
-                    if (SLOT_31 == 1000):
+                            SLOT_31 = SLOT_31 + 999999
+                    if SLOT_31 == 1000:
                         SLOT_5 = 0
                         ResourceBarColor(0, 4294902015)
                         ResourceGaugeX(0, 0)
                     else:
                         ResourceBarColor(0, 4289864226)
                         ResourceBarFlashIfFull(0, 0)
-                        if SLOT_110:
-                            SLOT_31 = (SLOT_31 + 6)
-                        if (not SLOT_110):
-                            SLOT_31 = (SLOT_31 + 2)
-                if (SLOT_31 == 0):
+                        if SLOT_OverdriveTimer:
+                            SLOT_31 = SLOT_31 + 6
+                        if not SLOT_OverdriveTimer:
+                            SLOT_31 = SLOT_31 + 2
+                if SLOT_31 == 0:
                     ResourceGaugeX(0, 1)
-    if (not SLOT_81):
+    if not SLOT_81:
         callSubroutine('WolfTimeUpCheck')
     CallPrivateFunction('VH_Frame', 0, 0, 0, 0, 0, 0, 0, 0)
-    if SLOT_30:
+    if SLOT_IsInHitstun:
         SLOT_59 = 0
-    if (SLOT_65 == 10):
+    if SLOT_65 == 10:
         CreateObject('FormOffMoya', 105)
         CreateObject('FormOffMoya', 105)
         CreateObject('FormOffMoya', 105)
         CreateObject('FormOffMoya', 105)
-        if SLOT_37:
+        if SLOT_IsGrounded:
             CreateObject('DriveFormOff', -1)
         else:
             CreateParticle('vhef_form_ex02', -1)
             CreateObject('FormOff_Air', -1)
-    if (SLOT_65 == 9):
+    if SLOT_65 == 9:
         CreateObject('FormOffMoya', 105)
         CreateObject('FormOffMoya', 105)
         CreateObject('FormOffMoya', 105)
-    if (SLOT_65 == 8):
+    if SLOT_65 == 8:
         CreateObject('FormOffMoya', 105)
         CreateObject('FormOffMoya', 105)
-    if (SLOT_65 == 7):
+    if SLOT_65 == 7:
         CreateObject('FormOffMoya', 105)
         CreateObject('FormOffMoya', 105)
     if SLOT_65:
-        SLOT_65 = (SLOT_65 + (-1))
+        SLOT_65 = SLOT_65 + -1
+
 
 @Subroutine
 def OnActionBeginPre():
@@ -959,7 +964,7 @@ def OnActionBeginPre():
         GroundDashCount(0)
         Unknown12049(1)
         EnableFallingAnimation(1)
-        if (not SLOT_11):
+        if not SLOT_11:
             DisableBarrier(1)
             DisableOverdrive1(1)
             DisableCrouch(1)
@@ -1052,7 +1057,7 @@ def OnActionBeginPre():
         GroundDashCount(1)
         Unknown12049(0)
         EnableFallingAnimation(0)
-        if (not SLOT_11):
+        if not SLOT_11:
             DisableBarrier(0)
             DisableOverdrive1(0)
             DisableCrouch(0)
@@ -1133,17 +1138,20 @@ def OnActionBeginPre():
         CommonVoicelines(73, 'vh402')
         CommonVoicelines(74, 'vh403')
 
+
 @Subroutine
 def OnActionBegin():
     callSubroutine('WolfTimeUpCheck')
 
+
 @Subroutine
 def WolfTimeUpCheck():
-    if TimerDepleted():
-        if SLOT_37:
+    if SLOT_65 == 7:
+        if SLOT_IsGrounded:
             if SLOT_4:
-                if (not SLOT_31):
+                if not SLOT_31:
                     enterState('Wolf_NmlAtk5D')
+
 
 @Subroutine
 def OnDamage():
@@ -1152,6 +1160,7 @@ def OnDamage():
         SLOT_60 = 0
         CreateObject('WolfDamage', -1)
     SLOT_4 = 0
+
 
 @Subroutine
 def Wolf_Dash():
@@ -1164,6 +1173,7 @@ def Wolf_Dash():
     WhiffCancel('Wolf_NmlAtk2D')
     WhiffCancel('Wolf_NmlAtk3D')
 
+
 @Subroutine
 def Wolf_DashCancel():
     HitOrBlockCancel('Wolf_NmlAtk6D')
@@ -1174,6 +1184,7 @@ def Wolf_DashCancel():
     HitOrBlockCancel('Wolf_NmlAtk1D')
     HitOrBlockCancel('Wolf_NmlAtk2D')
     HitOrBlockCancel('Wolf_NmlAtk3D')
+
 
 @Subroutine
 def SP_cancelDash():
@@ -1186,6 +1197,7 @@ def SP_cancelDash():
     BeginBuffer('SP_cancel2D')
     BeginBuffer('SP_cancel3D')
 
+
 @Subroutine
 def SP_cancelDashExe():
     BufferedOrPressedGoto('SP_cancel6D')
@@ -1196,6 +1208,7 @@ def SP_cancelDashExe():
     BufferedOrPressedGoto('SP_cancel1D')
     BufferedOrPressedGoto('SP_cancel2D')
     BufferedOrPressedGoto('SP_cancel3D')
+
 
 @Subroutine
 def SP_cancelDashClear():
@@ -1208,23 +1221,21 @@ def SP_cancelDashClear():
     DisallowGoto2('SP_cancel2D')
     DisallowGoto2('SP_cancel3D')
 
+
 @State
 def CmnActStand():
     if SLOT_4:
-        _gotolabel(1)
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    GotoIf0(0, 2, 59)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(2)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(3)
-    random_(2, 0, 100)
-    if SLOT_0:
-        _gotolabel(4)
+        conditionalSendToLabel(1)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if not SLOT_59:
+        notConditionalSendToLabel(0)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(2)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(3)
+    if random_(2, 0, 100):
+        conditionalSendToLabel(4)
     label(2)
     sprite('vh001_00', 6)
     SLOT_59 = 0
@@ -1308,9 +1319,11 @@ def CmnActStand():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def CmnActStandTurn():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw003_00', 3)
     sprite('vw003_01', 3)
     sprite('vw003_02', 3)
@@ -1322,10 +1335,12 @@ def CmnActStandTurn():
     sprite('vh003_01', 3)
     sprite('vh003_02', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('vh010_00', 4)
     sprite('vh010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -1345,20 +1360,24 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('vh013_00', 3)
     sprite('vh013_01', 3)
     sprite('vh013_02', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('vh010_01', 4)
     sprite('vh010_00', 4)
 
+
 @State
 def CmnActJumpPre():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw023_00', 2)
     sprite('vw023_01', 1)
     loopRest()
@@ -1367,9 +1386,11 @@ def CmnActJumpPre():
     sprite('vh023_00', 2)
     sprite('vh023_01', 2)
 
+
 @State
 def CmnActJumpUpper():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     label(0)
     sprite('vw020_00', 2)
     sprite('vw020_01', 2)
@@ -1378,10 +1399,10 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(0)
     label(424)
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('vh020_00', 2)
     sprite('vh020_01', 2)
     SmartVoiceline('vh007')
@@ -1402,15 +1423,18 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(5)
 
+
 @State
 def CmnActJumpUpperEnd():
     sprite('vh020_02', 4)
     sprite('vh020_03', 4)
     sprite('vh020_04', 4)
 
+
 @State
 def CmnActJumpDown():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     label(5)
     sprite('vw020_00', 2)
     sprite('vw020_01', 2)
@@ -1427,9 +1451,11 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpLanding():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw024_00', 3)
     sprite('vw024_01', 3)
     sprite('vw024_02', 3)
@@ -1445,9 +1471,11 @@ def CmnActJumpLanding():
     sprite('vh024_03', 3)
     sprite('vh024_04', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw024_00', 3)
     sprite('vw024_01', 3)
     sprite('vw024_02', 3)
@@ -1460,9 +1488,11 @@ def CmnActLandingStiffLoop():
     sprite('vh024_02', 3)
     sprite('vh024_03', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw024_04', 3)
     sprite('vw024_05', 3)
     loopRest()
@@ -1471,10 +1501,11 @@ def CmnActLandingStiffEnd():
     sprite('vh024_03', 3)
     sprite('vh024_04', 3)
 
+
 @State
 def CmnActFWalk():
     if SLOT_4:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('vh030_00', 7)
     sprite('vh030_01', 7)
     label(0)
@@ -1533,6 +1564,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(11)
 
+
 @State
 def CmnActFWalkEnd():
     sprite('vw030_08', 4)
@@ -1542,10 +1574,11 @@ def CmnActFWalkEnd():
     sprite('vw030_08', 4)
     sprite('vw030_09', 4)
 
+
 @State
 def CmnActBWalk():
     if SLOT_4:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('vh031_00', 7)
     sprite('vh031_01', 7)
     label(0)
@@ -1568,8 +1601,8 @@ def CmnActBWalk():
     sprite('vw003_05', 3)
     DashEffects(100, 1, 1)
 
-    def upon_FRAME_STEP():
-        SLOT_31 = (SLOT_31 + (-1))
+    def upon_EVERY_FRAME():
+        SLOT_31 = SLOT_31 + -1
     sprite('vw003_04', 3)
     sprite('vw003_03', 3)
     sprite('vw031_02', 3)
@@ -1600,6 +1633,7 @@ def CmnActBWalk():
     loopRest()
     gotoLabel(11)
 
+
 @State
 def CmnActBWalkEnd():
     sprite('vw003_00', 3)
@@ -1608,13 +1642,14 @@ def CmnActBWalkEnd():
     sprite('vw003_02', 3)
     DashEffects(100, 1, 1)
 
+
 @State
 def CmnActFDash():
 
     def upon_IMMEDIATE():
         SetCommonActionMark(1)
         EnterStateIfEventID(8, '_NEUTRAL')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         EndMomentum(1)
         ExternalForcesRate(100, 0)
     sprite('vh032_00', 2)
@@ -1638,7 +1673,7 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('vh032_03', 2)
     IgnoreInertia(0)
     WhiffNormalCancel(1)
@@ -1650,9 +1685,11 @@ def CmnActFDash():
     sprite('vh032_05', 2)
     sprite('vh032_06', 2)
 
+
 @State
 def CmnActFDashStop():
     pass
+
 
 @State
 def CmnActBDash():
@@ -1664,15 +1701,16 @@ def CmnActBDash():
         EndMomentum(1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw020_03', 3)
     physicsXImpulse(-24000)
     physicsYImpulse(16600)
     EndYPhysicsImpulse()
-    sendToLabelUpon(2, 401)
+    uponSendToLabel(LANDING, 401)
 
-    def upon_FRAME_STEP():
-        SLOT_31 = (SLOT_31 + (-1))
+    def upon_EVERY_FRAME():
+        SLOT_31 = SLOT_31 + -1
     label(400)
     sprite('vw020_02', 3)
     sprite('vw020_01', 3)
@@ -1694,7 +1732,7 @@ def CmnActBDash():
     physicsYImpulse(8800)
     setGravity(1550)
     JumpSoundEffects()
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('vh033_01', 3)
     sprite('vh033_02', 3)
     label(0)
@@ -1710,9 +1748,11 @@ def CmnActBDash():
     sprite('vh033_05', 2)
     sprite('vh033_06', 1)
 
+
 @State
 def CmnActBDashLanding():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw024_00', 4)
     sprite('vw024_01', 4)
     sprite('vw024_02', 4)
@@ -1724,9 +1764,11 @@ def CmnActBDashLanding():
     sprite('vh033_05', 2)
     sprite('vh033_06', 2)
 
+
 @State
 def CmnActAirFDash():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw035_00', 3)
     physicsYImpulse(30000)
     label(400)
@@ -1745,14 +1787,16 @@ def CmnActAirFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBDash():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw036_00', 3)
     physicsYImpulse(30000)
 
-    def upon_FRAME_STEP():
-        SLOT_31 = (SLOT_31 + (-1))
+    def upon_EVERY_FRAME():
+        SLOT_31 = SLOT_31 + -1
     label(400)
     sprite('vw036_01', 3)
     sprite('vw036_02', 3)
@@ -1769,11 +1813,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('vh050_00', 1)
     sprite('vh050_01', 1)
     sprite('vh050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1781,6 +1827,7 @@ def CmnActHitStandLv2():
     sprite('vh050_02', 1)
     sprite('vh050_01', 2)
     sprite('vh050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1790,6 +1837,7 @@ def CmnActHitStandLv3():
     sprite('vh050_01', 2)
     sprite('vh050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('vh050_03', 1)
@@ -1798,6 +1846,7 @@ def CmnActHitStandLv4():
     sprite('vh050_02', 2)
     sprite('vh050_01', 2)
     sprite('vh050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1809,11 +1858,13 @@ def CmnActHitStandLv5():
     sprite('vh050_01', 2)
     sprite('vh050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('vh052_00', 1)
     sprite('vh052_01', 1)
     sprite('vh052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1821,6 +1872,7 @@ def CmnActHitStandLowLv2():
     sprite('vh052_02', 1)
     sprite('vh052_01', 2)
     sprite('vh052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1830,6 +1882,7 @@ def CmnActHitStandLowLv3():
     sprite('vh052_01', 2)
     sprite('vh052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('vh052_03', 1)
@@ -1838,6 +1891,7 @@ def CmnActHitStandLowLv4():
     sprite('vh052_02', 2)
     sprite('vh052_01', 2)
     sprite('vh052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1849,11 +1903,13 @@ def CmnActHitStandLowLv5():
     sprite('vh052_01', 2)
     sprite('vh052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('vh054_00', 1)
     sprite('vh054_01', 1)
     sprite('vh054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1861,6 +1917,7 @@ def CmnActHitCrouchLv2():
     sprite('vh054_02', 1)
     sprite('vh054_01', 2)
     sprite('vh054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1870,6 +1927,7 @@ def CmnActHitCrouchLv3():
     sprite('vh054_01', 2)
     sprite('vh054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('vh054_03', 1)
@@ -1878,6 +1936,7 @@ def CmnActHitCrouchLv4():
     sprite('vh054_02', 2)
     sprite('vh054_01', 2)
     sprite('vh054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1889,6 +1948,7 @@ def CmnActHitCrouchLv5():
     sprite('vh054_01', 2)
     sprite('vh054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('vh060_00', 4)
@@ -1898,9 +1958,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('vh060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1911,10 +1973,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('vh060_07', 2)
     sprite('vh060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1924,9 +1988,11 @@ def CmnActBDownBound():
     sprite('vh060_12', 3)
     sprite('vh060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('vh060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1938,13 +2004,16 @@ def CmnActBDown2Stand():
     sprite('vh061_05', 4)
     sprite('vh061_06', 4)
 
+
 @State
 def CmnActFDownUpper():
     sprite('vh063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('vh063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1954,10 +2023,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('vh063_04', 3)
     sprite('vh063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1967,9 +2038,11 @@ def CmnActFDownBound():
     sprite('vh063_09', 3)
     sprite('vh063_10', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('vh063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1986,6 +2059,7 @@ def CmnActFDown2Stand():
     sprite('vh064_10', 2)
     sprite('vh064_11', 4)
 
+
 @State
 def CmnActVDownUpper():
     sprite('vh062_00', 3)
@@ -1995,10 +2069,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('vh062_03', 3)
     sprite('vh062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -2010,15 +2086,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('vh062_09', 2)
     sprite('vh062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('vh062_09', 2)
     sprite('vh062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -2031,6 +2110,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -2041,6 +2121,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -2049,14 +2130,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('vh071_04', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('vh073_00', 3)
     sprite('vh073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -2067,6 +2151,7 @@ def CmnActWallBoundDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerLoop():
     sprite('vh070_00', 3)
@@ -2076,6 +2161,7 @@ def CmnActStaggerLoop():
     sprite('vh070_03', 4)
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerDown():
     sprite('vh070_04', 5)
@@ -2084,6 +2170,7 @@ def CmnActStaggerDown():
     sprite('vh070_07', 4)
     sprite('vh070_08', 5)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('vh070_09', 2)
@@ -2091,11 +2178,13 @@ def CmnActUkemiStagger():
     sprite('vh070_11', 3)
     sprite('vh070_12', 3)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('vh113_00', 3)
     sprite('vh113_01', 3)
     sprite('vh113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -2103,11 +2192,13 @@ def CmnActUkemiAirB():
     sprite('vh113_01', 3)
     sprite('vh113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('vh113_00', 3)
     sprite('vh113_01', 3)
     sprite('vh113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -2119,6 +2210,7 @@ def CmnActUkemiLandF():
     sprite('vh110_09', 200)
     sprite('vh110_10', 3)
     sprite('vh110_11', 3)
+
 
 @State
 def CmnActUkemiLandB():
@@ -2133,6 +2225,7 @@ def CmnActUkemiLandB():
     sprite('vh111_09', 3)
     sprite('vh111_10', 3)
 
+
 @State
 def CmnActUkemiLandN():
     sprite('vh112_00', 2)
@@ -2145,6 +2238,7 @@ def CmnActUkemiLandN():
     sprite('vh112_07', 3)
     sprite('vh112_08', 3)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('vh024_00', 3)
@@ -2153,10 +2247,12 @@ def CmnActUkemiLandNLanding():
     sprite('vh024_03', 3)
     sprite('vh024_04', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('vh040_00', 3)
     sprite('vh040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -2166,10 +2262,12 @@ def CmnActMidGuardLoop():
     sprite('vh040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('vh040_01', 3)
     sprite('vh040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -2180,15 +2278,18 @@ def CmnActMidHeavyGuardLoop():
     sprite('vh040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('vh040_01', 3)
     sprite('vh040_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('vh041_00', 3)
     sprite('vh041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -2198,10 +2299,12 @@ def CmnActHighGuardLoop():
     sprite('vh041_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('vh041_01', 3)
     sprite('vh041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -2212,15 +2315,18 @@ def CmnActHighHeavyGuardLoop():
     sprite('vh041_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('vh041_01', 3)
     sprite('vh041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('vh043_00', 3)
     sprite('vh043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -2230,10 +2336,12 @@ def CmnActCrouchGuardLoop():
     sprite('vh043_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('vh043_01', 3)
     sprite('vh043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -2244,15 +2352,18 @@ def CmnActCrouchHeavyGuardLoop():
     sprite('vh043_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('vh043_01', 3)
     sprite('vh043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('vh045_00', 3)
     sprite('vh045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -2262,10 +2373,12 @@ def CmnActAirGuardLoop():
     sprite('vh045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('vh045_01', 3)
     sprite('vh045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -2276,10 +2389,12 @@ def CmnActAirHeavyGuardLoop():
     sprite('vh045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('vh045_01', 3)
     sprite('vh045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -2290,6 +2405,7 @@ def CmnActGuardBreakStand():
     sprite('vh090_03', 6)
     sprite('vh090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('vh091_00', 2)
@@ -2298,6 +2414,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('vh091_03', 6)
     sprite('vh091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -2308,9 +2425,11 @@ def CmnActGuardBreakAir():
     sprite('vh092_03', 6)
     sprite('vh092_04', 6)
 
+
 @State
 def CmnActAirTurn():
-    GotoIf0(424, 2, 4)
+    if not SLOT_4:
+        notConditionalSendToLabel(424)
     sprite('vw020_00', 2)
     sprite('vw020_01', 2)
     sprite('vw020_02', 2)
@@ -2322,11 +2441,13 @@ def CmnActAirTurn():
     sprite('vh025_01', 4)
     sprite('vh025_02', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('vh040_02', 1)
     sprite('vh040_01', 3)
     sprite('vh040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -2340,11 +2461,13 @@ def CmnActLockReject():
     sprite('vh312_07', 2)
     sprite('vh312_08', 2)
 
+
 @State
 def CmnActAirLockWait():
     sprite('vh045_02', 1)
     sprite('vh045_01', 3)
     sprite('vh045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -2356,6 +2479,7 @@ def CmnActAirLockReject():
     sprite('vh322_05', 3)
     sprite('vh322_06', 3)
     sprite('vh322_07', 3)
+
 
 @State
 def CmnActLandSpin():
@@ -2371,11 +2495,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('vh071_08', 6)
     sprite('vh071_09', 5)
     sprite('vh071_10', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -2388,6 +2514,7 @@ def CmnActVertSpin():
     sprite('vh071_07', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActSlideAir():
@@ -2403,6 +2530,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('vh077_02', 4)
@@ -2412,10 +2540,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('vh077_05', 5)
     sprite('vh077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -2425,10 +2555,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('vh060_11', 4)
     sprite('vh060_13', 5)
+
 
 @State
 def CmnActBurstBegin():
@@ -2439,6 +2571,7 @@ def CmnActBurstBegin():
     sprite('vh331_03', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActBurstLoop():
@@ -2451,10 +2584,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('vh331_09', 3)
     sprite('vh331_10', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -2466,6 +2601,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('vh331_04', 2)
@@ -2476,6 +2612,7 @@ def CmnActAirBurstLoop():
     sprite('vh331_08', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -2489,6 +2626,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('vh333_00', 3)
@@ -2498,6 +2636,7 @@ def CmnActOverDriveBegin():
     sprite('vh333_03', 32767)
     CreateObject('EMB_VH_OD', -1)
     loopRest()
+
 
 @State
 def CmnActOverDriveLoop():
@@ -2511,11 +2650,13 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('vh333_08', 4)
     sprite('vh333_09', 4)
     sprite('vh333_10', 4)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -2526,6 +2667,7 @@ def CmnActAirOverDriveBegin():
     sprite('vh333_14', 32767)
     CreateObject('EMB_VH_OD', -1)
     loopRest()
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -2539,11 +2681,13 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('vh333_16', 4)
     sprite('vh333_17', 4)
     sprite('vh333_18', 4)
+
 
 @State
 def NmlAtk5A():
@@ -2584,6 +2728,7 @@ def NmlAtk5A():
     sprite('vh200_04', 2)
     sprite('vh200_05', 5)
 
+
 @State
 def NmlAtk5B():
 
@@ -2615,6 +2760,7 @@ def NmlAtk5B():
     sprite('vh201_08', 3)
     sprite('vh201_09', 2)
 
+
 @State
 def NmlAtk5C():
 
@@ -2628,7 +2774,7 @@ def NmlAtk5C():
         StayAfterMovement(1, 0)
         HitOrBlockCancel('NmlAtk6C')
         HitJumpCancel(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_51 = 1
     sprite('vh202_00', 2)
     sprite('vh202_01', 5)
@@ -2675,6 +2821,7 @@ def NmlAtk5C():
     sprite('vh202_11', 4)
     sprite('vh202_12', 3)
 
+
 @State
 def NmlAtk2A():
 
@@ -2711,6 +2858,7 @@ def NmlAtk2A():
     sprite('vh230_04', 4)
     sprite('vh230_05', 3)
 
+
 @State
 def NmlAtk2B():
 
@@ -2741,6 +2889,7 @@ def NmlAtk2B():
     sprite('vh231_08', 3)
     sprite('vh231_09', 3)
 
+
 @State
 def NmlAtk2C():
 
@@ -2758,7 +2907,7 @@ def NmlAtk2C():
         HitOrBlockCancel('NmlAtk5C')
         HitOrBlockCancel('NmlAtk3C')
         HitOrBlockJumpCancel(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_51 = 1
     sprite('vh232_00', 2)
     sprite('vh232_01', 2)
@@ -2796,6 +2945,7 @@ def NmlAtk2C():
     sprite('vh232_12', 3)
     sprite('vh232_13', 5)
 
+
 @State
 def NmlAtk3C():
 
@@ -2816,7 +2966,7 @@ def NmlAtk3C():
         EnableEmergencyTechAirHit(1)
         DamageEffect(6, 'vhef_hit')
         UseSlashHitspark(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_51 = 1
     sprite('vh234_00', 2)
     sprite('vh234_01', 3)
@@ -2847,6 +2997,7 @@ def NmlAtk3C():
     sprite('vh234_10', 3)
     sprite('vh234_11', 2)
 
+
 @State
 def NmlAtkAIR5A():
 
@@ -2873,6 +3024,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('vh250_05', 3)
     sprite('vh250_06', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2901,6 +3053,7 @@ def NmlAtkAIR5B():
     sprite('vh251_07', 3)
     sprite('vh251_08', 4)
 
+
 @State
 def NmlAtkAIR5C():
 
@@ -2916,7 +3069,7 @@ def NmlAtkAIR5C():
         AirPushbackY(-20000)
         DamageEffect(6, 'vhef_hit')
         UseSlashHitspark(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_51 = 1
     sprite('vh252_00', 2)
     sprite('vh252_01', 3)
@@ -2949,6 +3102,7 @@ def NmlAtkAIR5C():
     sprite('vh252_09', 4)
     sprite('vh252_10', 4)
     sprite('vh252_11', 4)
+
 
 @State
 def NmlAtk6A():
@@ -2996,6 +3150,7 @@ def NmlAtk6A():
     sprite('vh210_06', 3)
     sprite('vh210_07', 3)
 
+
 @State
 def NmlAtk6B():
 
@@ -3035,6 +3190,7 @@ def NmlAtk6B():
     sprite('vh213_10', 5)
     sprite('vh213_11', 5)
     sprite('vh213_12', 3)
+
 
 @State
 def NmlAtk6C():
@@ -3089,6 +3245,7 @@ def NmlAtk6C():
     CreateObject('vhef_form_dustlight', 1)
     sprite('vh211_11', 3)
 
+
 @State
 def NmlAtk5D():
 
@@ -3103,6 +3260,7 @@ def NmlAtk5D():
     sprite('vh203_02', 3)
     SLOT_4 = 1
     sprite('vh203_03', 3)
+
 
 @State
 def NmlAtk4D():
@@ -3131,6 +3289,7 @@ def NmlAtk4D():
     sprite('vw020_03', 3)
     sprite('vw020_00', 3)
 
+
 @State
 def NmlAtk2D():
 
@@ -3145,6 +3304,7 @@ def NmlAtk2D():
     sprite('vh233_02', 3)
     SLOT_4 = 1
     sprite('vh203_03', 3)
+
 
 @State
 def NmlAtkAIR5D():
@@ -3171,6 +3331,7 @@ def NmlAtkAIR5D():
     WhiffCancel('Wolf_DrainAIR')
     callSubroutine('Wolf_Dash')
     sprite('vh253_03', 3)
+
 
 @State
 def NmlAtkExcite():
@@ -3199,12 +3360,13 @@ def NmlAtkExcite():
     sprite('vh615_06', 10)
     loopRest()
     if SLOT_97:
-        _gotolabel(50)
+        conditionalSendToLabel(50)
     sprite('vh615_07', 7)
     sprite('vh615_08', 7)
     sprite('vh615_09', 7)
     sprite('vh615_10', 7)
     sprite('vh615_11', 7)
+
 
 @State
 def NmlAtkDeadAngle():
@@ -3251,6 +3413,7 @@ def NmlAtkDeadAngle():
     sprite('vh202_11', 5)
     sprite('vh202_12', 5)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -3272,11 +3435,11 @@ def NmlAtkGuardCrush():
         HitBackReturnIgnore(1)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3284,8 +3447,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -3302,7 +3465,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('vh404_00', 3)
     sprite('vh404_01', 1)
@@ -3320,13 +3483,13 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('vh404_05', 2)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('vh404_06', 2)
     sprite('vh404_07', 3)
     physicsXImpulse(8000)
     physicsYImpulse(10000)
     GravityDefault()
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('vh404_08', 2)
     CommonSE('005_swing_grap_2_2')
     sprite('vh404_09', 1)
@@ -3336,7 +3499,7 @@ def NmlAtkGuardCrush():
     sprite('vh404_10', 32767)
     label(1)
     sprite('vh404_11', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('vh404_12', 2)
     sprite('vh404_13', 2)
@@ -3345,6 +3508,7 @@ def NmlAtkGuardCrush():
     sprite('vh404_16', 2)
     sprite('vh404_17', 2)
     sprite('vh404_18', 2)
+
 
 @State
 def NmlAtkThrow():
@@ -3366,6 +3530,7 @@ def NmlAtkThrow():
     SmartVoiceline('vh155')
     sprite('vh310_06', 7)
     sprite('vh310_07', 4)
+
 
 @State
 def ThrowExe():
@@ -3434,6 +3599,7 @@ def ThrowExe():
     sprite('vh311_11', 5)
     sprite('vh311_12', 5)
 
+
 @State
 def NmlAtkBackThrow():
 
@@ -3454,6 +3620,7 @@ def NmlAtkBackThrow():
     SmartVoiceline('vh155')
     sprite('vh310_06', 7)
     sprite('vh310_07', 4)
+
 
 @State
 def BackThrowExe():
@@ -3539,6 +3706,7 @@ def BackThrowExe():
     sprite('vh313_08', 4)
     sprite('vh313_09', 4)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -3560,6 +3728,7 @@ def NmlAtkAirThrow():
     SmartVoiceline('vh155')
     sprite('vh320_06', 7)
     sprite('vh320_07', 4)
+
 
 @State
 def AirThrowExe():
@@ -3623,6 +3792,7 @@ def AirThrowExe():
     setGravity(2000)
     sprite('vh321_10', 5)
 
+
 @State
 def Wolf_NmlAtk5A():
 
@@ -3653,6 +3823,7 @@ def Wolf_NmlAtk5A():
     Unknown2063()
     sprite('vw200_04', 4)
     sprite('vw200_05', 4)
+
 
 @State
 def Wolf_NmlAtk5B():
@@ -3686,6 +3857,7 @@ def Wolf_NmlAtk5B():
     sprite('vw201_06', 4)
     sprite('vw201_07', 4)
     sprite('vw201_08', 4)
+
 
 @State
 def Wolf_NmlAtk5C():
@@ -3724,6 +3896,7 @@ def Wolf_NmlAtk5C():
     sprite('vw024_04', 2)
     sprite('vw024_05', 2)
 
+
 @Subroutine
 def WolfAIR5AInit():
     AttackLevel_(1)
@@ -3741,6 +3914,7 @@ def WolfAIR5AInit():
     HitOrBlockCancel('Wolf_DrainAIR')
     callSubroutine('Wolf_DashCancel')
     HitOrBlockJumpCancel(1)
+
 
 @State
 def Wolf_NmlAtkAIR5A():
@@ -3761,6 +3935,7 @@ def Wolf_NmlAtkAIR5A():
     sprite('vw250_11', 3)
     sprite('vw250_12', 3)
 
+
 @State
 def Wolf_NmlAtkAIR5A2nd():
 
@@ -3779,6 +3954,7 @@ def Wolf_NmlAtkAIR5A2nd():
     sprite('vw250_07', 2)
     sprite('vw250_12', 3)
 
+
 @State
 def Wolf_NmlAtkAIR5A3rd():
 
@@ -3796,6 +3972,7 @@ def Wolf_NmlAtkAIR5A3rd():
     Unknown2063()
     sprite('vw250_11', 3)
     sprite('vw250_12', 3)
+
 
 @State
 def Wolf_NmlAtkAIR5B():
@@ -3828,6 +4005,7 @@ def Wolf_NmlAtkAIR5B():
     sprite('vw251_07', 2)
     sprite('vw251_08', 2)
 
+
 @State
 def Wolf_NmlAtkAIR5C():
 
@@ -3843,7 +4021,7 @@ def Wolf_NmlAtkAIR5C():
         HitOrBlockJumpCancel(1)
         callSubroutine('Wolf_DashCancel')
         XImpulseAcceleration(20)
-        if (SLOT_13 <= 0):
+        if SLOT_YVelocity <= 0:
             physicsYImpulse(18000)
     sprite('vw252_00', 3)
     sprite('vw252_01', 4)
@@ -3861,6 +4039,7 @@ def Wolf_NmlAtkAIR5C():
     sprite('vw252_06', 4)
     sprite('vw400_07', 4)
     sprite('vw251_08', 4)
+
 
 @State
 def Wolf_NmlAtk5D():
@@ -3907,6 +4086,7 @@ def Wolf_NmlAtk5D():
     WhiffCancel('NmlAtkBackThrow')
     WhiffCancel('NmlAtkExcite')
 
+
 @State
 def Wolf_NmlAtkAIR5D():
 
@@ -3941,6 +4121,7 @@ def Wolf_NmlAtkAIR5D():
     WhiffOverdriveCancel(1)
     WhiffBarrierCancel2(1)
 
+
 @Subroutine
 def WolfD_Init():
     AttackDefaults_StandingNormal()
@@ -3948,17 +4129,17 @@ def WolfD_Init():
     AttackOff()
     PreventBlocking(1)
     BeginCancelLevel(0)
-    SLOT_51 = SLOT_110
+    SLOT_51 = SLOT_OverdriveTimer
     CtrlDirectionVsTarget()
     WhiffCancel('Wolf_NmlAtkStop')
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
 
     def upon_45():
-        if (SLOT_23 >= 3000000):
-            SLOT_23 = 3000000
+        if SLOT_YDistanceFromFloor >= 3000000:
+            SLOT_YDistanceFromFloor = 3000000
 
     def upon_STATE_END():
-        if (not SLOT_30):
+        if not SLOT_IsInHitstun:
             XImpulseAcceleration(50)
             YAccel(50)
             EndYPhysicsImpulse()
@@ -3966,10 +4147,11 @@ def WolfD_Init():
 
     def upon_17():
         sendToLabel(2)
-    if SLOT_37:
-        SLOT_31 = (SLOT_31 + (-150))
+    if SLOT_IsGrounded:
+        SLOT_31 = SLOT_31 + -150
     else:
-        SLOT_31 = (SLOT_31 + (-100))
+        SLOT_31 = SLOT_31 + -100
+
 
 @State
 def Wolf_NmlAtk6D():
@@ -4001,10 +4183,10 @@ def Wolf_NmlAtk6D():
     label(0)
     sprite('vw202_21', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_22', 2)
     loopRest()
@@ -4012,7 +4194,7 @@ def Wolf_NmlAtk6D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4023,7 +4205,7 @@ def Wolf_NmlAtk6D():
     label(2)
     sprite('vw020_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4033,6 +4215,7 @@ def Wolf_NmlAtk6D():
     sprite('vw020_02', 2)
     loopRest()
     ExitState()
+
 
 @State
 def Wolf_NmlAtk9D():
@@ -4064,10 +4247,10 @@ def Wolf_NmlAtk9D():
     label(0)
     sprite('vw202_24', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_25', 2)
     loopRest()
@@ -4075,7 +4258,7 @@ def Wolf_NmlAtk9D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4086,7 +4269,7 @@ def Wolf_NmlAtk9D():
     label(2)
     sprite('vw202_26', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4096,6 +4279,7 @@ def Wolf_NmlAtk9D():
     sprite('vw202_27', 2)
     loopRest()
     ExitState()
+
 
 @State
 def Wolf_NmlAtk8D():
@@ -4127,10 +4311,10 @@ def Wolf_NmlAtk8D():
     label(0)
     sprite('vw202_29', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_30', 2)
     loopRest()
@@ -4138,7 +4322,7 @@ def Wolf_NmlAtk8D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4149,7 +4333,7 @@ def Wolf_NmlAtk8D():
     label(2)
     sprite('vw202_31', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4159,6 +4343,7 @@ def Wolf_NmlAtk8D():
     sprite('vw202_32', 2)
     loopRest()
     ExitState()
+
 
 @State
 def Wolf_NmlAtk7D():
@@ -4197,10 +4382,10 @@ def Wolf_NmlAtk7D():
     label(0)
     sprite('vw202_16', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_17', 2)
     loopRest()
@@ -4208,7 +4393,7 @@ def Wolf_NmlAtk7D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4219,7 +4404,7 @@ def Wolf_NmlAtk7D():
     label(2)
     sprite('vw202_18', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4229,6 +4414,7 @@ def Wolf_NmlAtk7D():
     sprite('vw202_19', 2)
     loopRest()
     ExitState()
+
 
 @State
 def Wolf_NmlAtk4D():
@@ -4267,10 +4453,10 @@ def Wolf_NmlAtk4D():
     label(0)
     sprite('vw202_21', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_22', 2)
     loopRest()
@@ -4278,7 +4464,7 @@ def Wolf_NmlAtk4D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4289,7 +4475,7 @@ def Wolf_NmlAtk4D():
     label(2)
     sprite('vw020_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4299,6 +4485,7 @@ def Wolf_NmlAtk4D():
     sprite('vw020_02', 2)
     loopRest()
     ExitState()
+
 
 @State
 def Wolf_NmlAtk1D():
@@ -4330,10 +4517,10 @@ def Wolf_NmlAtk1D():
     label(0)
     sprite('vw202_06', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_07', 2)
     loopRest()
@@ -4341,7 +4528,7 @@ def Wolf_NmlAtk1D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4352,7 +4539,7 @@ def Wolf_NmlAtk1D():
     label(2)
     sprite('vw202_08', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4362,6 +4549,7 @@ def Wolf_NmlAtk1D():
     sprite('vw202_09', 2)
     loopRest()
     ExitState()
+
 
 @State
 def Wolf_NmlAtk2D():
@@ -4393,10 +4581,10 @@ def Wolf_NmlAtk2D():
     label(0)
     sprite('vw202_11', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_12', 2)
     loopRest()
@@ -4404,7 +4592,7 @@ def Wolf_NmlAtk2D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4415,7 +4603,7 @@ def Wolf_NmlAtk2D():
     label(2)
     sprite('vw202_13', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4425,6 +4613,7 @@ def Wolf_NmlAtk2D():
     sprite('vw202_14', 2)
     loopRest()
     ExitState()
+
 
 @State
 def Wolf_NmlAtk3D():
@@ -4456,10 +4645,10 @@ def Wolf_NmlAtk3D():
     label(0)
     sprite('vw202_16', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_17', 2)
     loopRest()
@@ -4467,7 +4656,7 @@ def Wolf_NmlAtk3D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4478,7 +4667,7 @@ def Wolf_NmlAtk3D():
     label(2)
     sprite('vw202_18', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4488,6 +4677,7 @@ def Wolf_NmlAtk3D():
     sprite('vw202_19', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel6D():
@@ -4510,7 +4700,7 @@ def SP_cancel6D():
     sprite('vw202_01', 2)
     sprite('vw202_02', 1)
     WhiffCancelEnable(1)
-    if SLOT_37:
+    if SLOT_IsGrounded:
         physicsYImpulse(23000)
     else:
         physicsYImpulse(13000)
@@ -4530,7 +4720,7 @@ def SP_cancel6D():
     CreateObject('vw202_tossin', 0)
     CreateObject('ef_airdashf6C4C', 0)
     sprite('vw202_21', 2)
-    SLOT_31 = (SLOT_31 + (-12))
+    SLOT_31 = SLOT_31 + -12
     CreateParticle('vhef_vw202airwall5C', 0)
     EnableAfterimage(1)
     WhiffNormalCancel(1)
@@ -4539,10 +4729,10 @@ def SP_cancel6D():
     label(0)
     sprite('vw202_21', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_22', 2)
     loopRest()
@@ -4550,7 +4740,7 @@ def SP_cancel6D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4561,7 +4751,7 @@ def SP_cancel6D():
     label(2)
     sprite('vw020_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4571,6 +4761,7 @@ def SP_cancel6D():
     sprite('vw020_02', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel9D():
@@ -4620,10 +4811,10 @@ def SP_cancel9D():
     label(0)
     sprite('vw202_24', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_25', 2)
     loopRest()
@@ -4631,7 +4822,7 @@ def SP_cancel9D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4642,7 +4833,7 @@ def SP_cancel9D():
     label(2)
     sprite('vw202_26', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4652,6 +4843,7 @@ def SP_cancel9D():
     sprite('vw202_27', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel8D():
@@ -4702,10 +4894,10 @@ def SP_cancel8D():
     label(0)
     sprite('vw202_29', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_30', 2)
     loopRest()
@@ -4713,7 +4905,7 @@ def SP_cancel8D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4724,7 +4916,7 @@ def SP_cancel8D():
     label(2)
     sprite('vw202_31', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4734,6 +4926,7 @@ def SP_cancel8D():
     sprite('vw202_32', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel7D():
@@ -4787,10 +4980,10 @@ def SP_cancel7D():
     label(0)
     sprite('vw202_16', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_17', 2)
     loopRest()
@@ -4798,7 +4991,7 @@ def SP_cancel7D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4809,7 +5002,7 @@ def SP_cancel7D():
     label(2)
     sprite('vw202_18', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4819,6 +5012,7 @@ def SP_cancel7D():
     sprite('vw202_19', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel4D():
@@ -4873,10 +5067,10 @@ def SP_cancel4D():
     label(0)
     sprite('vw202_21', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_22', 2)
     loopRest()
@@ -4884,7 +5078,7 @@ def SP_cancel4D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4895,7 +5089,7 @@ def SP_cancel4D():
     label(2)
     sprite('vw020_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4905,6 +5099,7 @@ def SP_cancel4D():
     sprite('vw020_02', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel1D():
@@ -4947,7 +5142,7 @@ def SP_cancel1D():
     CreateObject('vw202_tossin1C', 0)
     CreateObject('ef_airdashf1C', 0)
     sprite('vw202_06', 2)
-    SLOT_31 = (SLOT_31 + (-12))
+    SLOT_31 = SLOT_31 + -12
     CreateParticle('vhef_vw202airwall1C', 0)
     EnableAfterimage(1)
     WhiffNormalCancel(1)
@@ -4956,10 +5151,10 @@ def SP_cancel1D():
     label(0)
     sprite('vw202_06', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_07', 2)
     loopRest()
@@ -4967,7 +5162,7 @@ def SP_cancel1D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -4978,7 +5173,7 @@ def SP_cancel1D():
     label(2)
     sprite('vw202_08', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -4988,6 +5183,7 @@ def SP_cancel1D():
     sprite('vw202_09', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel2D():
@@ -5038,10 +5234,10 @@ def SP_cancel2D():
     label(0)
     sprite('vw202_11', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_12', 2)
     loopRest()
@@ -5049,7 +5245,7 @@ def SP_cancel2D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -5060,7 +5256,7 @@ def SP_cancel2D():
     label(2)
     sprite('vw202_13', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -5070,6 +5266,7 @@ def SP_cancel2D():
     sprite('vw202_14', 2)
     loopRest()
     ExitState()
+
 
 @State
 def SP_cancel3D():
@@ -5120,10 +5317,10 @@ def SP_cancel3D():
     label(0)
     sprite('vw202_16', 2)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_21):
+    def upon_EVERY_FRAME():
+        if not SLOT_21:
             sendToLabel(2)
-        if (SLOT_31 <= 0):
+        if SLOT_31 <= 0:
             sendToLabel(2)
     sprite('vw202_17', 2)
     loopRest()
@@ -5131,7 +5328,7 @@ def SP_cancel3D():
     label(1)
     sprite('vw024_00', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     WhiffCancelEnable(0)
     EnableAfterimage(0)
     physicsXImpulse(0)
@@ -5142,7 +5339,7 @@ def SP_cancel3D():
     label(2)
     sprite('vw202_18', 2)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     AddAirJumpCount(-1)
     AddAirDashCount(-1)
     WhiffCancelEnable(0)
@@ -5153,6 +5350,7 @@ def SP_cancel3D():
     loopRest()
     ExitState()
 
+
 @State
 def Wolf_NmlAtkStop():
 
@@ -5160,9 +5358,10 @@ def Wolf_NmlAtkStop():
         AttackDefaults_AirNoAttack()
         XImpulseAcceleration(50)
         GravityDefault()
-        SLOT_31 = (SLOT_31 + (-20))
+        SLOT_31 = SLOT_31 + -20
     sprite('vw202_18', 2)
     sprite('vw202_19', 3)
+
 
 @State
 def Assault():
@@ -5180,9 +5379,9 @@ def Assault():
         AirPushbackY(27000)
         AttackDirection(0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             sendToLabel(0)
-            PassbackAddActionMarkToFunction('vh400_tossin', 32)
+            TriggerUponForState('vh400_tossin', 32)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('vh400_00', 2)
@@ -5253,6 +5452,7 @@ def Assault():
     PerInertia(0)
     sprite('vh032_06', 4)
 
+
 @State
 def LowAssault():
 
@@ -5318,6 +5518,7 @@ def LowAssault():
     sprite('vh402_11', 4)
     sprite('vh402_12', 5)
 
+
 @State
 def LowAssault2nd():
 
@@ -5371,6 +5572,7 @@ def LowAssault2nd():
     sprite('vh402_22', 4)
     sprite('vh402_23', 4)
     sprite('vh402_24', 5)
+
 
 @State
 def MidAssault():
@@ -5437,6 +5639,7 @@ def MidAssault():
     sprite('vh401_10', 3)
     sprite('vh401_11', 3)
 
+
 @State
 def AirAssault():
 
@@ -5458,8 +5661,8 @@ def AirAssault():
         Wallstick(1)
         WallstickDuration(20)
         UsePunchHitspark(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('vh403_00', 2)
@@ -5504,6 +5707,7 @@ def AirAssault():
     sprite('vh024_03', 4)
     sprite('vh024_04', 2)
 
+
 @Subroutine
 def BeastCannon_Matome():
     AttackLevel_(3)
@@ -5520,25 +5724,26 @@ def BeastCannon_Matome():
     AttackOff()
     if SLOT_137:
         DamageMultiplier(80)
-    sendToLabelUpon(10, 0)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 0)
 
     def upon_STATE_END():
-        if (not SLOT_30):
+        if not SLOT_IsInHitstun:
             XImpulseAcceleration(70)
             YAccel(70)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if SLOT_37:
-                SLOT_31 = (SLOT_31 + (-2))
-    if SLOT_110:
+            if SLOT_IsGrounded:
+                SLOT_31 = SLOT_31 + -2
+    if SLOT_OverdriveTimer:
         SLOT_51 = 1
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
 
     def upon_LANDING():
         SetActionMark(0)
         sendToLabel(2)
+
 
 @Subroutine
 def BeastCannonCancel():
@@ -5556,6 +5761,7 @@ def BeastCannonCancel():
     HitOrBlockCancel('UltimateWolfAirAssault')
     HitOrBlockCancel('UltimateWolfAirAssault_OD')
 
+
 @State
 def BeastCannon_H():
 
@@ -5563,7 +5769,7 @@ def BeastCannon_H():
         AttackDefaults_AirSpecial()
         callSubroutine('BeastCannon_Matome')
         AirUntechableTime(42)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
     sprite('vw202_00', 2)
     physicsXImpulse(0)
     EndMomentum(0)
@@ -5594,7 +5800,7 @@ def BeastCannon_H():
         XSpeed(10000)
     sprite('vw202_21ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     Visibility(1)
     RefreshMultihit()
     WhiffCrouchBlockCancel(1)
@@ -5602,7 +5808,7 @@ def BeastCannon_H():
     SmartVoiceline('vh303')
     sprite('vw202_22ex01', 2)
     sprite('vw202_21ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_22ex01', 2)
     loopRest()
     gotoLabel(3)
@@ -5621,7 +5827,7 @@ def BeastCannon_H():
     def upon_LANDING():
         SetActionMark(0)
         sendToLabel(2)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     AttackOff()
     EnableCollision(1)
@@ -5643,7 +5849,7 @@ def BeastCannon_H():
     gotoLabel(1)
     label(2)
     sprite('vw024_00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     sprite('vw024_01', 2)
@@ -5652,6 +5858,7 @@ def BeastCannon_H():
     sprite('vw024_04', 2)
     WhiffCancelEnable(0)
     sprite('vw024_05', 5)
+
 
 @State
 def BeastCannon_V():
@@ -5678,13 +5885,13 @@ def BeastCannon_V():
     ForceFaceSprite()
     sprite('vw202_23', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     PrivateSE('vhse_08')
     physicsXImpulse(50000)
     physicsYImpulse(50000)
@@ -5693,7 +5900,7 @@ def BeastCannon_V():
         XSpeed(10000)
     sprite('vw202_24ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -5701,7 +5908,7 @@ def BeastCannon_V():
     EnableCollision(0)
     sprite('vw202_25ex00', 2)
     sprite('vw202_24ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_25ex00', 2)
     loopRest()
     gotoLabel(3)
@@ -5715,7 +5922,7 @@ def BeastCannon_V():
     sprite('vw202_25ex00', 2)
     label(3)
     sprite('vw202_26', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     AttackOff()
     EnableCollision(1)
@@ -5736,7 +5943,7 @@ def BeastCannon_V():
     gotoLabel(1)
     label(2)
     sprite('vw024_00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     sprite('vw024_01', 2)
@@ -5745,6 +5952,7 @@ def BeastCannon_V():
     WhiffCancelEnable(0)
     sprite('vw024_04', 2)
     sprite('vw024_05', 2)
+
 
 @State
 def BeastCannon_U():
@@ -5772,13 +5980,13 @@ def BeastCannon_U():
     ForceFaceSprite()
     sprite('vw202_28', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     PrivateSE('vhse_08')
     physicsYImpulse(70000)
     setGravity(0)
@@ -5786,7 +5994,7 @@ def BeastCannon_U():
         XSpeed(10000)
     sprite('vw202_29ex01', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -5794,7 +6002,7 @@ def BeastCannon_U():
     EnableCollision(0)
     sprite('vw202_30ex01', 2)
     sprite('vw202_29ex01', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_30ex01', 2)
     loopRest()
     gotoLabel(3)
@@ -5808,7 +6016,7 @@ def BeastCannon_U():
     sprite('vw202_30ex01', 2)
     label(3)
     sprite('vw202_26', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     AttackOff()
     EnableCollision(1)
@@ -5829,7 +6037,7 @@ def BeastCannon_U():
     gotoLabel(1)
     label(2)
     sprite('vw024_00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     sprite('vw024_01', 2)
@@ -5838,6 +6046,7 @@ def BeastCannon_U():
     WhiffCancelEnable(0)
     sprite('vw024_04', 2)
     sprite('vw024_05', 2)
+
 
 @State
 def BeastCannonAIR_H():
@@ -5875,7 +6084,7 @@ def BeastCannonAIR_H():
         XSpeed(10000)
     sprite('vw202_21ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -5883,7 +6092,7 @@ def BeastCannonAIR_H():
     SetXCollisionFromOrigin(300)
     sprite('vw202_22ex01', 2)
     sprite('vw202_21ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_22ex01', 2)
     loopRest()
     gotoLabel(3)
@@ -5899,7 +6108,7 @@ def BeastCannonAIR_H():
     sprite('vw202_22ex01', 2)
     label(3)
     sprite('vw202_20', 4)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     AttackOff()
     EnableCollision(1)
@@ -5921,7 +6130,7 @@ def BeastCannonAIR_H():
     gotoLabel(1)
     label(2)
     sprite('vw024_00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     sprite('vw024_01', 2)
@@ -5930,6 +6139,7 @@ def BeastCannonAIR_H():
     WhiffCancelEnable(0)
     sprite('vw024_04', 2)
     sprite('vw024_05', 2)
+
 
 @State
 def BeastCannonAIR_V():
@@ -5956,13 +6166,13 @@ def BeastCannonAIR_V():
     ForceFaceSprite()
     sprite('vw202_23', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     PrivateSE('vhse_08')
     physicsXImpulse(50000)
     physicsYImpulse(50000)
@@ -5971,7 +6181,7 @@ def BeastCannonAIR_V():
         XSpeed(10000)
     sprite('vw202_24ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -5979,7 +6189,7 @@ def BeastCannonAIR_V():
     EnableCollision(0)
     sprite('vw202_25ex00', 2)
     sprite('vw202_24ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_25ex00', 2)
     loopRest()
     gotoLabel(3)
@@ -5993,7 +6203,7 @@ def BeastCannonAIR_V():
     sprite('vw202_25ex00', 2)
     label(3)
     sprite('vw202_26', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     AttackOff()
     EnableCollision(1)
@@ -6014,7 +6224,7 @@ def BeastCannonAIR_V():
     gotoLabel(1)
     label(2)
     sprite('vw024_00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     sprite('vw024_01', 2)
@@ -6023,6 +6233,7 @@ def BeastCannonAIR_V():
     WhiffCancelEnable(0)
     sprite('vw024_04', 2)
     sprite('vw024_05', 2)
+
 
 @State
 def BeastCannonAIR_U():
@@ -6050,13 +6261,13 @@ def BeastCannonAIR_U():
     ForceFaceSprite()
     sprite('vw202_28', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     PrivateSE('vhse_08')
     physicsYImpulse(70000)
     setGravity(0)
@@ -6064,7 +6275,7 @@ def BeastCannonAIR_U():
         XSpeed(10000)
     sprite('vw202_29ex01', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -6072,7 +6283,7 @@ def BeastCannonAIR_U():
     EnableCollision(0)
     sprite('vw202_30ex01', 2)
     sprite('vw202_29ex01', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_30ex01', 2)
     loopRest()
     gotoLabel(3)
@@ -6086,7 +6297,7 @@ def BeastCannonAIR_U():
     sprite('vw202_30ex01', 2)
     label(3)
     sprite('vw202_26', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     AttackOff()
     EnableCollision(1)
@@ -6107,7 +6318,7 @@ def BeastCannonAIR_U():
     gotoLabel(1)
     label(2)
     sprite('vw024_00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     sprite('vw024_01', 2)
@@ -6116,6 +6327,7 @@ def BeastCannonAIR_U():
     WhiffCancelEnable(0)
     sprite('vw024_04', 2)
     sprite('vw024_05', 2)
+
 
 @Subroutine
 def WolfDashInput():
@@ -6128,6 +6340,7 @@ def WolfDashInput():
     BeginBuffer('Wolf_NmlAtk8D')
     BeginBuffer('Wolf_NmlAtk9D')
 
+
 @Subroutine
 def WolfDashBegin():
     BufferedOrPressedGoto('Wolf_NmlAtk1D')
@@ -6139,6 +6352,7 @@ def WolfDashBegin():
     BufferedOrPressedGoto('Wolf_NmlAtk8D')
     BufferedOrPressedGoto('Wolf_NmlAtk9D')
 
+
 @Subroutine
 def WolfDashEnd():
     DisallowGoto2('Wolf_NmlAtk1D')
@@ -6149,6 +6363,7 @@ def WolfDashEnd():
     DisallowGoto2('Wolf_NmlAtk7D')
     DisallowGoto2('Wolf_NmlAtk8D')
     DisallowGoto2('Wolf_NmlAtk9D')
+
 
 @State
 def BeastCannonAIR_V2():
@@ -6162,7 +6377,7 @@ def BeastCannonAIR_V2():
         if SLOT_51:
             HardKnockdown(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             callSubroutine('WolfDashInput')
     sprite('vw202_00', 2)
     physicsXImpulse(0)
@@ -6181,13 +6396,13 @@ def BeastCannonAIR_V2():
     EndMomentum(1)
     sprite('vw202_15', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     PrivateSE('vhse_08')
     physicsXImpulse(60000)
     physicsYImpulse(-72000)
@@ -6196,7 +6411,7 @@ def BeastCannonAIR_V2():
         XSpeed(10000)
     sprite('vw202_16ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -6204,9 +6419,9 @@ def BeastCannonAIR_V2():
     EnableCollision(0)
     sprite('vw202_17ex00', 2)
     sprite('vw202_16ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     sprite('vw202_17ex00', 2)
     loopRest()
     label(6)
@@ -6239,11 +6454,11 @@ def BeastCannonAIR_V2():
     gotoLabel(7)
     label(2)
     sprite('vw024_00', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     Recovery()
@@ -6254,6 +6469,7 @@ def BeastCannonAIR_V2():
     sprite('vw024_04', 3)
     callSubroutine('WolfDashEnd')
     sprite('vw024_05', 3)
+
 
 @State
 def BeastCannonAIR_V3():
@@ -6267,7 +6483,7 @@ def BeastCannonAIR_V3():
         if SLOT_51:
             HardKnockdown(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             callSubroutine('WolfDashInput')
     sprite('vw202_00', 2)
     physicsXImpulse(0)
@@ -6287,13 +6503,13 @@ def BeastCannonAIR_V3():
     label(10)
     sprite('vw202_15', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     PrivateSE('vhse_08')
     physicsXImpulse(20000)
     physicsYImpulse(-74000)
@@ -6302,7 +6518,7 @@ def BeastCannonAIR_V3():
         YSpeed(-10000)
     sprite('vw202_16ex01', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -6310,9 +6526,9 @@ def BeastCannonAIR_V3():
     EnableCollision(0)
     sprite('vw202_17ex01', 2)
     sprite('vw202_16ex01', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     sprite('vw202_17ex01', 2)
     loopRest()
     label(6)
@@ -6345,11 +6561,11 @@ def BeastCannonAIR_V3():
     gotoLabel(7)
     label(2)
     sprite('vw024_00', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     Recovery()
@@ -6360,6 +6576,7 @@ def BeastCannonAIR_V3():
     sprite('vw024_04', 3)
     callSubroutine('WolfDashEnd')
     sprite('vw024_05', 3)
+
 
 @State
 def BeastCannonAIR_V4():
@@ -6373,7 +6590,7 @@ def BeastCannonAIR_V4():
         if SLOT_51:
             HardKnockdown(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             callSubroutine('WolfDashInput')
     sprite('vw202_00', 2)
     physicsXImpulse(0)
@@ -6393,13 +6610,13 @@ def BeastCannonAIR_V4():
     label(10)
     sprite('vw202_10', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     PrivateSE('vhse_08')
     physicsYImpulse(-80000)
     setGravity(0)
@@ -6407,7 +6624,7 @@ def BeastCannonAIR_V4():
         YSpeed(-10000)
     sprite('vw202_11ex01', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 40)
+    ObjectUpon(STATE_END, 40)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
@@ -6415,9 +6632,9 @@ def BeastCannonAIR_V4():
     EnableCollision(0)
     sprite('vw202_12ex01', 2)
     sprite('vw202_11ex01', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     sprite('vw202_12ex01', 2)
     loopRest()
     label(6)
@@ -6450,11 +6667,11 @@ def BeastCannonAIR_V4():
     gotoLabel(7)
     label(2)
     sprite('vw024_00', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     Recovery()
@@ -6465,6 +6682,7 @@ def BeastCannonAIR_V4():
     sprite('vw024_04', 3)
     callSubroutine('WolfDashEnd')
     sprite('vw024_05', 3)
+
 
 @State
 def Wolf_Drain():
@@ -6488,13 +6706,14 @@ def Wolf_Drain():
     sprite('vw402_04', 3)
     sprite('vw402_05', 3)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         SLOT_61 = 0
     sprite('vw402_06', 4)
     sprite('vw402_07', 5)
     sprite('vw402_08', 5)
     sprite('vw402_09', 5)
     loopRest()
+
 
 @State
 def Wolf_DrainExe():
@@ -6518,9 +6737,9 @@ def Wolf_DrainExe():
         callSubroutine('Wolf_DashCancel')
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
-            SLOT_31 = (SLOT_31 + 250)
-        sendToLabelUpon(2, 1)
+            clearUponHandler(OPPONENT_HIT)
+            SLOT_31 = SLOT_31 + 250
+        uponSendToLabel(LANDING, 1)
         SLOT_61 = 1
 
         def upon_STATE_END():
@@ -6576,7 +6795,7 @@ def Wolf_DrainExe():
     SLOT_4 = 0
     GravityDefault()
     XImpulseAcceleration(50)
-    SLOT_31 = (SLOT_31 + 1000)
+    SLOT_31 = SLOT_31 + 1000
     SpecialCancel(0)
     sprite('vw254_01', 5)
     CreateObject('FormOffMoya', 0)
@@ -6591,11 +6810,12 @@ def Wolf_DrainExe():
     label(1)
     sprite('vh024_00', 3)
     physicsXImpulse(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('vh024_01', 3)
     sprite('vh024_02', 3)
     sprite('vh024_03', 3)
     sprite('vh024_04', 3)
+
 
 @State
 def Wolf_DrainAIR():
@@ -6620,7 +6840,7 @@ def Wolf_DrainAIR():
     sprite('vw402_26', 2)
     StartMultihit()
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         SLOT_61 = 0
     sprite('vw402_27', 5)
     sprite('vw402_28', 5)
@@ -6628,6 +6848,7 @@ def Wolf_DrainAIR():
     sprite('vw402_30', 5)
     GravityDefault()
     loopRest()
+
 
 @State
 def Wolf_DrainAIRExe():
@@ -6651,9 +6872,9 @@ def Wolf_DrainAIRExe():
         callSubroutine('Wolf_DashCancel')
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
-            SLOT_31 = (SLOT_31 + 250)
-        sendToLabelUpon(2, 1)
+            clearUponHandler(OPPONENT_HIT)
+            SLOT_31 = SLOT_31 + 250
+        uponSendToLabel(LANDING, 1)
         ForcedLandingRecovery(6, 0)
         SLOT_61 = 1
 
@@ -6707,7 +6928,7 @@ def Wolf_DrainAIRExe():
     SLOT_4 = 0
     GravityDefault()
     XImpulseAcceleration(50)
-    SLOT_31 = (SLOT_31 + 1000)
+    SLOT_31 = SLOT_31 + 1000
     SpecialCancel(0)
     sprite('vw254_01', 5)
     CreateObject('FormOffMoya', 0)
@@ -6722,11 +6943,12 @@ def Wolf_DrainAIRExe():
     label(1)
     sprite('vh024_00', 3)
     physicsXImpulse(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('vh024_01', 3)
     sprite('vh024_02', 3)
     sprite('vh024_03', 3)
     sprite('vh024_04', 3)
+
 
 @State
 def UltimateAssault():
@@ -6796,6 +7018,7 @@ def UltimateAssault():
     Voiceline('vh255')
     sprite('vh430_18', 8)
     sprite('vh430_19', 8)
+
 
 @State
 def UltimateAssault_Ranbu():
@@ -6982,7 +7205,7 @@ def UltimateAssault_Ranbu():
         Voiceline('vh251')
     sprite('vh430_30', 7)
     sprite('vh430_31', 6)
-    Comment('UltimateAssaultFinish')
+    GotoState('UltimateAssaultFinish')
     CreateParticle('vhef_401smoke', 0)
     AttackLevel_(5)
     Damage(1200)
@@ -7026,6 +7249,7 @@ def UltimateAssault_Ranbu():
     sprite('vh430_41', 3)
     sprite('vh430_42', 3)
     sprite('vh430_43', 3)
+
 
 @State
 def UltimateAssault_OD():
@@ -7096,6 +7320,7 @@ def UltimateAssault_OD():
     Voiceline('vh255')
     sprite('vh430_18', 8)
     sprite('vh430_19', 8)
+
 
 @State
 def UltimateAssault_OD_Ranbu():
@@ -7338,7 +7563,7 @@ def UltimateAssault_OD_Ranbu():
     YAccel(30)
     sprite('vh450_12', 3)
     sprite('vh450_13', 32767)
-    sendToLabelUpon(2, 11)
+    uponSendToLabel(LANDING, 11)
     loopRest()
     label(11)
     sprite('vh430_36', 6)
@@ -7351,7 +7576,7 @@ def UltimateAssault_OD_Ranbu():
     CommonSE('004_swing_grap_1_2')
     CreateParticle('vhef_401smoke', 0)
     sprite('vh430_32', 3)
-    Comment('UltimateAssault_OD_Finish')
+    GotoState('UltimateAssault_OD_Finish')
     RefreshMultihit()
     AttackLevel_(5)
     DefeatOpponentBehavior(0)
@@ -7389,6 +7614,7 @@ def UltimateAssault_OD_Ranbu():
     sprite('vh430_42', 3)
     sprite('vh430_43', 3)
 
+
 @State
 def UltimateAirAssault():
 
@@ -7411,7 +7637,7 @@ def UltimateAirAssault():
         UseSlashHitspark(1)
         SingleProration(1)
         StarterRating(2)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         StayAfterMovement(1, 0)
         EndMomentum(1)
 
@@ -7422,7 +7648,7 @@ def UltimateAirAssault():
     sprite('vh431_00', 3)
     E0EAEffect('aura', 65535)
     CreateObject('EMB', -1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('vh431_01', 5)
     setInvincible(1)
     DistortionSettings(53, -1, 0)
@@ -7445,7 +7671,7 @@ def UltimateAirAssault():
     gotoLabel(0)
     label(1)
     sprite('vh431_07', 3)
-    PassbackAddActionMarkToFunction('vh431_jumpkick', 32)
+    TriggerUponForState('vh431_jumpkick', 32)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
     AirPushbackX(1000)
@@ -7459,8 +7685,8 @@ def UltimateAirAssault():
     ScreenShake(20000, 20000)
     physicsXImpulse(0)
     Hitstop(3)
-    sendToLabelUpon(12, 2)
-    clearUponHandler(2)
+    uponSendToLabel(OPPONENT_HIT, 2)
+    clearUponHandler(LANDING)
     sprite('vh431_08', 2)
     sprite('vh431_09', 5)
     AddX(160000)
@@ -7477,7 +7703,7 @@ def UltimateAirAssault():
     label(2)
     sprite('vh233_00', 3)
     EnableRapidCancel(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     ForceFaceSprite()
     ScreenShake(40000, 40000)
     OppPositionOnHit(0, 0, 0)
@@ -7491,7 +7717,7 @@ def UltimateAirAssault():
     sprite('vw024_02', 4)
     Voiceline('vh253')
     CommonSE('019_cloth_c')
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     label(3)
     sprite('vw020_01', 2)
     CommonSE('019_cloth_a')
@@ -7502,12 +7728,12 @@ def UltimateAirAssault():
     gotoLabel(3)
     label(4)
     sprite('vw024_00', 2)
-    Comment('UltimateAirAssaultFinish')
+    GotoState('UltimateAirAssaultFinish')
     CreateParticle('vhef_landing', -1)
     physicsXImpulse(0)
     physicsYImpulse(0)
     GravityDefault()
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     CommonSE('208_brake_normal')
     PrivateSE('vhse_09')
     sprite('vw024_01', 3)
@@ -7526,7 +7752,7 @@ def UltimateAirAssault():
     physicsYImpulse(40000)
     setGravity(100)
     EnableCollision(0)
-    sendToLabelUpon(10, 5)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 5)
     RefreshMultihit()
     Hitstop(4)
     Damage(3000)
@@ -7575,9 +7801,9 @@ def UltimateAirAssault():
     sprite('vw202_25', 2)
     sprite('vw202_24', 1)
     sprite('vw202_25', 1)
-    PassbackAddActionMarkToFunction('vw431_tossin', 32)
-    PassbackAddActionMarkToFunction('vw431_line9', 32)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('vw431_tossin', 32)
+    TriggerUponForState('vw431_line9', 32)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     XImpulseAcceleration(30)
     YAccel(45)
@@ -7587,8 +7813,8 @@ def UltimateAirAssault():
     XImpulseAcceleration(50)
     YAccel(48)
     EnableCollision(1)
-    sendToLabelUpon(2, 7)
-    clearUponHandler(10)
+    uponSendToLabel(LANDING, 7)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     CommonSE('019_cloth_c')
     sprite('vw020_01', 2)
     sprite('vw020_02', 2)
@@ -7621,12 +7847,10 @@ def UltimateAirAssault():
     physicsYImpulse(0)
     GravityDefault()
     loopRest()
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(8)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(9)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(8)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(9)
     gotoLabel(10)
     label(8)
     sprite('vh431_09', 2)
@@ -7699,6 +7923,7 @@ def UltimateAirAssault():
     sprite('vh001_16', 4)
     SLOT_59 = 0
 
+
 @State
 def UltimateAirAssault_OD():
 
@@ -7722,7 +7947,7 @@ def UltimateAirAssault_OD():
         SingleProration(1)
         AttackType(4)
         StarterRating(2)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         StayAfterMovement(1, 0)
         EndMomentum(1)
 
@@ -7733,7 +7958,7 @@ def UltimateAirAssault_OD():
     sprite('vh431_00', 3)
     E0EAEffect('aura', 65535)
     CreateObject('EMB', -1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('vh431_01', 5)
     setInvincible(1)
     DistortionSettings(53, -1, 0)
@@ -7756,7 +7981,7 @@ def UltimateAirAssault_OD():
     gotoLabel(0)
     label(1)
     sprite('vh431_07', 3)
-    PassbackAddActionMarkToFunction('vh431_jumpkick', 32)
+    TriggerUponForState('vh431_jumpkick', 32)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
     AirPushbackX(1000)
@@ -7770,8 +7995,8 @@ def UltimateAirAssault_OD():
     ScreenShake(20000, 20000)
     physicsXImpulse(0)
     Hitstop(3)
-    sendToLabelUpon(12, 2)
-    clearUponHandler(2)
+    uponSendToLabel(OPPONENT_HIT, 2)
+    clearUponHandler(LANDING)
     sprite('vh431_08', 2)
     sprite('vh431_09', 5)
     AddX(160000)
@@ -7788,7 +8013,7 @@ def UltimateAirAssault_OD():
     label(2)
     sprite('vh233_00', 3)
     EnableRapidCancel(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     ForceFaceSprite()
     ScreenShake(40000, 40000)
     OppPositionOnHit(0, 0, 0)
@@ -7802,7 +8027,7 @@ def UltimateAirAssault_OD():
     sprite('vw024_02', 4)
     Voiceline('vh253')
     CommonSE('019_cloth_c')
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     label(3)
     sprite('vw020_01', 2)
     CommonSE('019_cloth_a')
@@ -7813,12 +8038,12 @@ def UltimateAirAssault_OD():
     gotoLabel(3)
     label(4)
     sprite('vw024_00', 2)
-    Comment('UltimateAirAssaultFinish')
+    GotoState('UltimateAirAssaultFinish')
     CreateParticle('vhef_landing', -1)
     physicsXImpulse(0)
     physicsYImpulse(0)
     GravityDefault()
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     CommonSE('208_brake_normal')
     PrivateSE('vhse_09')
     sprite('vw024_01', 3)
@@ -7838,7 +8063,7 @@ def UltimateAirAssault_OD():
     physicsYImpulse(40000)
     setGravity(100)
     EnableCollision(0)
-    sendToLabelUpon(10, 5)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 5)
     RefreshMultihit()
     AttackLevel_(4)
     Damage(350)
@@ -7865,7 +8090,7 @@ def UltimateAirAssault_OD():
     AfterimageMask_2(0, 0, 0, 0)
     sprite('vh431_24', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     Visibility(1)
     EnableCollision(0)
     StartMultihit()
@@ -7884,35 +8109,35 @@ def UltimateAirAssault_OD():
     sprite('vw202_24', 1)
     EnableAfterimage(0)
     sprite('vw202_25', 2)
-    PassbackAddActionMarkToFunction('vw431_tossin', 32)
-    PassbackAddActionMarkToFunction('vw431_line9', 32)
+    TriggerUponForState('vw431_tossin', 32)
+    TriggerUponForState('vw431_line9', 32)
     XImpulseAcceleration(100)
     YAccel(45)
     setGravity(1000)
     sprite('vw202_24', 2)
     sprite('vw020_00', 2)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     XImpulseAcceleration(50)
     YAccel(48)
     EnableCollision(1)
-    sendToLabelUpon(2, 7)
-    clearUponHandler(10)
+    uponSendToLabel(LANDING, 7)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     CommonSE('019_cloth_c')
     ForceFaceSprite()
     label(101)
     HitAnywhere(1)
     CopyFromRightToLeft(23, 2, 67, 22, 2, 23)
-    if (SLOT_23 > SLOT_67):
+    if SLOT_YDistanceFromFloor > SLOT_67:
         AirPushbackY(50000)
-    sendToLabelUpon(10, 102)
-    if (SLOT_2 >= 2):
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 102)
+    if SLOT_2 >= 2:
         AirPushbackY(5000)
         YImpulseBeforeWallbounce(250)
     EnableCollision(0)
     AttackOff()
     sprite('vw202_00', 1)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     ForceFaceSprite()
     XImpulseAcceleration(80)
@@ -7945,14 +8170,14 @@ def UltimateAirAssault_OD():
     SmartVoiceline('vh304')
     sprite('vw202_24ex00boss', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     Visibility(1)
     RefreshMultihit()
     WhiffCrouchBlockCancel(1)
     EnableCollision(0)
     sprite('vw202_24ex00boss', 2)
     sprite('vw202_24ex00boss', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_24ex00boss', 2)
     loopRest()
     label(102)
@@ -7960,7 +8185,7 @@ def UltimateAirAssault_OD():
     AddActionMark(1)
     AttackOff()
     YSpeed(-2000)
-    if (SLOT_2 >= 3):
+    if SLOT_2 >= 3:
         sendToLabel(113)
     gotoLabel(101)
     label(113)
@@ -7968,19 +8193,19 @@ def UltimateAirAssault_OD():
     sprite('vw202_24ex00boss', 2)
     sprite('vh450_40add02', 4)
     EndMomentum(1)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     sprite('null', 8)
     TeleportToObject(22)
     AddX(10000)
     AddY(280000)
     EnableCollision(0)
-    clearUponHandler(10)
-    clearUponHandler(12)
-    sendToLabelUpon(2, 115)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(OPPONENT_HIT)
+    uponSendToLabel(LANDING, 115)
     physicsYImpulse(3000)
     setGravity(300)
-    Comment('UltimateAirAssault_OD_Finish')
+    GotoState('UltimateAirAssault_OD_Finish')
     sprite('vh450_40add02', 4)
     sprite('vh450_44', 8)
     sprite('vh450_45', 8)
@@ -8027,12 +8252,10 @@ def UltimateAirAssault_OD():
     GravityDefault()
     setInvincible(0)
     loopRest()
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(8)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(9)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(8)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(9)
     gotoLabel(10)
     label(8)
     sprite('vh431_09', 2)
@@ -8105,6 +8328,7 @@ def UltimateAirAssault_OD():
     sprite('vh001_16', 4)
     SLOT_59 = 0
 
+
 @State
 def UltimateWolfAirAssault():
 
@@ -8127,8 +8351,8 @@ def UltimateWolfAirAssault():
         UseSlashHitspark(1)
         SingleProration(1)
         StarterRating(2)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         StayAfterMovement(1, 0)
         EndMomentum(1)
         SLOT_61 = 1
@@ -8184,29 +8408,29 @@ def UltimateWolfAirAssault():
     EndMomentum(1)
     sprite('vw202_15', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     physicsXImpulse(60000)
     physicsYImpulse(-72000)
     setGravity(0)
     PrivateSE('vhse_08')
     sprite('vw202_16ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     Visibility(1)
     SmartVoiceline('vh304')
     RefreshMultihit()
     WhiffCrouchBlockCancel(1)
     sprite('vw202_17ex00', 2)
     sprite('vw202_16ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     sprite('vw202_17ex00', 2)
     loopRest()
     label(0)
@@ -8230,14 +8454,14 @@ def UltimateWolfAirAssault():
     ScreenShake(20000, 20000)
     physicsXImpulse(0)
     Hitstop(3)
-    sendToLabelUpon(12, 2)
-    clearUponHandler(2)
+    uponSendToLabel(OPPONENT_HIT, 2)
+    clearUponHandler(LANDING)
     sprite('vw024_00', 6)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     LandingEffects(100, 1, 1)
     sprite('vw024_01', 6)
     sprite('vw024_02', 6)
@@ -8247,15 +8471,15 @@ def UltimateWolfAirAssault():
     ExitState()
     label(2)
     sprite('vw024_00', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     LandingEffects(100, 1, 1)
     sprite('vw024_01', 3)
     EnableRapidCancel(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     ForceFaceSprite()
     ScreenShake(40000, 40000)
     OppPositionOnHit(0, 0, 0)
@@ -8264,7 +8488,7 @@ def UltimateWolfAirAssault():
     physicsYImpulse(10000)
     sprite('vw024_02', 4)
     CommonSE('019_cloth_c')
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     label(3)
     sprite('vw020_01', 2)
     CommonSE('019_cloth_a')
@@ -8275,12 +8499,12 @@ def UltimateWolfAirAssault():
     gotoLabel(3)
     label(4)
     sprite('vw024_00', 2)
-    Comment('UltimateAirAssaultFinish')
+    GotoState('UltimateAirAssaultFinish')
     CreateParticle('vhef_landing', -1)
     physicsXImpulse(0)
     physicsYImpulse(0)
     GravityDefault()
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     CommonSE('208_brake_normal')
     PrivateSE('vhse_09')
     sprite('vw024_01', 3)
@@ -8299,7 +8523,7 @@ def UltimateWolfAirAssault():
     physicsYImpulse(40000)
     setGravity(100)
     EnableCollision(0)
-    sendToLabelUpon(10, 5)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 5)
     RefreshMultihit()
     Hitstop(4)
     Damage(3000)
@@ -8347,9 +8571,9 @@ def UltimateWolfAirAssault():
     sprite('vw202_25', 1)
     sprite('vw202_24', 1)
     sprite('vw202_25', 1)
-    PassbackAddActionMarkToFunction('vw431_tossin', 32)
-    PassbackAddActionMarkToFunction('vw431_line9', 32)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('vw431_tossin', 32)
+    TriggerUponForState('vw431_line9', 32)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     XImpulseAcceleration(30)
     YAccel(45)
@@ -8359,8 +8583,8 @@ def UltimateWolfAirAssault():
     XImpulseAcceleration(10)
     YAccel(10)
     EnableCollision(1)
-    sendToLabelUpon(2, 7)
-    clearUponHandler(10)
+    uponSendToLabel(LANDING, 7)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     CommonSE('019_cloth_c')
     sprite('vw020_01', 2)
     sprite('vw020_02', 2)
@@ -8402,6 +8626,7 @@ def UltimateWolfAirAssault():
     sprite('vw611_09', 4)
     sprite('vw611_08', 4)
 
+
 @State
 def UltimateWolfAirAssault_OD():
 
@@ -8425,8 +8650,8 @@ def UltimateWolfAirAssault_OD():
         SingleProration(1)
         AttackType(4)
         StarterRating(2)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         StayAfterMovement(1, 0)
         EndMomentum(1)
         SLOT_61 = 1
@@ -8482,29 +8707,29 @@ def UltimateWolfAirAssault_OD():
     EndMomentum(1)
     sprite('vw202_15', 2)
     CreateObject('vw401_tossin', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw401_Rasen', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw400_tossin_line', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('vw400_tossin_dust', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     physicsXImpulse(60000)
     physicsYImpulse(-72000)
     setGravity(0)
     PrivateSE('vhse_08')
     sprite('vw202_16ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     Visibility(1)
     SmartVoiceline('vh303')
     RefreshMultihit()
     WhiffCrouchBlockCancel(1)
     sprite('vw202_17ex00', 2)
     sprite('vw202_16ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     sprite('vw202_17ex00', 2)
     loopRest()
     label(0)
@@ -8528,14 +8753,14 @@ def UltimateWolfAirAssault_OD():
     ScreenShake(20000, 20000)
     physicsXImpulse(0)
     Hitstop(3)
-    sendToLabelUpon(12, 2)
-    clearUponHandler(2)
+    uponSendToLabel(OPPONENT_HIT, 2)
+    clearUponHandler(LANDING)
     sprite('vw024_00', 6)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     LandingEffects(100, 1, 1)
     sprite('vw024_01', 6)
     sprite('vw024_02', 6)
@@ -8545,15 +8770,15 @@ def UltimateWolfAirAssault_OD():
     ExitState()
     label(2)
     sprite('vw024_00', 3)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
-    PassbackAddActionMarkToFunction('vw401_Rasen', 32)
-    PassbackAddActionMarkToFunction('vw400_tossin_line', 32)
+    TriggerUponForState('vw401_tossin', 32)
+    TriggerUponForState('vw401_Rasen', 32)
+    TriggerUponForState('vw400_tossin_line', 32)
     LandingEffects(100, 1, 1)
     sprite('vw024_01', 3)
     EnableRapidCancel(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     ForceFaceSprite()
     ScreenShake(40000, 40000)
     OppPositionOnHit(0, 0, 0)
@@ -8562,7 +8787,7 @@ def UltimateWolfAirAssault_OD():
     physicsYImpulse(10000)
     sprite('vw024_02', 4)
     CommonSE('019_cloth_c')
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     label(3)
     sprite('vw020_01', 2)
     CommonSE('019_cloth_a')
@@ -8573,12 +8798,12 @@ def UltimateWolfAirAssault_OD():
     gotoLabel(3)
     label(4)
     sprite('vw024_00', 2)
-    Comment('UltimateAirAssaultFinish')
+    GotoState('UltimateAirAssaultFinish')
     CreateParticle('vhef_landing', -1)
     physicsXImpulse(0)
     physicsYImpulse(0)
     GravityDefault()
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     CommonSE('208_brake_normal')
     PrivateSE('vhse_09')
     sprite('vw024_01', 3)
@@ -8599,7 +8824,7 @@ def UltimateWolfAirAssault_OD():
     physicsYImpulse(40000)
     setGravity(100)
     EnableCollision(0)
-    sendToLabelUpon(10, 5)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 5)
     RefreshMultihit()
     AttackLevel_(4)
     Damage(350)
@@ -8626,7 +8851,7 @@ def UltimateWolfAirAssault_OD():
     AfterimageMask_2(0, 0, 0, 0)
     sprite('vh431_24', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     Visibility(1)
     EnableCollision(0)
     StartMultihit()
@@ -8645,35 +8870,35 @@ def UltimateWolfAirAssault_OD():
     sprite('vw202_24', 1)
     EnableAfterimage(0)
     sprite('vw202_25', 2)
-    PassbackAddActionMarkToFunction('vw431_tossin', 32)
-    PassbackAddActionMarkToFunction('vw431_line9', 32)
+    TriggerUponForState('vw431_tossin', 32)
+    TriggerUponForState('vw431_line9', 32)
     XImpulseAcceleration(100)
     YAccel(45)
     setGravity(1000)
     sprite('vw202_24', 2)
     sprite('vw020_00', 2)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     XImpulseAcceleration(50)
     YAccel(48)
     EnableCollision(1)
-    sendToLabelUpon(2, 7)
-    clearUponHandler(10)
+    uponSendToLabel(LANDING, 7)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     CommonSE('019_cloth_c')
     ForceFaceSprite()
     label(101)
     HitAnywhere(1)
     CopyFromRightToLeft(23, 2, 67, 22, 2, 23)
-    if (SLOT_23 > SLOT_67):
+    if SLOT_YDistanceFromFloor > SLOT_67:
         AirPushbackY(50000)
-    sendToLabelUpon(10, 102)
-    if (SLOT_2 >= 2):
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 102)
+    if SLOT_2 >= 2:
         AirPushbackY(5000)
         YImpulseBeforeWallbounce(250)
     EnableCollision(0)
     AttackOff()
     sprite('vw202_00', 1)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     ForceFaceSprite()
     XImpulseAcceleration(80)
@@ -8706,14 +8931,14 @@ def UltimateWolfAirAssault_OD():
     SmartVoiceline('vh303')
     sprite('vw202_24ex00boss', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     Visibility(1)
     RefreshMultihit()
     WhiffCrouchBlockCancel(1)
     EnableCollision(0)
     sprite('vw202_24ex00boss', 2)
     sprite('vw202_24ex00boss', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_24ex00boss', 2)
     loopRest()
     label(102)
@@ -8721,7 +8946,7 @@ def UltimateWolfAirAssault_OD():
     AddActionMark(1)
     AttackOff()
     YSpeed(-2000)
-    if (SLOT_2 >= 3):
+    if SLOT_2 >= 3:
         sendToLabel(113)
     gotoLabel(101)
     label(113)
@@ -8729,19 +8954,19 @@ def UltimateWolfAirAssault_OD():
     sprite('vw202_24ex00boss', 2)
     sprite('vh450_40add02', 4)
     EndMomentum(1)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     sprite('null', 8)
     TeleportToObject(22)
     AddX(10000)
     AddY(280000)
     EnableCollision(0)
-    clearUponHandler(10)
-    clearUponHandler(12)
-    sendToLabelUpon(2, 115)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(OPPONENT_HIT)
+    uponSendToLabel(LANDING, 115)
     physicsYImpulse(3000)
     setGravity(300)
-    Comment('UltimateAirAssault_OD_Finish')
+    GotoState('UltimateAirAssault_OD_Finish')
     sprite('vh450_40add02', 4)
     sprite('vh450_44', 8)
     sprite('vh450_45', 8)
@@ -8801,11 +9026,12 @@ def UltimateWolfAirAssault_OD():
     sprite('vw611_09', 4)
     sprite('vw611_08', 4)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(100)
@@ -8823,13 +9049,13 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
             EnableCollision(0)
-            if (SLOT_25 <= 200000):
-                SLOT_22 = 1665000
+            if SLOT_XDistanceFromFowardCorner <= 200000:
+                SLOT_XDistanceFromCenterOfStage = 1665000
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -8855,11 +9081,12 @@ def BurstDD():
     sprite('vh312_07ex01', 5)
     sprite('vh312_08ex01', 4)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(100)
@@ -8877,13 +9104,13 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
             EnableCollision(0)
-            if (SLOT_25 <= 200000):
-                SLOT_22 = 1665000
+            if SLOT_XDistanceFromFowardCorner <= 200000:
+                SLOT_XDistanceFromCenterOfStage = 1665000
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -8911,11 +9138,12 @@ def BurstDD_Easy():
     sprite('vh312_07ex01', 5)
     sprite('vh312_08ex01', 4)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(5)
         Damage(600)
         PushbackX(19800)
@@ -9006,6 +9234,7 @@ def BurstDDAdd():
     sprite('vh401_10ex01', 2)
     sprite('vh401_11ex01', 2)
 
+
 @State
 def BurstDDFinish():
 
@@ -9095,6 +9324,7 @@ def BurstDDFinish():
     sprite('vh401_09ex01', 4)
     sprite('vh401_10ex01', 4)
     sprite('vh401_11ex01', 4)
+
 
 @State
 def BurstDDFinishSP():
@@ -9206,6 +9436,7 @@ def BurstDDFinishSP():
     sprite('vh401_10ex01', 4)
     sprite('vh401_11ex01', 4)
 
+
 @State
 def AstralHeat():
 
@@ -9227,9 +9458,9 @@ def AstralHeat():
 
         def upon_OPPONENT_HIT():
             sendToLabel(1)
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             CreateObject('AstralCamera', -1)
-            ObjectUpon(1, 33)
+            ObjectUpon(STATE_END, 33)
             ScreenShake(9000, 0)
             AstralHeatCleanup(1, 1)
             PlayPlayAstralBGM(0)
@@ -9257,7 +9488,7 @@ def AstralHeat():
     sprite('vh450_01', 3)
     sprite('vh450_02', 3)
     sprite('vh450_03', 3)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     sprite('vh450_04', 6)
     sprite('vh450_05', 2)
     sprite('vh450_06', 2)
@@ -9315,7 +9546,7 @@ def AstralHeat():
     sprite('vh450_21', 4)
     sprite('vh450_22', 4)
     sprite('vh450_23', 4)
-    if (not CharacterIDCheck('rc')):
+    if not CharacterIDCheck('rc'):
         Voiceline('vh255')
     sprite('vh450_24', 4)
     sprite('vh450_25', 4)
@@ -9328,14 +9559,14 @@ def AstralHeat():
     CreateObject('vh450_kakato_kickef2', 1)
     CreateObject('vh450_kakato_kickef2', 2)
     CreateObject('vh450_kakato_kickef3', 3)
-    clearUponHandler(12)
-    sendToLabelUpon(2, 2)
+    clearUponHandler(OPPONENT_HIT)
+    uponSendToLabel(LANDING, 2)
     physicsXImpulse(200)
     physicsYImpulse(290)
     setGravity(0)
     EnableAfterimage(1)
     AfterimageInterval(3)
-    PassbackAddActionMarkToFunction('vh450_kakato_kick1', 32)
+    TriggerUponForState('vh450_kakato_kick1', 32)
     ScreenShake(4000, 0)
     AddRotationPerFrame(-46)
     CreateObject('Yugami', 0)
@@ -9380,7 +9611,7 @@ def AstralHeat():
     physicsXImpulse(0)
     physicsYImpulse(30000)
     setGravity(6000)
-    PassbackAddActionMarkToFunction('AstralCamera', 35)
+    TriggerUponForState('AstralCamera', 35)
     sprite('vh450_09', 4)
     CommonSE('019_cloth_c')
     CommonSE('019_cloth_c')
@@ -9433,7 +9664,7 @@ def AstralHeat():
     sprite('vh450_32', 1)
     CreateObject('vh450_howling1', 0)
     sprite('vh450_33', 1)
-    PassbackAddActionMarkToFunction('vh450_moya1', 32)
+    TriggerUponForState('vh450_moya1', 32)
     sprite('vh450_35', 3)
     ColorForTransition(4280291344)
     ColorTransition(3367285940, 5)
@@ -9475,12 +9706,12 @@ def AstralHeat():
     sprite('null', 1)
     CreateObject('AstralHeatBunshin1stJump', -1)
     sprite('null', 3)
-    PassbackAddActionMarkToFunction('AstralCamera', 36)
+    TriggerUponForState('AstralCamera', 36)
     sprite('null', 10)
     sprite('null', 10)
     sprite('null', 10)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('AstralCamera', 40)
+    TriggerUponForState('AstralCamera', 40)
     Voiceline('vh291')
     sprite('null', 10)
     sprite('null', 10)
@@ -9491,7 +9722,7 @@ def AstralHeat():
     sprite('null', 10)
     sprite('null', 10)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('AstralCamera', 39)
+    TriggerUponForState('AstralCamera', 39)
     TeleportToObject(22)
     EnableCollision(0)
     sprite('null', 10)
@@ -9549,7 +9780,7 @@ def AstralHeat():
     AfterimageColor_1(180, 0, 0, 0)
     AfterimageColor_2(40, 0, 0, 0)
     ColorForTransition(4278190080)
-    PassbackAddActionMarkToFunction('AstralCamera', 38)
+    TriggerUponForState('AstralCamera', 38)
     CreateObject('Fade4', -1)
     CreateObject('vh_AH_ray', -1)
     sprite('vh450_46', 8)
@@ -9580,9 +9811,9 @@ def AstralHeat():
     sprite('vh450_49', 6)
     CreateObject('Fade_Backout', -1)
     sprite('vh450_49', 1)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(1)
     CreateObject('AstralDummyKillObj', -1)
     sprite('vh450_49', 100)
     EndMomentum(1)
@@ -9597,13 +9828,14 @@ def AstralHeat():
     AbsoluteY(2500000)
     physicsYImpulse(-6600)
     setGravity(1100)
-    PassbackAddActionMarkToFunction('AstralCamera', 37)
+    TriggerUponForState('AstralCamera', 37)
     EnterStateIfEventID(2, 'CmnActJumpLanding')
     label(336)
     sprite('vh020_07', 4)
     sprite('vh020_08', 4)
     loopRest()
     gotoLabel(336)
+
 
 @State
 def RlAstralDamage():
@@ -9612,7 +9844,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('vh054')
     sprite('vh900_00', 32767)
     EnableCollision(0)
@@ -9627,6 +9859,7 @@ def RlAstralDamage():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def AmAstralDamage():
 
@@ -9638,99 +9871,358 @@ def AmAstralDamage():
     sprite('vh901_00', 32767)
     Voiceline('vh055')
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh055', 13921, 13923, 13921, 13667, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh400', 14433, 14435, 14177, 14179, 14177, 14179, 13921, 13923, 14177, 14179, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh401', 14433, 14435, 14177, 13411, 13921, 14179, 14177, 14179, 14177, 14179, 13665, 14179, 12641, 25394, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh404', 14433, 14435, 14433, 14435, 14177, 13923, 13921, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh406', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 13921, 13923, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh408', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh411', 13155, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh412', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh413', 14177, 14179, 13921, 13923, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh414', 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh417', 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('vh254', 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh055', 13921, 13923, 13921, 13667, 13921, 13923, 13921, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh400', 14433, 14435, 14177, 14179, 14177, 14179, 13921, 
+        13923, 14177, 14179, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh401', 14433, 14435, 14177, 13411, 13921, 14179, 14177, 
+        14179, 14177, 14179, 13665, 14179, 12641, 25394, 54, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh404', 14433, 14435, 14433, 14435, 14177, 13923, 13921, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh406', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+        14435, 14177, 14179, 13921, 13923, 14433, 14435, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh408', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+        14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh411', 13155, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('vh412', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('vh413', 14177, 14179, 13921, 13923, 14177, 14179, 14177, 
+        14179, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 
+        13921, 13923, 13921, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0)
+    Unknown18011('vh414', 14433, 14435, 14433, 14435, 14433, 14435, 14177, 
+        14179, 14177, 14179, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('vh417', 13921, 13923, 13921, 13923, 14177, 14179, 14177, 
+        14179, 14177, 14179, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('vh254', 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh400', 12897, 25392, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh404', 12641, 25394, 24888, 12849, 14435, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh405', 14433, 14435, 14433, 14435, 14177, 13923, 13921, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh406', 12641, 25392, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25400, 24888, 25400, 12850, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh408', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh411', 13155, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh412', 13155, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh413', 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 12641, 25394, 24887, 25399, 24887, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh414', 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 24888, 25400, 24888, 25400, 24888, 12849, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh416', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh417', 13667, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('vh254', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh400', 12897, 25392, 24887, 25399, 24887, 25399, 
+            24887, 25399, 24887, 25399, 24887, 25398, 54, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('vh401', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 12641, 25392, 55, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0)
+        Unknown18011('vh404', 12641, 25394, 24888, 12849, 14435, 14177, 
+            14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh405', 14433, 14435, 14433, 14435, 14177, 13923, 
+            13921, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+            13667, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh406', 12641, 25392, 24887, 25399, 24887, 25399, 
+            24887, 25399, 24887, 25399, 24887, 25400, 24888, 25400, 12850, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+            14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh408', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 14435, 14433, 14435, 14433, 14435, 14433, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0)
+        Unknown18011('vh411', 13155, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh412', 13155, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh413', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14177, 14179, 12641, 25394, 24887, 25399, 24887, 25398, 24886, 
+            25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh414', 14177, 14179, 14177, 14179, 14177, 14179, 
+            12641, 25394, 24888, 25400, 24888, 25400, 24888, 12849, 13923, 
+            13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh416', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('vh417', 13667, 14433, 14435, 14433, 14435, 14433, 
+            14435, 14433, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('vh254', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('rc'):
-            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh401', 14177, 14179, 14177, 14179, 14177, 12643, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('vh400', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh401', 14177, 14179, 14177, 14179, 14177, 12643,
+                24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rl'):
-            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh400', 12641, 25394, 24888, 12849, 13667, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh401', 12641, 25392, 24888, 14385, 14435, 14433, 13411, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('vh400', 12641, 25394, 24888, 12849, 13667, 24880,
+                25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 
+                25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh401', 12641, 25392, 24888, 14385, 14435, 14433,
+                13411, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 
+                25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('tm'):
-            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh400', 12641, 25392, 24888, 12337, 13155, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh401', 12641, 25394, 24888, 12849, 14435, 12641, 25394, 12340, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('vh400', 12641, 25392, 24888, 12337, 13155, 24880,
+                25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh401', 12641, 25394, 24888, 12849, 14435, 12641,
+                25394, 12340, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('nt'):
-            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh400', 12641, 25392, 24888, 12337, 12643, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh401', 12641, 25394, 24888, 25400, 13620, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('vh400', 12641, 25392, 24888, 12337, 12643, 24880,
+                25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('vh401', 12641, 25394, 24888, 25400, 13620, 14433,
+                14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+                14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh400', 12641, 25397, 24888, 12849, 14435, 12641, 25394, 12341, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh401', 12641, 25394, 24888, 12849, 14435, 12641, 25394, 12342, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh400', 12641, 25397, 24888, 12849, 14435, 12641,
+                25394, 12341, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh401', 12641, 25394, 24888, 12849, 14435, 12641,
+                25394, 12342, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('su'):
-            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh400', 12641, 25392, 24888, 12337, 13155, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh401', 12641, 25394, 24888, 12849, 14435, 12641, 25394, 12340, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('vh400', 12641, 25392, 24888, 12337, 13155, 24880,
+                25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh401', 12641, 25394, 24888, 12849, 14435, 12641,
+                25394, 12340, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rc'):
-            Unknown18011('vh506', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh507', 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh506', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh507', 14177, 14179, 14177, 14179, 14177, 13411,
+                24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
         if CharacterIDCheck('ha'):
-            Unknown18011('vh520', 13155, 14433, 14435, 14433, 14435, 13665, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh521', 13921, 13923, 13921, 13923, 13921, 13923, 14177, 14179, 12641, 25394, 24887, 25399, 13620, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh520', 13155, 14433, 14435, 14433, 14435, 13665,
+                14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+                14435, 14433, 14435, 14433, 14435, 14177, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh521', 13921, 13923, 13921, 13923, 13921, 13923,
+                14177, 14179, 12641, 25394, 24887, 25399, 13620, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rl'):
-            Unknown18011('vh536', 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh537', 14433, 13923, 14433, 14179, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh536', 14177, 14179, 14177, 14179, 14177, 13667,
+                24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('vh537', 14433, 13923, 14433, 14179, 24880, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('tm'):
-            Unknown18011('vh550', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh551', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh550', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh551', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ce'):
             if SLOT_138:
-                Unknown18011('vh552', 14433, 14435, 13153, 25392, 12338, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('vh553', 14433, 14435, 14433, 14435, 14433, 13667, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('vh552', 14433, 14435, 13153, 25392, 12338, 
+                    14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435,
+                    14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0)
+                Unknown18011('vh553', 14433, 14435, 14433, 14435, 14433, 
+                    13667, 24880, 25400, 24888, 25400, 24888, 25400, 24888,
+                    25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888,
+                    25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('vh552', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('vh553', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('vh552', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('vh553', 14433, 14435, 14433, 14435, 14433, 
+                    14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433,
+                    14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('nt'):
-            Unknown18011('vh560', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh561', 14433, 14435, 14433, 14435, 14433, 13667, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh560', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 14435, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh561', 14433, 14435, 14433, 14435, 14433, 13667,
+                24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 
+                24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('vh558', 14433, 14435, 14433, 13155, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh559', 14433, 14435, 14433, 14435, 14433, 13667, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh558', 14433, 14435, 14433, 13155, 24880, 25400,
+                24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 
+                24888, 25400, 24888, 25400, 24888, 25400, 24888, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh559', 14433, 14435, 14433, 14435, 14433, 13667,
+                24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 
+                24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('su'):
-            Unknown18011('vh564', 12643, 12341, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh565', 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh564', 12643, 12341, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh565', 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('jb'):
-            Unknown18011('vh570', 12643, 12341, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('vh571', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh570', 12643, 12341, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 12641, 25392, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('vh571', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('rc'):
         SyncEntry()
         gotoLabel(130)
@@ -9771,12 +10263,12 @@ def CmnActEntry():
     sprite('vh600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     Voiceline('vh412')
     label(1)
     sprite('vh600_00', 90)
     if SLOT_97:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('vh600_01', 2)
     sprite('vh600_02', 2)
     sprite('vh600_03', 3)
@@ -9819,7 +10311,7 @@ def CmnActEntry():
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('vw202_21', 2)
     Flip()
     ScreenCollision(0)
@@ -9852,7 +10344,7 @@ def CmnActEntry():
     sprite('vw202_22', 2)
     sprite('vw202_21', 2)
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('vh601_line', 32)
+    TriggerUponForState('vh601_line', 32)
     sprite('vw202_22', 2)
     physicsXImpulse(0)
     Flip()
@@ -9882,7 +10374,7 @@ def CmnActEntry():
     sprite('vw202_24', 2)
     sprite('vw202_25', 2)
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('vh601_line_nanameue', 32)
+    TriggerUponForState('vh601_line_nanameue', 32)
     sprite('vw202_25', 2)
     physicsXImpulse(0)
     physicsYImpulse(0)
@@ -9895,16 +10387,16 @@ def CmnActEntry():
     CreateObject('vh601_line_masita', 1)
     sprite('vw202_11', 1)
     physicsYImpulse(-150000)
-    sendToLabelUpon(2, 12)
+    uponSendToLabel(LANDING, 12)
     label(11)
     sprite('vw202_11', 2)
     sprite('vw202_12', 2)
-    PassbackAddActionMarkToFunction('vh601_line_masita', 32)
+    TriggerUponForState('vh601_line_masita', 32)
     gotoLabel(11)
     label(12)
     sprite('vw024_00', 4)
     CreateParticle('vhef_landing', -1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('vw024_01', 4)
     sprite('vw024_02', 4)
     EnableAfterimage(0)
@@ -9936,12 +10428,12 @@ def CmnActEntry():
     sprite('vw202_25', 2)
     sprite('vw202_24', 2)
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('vh601_line_nanameue', 32)
+    TriggerUponForState('vh601_line_nanameue', 32)
     sprite('vw202_25', 2)
     physicsXImpulse(0)
     physicsYImpulse(0)
     sprite('vh601_00', 2)
-    sendToLabelUpon(2, 14)
+    uponSendToLabel(LANDING, 14)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageInterval(1)
@@ -9969,7 +10461,7 @@ def CmnActEntry():
     label(14)
     sprite('vh601_04', 6)
     CreateParticle('vhef_landing', 0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('vh601_05', 6)
     sprite('vh601_06', 6)
@@ -9982,7 +10474,7 @@ def CmnActEntry():
     label(15)
     sprite('vh601_10', 50)
     if SLOT_97:
-        _gotolabel(15)
+        conditionalSendToLabel(15)
     sprite('vh601_11', 4)
     CommonSE('019_cloth_a')
     sprite('vh601_12', 4)
@@ -9997,7 +10489,7 @@ def CmnActEntry():
     sprite('vh600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(20)
+        conditionalSendToLabel(20)
     Voiceline('vh416')
     sprite('vh600_00', 90)
     sprite('vh600_01', 2)
@@ -10039,7 +10531,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(130)
-    sendToLabelUpon(32, 132)
+    uponSendToLabel(32, 132)
     label(131)
     sprite('vh612_03', 7)
     sprite('vh612_04', 7)
@@ -10100,7 +10592,7 @@ def CmnActEntry():
     sprite('vh612_05', 7)
     sprite('vh612_04', 7)
     loopRest()
-    if (not SLOT_2):
+    if not SLOT_2:
         gotoLabel(201)
     sprite('vh612_03', 7)
     sprite('vh612_04', 7)
@@ -10144,7 +10636,7 @@ def CmnActEntry():
     ExitState()
     label(280)
     sprite('null', 32767)
-    sendToLabelUpon(32, 281)
+    uponSendToLabel(32, 281)
     XPositionRelativeFacing(-960000)
     ScreenCollision(0)
     EnableCollision(0)
@@ -10177,17 +10669,17 @@ def CmnActEntry():
     setGravity(0)
     sprite('vw202_21ex00', 2)
     CreateObject('Sukuryu', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     Visibility(1)
     RefreshMultihit()
     SmartVoiceline('vh303')
     sprite('vw202_22ex01', 2)
     sprite('vw202_21ex00', 2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    TriggerUponForState('vw401_tossin', 32)
     sprite('vw202_22ex01', 2)
     sprite('vw202_20', 4)
-    sendToLabelUpon(2, 283)
-    PassbackAddActionMarkToFunction('Sukuryu', 36)
+    uponSendToLabel(LANDING, 283)
+    TriggerUponForState('Sukuryu', 36)
     Visibility(0)
     AttackOff()
     YSpeed(-2000)
@@ -10204,8 +10696,8 @@ def CmnActEntry():
     gotoLabel(282)
     label(283)
     sprite('vw024_00', 2)
-    clearUponHandler(2)
-    PassbackAddActionMarkToFunction('vw401_tossin', 32)
+    clearUponHandler(LANDING)
+    TriggerUponForState('vw401_tossin', 32)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     sprite('vw024_01', 2)
@@ -10214,7 +10706,7 @@ def CmnActEntry():
     sprite('vw024_04', 3)
     sprite('vw024_05', 5)
     sprite('vw020_00', 3)
-    sendToLabelUpon(2, 285)
+    uponSendToLabel(LANDING, 285)
     physicsXImpulse(-4000)
     physicsYImpulse(24000)
     EndYPhysicsImpulse()
@@ -10230,7 +10722,7 @@ def CmnActEntry():
     gotoLabel(284)
     label(285)
     sprite('vw024_00', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
     sprite('vw024_01', 3)
@@ -10269,7 +10761,7 @@ def CmnActEntry():
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(350)
+        conditionalSendToLabel(350)
     sprite('null', 20)
     sprite('vw202_21', 2)
     ScreenCollision(0)
@@ -10302,7 +10794,7 @@ def CmnActEntry():
     sprite('vw202_22', 2)
     sprite('vw202_21', 2)
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('vh601_line', 32)
+    TriggerUponForState('vh601_line', 32)
     sprite('vw202_22', 2)
     physicsXImpulse(0)
     Flip()
@@ -10332,9 +10824,9 @@ def CmnActEntry():
     sprite('vw202_24', 2)
     sprite('vw202_25', 2)
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('vh601_line_nanameue', 32)
+    TriggerUponForState('vh601_line_nanameue', 32)
     sprite('vh601_00', 2)
-    sendToLabelUpon(2, 354)
+    uponSendToLabel(LANDING, 354)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageInterval(1)
@@ -10363,7 +10855,7 @@ def CmnActEntry():
     label(354)
     sprite('vh601_04', 6)
     CreateParticle('vhef_landing', 0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('vh601_05', 6)
     sprite('vh601_06', 6)
@@ -10398,7 +10890,7 @@ def CmnActEntry():
     sprite('vh612_05', 7)
     sprite('vh612_04', 7)
     loopRest()
-    if (not SLOT_2):
+    if not SLOT_2:
         gotoLabel(361)
     sprite('vh612_03', 7)
     sprite('vh612_04', 7)
@@ -10455,7 +10947,7 @@ def CmnActEntry():
     sprite('vh612_05', 7)
     sprite('vh612_04', 7)
     loopRest()
-    if (not SLOT_2):
+    if not SLOT_2:
         gotoLabel(1361)
     sprite('vh612_03', 7)
     sprite('vh612_04', 7)
@@ -10474,7 +10966,7 @@ def CmnActEntry():
     sprite('vh612_04', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(1362)
+        conditionalSendToLabel(1362)
     sprite('vh612_07', 7)
     sprite('vh612_08', 7)
     sprite('vh612_09', 12)
@@ -10486,7 +10978,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(400)
-    sendToLabelUpon(32, 402)
+    uponSendToLabel(32, 402)
     label(401)
     sprite('vh600_00', 6)
     loopRest()
@@ -10532,7 +11024,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(390)
-    sendToLabelUpon(32, 392)
+    uponSendToLabel(32, 392)
     label(391)
     sprite('vh600_00', 6)
     loopRest()
@@ -10581,7 +11073,7 @@ def CmnActEntry():
     sprite('vh600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(420)
+        conditionalSendToLabel(420)
     sprite('vh600_00', 30)
     sprite('vh600_00', 70)
     Voiceline('vh564')
@@ -10626,7 +11118,7 @@ def CmnActEntry():
     sprite('vh600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(440)
+        conditionalSendToLabel(440)
     sprite('vh600_00', 20)
     sprite('vh600_00', 100)
     Voiceline('vh570')
@@ -10660,6 +11152,7 @@ def CmnActEntry():
     DemoTimer(30)
     loopRest()
     ExitState()
+
 
 @State
 def CmnActRoundWin():
@@ -10700,45 +11193,37 @@ def CmnActRoundWin():
     sprite('vh615_06', 32767)
     loopRest()
 
+
 @State
 def CmnActMatchWin():
     if SLOT_86:
-        _gotolabel(482)
-    CharacterIDCheck('rc')
-    if SLOT_0:
-        _gotolabel(130)
-    CharacterIDCheck('ha')
-    if SLOT_0:
-        _gotolabel(200)
-    CharacterIDCheck('rl')
-    if SLOT_0:
-        _gotolabel(280)
-    CharacterIDCheck('tm')
-    if SLOT_0:
-        _gotolabel(350)
+        conditionalSendToLabel(482)
+    if CharacterIDCheck('rc'):
+        conditionalSendToLabel(130)
+    if CharacterIDCheck('ha'):
+        conditionalSendToLabel(200)
+    if CharacterIDCheck('rl'):
+        conditionalSendToLabel(280)
+    if CharacterIDCheck('tm'):
+        conditionalSendToLabel(350)
     if CharacterIDCheck('ce'):
         if SLOT_138:
             gotoLabel(360)
         else:
             gotoLabel(1360)
-    CharacterIDCheck('nt')
-    if SLOT_0:
-        _gotolabel(400)
-    CharacterIDCheck('ph')
-    if SLOT_0:
-        _gotolabel(390)
-    CharacterIDCheck('su')
-    if SLOT_0:
-        _gotolabel(420)
-    CharacterIDCheck('jb')
-    if SLOT_0:
-        _gotolabel(440)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('nt'):
+        conditionalSendToLabel(400)
+    if CharacterIDCheck('ph'):
+        conditionalSendToLabel(390)
+    if CharacterIDCheck('su'):
+        conditionalSendToLabel(420)
+    if CharacterIDCheck('jb'):
+        conditionalSendToLabel(440)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
     if SLOT_4:
-        _gotolabel(50)
+        conditionalSendToLabel(50)
     label(0)
     sprite('vh612_00', 5)
     Voiceline('vh406')
@@ -10752,7 +11237,7 @@ def CmnActMatchWin():
     label(1)
     sprite('vh612_04', 5)
     if SLOT_97:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('vh612_07', 7)
     sprite('vh612_08', 7)
     sprite('vh612_09', 12)
@@ -10801,8 +11286,8 @@ def CmnActMatchWin():
     sprite('vh610_12ex00', 4)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('vh610_12ex00', 3)
-    PassbackAddActionMarkToFunction('vhef_entry', 32)
-    PassbackAddActionMarkToFunction('vh610_entry_moya', 32)
+    TriggerUponForState('vhef_entry', 32)
+    TriggerUponForState('vh610_entry_moya', 32)
     sprite('vh610_12ex01', 32767)
     CommonSE('022_magiccircle_c')
     CreateParticle('vh610_entry_end', 0)
@@ -10860,7 +11345,7 @@ def CmnActMatchWin():
     label(133)
     sprite('vh612_04', 6)
     if SLOT_97:
-        _gotolabel(133)
+        conditionalSendToLabel(133)
     sprite('vh612_07', 7)
     sprite('vh612_08', 7)
     sprite('vh612_09', 32767)
@@ -11164,8 +11649,8 @@ def CmnActMatchWin():
     sprite('vh610_12ex00', 4)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('vh610_12ex00', 3)
-    PassbackAddActionMarkToFunction('vhef_entry', 32)
-    PassbackAddActionMarkToFunction('vh610_entry_moya', 32)
+    TriggerUponForState('vhef_entry', 32)
+    TriggerUponForState('vh610_entry_moya', 32)
     sprite('vh610_12ex01', 32767)
     CommonSE('022_magiccircle_c')
     CreateParticle('vh610_entry_end', 0)
@@ -11299,7 +11784,7 @@ def CmnActMatchWin():
     label(669)
     sprite('vh612_04', 5)
     if SLOT_97:
-        _gotolabel(669)
+        conditionalSendToLabel(669)
     sprite('vh612_07', 7)
     sprite('vh612_08', 7)
     sprite('vh612_09', 12)
@@ -11348,14 +11833,15 @@ def CmnActMatchWin():
     sprite('vh610_12ex00', 4)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('vh610_12ex00', 3)
-    PassbackAddActionMarkToFunction('vhef_entry', 32)
-    PassbackAddActionMarkToFunction('vh610_entry_moya', 32)
+    TriggerUponForState('vhef_entry', 32)
+    TriggerUponForState('vh610_entry_moya', 32)
     sprite('vh610_12ex01', 32767)
     CommonSE('022_magiccircle_c')
     CreateParticle('vh610_entry_end', 0)
     DemoTimer(60)
     loopRest()
     ExitState()
+
 
 @State
 def CmnActLose():
@@ -11399,6 +11885,7 @@ def CmnActLose():
     gotoLabel(0)
     DemoTimer(90)
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -11417,17 +11904,20 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefWin():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefLose():
@@ -11449,12 +11939,14 @@ def EventDefLose():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventLose():
     label(0)
     sprite('vh070_02', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventLoseToDown():
@@ -11468,6 +11960,7 @@ def EventLoseToDown():
     sprite('vh063_11', 32767)
     loopRest()
 
+
 @State
 def EventLoseToStand():
     sprite('vh070_02', 4)
@@ -11479,10 +11972,12 @@ def EventLoseToStand():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventVSAZ1():
     sprite('vh070_10', 32767)
     loopRest()
+
 
 @State
 def EventVSAZ2():
@@ -11492,10 +11987,12 @@ def EventVSAZ2():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventNoDisp():
     sprite('null', 32767)
     Visibility(1)
+
 
 @State
 def EventVSPT1():
@@ -11508,6 +12005,7 @@ def EventVSPT1():
     sprite('vh612_04', 7)
     gotoLabel(0)
 
+
 @State
 def EventVSPT2():
     sprite('vh612_04', 6)
@@ -11517,6 +12015,7 @@ def EventVSPT2():
     sprite('vh612_08', 7)
     sprite('vh612_09', 32767)
     loopRest()
+
 
 @State
 def EventVSPT3():
@@ -11533,12 +12032,14 @@ def EventVSPT3():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventVSRG1():
     sprite('null', 1)
     AddX(-700000)
     ScreenCollision(0)
     EnableCollision(0)
+
 
 @State
 def EventVSRG2():
@@ -11582,6 +12083,7 @@ def EventVSRG2():
     enterState('CmnActStand')
     loopRest()
 
+
 @State
 def EventVSRL1():
     sprite('vh001_16', 7)
@@ -11591,6 +12093,7 @@ def EventVSRL1():
     sprite('vh001_20', 7)
     CommonSE('007_swing_knife_0')
     sprite('vh001_21', 32767)
+
 
 @State
 def EventVSRL2():
@@ -11607,10 +12110,12 @@ def EventVSRL2():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventVHFrameOut():
     ScreenCollision(0)
     XPositionRelativeFacing(-900000)
+
 
 @State
 def EventVHWalkFrameIn():
@@ -11618,9 +12123,9 @@ def EventVHWalkFrameIn():
     ScreenCollision(0)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('vh030_00', 7)
@@ -11646,10 +12151,12 @@ def EventVHWalkFrameIn():
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
 
+
 @State
 def EventVHStandRespectful():
     sprite('vh612_04', 32767)
     loopRest()
+
 
 @State
 def EventVHStandRespectfulToStand():
@@ -11659,6 +12166,7 @@ def EventVHStandRespectfulToStand():
     sprite('vh612_00', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventVHWalkAndWarp():
@@ -11704,12 +12212,13 @@ def EventVHWalkAndWarp():
     sprite('vh610_12ex00', 4)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('vh610_12ex00', 3)
-    PassbackAddActionMarkToFunction('vhef_entry', 32)
-    PassbackAddActionMarkToFunction('vh610_entry_moya', 32)
+    TriggerUponForState('vhef_entry', 32)
+    TriggerUponForState('vh610_entry_moya', 32)
     sprite('vh610_12ex01', 32767)
     CommonSE('022_magiccircle_c')
     CreateParticle('vh610_entry_end', 0)
     loopRest()
+
 
 @State
 def EventVHMatchStand():
@@ -11723,12 +12232,14 @@ def EventVHMatchStand():
     sprite('vh612_05', 6)
     sprite('vh612_04', 32767)
 
+
 @State
 def EventVHMatchStandEnd():
     sprite('vh612_07', 7)
     sprite('vh612_08', 7)
     sprite('vh612_09', 32767)
     loopRest()
+
 
 @State
 def EventVHMatchmodori():
@@ -11744,6 +12255,7 @@ def EventVHMatchmodori():
     sprite('vh612_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventVHHand():
@@ -11763,6 +12275,7 @@ def EventVHHand():
     sprite('vh001_16', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventVH5C():
@@ -11802,6 +12315,7 @@ def EventVH5C():
     sprite('vh202_12', 3)
     enterState('EventVHHand')
 
+
 @State
 def EventDefLoseReverse():
     sprite('vh620_09', 6)
@@ -11815,6 +12329,7 @@ def EventDefLoseReverse():
     sprite('vh620_01', 6)
     sprite('vh620_00', 6)
     enterState('CmnActStand')
+
 
 @State
 def EventVHWorfDash():
@@ -11850,12 +12365,14 @@ def EventVHWorfDash():
     sprite('vw202_21', 2)
     sprite('vw202_22', 2)
 
+
 @State
 def EventHAvsVH_CreateRC():
     sprite('keep', 1)
     CreateObject('EventEffectRCFallWait', 0)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventHAvsVH_RCFall():
@@ -11864,17 +12381,20 @@ def EventHAvsVH_RCFall():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventVHvsPT_CreateRC():
     sprite('keep', 1)
     CreateObject('EventEffectRCFallWait', 0)
     loopRest()
 
+
 @State
 def EventVHvsPT_RCFall():
     sprite('keep', 1)
     CreateObject('EventEffectRCFall', 0)
     loopRest()
+
 
 @State
 def EventExcite():
@@ -11888,6 +12408,7 @@ def EventExcite():
     sprite('vh615_05', 7)
     sprite('vh615_06', 32767)
 
+
 @State
 def EventExciteEnd():
     sprite('vh615_07', 7)
@@ -11897,6 +12418,7 @@ def EventExciteEnd():
     sprite('vh615_11', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventPHTeni():
@@ -11915,18 +12437,19 @@ def EventPHTeni():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def EventWalkFrameIn():
     ScreenCollision(0)
     SetActionMark(1)
     XPositionRelativeFacing(-900000)
 
-    def upon_FRAME_STEP():
-        if SLOT_38:
-            if (SLOT_22 < 260000):
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_XDistanceFromCenterOfStage < 260000:
                 SetActionMark(0)
                 sendToLabel(1)
-        elif (SLOT_22 > (-260000)):
+        elif SLOT_XDistanceFromCenterOfStage > -260000:
             sendToLabel(1)
     sprite('vh030_00', 7)
     physicsXImpulse(4650)
@@ -11951,6 +12474,7 @@ def EventWalkFrameIn():
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
 
+
 @State
 def EventVHMatchStandLoop():
     label(1)
@@ -11962,6 +12486,7 @@ def EventVHMatchStandLoop():
     sprite('vh612_04', 7)
     loopRest()
     gotoLabel(1)
+
 
 @State
 def EventVsVHAction1():
@@ -12030,6 +12555,7 @@ def EventVsVHAction1():
     PerInertia(0)
     sprite('vh032_06', 4)
 
+
 @State
 def EventCrouch():
     sprite('vh010_00', 4)
@@ -12050,6 +12576,7 @@ def EventCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventCrouchLoop():
     label(0)
@@ -12068,6 +12595,7 @@ def EventCrouchLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventCrouchToStand():
     sprite('vh010_01', 4)
@@ -12075,10 +12603,11 @@ def EventCrouchToStand():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_havsvh_00():
     sprite('vh601_00', 2)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageInterval(1)
@@ -12106,7 +12635,7 @@ def Act2Event_havsvh_00():
     label(1)
     sprite('vh601_04', 6)
     CreateParticle('vhef_landing', 0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('vh601_05', 6)
     sprite('vh601_06', 6)
@@ -12126,6 +12655,7 @@ def Act2Event_havsvh_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_handLoop():
     sprite('vh001_16', 7)
@@ -12135,6 +12665,7 @@ def Act2Event_handLoop():
     sprite('vh001_20', 7)
     CommonSE('007_swing_knife_0')
     sprite('vh001_21', 32767)
+
 
 @State
 def Act2Event_handLoopEnd():
@@ -12150,6 +12681,7 @@ def Act2Event_handLoopEnd():
     sprite('vh001_16', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_DefLose():
@@ -12170,6 +12702,7 @@ def Act2Event_DefLose():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Semuke():
     sprite('vh620_00', 6)
@@ -12183,6 +12716,7 @@ def Act2Event_Semuke():
     sprite('vh620_08', 32767)
     loopRest()
 
+
 @State
 def Act2Event_NoDisp():
 
@@ -12194,12 +12728,14 @@ def Act2Event_NoDisp():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def Act2Event_CrashTrigger():
     sprite('vh404_00', 5)
     sprite('vh404_01', 5)
     loopRest()
     enterState('Act2Event_CrashTriggerLoop')
+
 
 @State
 def Act2Event_CrashTriggerLoop():
@@ -12210,6 +12746,7 @@ def Act2Event_CrashTriggerLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_CrashTriggerEnd():
     sprite('keep', 2)
@@ -12217,6 +12754,7 @@ def Act2Event_CrashTriggerEnd():
     sprite('vh404_00', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Bow():
@@ -12233,6 +12771,7 @@ def Act2Event_Bow():
     sprite('vh612_09', 32767)
     loopRest()
 
+
 @State
 def Act2Event_Kashikomari():
     sprite('vh612_00', 6)
@@ -12245,6 +12784,7 @@ def Act2Event_Kashikomari():
     sprite('vh612_04', 32767)
     loopRest()
 
+
 @State
 def Act2Event_KashikomariHalf():
     sprite('keep', 6)
@@ -12252,6 +12792,7 @@ def Act2Event_KashikomariHalf():
     sprite('vh612_08', 6)
     sprite('vh612_09', 32767)
     loopRest()
+
 
 @State
 def Act2Event_BowHalf():
@@ -12261,6 +12802,7 @@ def Act2Event_BowHalf():
     sprite('vh612_04', 32767)
     loopRest()
 
+
 @State
 def Act2Event_BowHalfEnd():
     sprite('keep', 6)
@@ -12269,13 +12811,14 @@ def Act2Event_BowHalfEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_muvsvh_00():
 
     def upon_IMMEDIATE():
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(0)
             EndMomentum(1)
             XPositionRelativeFacing(-260000)
@@ -12343,6 +12886,7 @@ def Act2Event_muvsvh_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_muvsvh_01():
 
@@ -12359,6 +12903,7 @@ def Act2Event_muvsvh_01():
     sprite('vh070_03', 32767)
     loopRest()
 
+
 @State
 def Act2Event_muvsvh_02():
     StayAfterMovement(1, 0)
@@ -12371,6 +12916,7 @@ def Act2Event_muvsvh_02():
     CommonSE('209_down_normal_0')
     loopRest()
 
+
 @State
 def Act2Event_vhvsrc_00():
 
@@ -12378,7 +12924,7 @@ def Act2Event_vhvsrc_00():
 
         def upon_LANDING():
             EndMomentum(1)
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(0)
     sprite('vh032_00', 2)
     sprite('vh032_01', 2)
@@ -12414,12 +12960,14 @@ def Act2Event_vhvsrc_00():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def Act2Event_vhvsrc_01():
     sprite('vh010_01', 4)
     sprite('vh010_00', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_vhvsaz_00():
@@ -12436,6 +12984,7 @@ def Act2Event_vhvsaz_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_vhvsaz_01():
     sprite('vh070_12', 4)
@@ -12443,6 +12992,7 @@ def Act2Event_vhvsaz_01():
     sprite('vh070_11', 4)
     sprite('vh070_10', 32767)
     loopRest()
+
 
 @State
 def Act3Event_vhvshz_00():
@@ -12483,6 +13033,7 @@ def Act3Event_vhvshz_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_vhvsrg_00():
 
@@ -12490,15 +13041,15 @@ def Act3Event_vhvsrg_00():
         ScreenCollision(0)
         XPositionRelativeFacing(-720000)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-260000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-260000)
                 EndMomentum(1)
                 sendToLabel(0)
@@ -12525,6 +13076,7 @@ def Act3Event_vhvsrg_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_vhvsrg_01():
 
@@ -12549,18 +13101,20 @@ def Act3Event_vhvsrg_01():
     sprite('vh600_08', 4)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('vh600_09', 5)
     sprite('vh600_10', 5)
     sprite('vh600_11', 6)
     sprite('vh600_12', 6)
     sprite('vh600_13', 32767)
 
+
 @State
 def Act3Event_vhvsrg_02():
     sprite('vh600_14', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_vhvsrg_03():
@@ -12575,6 +13129,7 @@ def Act3Event_vhvsrg_03():
     sprite('vh612_04', 32767)
     loopRest()
 
+
 @State
 def Act3Event_vhvsrg_04():
     sprite('vh612_08', 6)
@@ -12584,6 +13139,7 @@ def Act3Event_vhvsrg_04():
     sprite('vh612_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_vhvsrl_00():
@@ -12609,12 +13165,13 @@ def Act3Event_vhvsrl_00():
     sprite('vh600_08', 4)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('vh600_09', 5)
     sprite('vh600_10', 5)
     sprite('vh600_11', 6)
     sprite('vh600_12', 6)
     sprite('vh600_13', 32767)
+
 
 @State
 def Act3Event_vhvsrl_01():
@@ -12623,7 +13180,7 @@ def Act3Event_vhvsrl_01():
 
         def upon_LANDING():
             EndMomentum(1)
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(0)
     sprite('vh032_00', 3)
     sprite('vh032_01', 3)
@@ -12645,6 +13202,7 @@ def Act3Event_vhvsrl_01():
     sprite('vh032_05', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_vhvsrl_02():
@@ -12669,11 +13227,12 @@ def Act3Event_vhvsrl_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_havsvh_00():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         XPositionRelativeFacing(-60000)
     label(0)
     sprite('vh000_00', 7)
@@ -12704,11 +13263,12 @@ def Act3Event_havsvh_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_rlvsvh_00():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         NoAttackDuringAction(1)
         XPositionRelativeFacing(-100000)
     sprite('vh232_00', 2)
@@ -12789,17 +13349,20 @@ def Act3Event_rlvsvh_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_suvsvh_00():
     sprite('null', 32767)
     CommonSE('400_menu_cursor_a')
     loopRest()
 
+
 @State
 def Act3Event_suvsvh_01():
     sprite('null', 32767)
     CommonSE('400_menu_ok')
     loopRest()
+
 
 @State
 def Act3Event_suvsvh_02():
@@ -12822,6 +13385,7 @@ def Act3Event_suvsvh_02():
     CreateParticle('haef_event_lose_end', 103)
     loopRest()
 
+
 @State
 def Act3Event_suvsvh_03():
     sprite('vh612_04', 6)
@@ -12829,6 +13393,7 @@ def Act3Event_suvsvh_03():
     sprite('vh612_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_suvsvh_04():

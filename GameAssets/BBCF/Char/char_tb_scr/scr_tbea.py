@@ -19,6 +19,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_TB_OD():
 
@@ -39,6 +40,7 @@ def EMB_TB_OD():
     sprite('null', 10)
     ColorTransition(4278223103, 10)
     sprite('null', 20)
+
 
 @State
 def EMB_TB_AH():
@@ -61,6 +63,7 @@ def EMB_TB_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 20)
 
+
 @State
 def Install():
 
@@ -73,8 +76,8 @@ def Install():
         Size(300)
         AddX(16000)
         AlphaValue(255)
-        sendToLabelUpon(56, 1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(56, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 10)
     ConstantAlphaModifier(20)
     SetScaleSpeed(20)
@@ -89,11 +92,13 @@ def Install():
     AlphaValue(200)
     ConstantAlphaModifier(-50)
 
+
 @State
 def InstallMagicCircle():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m')
+        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m'
+            )
         FaceSpawnLocation()
         E0EAEffectPosition(3)
         RenderLayer(2)
@@ -103,8 +108,8 @@ def InstallMagicCircle():
         AddY(20000)
         AlphaValue(160)
         RotationAngle(0)
-        sendToLabelUpon(56, 1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(56, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 10)
     ColorForTransition(4291328255)
     ColorTransition(4294958335, 10)
@@ -115,19 +120,21 @@ def InstallMagicCircle():
     SetScaleSpeed(0)
     loopRest()
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('null', 6)
     E0EAEffectPosition(0)
     RemoveOnCallStateEnd(0)
-    PassbackAddActionMarkToFunction('InstallMagicCircleAfterImage', 32)
+    TriggerUponForState('InstallMagicCircleAfterImage', 32)
     AlphaValue(120)
     ConstantAlphaModifier(-20)
+
 
 @State
 def InstallMagicCircleAfterImage():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m')
+        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m'
+            )
         FaceSpawnLocation()
         RemoveOnCallStateEnd(3)
         E0EAEffectPosition(2)
@@ -136,7 +143,7 @@ def InstallMagicCircleAfterImage():
         BlendMode_Add()
         AddY(-1000)
         Size(300)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 10)
     ColorForTransition(4291328255)
     SetScaleSpeed(5)
@@ -151,6 +158,7 @@ def InstallMagicCircleAfterImage():
     AlphaValue(200)
     ConstantAlphaModifier(-50)
 
+
 @State
 def MagicBookLoop():
 
@@ -163,8 +171,8 @@ def MagicBookLoop():
         AddX(5000)
 
         def upon_30():
-            PassbackAddActionMarkToFunction('MagicBookAura', 32)
-            PassbackAddActionMarkToFunction('TBEFFont', 32)
+            TriggerUponForState('MagicBookAura', 32)
+            TriggerUponForState('TBEFFont', 32)
     sprite('tb203_loop00', 6)
     CreateObject('MagicBookAura', -1)
     CreateObject('TBEFFont', 0)
@@ -212,6 +220,7 @@ def MagicBookLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def MagicBookAura():
 
@@ -226,7 +235,7 @@ def MagicBookAura():
 
         def upon_56():
             EndObject()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vref_env', 10)
     AlphaValue(0)
     ConstantAlphaModifier(50)
@@ -246,6 +255,7 @@ def MagicBookAura():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def TBEFFont():
 
@@ -259,10 +269,11 @@ def TBEFFont():
 
         def upon_56():
             EndObject()
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 32767)
     label(99)
     sprite('null', 1)
+
 
 @State
 def WingDust():
@@ -271,12 +282,14 @@ def WingDust():
         LinkParticle('tbef_hanelight')
     sprite('null', 60)
 
+
 @State
 def WeaponDelDust():
 
     def upon_IMMEDIATE():
         LinkParticle('tbef_dellight')
     sprite('null', 30)
+
 
 @State
 def TBEF201zanzo():
@@ -303,6 +316,7 @@ def TBEF201zanzo():
     sprite('vrtbef201_00', 13)
     AlphaValue(100)
 
+
 @State
 def TBEF231zanzo():
 
@@ -327,6 +341,7 @@ def TBEF231zanzo():
     sprite('vrtbef231_01', 10)
     AlphaValue(100)
 
+
 @State
 def AirNormalShotHit():
 
@@ -336,6 +351,7 @@ def AirNormalShotHit():
         Size(3000)
     sprite('null', 90)
 
+
 @State
 def AirPowerUpShotHit():
 
@@ -344,6 +360,7 @@ def AirPowerUpShotHit():
         BlendMode_Add()
         Size(3000)
     sprite('null', 90)
+
 
 @State
 def AssaultAir1st_Shot():
@@ -365,7 +382,7 @@ def AssaultAir1st_Shot():
         Hitstop(0)
         EnemyHitstopAddition(11, 11, 13)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 100)
+        uponSendToLabel(54, 100)
         MoveAttributes(0, 0, 0, 1, 0)
         UseStrongHitspark(0)
         DamageEffect(2, 'AirNormalShotHit')
@@ -385,13 +402,13 @@ def AssaultAir1st_Shot():
     sprite('keep', 10)
     EndMomentum(1)
     AttackOff()
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     label(101)
     sprite('keep', 15)
     AttackOff()
     SetActionMark(0)
     EndMomentum(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ParticleSize(2000)
     ParticleColor(4294953215, 4294953215, 4294953215)
     CallCustomizableParticle('tbef_lockdd', -1)
@@ -402,8 +419,9 @@ def AssaultAir1st_Shot():
     sprite('keep', 15)
     AttackOff()
     EndMomentum(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     gotoLabel(101)
+
 
 @State
 def AssaultAir1stEx_Shot():
@@ -432,7 +450,7 @@ def AssaultAir1stEx_Shot():
         def upon_32():
             HeatGainMultiplier(200)
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
-        sendToLabelUpon(54, 100)
+        uponSendToLabel(54, 100)
 
         def upon_33():
             clearUponHandler(33)
@@ -441,11 +459,11 @@ def AssaultAir1stEx_Shot():
         def upon_LANDING():
             sendToLabel(101)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             ObjectUpon24(23, 100, 3, 103)
-            if (SLOT_0 < 300000):
-                PassbackAddActionMarkToFunction('AirTackleEx', 33)
-                PassbackAddActionMarkToFunction('AirTackleEx_Hasei', 33)
+            if SLOT_0 < 300000:
+                TriggerUponForState('AirTackleEx', 33)
+                TriggerUponForState('AirTackleEx_Hasei', 33)
         BlendMode_Add()
         SLOT_5 = 1
 
@@ -458,13 +476,13 @@ def AssaultAir1stEx_Shot():
     sprite('keep', 10)
     EndMomentum(1)
     AttackOff()
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     label(101)
     sprite('keep', 1)
     AttackOff()
     SetActionMark(0)
     EndMomentum(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ParticleSize(2000)
     ParticleColor(4294953215, 4294953215, 4294953215)
     CallCustomizableParticle('tbef_lockdd', -1)
@@ -475,8 +493,9 @@ def AssaultAir1stEx_Shot():
     sprite('keep', 25)
     AttackOff()
     EndMomentum(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     gotoLabel(101)
+
 
 @State
 def AssaultAir1stEx_ShotStart():
@@ -490,6 +509,7 @@ def AssaultAir1stEx_ShotStart():
         RotationAngle(40000)
     sprite('null', 30)
 
+
 @State
 def AssaultAir1stEx_ShotNormal():
 
@@ -500,8 +520,8 @@ def AssaultAir1stEx_ShotNormal():
         BlendMode_Add()
         Size(2000)
         RotationAngle(-40000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 32767)
     label(0)
     sprite('null', 30)
@@ -521,6 +541,7 @@ def AssaultAir1stEx_ShotNormal():
     clearUponHandler(33)
     PrivateSE('tbse_10')
 
+
 @State
 def AssaultAir1stEx_ShotEx():
 
@@ -534,7 +555,7 @@ def AssaultAir1stEx_ShotEx():
         AddY(-100000)
         Size(2400)
         RotationAngle(-40000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 4)
     SetScaleXPerFrame(100)
     SetScaleSpeedY(150)
@@ -546,6 +567,7 @@ def AssaultAir1stEx_ShotEx():
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-25)
+
 
 @State
 def AssaultLand1stEx_ShotEx():
@@ -560,7 +582,7 @@ def AssaultLand1stEx_ShotEx():
         AddY(50000)
         Size(2400)
         RotationAngle(-90000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 4)
     SetScaleXPerFrame(100)
     SetScaleSpeedY(150)
@@ -573,6 +595,7 @@ def AssaultLand1stEx_ShotEx():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def AssaultLand1stEx_ShotStart():
 
@@ -583,6 +606,7 @@ def AssaultLand1stEx_ShotStart():
         BlendMode_Add()
         Size(3000)
     sprite('null', 30)
+
 
 @State
 def LandShot():
@@ -604,7 +628,7 @@ def LandShot():
         Hitstop(0)
         EnemyHitstopAddition(11, 11, 13)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 100)
+        uponSendToLabel(54, 100)
         MoveAttributes(0, 0, 0, 1, 0)
         UseStrongHitspark(0)
         DamageEffect(2, 'AirNormalShotHit')
@@ -622,13 +646,13 @@ def LandShot():
     sprite('keep', 10)
     EndMomentum(1)
     AttackOff()
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     label(101)
     sprite('keep', 15)
     AttackOff()
     SetActionMark(0)
     EndMomentum(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ParticleSize(1400)
     ParticleColor(4294953215, 4294953215, 4294953215)
     CallCustomizableParticle('tbef_lockdd', -1)
@@ -639,8 +663,9 @@ def LandShot():
     sprite('keep', 15)
     AttackOff()
     EndMomentum(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     gotoLabel(101)
+
 
 @State
 def LandShotEx():
@@ -665,16 +690,16 @@ def LandShotEx():
         UseStrongHitspark(0)
         DamageEffect(2, 'AirPowerUpShotHit')
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
-        sendToLabelUpon(54, 100)
+        uponSendToLabel(54, 100)
 
         def upon_33():
             clearUponHandler(33)
             sendToLabel(101)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             ObjectUpon24(23, 100, 3, 103)
-            if (SLOT_0 < 300000):
-                PassbackAddActionMarkToFunction('LandTackleEx', 33)
+            if SLOT_0 < 300000:
+                TriggerUponForState('LandTackleEx', 33)
         BlendMode_Add()
         SLOT_5 = 1
 
@@ -691,7 +716,7 @@ def LandShotEx():
     sprite('keep', 5)
     EndMomentum(1)
     AttackOff()
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     label(101)
     sprite('keep', 1)
     AttackOff()
@@ -706,8 +731,9 @@ def LandShotEx():
     sprite('keep', 25)
     AttackOff()
     EndMomentum(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     gotoLabel(101)
+
 
 @State
 def LandShot_Normal():
@@ -719,8 +745,8 @@ def LandShot_Normal():
         BlendMode_Add()
         Size(2000)
         AddX(15000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 32767)
     label(0)
     sprite('null', 30)
@@ -740,6 +766,7 @@ def LandShot_Normal():
     clearUponHandler(33)
     PrivateSE('tbse_10')
 
+
 @State
 def LandShot_Ex():
 
@@ -750,8 +777,8 @@ def LandShot_Ex():
         BlendMode_Add()
         Size(1200)
         AddX(15000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 32767)
     label(0)
     sprite('null', 30)
@@ -770,6 +797,7 @@ def LandShot_Ex():
     clearUponHandler(32)
     clearUponHandler(33)
     PrivateSE('tbse_11')
+
 
 @State
 def ULMagicBookLoop():
@@ -843,10 +871,10 @@ def ULMagicBookLoop():
     DeleteObject(5)
     DeleteObject(6)
     DeleteObject(7)
-    ApplyFunctionsToObjects(4)
-    SetScaleSpeed(400)
-    ConstantAlphaModifier(-10)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        SetScaleSpeed(400)
+        ConstantAlphaModifier(-10)
     CreateObject('ULMagicBookAtk', -1)
     RegisterObject(8, 1)
     CreateObject('UltimateLockStart', -1)
@@ -855,8 +883,9 @@ def ULMagicBookLoop():
     loopRest()
     gotoLabel(2)
     label(99)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ObjectUpon(8, 32)
+
 
 @State
 def ULMagicBookAura():
@@ -886,6 +915,7 @@ def ULMagicBookAura():
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def ULMagicBookAtk():
@@ -918,6 +948,7 @@ def ULMagicBookAtk():
     gotoLabel(2)
     label(99)
 
+
 @State
 def UltimateLock_First():
 
@@ -949,46 +980,46 @@ def UltimateLock_First():
         StarterRating(2)
         if SLOT_6:
             CopyFromRightToLeft(23, 2, 63, 3, 2, 63)
-            if (SLOT_63 == (-1)):
+            if SLOT_63 == -1:
                 DamageFromStateOnly('UltimateLock_SeedLvC_OD')
             else:
                 DamageFromStateOnly('UltimateLock_D_OD')
         else:
             CopyFromRightToLeft(23, 2, 63, 3, 2, 63)
-            if (SLOT_63 == 0):
+            if SLOT_63 == 0:
                 DamageFromStateOnly('UltimateLock_SeedLv0')
-            if (SLOT_63 == 1):
+            if SLOT_63 == 1:
                 DamageFromStateOnly('UltimateLock_SeedLv1')
-            if (SLOT_63 == 2):
+            if SLOT_63 == 2:
                 DamageFromStateOnly('UltimateLock_SeedLv2')
-            if (SLOT_63 == 3):
+            if SLOT_63 == 3:
                 DamageFromStateOnly('UltimateLock_SeedLv3')
-            if (SLOT_63 == 4):
+            if SLOT_63 == 4:
                 DamageFromStateOnly('UltimateLock_SeedLv4')
-            if (SLOT_63 == 5):
+            if SLOT_63 == 5:
                 DamageFromStateOnly('UltimateLock_SeedLv5')
-            if (SLOT_63 == (-1)):
+            if SLOT_63 == -1:
                 DamageFromStateOnly('UltimateLock_SeedLvC')
 
         def upon_OPPONENT_HIT():
             SLOT_51 = 2
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
             CreateObject('UltimateLockMagic', -1)
             CreateObject('UltimateLock_DangerCircle', -1)
             RegisterObject(4, 1)
-            ApplyFunctionsToObjects(3)
-            EnableRapidCancel(0)
-            ApplyFunctionsToSelf()
 
-        def upon_FRAME_STEP():
+            def RunOnObject_3():
+                EnableRapidCancel(0)
+
+        def upon_EVERY_FRAME():
             if SLOT_51:
                 ExtendNonCornerWallbounce(30)
-                ApplyFunctionsToObjects(4)
-                AddAlpha(255)
-                ApplyFunctionsToSelf()
-                if (not CopyFromRightToLeft(23, 2, 0, 22, 2, 30)):
-                    SLOT_51 = (SLOT_51 + (-1))
-                    if (not SLOT_51):
+
+                def RunOnObject_4():
+                    AddAlpha(255)
+                if not SLOT_63 == -1:
+                    SLOT_51 = SLOT_51 + -1
+                    if not SLOT_51:
                         Unknown23090(23)
         HitsPerCall(1, 0, 0, 0, 0, 1, 1, 1)
 
@@ -999,18 +1030,19 @@ def UltimateLock_First():
         Visibility(1)
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_63 == -1:
                 clearUponHandler(45)
-                ObjectUpon(2, 41)
+                ObjectUpon(LANDING, 41)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('vrtbef430book00', 32767)
     loopRest()
     label(0)
     sprite('null', 10)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     SLOT_51 = 0
     EndMomentum(1)
+
 
 @State
 def UltimateLock_DangerCircle():
@@ -1026,8 +1058,8 @@ def UltimateLock_DangerCircle():
         AddX(32000)
         AddY(220000)
         BlendMode_Add()
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
     sprite('null', 5)
     Size(500)
     SetScaleSpeed(100)
@@ -1047,6 +1079,7 @@ def UltimateLock_DangerCircle():
     ColorTransition(0, 10)
     SetScaleSpeed(-100)
 
+
 @State
 def ULMCircleA():
 
@@ -1055,8 +1088,8 @@ def ULMCircleA():
         def upon_32():
             sendToLabel(1)
         HitsPerCall(1, 0, 0, 0, 0, 1, 1, 1)
-        sendToLabelUpon(54, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(54, 99)
+        uponSendToLabel(56, 99)
         SetPosXByScreenPer(50)
     label(0)
     sprite('null', 2)
@@ -1075,7 +1108,8 @@ def ULMCircleA():
     sprite('null', 15)
     clearUponHandler(32)
     clearUponHandler(54)
-    PassbackAddActionMarkToFunction('ULMCircleAdd', 32)
+    TriggerUponForState('ULMCircleAdd', 32)
+
 
 @State
 def ULMCircleB():
@@ -1084,8 +1118,8 @@ def ULMCircleB():
 
         def upon_32():
             sendToLabel(1)
-        sendToLabelUpon(54, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(54, 99)
+        uponSendToLabel(56, 99)
         SetPosXByScreenPer(0)
         AddX(520000)
     label(0)
@@ -1103,7 +1137,8 @@ def ULMCircleB():
     gotoLabel(2)
     label(99)
     sprite('null', 15)
-    PassbackAddActionMarkToFunction('ULMCircleAdd', 32)
+    TriggerUponForState('ULMCircleAdd', 32)
+
 
 @State
 def ULMCircleC():
@@ -1112,8 +1147,8 @@ def ULMCircleC():
 
         def upon_32():
             sendToLabel(1)
-        sendToLabelUpon(54, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(54, 99)
+        uponSendToLabel(56, 99)
         SetPosXByScreenPer(90)
         AddX(-600000)
     label(0)
@@ -1131,7 +1166,8 @@ def ULMCircleC():
     gotoLabel(2)
     label(99)
     sprite('null', 15)
-    PassbackAddActionMarkToFunction('ULMCircleAdd', 32)
+    TriggerUponForState('ULMCircleAdd', 32)
+
 
 @State
 def ULMCircleAdd():
@@ -1144,8 +1180,8 @@ def ULMCircleAdd():
         Size(800)
         AlphaValue(0)
         StopCharacterFlash1(-65408)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(56, 99)
     sprite('null', 8)
     ConstantAlphaModifier(15)
     physicsXImpulse(-2000)
@@ -1157,6 +1193,7 @@ def ULMCircleAdd():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(-2)
 
+
 @State
 def ULBookC():
 
@@ -1165,8 +1202,8 @@ def ULBookC():
         E0EAEffectPosition(3)
         BlendMode_Normal()
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
         StopCharacterFlash1(-8355712)
         CharacterFlash2(-16777216, 15)
     sprite('vrtbef430book00', 10)
@@ -1203,6 +1240,7 @@ def ULBookC():
     label(99)
     sprite('null', 1)
 
+
 @State
 def ULBook():
 
@@ -1213,12 +1251,12 @@ def ULBook():
             clearUponHandler(32)
             clearUponHandler(33)
             sendToLabel(99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
 
         def upon_32():
             clearUponHandler(32)
             clearUponHandler(33)
-            ObjectUpon(7, 32)
+            ObjectUpon(CORNERED, 32)
 
         def upon_33():
             clearUponHandler(32)
@@ -1247,6 +1285,7 @@ def ULBook():
     loopRest()
     ExitState()
 
+
 @State
 def UltimateLockStart():
 
@@ -1263,6 +1302,7 @@ def UltimateLockStart():
     SetScaleSpeed(10)
     AlphaValue(150)
     ConstantAlphaModifier(-10)
+
 
 @State
 def ULChange():
@@ -1293,6 +1333,7 @@ def ULChange():
     sprite('null', 5)
     SetScaleSpeed(100)
 
+
 @State
 def UltimateLockMagic():
 
@@ -1306,6 +1347,7 @@ def UltimateLockMagic():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def ULChangeEff():
 
@@ -1313,6 +1355,7 @@ def ULChangeEff():
         LinkParticle('tbef_lockdd')
         Size(3000)
     sprite('null', 200)
+
 
 @State
 def UltimateLockBallSeed():
@@ -1330,6 +1373,7 @@ def UltimateLockBallSeed():
     label(0)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def UltimateLock_BallLvC():
@@ -1370,6 +1414,7 @@ def UltimateLock_BallLvC():
     sprite('null', 5)
     sprite('null', 35)
 
+
 @State
 def UltimateLock_SeedLvC():
 
@@ -1391,9 +1436,9 @@ def UltimateLock_SeedLvC():
         def upon_54():
             sendToLabel(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            ObjectUpon(3, 34)
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            ObjectUpon(EVERY_FRAME, 34)
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             XImpulseAcceleration(20)
         BlendMode_Add()
         AddX(200000)
@@ -1414,13 +1459,14 @@ def UltimateLock_SeedLvC():
     gotoLabel(1)
     label(0)
     sprite('vrtbef430_tex1', 10)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     EndAttack()
     SetScaleSpeed(40)
     ConstantAlphaModifier(-20)
     EndMomentum(1)
     sprite('vrtbef430_tex1', 30)
     RefreshMultihit()
+
 
 @State
 def UltimateLock_SeedLvC_OD():
@@ -1445,9 +1491,9 @@ def UltimateLock_SeedLvC_OD():
         def upon_54():
             sendToLabel(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            ObjectUpon(3, 34)
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            ObjectUpon(EVERY_FRAME, 34)
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             XImpulseAcceleration(20)
         BlendMode_Add()
         AddX(200000)
@@ -1468,13 +1514,14 @@ def UltimateLock_SeedLvC_OD():
     gotoLabel(1)
     label(0)
     sprite('vrtbef430_tex1', 10)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     EndAttack()
     SetScaleSpeed(40)
     ConstantAlphaModifier(-20)
     EndMomentum(1)
     sprite('vrtbef430_tex1', 30)
     RefreshMultihit()
+
 
 @State
 def UltimateLock_BallLv0():
@@ -1515,6 +1562,7 @@ def UltimateLock_BallLv0():
     sprite('null', 5)
     sprite('null', 35)
 
+
 @State
 def UltimateLock_SeedLv0():
 
@@ -1535,7 +1583,7 @@ def UltimateLock_SeedLv0():
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
 
         def upon_54():
-            ObjectUpon(3, 34)
+            ObjectUpon(EVERY_FRAME, 34)
             sendToLabel(0)
         BlendMode_Add()
         AddX(200000)
@@ -1555,7 +1603,7 @@ def UltimateLock_SeedLv0():
     RegisterObject(6, 1)
     sprite('null', 1)
     if SLOT_6:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     loopRest()
     sprite('vrtbef430_tex1', 32767)
     Visibility(1)
@@ -1574,7 +1622,7 @@ def UltimateLock_SeedLv0():
     Size(1000)
     AddX(32000)
     SLOT_6 = 10
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     loopRest()
     label(0)
     sprite('vrtbef430_tex1', 30)
@@ -1583,6 +1631,7 @@ def UltimateLock_SeedLv0():
     ObjectUpon(6, 33)
     EndAttack()
     EndMomentum(1)
+
 
 @State
 def UltimateLock_BallLv1():
@@ -1623,6 +1672,7 @@ def UltimateLock_BallLv1():
     sprite('null', 5)
     sprite('null', 35)
 
+
 @State
 def UltimateLock_SeedLv1():
 
@@ -1643,7 +1693,7 @@ def UltimateLock_SeedLv1():
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
 
         def upon_54():
-            ObjectUpon(3, 34)
+            ObjectUpon(EVERY_FRAME, 34)
             sendToLabel(0)
         BlendMode_Add()
         AddX(200000)
@@ -1663,7 +1713,7 @@ def UltimateLock_SeedLv1():
     RegisterObject(6, 1)
     sprite('null', 1)
     if SLOT_6:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     loopRest()
     sprite('vrtbef430_tex1', 32767)
     BlendMode_Normal()
@@ -1682,7 +1732,7 @@ def UltimateLock_SeedLv1():
     Size(1000)
     AddX(32000)
     SLOT_6 = 11
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('vrtbef430_tex4', 1)
     Visibility(1)
     loopRest()
@@ -1694,6 +1744,7 @@ def UltimateLock_SeedLv1():
     EndAttack()
     ColorForTransition(16752800)
     EndMomentum(1)
+
 
 @State
 def UltimateLock_BallLv2():
@@ -1734,6 +1785,7 @@ def UltimateLock_BallLv2():
     sprite('null', 5)
     sprite('null', 35)
 
+
 @State
 def UltimateLock_SeedLv2():
 
@@ -1754,7 +1806,7 @@ def UltimateLock_SeedLv2():
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
 
         def upon_54():
-            ObjectUpon(3, 34)
+            ObjectUpon(EVERY_FRAME, 34)
             sendToLabel(0)
         BlendMode_Add()
         AddX(200000)
@@ -1774,7 +1826,7 @@ def UltimateLock_SeedLv2():
     RegisterObject(6, 1)
     sprite('null', 1)
     if SLOT_6:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     loopRest()
     sprite('vrtbef430_tex2', 32767)
     BlendMode_Normal()
@@ -1793,7 +1845,7 @@ def UltimateLock_SeedLv2():
     Size(1000)
     AddX(32000)
     SLOT_6 = 12
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('vrtbef430_tex4', 1)
     Visibility(1)
     loopRest()
@@ -1805,6 +1857,7 @@ def UltimateLock_SeedLv2():
     EndAttack()
     ColorForTransition(16752800)
     EndMomentum(1)
+
 
 @State
 def UltimateLock_BallLv3():
@@ -1848,6 +1901,7 @@ def UltimateLock_BallLv3():
     CallCustomizableParticle('tbef_lockdd', -1)
     sprite('null', 35)
 
+
 @State
 def UltimateLock_SeedLv3():
 
@@ -1868,7 +1922,7 @@ def UltimateLock_SeedLv3():
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
 
         def upon_54():
-            ObjectUpon(3, 34)
+            ObjectUpon(EVERY_FRAME, 34)
             sendToLabel(0)
         BlendMode_Add()
         AddX(200000)
@@ -1888,7 +1942,7 @@ def UltimateLock_SeedLv3():
     RegisterObject(6, 1)
     sprite('null', 1)
     if SLOT_6:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     loopRest()
     sprite('vrtbef430_tex3', 32767)
     BlendMode_Normal()
@@ -1907,7 +1961,7 @@ def UltimateLock_SeedLv3():
     Size(1000)
     AddX(32000)
     SLOT_6 = 13
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('vrtbef430_tex4', 1)
     Visibility(1)
     loopRest()
@@ -1919,6 +1973,7 @@ def UltimateLock_SeedLv3():
     EndAttack()
     ColorForTransition(16752800)
     EndMomentum(1)
+
 
 @State
 def UltimateLock_CircleLv4():
@@ -1934,6 +1989,7 @@ def UltimateLock_CircleLv4():
     SetZVal(500)
     physicsXImpulse(-46000)
     SetAcceleration(2000)
+
 
 @State
 def UltimateLock_BallLv4():
@@ -1977,6 +2033,7 @@ def UltimateLock_BallLv4():
     CallCustomizableParticle('tbef_lockdd', -1)
     sprite('null', 35)
 
+
 @State
 def UltimateLock_SeedLv4():
 
@@ -2001,10 +2058,10 @@ def UltimateLock_SeedLv4():
         HitsPerCall(5, 1, 1, 1, 1, 0, 0, 0)
 
         def upon_54():
-            ObjectUpon(3, 34)
+            ObjectUpon(EVERY_FRAME, 34)
             sendToLabel(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(50)
             ColorForTransition(520069280)
             ColorTransition(16752800, 30)
@@ -2028,7 +2085,7 @@ def UltimateLock_SeedLv4():
     AddX(100000)
     sprite('null', 1)
     if SLOT_6:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     loopRest()
     label(0)
     sprite('vrtbef430_tex4', 1)
@@ -2050,7 +2107,7 @@ def UltimateLock_SeedLv4():
     Size(1000)
     AddX(32000)
     SLOT_6 = 14
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('vrtbef430_tex4', 1)
     Visibility(1)
     loopRest()
@@ -2061,6 +2118,7 @@ def UltimateLock_SeedLv4():
     ObjectUpon(6, 33)
     EndAttack()
     EndMomentum(1)
+
 
 @State
 def UltimateLock_BallLv5():
@@ -2105,6 +2163,7 @@ def UltimateLock_BallLv5():
     CallCustomizableParticle('tbef_lockdd', -1)
     sprite('null', 35)
 
+
 @State
 def UltimateLock_SeedLv5():
 
@@ -2128,10 +2187,10 @@ def UltimateLock_SeedLv5():
         HitsPerCall(9, 1, 1, 1, 1, 0, 0, 0)
 
         def upon_54():
-            ObjectUpon(3, 34)
+            ObjectUpon(EVERY_FRAME, 34)
             sendToLabel(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(50)
             ColorForTransition(520069280)
             ColorTransition(16752800, 30)
@@ -2155,7 +2214,7 @@ def UltimateLock_SeedLv5():
     AddX(200000)
     sprite('null', 1)
     if SLOT_6:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     loopRest()
     label(0)
     sprite('vrtbef430_tex5', 1)
@@ -2177,7 +2236,7 @@ def UltimateLock_SeedLv5():
     Size(1000)
     AddX(32000)
     SLOT_6 = 15
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('vrtbef430_tex5', 1)
     Visibility(1)
     loopRest()
@@ -2189,22 +2248,23 @@ def UltimateLock_SeedLv5():
     EndAttack()
     EndMomentum(1)
 
+
 @State
 def UltimateLock_TackleEf():
 
     def upon_IMMEDIATE():
         CallPrivateEffect('tbef_airexattack')
-        if (SLOT_6 == 10):
+        if SLOT_6 == 10:
             ParticleColor(4294953215, 4294953215, 4294953215)
-        if (SLOT_6 == 11):
+        if SLOT_6 == 11:
             ParticleColor(4294953215, 4294953215, 4294953215)
-        if (SLOT_6 == 12):
+        if SLOT_6 == 12:
             ParticleColor(4294967040, 4294967040, 16777215)
-        if (SLOT_6 == 13):
+        if SLOT_6 == 13:
             ParticleColor(4294901760, 4294901760, 16711935)
-        if (SLOT_6 == 14):
+        if SLOT_6 == 14:
             ParticleColor(4278190335, 4278190335, 255)
-        if (SLOT_6 == 15):
+        if SLOT_6 == 15:
             ParticleColor(4294901760, 4294901760, 16711935)
         E0EAEffectPosition(3)
         RemoveOnCallStateEnd(3)
@@ -2213,8 +2273,8 @@ def UltimateLock_TackleEf():
         AlphaValue(255)
         RotationAngle(-45000)
         RunLoopUpon(17, 120)
-        sendToLabelUpon(17, 0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(17, 0)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     Size(3000)
     SetScaleSpeed(-10)
@@ -2228,6 +2288,7 @@ def UltimateLock_TackleEf():
     label(1)
     sprite('null', 5)
     ConstantAlphaModifier(-40)
+
 
 @State
 def UltimateInstall():
@@ -2262,11 +2323,13 @@ def UltimateInstall():
     SetScaleSpeedZ(10)
     ConstantAlphaModifier(-15)
 
+
 @State
 def UltimateInstallMagicCircle():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m')
+        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m'
+            )
         FaceSpawnLocation()
         RemoveOnCallStateEnd(3)
         E0EAEffectPosition(3)
@@ -2293,17 +2356,19 @@ def UltimateInstallMagicCircle():
     gotoLabel(0)
     label(1)
     sprite('null', 25)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     RemoveOnCallStateEnd(0)
     AlphaValue(100)
     SetScaleSpeed(-5)
     ConstantAlphaModifier(-15)
 
+
 @State
 def UltimateMagicCircleAfterImage():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m')
+        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m'
+            )
         FaceSpawnLocation()
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
@@ -2329,6 +2394,7 @@ def UltimateMagicCircleAfterImage():
     AlphaValue(100)
     SetScaleSpeed(-10)
     ConstantAlphaModifier(-10)
+
 
 @State
 def UCMagicBookLoop():
@@ -2394,16 +2460,17 @@ def UCMagicBookLoop():
     DeleteObject(5)
     DeleteObject(6)
     DeleteObject(7)
-    ApplyFunctionsToObjects(4)
-    SetScaleSpeed(400)
-    ConstantAlphaModifier(-10)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        SetScaleSpeed(400)
+        ConstantAlphaModifier(-10)
     label(2)
     sprite('null', 2)
     loopRest()
     gotoLabel(2)
     label(99)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
+
 
 @State
 def UCMagicBookAura():
@@ -2431,12 +2498,13 @@ def UCMagicBookAura():
     loopRest()
     gotoLabel(0)
     label(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('vref_env', 14)
     RemoveOnCallStateEnd(0)
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def UCMagicBookAuraBack():
@@ -2467,6 +2535,7 @@ def UCMagicBookAuraBack():
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
 
+
 @State
 def UltimateCharge_TextField():
 
@@ -2477,7 +2546,7 @@ def UltimateCharge_TextField():
         AlphaValue(255)
         AddX(60000)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 48)
     loopRest()
@@ -2485,6 +2554,7 @@ def UltimateCharge_TextField():
     label(1)
     sprite('null', 34)
     ConstantAlphaModifier(-7)
+
 
 @State
 def UltimateCharge_DataField():
@@ -2496,7 +2566,7 @@ def UltimateCharge_DataField():
         AlphaValue(200)
         AddX(60000)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 60)
     loopRest()
@@ -2504,6 +2574,7 @@ def UltimateCharge_DataField():
     label(1)
     sprite('null', 60)
     ConstantAlphaModifier(-5)
+
 
 @State
 def TBEF_AngelRing():
@@ -2518,12 +2589,13 @@ def TBEF_AngelRing():
         Size(800)
         AddX(-10000)
         AddY(420000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 80)
     loopRest()
     label(1)
     sprite('null', 20)
     E0EAEffectPosition(0)
+
 
 @State
 def yugami_ring():
@@ -2539,6 +2611,7 @@ def yugami_ring():
     sprite('vr_yugami', 10)
     SetScaleSpeed(200)
     Unknown3059(-3200)
+
 
 @State
 def Atk5C_arm():
@@ -2579,6 +2652,7 @@ def Atk5C_arm():
     CreateObject('WeaponDelDust', 3)
     CreateObject('WeaponDelDust', 4)
 
+
 @State
 def Atk5C_MagicCircle():
 
@@ -2593,6 +2667,7 @@ def Atk5C_MagicCircle():
     sprite('null', 5)
     sprite('null', 15)
     AddRotationPerFrame(0)
+
 
 @State
 def AtkAIR6C_sword():
@@ -2633,6 +2708,7 @@ def AtkAIR6C_sword():
     CreateObject('WeaponDelDust', 4)
     CreateObject('WeaponDelDust', 5)
     CreateObject('WeaponDelDust', 6)
+
 
 @State
 def AtkAIR5C_mace():
@@ -2681,6 +2757,7 @@ def AtkAIR5C_mace():
     CreateObject('WeaponDelDust', 3)
     CreateObject('WeaponDelDust', 4)
 
+
 @State
 def ThrowLock_MagicCircle():
 
@@ -2712,6 +2789,7 @@ def ThrowLock_MagicCircle():
     sprite('null', 10)
     ConstantAlphaModifier(-10)
     loopRest()
+
 
 @State
 def ThrowBackLock_MagicCircle():
@@ -2747,6 +2825,7 @@ def ThrowBackLock_MagicCircle():
     ConstantAlphaModifier(-10)
     loopRest()
 
+
 @State
 def AirThrowLock_MagicCircle():
 
@@ -2778,6 +2857,7 @@ def AirThrowLock_MagicCircle():
     ConstantAlphaModifier(-10)
     loopRest()
 
+
 @State
 def Effect6CArmSpot():
 
@@ -2785,6 +2865,7 @@ def Effect6CArmSpot():
         CallPrivateEffect('tbef_6Carmspot')
         BlendMode_Add()
     sprite('null', 60)
+
 
 @State
 def AssaultLand2ndEff():
@@ -2794,6 +2875,7 @@ def AssaultLand2ndEff():
         IgnoreScreenfreeze(1)
     sprite('null', 20)
 
+
 @State
 def AssaultLand2ndExEff():
 
@@ -2801,6 +2883,7 @@ def AssaultLand2ndExEff():
         LinkParticle('tbef_assault2ndEx')
         IgnoreScreenfreeze(1)
     sprite('null', 20)
+
 
 @State
 def AssaultLand2ndBladeEff():
@@ -2813,6 +2896,7 @@ def AssaultLand2ndBladeEff():
         AddY(-64000)
     sprite('null', 12)
 
+
 @State
 def AssaultLandExAuraEff():
 
@@ -2822,6 +2906,7 @@ def AssaultLandExAuraEff():
         BlendMode_Add()
     sprite('null', 25)
     ConstantAlphaModifier(-10)
+
 
 @State
 def AssaultLand3rdEff():
@@ -2835,6 +2920,7 @@ def AssaultLand3rdEff():
     sprite('null', 60)
     ConstantAlphaModifier(40)
 
+
 @State
 def AssaultLand3rdExEff():
 
@@ -2846,6 +2932,7 @@ def AssaultLand3rdExEff():
         AlphaValue(0)
     sprite('null', 60)
     ConstantAlphaModifier(40)
+
 
 @State
 def AssaultLand3rdBladeEff():
@@ -2859,12 +2946,14 @@ def AssaultLand3rdBladeEff():
         AddY(140000)
     sprite('null', 12)
 
+
 @State
 def AssaultExAura():
 
     def upon_IMMEDIATE():
         LinkParticle('tbef_assaultExAura')
     sprite('null', 24)
+
 
 @State
 def AssaultHoldOpt():
@@ -2873,8 +2962,8 @@ def AssaultHoldOpt():
         E0EAEffectPosition(3)
         LinkParticle('tbef_assaultHoldOpt')
         AddY(200000)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(56, 1)
     sprite('null', 32767)
     loopRest()
     label(1)
@@ -2884,11 +2973,13 @@ def AssaultHoldOpt():
     AlphaValue(150)
     ConstantAlphaModifier(-10)
 
+
 @State
 def Entry2MagicCircle():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m')
+        Eff3DEffect('tbef_magiccircle00.DIG', 'tbef_magiccircle00_motion_000.m'
+            )
         FaceSpawnLocation()
         IgnoreScreenfreeze(1)
         RenderLayer(5)
@@ -2910,9 +3001,10 @@ def Entry2MagicCircle():
     ConstantAlphaModifier(0)
     SetScaleSpeed(0)
     sprite('null', 30)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     SetScaleSpeed(5)
     ConstantAlphaModifier(-4)
+
 
 @State
 def Entry2Wind():
@@ -2934,6 +3026,7 @@ def Entry2Wind():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def EffectAuraAssaltAir():
 
@@ -2944,8 +3037,8 @@ def EffectAuraAssaltAir():
         CallPrivateEffect('tbef_airenvlight')
         BlendMode_Add()
         AlphaValue(0)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(56, 0)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(56, 0)
         AddX(-32000)
         AddY(-16000)
     sprite('null', 32767)
@@ -2958,6 +3051,7 @@ def EffectAuraAssaltAir():
     AlphaValue(150)
     ConstantAlphaModifier(-10)
 
+
 @State
 def EffectAuraAssaltAirExOpt():
 
@@ -2968,8 +3062,8 @@ def EffectAuraAssaltAirExOpt():
         BlendMode_Add()
         AlphaValue(255)
         RunLoopUpon(17, 10)
-        sendToLabelUpon(17, 0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(17, 0)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     Size(2500)
     SetScaleSpeed(-10)
@@ -2984,6 +3078,7 @@ def EffectAuraAssaltAirExOpt():
     sprite('null', 5)
     ConstantAlphaModifier(-40)
 
+
 @State
 def EffectAuraAssaltAirEx():
 
@@ -2994,8 +3089,8 @@ def EffectAuraAssaltAirEx():
         BlendMode_Add()
         AlphaValue(255)
         RunLoopUpon(17, 12)
-        sendToLabelUpon(17, 0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(17, 0)
+        uponSendToLabel(32, 1)
         AddX(100000)
         AddY(-150000)
     sprite('null', 32767)
@@ -3011,6 +3106,7 @@ def EffectAuraAssaltAirEx():
     sprite('null', 5)
     ConstantAlphaModifier(-40)
 
+
 @State
 def EffectAuraAssaltLandExOpt():
 
@@ -3023,8 +3119,8 @@ def EffectAuraAssaltLandExOpt():
         AlphaValue(255)
         RotationAngle(-45000)
         RunLoopUpon(17, 120)
-        sendToLabelUpon(17, 0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(17, 0)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     Size(3000)
     SetScaleSpeed(-10)
@@ -3039,6 +3135,7 @@ def EffectAuraAssaltLandExOpt():
     sprite('null', 5)
     ConstantAlphaModifier(-40)
 
+
 @State
 def TBEF_ArmChange():
 
@@ -3051,6 +3148,7 @@ def TBEF_ArmChange():
     sprite('null', 2)
     sprite('null', 60)
     E0EAEffectPosition(0)
+
 
 @State
 def TBEF_ArmChange_link():
@@ -3066,6 +3164,7 @@ def TBEF_ArmChange_link():
     sprite('null', 60)
     E0EAEffectPosition(3)
 
+
 @State
 def TBEF_ArmSummon():
 
@@ -3080,6 +3179,7 @@ def TBEF_ArmSummon():
     sprite('null', 2)
     sprite('null', 60)
 
+
 @State
 def EffectAura():
 
@@ -3093,6 +3193,7 @@ def EffectAura():
     sprite('null', 15)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-20)
+
 
 @State
 def Atk6A_gauntlet():
@@ -3119,6 +3220,7 @@ def Atk6A_gauntlet():
     CreateObject('WeaponDelDust', 0)
     CreateObject('WeaponDelDust', 1)
 
+
 @State
 def Atk6A_lightcircle():
 
@@ -3128,6 +3230,7 @@ def Atk6A_lightcircle():
         LinkParticle('tbef_lightball')
         BlendMode_Add()
     sprite('null', 30)
+
 
 @State
 def Atk6B_mcircle():
@@ -3152,6 +3255,7 @@ def Atk6B_mcircle():
     CreateObject('WeaponDelDust', 2)
     CreateObject('WeaponDelDust', 3)
 
+
 @State
 def AssaultLand1stEff():
 
@@ -3160,6 +3264,7 @@ def AssaultLand1stEff():
         IgnoreScreenfreeze(1)
     sprite('null', 26)
 
+
 @State
 def AssaultLand1stEffEx():
 
@@ -3167,6 +3272,7 @@ def AssaultLand1stEffEx():
         LinkParticle('tbef_assault1stEx')
         IgnoreScreenfreeze(1)
     sprite('null', 36)
+
 
 @State
 def AssaultLand1st_airdash():
@@ -3177,6 +3283,7 @@ def AssaultLand1st_airdash():
         LinkParticle('tbef_assault1st_airdash')
     sprite('null', 14)
 
+
 @State
 def AssaultLand1st_airdashEx():
 
@@ -3185,6 +3292,7 @@ def AssaultLand1st_airdashEx():
         IgnoreScreenfreeze(1)
         LinkParticle('tbef_assault1st_airdashEx')
     sprite('null', 14)
+
 
 @State
 def AssaultLand1stA_mcircle():
@@ -3197,6 +3305,7 @@ def AssaultLand1stA_mcircle():
         LinkParticle('tbef_assault1st_mcircle')
     sprite('null', 20)
 
+
 @State
 def AssaultLand1stA_mcircleEx():
 
@@ -3207,6 +3316,7 @@ def AssaultLand1stA_mcircleEx():
         LinkParticle('tbef_assault1st_mcircleEx')
     sprite('null', 20)
 
+
 @State
 def AssaultLand1st_lightball():
 
@@ -3215,6 +3325,7 @@ def AssaultLand1st_lightball():
         LinkParticle('tbef_assault1st_lightball')
     sprite('null', 75)
 
+
 @State
 def AssaultLand1st_lightballEx():
 
@@ -3222,6 +3333,7 @@ def AssaultLand1st_lightballEx():
         E0EAEffectPosition(3)
         LinkParticle('tbef_assault1st_lightballEx')
     sprite('null', 75)
+
 
 @State
 def AssaultLand1st_MagicBookchage():
@@ -3245,6 +3357,7 @@ def AssaultLand1st_MagicBookchage():
     gotoLabel(0)
     label(1)
     sprite('null', 1)
+
 
 @State
 def AssaultLand1st_MagicBook():
@@ -3272,6 +3385,7 @@ def AssaultLand1st_MagicBook():
     label(11)
     sprite('null', 1)
 
+
 @State
 def AssaultLand1st_MagicBookEx():
 
@@ -3298,6 +3412,7 @@ def AssaultLand1st_MagicBookEx():
     label(11)
     sprite('null', 1)
 
+
 @State
 def AssaultLand1stA_MagicBookAura():
 
@@ -3311,7 +3426,7 @@ def AssaultLand1stA_MagicBookAura():
         AddY(215000)
         ColorForTransition(2164208256)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             sendToLabel(1)
 
         def upon_32():
@@ -3329,6 +3444,7 @@ def AssaultLand1stA_MagicBookAura():
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AssaultLand1stB_MagicBookAura():
@@ -3343,7 +3459,7 @@ def AssaultLand1stB_MagicBookAura():
         AddY(215000)
         ColorForTransition(2164208256)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             sendToLabel(1)
 
         def upon_32():
@@ -3361,6 +3477,7 @@ def AssaultLand1stB_MagicBookAura():
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AssaultLand1stC_MagicBookAura():
@@ -3375,7 +3492,7 @@ def AssaultLand1stC_MagicBookAura():
         AddY(215000)
         ColorForTransition(2164208256)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             sendToLabel(1)
 
         def upon_32():
@@ -3393,6 +3510,7 @@ def AssaultLand1stC_MagicBookAura():
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AssaultLand1stEx_MagicBookAura():
@@ -3407,7 +3525,7 @@ def AssaultLand1stEx_MagicBookAura():
         AddY(215000)
         ColorForTransition(2164233948)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             sendToLabel(1)
 
         def upon_32():
@@ -3425,6 +3543,7 @@ def AssaultLand1stEx_MagicBookAura():
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AntiAir_mcircle():
@@ -3444,7 +3563,8 @@ def AntiAir_mcircle():
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-20)
-endState()
+    endState()
+
 
 @State
 def AntiAir_mcircleEx():
@@ -3464,6 +3584,7 @@ def AntiAir_mcircleEx():
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AntiAir_auraA():
@@ -3485,6 +3606,7 @@ def AntiAir_auraA():
     sprite('null', 6)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AntiAir_auraB():
 
@@ -3504,6 +3626,7 @@ def AntiAir_auraB():
     ConstantAlphaModifier(0)
     sprite('null', 6)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AntiAir_auraC():
@@ -3526,6 +3649,7 @@ def AntiAir_auraC():
     sprite('null', 6)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AntiAir_auraExA():
 
@@ -3546,6 +3670,7 @@ def AntiAir_auraExA():
     ConstantAlphaModifier(0)
     sprite('null', 6)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AntiAir_auraExB():
@@ -3569,6 +3694,7 @@ def AntiAir_auraExB():
     sprite('null', 6)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AntiAir_auraEx():
 
@@ -3589,6 +3715,7 @@ def AntiAir_auraEx():
     sprite('null', 6)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AntiAir_light():
 
@@ -3599,9 +3726,9 @@ def AntiAir_light():
         E0EAEffectPosition(2)
         BlendMode_Add()
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             sendToLabel(1)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     label(0)
     sprite('null', 2)
     CreateParticle('tbef_antiair_lightball', -1)
@@ -3609,6 +3736,7 @@ def AntiAir_light():
     gotoLabel(0)
     label(99)
     sprite('null', 2)
+
 
 @State
 def AntiAir_swordC():
@@ -3673,7 +3801,7 @@ def AntiAir_swordC():
     YAccel(25)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
-    PassbackAddActionMarkToFunction('AntiAir_light', 32)
+    TriggerUponForState('AntiAir_light', 32)
     sprite('vrtbef403_00ex', 1)
     StartMultihit()
     XImpulseAcceleration(50)
@@ -3683,7 +3811,8 @@ def AntiAir_swordC():
     XImpulseAcceleration(50)
     YAccel(50)
     sprite('vrtbef403_00ex', 10)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
+
 
 @State
 def AntiAir_swordEx():
@@ -3759,7 +3888,7 @@ def AntiAir_swordEx():
     YAccel(25)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
-    PassbackAddActionMarkToFunction('AntiAir_light', 32)
+    TriggerUponForState('AntiAir_light', 32)
     sprite('vrtbef403_00ex', 1)
     StartMultihit()
     XImpulseAcceleration(50)
@@ -3770,7 +3899,8 @@ def AntiAir_swordEx():
     YAccel(50)
     sprite('vrtbef403_00ex', 7)
     StartMultihit()
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
+
 
 @State
 def AntiAir_swordA():
@@ -3825,7 +3955,7 @@ def AntiAir_swordA():
     YAccel(25)
     AlphaValue(120)
     ConstantAlphaModifier(-10)
-    PassbackAddActionMarkToFunction('AntiAir_light', 32)
+    TriggerUponForState('AntiAir_light', 32)
     sprite('vrtbef403_00ex', 1)
     StartMultihit()
     XImpulseAcceleration(50)
@@ -3836,7 +3966,8 @@ def AntiAir_swordA():
     YAccel(50)
     sprite('vrtbef403_00ex', 7)
     StartMultihit()
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
+
 
 @State
 def AntiAir_swordB():
@@ -3894,7 +4025,7 @@ def AntiAir_swordB():
     YAccel(25)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
-    PassbackAddActionMarkToFunction('AntiAir_light', 32)
+    TriggerUponForState('AntiAir_light', 32)
     sprite('vrtbef403_00ex', 1)
     StartMultihit()
     XImpulseAcceleration(50)
@@ -3905,7 +4036,8 @@ def AntiAir_swordB():
     YAccel(50)
     sprite('vrtbef403_00ex', 7)
     StartMultihit()
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
+
 
 @State
 def AntiAir_swordExA():
@@ -3944,7 +4076,7 @@ def AntiAir_swordExA():
     YAccel(25)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
-    PassbackAddActionMarkToFunction('AntiAir_light', 32)
+    TriggerUponForState('AntiAir_light', 32)
     sprite('vrtbef403_00ex', 2)
     StartMultihit()
     XImpulseAcceleration(50)
@@ -3955,6 +4087,7 @@ def AntiAir_swordExA():
     YAccel(50)
     sprite('vrtbef403_00ex', 7)
     StartMultihit()
+
 
 @State
 def AntiAir_swordExB():
@@ -3994,7 +4127,7 @@ def AntiAir_swordExB():
     YAccel(25)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
-    PassbackAddActionMarkToFunction('AntiAir_light', 32)
+    TriggerUponForState('AntiAir_light', 32)
     sprite('vrtbef403_00ex', 2)
     StartMultihit()
     XImpulseAcceleration(50)
@@ -4005,6 +4138,7 @@ def AntiAir_swordExB():
     YAccel(50)
     sprite('vrtbef403_00ex', 7)
     StartMultihit()
+
 
 @State
 def AssaultAir1st_auraA():
@@ -4019,6 +4153,7 @@ def AssaultAir1st_auraA():
         AddY(50000)
     sprite('null', 20)
 
+
 @State
 def AssaultAir1st_auraB():
 
@@ -4031,6 +4166,7 @@ def AssaultAir1st_auraB():
         AddX(-50000)
     sprite('null', 20)
 
+
 @State
 def AssaultAir1st_auraC():
 
@@ -4041,6 +4177,7 @@ def AssaultAir1st_auraC():
         CallPrivateEffect('tbef_AssaultAir1stAura')
         BlendMode_Add()
     sprite('null', 20)
+
 
 @State
 def Terikaeshi():
@@ -4060,13 +4197,14 @@ def Terikaeshi():
     sprite('vref_teridmy', 5)
     ConstantAlphaModifier(-30)
 
+
 @State
 def __407kokusokuray():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(2)
         AlphaValue(255)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         RenderLayer(2)
     sprite('null', 32767)
     LinkParticle('tbef_407kousoku_thunder')
@@ -4074,6 +4212,7 @@ def __407kokusokuray():
     sprite('null', 10)
     CreateParticle('tbef_407kousoku_fin', -1)
     SetScaleXPerFrame(-80)
+
 
 @State
 def AstWhite():
@@ -4094,6 +4233,7 @@ def AstWhite():
     AlphaValue(240)
     ConstantAlphaModifier(-8)
 
+
 @State
 def AstWhitefinish():
 
@@ -4111,6 +4251,7 @@ def AstWhitefinish():
     sprite('vr_white', 15)
     sprite('vr_white', 30)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AH_mcircle():
@@ -4133,6 +4274,7 @@ def AH_mcircle():
     AlphaValue(128)
     ConstantAlphaModifier(-10)
 
+
 @State
 def AH_wind():
 
@@ -4144,8 +4286,8 @@ def AH_wind():
         AlphaValue(0)
         Size(0)
         AddY(80000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(56, 0)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(56, 0)
     sprite('null', 10)
     SetScaleY(120)
     SetScaleSpeed(50)
@@ -4162,6 +4304,7 @@ def AH_wind():
     ConstantAlphaModifier(-20)
     sprite('null', 5)
     EndMomentum(1)
+
 
 @State
 def AH_changelight():
@@ -4184,6 +4327,7 @@ def AH_changelight():
     ColorTransition(4278190080, 10)
     SetScaleXPerFrame(5)
 
+
 @State
 def AHCharge_TextField():
 
@@ -4192,7 +4336,7 @@ def AHCharge_TextField():
         BlendMode_Add()
         AlphaValue(128)
         LinkParticle('tbef_AHfont_all')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 48)
     loopRest()
@@ -4200,6 +4344,7 @@ def AHCharge_TextField():
     label(1)
     sprite('null', 12)
     ConstantAlphaModifier(-10)
+
 
 @State
 def AHCharge_DateField():
@@ -4209,7 +4354,7 @@ def AHCharge_DateField():
         BlendMode_Add()
         AlphaValue(200)
         LinkParticle('tbef_AHdate')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 128)
     loopRest()
@@ -4217,6 +4362,7 @@ def AHCharge_DateField():
     label(1)
     sprite('null', 16)
     ConstantAlphaModifier(-10)
+
 
 @State
 def AH_changelightC():
@@ -4229,6 +4375,7 @@ def AH_changelightC():
         LinkParticle('tbef_AH_changelightC')
     sprite('null', 60)
 
+
 @State
 def AH_changeBG():
 
@@ -4238,13 +4385,14 @@ def AH_changeBG():
         RenderLayer(5)
         BlendMode_Add()
         LinkParticle('tbef_AH_changeBG')
-        sendToLabelUpon(32, 90)
+        uponSendToLabel(32, 90)
     sprite('null', 60)
     loopRest()
     label(90)
     sprite('null', 5)
     AlphaValue(0)
     ConstantAlphaModifier(-25)
+
 
 @State
 def AH_BG():
@@ -4258,13 +4406,14 @@ def AH_BG():
         LinkParticle('tbef_AH_BG')
         SetPosXByScreenPer(50)
         SetPosYByScreenPer(50)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 300)
     loopRest()
     label(1)
     sprite('null', 10)
     AlphaValue(255)
     ConstantAlphaModifier(-25)
+
 
 @State
 def AH_mcirclebook():
@@ -4274,7 +4423,7 @@ def AH_mcirclebook():
         IgnoreScreenfreeze(1)
         LinkParticle('tbef_AH_book')
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             sendToLabel(1)
     sprite('null', 14)
     sprite('null', 8)
@@ -4289,6 +4438,7 @@ def AH_mcirclebook():
     SetScaleSpeed(40)
     AlphaValue(180)
     ConstantAlphaModifier(-30)
+
 
 @State
 def AHLock_MagicCircle():
@@ -4314,6 +4464,7 @@ def AHLock_MagicCircle():
     SetScaleXPerFrame(200)
     SetScaleSpeedY(100)
 
+
 @State
 def AH_locklight():
 
@@ -4323,13 +4474,14 @@ def AH_locklight():
         RenderLayer(2)
         BlendMode_Add()
         LinkParticle('tbef_AH_locklight')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 60)
     loopRest()
     label(1)
     sprite('null', 20)
     AlphaValue(255)
     ConstantAlphaModifier(-12)
+
 
 @State
 def AH_tsubaki():
@@ -4383,7 +4535,7 @@ def AH_tsubaki():
     CommonSE('015_blaze_2')
     CreateObject('AH_auraB', 0)
     RegisterObject(5, 1)
-    PassbackAddActionMarkToFunction('AH_auraA', 32)
+    TriggerUponForState('AH_auraA', 32)
     sprite('tb450_38ex00', 6)
     CommonSE('019_quake_1')
     sprite('tb450_38ex01', 6)
@@ -4453,10 +4605,11 @@ def AH_tsubaki():
     CommonSE('002_highjump_2')
     CreateObject('AH_auraC', 0)
     ObjectUpon(5, 32)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('tb450_40', 6)
     sprite('tb450_41', 48)
     sprite('tb450_41', 1)
+
 
 @State
 def AH_auracharge():
@@ -4470,6 +4623,7 @@ def AH_auracharge():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def AH_auraA():
 
@@ -4479,7 +4633,7 @@ def AH_auraA():
         LinkParticle('tbef_AHauraA')
         Size(1400)
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         ContinueState(640)
     sprite('null', 255)
     ConstantAlphaModifier(1)
@@ -4492,6 +4646,7 @@ def AH_auraA():
     ConstantAlphaModifier(-30)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AH_auraRing():
@@ -4503,7 +4658,7 @@ def AH_auraRing():
         CallPrivateEffect('tbef_AHauraRing')
         AddRotationPerFrame(350)
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         ContinueState(640)
     sprite('null', 255)
     ConstantAlphaModifier(1)
@@ -4517,6 +4672,7 @@ def AH_auraRing():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def AH_auraB():
 
@@ -4525,7 +4681,7 @@ def AH_auraB():
         IgnoreScreenfreeze(1)
         LinkParticle('tbef_AHauraB')
         Size(900)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         ContinueState(400)
     sprite('null', 32767)
     loopRest()
@@ -4537,6 +4693,7 @@ def AH_auraB():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def AH_auraC():
 
@@ -4544,6 +4701,7 @@ def AH_auraC():
         IgnoreScreenfreeze(1)
         LinkParticle('tbef_AHauraC')
     sprite('null', 16)
+
 
 @State
 def AH_FinishThunder():
@@ -4577,6 +4735,7 @@ def AH_FinishThunder():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def AH_megamilight():
 
@@ -4605,6 +4764,7 @@ def AH_megamilight():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def AH_FinishRedlight():
 
@@ -4615,11 +4775,12 @@ def AH_FinishRedlight():
         AbsoluteY(7950000)
         XPositionRelativeFacing(0)
         Size(1400)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 200)
     label(0)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AH_megami_aura():
@@ -4634,7 +4795,7 @@ def AH_megami_aura():
         XPositionRelativeFacing(-110000)
         Size(400)
         AddY(14000000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 5)
     physicsXImpulse(500)
     ConstantAlphaModifier(10)
@@ -4653,6 +4814,7 @@ def AH_megami_aura():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def AH_finishBG():
 
@@ -4664,11 +4826,12 @@ def AH_finishBG():
         AlphaValue(100)
         SetScaleX(1100)
         SetScaleY(1000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 800)
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AH_finish():
@@ -4680,6 +4843,7 @@ def AH_finish():
         XPositionRelativeFacing(0)
         AddY(350000)
     sprite('null', 30)
+
 
 @State
 def AH_wing():
@@ -4695,6 +4859,7 @@ def AH_wing():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def AH_Megami():
 
@@ -4707,7 +4872,7 @@ def AH_Megami():
         SetScaleX(1600)
         SetScaleY(1600)
         SetScaleZ(1000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 297)
     CreateObject('AH_megami_aura', -1)
     setGravity(-1)
@@ -4742,6 +4907,7 @@ def AH_Megami():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def EventHazamaWalk():
     PaletteIndex(7)
@@ -4751,9 +4917,9 @@ def EventHazamaWalk():
     SetZVal(500)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 30000):
+            if SLOT_19 < 30000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('hz030_00', 7)
@@ -4778,13 +4944,14 @@ def EventHazamaWalk():
     physicsXImpulse(0)
     enterState('EventHazamaStand')
 
+
 @State
 def EventHazamaStand():
 
-    def upon_43():
+    def upon_VALUE_RECEIVED():
         PaletteIndex(7)
         SetZVal(500)
-        if (SLOT_48 == 10):
+        if SLOT_ReceivedValue == 10:
             enterState('EventHazamaBackJump')
     label(0)
     sprite('hz000_00', 8)
@@ -4798,6 +4965,7 @@ def EventHazamaStand():
     sprite('hz000_08', 8)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventHazamaBackJump():
@@ -4817,6 +4985,7 @@ def EventHazamaBackJump():
     physicsYImpulse(50000)
     loopRest()
 
+
 @State
 def RLAstLockmc():
 
@@ -4831,6 +5000,7 @@ def RLAstLockmc():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def RLAstLockAura():
 
@@ -4843,6 +5013,7 @@ def RLAstLockAura():
     ConstantAlphaModifier(2)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
+
 
 @State
 def UltimateShotMaster():
@@ -4859,35 +5030,36 @@ def UltimateShotMaster():
 
         def upon_41():
             Unknown2064(1)
-            PassbackAddActionMarkToFunction('UltimateShotTest', 41)
+            TriggerUponForState('UltimateShotTest', 41)
     sprite('tb432_07ex', 3)
     CreateObject('UltimateShotTest', 0)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     sprite('tb432_08', 3)
     CreateObject('UltimateShotTest', 1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('tb432_09', 3)
     CreateObject('UltimateShotTest', 2)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     sprite('tb432_07', 3)
     CreateObject('UltimateShotTest', 3)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     sprite('tb432_08', 3)
     CreateObject('UltimateShotTest', 4)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     sprite('tb432_09', 3)
     CreateObject('UltimateShotTest', 5)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     sprite('tb432_07', 3)
     CreateObject('UltimateShotTest', 6)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     sprite('tb432_08', 3)
     CreateObject('UltimateShotTest', 7)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     sprite('tb432_09', 3)
     sprite('tb432_09', 300)
     label(1)
     sprite('null', 10)
+
 
 @State
 def UltimateShotMaster_OD():
@@ -4904,35 +5076,36 @@ def UltimateShotMaster_OD():
 
         def upon_41():
             Unknown2064(1)
-            PassbackAddActionMarkToFunction('UltimateShotTest_OD', 41)
+            TriggerUponForState('UltimateShotTest_OD', 41)
     sprite('tb432_07ex', 3)
     CreateObject('UltimateShotTest_OD', 0)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     sprite('tb432_08', 3)
     CreateObject('UltimateShotTest_OD', 1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('tb432_09', 3)
     CreateObject('UltimateShotTest_OD', 2)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     sprite('tb432_07', 3)
     CreateObject('UltimateShotTest_OD', 3)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     sprite('tb432_08', 3)
     CreateObject('UltimateShotTest_OD', 4)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     sprite('tb432_09', 3)
     CreateObject('UltimateShotTest_OD', 5)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     sprite('tb432_07', 3)
     CreateObject('UltimateShotTest_OD', 6)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     sprite('tb432_08', 3)
     CreateObject('UltimateShotTest_OD', 7)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     sprite('tb432_09', 3)
     sprite('tb432_09', 300)
     label(1)
     sprite('null', 10)
+
 
 @State
 def UltimateShotTest():
@@ -4986,13 +5159,13 @@ def UltimateShotTest():
         def upon_39():
             SLOT_58 = 1
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 100)
+        uponSendToLabel(54, 100)
         AttackOff()
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_ReceivedValue == 10:
                 clearUponHandler(45)
-                ObjectUpon(2, 41)
+                ObjectUpon(LANDING, 41)
         Unknown2064(0)
 
         def upon_41():
@@ -5027,6 +5200,7 @@ def UltimateShotTest():
     sprite('vrtbef403_00ex', 45)
     AttackOff()
     ConstantAlphaModifier(-6)
+
 
 @State
 def UltimateShotTest_OD():
@@ -5081,13 +5255,13 @@ def UltimateShotTest_OD():
         def upon_39():
             SLOT_58 = 1
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 100)
+        uponSendToLabel(54, 100)
         AttackOff()
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_ReceivedValue == 10:
                 clearUponHandler(45)
-                ObjectUpon(2, 41)
+                ObjectUpon(LANDING, 41)
         Unknown2064(0)
 
         def upon_41():
@@ -5123,6 +5297,7 @@ def UltimateShotTest_OD():
     AttackOff()
     ConstantAlphaModifier(-6)
 
+
 @State
 def __432nokosibloom():
 
@@ -5132,9 +5307,9 @@ def __432nokosibloom():
         BlendMode_Add()
         E0EAEffectRotation(2)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             sendToLabel(1)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     label(0)
     sprite('null', 5)
     CreateObject('432bloom', -1)
@@ -5143,14 +5318,15 @@ def __432nokosibloom():
     label(99)
     sprite('null', 2)
 
+
 @State
 def __432bloom():
 
     def upon_IMMEDIATE():
         E0EAEffectRotation(2)
-sprite('null', 30)
-LinkParticle('tbef_432nokosi_bloom')
-endState()
+    sprite('null', 30)
+    LinkParticle('tbef_432nokosi_bloom')
+
 
 @State
 def __407bookloop():
@@ -5158,7 +5334,7 @@ def __407bookloop():
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     label(0)
     sprite('tb407_book00', 3)
     sprite('tb407_book01', 3)
@@ -5167,6 +5343,7 @@ def __407bookloop():
     gotoLabel(0)
     label(99)
     sprite('null', 1)
+
 
 @State
 def AssaultLand2nd_mcircle():
@@ -5181,6 +5358,7 @@ def AssaultLand2nd_mcircle():
         AddY(230000)
     sprite('null', 20)
 
+
 @State
 def BurstDD_Test():
 
@@ -5189,7 +5367,7 @@ def BurstDD_Test():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         BlendMode_Normal()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
 
         def upon_33():
             SLOT_2 = 1
@@ -5198,23 +5376,24 @@ def BurstDD_Test():
     sprite('null', 3)
     CreateObject('BurstDD_Testtama', 0)
     if SLOT_2:
-        ObjectUpon(1, 33)
+        ObjectUpon(STATE_END, 33)
     sprite('null', 3)
     CreateObject('BurstDD_Testtama', 0)
     if SLOT_2:
-        ObjectUpon(1, 33)
+        ObjectUpon(STATE_END, 33)
     sprite('null', 3)
     CreateObject('BurstDD_Testtama', 0)
     if SLOT_2:
-        ObjectUpon(1, 33)
+        ObjectUpon(STATE_END, 33)
     loopRest()
     gotoLabel(0)
     label(1)
     sprite('null', 3)
     CreateObject('BurstDD_Testtama', 0)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     if SLOT_2:
-        ObjectUpon(1, 33)
+        ObjectUpon(STATE_END, 33)
+
 
 @State
 def BurstDD_Testtama():
@@ -5245,7 +5424,7 @@ def BurstDD_Testtama():
         OnlyHitPlayer(1)
         DeviationY(-300000, 100000)
         physicsXImpulse(100000)
-        sendToLabelUpon(10, 9)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 9)
         Visibility(1)
 
         def upon_32():
@@ -5263,8 +5442,9 @@ def BurstDD_Testtama():
     loopRest()
     gotoLabel(0)
     label(9)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('null', 1)
+
 
 @State
 def BurstDD_Yumi():
@@ -5274,7 +5454,7 @@ def BurstDD_Yumi():
         PaletteIndex(1)
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vrtbef440_yumi00', 4)
     sprite('vrtbef440_yumi01', 4)
     sprite('vrtbef440_yumi02', 4)
@@ -5311,6 +5491,7 @@ def BurstDD_Yumi():
     CreateParticle('tbef_440hane2', 4)
     CreateParticle('tbef_440hane2', 5)
 
+
 @State
 def BurstDD_YumiC():
 
@@ -5327,6 +5508,7 @@ def BurstDD_YumiC():
     sprite('null', 32767)
     SetScaleSpeed(0)
 
+
 @State
 def BurstDD_Core():
 
@@ -5339,13 +5521,14 @@ def BurstDD_Core():
     sprite('null', 32767)
     Size(1000)
 
+
 @State
 def BurstDD_BeamMato2():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(2)
         AddX(-150000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 1)
     CreateObject('BurstDD_BeamMatoCore', -1)
     ScreenShake(20000, 20000)
@@ -5357,7 +5540,8 @@ def BurstDD_BeamMato2():
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
-    PassbackAddActionMarkToFunction('BurstDD_BeamMatoCore', 32)
+    TriggerUponForState('BurstDD_BeamMatoCore', 32)
+
 
 @State
 def BurstDD_BeamMatoCore():
@@ -5367,7 +5551,7 @@ def BurstDD_BeamMatoCore():
         LinkParticle('tbef_440_shootcore')
         AddY(250000)
         AddX(400000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
@@ -5375,13 +5559,14 @@ def BurstDD_BeamMatoCore():
     ConstantAlphaModifier(-26)
     CreateParticle('tbef_440kira_mato2', -1)
 
+
 @State
 def BurstDD_BeamMato2EX():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(2)
         AddX(-150000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 1)
     CreateObject('BurstDD_BeamMatoCoreEX', -1)
     ScreenShake(20000, 20000)
@@ -5393,55 +5578,57 @@ def BurstDD_BeamMato2EX():
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
-    PassbackAddActionMarkToFunction('BurstDD_BeamMatoCoreEX', 32)
+    TriggerUponForState('BurstDD_BeamMatoCoreEX', 32)
+
 
 @State
 def BurstDD_BeamMatoEX():
     sprite('null', 5)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(300000)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(350000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(350000)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(400000)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(450000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(450000)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(300000)
-    SetScaleY(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(300000)
+        SetScaleY(-1000)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(350000)
-    SetScaleY(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(350000)
+        SetScaleY(-1000)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(400000)
-    SetScaleY(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(400000)
+        SetScaleY(-1000)
     CreateObject('BurstDD_Beam', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(450000)
-    SetScaleY(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(450000)
+        SetScaleY(-1000)
+
 
 @State
 def BurstDD_BeamMatoCoreEX():
@@ -5452,13 +5639,14 @@ def BurstDD_BeamMatoCoreEX():
         AddY(250000)
         AddX(400000)
         Size(1200)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     SetScaleSpeed(100)
     ConstantAlphaModifier(-26)
     CreateParticle('tbef_440kira_mato2', -1)
+
 
 @State
 def BurstDD_BeamEX():
@@ -5472,14 +5660,15 @@ def BurstDD_BeamEX():
     sprite('null', 15)
     sprite('null', 24)
     CreateObject('BurstDD_EffPos', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleX(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleX(800)
     CreateObject('BurstDD_EffPos', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleY(-800)
-    SetScaleX(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleY(-800)
+        SetScaleX(800)
+
 
 @State
 def BurstDD_Beam():
@@ -5493,14 +5682,15 @@ def BurstDD_Beam():
     sprite('null', 15)
     sprite('null', 24)
     CreateObject('BurstDD_EffPos', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleX(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleX(800)
     CreateObject('BurstDD_EffPos', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleY(-800)
-    SetScaleX(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleY(-800)
+        SetScaleX(800)
+
 
 @State
 def BurstDD_EffPos():
@@ -5522,11 +5712,12 @@ def BurstDD_EffPos():
     sprite('vrtbef440_particlepos', 4)
     CreateParticle('tbef_440_zansho', 6)
 
+
 @State
 def Fade1():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         E0EAEffectPosition(3)
         AlphaValue(0)
         XPositionRelativeFacing(0)
@@ -5545,12 +5736,13 @@ def Fade1():
     sprite('vr_fade', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def EventJNYoroke():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 2)
         LoadSpritePalette(0)
         XPositionRelativeFacing(-100000)
     sprite('jn620_08', 32767)
@@ -5596,6 +5788,7 @@ def EventJNYoroke():
     sprite('jn032_11', 4)
     sprite('jn032_12', 4)
 
+
 @State
 def Act2Event_Fade():
 
@@ -5613,6 +5806,7 @@ def Act2Event_Fade():
     ConstantAlphaModifier(0)
     AlphaValue(255)
 
+
 @State
 def Act2Event_NagenukeEff():
 
@@ -5621,6 +5815,7 @@ def Act2Event_NagenukeEff():
         AddY(222000)
     sprite('null', 3)
     CreateParticle('ef_nagenuke', 0)
+
 
 @State
 def Act2Event_Yure():
@@ -5631,11 +5826,12 @@ def Act2Event_Yure():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventNoYoroke():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 0)
+        uponSendToLabel(33, 0)
         XPositionRelativeFacing(-200000)
         LoadSpritePalette(0)
         SetZVal(-500)

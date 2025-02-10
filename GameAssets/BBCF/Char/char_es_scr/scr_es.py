@@ -1,7 +1,8 @@
 @Subroutine
 def PreInit():
     CharacterID('es')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def MatchInit():
@@ -148,14 +149,14 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 400000, 0, 300000, 1000, 50)
     Move_EndRegister()
-    Move_Register('AirStamp_1st', 0x2)
+    Move_Register('AirStamp_1st', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(0x45)
     Move_Input_(INPUT_PRESS_B)
     CallSkillConditions('EnableAirNormalAttack')
     SkillEstimateRange(-200000, 200000, -400000, -200000, 500, 10)
     Move_EndRegister()
-    Move_Register('AirStamp_2nd', 0x2)
+    Move_Register('AirStamp_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(0x45)
     Move_Input_(INPUT_PRESS_B)
@@ -165,7 +166,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(-200000, 200000, -400000, 100000, 500, 10)
     Move_EndRegister()
-    Move_Register('AirStamp_3rd', 0x2)
+    Move_Register('AirStamp_3rd', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(0x45)
     Move_Input_(INPUT_PRESS_B)
@@ -175,7 +176,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(-200000, 200000, -400000, 100000, 500, 10)
     Move_EndRegister()
-    Move_Register('ShotA', 0x2)
+    Move_Register('ShotA', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -185,7 +186,7 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(800000, 1200000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('ShotB', 0x2)
+    Move_Register('ShotB', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -195,7 +196,7 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(800000, 1200000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('ShotA_2nd', 0x2)
+    Move_Register('ShotA_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -205,7 +206,7 @@ def MatchInit():
     DamageStunPriority(5000)
     SkillEstimateRange(800000, 1200000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('ShotB_2nd', 0x2)
+    Move_Register('ShotB_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -215,7 +216,7 @@ def MatchInit():
     DamageStunPriority(5000)
     SkillEstimateRange(800000, 1200000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('AirShotA', 0x2)
+    Move_Register('AirShotA', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -224,7 +225,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(450000, 800000, -500000, -200000, 250, 10)
     Move_EndRegister()
-    Move_Register('AirShotB', 0x2)
+    Move_Register('AirShotB', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -233,21 +234,21 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(800000, 1200000, -400000, -100000, 250, 10)
     Move_EndRegister()
-    Move_Register('AirShotA_2nd', 0x2)
+    Move_Register('AirShotA_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
     FollowupOnly(1)
     SkillEstimateRange(350000, 900000, -700000, -100000, 10000, 10)
     Move_EndRegister()
-    Move_Register('AirShotB_2nd', 0x2)
+    Move_Register('AirShotB_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
     FollowupOnly(1)
     SkillEstimateRange(700000, 1300000, -700000, -100000, 10000, 10)
     Move_EndRegister()
-    Move_Register('AntiAir', 0x2)
+    Move_Register('AntiAir', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_C)
@@ -256,7 +257,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 1, 1000, 3000)
     SkillEstimateRange(0, 400000, -200000, 150000, 500, 0)
     Move_EndRegister()
-    Move_Register('AntiAir_Air', 0x2)
+    Move_Register('AntiAir_Air', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_C)
@@ -265,7 +266,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 1, 1000, 2000)
     SkillEstimateRange(-200000, 450000, 50000, 350000, 250, 0)
     Move_EndRegister()
-    Move_Register('AntiAir_2nd', 0x2)
+    Move_Register('AntiAir_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(0x45)
     Move_Input_(INPUT_PRESS_C)
@@ -273,7 +274,7 @@ def MatchInit():
     DamageStunPriority(10000)
     GuardStunPriority(1)
     Move_EndRegister()
-    Move_Register('SpecialThrow', 0x2)
+    Move_Register('SpecialThrow', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_A)
@@ -283,7 +284,7 @@ def MatchInit():
     GuardStunPriority(6000)
     SkillEstimateRange(200000, 450000, -200000, 100000, 250, 0)
     Move_EndRegister()
-    Move_Register('MidAssault', 0x2)
+    Move_Register('MidAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
@@ -295,7 +296,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 1, 1000, 2500)
     SkillEstimateRange(300000, 550000, -200000, 100000, 250, 0)
     Move_EndRegister()
-    Move_Register('Assault', 0x2)
+    Move_Register('Assault', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
@@ -304,7 +305,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 1, 1000, 2000)
     SkillEstimateRange(0, 400000, -200000, 100000, 500, 0)
     Move_EndRegister()
-    Move_Register('Assault_2nd', 0x2)
+    Move_Register('Assault_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
@@ -313,7 +314,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 350000, -200000, 350000, 500, 0)
     Move_EndRegister()
-    Move_Register('Chage', 0x2)
+    Move_Register('Chage', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_D)
@@ -323,7 +324,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 1, 1000, 0)
     SkillEstimateRange(0, 450000, -200000, 250000, 350, 0)
     Move_EndRegister()
-    Move_Register('UltimateShot_LandA', 0x606)
+    Move_Register('UltimateShot_LandA', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -333,7 +334,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, -200000, 100000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateShot_LandB', 0x606)
+    Move_Register('UltimateShot_LandB', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -342,7 +343,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, 100000, 500000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateShot_LandAOD', 0x606)
+    Move_Register('UltimateShot_LandAOD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -353,7 +354,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, -200000, 100000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateShot_LandBOD', 0x606)
+    Move_Register('UltimateShot_LandBOD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -363,7 +364,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, 100000, 500000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateShot_AirA', 0x606)
+    Move_Register('UltimateShot_AirA', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -373,7 +374,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, -200000, 100000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateShot_AirB', 0x606)
+    Move_Register('UltimateShot_AirB', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -383,7 +384,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, -100000, -400000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateShot_AirAOD', 0x606)
+    Move_Register('UltimateShot_AirAOD', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -394,7 +395,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, -200000, 100000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateShot_AirBOD', 0x606)
+    Move_Register('UltimateShot_AirBOD', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -405,7 +406,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(700000, 1200000, -100000, -400000, 500, 10)
     Move_EndRegister()
-    Move_Register('UltimateAssault', 0x606)
+    Move_Register('UltimateAssault', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -415,7 +416,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 200000, 500, 1)
     Move_EndRegister()
-    Move_Register('UltimateAssaultOD', 0x606)
+    Move_Register('UltimateAssaultOD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -426,7 +427,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 200000, 500, 1)
     Move_EndRegister()
-    Move_Register('UltimateChage', 0x606)
+    Move_Register('UltimateChage', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -437,7 +438,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 1, 1000, 0)
     SkillEstimateRange(0, 450000, -200000, 250000, 500, 0)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x304a)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236236)
@@ -447,12 +448,12 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 500000, -200000, 200000, 500, 1)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -460,7 +461,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 400000, -200000, 400000, 500, 1)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -473,7 +474,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 400000, -200000, 400000, 500, 1)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -684,15 +685,17 @@ def MatchInit():
     CommonVoicelines(73, 'es402')
     CommonVoicelines(74, 'es403')
 
+
 @Subroutine
 def MatchInit2():
     Unknown30007(0)
     Unknown30011('')
 
+
 @Subroutine
 def EnableAirNormalAttack():
     SLOT_47 = 0
-    if (SLOT_23 <= 114000):
+    if SLOT_YDistanceFromFloor <= 114000:
         if CurrentStateCheck('CmnActAirFDash'):
             SLOT_47 = 0
         else:
@@ -700,11 +703,13 @@ def EnableAirNormalAttack():
     else:
         SLOT_47 = 1
 
+
 @Subroutine
 def EnableAirShot():
     SLOT_47 = 0
-    if (not SLOT_59):
+    if not SLOT_59:
         SLOT_47 = 1
+
 
 @Subroutine
 def Func_BurstDD_Easy():
@@ -712,37 +717,38 @@ def Func_BurstDD_Easy():
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def OnFrameStep():
     if SLOT_21:
-        if (not SLOT_81):
+        if not SLOT_81:
             TrainingModeSLOT('TRI_EsPowerUpTime', 2, 67)
             if SLOT_67:
-                if (SLOT_67 == 1):
-                    if SLOT_90:
+                if SLOT_67 == 1:
+                    if SLOT_InNeutral:
                         SLOT_32 = 0
                         SLOT_31 = 900
                         DisableResourceGaugeBar(0, 1)
-                if (SLOT_67 == 2):
+                if SLOT_67 == 2:
                     SLOT_32 = 1
             if SLOT_32:
-                if SLOT_110:
-                    SLOT_31 = (SLOT_31 + (-1))
+                if SLOT_OverdriveTimer:
+                    SLOT_31 = SLOT_31 + -1
                 else:
-                    SLOT_31 = (SLOT_31 + (-1))
-                    if (not SLOT_30):
-                        SLOT_31 = (SLOT_31 + (-1))
+                    SLOT_31 = SLOT_31 + -1
+                    if not SLOT_IsInHitstun:
+                        SLOT_31 = SLOT_31 + -1
         if SLOT_32:
-            if (SLOT_32 == 1):
+            if SLOT_32 == 1:
                 ResourceGauge(0, 1, 74, 1, 900, 900, -6684673, -6684673)
                 DisableResourceGaugeBar(0, 0)
                 SLOT_32 = 2
-            if (SLOT_31 <= 0):
+            if SLOT_31 <= 0:
                 ResourceGauge(0, 1, 74, 1, 1, 0, -6684673, -6684673)
                 DisableResourceGaugeBar(0, 1)
                 SLOT_32 = 0
         if SLOT_31:
-            if (not CheckObjectPresence(9)):
+            if not CheckObjectPresence(9):
                 CreateObject('es_ChageAuraGenerator', -1)
                 RegisterObject(9, 1)
         elif CheckObjectPresence(9):
@@ -754,7 +760,7 @@ def OnFrameStep():
         SLOT_32 = 0
         if CheckObjectPresence(9):
             DeleteObject(9)
-    if SLOT_30:
+    if SLOT_IsInHitstun:
         if CheckObjectPresence(11):
             DespawnEAEffect('es203_effAtk')
             DespawnEAEffect('es213_effAtk')
@@ -765,28 +771,33 @@ def OnFrameStep():
             DespawnEAEffect('esef_406EffEX')
             DespawnEAEffect('esef_406Eff2EX')
 
+
 @Subroutine
 def OnDamage():
-    if (not SLOT_32):
+    if not SLOT_32:
         SLOT_31 = 0
-    if SLOT_37:
+    if SLOT_IsGrounded:
         SLOT_59 = 0
+
 
 @Subroutine
 def OnLanding():
     SLOT_59 = 0
+
 
 @Subroutine
 def CheckSpecialFlash():
 
     def upon_16():
         if SLOT_56:
-            SLOT_56 = (SLOT_56 + 1)
+            SLOT_56 = SLOT_56 + 1
+
 
 @Subroutine
 def ChageAtk_flash():
     if SLOT_2:
         CallPrivateFunction('es_special_flash', 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActStand():
@@ -803,24 +814,21 @@ def CmnActStand():
     sprite('es000_09', 7)
     sprite('es000_10', 7)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(0, 2, 123)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(0, 2, 123):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     sprite('es001_00', 6)
     SLOT_88 = 960
     sprite('es001_01', 6)
     sprite('es001_02', 6)
     sprite('es001_03', 6)
     CreateObject('esef_001', 0)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(65000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(65000)
     PrivateSE('esse_08')
     CreateObject('esef_001_tame_add', 0)
     CreateObject('esef_001_tame_add', 1)
@@ -853,6 +861,7 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('es003_00', 3)
@@ -860,10 +869,12 @@ def CmnActStandTurn():
     sprite('es003_01ex00', 2)
     sprite('es003_00ex00', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('es010_00', 4)
     sprite('es010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -882,6 +893,7 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('es013_00', 3)
@@ -889,15 +901,18 @@ def CmnActCrouchTurn():
     sprite('es013_01ex00', 2)
     sprite('es013_00ex00', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('es010_01', 4)
     sprite('es010_00', 4)
 
+
 @State
 def CmnActJumpPre():
     sprite('es023_00', 2)
     sprite('es023_01', 2)
+
 
 @State
 def CmnActJumpUpper():
@@ -907,11 +922,13 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpUpperEnd():
     sprite('es020_02', 3)
     sprite('es020_03', 3)
     sprite('es020_04', 3)
+
 
 @State
 def CmnActJumpDown():
@@ -923,6 +940,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpLanding():
     sprite('es024_00', 3)
@@ -931,16 +949,19 @@ def CmnActJumpLanding():
     sprite('es024_03', 3)
     sprite('es024_04', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('es024_00', 2)
     sprite('es024_01', 2)
     sprite('es024_02', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def CmnActFWalk():
@@ -961,6 +982,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalk():
     sprite('es031_00', 7)
@@ -979,6 +1001,7 @@ def CmnActBWalk():
     sprite('es031_10', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActFDash():
@@ -1004,12 +1027,14 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDashStop():
     sprite('es032_09', 3)
     sprite('es032_10', 3)
     sprite('es032_11', 3)
     sprite('es032_12', 3)
+
 
 @State
 def CmnActBDash():
@@ -1019,7 +1044,7 @@ def CmnActBDash():
         EnterStateIfEventID(8, '_NEUTRAL')
         setInvincible(1)
         EndMomentum(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
     sprite('es033_00', 1)
@@ -1043,9 +1068,11 @@ def CmnActBDash():
     sprite('es033_07', 3)
     sprite('es033_08', 3)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1065,6 +1092,7 @@ def CmnActAirFDash():
     sprite('es035_06', 2)
     sprite('es035_07', 2)
 
+
 @State
 def CmnActAirBDash():
     sprite('es036_00', 3)
@@ -1075,11 +1103,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('es050_00', 1)
     sprite('es050_01', 1)
     sprite('es050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1087,6 +1117,7 @@ def CmnActHitStandLv2():
     sprite('es050_02', 1)
     sprite('es050_01', 2)
     sprite('es050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1096,6 +1127,7 @@ def CmnActHitStandLv3():
     sprite('es050_01', 2)
     sprite('es050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('es050_03', 1)
@@ -1104,6 +1136,7 @@ def CmnActHitStandLv4():
     sprite('es050_02', 2)
     sprite('es050_01', 2)
     sprite('es050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1115,11 +1148,13 @@ def CmnActHitStandLv5():
     sprite('es050_01', 2)
     sprite('es050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('es052_00', 1)
     sprite('es052_01', 1)
     sprite('es052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1127,6 +1162,7 @@ def CmnActHitStandLowLv2():
     sprite('es052_02', 1)
     sprite('es052_01', 2)
     sprite('es052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1136,6 +1172,7 @@ def CmnActHitStandLowLv3():
     sprite('es052_01', 2)
     sprite('es052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('es052_03', 1)
@@ -1144,6 +1181,7 @@ def CmnActHitStandLowLv4():
     sprite('es052_02', 2)
     sprite('es052_01', 2)
     sprite('es052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1155,11 +1193,13 @@ def CmnActHitStandLowLv5():
     sprite('es052_01', 2)
     sprite('es052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('es054_00', 1)
     sprite('es054_01', 1)
     sprite('es054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1167,6 +1207,7 @@ def CmnActHitCrouchLv2():
     sprite('es054_02', 1)
     sprite('es054_01', 2)
     sprite('es054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1176,6 +1217,7 @@ def CmnActHitCrouchLv3():
     sprite('es054_01', 2)
     sprite('es054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('es054_03', 1)
@@ -1184,6 +1226,7 @@ def CmnActHitCrouchLv4():
     sprite('es054_02', 2)
     sprite('es054_01', 2)
     sprite('es054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1195,6 +1238,7 @@ def CmnActHitCrouchLv5():
     sprite('es054_01', 2)
     sprite('es054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('es060_00', 4)
@@ -1204,9 +1248,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('es060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1217,10 +1263,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('es060_07', 2)
     sprite('es060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1230,9 +1278,11 @@ def CmnActBDownBound():
     sprite('es060_12', 3)
     sprite('es060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('es060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1245,13 +1295,16 @@ def CmnActBDown2Stand():
     sprite('es061_06', 4)
     sprite('es061_07', 4)
 
+
 @State
 def CmnActFDownUpper():
     sprite('es063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('es063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1261,10 +1314,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('es063_04', 3)
     sprite('es063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1274,9 +1329,11 @@ def CmnActFDownBound():
     sprite('es063_09', 3)
     sprite('es063_10', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('es063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1290,6 +1347,7 @@ def CmnActFDown2Stand():
     sprite('es064_07', 3)
     sprite('es064_08', 3)
 
+
 @State
 def CmnActVDownUpper():
     sprite('es062_00', 3)
@@ -1299,10 +1357,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('es062_03', 3)
     sprite('es062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1314,15 +1374,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('es062_09', 2)
     sprite('es062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('es062_09', 2)
     sprite('es062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1335,6 +1398,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1345,6 +1409,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1353,14 +1418,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('es071_04', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('es073_00', 3)
     sprite('es073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1370,6 +1438,7 @@ def CmnActWallBoundDown():
     sprite('es073_04', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerLoop():
@@ -1381,6 +1450,7 @@ def CmnActStaggerLoop():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def CmnActStaggerDown():
     sprite('es070_04', 4)
@@ -1390,6 +1460,7 @@ def CmnActStaggerDown():
     sprite('es070_08', 4)
     sprite('es070_09', 5)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('es070_10', 2)
@@ -1397,11 +1468,13 @@ def CmnActUkemiStagger():
     sprite('es070_12', 2)
     sprite('es070_13', 2)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('es113_00', 3)
     sprite('es113_01', 3)
     sprite('es113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -1409,11 +1482,13 @@ def CmnActUkemiAirB():
     sprite('es113_01', 3)
     sprite('es113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('es113_00', 3)
     sprite('es113_01', 3)
     sprite('es113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1426,6 +1501,7 @@ def CmnActUkemiLandF():
     sprite('es110_06', 2)
     sprite('es110_07', 2)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('es111_00', 3)
@@ -1436,6 +1512,7 @@ def CmnActUkemiLandB():
     sprite('es111_05', 2)
     sprite('es111_06', 2)
     sprite('es111_07', 2)
+
 
 @State
 def CmnActUkemiLandN():
@@ -1454,6 +1531,7 @@ def CmnActUkemiLandN():
     sprite('es020_08', 3)
     gotoLabel(1)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('es024_00', 3)
@@ -1462,10 +1540,12 @@ def CmnActUkemiLandNLanding():
     sprite('es024_03', 3)
     sprite('es024_04', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('es040_00', 3)
     sprite('es040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1475,10 +1555,12 @@ def CmnActMidGuardLoop():
     sprite('es040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('es040_01', 3)
     sprite('es040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1489,15 +1571,18 @@ def CmnActMidHeavyGuardLoop():
     sprite('es040_04', 4)
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('es040_01', 3)
     sprite('es040_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('es041_00', 3)
     sprite('es041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -1507,10 +1592,12 @@ def CmnActHighGuardLoop():
     sprite('es041_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('es041_01', 3)
     sprite('es041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -1521,15 +1608,18 @@ def CmnActHighHeavyGuardLoop():
     sprite('es041_04', 4)
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('es041_01', 3)
     sprite('es041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('es043_00', 3)
     sprite('es043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1539,10 +1629,12 @@ def CmnActCrouchGuardLoop():
     sprite('es043_04', 4)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('es043_01', 3)
     sprite('es043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1553,15 +1645,18 @@ def CmnActCrouchHeavyGuardLoop():
     sprite('es043_04', 4)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('es043_01', 3)
     sprite('es043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('es045_00', 3)
     sprite('es045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1571,10 +1666,12 @@ def CmnActAirGuardLoop():
     sprite('es045_04', 4)
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('es045_01', 3)
     sprite('es045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -1585,10 +1682,12 @@ def CmnActAirHeavyGuardLoop():
     sprite('es045_04', 4)
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('es045_01', 3)
     sprite('es045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1599,6 +1698,7 @@ def CmnActGuardBreakStand():
     sprite('es090_03', 6)
     sprite('es090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('es091_00', 2)
@@ -1607,6 +1707,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('es091_03', 6)
     sprite('es091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1617,6 +1718,7 @@ def CmnActGuardBreakAir():
     sprite('es092_03', 6)
     sprite('es092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('es025_00', 4)
@@ -1624,11 +1726,13 @@ def CmnActAirTurn():
     sprite('es025_01ex00', 3)
     sprite('es025_00ex00', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('es040_02', 1)
     sprite('es040_01', 3)
     sprite('es040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1642,11 +1746,13 @@ def CmnActLockReject():
     sprite('es312_07', 3)
     sprite('es312_08', 3)
 
+
 @State
 def CmnActAirLockWait():
     sprite('es045_02', 1)
     sprite('es045_01', 3)
     sprite('es045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1658,6 +1764,7 @@ def CmnActAirLockReject():
     sprite('es322_05', 4)
     sprite('es322_06', 4)
     sprite('es322_07', 4)
+
 
 @State
 def CmnActLandSpin():
@@ -1675,11 +1782,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('es071_10', 6)
     sprite('es071_11', 5)
     sprite('es071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1695,6 +1804,7 @@ def CmnActVertSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideAir():
     label(0)
@@ -1709,6 +1819,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('es077_02', 4)
@@ -1718,10 +1829,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('es077_05', 5)
     sprite('es077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1731,10 +1844,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('es060_11', 4)
     sprite('es060_13', 5)
+
 
 @State
 def CmnActBurstBegin():
@@ -1748,6 +1863,7 @@ def CmnActBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstLoop():
     sprite('es331_05', 2)
@@ -1758,10 +1874,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('es331_09', 3)
     sprite('es331_10', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -1775,6 +1893,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('es331_05', 2)
@@ -1784,6 +1903,7 @@ def CmnActAirBurstLoop():
     sprite('es331_08', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -1797,6 +1917,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('es333_00', 3)
@@ -1805,6 +1926,7 @@ def CmnActOverDriveBegin():
     CreateObject('EMB_OD', -1)
     sprite('es333_03', 32767)
     loopRest()
+
 
 @State
 def CmnActOverDriveLoop():
@@ -1817,10 +1939,12 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('es333_08', 6)
     sprite('es333_09', 6)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -1830,6 +1954,7 @@ def CmnActAirOverDriveBegin():
     CreateObject('EMB_OD', -1)
     sprite('es333_13', 32767)
     loopRest()
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -1842,10 +1967,12 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('es333_15', 6)
     sprite('es333_16', 6)
+
 
 @State
 def NmlAtk5A():
@@ -1888,6 +2015,7 @@ def NmlAtk5A():
     sprite('es200_05', 3)
     sprite('es200_06', 3)
 
+
 @State
 def NmlAtk5B():
 
@@ -1925,6 +2053,7 @@ def NmlAtk5B():
     sprite('es201_09', 3)
     sprite('es201_10', 3)
 
+
 @State
 def NmlAtk5C():
 
@@ -1960,6 +2089,7 @@ def NmlAtk5C():
     sprite('es202_10', 3)
     sprite('es202_11', 3)
 
+
 @State
 def NmlAtk5D():
 
@@ -1971,25 +2101,25 @@ def NmlAtk5D():
         AirPushbackY(-100000)
         HardKnockdown(10)
         UseSlashHitspark(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
         StayAfterMovement(1, 0)
     sprite('es203_00', 3)
     sprite('es203_01', 3)
     SpriteIfNot0(1, 2, 2)
-    if (not SLOT_2):
-        ObjectUpon(10, 33)
-        ObjectUpon(11, 33)
+    if not SLOT_2:
+        ObjectUpon(OPPONENT_HIT_OR_BLOCK, 33)
+        ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 33)
     CreateObject('eseff_DTame', 0)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(42500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(42500)
     PrivateSE('esse_02')
     sprite('es203_02', 3)
     sprite('es203_03', 3)
     PrivateSE('esse_02')
     sprite('es203_01', 3)
-    PassbackAddActionMarkToFunction('eseff_DTame', 32)
+    TriggerUponForState('eseff_DTame', 32)
     sprite('es203_04', 2)
     CommonSE('006_swing_blade_2')
     RandomCommonVoiceline(3)
@@ -2012,6 +2142,7 @@ def NmlAtk5D():
     sprite('es203_12', 5)
     sprite('es203_13', 5)
     sprite('es203_14', 4)
+
 
 @State
 def NmlAtk2A():
@@ -2038,9 +2169,8 @@ def NmlAtk2A():
         HitOrBlockCancel('NmlAtk6D')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
-    PreviousStateCheck('NmlAtk2A')
-    if SLOT_0:
-        _gotolabel(1)
+    if PreviousStateCheck('NmlAtk2A'):
+        conditionalSendToLabel(1)
     sprite('es230_00', 2)
     PerInertia(60)
     sprite('es230_01', 2)
@@ -2067,6 +2197,7 @@ def NmlAtk2A():
     WhiffCancelEnable(1)
     sprite('es230_05', 3)
     sprite('es230_06', 3)
+
 
 @State
 def NmlAtk2B():
@@ -2102,6 +2233,7 @@ def NmlAtk2B():
     sprite('es231_07', 4)
     sprite('es231_08', 4)
     sprite('es231_09', 4)
+
 
 @State
 def NmlAtk2C():
@@ -2143,6 +2275,7 @@ def NmlAtk2C():
     sprite('es232_09', 6)
     sprite('es232_10', 6)
 
+
 @State
 def NmlAtk3C():
 
@@ -2182,6 +2315,7 @@ def NmlAtk3C():
     sprite('es235_10', 3)
     sprite('es235_11', 3)
 
+
 @State
 def NmlAtk2D():
 
@@ -2198,20 +2332,20 @@ def NmlAtk2D():
         MoveAttributes(0, 1, 0, 0, 0)
         UseSlashHitspark(1)
         HitOrBlockJumpCancel(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
     sprite('es233_00', 3)
     sprite('es233_01', 4)
     SpriteIfNot0(3, 2, 2)
-    if (not SLOT_2):
-        ObjectUpon(10, 33)
-        ObjectUpon(11, 33)
+    if not SLOT_2:
+        ObjectUpon(OPPONENT_HIT_OR_BLOCK, 33)
+        ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 33)
     CreateObject('eseff_DTame', 0)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(63000)
-    SetScaleX(700)
-    SetScaleY(900)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(63000)
+        SetScaleX(700)
+        SetScaleY(900)
     PrivateSE('esse_02')
     sprite('es233_02', 4)
     SpriteIfNot0(3, 2, 2)
@@ -2219,7 +2353,7 @@ def NmlAtk2D():
     SpriteIfNot0(3, 2, 2)
     PrivateSE('esse_02')
     sprite('es233_04', 2)
-    PassbackAddActionMarkToFunction('eseff_DTame', 32)
+    TriggerUponForState('eseff_DTame', 32)
     physicsXImpulse(35000)
     sprite('es233_04', 2)
     XImpulseAcceleration(90)
@@ -2253,6 +2387,7 @@ def NmlAtk2D():
     sprite('es233_14', 2)
     sprite('es233_15', 2)
 
+
 @State
 def NmlAtkAIR5A():
 
@@ -2267,9 +2402,8 @@ def NmlAtkAIR5A():
         HitOrBlockCancel('NmlAtkAIR5D')
         HitOrBlockCancel('NmlAtkAirThrow')
         HitOrBlockJumpCancel(1)
-    PreviousStateCheck('NmlAtkAIR5A')
-    if SLOT_0:
-        _gotolabel(1)
+    if PreviousStateCheck('NmlAtkAIR5A'):
+        conditionalSendToLabel(1)
     sprite('es250_00', 2)
     sprite('es250_01', 2)
     sprite('es250_02', 2)
@@ -2295,6 +2429,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('es250_04', 4)
     sprite('es250_05', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2327,6 +2462,7 @@ def NmlAtkAIR5B():
     WhiffCancelEnable(0)
     sprite('es251_06', 4)
 
+
 @State
 def NmlAtkAir5B_B():
 
@@ -2354,6 +2490,7 @@ def NmlAtkAir5B_B():
     sprite('es251_12', 3)
     sprite('es251_13', 3)
     sprite('es251_14', 3)
+
 
 @State
 def NmlAtkAIR5C():
@@ -2386,6 +2523,7 @@ def NmlAtkAIR5C():
     sprite('es252_09', 5)
     sprite('es252_10', 3)
 
+
 @State
 def NmlAtkAIR5D():
 
@@ -2398,25 +2536,25 @@ def NmlAtkAIR5D():
         AirPushbackY(18000)
         AirUntechableTime(35)
         UseSlashHitspark(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
     sprite('es253_00', 3)
     sprite('es253_00', 1)
-    if (not SLOT_2):
-        ObjectUpon(10, 33)
-        ObjectUpon(11, 33)
+    if not SLOT_2:
+        ObjectUpon(OPPONENT_HIT_OR_BLOCK, 33)
+        ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 33)
     sprite('es253_01', 3)
     SpriteIfNot0(1, 2, 2)
     ForcedLandingRecovery(9, 1)
     CreateObject('eseff_DTame', 0)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(120000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(120000)
     PrivateSE('esse_02')
     sprite('es253_02', 3)
     sprite('es253_03', 3)
     PrivateSE('esse_02')
-    PassbackAddActionMarkToFunction('eseff_DTame', 32)
+    TriggerUponForState('eseff_DTame', 32)
     sprite('es253_04', 3)
     CommonSE('006_swing_blade_2')
     sprite('es253_05', 3)
@@ -2442,6 +2580,7 @@ def NmlAtkAIR5D():
     sprite('es253_11', 3)
     sprite('es253_12', 3)
     sprite('es253_13', 3)
+
 
 @State
 def NmlAtk6A():
@@ -2486,6 +2625,7 @@ def NmlAtk6A():
     sprite('es210_12', 3)
     sprite('es210_13', 3)
 
+
 @State
 def NmlAtk6B():
 
@@ -2526,6 +2666,7 @@ def NmlAtk6B():
     sprite('es211_08', 5)
     sprite('es211_09', 4)
     sprite('es211_10', 4)
+
 
 @State
 def NmlAtk6C():
@@ -2579,6 +2720,7 @@ def NmlAtk6C():
     sprite('es212_09', 3)
     sprite('es212_10', 3)
 
+
 @State
 def NmlAtkDash6C():
 
@@ -2629,6 +2771,7 @@ def NmlAtkDash6C():
     sprite('es212_09', 3)
     sprite('es212_10', 3)
 
+
 @State
 def NmlAtk6D():
 
@@ -2644,29 +2787,29 @@ def NmlAtk6D():
         PushbackX(19800)
         UseSlashHitspark(1)
         HitJumpCancel(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
     sprite('es213_00', 2)
     sprite('es213_01', 1)
     sprite('es213_01', 2)
-    if (not SLOT_2):
-        ObjectUpon(10, 33)
-        ObjectUpon(11, 33)
+    if not SLOT_2:
+        ObjectUpon(OPPONENT_HIT_OR_BLOCK, 33)
+        ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 33)
     sprite('es213_02', 4)
     SpriteIfNot0(2, 2, 2)
     setInvincible(1)
     SpecificInvincibility(0, 0, 1, 0, 1)
     CreateObject('eseff_DTame', 0)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(155000)
-    Size(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(155000)
+        Size(800)
     PrivateSE('esse_02')
     sprite('es213_03', 4)
     PrivateSE('esse_02')
     sprite('es213_05', 3)
-    PassbackAddActionMarkToFunction('eseff_DTame', 32)
+    TriggerUponForState('eseff_DTame', 32)
     CommonSE('006_swing_blade_2')
     RandomCommonVoiceline(3)
     sprite('es213_06', 2)
@@ -2692,13 +2835,14 @@ def NmlAtk6D():
     sprite('es213_12', 32767)
     label(2)
     sprite('es213_13', 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     setInvincible(0)
     EndMomentum(1)
     sprite('es213_14', 3)
     sprite('es213_15', 2)
     sprite('es213_16', 2)
     sprite('es213_17', 2)
+
 
 @State
 def NmlAtkExcite():
@@ -2722,6 +2866,7 @@ def NmlAtkExcite():
     sprite('es300_08', 80)
     sprite('es300_07', 8)
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -2743,6 +2888,7 @@ def NmlAtkDeadAngle():
     sprite('es202_09', 5)
     sprite('es202_10', 5)
     sprite('es202_11', 4)
+
 
 @State
 def NmlAtkGuardCrush():
@@ -2768,11 +2914,11 @@ def NmlAtkGuardCrush():
         HitBackReturnIgnore(1)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -2780,8 +2926,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -2798,7 +2944,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('es340_00', 3)
     CreateObject('esef_340', 103)
@@ -2821,14 +2967,14 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('es340_04', 3)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     DespawnEAEffect('esef_340')
     CommonSE('006_swing_blade_2')
     sprite('es340_05', 3)
     sprite('es340_06', 3)
     CreateObject('esef_340_blade', -1)
-    PassbackAddActionMarkToFunction('esef_340_circle1', 32)
-    PassbackAddActionMarkToFunction('esef_340_circle2', 32)
+    TriggerUponForState('esef_340_circle1', 32)
+    TriggerUponForState('esef_340_circle2', 32)
     PrivateSE('esse_01')
     sprite('es340_07', 1)
     CreateObject('esef_340_zanzou', -1)
@@ -2841,6 +2987,7 @@ def NmlAtkGuardCrush():
     sprite('es340_11', 4)
     sprite('es340_12', 4)
     sprite('es340_13', 3)
+
 
 @State
 def NmlAtkThrow():
@@ -2859,6 +3006,7 @@ def NmlAtkThrow():
     sprite('es310_06', 3)
     sprite('es310_07', 3)
     sprite('es310_08', 3)
+
 
 @State
 def ThrowExe():
@@ -2880,14 +3028,14 @@ def ThrowExe():
         StarterRating(2)
         EnableRapidCancel(0)
         SpecialCancel(0)
-        PassbackAddActionMarkToFunction('es203_effAtk', 32)
-        PassbackAddActionMarkToFunction('es213_effAtk', 32)
-        PassbackAddActionMarkToFunction('es233_effAtk', 32)
-        PassbackAddActionMarkToFunction('es253_effAtk', 32)
-        PassbackAddActionMarkToFunction('es203_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es213_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es233_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es253_effAtkOD', 32)
+        TriggerUponForState('es203_effAtk', 32)
+        TriggerUponForState('es213_effAtk', 32)
+        TriggerUponForState('es233_effAtk', 32)
+        TriggerUponForState('es253_effAtk', 32)
+        TriggerUponForState('es203_effAtkOD', 32)
+        TriggerUponForState('es213_effAtkOD', 32)
+        TriggerUponForState('es233_effAtkOD', 32)
+        TriggerUponForState('es253_effAtkOD', 32)
     sprite('es310_02', 6)
     OppThrowAnimation(8, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
@@ -2911,7 +3059,7 @@ def ThrowExe():
     sprite('es311_04', 1)
     OppThrowAnimation(8, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
-    PassbackAddActionMarkToFunction('esef_ThrowEff', 32)
+    TriggerUponForState('esef_ThrowEff', 32)
     RefreshMultihit()
     PrivateSE('esse_01')
     sprite('es311_04', 1)
@@ -2922,7 +3070,7 @@ def ThrowExe():
     AirPushbackY(30000)
     YImpulseBeforeWallbounce(1800)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         EnableRapidCancel(1)
         SpecialCancel(1)
     sprite('es311_05', 5)
@@ -2931,6 +3079,7 @@ def ThrowExe():
     sprite('es311_08', 5)
     sprite('es311_09', 5)
     sprite('es311_10', 5)
+
 
 @State
 def NmlAtkBackThrow():
@@ -2950,6 +3099,7 @@ def NmlAtkBackThrow():
     sprite('es310_07', 3)
     sprite('es310_08', 3)
 
+
 @State
 def BackThrowExe():
 
@@ -2968,14 +3118,14 @@ def BackThrowExe():
         OppPositionOnHit(1, -180000, 0)
         WhiffCrouchBlockCancel(1)
         IgnoreTurn(1)
-        PassbackAddActionMarkToFunction('es203_effAtk', 32)
-        PassbackAddActionMarkToFunction('es213_effAtk', 32)
-        PassbackAddActionMarkToFunction('es233_effAtk', 32)
-        PassbackAddActionMarkToFunction('es253_effAtk', 32)
-        PassbackAddActionMarkToFunction('es203_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es213_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es233_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es253_effAtkOD', 32)
+        TriggerUponForState('es203_effAtk', 32)
+        TriggerUponForState('es213_effAtk', 32)
+        TriggerUponForState('es233_effAtk', 32)
+        TriggerUponForState('es253_effAtk', 32)
+        TriggerUponForState('es203_effAtkOD', 32)
+        TriggerUponForState('es213_effAtkOD', 32)
+        TriggerUponForState('es233_effAtkOD', 32)
+        TriggerUponForState('es253_effAtkOD', 32)
     sprite('es310_02', 6)
     OppThrowAnimation(8, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
@@ -3003,7 +3153,7 @@ def BackThrowExe():
     OppThrowPosition(0, 4, 4, 0, 0)
     Voiceline('es153')
     sprite('es313_05', 3)
-    PassbackAddActionMarkToFunction('esef_BackThrowEff', 32)
+    TriggerUponForState('esef_BackThrowEff', 32)
     RefreshMultihit()
     PrivateSE('esse_01')
     sprite('es313_06', 6)
@@ -3012,6 +3162,7 @@ def BackThrowExe():
     sprite('es313_09', 6)
     sprite('es313_10', 6)
     sprite('es313_11', 6)
+
 
 @State
 def NmlAtkAirThrow():
@@ -3031,6 +3182,7 @@ def NmlAtkAirThrow():
     sprite('es320_06', 3)
     sprite('es320_07', 3)
     sprite('es320_08', 3)
+
 
 @State
 def AirThrowExe():
@@ -3056,16 +3208,16 @@ def AirThrowExe():
         EnableRapidCancel(0)
         SpecialCancel(0)
         ForcedLandingRecovery(0, 0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 2)
-        PassbackAddActionMarkToFunction('es203_effAtk', 32)
-        PassbackAddActionMarkToFunction('es213_effAtk', 32)
-        PassbackAddActionMarkToFunction('es233_effAtk', 32)
-        PassbackAddActionMarkToFunction('es253_effAtk', 32)
-        PassbackAddActionMarkToFunction('es203_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es213_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es233_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es253_effAtkOD', 32)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 2)
+        TriggerUponForState('es203_effAtk', 32)
+        TriggerUponForState('es213_effAtk', 32)
+        TriggerUponForState('es233_effAtk', 32)
+        TriggerUponForState('es253_effAtk', 32)
+        TriggerUponForState('es203_effAtkOD', 32)
+        TriggerUponForState('es213_effAtkOD', 32)
+        TriggerUponForState('es233_effAtkOD', 32)
+        TriggerUponForState('es253_effAtkOD', 32)
     sprite('es320_02', 4)
     OppThrowAnimation(9, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
@@ -3106,7 +3258,7 @@ def AirThrowExe():
     label(2)
     sprite('es321_11', 3)
     AddX(-1000)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     RefreshMultihit()
     Damage(1500)
     AttackP2(50)
@@ -3116,13 +3268,13 @@ def AirThrowExe():
     DamageFromStateOnly('')
     OppPositionOnHit(0, 0, 0)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         EnableRapidCancel(1)
     sprite('es321_12', 3)
     sprite('es321_13', 12)
     sprite('es112_00', 1)
     sprite('es112_01', 3)
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     physicsYImpulse(15000)
     physicsXImpulse(-12000)
     setGravity(1500)
@@ -3149,6 +3301,7 @@ def AirThrowExe():
     sprite('es024_02', 4)
     sprite('es024_03', 4)
     sprite('es024_04', 4)
+
 
 @State
 def ShotA():
@@ -3181,6 +3334,7 @@ def ShotA():
     sprite('es400_11', 3)
     Recovery()
     sprite('es400_12', 3)
+
 
 @State
 def ShotB():
@@ -3216,6 +3370,7 @@ def ShotB():
     Recovery()
     sprite('es400_12', 2)
 
+
 @State
 def ShotA_2nd():
 
@@ -3245,6 +3400,7 @@ def ShotA_2nd():
     sprite('es400_23', 3)
     sprite('es400_24', 3)
 
+
 @State
 def ShotB_2nd():
 
@@ -3253,14 +3409,14 @@ def ShotB_2nd():
         if PreviousStateCheck('ShotA'):
             SLOT_51 = 1
 
-            def upon_FRAME_STEP():
+            def upon_EVERY_FRAME():
                 if CheckObjectPresence(4):
                     if SLOT_2:
                         ObjectUpon24(4, 103, 6, 103)
-                        if (SLOT_0 < 50000):
-                            clearUponHandler(3)
-                            PassbackAddActionMarkToFunction('es400_B_2nd', 33)
-                            PassbackAddActionMarkToFunction('es400_B_2ndB', 33)
+                        if SLOT_0 < 50000:
+                            clearUponHandler(EVERY_FRAME)
+                            TriggerUponForState('es400_B_2nd', 33)
+                            TriggerUponForState('es400_B_2ndB', 33)
     sprite('es400_13', 2)
     sprite('es400_14', 4)
     sprite('es400_15', 4)
@@ -3283,6 +3439,7 @@ def ShotB_2nd():
     Recovery()
     sprite('es400_23', 3)
     sprite('es400_24', 3)
+
 
 @State
 def AirShotA():
@@ -3325,6 +3482,7 @@ def AirShotA():
     sprite('es401_11', 2)
     sprite('es401_12', 2)
 
+
 @State
 def AirShotB():
 
@@ -3366,6 +3524,7 @@ def AirShotB():
     sprite('es401_11', 2)
     sprite('es401_12', 2)
 
+
 @State
 def AirShotA_2nd():
 
@@ -3395,7 +3554,8 @@ def AirShotA_2nd():
     setGravity(1500)
     sprite('es401_18', 3)
     loopRest()
-    GotoIf0(0, 2, 51)
+    if not SLOT_51:
+        notConditionalSendToLabel(0)
     sprite('es401_19', 3)
     sprite('es401_20', 3)
     sprite('es401_18', 3)
@@ -3404,6 +3564,7 @@ def AirShotA_2nd():
     sprite('es401_21', 3)
     sprite('es401_22', 3)
     sprite('es401_23', 3)
+
 
 @State
 def AirShotB_2nd():
@@ -3434,7 +3595,8 @@ def AirShotB_2nd():
     setGravity(1500)
     sprite('es401_18', 3)
     loopRest()
-    GotoIf0(0, 2, 51)
+    if not SLOT_51:
+        notConditionalSendToLabel(0)
     sprite('es401_19', 3)
     sprite('es401_20', 3)
     sprite('es401_18', 3)
@@ -3443,6 +3605,7 @@ def AirShotB_2nd():
     sprite('es401_21', 3)
     sprite('es401_22', 3)
     sprite('es401_23', 3)
+
 
 @State
 def AntiAir():
@@ -3461,7 +3624,7 @@ def AntiAir():
         StarterRating(0)
         UseSlashHitspark(1)
         if SLOT_31:
-            if (not SLOT_32):
+            if not SLOT_32:
                 SLOT_31 = 0
             SetActionMark(1)
 
@@ -3491,10 +3654,10 @@ def AntiAir():
     sprite('es402_10', 3)
     physicsXImpulse(30000)
     sprite('es402_11', 1)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     ObjectHitbox(1)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         CreateObject('esef_402Eff', -1)
         SLOT_52 = 1
         if SLOT_2:
@@ -3512,8 +3675,8 @@ def AntiAir():
     ResetPushbackX()
     RefreshMultihit()
     sprite('es402_11', 2)
-    clearUponHandler(10)
-    if (not SLOT_52):
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    if not SLOT_52:
         CreateObject('esef_402Eff', -1)
         if SLOT_2:
             CreateObject('es402_effAtk', -1)
@@ -3542,11 +3705,12 @@ def AntiAir():
     gotoLabel(1)
     label(2)
     sprite('es024_00', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('es024_01', 3)
     sprite('es024_02', 3)
     sprite('es024_03', 3)
+
 
 @State
 def AntiAir_Air():
@@ -3565,7 +3729,7 @@ def AntiAir_Air():
         StarterRating(0)
         UseSlashHitspark(1)
         if SLOT_31:
-            if (not SLOT_32):
+            if not SLOT_32:
                 SLOT_31 = 0
             SetActionMark(1)
 
@@ -3598,11 +3762,11 @@ def AntiAir_Air():
     CommonSE('006_swing_blade_2')
     sprite('es402_10', 3)
     sprite('es402_11', 1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 2)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 2)
     ObjectHitbox(1)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         CreateObject('esef_402Eff', -1)
         SLOT_52 = 1
         if SLOT_2:
@@ -3616,8 +3780,8 @@ def AntiAir_Air():
     AirPushbackY(42000)
     RefreshMultihit()
     sprite('es402_11', 2)
-    clearUponHandler(10)
-    if (not SLOT_52):
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    if not SLOT_52:
         CreateObject('esef_402Eff', -1)
         if SLOT_2:
             CreateObject('es402_effAtk', -1)
@@ -3646,11 +3810,12 @@ def AntiAir_Air():
     gotoLabel(1)
     label(2)
     sprite('es024_00', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('es024_01', 3)
     sprite('es024_02', 3)
     sprite('es024_03', 3)
+
 
 @State
 def AntiAir_2nd():
@@ -3660,8 +3825,8 @@ def AntiAir_2nd():
     sprite('es403_00', 4)
     physicsYImpulse(25000)
     setGravity(1500)
-    SLOT_12 = SLOT_40
-    if SLOT_38:
+    SLOT_XVelocity = SLOT_40
+    if SLOT_IsFacingRight:
         XImpulseAcceleration(-5)
     else:
         XImpulseAcceleration(5)
@@ -3683,6 +3848,7 @@ def AntiAir_2nd():
     sprite('es403_08', 4)
     sprite('es403_09', 4)
 
+
 @State
 def SpecialThrow():
 
@@ -3694,7 +3860,7 @@ def SpecialThrow():
         ThrowTechWindow(-1)
         CrouchWhiff(1)
         MoveAttributes(1, 0, 0, 0, 0)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
     sprite('es404_00', 3)
     CommonSE('000_airdash_0')
     sprite('es404_01', 3)
@@ -3732,7 +3898,7 @@ def SpecialThrow():
     XImpulseAcceleration(40)
     CrouchState(1)
     LandingEffects(-1, 1, 1)
-    sendToLabelUpon(2, 3)
+    uponSendToLabel(LANDING, 3)
     sprite('es404_18', 5)
     sprite('es404_19', 32767)
     label(3)
@@ -3744,6 +3910,7 @@ def SpecialThrow():
     Voiceline('es155')
     sprite('es404_22', 3)
     sprite('es404_23', 3)
+
 
 @State
 def SpecialThrowExe():
@@ -3770,14 +3937,14 @@ def SpecialThrowExe():
 
         def upon_STATE_END():
             setGravity(1500)
-        PassbackAddActionMarkToFunction('es203_effAtk', 32)
-        PassbackAddActionMarkToFunction('es213_effAtk', 32)
-        PassbackAddActionMarkToFunction('es233_effAtk', 32)
-        PassbackAddActionMarkToFunction('es253_effAtk', 32)
-        PassbackAddActionMarkToFunction('es203_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es213_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es233_effAtkOD', 32)
-        PassbackAddActionMarkToFunction('es253_effAtkOD', 32)
+        TriggerUponForState('es203_effAtk', 32)
+        TriggerUponForState('es213_effAtk', 32)
+        TriggerUponForState('es233_effAtk', 32)
+        TriggerUponForState('es253_effAtk', 32)
+        TriggerUponForState('es203_effAtkOD', 32)
+        TriggerUponForState('es213_effAtkOD', 32)
+        TriggerUponForState('es233_effAtkOD', 32)
+        TriggerUponForState('es253_effAtkOD', 32)
     sprite('es404_06', 6)
     OppThrowAnimation(16, 0)
     OppThrowPosition(0, 0, 0, 0, 6)
@@ -3812,6 +3979,7 @@ def SpecialThrowExe():
     sprite('es020_08', 3)
     gotoLabel(1)
 
+
 @State
 def MidAssault():
 
@@ -3835,7 +4003,7 @@ def MidAssault():
         StarterRating(2)
         UseSlashHitspark(1)
         if SLOT_31:
-            if (not SLOT_32):
+            if not SLOT_32:
                 SLOT_31 = 0
             SetActionMark(1)
         callSubroutine('CheckSpecialFlash')
@@ -3856,15 +4024,15 @@ def MidAssault():
     SpecificInvincibility(0, 0, 1, 0, 1)
     sprite('es405_06', 4)
     sprite('es405_07', 3)
-    if CheckInput(0xa):
-        sendToLabelUpon(2, 3)
+    if CheckInput(INPUT_HOLD_B):
+        uponSendToLabel(LANDING, 3)
         SLOT_51 = 1
     else:
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     sprite('es405_08', 3)
     loopRest()
     if SLOT_51:
-        _gotolabel(2)
+        conditionalSendToLabel(2)
     sprite('es405_09', 2)
     CommonSE('006_swing_blade_2')
     sprite('es405_10', 2)
@@ -3885,7 +4053,7 @@ def MidAssault():
     gotoLabel(0)
     label(1)
     sprite('es405_14', 2)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(-1, 1, 1)
     AddX(50000)
     EndMomentum(1)
@@ -3903,12 +4071,12 @@ def MidAssault():
     sprite('es405_16', 30)
     label(3)
     sprite('es405_17', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(-1, 1, 1)
     EndMomentum(1)
     CrouchState(1)
     ScreenShake(8000, 8000)
-    Comment('MidAssault_Tame')
+    GotoState('MidAssault_Tame')
     AttackLevel_(4)
     Damage(1300)
     ResetAttackP2()
@@ -3929,6 +4097,7 @@ def MidAssault():
     sprite('es405_21', 2)
     sprite('es405_22', 2)
 
+
 @State
 def Assault():
 
@@ -3946,13 +4115,13 @@ def Assault():
         AttackDirection(0)
         UseSlashHitspark(1)
 
-        def upon_FRAME_STEP():
-            (SLOT_19 < 300000)
-            if op(5, 2, 0, 2, 51):
+        def upon_EVERY_FRAME():
+            SLOT_19 < 300000
+            if not SLOT_0 and not SLOT_51:
                 sendToLabel(0)
         SLOT_62 = 0
         if SLOT_31:
-            if (not SLOT_32):
+            if not SLOT_32:
                 SLOT_31 = 0
             SLOT_62 = 1
             SetActionMark(1)
@@ -3975,7 +4144,7 @@ def Assault():
     DashEffects(100, 1, 0)
     label(0)
     sprite('es406_03', 4)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     SkidEffects(100, 1, 0)
     CommonSE('006_swing_blade_2')
     XImpulseAcceleration(60)
@@ -3999,12 +4168,13 @@ def Assault():
     BufferedOrPressedGoto('Assault_2nd')
     sprite('es406_07', 4)
     DisallowGoto2('Assault_2nd')
-    PassbackAddActionMarkToFunction('esef_406Eff', 32)
-    PassbackAddActionMarkToFunction('esef_406EffEX', 32)
+    TriggerUponForState('esef_406Eff', 32)
+    TriggerUponForState('esef_406EffEX', 32)
     sprite('es406_08', 4)
     sprite('es202_09ex00', 4)
     sprite('es202_10ex00', 3)
     sprite('es202_11ex00', 3)
+
 
 @State
 def Assault_2nd():
@@ -4023,9 +4193,9 @@ def Assault_2nd():
         AirUntechableTime(55)
         UseSlashHitspark(1)
         FatalCounter(1)
-        PassbackAddActionMarkToFunction('esef_406Eff', 33)
-        PassbackAddActionMarkToFunction('esef_406EffEX', 33)
-        PassbackAddActionMarkToFunction('esef_406Effadd', 33)
+        TriggerUponForState('esef_406Eff', 33)
+        TriggerUponForState('esef_406EffEX', 33)
+        TriggerUponForState('esef_406Effadd', 33)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('es406_07', 1)
@@ -4038,7 +4208,7 @@ def Assault_2nd():
     CommonSE('006_swing_blade_2')
     sprite('es407_02', 2)
     sprite('es407_03', 2)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     XImpulseAcceleration(20)
     physicsYImpulse(20000)
     setGravity(1500)
@@ -4066,6 +4236,7 @@ def Assault_2nd():
     sprite('es024_02', 2)
     sprite('es024_03', 2)
 
+
 @State
 def Chage():
 
@@ -4086,10 +4257,11 @@ def Chage():
     sprite('es408_03', 3)
     sprite('es408_05', 3)
     sprite('es408_06', 3)
-    if (not SLOT_32):
+    if not SLOT_32:
         SLOT_31 = 1
     sprite('es408_07', 4)
     sprite('es408_08', 3)
+
 
 @State
 def AirStamp_1st():
@@ -4108,17 +4280,17 @@ def AirStamp_1st():
         HitsparkSize(600)
         SpecialCancel(0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             Voiceline('es209')
             BeginBuffer('AirStamp_2nd')
             BufferedOrPressedGoto('AirStamp_2nd')
             ForcedLandingRecovery(5, 0)
             PerInertia(0)
             physicsYImpulse(8000)
-            if SLOT_38:
-                if (SLOT_40 > 0):
+            if SLOT_IsFacingRight:
+                if SLOT_40 > 0:
                     XImpulseAcceleration(-80)
-            elif (SLOT_40 < 0):
+            elif SLOT_40 < 0:
                 XImpulseAcceleration(-80)
             else:
                 XSpeed(5000)
@@ -4146,6 +4318,7 @@ def AirStamp_1st():
     DisallowGoto2('AirStamp_2nd')
     sprite('es409_07', 4)
 
+
 @State
 def AirStamp_2nd():
 
@@ -4164,7 +4337,7 @@ def AirStamp_2nd():
         HitsparkSize(600)
         SpecialCancel(0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             Voiceline('es210')
             BeginBuffer('AirStamp_3rd')
             BufferedOrPressedGoto('AirStamp_3rd')
@@ -4197,6 +4370,7 @@ def AirStamp_2nd():
     sprite('es409_13', 2)
     sprite('es409_14', 2)
     ExitState()
+
 
 @State
 def AirStamp_3rd():
@@ -4239,6 +4413,7 @@ def AirStamp_3rd():
     sprite('es409_21', 4)
     sprite('es409_22', 4)
 
+
 @State
 def UltimateShot_LandA():
 
@@ -4262,7 +4437,7 @@ def UltimateShot_LandA():
     sprite('es430_07', 4)
     sprite('es430_08', 4)
     sprite('es430_09', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStart', 32)
+    TriggerUponForState('esef_430EffStart', 32)
     sprite('es430_10', 4)
     sprite('es430_11', 4)
     SetXCollisionFromOrigin(150)
@@ -4274,9 +4449,9 @@ def UltimateShot_LandA():
     AddX(30000)
     sprite('es430_14', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStart', 33)
+    TriggerUponForState('esef_430EffStart', 33)
     CreateObject('es430LandA', -1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsXImpulse(20000)
     physicsYImpulse(12000)
     setGravity(1000)
@@ -4299,6 +4474,7 @@ def UltimateShot_LandA():
     sprite('es024_02', 3)
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def UltimateShot_LandB():
@@ -4318,15 +4494,15 @@ def UltimateShot_LandB():
     sprite('es430_03', 4)
     sprite('es430_04', 4)
     CreateObject('esef_430EffStart', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(350000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(350000)
     sprite('es430_05', 4)
     sprite('es430_06', 4)
     sprite('es430_07', 4)
     sprite('es430_08', 4)
     sprite('es430_09', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStart', 32)
+    TriggerUponForState('esef_430EffStart', 32)
     sprite('es430_10', 4)
     sprite('es430_11', 4)
     SetXCollisionFromOrigin(150)
@@ -4338,9 +4514,9 @@ def UltimateShot_LandB():
     AddX(30000)
     sprite('es430_14', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStart', 33)
+    TriggerUponForState('esef_430EffStart', 33)
     CreateObject('es430LandB', -1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsXImpulse(20000)
     physicsYImpulse(12000)
     setGravity(1000)
@@ -4363,6 +4539,7 @@ def UltimateShot_LandB():
     sprite('es024_02', 3)
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def UltimateShot_LandAOD():
@@ -4387,7 +4564,7 @@ def UltimateShot_LandAOD():
     sprite('es430_07', 4)
     sprite('es430_08', 4)
     sprite('es430_09', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 32)
+    TriggerUponForState('esef_430EffStartOD', 32)
     sprite('es430_10', 4)
     sprite('es430_11', 4)
     SetXCollisionFromOrigin(150)
@@ -4399,9 +4576,9 @@ def UltimateShot_LandAOD():
     AddX(30000)
     sprite('es430_14', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 33)
+    TriggerUponForState('esef_430EffStartOD', 33)
     CreateObject('es430LandAOD', -1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsXImpulse(20000)
     physicsYImpulse(12000)
     setGravity(1000)
@@ -4424,6 +4601,7 @@ def UltimateShot_LandAOD():
     sprite('es024_02', 3)
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def UltimateShot_LandBOD():
@@ -4443,15 +4621,15 @@ def UltimateShot_LandBOD():
     sprite('es430_03', 4)
     sprite('es430_04', 4)
     CreateObject('esef_430EffStartOD', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(350000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(350000)
     sprite('es430_05', 4)
     sprite('es430_06', 4)
     sprite('es430_07', 4)
     sprite('es430_08', 4)
     sprite('es430_09', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 32)
+    TriggerUponForState('esef_430EffStartOD', 32)
     sprite('es430_10', 4)
     sprite('es430_11', 4)
     SetXCollisionFromOrigin(150)
@@ -4463,9 +4641,9 @@ def UltimateShot_LandBOD():
     AddX(30000)
     sprite('es430_14', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 33)
+    TriggerUponForState('esef_430EffStartOD', 33)
     CreateObject('es430LandBOD', -1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsXImpulse(20000)
     physicsYImpulse(12000)
     setGravity(1000)
@@ -4488,6 +4666,7 @@ def UltimateShot_LandBOD():
     sprite('es024_02', 3)
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def UltimateShot_AirA():
@@ -4509,15 +4688,15 @@ def UltimateShot_AirA():
     sprite('es430_03ex00', 4)
     sprite('es430_04ex00', 4)
     CreateObject('esef_430EffStart', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(30000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(30000)
     sprite('es430_05ex00', 4)
     sprite('es430_06ex00', 4)
     sprite('es430_07ex00', 4)
     sprite('es430_08ex00', 4)
     sprite('es430_09ex00', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStart', 32)
+    TriggerUponForState('esef_430EffStart', 32)
     sprite('es430_10ex00', 4)
     sprite('es430_11ex00', 4)
     SetXCollisionFromOrigin(150)
@@ -4529,16 +4708,16 @@ def UltimateShot_AirA():
     AddX(30000)
     sprite('es430_14ex00', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStart', 33)
-    PassbackAddActionMarkToFunction('esef_430EffStartAir', 33)
+    TriggerUponForState('esef_430EffStart', 33)
+    TriggerUponForState('esef_430EffStartAir', 33)
     CreateObject('es430AirA', -1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 2)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 2)
     physicsXImpulse(15000)
     physicsYImpulse(10000)
     setGravity(1500)
     SetXCollisionFromOrigin(-1)
-    PassbackAddActionMarkToFunction('esef_430EffAsiba', 32)
+    TriggerUponForState('esef_430EffAsiba', 32)
     sprite('es430_15ex00', 4)
     sprite('es430_16ex00', 4)
     setInvincible(0)
@@ -4563,6 +4742,7 @@ def UltimateShot_AirA():
     sprite('es024_02', 3)
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def UltimateShot_AirB():
@@ -4584,16 +4764,16 @@ def UltimateShot_AirB():
     sprite('es430_03ex00', 4)
     sprite('es430_04ex00', 4)
     CreateObject('esef_430EffStart', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(15000)
-    AddY(30000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(15000)
+        AddY(30000)
     sprite('es430_05ex00', 4)
     sprite('es430_06ex00', 4)
     sprite('es430_07ex00', 4)
     sprite('es430_08ex00', 4)
     sprite('es430_09ex00', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStart', 32)
+    TriggerUponForState('esef_430EffStart', 32)
     sprite('es430_10ex00', 4)
     sprite('es430_11ex00', 4)
     SetXCollisionFromOrigin(150)
@@ -4605,16 +4785,16 @@ def UltimateShot_AirB():
     AddX(30000)
     sprite('es430_14ex00', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStart', 33)
-    PassbackAddActionMarkToFunction('esef_430EffStartAir', 33)
+    TriggerUponForState('esef_430EffStart', 33)
+    TriggerUponForState('esef_430EffStartAir', 33)
     CreateObject('es430AirB', -1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 2)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 2)
     physicsXImpulse(15000)
     physicsYImpulse(10000)
     setGravity(1500)
     SetXCollisionFromOrigin(-1)
-    PassbackAddActionMarkToFunction('esef_430EffAsiba', 32)
+    TriggerUponForState('esef_430EffAsiba', 32)
     sprite('es430_15ex00', 4)
     sprite('es430_16ex00', 4)
     setInvincible(0)
@@ -4639,6 +4819,7 @@ def UltimateShot_AirB():
     sprite('es024_02', 3)
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def UltimateShot_AirAOD():
@@ -4660,15 +4841,15 @@ def UltimateShot_AirAOD():
     sprite('es430_03ex00', 4)
     sprite('es430_04ex00', 4)
     CreateObject('esef_430EffStartOD', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(30000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(30000)
     sprite('es430_05ex00', 4)
     sprite('es430_06ex00', 4)
     sprite('es430_07ex00', 4)
     sprite('es430_08ex00', 4)
     sprite('es430_09ex00', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 32)
+    TriggerUponForState('esef_430EffStartOD', 32)
     sprite('es430_10ex00', 4)
     sprite('es430_11ex00', 4)
     SetXCollisionFromOrigin(150)
@@ -4680,16 +4861,16 @@ def UltimateShot_AirAOD():
     AddX(30000)
     sprite('es430_14ex00', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 33)
-    PassbackAddActionMarkToFunction('esef_430EffStartAir', 33)
+    TriggerUponForState('esef_430EffStartOD', 33)
+    TriggerUponForState('esef_430EffStartAir', 33)
     CreateObject('es430AirAOD', -1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 2)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 2)
     physicsXImpulse(15000)
     physicsYImpulse(10000)
     setGravity(1500)
     SetXCollisionFromOrigin(-1)
-    PassbackAddActionMarkToFunction('esef_430EffAsiba', 32)
+    TriggerUponForState('esef_430EffAsiba', 32)
     sprite('es430_15ex00', 4)
     sprite('es430_16ex00', 4)
     setInvincible(0)
@@ -4714,6 +4895,7 @@ def UltimateShot_AirAOD():
     sprite('es024_02', 3)
     sprite('es024_03', 3)
     sprite('es024_04', 3)
+
 
 @State
 def UltimateShot_AirBOD():
@@ -4735,16 +4917,16 @@ def UltimateShot_AirBOD():
     sprite('es430_03ex00', 4)
     sprite('es430_04ex00', 4)
     CreateObject('esef_430EffStartOD', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(15000)
-    AddY(30000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(15000)
+        AddY(30000)
     sprite('es430_05ex00', 4)
     sprite('es430_06ex00', 4)
     sprite('es430_07ex00', 4)
     sprite('es430_08ex00', 4)
     sprite('es430_09ex00', 4)
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 32)
+    TriggerUponForState('esef_430EffStartOD', 32)
     sprite('es430_10ex00', 4)
     sprite('es430_11ex00', 4)
     SetXCollisionFromOrigin(150)
@@ -4756,16 +4938,16 @@ def UltimateShot_AirBOD():
     AddX(30000)
     sprite('es430_14ex00', 4)
     Voiceline('es251')
-    PassbackAddActionMarkToFunction('esef_430EffStartOD', 33)
-    PassbackAddActionMarkToFunction('esef_430EffStartAir', 33)
+    TriggerUponForState('esef_430EffStartOD', 33)
+    TriggerUponForState('esef_430EffStartAir', 33)
     CreateObject('es430AirBOD', -1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 2)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 2)
     physicsXImpulse(15000)
     physicsYImpulse(10000)
     setGravity(1500)
     SetXCollisionFromOrigin(-1)
-    PassbackAddActionMarkToFunction('esef_430EffAsiba', 32)
+    TriggerUponForState('esef_430EffAsiba', 32)
     sprite('es430_15ex00', 4)
     sprite('es430_16ex00', 4)
     setInvincible(0)
@@ -4791,6 +4973,7 @@ def UltimateShot_AirBOD():
     sprite('es024_03', 3)
     sprite('es024_04', 3)
 
+
 @State
 def UltimateAssault():
 
@@ -4808,19 +4991,19 @@ def UltimateAssault():
         DefeatOpponentBehavior(1)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             EnableRapidCancel(0)
             IgnoreTurn(1)
             WhiffCrouchBlockCancel(1)
             sendToLabel(0)
-            PassbackAddActionMarkToFunction('es203_effAtk', 32)
-            PassbackAddActionMarkToFunction('es213_effAtk', 32)
-            PassbackAddActionMarkToFunction('es233_effAtk', 32)
-            PassbackAddActionMarkToFunction('es253_effAtk', 32)
-            PassbackAddActionMarkToFunction('es203_effAtkOD', 32)
-            PassbackAddActionMarkToFunction('es213_effAtkOD', 32)
-            PassbackAddActionMarkToFunction('es233_effAtkOD', 32)
-            PassbackAddActionMarkToFunction('es253_effAtkOD', 32)
+            TriggerUponForState('es203_effAtk', 32)
+            TriggerUponForState('es213_effAtk', 32)
+            TriggerUponForState('es233_effAtk', 32)
+            TriggerUponForState('es253_effAtk', 32)
+            TriggerUponForState('es203_effAtkOD', 32)
+            TriggerUponForState('es213_effAtkOD', 32)
+            TriggerUponForState('es233_effAtkOD', 32)
+            TriggerUponForState('es253_effAtkOD', 32)
 
         def upon_STATE_END():
             DespawnEAEffect('esef_431Camera')
@@ -4844,7 +5027,7 @@ def UltimateAssault():
     sprite('es431_06', 6)
     sprite('es431_07', 5)
     sprite('es431_08', 3)
-    PassbackAddActionMarkToFunction('esef_431Eff', 32)
+    TriggerUponForState('esef_431Eff', 32)
     EnableAfterimage(1)
     physicsXImpulse(15000)
     physicsYImpulse(18000)
@@ -4855,7 +5038,7 @@ def UltimateAssault():
     physicsYImpulse(0)
     sprite('es431_10', 3)
     sprite('es431_09', 3)
-    PassbackAddActionMarkToFunction('esef_431Eff', 33)
+    TriggerUponForState('esef_431Eff', 33)
     sprite('es431_11', 4)
     setInvincible(0)
     XImpulseAcceleration(70)
@@ -4874,7 +5057,7 @@ def UltimateAssault():
     ExitState()
     label(0)
     sprite('es431_12', 5)
-    PassbackAddActionMarkToFunction('esef_431Eff', 33)
+    TriggerUponForState('esef_431Eff', 33)
     XImpulseAcceleration(50)
     sprite('es431_13', 5)
     XImpulseAcceleration(50)
@@ -4955,6 +5138,7 @@ def UltimateAssault():
     DespawnEAEffect('esef_431Camera')
     sprite('es431_24', 5)
 
+
 @State
 def UltimateAssaultOD():
 
@@ -4973,19 +5157,19 @@ def UltimateAssaultOD():
         DefeatOpponentBehavior(1)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             EnableRapidCancel(0)
             IgnoreTurn(1)
             WhiffCrouchBlockCancel(1)
             sendToLabel(0)
-            PassbackAddActionMarkToFunction('es203_effAtk', 32)
-            PassbackAddActionMarkToFunction('es213_effAtk', 32)
-            PassbackAddActionMarkToFunction('es233_effAtk', 32)
-            PassbackAddActionMarkToFunction('es253_effAtk', 32)
-            PassbackAddActionMarkToFunction('es203_effAtkOD', 32)
-            PassbackAddActionMarkToFunction('es213_effAtkOD', 32)
-            PassbackAddActionMarkToFunction('es233_effAtkOD', 32)
-            PassbackAddActionMarkToFunction('es253_effAtkOD', 32)
+            TriggerUponForState('es203_effAtk', 32)
+            TriggerUponForState('es213_effAtk', 32)
+            TriggerUponForState('es233_effAtk', 32)
+            TriggerUponForState('es253_effAtk', 32)
+            TriggerUponForState('es203_effAtkOD', 32)
+            TriggerUponForState('es213_effAtkOD', 32)
+            TriggerUponForState('es233_effAtkOD', 32)
+            TriggerUponForState('es253_effAtkOD', 32)
 
         def upon_STATE_END():
             DespawnEAEffect('esef_431Camera')
@@ -5009,7 +5193,7 @@ def UltimateAssaultOD():
     sprite('es431_06', 6)
     sprite('es431_07', 5)
     sprite('es431_08', 3)
-    PassbackAddActionMarkToFunction('esef_431Eff', 32)
+    TriggerUponForState('esef_431Eff', 32)
     EnableAfterimage(1)
     physicsXImpulse(15000)
     physicsYImpulse(18000)
@@ -5021,7 +5205,7 @@ def UltimateAssaultOD():
     sprite('es431_10', 3)
     sprite('es431_09', 3)
     sprite('es431_11', 4)
-    PassbackAddActionMarkToFunction('esef_431Eff', 33)
+    TriggerUponForState('esef_431Eff', 33)
     setInvincible(0)
     XImpulseAcceleration(70)
     AbsoluteY(0)
@@ -5039,7 +5223,7 @@ def UltimateAssaultOD():
     ExitState()
     label(0)
     sprite('es431_12', 5)
-    PassbackAddActionMarkToFunction('esef_431Eff', 33)
+    TriggerUponForState('esef_431Eff', 33)
     XImpulseAcceleration(50)
     SetBackground(2)
     sprite('es431_13', 5)
@@ -5145,6 +5329,7 @@ def UltimateAssaultOD():
     DespawnEAEffect('esef_431Camera')
     sprite('es431_24', 5)
 
+
 @State
 def UltimateChage():
 
@@ -5156,9 +5341,9 @@ def UltimateChage():
     EndMomentum(1)
     sprite('es408_01', 3)
     CreateObject('EMB', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(-200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(-200)
     DistortionSettings(109, -1, 0)
     HeatChange(-5000)
     CameraControlEnable(1)
@@ -5211,17 +5396,18 @@ def UltimateChage():
     sprite('es432_18', 3)
     sprite('es432_19', 6)
     SLOT_32 = 1
-    SLOT_31 = (SLOT_31 + 900)
+    SLOT_31 = SLOT_31 + 900
     CreateObject('esef_43EsRayEff', 100)
     CameraControlEnable(0)
     sprite('es432_20', 3)
     sprite('es432_21', 3)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirUntechableTime(100)
         Blockstun(26)
         Hitstop(20)
@@ -5243,10 +5429,10 @@ def BurstDD():
             PushSpeedY()
             PushGravity()
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -5261,7 +5447,7 @@ def BurstDD():
     sprite('es440_03', 4)
     physicsXImpulse(12500)
     sprite('es404_10ex00', 2)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsXImpulse(-7000)
     SetAcceleration(300)
     physicsYImpulse(18000)
@@ -5293,11 +5479,12 @@ def BurstDD():
     sprite('es024_03', 3)
     sprite('es024_04', 3)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirUntechableTime(100)
         Blockstun(26)
         Hitstop(20)
@@ -5319,10 +5506,10 @@ def BurstDD_Easy():
             PushSpeedY()
             PushGravity()
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -5339,7 +5526,7 @@ def BurstDD_Easy():
     sprite('es440_03', 2)
     physicsXImpulse(25000)
     sprite('es404_10ex00', 2)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsXImpulse(-7000)
     SetAcceleration(300)
     physicsYImpulse(18000)
@@ -5371,11 +5558,12 @@ def BurstDD_Easy():
     sprite('es024_03', 3)
     sprite('es024_04', 3)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(3)
         Damage(600)
         AttackP2(100)
@@ -5419,7 +5607,7 @@ def BurstDDAdd():
     sprite('es020_00ex00', 3)
     physicsYImpulse(50000)
     setGravity(1500)
-    PassbackAddActionMarkToFunction('BurstDD_Camera', 32)
+    TriggerUponForState('BurstDD_Camera', 32)
     sprite('es020_01ex00', 3)
     sprite('es020_00ex00', 3)
     sprite('es020_01ex00', 3)
@@ -5432,7 +5620,7 @@ def BurstDDAdd():
     sprite('es251_00ex00', 3)
     sprite('es251_01ex00', 3)
     EndMomentum(1)
-    PassbackAddActionMarkToFunction('BurstDD_Camera', 33)
+    TriggerUponForState('BurstDD_Camera', 33)
     CommonSE('006_swing_blade_2')
     sprite('es251_02ex00', 3)
     sprite('es251_03ex00', 3)
@@ -5444,7 +5632,7 @@ def BurstDDAdd():
     sprite('es251_07ex00', 3)
     loopRest()
     if SLOT_51:
-        _gotolabel(100)
+        conditionalSendToLabel(100)
     sprite('es251_08ex00', 3)
     CreateObject('esef_251_2', -1)
     GroundedHitstunAnimation(9)
@@ -5466,9 +5654,9 @@ def BurstDDAdd():
     sprite('es440_08', 2)
     CommonSE('000_airdash_1')
     YAccel(200)
-    PassbackAddActionMarkToFunction('BurstDD_Camera', 34)
+    TriggerUponForState('BurstDD_Camera', 34)
     sprite('keep', 1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsYImpulse(-10000)
     setGravity(4000)
     label(0)
@@ -5512,8 +5700,8 @@ def BurstDDAdd():
     sprite('es440_13', 3)
     sprite('es440_14', 3)
     sprite('es440_12', 3)
-    PassbackAddActionMarkToFunction('esef_440_sword', 32)
-    PassbackAddActionMarkToFunction('esef_440_sword_add', 32)
+    TriggerUponForState('esef_440_sword', 32)
+    TriggerUponForState('esef_440_sword_add', 32)
     sprite('es440_13', 3)
     sprite('es440_14', 3)
     sprite('es440_12', 3)
@@ -5546,7 +5734,7 @@ def BurstDDAdd():
     sprite('es402_06', 2)
     sprite('es402_07', 2)
     sprite('es402_08', 2)
-    PassbackAddActionMarkToFunction('BurstDD_Camera', 35)
+    TriggerUponForState('BurstDD_Camera', 35)
     sprite('es402_09', 2)
     physicsXImpulse(15000)
     physicsYImpulse(20000)
@@ -5567,11 +5755,11 @@ def BurstDDAdd():
     sprite('es440_05', 5)
     sprite('es440_06', 5)
     sprite('es440_07', 5)
-    PassbackAddActionMarkToFunction('BurstDD_Camera', 36)
+    TriggerUponForState('BurstDD_Camera', 36)
     sprite('es440_08', 4)
     CommonSE('000_airdash_1')
     sprite('keep', 1)
-    sendToLabelUpon(2, 102)
+    uponSendToLabel(LANDING, 102)
     physicsYImpulse(-10000)
     setGravity(20000)
     label(101)
@@ -5634,8 +5822,8 @@ def BurstDDAdd():
     sprite('es440_12', 3)
     sprite('es440_13', 3)
     sprite('es440_14', 3)
-    PassbackAddActionMarkToFunction('esef_440_sword', 32)
-    PassbackAddActionMarkToFunction('esef_440_sword_add', 32)
+    TriggerUponForState('esef_440_sword', 32)
+    TriggerUponForState('esef_440_sword_add', 32)
     sprite('es440_12', 3)
     sprite('es440_13', 3)
     sprite('es440_14', 3)
@@ -5643,13 +5831,14 @@ def BurstDDAdd():
     sprite('es440_13', 3)
     label(2)
     sprite('es440_15', 4)
-    PassbackAddActionMarkToFunction('BurstDD_Camera', 37)
+    TriggerUponForState('BurstDD_Camera', 37)
     SetBackground(0)
     sprite('es440_16', 4)
     sprite('es440_17', 4)
     sprite('es312_06', 4)
     sprite('es312_07', 4)
     sprite('es312_08', 4)
+
 
 @State
 def AstralHeat():
@@ -5676,7 +5865,7 @@ def AstralHeat():
         EnemyHitstopAddition(20, 10, 10)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             CreateObject('AstralHeat_Camera', -1)
             SLOT_66 = 1
             PushbackX(0)
@@ -5747,14 +5936,14 @@ def AstralHeat():
     CreateObject('esef_430EffBG', -1)
     CreateObject('esef_430EffBGAdd', -1)
     sprite('es450_11', 4)
-    PassbackAddActionMarkToFunction('AstralHeat_Camera', 32)
+    TriggerUponForState('AstralHeat_Camera', 32)
     sprite('es450_12', 4)
     sprite('es450_13', 4)
-    ApplyFunctionsToObjects(22)
-    EndMomentum(1)
-    physicsYImpulse(1)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndMomentum(1)
+        physicsYImpulse(1)
+        EndSprite(1)
     sprite('es450_11ex', 4)
     CreateObject('esef_450ChangeSordEff', 0)
     PrivateSE('esse_00')
@@ -5777,9 +5966,9 @@ def AstralHeat():
     sprite('es450_12ex', 4)
     sprite('es450_13ex', 4)
     sprite('es450_15', 4)
-    PassbackAddActionMarkToFunction('AstralHeat_Camera', 33)
-    PassbackAddActionMarkToFunction('esef_430EffBG', 32)
-    PassbackAddActionMarkToFunction('esef_430EffBGAdd', 32)
+    TriggerUponForState('AstralHeat_Camera', 33)
+    TriggerUponForState('esef_430EffBG', 32)
+    TriggerUponForState('esef_430EffBGAdd', 32)
     sprite('es450_16', 4)
     sprite('es450_17', 4)
     sprite('es450_18', 3)
@@ -5793,9 +5982,9 @@ def AstralHeat():
     PrivateSE('esse_03')
     CommonSE('000_airdash_0')
     CreateObject('esef_430EffAtkSlash', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-35000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-35000)
     Damage(2000)
     Hitstop(12)
     EnemyHitstopAddition(0, 0, 0)
@@ -5817,12 +6006,12 @@ def AstralHeat():
     sprite('es450_24', 4)
     Size(1160)
     CreateObject('esef_430EffAasiba', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-35000)
-    AddX(200000)
-    AddY(120000)
-    SetScaleSpeed(-1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-35000)
+        AddX(200000)
+        AddY(120000)
+        SetScaleSpeed(-1)
     sprite('es450_25', 15)
     Size(1200)
     EndMomentum(1)
@@ -5838,9 +6027,9 @@ def AstralHeat():
     PrivateSE('esse_03')
     CommonSE('000_airdash_0')
     CreateObject('esef_430EffAtkSlash', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(35000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(35000)
     Damage(3000)
     GroundedHitstunAnimation(13)
     AirHitstunAnimation(13)
@@ -5861,34 +6050,34 @@ def AstralHeat():
     sprite('es450_34', 18)
     Size(800)
     CreateObject('esef_430EffAasiba', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-45000)
-    AddX(-80000)
-    AddY(350000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-45000)
+        AddX(-80000)
+        AddY(350000)
     EndMomentum(1)
     sprite('null', 18)
     Size(1000)
     Visibility(1)
     CreateObject('esef_430EffCutIn', -1)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    physicsXImpulse(0)
-    physicsYImpulse(1)
-    setGravity(0)
-    XPositionRelativeFacing(-1380000)
-    AbsoluteY(1500000)
-    Flip()
-    ApplyFunctionsToSelf()
-    PassbackAddActionMarkToFunction('esef_430EffBG', 33)
+
+    def RunOnObject_22():
+        Visibility(1)
+        physicsXImpulse(0)
+        physicsYImpulse(1)
+        setGravity(0)
+        XPositionRelativeFacing(-1380000)
+        AbsoluteY(1500000)
+        Flip()
+    TriggerUponForState('esef_430EffBG', 33)
     sprite('null', 40)
     Voiceline('es293')
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('AstralHeat_Camera', 34)
+    TriggerUponForState('AstralHeat_Camera', 34)
     sprite('es450_35', 1)
-    ApplyFunctionsToObjects(22)
-    Visibility(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(0)
     DespawnEAEffect('esef_430EffCutIn')
     CreateObject('esef_450SlashLast', -1)
     PrivateSE('esse_09')
@@ -5904,7 +6093,7 @@ def AstralHeat():
     AirHitstunAnimation(9)
     AttackDirection(2)
     RefreshMultihit()
-    PassbackAddActionMarkToFunction('AstralHeat_Camera', 35)
+    TriggerUponForState('AstralHeat_Camera', 35)
     sprite('es450_35', 13)
     sprite('es450_35', 6)
     Visibility(0)
@@ -5912,10 +6101,10 @@ def AstralHeat():
     AbsoluteY(0)
     JumpEffects(2, 100)
     SetZLine(1, 40)
-    ApplyFunctionsToObjects(22)
-    XImpulseAcceleration(5)
-    YAccel(5)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        XImpulseAcceleration(5)
+        YAccel(5)
     sprite('es450_36', 6)
     sprite('es450_37', 6)
     sprite('es450_38', 6)
@@ -5923,18 +6112,18 @@ def AstralHeat():
     sprite('es450_39', 70)
     CreateObject('esef_450EffEmb', -1)
     StopCharacterFlash1(-1)
-    ApplyFunctionsToObjects(22)
-    StopCharacterFlash1(-1)
-    EndSprite(1)
-    EndMomentum(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        StopCharacterFlash1(-1)
+        EndSprite(1)
+        EndMomentum(1)
     PrivateSE('esse_10')
     sprite('es450_40', 4)
     DespawnEAEffect('esef_450EffEmb')
     StopCharacterFlash1(-16777216)
-    ApplyFunctionsToObjects(22)
-    StopCharacterFlash1(-16777216)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        StopCharacterFlash1(-16777216)
     CallCustomizableParticle('eseff_450_flash2', -1)
     CreateObject('esef_450EffWing', -1)
     CreateObject('esef_450EffWingAdd', -1)
@@ -5965,10 +6154,10 @@ def AstralHeat():
     sprite('es450_35', 5)
     sprite('es450_41', 5)
     sprite('es450_42', 5)
-    PassbackAddActionMarkToFunction('esef_450EffWingAdd', 32)
-    ApplyFunctionsToObjects(22)
-    CharacterFlash(16777215, 60, 1)
-    ApplyFunctionsToSelf()
+    TriggerUponForState('esef_450EffWingAdd', 32)
+
+    def RunOnObject_22():
+        CharacterFlash(16777215, 60, 1)
     sprite('es450_35', 5)
     sprite('es450_41', 5)
     sprite('es450_42', 5)
@@ -5987,13 +6176,13 @@ def AstralHeat():
     CreateObject('esef_450EffClashA', -1)
     CreateObject('esef_450EffClashB', -1)
     CreateObject('esef_450EffClashC', -1)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    XPositionRelativeFacing(-260000)
-    AlphaValue(0)
-    ForceFloorReflectOff(0)
-    ForceShadowOff(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
+        XPositionRelativeFacing(-260000)
+        AlphaValue(0)
+        ForceFloorReflectOff(0)
+        ForceShadowOff(0)
     sprite('es450_42', 4)
     sprite('es450_35', 4)
     sprite('es450_41', 4)
@@ -6057,7 +6246,7 @@ def AstralHeat():
     sprite('es450_42', 3)
     sprite('es450_35', 3)
     sprite('es615_00ex', 7)
-    PassbackAddActionMarkToFunction('AstralHeat_Camera', 36)
+    TriggerUponForState('AstralHeat_Camera', 36)
     XPositionRelativeFacing(260000)
     DespawnEAEffect('esef_450EffBGClash')
     CreateObject('esef_450EffBGLast', -1)
@@ -6079,6 +6268,7 @@ def AstralHeat():
     sprite('es615_07ex', 7)
     gotoLabel(2)
 
+
 @State
 def RlAstralDamage():
 
@@ -6086,7 +6276,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('es054')
     sprite('es900_00', 25)
     EnableCollision(0)
@@ -6104,6 +6294,7 @@ def RlAstralDamage():
     Unknown30011('')
     Unknown30009(229)
     loopRest()
+
 
 @State
 def AmAstralDamage():
@@ -6129,57 +6320,189 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('es000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es055', 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es406', 13921, 13923, 13921, 13923, 13921, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es407', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es408', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es411', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es412', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es413', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es414', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es415', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es416', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('es417', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es055', 14177, 14179, 14177, 13923, 24880, 25399, 24887, 
+        25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+        14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
+    Unknown18011('es404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es406', 13921, 13923, 13921, 13923, 13921, 14435, 14433, 
+        14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es407', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 
+        25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es408', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 13667, 24885, 25399, 24887, 25399, 
+        24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es411', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es412', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es413', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es414', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es415', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es416', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('es417', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('es000', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es055', 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es406', 13921, 13923, 13921, 13923, 13921, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es407', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es408', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24884, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es411', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es412', 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es413', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es414', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es415', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es416', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('es417', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('es000', 14177, 14179, 14177, 14179, 14177, 14179, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es055', 14177, 14179, 14177, 13923, 24880, 25399, 
+            24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es400', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es401', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('es404', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+            14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es405', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es406', 13921, 13923, 13921, 13923, 13921, 14435, 
+            14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es407', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 13411, 24885, 25399, 24887, 25399, 24887, 
+            25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+            24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es408', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 13667, 24884, 25399, 24887, 
+            25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+            55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es411', 14177, 14179, 14177, 13411, 24880, 25399, 
+            24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es412', 13921, 13923, 13921, 13923, 13921, 13411, 
+            24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0)
+        Unknown18011('es413', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('es414', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es415', 14177, 14179, 14177, 14179, 14177, 14179, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('es416', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('es417', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+            14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('rg'):
-            Unknown18011('es500', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 14388, 14177, 14179, 14177, 13411, 24885, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('es501', 14177, 13667, 14177, 13155, 24880, 25399, 24885, 25399, 24885, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('es500', 14177, 14179, 14177, 13411, 24880, 25399,
+                24887, 25399, 14388, 14177, 14179, 14177, 13411, 24885, 
+                25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('es501', 14177, 13667, 14177, 13155, 24880, 25399,
+                24885, 25399, 24885, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0)
         if CharacterIDCheck('kg'):
-            Unknown18011('es546', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('es547', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('es546', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 24880, 25399, 
+                24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('es547', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('es558', 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('es559', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 24887, 25399, 24887, 25399, 13620, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('es558', 13921, 13923, 13921, 13923, 13921, 13411,
+                24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('es559', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13923, 24880, 25399, 24887, 24887, 25399, 24887, 
+                25399, 13620, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
-    if Unknown60('rg'):
+        conditionalSendToLabel(482)
+    if CharacterIDCheck('ph'):
         SyncEntry()
         gotoLabel(100)
     if CharacterIDCheck('kg'):
@@ -6189,15 +6512,14 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(390)
     label(482)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(2)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(2)
     label(1)
     sprite('null', 30)
     ForceBloomMaskOn(1)
     loopRest()
     if SLOT_17:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('es600_00', 16)
     if random_(2, 0, 50):
         SetActionMark(1)
@@ -6229,16 +6551,16 @@ def CmnActEntry():
     sprite('es600_09', 30)
     physicsYImpulse(-5000)
     setGravity(500)
-    sendToLabelUpon(2, 11)
+    uponSendToLabel(LANDING, 11)
     label(11)
     sprite('es600_10', 6)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('es024_01', 6)
     DespawnEAEffect('esef_600_particle')
-    ApplyFunctionsToObjects(22)
-    ColorForTransition(4294967295)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ColorForTransition(4294967295)
     sprite('es024_02', 6)
     sprite('es024_03', 6)
     sprite('es024_04', 6)
@@ -6270,15 +6592,15 @@ def CmnActEntry():
     sprite('es601_03', 7)
     loopRest()
     if SLOT_17:
-        _gotolabel(21)
+        conditionalSendToLabel(21)
     sprite('es601_00', 1)
     CreateObject('esef_601', -1)
     CommonSE('022_magiccircle_b')
     Voiceline('es416')
     sprite('es601_00', 6)
-    PassbackAddActionMarkToFunction('esef_601_sword', 32)
-    PassbackAddActionMarkToFunction('esef_601_sword_add', 32)
-    sendToLabelUpon(32, 23)
+    TriggerUponForState('esef_601_sword', 32)
+    TriggerUponForState('esef_601_sword_add', 32)
+    uponSendToLabel(32, 23)
     label(22)
     sprite('es601_01', 7)
     sprite('es601_02', 7)
@@ -6297,8 +6619,8 @@ def CmnActEntry():
     sprite('es601_08', 7)
     sprite('es601_09', 7)
     DespawnEAEffect('esef_601_sword_particle')
-    PassbackAddActionMarkToFunction('esef_601_bloom', 32)
-    PassbackAddActionMarkToFunction('esef_601_sub', 32)
+    TriggerUponForState('esef_601_bloom', 32)
+    TriggerUponForState('esef_601_sub', 32)
     CreateObject('esef_601_zanzou', -1)
     sprite('es601_10', 7)
     sprite('es601_11', 7)
@@ -6318,7 +6640,7 @@ def CmnActEntry():
     sprite('es601_03', 7)
     loopRest()
     if SLOT_17:
-        _gotolabel(101)
+        conditionalSendToLabel(101)
     sprite('es601_00', 7)
     sprite('es601_01', 7)
     sprite('es601_02', 7)
@@ -6340,9 +6662,9 @@ def CmnActEntry():
     CreateObject('esef_601', -1)
     CommonSE('022_magiccircle_b')
     sprite('es601_00', 6)
-    PassbackAddActionMarkToFunction('esef_601_sword', 32)
-    PassbackAddActionMarkToFunction('esef_601_sword_add', 32)
-    sendToLabelUpon(32, 105)
+    TriggerUponForState('esef_601_sword', 32)
+    TriggerUponForState('esef_601_sword_add', 32)
+    uponSendToLabel(32, 105)
     label(104)
     sprite('es601_01', 7)
     sprite('es601_02', 7)
@@ -6360,8 +6682,8 @@ def CmnActEntry():
     sprite('es601_08', 7)
     sprite('es601_09', 7)
     DespawnEAEffect('esef_601_sword_particle')
-    PassbackAddActionMarkToFunction('esef_601_bloom', 32)
-    PassbackAddActionMarkToFunction('esef_601_sub', 32)
+    TriggerUponForState('esef_601_bloom', 32)
+    TriggerUponForState('esef_601_sub', 32)
     CreateObject('esef_601_zanzou', -1)
     sprite('es601_10', 7)
     sprite('es601_11', 7)
@@ -6382,7 +6704,8 @@ def CmnActEntry():
     sprite('es601_02', 7)
     sprite('es601_03', 7)
     loopRest()
-    GotoIf0(331, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(331)
     sprite('es601_00', 7)
     sprite('es601_01', 7)
     Voiceline('es546')
@@ -6393,9 +6716,9 @@ def CmnActEntry():
     CreateObject('esef_601', -1)
     CommonSE('022_magiccircle_b')
     sprite('es601_00', 6)
-    PassbackAddActionMarkToFunction('esef_601_sword', 32)
-    PassbackAddActionMarkToFunction('esef_601_sword_add', 32)
-    sendToLabelUpon(32, 105)
+    TriggerUponForState('esef_601_sword', 32)
+    TriggerUponForState('esef_601_sword_add', 32)
+    uponSendToLabel(32, 105)
     label(334)
     sprite('es601_01', 7)
     sprite('es601_02', 7)
@@ -6412,8 +6735,8 @@ def CmnActEntry():
     sprite('es601_08', 7)
     sprite('es601_09', 7)
     DespawnEAEffect('esef_601_sword_particle')
-    PassbackAddActionMarkToFunction('esef_601_bloom', 32)
-    PassbackAddActionMarkToFunction('esef_601_sub', 32)
+    TriggerUponForState('esef_601_bloom', 32)
+    TriggerUponForState('esef_601_sub', 32)
     CreateObject('esef_601_zanzou', -1)
     sprite('es601_10', 7)
     sprite('es601_11', 7)
@@ -6428,7 +6751,7 @@ def CmnActEntry():
     ForceBloomMaskOn(1)
     loopRest()
     if SLOT_17:
-        _gotolabel(390)
+        conditionalSendToLabel(390)
     sprite('es600_00', 16)
     Visibility(1)
     AbsoluteY(120000)
@@ -6455,16 +6778,16 @@ def CmnActEntry():
     sprite('es600_09', 30)
     physicsYImpulse(-5000)
     setGravity(500)
-    sendToLabelUpon(2, 391)
+    uponSendToLabel(LANDING, 391)
     label(391)
     sprite('es600_10', 6)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('es024_01', 6)
     DespawnEAEffect('esef_600_particle')
-    ApplyFunctionsToObjects(22)
-    ColorForTransition(4294967295)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ColorForTransition(4294967295)
     sprite('es024_02', 6)
     sprite('es024_03', 6)
     sprite('es024_04', 6)
@@ -6483,6 +6806,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActRoundWin():
     sprite('es615_00', 7)
@@ -6498,10 +6822,11 @@ def CmnActRoundWin():
     sprite('es615_07', 7)
     gotoLabel(1)
 
+
 @State
 def CmnActMatchWin():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('rg'):
         SyncEntry()
         gotoLabel(100)
@@ -6512,9 +6837,8 @@ def CmnActMatchWin():
         SyncEntry()
         gotoLabel(390)
     label(482)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(2)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(2)
     label(1)
     sprite('es610_00', 9)
     sprite('es610_01', 9)
@@ -6636,9 +6960,9 @@ def CmnActMatchWin():
     sprite('es001_02', 6)
     sprite('es001_03', 6)
     CreateObject('esef_001', 0)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(65000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(65000)
     PrivateSE('esse_08')
     CreateObject('esef_001_tame_add', 0)
     CreateObject('esef_001_tame_add', 1)
@@ -6675,6 +6999,7 @@ def CmnActMatchWin():
     loopRest()
     gotoLabel(391)
 
+
 @State
 def CmnActLose():
     sprite('es620_00', 7)
@@ -6689,6 +7014,7 @@ def CmnActLose():
     sprite('es620_06', 7)
     sprite('es620_07', 7)
     sprite('es620_08', 32767)
+
 
 @State
 def Act3Event_StandLoop():
@@ -6707,6 +7033,7 @@ def Act3Event_StandLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_NoDisp():
 
@@ -6718,6 +7045,7 @@ def Act3Event_NoDisp():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def Act3Event_WalkIn():
 
@@ -6725,15 +7053,15 @@ def Act3Event_WalkIn():
         ScreenCollision(0)
         XPositionRelativeFacing(-720000)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-260000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-260000)
                 EndMomentum(1)
                 sendToLabel(0)
@@ -6759,6 +7087,7 @@ def Act3Event_WalkIn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_WalkInLookAtMe():
 
@@ -6767,15 +7096,15 @@ def Act3Event_WalkInLookAtMe():
         CameraControlEnable(1)
         XPositionRelativeFacing(-720000)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-260000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-260000)
                 EndMomentum(1)
                 sendToLabel(0)
@@ -6811,6 +7140,7 @@ def Act3Event_WalkInLookAtMe():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_Reaction():
     sprite('es001_00', 6)
@@ -6818,9 +7148,9 @@ def Act3Event_Reaction():
     sprite('es001_02', 6)
     sprite('es001_03', 6)
     CreateObject('esef_001', 0)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(65000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(65000)
     PrivateSE('esse_08')
     CreateObject('esef_001_tame_add', 0)
     CreateObject('esef_001_tame_add', 1)
@@ -6855,6 +7185,7 @@ def Act3Event_Reaction():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ReactionEnd():
     sprite('es001_02', 6)
@@ -6862,6 +7193,7 @@ def Act3Event_ReactionEnd():
     sprite('es001_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_Chouhatsu():
@@ -6874,6 +7206,7 @@ def Act3Event_Chouhatsu():
     sprite('es300_06', 8)
     sprite('es300_08', 32767)
 
+
 @State
 def Act3Event_ChouhatsuEnd():
     sprite('es300_06', 6)
@@ -6885,6 +7218,7 @@ def Act3Event_ChouhatsuEnd():
     sprite('es300_00', 8)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsmk_00():
@@ -6909,6 +7243,7 @@ def Act3Event_esvsmk_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsmk_01():
     sprite('es003_00', 3)
@@ -6919,6 +7254,7 @@ def Act3Event_esvsmk_01():
     sprite('es003_00ex00', 3)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsmk_02():
@@ -6934,6 +7270,7 @@ def Act3Event_esvsmk_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsmk_03():
     sprite('es610_03', 5)
@@ -6943,12 +7280,14 @@ def Act3Event_esvsmk_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_esvsnt_00():
     sprite('keep', 1)
     ObjectUpon(22, 32)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsnt_01():
@@ -6964,12 +7303,14 @@ def Act3Event_esvsnt_01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsnt_02():
     sprite('es400_00', 7)
     loopRest()
     SFX_FOOTSTEP_(100, 1, 1)
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsnt_03():
@@ -6987,7 +7328,7 @@ def Act3Event_esvsnt_03():
         def upon_LANDING():
             EndMomentum(1)
             ScreenCollision(1)
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             CameraControlEnable(0)
             sendToLabel(1)
 
@@ -7042,8 +7383,8 @@ def Act3Event_esvsnt_03():
     sprite('es440_13', 4)
     sprite('es440_14', 4)
     sprite('es440_12', 4)
-    PassbackAddActionMarkToFunction('esef_440_sword', 32)
-    PassbackAddActionMarkToFunction('esef_440_sword_add', 32)
+    TriggerUponForState('esef_440_sword', 32)
+    TriggerUponForState('esef_440_sword_add', 32)
     sprite('es440_13', 4)
     sprite('es440_14', 4)
     sprite('es440_12', 5)
@@ -7063,6 +7404,7 @@ def Act3Event_esvsnt_03():
     sprite('es312_08', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsnt_04():
@@ -7105,6 +7447,7 @@ def Act3Event_esvsnt_04():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsnt_05():
     sprite('es300_00', 8)
@@ -7116,6 +7459,7 @@ def Act3Event_esvsnt_05():
     sprite('es300_05', 8)
     sprite('es300_06', 8)
     sprite('es300_08', 32767)
+
 
 @State
 def Act3Event_esvsiz_00():
@@ -7281,6 +7625,7 @@ def Act3Event_esvsiz_00():
     AbsoluteY(0)
     loopRest()
 
+
 @State
 def Act3Event_esvsiz_01():
     sprite('null', 1)
@@ -7307,8 +7652,8 @@ def Act3Event_esvsiz_01():
     sprite('es340_05', 2)
     sprite('es340_06', 2)
     CreateObject('esef_340_blade', -1)
-    PassbackAddActionMarkToFunction('esef_340_circle1', 32)
-    PassbackAddActionMarkToFunction('esef_340_circle2', 32)
+    TriggerUponForState('esef_340_circle1', 32)
+    TriggerUponForState('esef_340_circle2', 32)
     PrivateSE('esse_01')
     sprite('es340_07', 1)
     CreateObject('esef_340_zanzou', -1)
@@ -7324,6 +7669,7 @@ def Act3Event_esvsiz_01():
     sprite('es340_13', 3)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsiz_02():
@@ -7351,21 +7697,22 @@ def Act3Event_esvsiz_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsiz_03():
     CameraControlEnable(1)
     ScreenCollision(0)
 
     def upon_STATE_END():
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
     sprite('es212_00', 3)
     physicsXImpulse(70000)
     ScreenShake(4000, 2000)
     CommonSE('002_highjump_1')
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 300000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 300000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(1)
     label(0)
@@ -7401,13 +7748,14 @@ def Act3Event_esvsiz_03():
     sprite('es212_05', 32767)
     loopRest()
 
+
 @State
 def Act3Event_esvsiz_04():
     ScreenCollision(0)
     CameraControlEnable(1)
 
     def upon_STATE_END():
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
         CameraControlEnable(0)
     sprite('es212_06', 6)
     sprite('es212_07', 3)
@@ -7430,13 +7778,14 @@ def Act3Event_esvsiz_04():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsiz_05():
     sprite('es611_00', 7)
     AbsoluteY(0)
     ColorForTransition(4294967295)
     CommonSE('019_cloth_c')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('es611_01', 7)
     CommonSE('019_cloth_b')
     sprite('es611_02', 7)
@@ -7464,6 +7813,7 @@ def Act3Event_esvsiz_05():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def Act3Event_esvsiz_06():
 
@@ -7471,15 +7821,15 @@ def Act3Event_esvsiz_06():
         ScreenCollision(0)
         XPositionRelativeFacing(-920000)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 60000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 60000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-60000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-60000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -60000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-60000)
                 EndMomentum(1)
                 sendToLabel(0)
@@ -7515,6 +7865,7 @@ def Act3Event_esvsiz_06():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsrg_00():
     sprite('es600_00', 16)
@@ -7542,22 +7893,23 @@ def Act3Event_esvsrg_00():
     sprite('es600_09', 30)
     physicsYImpulse(-5000)
     setGravity(500)
-    sendToLabelUpon(2, 11)
+    uponSendToLabel(LANDING, 11)
     label(11)
     sprite('es600_10', 6)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
     sprite('es024_01', 6)
     DespawnEAEffect('esef_600_particle')
-    ApplyFunctionsToObjects(22)
-    ColorForTransition(4294967295)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ColorForTransition(4294967295)
     sprite('es024_02', 6)
     sprite('es024_03', 6)
     sprite('es024_04', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsrg_01():
@@ -7573,6 +7925,7 @@ def Act3Event_esvsrg_01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsrg_02():
     sprite('es610_03', 5)
@@ -7581,6 +7934,7 @@ def Act3Event_esvsrg_02():
     sprite('es610_00', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsmk_90():
@@ -7602,6 +7956,7 @@ def Act3Event_esvsmk_90():
     sprite('es202_11', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsiz_90():
@@ -7627,8 +7982,8 @@ def Act3Event_esvsiz_90():
     sprite('es406_06', 2)
     sprite('es406_06', 2)
     sprite('es406_07', 4)
-    PassbackAddActionMarkToFunction('esef_406Eff', 32)
-    PassbackAddActionMarkToFunction('esef_406EffEX', 32)
+    TriggerUponForState('esef_406Eff', 32)
+    TriggerUponForState('esef_406EffEX', 32)
     sprite('es406_08', 4)
     sprite('es202_09ex00', 4)
     AddX(30000)
@@ -7638,6 +7993,7 @@ def Act3Event_esvsiz_90():
     XPositionRelativeFacing(0)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsiz_91():
@@ -7661,6 +8017,7 @@ def Act3Event_esvsiz_91():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsiz_92():
     sprite('keep', 2)
@@ -7680,6 +8037,7 @@ def Act3Event_esvsiz_92():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsiz_93():
     sprite('keep', 2)
@@ -7694,6 +8052,7 @@ def Act3Event_esvsiz_93():
     sprite('es610_07', 8)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_esvsiz_94():
@@ -7715,7 +8074,7 @@ def Act3Event_esvsiz_94():
     sprite('es611_04', 7)
     sprite('es611_05', 7)
     physicsYImpulse(2000)
-    PassbackAddActionMarkToFunction('Act3Event_esvsiz_rg', 32)
+    TriggerUponForState('Act3Event_esvsiz_rg', 32)
     sprite('es611_06', 7)
     physicsYImpulse(1000)
     sprite('es611_07', 7)

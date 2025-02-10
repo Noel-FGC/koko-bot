@@ -20,6 +20,7 @@ def EMB_MK():
     ColorTransition(4286625023, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_MK_OD():
 
@@ -42,6 +43,7 @@ def EMB_MK_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_MK_AH():
 
@@ -62,6 +64,7 @@ def EMB_MK_AH():
     sprite('null', 10)
     ColorTransition(4294901760, 10)
     sprite('null', 20)
+
 
 @State
 def DriveRing():
@@ -139,14 +142,14 @@ def DriveRing():
                 AddY(235000)
                 E0EAEffectPosition(3)
         SLOT_51 = SLOT_103
-        SLOT_51 = (SLOT_51 + 1)
+        SLOT_51 = SLOT_51 + 1
         SLOT_104 = SLOT_51
-        SLOT_104 = (SLOT_104 * 80)
-        SLOT_105 = (-80)
+        SLOT_104 = SLOT_104 * 80
+        SLOT_105 = -80
         PaletteID(1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 > SLOT_51):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration > SLOT_51:
                 DeleteObject(23)
     sprite('null', 4)
     sprite('null', 117)
@@ -156,15 +159,16 @@ def DriveRing():
     sprite('null', 30)
     clearUponHandler(32)
     SetScaleSpeed(20)
-    PassbackAddActionMarkToFunction('DriveChargemc', 33)
+    TriggerUponForState('DriveChargemc', 33)
     E0EAEffectPosition(0)
+
 
 @State
 def FakeBunshinStepA():
 
     def upon_IMMEDIATE():
         NoDamageAction(1)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
         WallCollisionDetection(1)
     sprite('mk404_00', 3)
     EnableAfterimage(1)
@@ -190,12 +194,13 @@ def FakeBunshinStepA():
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
 
+
 @State
 def FakeBunshinStepB():
 
     def upon_IMMEDIATE():
         NoDamageAction(1)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
         WallCollisionDetection(1)
     sprite('mk023_00', 2)
     EnableAfterimage(1)
@@ -225,12 +230,13 @@ def FakeBunshinStepB():
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
 
+
 @State
 def FakeBunshinStepC():
 
     def upon_IMMEDIATE():
         NoDamageAction(1)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
         WallCollisionDetection(1)
     sprite('mk023_00', 2)
     EnableAfterimage(1)
@@ -261,6 +267,7 @@ def FakeBunshinStepC():
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
 
+
 @State
 def DonguriShot():
 
@@ -268,8 +275,8 @@ def DonguriShot():
         AttackDefaults_SpecialProjectile()
         AttackLevel_(0)
         Damage(100)
-        sendToLabelUpon(2, 1)
-        sendToLabelUpon(54, 1)
+        uponSendToLabel(LANDING, 1)
+        uponSendToLabel(54, 1)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
         SLOT_6 = 1
 
@@ -284,7 +291,7 @@ def DonguriShot():
     physicsXImpulse(4000)
     label(1)
     sprite('vr_donguri', 20)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     AddRotationPerFrame(-48000)
     YAccel(-40)
@@ -292,6 +299,7 @@ def DonguriShot():
     BlendMode_Normal()
     sprite('vr_donguri', 40)
     ConstantAlphaModifier(-30)
+
 
 @State
 def EnergyBall():
@@ -318,19 +326,19 @@ def EnergyBall():
         def upon_STATE_END():
             SLOT_4 = 0
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
-            if (SLOT_2 == 3):
-                clearUponHandler(10)
+            if SLOT_2 == 3:
+                clearUponHandler(OPPONENT_HIT_OR_BLOCK)
                 HitsparkSize(1000)
                 NoAttackDuringAction(1)
 
         def upon_OPPONENT_HIT():
             AttackDirection(4)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
 
         def upon_41():
             NoAttackDuringAction(1)
@@ -408,9 +416,9 @@ def EnergyBall():
     AirPushbackY(15000)
     ResetPushbackX()
     AttackDirection(0)
-    clearUponHandler(10)
-    clearUponHandler(12)
-    sendToLabelUpon(10, 100)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(OPPONENT_HIT)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 100)
     BlendMode_Add()
     Visibility(1)
     CreateObject('mkef_EnergyBall', -1)
@@ -442,9 +450,9 @@ def EnergyBall():
     AirPushbackY(15000)
     ResetPushbackX()
     AttackDirection(0)
-    clearUponHandler(10)
-    clearUponHandler(12)
-    sendToLabelUpon(10, 100)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(OPPONENT_HIT)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 100)
     BlendMode_Add()
     Visibility(1)
     CreateObject('mkef_EnergyBall', -1)
@@ -482,9 +490,9 @@ def EnergyBall():
     CHAirHitstunAnimation(12)
     AirHitstunAfterWallbounce(50)
     CHWallbounceReboundTime(5)
-    clearUponHandler(10)
-    clearUponHandler(12)
-    sendToLabelUpon(10, 100)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(OPPONENT_HIT)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 100)
     BlendMode_Add()
     Visibility(1)
     CreateObject('mkef_EnergyBall', -1)
@@ -521,9 +529,9 @@ def EnergyBall():
     FatalCounter(1)
     AirHitstunAfterWallbounce(50)
     CHWallbounceReboundTime(5)
-    clearUponHandler(10)
-    clearUponHandler(12)
-    sendToLabelUpon(10, 100)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(OPPONENT_HIT)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 100)
     BlendMode_Add()
     Visibility(1)
     CreateObject('mkef_EnergyBall', -1)
@@ -544,7 +552,7 @@ def EnergyBall():
     gotoLabel(101)
     label(100)
     if SLOT_51:
-        _gotolabel(101)
+        conditionalSendToLabel(101)
     sprite('vr_shot_test01', 16)
     NoAttackDuringAction(1)
     XImpulseAcceleration(80)
@@ -556,7 +564,8 @@ def EnergyBall():
     EndMomentum(1)
     SetAcceleration(0)
     SetScaleSpeed(-50)
-    PassbackAddActionMarkToFunction('mkef_EnergyBall_Punch', 36)
+    TriggerUponForState('mkef_EnergyBall_Punch', 36)
+
 
 @State
 def ChargeRing():
@@ -568,7 +577,7 @@ def ChargeRing():
         RemoveOnCallStateEnd(2)
         RenderLayer(4)
         Size(1800)
-        sendToLabelUpon(32, 22)
+        uponSendToLabel(32, 22)
     sprite('null', 2)
     AlphaValue(0)
     sprite('null', 10)
@@ -581,6 +590,7 @@ def ChargeRing():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def DriveChargemc():
 
@@ -592,8 +602,8 @@ def DriveChargemc():
         E0EAEffectScale(2)
         RenderLayer(4)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(44, 22)
-        sendToLabelUpon(33, 22)
+        uponSendToLabel(PLAYER_DAMAGED, 22)
+        uponSendToLabel(33, 22)
     sprite('null', 200)
     AlphaValue(255)
     loopRest()
@@ -605,6 +615,7 @@ def DriveChargemc():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def DriveChargeAura():
 
@@ -615,8 +626,8 @@ def DriveChargeAura():
         Size(0)
         ColorForTransition(3355459839)
         RemoveOnCallStateEnd(3)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(44, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
         ContinueState(160)
     sprite('vref_env', 15)
     SetScaleSpeed(200)
@@ -625,11 +636,12 @@ def DriveChargeAura():
     label(99)
     sprite('vref_env', 10)
     clearUponHandler(32)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     RemoveOnCallStateEnd(0)
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-40)
+
 
 @State
 def DriveChargeAuraAir():
@@ -641,7 +653,7 @@ def DriveChargeAuraAir():
         BlendMode_Add()
         Size(0)
         ColorForTransition(3355459839)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
         ContinueState(120)
     sprite('vref_env', 15)
     SetScaleSpeed(200)
@@ -653,6 +665,7 @@ def DriveChargeAuraAir():
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def DriveChargeWind():
@@ -668,8 +681,8 @@ def DriveChargeWind():
         AddX(16000)
         AlphaValue(255)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(36, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(36, 2)
     sprite('null', 5)
     ConstantAlphaModifier(20)
     SetScaleSpeed(20)
@@ -691,6 +704,7 @@ def DriveChargeWind():
     ConstantAlphaModifier(-20)
     SetScaleXPerFrame(10)
 
+
 @State
 def DriveChargelightning():
 
@@ -702,6 +716,7 @@ def DriveChargelightning():
         Size(800)
     sprite('null', 30)
 
+
 @State
 def Lightblue():
 
@@ -710,6 +725,7 @@ def Lightblue():
         RemoveOnCallStateEnd(2)
         LinkParticle('mkef_lightblue')
     sprite('null', 24)
+
 
 @State
 def ShinigPunch_D():
@@ -735,6 +751,7 @@ def ShinigPunch_D():
     CreateObject('Lightblue', 0)
     CreateObject('Lightblue', 1)
 
+
 @State
 def ShinigPunchLvG_D():
 
@@ -759,6 +776,7 @@ def ShinigPunchLvG_D():
     CreateObject('Lightblue', 0)
     CreateObject('Lightblue', 1)
 
+
 @State
 def ShinigPunch_2D():
 
@@ -779,6 +797,7 @@ def ShinigPunch_2D():
     sprite('vrmkef233_01', 1)
     sprite('vrmkef233_01', 2)
 
+
 @State
 def ShinigPunchLvG_2D():
 
@@ -798,6 +817,7 @@ def ShinigPunchLvG_2D():
     ConstantAlphaModifier(-50)
     sprite('vrmkef233_01', 1)
     sprite('vrmkef233_01', 2)
+
 
 @State
 def ShinigPunch_5D():
@@ -823,6 +843,7 @@ def ShinigPunch_5D():
     CreateObject('Lightblue', 0)
     CreateObject('Lightblue', 1)
 
+
 @State
 def ShinigPunchLvG_5D():
 
@@ -847,6 +868,7 @@ def ShinigPunchLvG_5D():
     CreateObject('Lightblue', 0)
     CreateObject('Lightblue', 1)
 
+
 @State
 def DriveLv1PunchefD():
 
@@ -862,6 +884,7 @@ def DriveLv1PunchefD():
     E0EAEffectPosition(0)
     sprite('null', 19)
     ConstantAlphaModifier(-10)
+
 
 @State
 def DriveLv2PunchefD():
@@ -881,6 +904,7 @@ def DriveLv2PunchefD():
     sprite('null', 19)
     ConstantAlphaModifier(-10)
 
+
 @State
 def DriveLv3PunchefD():
 
@@ -890,7 +914,7 @@ def DriveLv3PunchefD():
         RemoveOnCallStateEnd(3)
         BlendMode_Add()
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
     sprite('null', 8)
     sprite('null', 3)
     ConstantAlphaModifier(-25)
@@ -906,21 +930,6 @@ def DriveLv3PunchefD():
     sprite('null', 12)
     ConstantAlphaModifier(-12)
 
-@State
-def DriveLvG_PunchefD():
-
-    def upon_IMMEDIATE():
-        LinkParticle('mkef_LvGPunchmc')
-        E0EAEffectPosition(3)
-        RemoveOnCallStateEnd(3)
-        BlendMode_Add()
-        IgnoreScreenfreeze(1)
-    sprite('null', 8)
-    sprite('null', 3)
-    ConstantAlphaModifier(-25)
-    E0EAEffectPosition(0)
-    sprite('null', 19)
-    ConstantAlphaModifier(-8)
 
 @State
 def DriveLvG_PunchefD():
@@ -937,6 +946,24 @@ def DriveLvG_PunchefD():
     E0EAEffectPosition(0)
     sprite('null', 19)
     ConstantAlphaModifier(-8)
+
+
+@State
+def DriveLvG_PunchefD():
+
+    def upon_IMMEDIATE():
+        LinkParticle('mkef_LvGPunchmc')
+        E0EAEffectPosition(3)
+        RemoveOnCallStateEnd(3)
+        BlendMode_Add()
+        IgnoreScreenfreeze(1)
+    sprite('null', 8)
+    sprite('null', 3)
+    ConstantAlphaModifier(-25)
+    E0EAEffectPosition(0)
+    sprite('null', 19)
+    ConstantAlphaModifier(-8)
+
 
 @State
 def DriveLv1Punchef2D():
@@ -953,6 +980,7 @@ def DriveLv1Punchef2D():
     sprite('null', 19)
     ConstantAlphaModifier(-10)
 
+
 @State
 def DriveLv2Punchef2D():
 
@@ -967,6 +995,7 @@ def DriveLv2Punchef2D():
     ConstantAlphaModifier(-25)
     sprite('null', 19)
     ConstantAlphaModifier(-10)
+
 
 @State
 def DriveLv3Punchef2D():
@@ -983,6 +1012,7 @@ def DriveLv3Punchef2D():
     sprite('null', 19)
     ConstantAlphaModifier(-8)
 
+
 @State
 def DriveLvG_Punchef2D():
 
@@ -998,6 +1028,7 @@ def DriveLvG_Punchef2D():
     sprite('null', 19)
     ConstantAlphaModifier(-8)
 
+
 @State
 def DriveLv1PunchefPowerDunk():
 
@@ -1007,7 +1038,7 @@ def DriveLv1PunchefPowerDunk():
         RemoveOnCallStateEnd(3)
         IgnoreScreenfreeze(1)
         RotationAngle(80000)
-        sendToLabelUpon(32, 70)
+        uponSendToLabel(32, 70)
     sprite('null', 5)
     E0EAEffectPosition(3)
     sprite('null', 3)
@@ -1019,6 +1050,7 @@ def DriveLv1PunchefPowerDunk():
     sprite('null', 8)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-30)
+
 
 @State
 def DriveLv2PunchefPowerDunk():
@@ -1037,6 +1069,7 @@ def DriveLv2PunchefPowerDunk():
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-10)
 
+
 @State
 def DriveLv3PunchefPowerDunk():
 
@@ -1053,6 +1086,7 @@ def DriveLv3PunchefPowerDunk():
     sprite('null', 19)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-8)
+
 
 @State
 def DriveLvG_PunchefPowerDunk():
@@ -1071,6 +1105,7 @@ def DriveLvG_PunchefPowerDunk():
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-8)
 
+
 @State
 def DriveLv1PunchefSyouryu2():
 
@@ -1085,6 +1120,7 @@ def DriveLv1PunchefSyouryu2():
     ConstantAlphaModifier(-25)
     sprite('null', 19)
     ConstantAlphaModifier(-10)
+
 
 @State
 def DriveLv2PunchefSyouryu2():
@@ -1101,6 +1137,7 @@ def DriveLv2PunchefSyouryu2():
     sprite('null', 19)
     ConstantAlphaModifier(-10)
 
+
 @State
 def DriveLv3PunchefSyouryu2():
 
@@ -1115,6 +1152,7 @@ def DriveLv3PunchefSyouryu2():
     ConstantAlphaModifier(-25)
     sprite('null', 19)
     ConstantAlphaModifier(-8)
+
 
 @State
 def DriveLv3PunchefSyouryu():
@@ -1132,6 +1170,7 @@ def DriveLv3PunchefSyouryu():
     sprite('null', 19)
     ConstantAlphaModifier(-8)
 
+
 @State
 def DriveLv3PunchefSyouryu_Air():
 
@@ -1148,6 +1187,7 @@ def DriveLv3PunchefSyouryu_Air():
     sprite('null', 19)
     ConstantAlphaModifier(-8)
 
+
 @State
 def mkef_hit_low():
 
@@ -1155,6 +1195,7 @@ def mkef_hit_low():
         pass
     sprite('null', 1)
     CreateParticle('mkef_hit_low', -1)
+
 
 @State
 def mkef_hit_middle():
@@ -1164,6 +1205,7 @@ def mkef_hit_middle():
     sprite('null', 1)
     CreateParticle('mkef_hit_middle', -1)
 
+
 @State
 def mkef_hit_high():
 
@@ -1171,6 +1213,7 @@ def mkef_hit_high():
         pass
     sprite('null', 1)
     CreateParticle('mkef_hit_high', -1)
+
 
 @State
 def mkef_hit_tailsp():
@@ -1182,6 +1225,7 @@ def mkef_hit_tailsp():
     PrivateSE('mkse_06')
     PrivateSE('mkse_06')
 
+
 @State
 def mkef_hit_tailsp_nage():
 
@@ -1191,6 +1235,7 @@ def mkef_hit_tailsp_nage():
     CreateParticle('mkef_hit_tailsp_nage', -1)
     PrivateSE('mkse_06')
 
+
 @State
 def mkef_hibana():
 
@@ -1199,6 +1244,7 @@ def mkef_hibana():
         E0EAEffectPosition(2)
         LinkParticle('mkef_hibana')
     sprite('null', 6)
+
 
 @State
 def mkef_EnergyBall():
@@ -1210,6 +1256,7 @@ def mkef_EnergyBall():
         Size(750)
     sprite('null', 6)
 
+
 @State
 def mkef_EnergyBall_Punch():
 
@@ -1218,8 +1265,8 @@ def mkef_EnergyBall_Punch():
         E0EAEffectPosition(2)
         LinkParticle('mkef_400energyball')
         AlphaValue(255)
-        sendToLabelUpon(54, 11)
-        sendToLabelUpon(36, 11)
+        uponSendToLabel(54, 11)
+        uponSendToLabel(36, 11)
     sprite('null', 30)
     sprite('null', 1)
     Unknown23090(23)
@@ -1233,6 +1280,7 @@ def mkef_EnergyBall_Punch():
     AlphaValue(0)
     loopRest()
     ExitState()
+
 
 @State
 def mkef_EnergyBall_Koware():
@@ -1249,6 +1297,7 @@ def mkef_EnergyBall_Koware():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def SyouryuUpper():
 
@@ -1258,6 +1307,7 @@ def SyouryuUpper():
     sprite('null', 8)
     RotationAngle(15000)
     sprite('null', 32)
+
 
 @State
 def PowerDunkAirwallLv2():
@@ -1269,6 +1319,7 @@ def PowerDunkAirwallLv2():
     sprite('null', 75)
     RotationAngle(80000)
 
+
 @State
 def PowerDunkAirwallLv3():
 
@@ -1279,6 +1330,7 @@ def PowerDunkAirwallLv3():
     sprite('null', 75)
     RotationAngle(80000)
 
+
 @State
 def PowerDunkAirwallLvG():
 
@@ -1288,6 +1340,7 @@ def PowerDunkAirwallLvG():
         E0EAEffectPosition(3)
     sprite('null', 75)
     RotationAngle(80000)
+
 
 @State
 def BlockingPunchLv1():
@@ -1302,6 +1355,7 @@ def BlockingPunchLv1():
     sprite('null', 65)
     AddX(75000)
 
+
 @State
 def BlockingPunchLv2():
 
@@ -1315,6 +1369,7 @@ def BlockingPunchLv2():
     sprite('null', 65)
     AddX(75000)
 
+
 @State
 def BlockingPunchLv3():
 
@@ -1326,6 +1381,7 @@ def BlockingPunchLv3():
     E0EAEffectPosition(3)
     AddY(6000)
     AddX(40000)
+
 
 @State
 def BlockingPunchLv3_G():
@@ -1339,6 +1395,7 @@ def BlockingPunchLv3_G():
     AddY(6000)
     AddX(40000)
 
+
 @State
 def BlockingSpeedLine():
 
@@ -1349,6 +1406,7 @@ def BlockingSpeedLine():
     sprite('null', 12)
     AbsoluteY(200000)
     AddX(-80000)
+
 
 @State
 def BlockingWind():
@@ -1369,6 +1427,7 @@ def BlockingWind():
     sprite('null', 21)
     physicsXImpulse(-10000)
 
+
 @State
 def EntryMant():
 
@@ -1380,6 +1439,7 @@ def EntryMant():
     AddY(180000)
     sprite('vrmkef600m_01', 3)
     AddY(100000)
+
 
 @State
 def GuardCrash():
@@ -1396,6 +1456,7 @@ def GuardCrash():
     sprite('vrmkef414_02', 4)
     sprite('vrmkef414_03', 4)
 
+
 @State
 def mkef_414Lv3airwall():
 
@@ -1404,6 +1465,7 @@ def mkef_414Lv3airwall():
         LinkParticle('mkef_414')
     sprite('null', 30)
     RotationAngle(90000)
+
 
 @State
 def mkef413_lv1():
@@ -1417,6 +1479,7 @@ def mkef413_lv1():
     sprite('vrmkef413_00', 1)
     CreateObject('DriveLv1PunchefD413', 0)
     Visibility(1)
+
 
 @State
 def DriveLv1PunchefD413():
@@ -1433,6 +1496,7 @@ def DriveLv1PunchefD413():
     sprite('null', 19)
     ConstantAlphaModifier(-10)
 
+
 @State
 def mkef413_lv2():
 
@@ -1445,6 +1509,7 @@ def mkef413_lv2():
     sprite('vrmkef413_00', 1)
     CreateObject('DriveLv2PunchefD413', 0)
     Visibility(1)
+
 
 @State
 def DriveLv2PunchefD413():
@@ -1461,6 +1526,7 @@ def DriveLv2PunchefD413():
     E0EAEffectPosition(0)
     sprite('null', 19)
     ConstantAlphaModifier(-10)
+
 
 @State
 def mkef413_lv3():
@@ -1484,6 +1550,7 @@ def mkef413_lv3():
     CreateObject('Lightblue', 2)
     ConstantAlphaModifier(-50)
 
+
 @State
 def DriveLv3PunchefD413():
 
@@ -1498,6 +1565,7 @@ def DriveLv3PunchefD413():
     E0EAEffectPosition(0)
     sprite('null', 19)
     ConstantAlphaModifier(-8)
+
 
 @State
 def mkef413_lvG():
@@ -1521,6 +1589,7 @@ def mkef413_lvG():
     CreateObject('Lightblue', 2)
     ConstantAlphaModifier(-50)
 
+
 @State
 def DriveLvG_PunchefD413():
 
@@ -1536,6 +1605,7 @@ def DriveLvG_PunchefD413():
     sprite('null', 19)
     ConstantAlphaModifier(-8)
 
+
 @State
 def Drive412Lv1():
 
@@ -1549,6 +1619,7 @@ def Drive412Lv1():
     ConstantAlphaModifier(-25)
     sprite('null', 19)
     ConstantAlphaModifier(-10)
+
 
 @State
 def Drive412Lv2():
@@ -1564,6 +1635,7 @@ def Drive412Lv2():
     sprite('null', 19)
     ConstantAlphaModifier(-10)
 
+
 @State
 def Drive412Lv3():
 
@@ -1577,6 +1649,7 @@ def Drive412Lv3():
     ConstantAlphaModifier(-25)
     sprite('null', 19)
     ConstantAlphaModifier(-8)
+
 
 @State
 def Drive412LvG():
@@ -1592,6 +1665,7 @@ def Drive412LvG():
     sprite('null', 19)
     ConstantAlphaModifier(-8)
 
+
 @State
 def Drive412Lv1_hit():
 
@@ -1602,6 +1676,7 @@ def Drive412Lv1_hit():
         IgnoreFinishStop(1)
     sprite('null', 60)
     RotationAngle(32000)
+
 
 @State
 def Drive412Lv2_hit():
@@ -1614,6 +1689,7 @@ def Drive412Lv2_hit():
     sprite('null', 60)
     RotationAngle(32000)
 
+
 @State
 def Drive412Lv3_hit():
 
@@ -1625,6 +1701,7 @@ def Drive412Lv3_hit():
     sprite('null', 60)
     RotationAngle(32000)
 
+
 @State
 def Drive412LvG_hit():
 
@@ -1635,6 +1712,7 @@ def Drive412LvG_hit():
         IgnoreFinishStop(1)
     sprite('null', 60)
     RotationAngle(32000)
+
 
 @State
 def mkef_415_punch():
@@ -1648,6 +1726,7 @@ def mkef_415_punch():
     sprite('null', 16)
     CreateParticle('mkef_415', -1)
     ConstantAlphaModifier(-16)
+
 
 @State
 def mkef_415_atk():
@@ -1677,20 +1756,21 @@ def mkef_415_atk():
         def upon_32():
             NoAttackDuringAction(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CopyFromRightToLeft(23, 2, 51, 22, 2, 23)
-            if (SLOT_51 == 0):
+            if SLOT_51 == 0:
                 DoNotHitKnockedDownOpp(1)
             else:
                 DoNotHitKnockedDownOpp(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('SiriusJolt', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('SiriusJolt', 32)
         RemoveOnCallStateEnd(3)
         CancelIfPlayerHit(3)
         E0EAEffectPosition(3)
         IgnorePauses(3)
     sprite('mk415_10_dmyAtk', 3)
+
 
 @State
 def BigPunch_SE():
@@ -1705,6 +1785,7 @@ def BigPunch_SE():
     ScreenShake(1000, 0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def mk430cutin_up():
@@ -1734,6 +1815,7 @@ def mk430cutin_up():
     ConstantAlphaModifier(-25)
     sprite('mk430cutin_01', 5)
 
+
 @State
 def mkef_430circlering_lv1():
 
@@ -1746,6 +1828,7 @@ def mkef_430circlering_lv1():
     sprite('null', 45)
     sprite('null', 30)
     ConstantAlphaModifier(-20)
+
 
 @State
 def mkef_430circlering_lv2():
@@ -1760,6 +1843,7 @@ def mkef_430circlering_lv2():
     sprite('null', 30)
     ConstantAlphaModifier(-20)
 
+
 @State
 def mkef_430circlering_lv3():
 
@@ -1772,6 +1856,7 @@ def mkef_430circlering_lv3():
     sprite('null', 50)
     sprite('null', 35)
     ConstantAlphaModifier(-20)
+
 
 @State
 def mkef_430bigpunch_lv2():
@@ -1786,6 +1871,7 @@ def mkef_430bigpunch_lv2():
     sprite('null', 40)
     ConstantAlphaModifier(-20)
 
+
 @State
 def mkef_430bigpunch_lv3():
 
@@ -1799,6 +1885,7 @@ def mkef_430bigpunch_lv3():
     sprite('null', 40)
     ConstantAlphaModifier(-20)
 
+
 @State
 def mkef_430bigpunch_lvG():
 
@@ -1811,6 +1898,7 @@ def mkef_430bigpunch_lvG():
     sprite('null', 30)
     sprite('null', 40)
     ConstantAlphaModifier(-20)
+
 
 @State
 def mk430cutin_lv1():
@@ -1859,6 +1947,7 @@ def mk430cutin_lv1():
     ConstantAlphaModifier(-25)
     BlendMode_Add()
 
+
 @State
 def mk430effLv1():
 
@@ -1887,6 +1976,7 @@ def mk430effLv1():
     ConstantAlphaModifier(-15)
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
+
 
 @State
 def mk430cutin_lv2():
@@ -1936,6 +2026,7 @@ def mk430cutin_lv2():
     ConstantAlphaModifier(-25)
     BlendMode_Add()
 
+
 @State
 def mk430effLv2():
 
@@ -1964,6 +2055,7 @@ def mk430effLv2():
     ConstantAlphaModifier(-15)
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
+
 
 @State
 def mk430cutin_lv3():
@@ -2016,6 +2108,7 @@ def mk430cutin_lv3():
     ConstantAlphaModifier(-15)
     BlendMode_Add()
 
+
 @State
 def mk430effLv3():
 
@@ -2043,6 +2136,7 @@ def mk430effLv3():
     ConstantAlphaModifier(-15)
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
+
 
 @State
 def mk430cutin_lvG():
@@ -2095,6 +2189,7 @@ def mk430cutin_lvG():
     StartMultihit()
     ConstantAlphaModifier(-15)
 
+
 @State
 def mk430effLvG():
 
@@ -2123,6 +2218,7 @@ def mk430effLvG():
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
 
+
 @State
 def mkef_circle_small():
 
@@ -2141,6 +2237,7 @@ def mkef_circle_small():
     AlphaValue(255)
     sprite('null', 20)
     ConstantAlphaModifier(-15)
+
 
 @State
 def mkef_circle_middle():
@@ -2161,6 +2258,7 @@ def mkef_circle_middle():
     sprite('null', 20)
     ConstantAlphaModifier(-15)
 
+
 @State
 def mkef_circle_large():
 
@@ -2179,6 +2277,7 @@ def mkef_circle_large():
     AlphaValue(255)
     sprite('null', 20)
     ConstantAlphaModifier(-15)
+
 
 @State
 def mkef_mahojin_small():
@@ -2200,6 +2299,7 @@ def mkef_mahojin_small():
     ConstantAlphaModifier(-10)
     sprite('null', 60)
 
+
 @State
 def mkef_mahojin_middle():
 
@@ -2219,6 +2319,7 @@ def mkef_mahojin_middle():
     sprite('null', 35)
     ConstantAlphaModifier(-10)
     sprite('null', 60)
+
 
 @State
 def mkef_mahojin_large():
@@ -2240,6 +2341,7 @@ def mkef_mahojin_large():
     ConstantAlphaModifier(-10)
     sprite('null', 60)
 
+
 @State
 def mk431cutin_up():
 
@@ -2249,7 +2351,7 @@ def mk431cutin_up():
         IgnoreScreenfreeze(1)
         SetPosXByScreenPer(50)
         AbsoluteY(1825000)
-        sendToLabelUpon(32, 23)
+        uponSendToLabel(32, 23)
     sprite('mk431cutin_00', 5)
     Size(1000)
     AlphaValue(0)
@@ -2274,6 +2376,7 @@ def mk431cutin_up():
     ConstantAlphaModifier(-50)
     sprite('mk431cutin_01', 1)
     AlphaValue(0)
+
 
 @State
 def mk431cutin_punchLv1():
@@ -2306,6 +2409,7 @@ def mk431cutin_punchLv1():
     sprite('mk431cutin_02', 1)
     AlphaValue(0)
 
+
 @State
 def mk431effLv1():
 
@@ -2327,6 +2431,7 @@ def mk431effLv1():
     ConstantAlphaModifier(-15)
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
+
 
 @State
 def mk431cutin_punchLv2():
@@ -2359,6 +2464,7 @@ def mk431cutin_punchLv2():
     sprite('mk431cutin_02', 1)
     AlphaValue(0)
 
+
 @State
 def mk431effLv2():
 
@@ -2379,6 +2485,7 @@ def mk431effLv2():
     ConstantAlphaModifier(-15)
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
+
 
 @State
 def mk431cutin_punchLv3():
@@ -2411,6 +2518,7 @@ def mk431cutin_punchLv3():
     sprite('mk431cutin_02', 1)
     AlphaValue(0)
 
+
 @State
 def mk431effLv3():
 
@@ -2431,6 +2539,7 @@ def mk431effLv3():
     ConstantAlphaModifier(-15)
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
+
 
 @State
 def mk431cutin_punchLvG():
@@ -2463,6 +2572,7 @@ def mk431cutin_punchLvG():
     sprite('mk431cutin_02', 1)
     AlphaValue(0)
 
+
 @State
 def mk431effLvG():
 
@@ -2484,12 +2594,14 @@ def mk431effLvG():
     sprite('vrmkef430add_05', 4)
     sprite('vrmkef430add_06', 4)
 
+
 @State
 def mk431dummy():
 
     def upon_IMMEDIATE():
         BlendMode_Normal()
     sprite('mk431_18', 20)
+
 
 @State
 def mkef_431Lv1first():
@@ -2502,6 +2614,7 @@ def mkef_431Lv1first():
     sprite('null', 80)
     RotationAngle(27000)
 
+
 @State
 def mkef_431Lv2first():
 
@@ -2512,6 +2625,7 @@ def mkef_431Lv2first():
         Size(1100)
     sprite('null', 80)
     RotationAngle(27000)
+
 
 @State
 def mkef_431Lv3first():
@@ -2524,6 +2638,7 @@ def mkef_431Lv3first():
     sprite('null', 80)
     RotationAngle(27000)
 
+
 @State
 def mkef_431Lv1secondtame():
 
@@ -2533,6 +2648,7 @@ def mkef_431Lv1secondtame():
         IgnoreScreenfreeze(1)
         Size(900)
     sprite('null', 80)
+
 
 @State
 def mkef_431Lv2secondtame():
@@ -2544,6 +2660,7 @@ def mkef_431Lv2secondtame():
         Size(1100)
     sprite('null', 80)
 
+
 @State
 def mkef_431Lv3secondtame():
 
@@ -2553,6 +2670,7 @@ def mkef_431Lv3secondtame():
         IgnoreScreenfreeze(1)
         Size(1400)
     sprite('null', 80)
+
 
 @State
 def mkef_431_2ndsub_back():
@@ -2564,6 +2682,7 @@ def mkef_431_2ndsub_back():
         Size(1100)
     sprite('null', 80)
 
+
 @State
 def mkef_431Lv1second():
 
@@ -2573,6 +2692,7 @@ def mkef_431Lv1second():
         IgnoreScreenfreeze(1)
         Size(1200)
     sprite('null', 80)
+
 
 @State
 def mkef_431Lv2second():
@@ -2584,6 +2704,7 @@ def mkef_431Lv2second():
         Size(1400)
     sprite('null', 80)
 
+
 @State
 def mkef_431Lv3second():
 
@@ -2594,6 +2715,7 @@ def mkef_431Lv3second():
         Size(1800)
     sprite('null', 80)
 
+
 @State
 def mkef_jumpsmoke11():
 
@@ -2602,6 +2724,7 @@ def mkef_jumpsmoke11():
         IgnoreScreenfreeze(1)
         Size(800)
     sprite('null', 40)
+
 
 @State
 def mkef_jumpsmoke12():
@@ -2612,6 +2735,7 @@ def mkef_jumpsmoke12():
         Size(1100)
     sprite('null', 40)
 
+
 @State
 def mkef_jumpsmoke13():
 
@@ -2620,6 +2744,7 @@ def mkef_jumpsmoke13():
         IgnoreScreenfreeze(1)
         Size(1400)
     sprite('null', 40)
+
 
 @State
 def mkef_jumpsmoke21():
@@ -2630,6 +2755,7 @@ def mkef_jumpsmoke21():
         Size(800)
     sprite('null', 40)
 
+
 @State
 def mkef_jumpsmoke22():
 
@@ -2639,6 +2765,7 @@ def mkef_jumpsmoke22():
         Size(1100)
     sprite('null', 40)
 
+
 @State
 def mkef_jumpsmoke23():
 
@@ -2647,6 +2774,7 @@ def mkef_jumpsmoke23():
         IgnoreScreenfreeze(1)
         Size(1400)
     sprite('null', 40)
+
 
 @State
 def mk450_energy():
@@ -2664,6 +2792,7 @@ def mk450_energy():
     ConstantAlphaModifier(-10)
     sprite('null', 60)
 
+
 @State
 def mk450_tame():
 
@@ -2673,7 +2802,7 @@ def mk450_tame():
         IgnoreScreenfreeze(1)
         Size(600)
         AlphaValue(0)
-        sendToLabelUpon(32, 80)
+        uponSendToLabel(32, 80)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 115)
@@ -2683,6 +2812,7 @@ def mk450_tame():
     ConstantAlphaModifier(-25)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def mk450_syogeki():
@@ -2700,6 +2830,7 @@ def mk450_syogeki():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def mk450_impact():
 
@@ -2711,7 +2842,7 @@ def mk450_impact():
         RemoveOnCallStateEnd(3)
         Size(800)
         AlphaValue(0)
-        sendToLabelUpon(32, 81)
+        uponSendToLabel(32, 81)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 115)
@@ -2721,6 +2852,7 @@ def mk450_impact():
     ConstantAlphaModifier(-35)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def mk450_bunsan():
@@ -2733,6 +2865,7 @@ def mk450_bunsan():
         RemoveOnCallStateEnd(3)
         Size(1000)
     sprite('null', 60)
+
 
 @State
 def mk450_footef():
@@ -2748,6 +2881,7 @@ def mk450_footef():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def mk450_bgef():
 
@@ -2761,6 +2895,7 @@ def mk450_bgef():
     sprite('null', 174)
     AlphaValue(255)
 
+
 @State
 def mk450_hibana():
 
@@ -2768,6 +2903,7 @@ def mk450_hibana():
         LinkParticle('mkef_450hibana')
         BlendMode_Add()
     sprite('null', 164)
+
 
 @State
 def mk450cutin_tame():
@@ -2788,6 +2924,7 @@ def mk450cutin_tame():
     sprite('mk450cutin_03', 6)
     sprite('mk450cutin_03', 6)
     ConstantAlphaModifier(-35)
+
 
 @State
 def mk450cutin_impact():
@@ -2820,6 +2957,7 @@ def mk450cutin_impact():
     sprite('mk450cutin_04', 6)
     sprite('mk450cutin_05', 6)
 
+
 @State
 def mk450cutin_impact_small():
 
@@ -2850,6 +2988,7 @@ def mk450cutin_impact_small():
     sprite('mk450cutin_06', 6)
     sprite('mk450cutin_07', 6)
 
+
 @State
 def mk450_impactline():
 
@@ -2865,6 +3004,7 @@ def mk450_impactline():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def mk450_kirari():
 
@@ -2873,6 +3013,7 @@ def mk450_kirari():
         BlendMode_Add()
         Size(750)
     sprite('null', 50)
+
 
 @State
 def AstWhite():
@@ -2892,6 +3033,7 @@ def AstWhite():
     AlphaValue(240)
     ConstantAlphaModifier(-30)
 
+
 @State
 def mk450_kamifubuki():
 
@@ -2899,6 +3041,7 @@ def mk450_kamifubuki():
         LinkParticle('mk450_kamifubuki')
         BlendMode_Normal()
     sprite('null', 600)
+
 
 @State
 def AstralHeatKillObject():
@@ -2926,6 +3069,7 @@ def AstralHeatKillObject():
     sprite('vr_donguri', 1)
     TeleportToObject(22)
 
+
 @State
 def RLAstLockmc():
 
@@ -2940,6 +3084,7 @@ def RLAstLockmc():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def RLAstLockAura():
 
@@ -2953,6 +3098,7 @@ def RLAstLockAura():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def BurstDD_Camera():
 
@@ -2961,11 +3107,11 @@ def BurstDD_Camera():
         CameraControlEnable(1)
         CameraNoScreenCollision(1)
         E0EAEffectPosition(22)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 4)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 4)
 
         def upon_56():
             CameraControlEnable(0)
@@ -3011,6 +3157,7 @@ def BurstDD_Camera():
     EndMomentum(1)
     CameraNoScreenCollision(0)
 
+
 @State
 def mk440cutin():
 
@@ -3038,6 +3185,7 @@ def mk440cutin():
     sprite('mk440cutin_04', 5)
     XImpulseAcceleration(3)
 
+
 @State
 def mk440cutinEffStart():
 
@@ -3053,6 +3201,7 @@ def mk440cutinEffStart():
     sprite('vrmkeff440_01', 3)
     sprite('vrmkeff440_02', 3)
     sprite('vrmkeff440_03', 3)
+
 
 @State
 def mk440cutinEff():
@@ -3074,6 +3223,7 @@ def mk440cutinEff():
     sprite('null', 3)
     CreateObject('mk440cutinEffEnd', -1)
 
+
 @State
 def mk440cutinEffEnd():
 
@@ -3087,6 +3237,7 @@ def mk440cutinEffEnd():
     ConstantAlphaModifier(-23)
     sprite('vrmkeff440_12', 4)
     sprite('vrmkeff440_13', 4)
+
 
 @State
 def mk440cutin_Active():
@@ -3118,6 +3269,7 @@ def mk440cutin_Active():
     sprite('mk440cutin_04', 5)
     XImpulseAcceleration(3)
 
+
 @State
 def mk440cutinEffStarEx():
 
@@ -3133,6 +3285,7 @@ def mk440cutinEffStarEx():
     sprite('vrmkeff440_01', 3)
     sprite('vrmkeff440_02', 3)
     sprite('vrmkeff440_03', 3)
+
 
 @State
 def mk440cutinEffEx():
@@ -3154,6 +3307,7 @@ def mk440cutinEffEx():
     sprite('null', 3)
     CreateObject('mk440cutinEffEndEX', -1)
 
+
 @State
 def mk440cutinEffEndEX():
 
@@ -3167,6 +3321,7 @@ def mk440cutinEffEndEX():
     ConstantAlphaModifier(-23)
     sprite('vrmkeff440_12', 4)
     sprite('vrmkeff440_13', 4)
+
 
 @State
 def mk440cutin_Active2():
@@ -3200,8 +3355,9 @@ def mk440cutin_Active2():
     sprite('mk440cutin_09', 4)
     ConstantAlphaModifier(-31)
     EndMomentum(1)
-    PassbackAddActionMarkToFunction('mk440cutinEffEx2', 32)
+    TriggerUponForState('mk440cutinEffEx2', 32)
     sprite('mk440cutin_10', 4)
+
 
 @State
 def mk440cutinEffStarEx2():
@@ -3220,6 +3376,7 @@ def mk440cutinEffStarEx2():
     sprite('vrmkeff440_22', 2)
     sprite('vrmkeff440_23', 2)
 
+
 @State
 def mk440cutinEffEx2():
 
@@ -3232,7 +3389,7 @@ def mk440cutinEffEx2():
         E0EAEffectScale(2)
         EnableAfterimage(1)
         AfterimageCount(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(255)
     sprite('vrmkeff440_24', 4)
     RenderLayer(2)
@@ -3243,6 +3400,7 @@ def mk440cutinEffEx2():
     sprite('vrmkeff440_29', 4)
     sprite('null', 1)
     CreateObject('mk440cutinEffEndEX2', -1)
+
 
 @State
 def mk440cutinEffEndEX2():
@@ -3257,6 +3415,7 @@ def mk440cutinEffEndEX2():
     sprite('vrmkeff440_32', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def EntryMant2():
 
@@ -3268,6 +3427,7 @@ def EntryMant2():
     AddY(180000)
     sprite('vrmkef603m_01', 3)
     AddY(100000)
+
 
 @State
 def Event_mk430cutin_lv3():
@@ -3305,6 +3465,7 @@ def Event_mk430cutin_lv3():
     ConstantAlphaModifier(-15)
     BlendMode_Add()
 
+
 @State
 def Act3Event_Noel():
 
@@ -3314,8 +3475,8 @@ def Act3Event_Noel():
         SetZVal(750)
         EnableCollision(0)
         ScreenCollision(0)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(LANDING, 1)
     sprite('no620_08', 32767)
     label(0)
     sprite('no064_02', 4)
@@ -3342,6 +3503,7 @@ def Act3Event_Noel():
     sprite('null', 2)
     EndMomentum(1)
     Visibility(1)
+
 
 @State
 def Eventoffset_Sosai():

@@ -11,6 +11,7 @@ def drain_base():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def drain_num8():
 
@@ -30,6 +31,7 @@ def drain_num8():
     CreateObject('drain_tsubu', -1)
     CreateObject('drain_tsubu', -1)
 
+
 @State
 def drain_num4():
 
@@ -42,6 +44,7 @@ def drain_num4():
     CreateObject('drain_tsubu', -1)
     CreateObject('drain_tsubu', -1)
     CreateObject('drain_tsubu', -1)
+
 
 @State
 def drain_tsubu():
@@ -68,56 +71,56 @@ def drain_tsubu():
     CommonPolyline('vrdraintex_test.hip', 3000)
     sprite('null', 15)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(80)
         YAccel(80)
         PerSpeedZ(80)
         Unknown2070(3, 0, 1, 0)
     sprite('null', 7)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 1, 0)
     sprite('null', 5)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 2, 0)
     sprite('null', 3)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 4, 0)
     sprite('null', 3)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 8, 0)
     sprite('null', 2)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 16, 0)
     sprite('null', 2)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 24, 0)
     sprite('null', 2)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
@@ -125,12 +128,12 @@ def drain_tsubu():
     label(0)
     sprite('null', 2)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 48, 0)
-    sendToLabelUpon(29, 1)
+    uponSendToLabel(29, 1)
     RunLoopUpon(29, 200000)
     loopRest()
     gotoLabel(0)
@@ -140,11 +143,12 @@ def drain_tsubu():
     AddActionMark(1)
     clearUponHandler(29)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         XImpulseAcceleration(90)
         YAccel(90)
         PerSpeedZ(90)
         Unknown2070(3, 0, 96, 0)
+
 
 @State
 def EffBarrier():
@@ -160,7 +164,7 @@ def EffBarrier():
         BlendMode_Add()
 
         def upon_32():
-            if (not SLOT_2):
+            if not SLOT_2:
                 SetActionMark(1)
                 sendToLabel(1)
         CreateObject('EffBarrierParts', -1)
@@ -178,6 +182,7 @@ def EffBarrier():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(30)
 
+
 @State
 def EffBarrierJust():
 
@@ -192,6 +197,7 @@ def EffBarrierJust():
         BlendMode_Add()
     sprite('null', 30)
 
+
 @State
 def EffBarrierParts():
 
@@ -201,6 +207,7 @@ def EffBarrierParts():
         RemoveOnCallStateEnd(2)
         E0EAEffectDirection(2)
     sprite('null', 32767)
+
 
 @State
 def EffBarrierPartsTraining():
@@ -212,6 +219,7 @@ def EffBarrierPartsTraining():
     sprite('null', 10)
     ConstantAlphaModifier(-30)
 
+
 @State
 def FLORE_BURST():
     sprite('null', 240)
@@ -222,6 +230,7 @@ def FLORE_BURST():
     RandRotationAngle()
     sprite('null', 48)
     ConstantAlphaModifier(-5)
+
 
 @State
 def e0_burst():
@@ -250,6 +259,7 @@ def e0_burst():
     sprite('vrdmy_burst', 10)
     StartMultihit()
 
+
 @State
 def BurstLv0First():
     sprite('null', 30)
@@ -257,6 +267,7 @@ def BurstLv0First():
     E0EAEffectPositionCenter(3)
     XPositionRelativeFacing(0)
     AbsoluteY(0)
+
 
 @State
 def BurstLv1First():
@@ -266,6 +277,7 @@ def BurstLv1First():
     XPositionRelativeFacing(0)
     AbsoluteY(0)
 
+
 @State
 def BurstLv2First():
     sprite('null', 30)
@@ -273,6 +285,7 @@ def BurstLv2First():
     E0EAEffectPositionCenter(3)
     XPositionRelativeFacing(0)
     AbsoluteY(0)
+
 
 @State
 def BurstObj():
@@ -325,9 +338,9 @@ def BurstObj():
             AttackP2(110)
             RemoveOnCallStateEnd(3)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             pass
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     sprite('vrdmy_burst', 4)
     AttackOff()
     sprite('vrdmy_burst', 4)
@@ -346,6 +359,7 @@ def BurstObj():
     label(2)
     loopRest()
 
+
 @State
 def aura():
 
@@ -356,6 +370,7 @@ def aura():
         Visibility(1)
         Size(1000)
     sprite('null', 120)
+
 
 @State
 def yugami_ring():
@@ -371,6 +386,7 @@ def yugami_ring():
     SetScaleSpeed(200)
     Unknown3059(-3200)
 
+
 @State
 def yugami_ring2():
 
@@ -385,6 +401,7 @@ def yugami_ring2():
     SetScaleSpeed(200)
     Unknown3059(-3200)
 
+
 @State
 def FLORE_FROST():
     sprite('null', 240)
@@ -395,6 +412,7 @@ def FLORE_FROST():
     RandRotationAngle()
     sprite('null', 48)
     ConstantAlphaModifier(-5)
+
 
 @State
 def FreezeDamage():
@@ -421,14 +439,15 @@ def FreezeDamage():
             CreateObject('FreezeDamageBreakParts', -1)
 
         def upon_34():
-            SLOT_51 = (SLOT_51 + 1)
-            if (not op(4, 2, 51, 0, 10)):
+            SLOT_51 = SLOT_51 + 1
+            if not SLOT_51 % 10:
                 CreateObject('FreezeDamageLandParts', -1)
                 CreateObject('FREEZE_FLORE_FROST', -1)
     label(0)
     sprite('null', 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def FreezeDamageParts():
@@ -444,6 +463,7 @@ def FreezeDamageParts():
     ParticleColorFromPalette(175, 111, 111)
     CallCustomizableParticle('ef_freezebreak', -1)
 
+
 @State
 def FreezeDamageBreakParts():
 
@@ -455,6 +475,7 @@ def FreezeDamageBreakParts():
     sprite('null', 200)
     ParticleColorFromPalette(175, 111, 111)
     CallPrivateEffect('ef_freezebreak')
+
 
 @State
 def FreezeDamageLandParts():
@@ -468,6 +489,7 @@ def FreezeDamageLandParts():
     sprite('null', 32767)
     ParticleColorFromPalette(175, 111, 111)
     CallPrivateEffect('ef_freezeland')
+
 
 @State
 def FREEZE_FLORE_FROST():
@@ -483,6 +505,7 @@ def FREEZE_FLORE_FROST():
     sprite('null', 30)
     ConstantAlphaModifier(-6)
 
+
 @State
 def FreezeDamageRendaParts():
 
@@ -496,6 +519,7 @@ def FreezeDamageRendaParts():
     ParticleColorFromPalette(111, 111, 111)
     CallCustomizableParticle('jnef_icebrl', -1)
 
+
 @State
 def ef_danger():
 
@@ -504,6 +528,7 @@ def ef_danger():
         E0EAEffectPosition(3)
         LinkParticle('ef_danger')
     sprite('null', 40)
+
 
 @State
 def ef_danger_re():
@@ -515,6 +540,7 @@ def ef_danger_re():
         E0EAEffectPositionCenter(3)
         LinkParticle('ef_danger_re')
     sprite('null', 40)
+
 
 @State
 def FreezeDamageTest():
@@ -528,6 +554,7 @@ def FreezeDamageTest():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def PushAndDamage():
 
@@ -536,6 +563,7 @@ def PushAndDamage():
         EnableCollision(1)
         NoAttackDuringAction(1)
     sprite('vr_debug_dmg', 2400)
+
 
 @State
 def Banana():
@@ -559,7 +587,7 @@ def Banana():
                 sendToLabel(0)
             SetActionMark(0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             if SLOT_2:
                 sendToLabel(0)
             SetActionMark(0)
@@ -568,6 +596,7 @@ def Banana():
     sprite('vr_banana2', 30)
     BlendMode_Normal()
     ConstantAlphaModifier(-8)
+
 
 @State
 def RandomAttack():
@@ -588,12 +617,10 @@ def RandomAttack():
     ColorForTransition(4278190335)
     NoAttackDuringAction(1)
     loopRest()
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 10)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 10):
+        conditionalSendToLabel(1)
     label(4)
     sprite('vr_debug_dmg', 20)
     physicsXImpulse(0)
@@ -605,6 +632,7 @@ def RandomAttack():
     label(1)
     sprite('vr_debug_dmg', 1)
 
+
 @State
 def PushFix():
 
@@ -615,6 +643,7 @@ def PushFix():
         ColorForTransition(4278255360)
         PreventSelfPush(1)
     sprite('vr_debug_dmg', 2400)
+
 
 @State
 def HitStopObj():
@@ -641,6 +670,7 @@ def HitStopObj():
     sprite('vr_debug_dmg', 10)
     RefreshMultihit()
 
+
 @State
 def Aura():
     sprite('vr_aura00', 7)
@@ -661,6 +691,7 @@ def Aura():
     sprite('vr_aura02', 7)
     sprite('vr_aura03', 30)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AuraDark():
@@ -684,25 +715,30 @@ def AuraDark():
     sprite('vr_aura03', 30)
     ConstantAlphaModifier(-20)
 
+
 @State
 def cmn_tekitou_w():
     sprite('null', 10)
     CreateParticle('ef_kaihi', -1)
+
 
 @State
 def cmn_tekitou():
     sprite('null', 10)
     CreateParticle('ef_ukemi', -1)
 
+
 @State
 def cmn_tekitou_r():
     sprite('null', 10)
     CreateParticle('ef_rapidcancel', -1)
 
+
 @State
 def cmn_digitalcrush():
     sprite('null', 10)
     CreateParticle('ef_digitalcrush', -1)
+
 
 @State
 def cmn_shotsousai():
@@ -720,6 +756,7 @@ def cmn_shotsousai():
     SetScaleSpeed(100)
     Unknown3059(-3200)
 
+
 @State
 def cmn_judgment():
 
@@ -729,7 +766,7 @@ def cmn_judgment():
         RenderLayer(1)
     DeleteObject(23)
     if SLOT_96:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(0)
     sprite('vr_judge_arrow', 8)
     physicsYImpulse(1000)
@@ -760,6 +797,7 @@ def cmn_judgment():
     YAccel(50)
     loopRest()
     gotoLabel(1)
+
 
 @State
 def EffOverDrive():
@@ -793,6 +831,7 @@ def EffOverDrive():
     ConstantAlphaModifier(-5)
     sprite('vr_aura05', 7)
 
+
 @State
 def AuraRed():
     sprite('vr_aura00', 7)
@@ -815,6 +854,7 @@ def AuraRed():
     sprite('vr_aura02', 7)
     sprite('vr_aura03', 30)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AuraBlack():
@@ -839,6 +879,7 @@ def AuraBlack():
     sprite('vr_aura03', 30)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AuraSilver():
     sprite('vr_aura00', 7)
@@ -862,6 +903,7 @@ def AuraSilver():
     sprite('vr_aura03', 30)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AuraGold():
     sprite('vr_aura00', 7)
@@ -884,6 +926,7 @@ def AuraGold():
     sprite('vr_aura02', 7)
     sprite('vr_aura03', 30)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AuraRainbow():
@@ -914,6 +957,7 @@ def AuraRainbow():
     ConstantBlueModifier(30)
     ConstantAlphaModifier(-6)
 
+
 @State
 def GuardCrushptc():
 
@@ -923,6 +967,7 @@ def GuardCrushptc():
         RemoveOnCallStateEnd(3)
     sprite('null', 40)
 
+
 @State
 def GuardCrushWind():
 
@@ -930,7 +975,7 @@ def GuardCrushWind():
         Eff3DEffect('ef_girdcrashwind00.DIG', '')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
         SetScaleX(900)
         SetScaleY(700)
         AddY(70000)
@@ -951,6 +996,7 @@ def GuardCrushWind():
     SetScaleSpeedY(-20)
     ConstantAlphaModifier(-20)
 
+
 @State
 def GuardCrushWind01():
 
@@ -958,7 +1004,7 @@ def GuardCrushWind01():
         Eff3DEffect('ef_girdcrashwind01.DIG', '')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
         SetScaleX(1000)
         SetScaleY(700)
         AddY(-100000)
@@ -973,6 +1019,7 @@ def GuardCrushWind01():
     SetScaleXPerFrame(90)
     ConstantAlphaModifier(-40)
 
+
 @State
 def GuardCrushWind_tg():
 
@@ -980,7 +1027,7 @@ def GuardCrushWind_tg():
         Eff3DEffect('ef_girdcrashwind00.DIG', '')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
         SetScaleX(1100)
         SetScaleY(750)
         AddY(70000)
@@ -1001,6 +1048,7 @@ def GuardCrushWind_tg():
     SetScaleSpeedY(-20)
     ConstantAlphaModifier(-20)
 
+
 @State
 def GuardCrushWind_tg01():
 
@@ -1008,7 +1056,7 @@ def GuardCrushWind_tg01():
         Eff3DEffect('ef_girdcrashwind01.DIG', '')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(56, 99)
         SetScaleX(1300)
         SetScaleY(1000)
         AddY(-100000)
@@ -1022,6 +1070,7 @@ def GuardCrushWind_tg01():
     sprite('null', 5)
     SetScaleXPerFrame(90)
     ConstantAlphaModifier(-40)
+
 
 @State
 def BurstDDeff():
@@ -1046,6 +1095,7 @@ def BurstDDeff():
     ConstantAlphaModifier(-26)
     sprite('vr_bstdd05', 4)
 
+
 @State
 def BurstDDeff_OFF():
 
@@ -1054,6 +1104,7 @@ def BurstDDeff_OFF():
     sprite('null', 60)
     LinkParticle('ef_burstdd_Off')
 
+
 @State
 def Positive_ON():
 
@@ -1061,6 +1112,7 @@ def Positive_ON():
         E0EAEffectPosition(2)
     sprite('null', 60)
     CreateParticle('ef_Positive', -1)
+
 
 @State
 def Positive_OFF():

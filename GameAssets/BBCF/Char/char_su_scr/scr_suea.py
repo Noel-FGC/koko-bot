@@ -20,6 +20,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_OD():
 
@@ -42,6 +43,7 @@ def EMB_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_SU_AH():
 
@@ -63,22 +65,25 @@ def EMB_SU_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def suef_test():
 
     def upon_IMMEDIATE():
         pass
 
+
 @State
-def suef_unlock_center@():
+def suef_unlock_center__at__():
     sprite('null', 1)
     CreateParticle('suef_unlock', -1)
     PaletteIndex(1)
     ParticleColorFromPalette(241, 241, 241)
     CallCustomizableParticle('suef_unlock_color', -1)
 
+
 @State
-def suef_unlock1st@():
+def suef_unlock1st__at__():
 
     def upon_IMMEDIATE():
         FaceLeft()
@@ -91,6 +96,7 @@ def suef_unlock1st@():
     sprite('vrsuef_font01', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def suef_unlock_center():
     CallCustomizableParticle('suef_unlock', -1)
@@ -102,13 +108,16 @@ def suef_unlock_center():
     ParticleColorFromPalette(241, 241, 241)
     CallCustomizableParticle('suef_unlock_square', -1)
 
+
 @State
 def suef_unlock_particle():
     pass
 
+
 @State
 def suef_unlock_tama():
     pass
+
 
 @State
 def suef_unlock1st():
@@ -129,6 +138,7 @@ def suef_unlock1st():
     CreateObject('suef_unlock_particle', 6)
     CreateObject('suef_unlock_particle', 7)
     CreateObject('suef_unlock_tama', 0)
+
 
 @State
 def suef_unlock2nd():
@@ -151,6 +161,7 @@ def suef_unlock2nd():
     CreateObject('suef_unlock_tama', 0)
     CreateObject('suef_unlock_tama', 1)
 
+
 @State
 def suef_unlock3rd():
 
@@ -172,6 +183,7 @@ def suef_unlock3rd():
     CreateObject('suef_unlock_tama', 0)
     CreateObject('suef_unlock_tama', 1)
     CreateObject('suef_unlock_tama', 2)
+
 
 @State
 def suef_unlock4th():
@@ -196,6 +208,7 @@ def suef_unlock4th():
     CreateObject('suef_unlock_tama', 2)
     CreateObject('suef_unlock_tama', 3)
 
+
 @State
 def suef_unlock5th():
 
@@ -219,6 +232,7 @@ def suef_unlock5th():
     CreateObject('suef_unlock_tama', 2)
     CreateObject('suef_unlock_tama', 3)
     CreateObject('suef_unlock_tama', 4)
+
 
 @State
 def suef_unlock6th():
@@ -245,6 +259,7 @@ def suef_unlock6th():
     CreateObject('suef_unlock_tama', 4)
     CreateObject('suef_unlock_tama', 5)
 
+
 @State
 def suef_unlock7th():
 
@@ -270,6 +285,7 @@ def suef_unlock7th():
     CreateObject('suef_unlock_tama', 4)
     CreateObject('suef_unlock_tama', 5)
     CreateObject('suef_unlock_tama', 6)
+
 
 @State
 def suef_unlock8th():
@@ -298,6 +314,7 @@ def suef_unlock8th():
     CreateObject('suef_unlock_tama', 6)
     CreateObject('suef_unlock_tama', 7)
 
+
 @State
 def suef_unlock_font01():
 
@@ -311,6 +328,7 @@ def suef_unlock_font01():
     sprite('vrsuef_font01', 10)
     sprite('vrsuef_font01', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def suef_unlock_font02():
@@ -326,6 +344,7 @@ def suef_unlock_font02():
     sprite('vrsuef_font02', 20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def suef_unlock_font03():
 
@@ -339,6 +358,7 @@ def suef_unlock_font03():
     sprite('vrsuef_font03', 10)
     sprite('vrsuef_font03', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def suef_unlock_font04():
@@ -354,6 +374,7 @@ def suef_unlock_font04():
     sprite('vrsuef_font04', 20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def suef_unlock_font05():
 
@@ -367,6 +388,7 @@ def suef_unlock_font05():
     sprite('vrsuef_font05', 10)
     sprite('vrsuef_font05', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def suef_unlock_font06():
@@ -382,6 +404,7 @@ def suef_unlock_font06():
     sprite('vrsuef_font06', 20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def suef_unlock_font07():
 
@@ -396,6 +419,7 @@ def suef_unlock_font07():
     sprite('vrsuef_font07', 20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def suef_unlock_font08():
 
@@ -409,6 +433,7 @@ def suef_unlock_font08():
     sprite('vrsuef_font08', 10)
     sprite('vrsuef_font08', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def suef_aura():
@@ -430,6 +455,7 @@ def suef_aura():
     ParticleColorFromPalette(241, 241, 241)
     CallCustomizableParticle('suef_aura', -1)
 
+
 @State
 def suef_dust():
     sprite('null', 1)
@@ -438,6 +464,7 @@ def suef_dust():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_dust00', -1)
     CreateParticle('suef_dust', -1)
+
 
 @State
 def suef_dust_front():
@@ -448,6 +475,7 @@ def suef_dust_front():
     CallCustomizableParticle('suef_dust00', -1)
     CreateParticle('suef_dust', -1)
 
+
 @State
 def suef_dust_large():
     sprite('null', 1)
@@ -456,6 +484,7 @@ def suef_dust_large():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_dust_c2', -1)
     CreateParticle('suef_dust_large', -1)
+
 
 @State
 def suef_200():
@@ -471,6 +500,7 @@ def suef_200():
     sprite('vrsuef200_00', 4)
     CreateObject('suef_dust', 0)
     sprite('vrsuef200_01', 5)
+
 
 @State
 def suef_230():
@@ -488,6 +518,7 @@ def suef_230():
     CreateObject('suef_dust', 1)
     sprite('vrsuef230_01', 4)
 
+
 @State
 def suef_250():
 
@@ -503,6 +534,7 @@ def suef_250():
     CreateObject('suef_dust', 1)
     sprite('vrsuef250_01', 4)
 
+
 @State
 def suef_210_shot():
     sprite('null', 1)
@@ -510,12 +542,13 @@ def suef_210_shot():
     PaletteIndex(1)
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_210shot', -1)
-    if (SLOT_19 >= 200000):
+    if SLOT_19 >= 200000:
         CreateObject('suef_210_shot_add', -1)
     else:
         CopyFromRightToLeft(23, 2, 0, 22, 2, 23)
-        if (SLOT_0 >= 100000):
+        if SLOT_0 >= 100000:
             CreateObject('suef_210_shot_add', -1)
+
 
 @State
 def suef_210_shot_add():
@@ -524,6 +557,7 @@ def suef_210_shot_add():
     PaletteIndex(1)
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_210shot_add', -1)
+
 
 @State
 def suef_210_Atk():
@@ -544,7 +578,7 @@ def suef_210_Atk():
         StarterRating(2)
         CancelIfPlayerHit(3)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('suef_210_hit', 101)
             AttackOff()
         GuardPoint_(1)
@@ -556,11 +590,12 @@ def suef_210_Atk():
         def upon_GUARDPOINT_ACTIVATION():
             NoAttackDuringAction(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtk6A', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtk6A', 33)
     sprite('null', 1)
     sprite('su210_def', 1)
     sprite('su210_atk', 3)
+
 
 @State
 def suef_210_hit():
@@ -570,6 +605,7 @@ def suef_210_hit():
     PaletteIndex(1)
     ParticleColorFromPalette(240, 240, 240)
     CallCustomizableParticle('suef_210hit', -1)
+
 
 @State
 def suef_211():
@@ -589,6 +625,7 @@ def suef_211():
     sprite('vrsuef211_02', 6)
     E0EAEffectPosition(0)
 
+
 @State
 def suef_211_2():
 
@@ -602,6 +639,7 @@ def suef_211_2():
     CreateObject('suef_dust_large', 1)
     sprite('vrsuef211_11', 5)
     sprite('vrsuef211_12', 2)
+
 
 @State
 def suef_211_foot():
@@ -617,6 +655,7 @@ def suef_211_foot():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def suef_211_foot2():
 
@@ -630,6 +669,7 @@ def suef_211_foot2():
     CallCustomizableParticle('suef_211foot', -1)
     sprite('null', 15)
     ConstantAlphaModifier(-17)
+
 
 @State
 def suef_231():
@@ -648,6 +688,7 @@ def suef_231():
     sprite('vrsuef231_01', 4)
     sprite('vrsuef231_02', 4)
 
+
 @State
 def suef_251():
 
@@ -663,6 +704,7 @@ def suef_251():
     Visibility(1)
     CreateObject('suef_dust_large', 0)
     CreateObject('suef_dust_large', 1)
+
 
 @State
 def suef_251_3d():
@@ -680,6 +722,7 @@ def suef_251_3d():
         RotationAngle(17500)
         Size(750)
     sprite('null', 15)
+
 
 @State
 def suef_232():
@@ -702,6 +745,7 @@ def suef_232():
     sprite('vrsuef232_04', 16)
     ConstantAlphaModifier(-16)
     E0EAEffectPosition(0)
+
 
 @State
 def suef_252():
@@ -727,6 +771,7 @@ def suef_252():
     sprite('vrsuef252_05', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def suef_212():
 
@@ -751,6 +796,7 @@ def suef_212():
     sprite('vrsuef212_06', 3)
     sprite('vrsuef212_07', 3)
 
+
 @State
 def suef_235():
 
@@ -771,6 +817,7 @@ def suef_235():
     CreateObject('suef_dust', 0)
     sprite('vrsuef235_03', 4)
 
+
 @State
 def suef_235_2():
 
@@ -788,6 +835,7 @@ def suef_235_2():
     CreateObject('suef_dust', 2)
     sprite('vrsuef235_12', 4)
     sprite('vrsuef235_13', 4)
+
 
 @State
 def suef_203():
@@ -808,6 +856,7 @@ def suef_203():
     sprite('vrsuef203_03', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def suef_203_atk():
 
@@ -827,6 +876,7 @@ def suef_203_atk():
     sprite('vrsuef203_13', 6)
     E0EAEffectPosition(0)
     IgnorePauses(0)
+
 
 @State
 def suef_233_claw_3d():
@@ -861,6 +911,7 @@ def suef_233_claw_3d():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_233_2', 5)
 
+
 @State
 def suef_233_claw2_3d():
 
@@ -876,6 +927,7 @@ def suef_233_claw2_3d():
     sprite('null', 8)
     sprite('null', 8)
     E0EAEffectPosition(0)
+
 
 @State
 def suef_253_3d():
@@ -897,6 +949,7 @@ def suef_253_3d():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def suef_253_particle():
 
@@ -906,6 +959,7 @@ def suef_253_particle():
         IgnorePauses(2)
     sprite('null', 60)
     LinkParticle('suef_253dust')
+
 
 @State
 def suef_213():
@@ -929,6 +983,7 @@ def suef_213():
     AddX(-144000)
     CreateObject('suef_dust', 0)
 
+
 @State
 def suef_213_2():
 
@@ -948,6 +1003,7 @@ def suef_213_2():
     AddX(-160000)
     CreateObject('suef_dust', 0)
     CreateObject('suef_dust', 1)
+
 
 @State
 def suef_213_3d():
@@ -970,6 +1026,7 @@ def suef_213_3d():
     sprite('vrsuef213_particle', 6)
     E0EAEffectPosition(0)
 
+
 @State
 def suef_214():
 
@@ -979,6 +1036,7 @@ def suef_214():
         IgnorePauses(2)
     sprite('null', 1)
     CreateParticle('suef_214', -1)
+
 
 @State
 def suef_214ground():
@@ -998,6 +1056,7 @@ def suef_214ground():
     ConstantAlphaModifier(64)
     sprite('null', 60)
     ConstantAlphaModifier(-16)
+
 
 @State
 def suef_214ground2():
@@ -1022,6 +1081,7 @@ def suef_214ground2():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def suef_311():
 
@@ -1042,6 +1102,7 @@ def suef_311():
     CreateObject('suef_dust', 6)
     CreateObject('suef_dust', 7)
 
+
 @State
 def suef_311_3d():
 
@@ -1056,6 +1117,7 @@ def suef_311_3d():
     sprite('null', 6)
     ConstantAlphaModifier(-42)
 
+
 @State
 def suef_312():
 
@@ -1066,6 +1128,7 @@ def suef_312():
         AddY(-16000)
     sprite('vrsuef312_00', 6)
     sprite('vrsuef312_01', 6)
+
 
 @State
 def suef_313():
@@ -1083,6 +1146,7 @@ def suef_313():
     ParticleColorFromPalette(240, 240, 240)
     CallCustomizableParticle('suef_313', -1)
 
+
 @State
 def suef_313_smoke():
     sprite('null', 3)
@@ -1090,6 +1154,7 @@ def suef_313_smoke():
     CreateObject('suef_313_smoke1', -1)
     sprite('null', 3)
     CreateObject('suef_313_smoke2', -1)
+
 
 @State
 def suef_313_smoke1():
@@ -1113,6 +1178,7 @@ def suef_313_smoke1():
     sprite('null', 6)
     sprite('null', 32767)
 
+
 @State
 def suef_313_smoke2():
 
@@ -1134,6 +1200,7 @@ def suef_313_smoke2():
     sprite('null', 6)
     sprite('null', 6)
     sprite('null', 32767)
+
 
 @State
 def suef_321():
@@ -1161,6 +1228,7 @@ def suef_321():
     CreateObject('suef_dust', 12)
     CreateObject('suef_dust', 13)
 
+
 @State
 def suef_321_3d():
 
@@ -1173,6 +1241,7 @@ def suef_321_3d():
         ColorFromPaletteIndex(240)
         AddY(352000)
     sprite('null', 15)
+
 
 @State
 def suef_321_3d_r():
@@ -1188,6 +1257,7 @@ def suef_321_3d_r():
         AddY(352000)
     sprite('null', 15)
 
+
 @State
 def suef_331():
 
@@ -1198,6 +1268,7 @@ def suef_331():
     sprite('null', 1)
     CreateObject('suef_331_a', -1)
     CreateObject('suef_331_b', -1)
+
 
 @State
 def suef_331_a():
@@ -1219,6 +1290,7 @@ def suef_331_a():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_331', -1)
 
+
 @State
 def suef_331_b():
 
@@ -1231,6 +1303,7 @@ def suef_331_b():
     CreateParticle('suef_331b', -1)
     sprite('null', 5)
     CreateParticle('suef_331b', -1)
+
 
 @State
 def suef_340_hold():
@@ -1251,6 +1324,7 @@ def suef_340_hold():
     CallCustomizableParticle('suef_dust340', 0)
     sprite('vrsuef340_03', 3)
     gotoLabel(0)
+
 
 @State
 def suef_340():
@@ -1276,6 +1350,7 @@ def suef_340():
     sprite('vrsuef340_14', 3)
     AddX(-28000)
 
+
 @State
 def suef_340_rock():
 
@@ -1288,6 +1363,7 @@ def suef_340_rock():
     Size(500)
     sprite('null', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def suef_400():
@@ -1304,6 +1380,7 @@ def suef_400():
     sprite('vrsuef400_05', 3)
     gotoLabel(0)
 
+
 @State
 def suef_400_aura():
 
@@ -1316,6 +1393,7 @@ def suef_400_aura():
     BlendMode_Normal()
     PaletteIndex(1)
     ColorFromPaletteIndex(240)
+
 
 @State
 def suef_400_aura3():
@@ -1330,6 +1408,7 @@ def suef_400_aura3():
         ColorFromPaletteIndex(240)
     sprite('null', 2)
 
+
 @State
 def suef_400_aura2():
 
@@ -1343,6 +1422,7 @@ def suef_400_aura2():
         ColorFromPaletteIndex(240)
     sprite('null', 4)
     ConstantAlphaModifier(-8)
+
 
 @State
 def suef_400_particle():
@@ -1360,6 +1440,7 @@ def suef_400_particle():
     CreateObject('suef_dust_front', -1)
     gotoLabel(0)
 
+
 @State
 def suef_400_particle2():
 
@@ -1375,6 +1456,7 @@ def suef_400_particle2():
     CallCustomizableParticle('suef_400dash', -1)
     gotoLabel(0)
 
+
 @State
 def suef_400_claw():
 
@@ -1389,6 +1471,7 @@ def suef_400_claw():
         AddY(-64000)
         AddX(64000)
     sprite('null', 16)
+
 
 @State
 def suef_400_claw2():
@@ -1409,6 +1492,7 @@ def suef_400_claw2():
     sprite('null', 8)
     AddScaleSpeed(25)
     ConstantAlphaModifier(-32)
+
 
 @State
 def suef_401handaura():
@@ -1435,6 +1519,7 @@ def suef_401handaura():
     CreateObject('suef_dust', 0)
     CreateObject('suef_dust', 1)
 
+
 @State
 def suef_401():
 
@@ -1456,8 +1541,8 @@ def suef_401():
         E0EAEffectPosition(3)
         IgnorePauses(3)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('AntiAir', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('AntiAir', 32)
 
         def upon_56():
             E0EAEffectPosition(0)
@@ -1475,6 +1560,7 @@ def suef_401():
     sprite('su401_AtkEx0', 4)
     sprite('su401_AtkEx1', 4)
     sprite('null', 20)
+
 
 @State
 def suef_401_SP():
@@ -1497,6 +1583,7 @@ def suef_401_SP():
     Size(1500)
     sprite('null', 20)
 
+
 @State
 def suef_401_crack():
 
@@ -1512,6 +1599,7 @@ def suef_401_crack():
     sprite('null', 16)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-16)
+
 
 @State
 def suef_401_swordaura():
@@ -1530,6 +1618,7 @@ def suef_401_swordaura():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def suef_401_swordaura2():
 
@@ -1547,6 +1636,7 @@ def suef_401_swordaura2():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def suef_402():
 
@@ -1556,7 +1646,7 @@ def suef_402():
         IgnorePauses(3)
         CancelIfPlayerHit(3)
         PaletteIndex(1)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
     sprite('vrsuef402_00', 3)
     CreateObject('suef_dust', 0)
     CreateObject('suef_dust', 1)
@@ -1654,6 +1744,7 @@ def suef_402():
     AddX(187000)
     AddX(-119000)
 
+
 @State
 def suef_402_b():
 
@@ -1676,6 +1767,7 @@ def suef_402_b():
     CreateObject('suef_dust', 2)
     CreateObject('suef_dust', 3)
 
+
 @State
 def suef_403_camera():
 
@@ -1686,6 +1778,7 @@ def suef_403_camera():
             CameraControlEnable(0)
             DeleteObject(23)
     sprite('null', 30)
+
 
 @State
 def suef_403_aura():
@@ -1702,6 +1795,7 @@ def suef_403_aura():
     ParticleColorFromPalette(240, 240, 240)
     CallCustomizableParticle('suef_403aura', -1)
     gotoLabel(0)
+
 
 @State
 def suef_403_hand():
@@ -1720,6 +1814,7 @@ def suef_403_hand():
     sprite('vrsuef403_02', 4)
     gotoLabel(0)
 
+
 @State
 def suef_403_smash():
 
@@ -1730,7 +1825,7 @@ def suef_403_smash():
         BlendMode_Normal()
         PaletteIndex(1)
         RenderLayer(7)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
     sprite('vrsuef403_10', 5)
     CreateObject('suef_dust_front', 0)
     CreateObject('suef_dust_front', 1)
@@ -1748,6 +1843,7 @@ def suef_403_smash():
     CreateObject('suef_dust_front', 2)
     sprite('vrsuef403_20', 3)
     sprite('vrsuef403_21', 3)
+
 
 @State
 def suef_403_smoke():
@@ -1768,6 +1864,7 @@ def suef_403_smoke():
     CreateObject('suef_403_smoke4', -1)
     sprite('null', 6)
     CreateObject('suef_403_smoke5', -1)
+
 
 @State
 def suef_403_smoke1():
@@ -1791,6 +1888,7 @@ def suef_403_smoke1():
     sprite('null', 6)
     sprite('null', 6)
 
+
 @State
 def suef_403_smoke2():
 
@@ -1812,6 +1910,7 @@ def suef_403_smoke2():
     sprite('null', 6)
     sprite('null', 6)
     sprite('null', 6)
+
 
 @State
 def suef_403_smoke3():
@@ -1838,6 +1937,7 @@ def suef_403_smoke3():
     sprite('null', 6)
     sprite('null', 6)
 
+
 @State
 def suef_403_smoke4():
 
@@ -1863,6 +1963,7 @@ def suef_403_smoke4():
     sprite('null', 6)
     sprite('null', 6)
     sprite('null', 6)
+
 
 @State
 def suef_403_smoke5():
@@ -1891,6 +1992,7 @@ def suef_403_smoke5():
     sprite('null', 6)
     sprite('null', 6)
 
+
 @State
 def suef_403_smoke_b():
 
@@ -1917,6 +2019,7 @@ def suef_403_smoke_b():
     sprite('null', 6)
     sprite('null', 6)
     sprite('null', 6)
+
 
 @State
 def suef_403_smoke_b2():
@@ -1947,6 +2050,7 @@ def suef_403_smoke_b2():
     sprite('null', 6)
     sprite('null', 6)
 
+
 @State
 def suef_403_smoke_b3():
 
@@ -1976,6 +2080,7 @@ def suef_403_smoke_b3():
     sprite('null', 6)
     sprite('null', 6)
 
+
 @State
 def suef_404():
 
@@ -1989,6 +2094,7 @@ def suef_404():
     CommonSE('014_electric_ml')
     gotoLabel(0)
 
+
 @State
 def suef_404a():
 
@@ -2000,6 +2106,7 @@ def suef_404a():
     ParticleColorFromPalette(242, 242, 242)
     CallPrivateEffect('suef_404a')
 
+
 @State
 def suef_404b():
 
@@ -2008,6 +2115,7 @@ def suef_404b():
         E0EAEffectPosition(3)
     sprite('null', 3)
     LinkParticle('suef_404b')
+
 
 @State
 def suef_405():
@@ -2034,6 +2142,7 @@ def suef_405():
     CreateObject('suef_405_aura', -1)
     gotoLabel(0)
 
+
 @State
 def suef_405_ground():
 
@@ -2046,6 +2155,7 @@ def suef_405_ground():
     ParticleColorFromPalette(242, 242, 242)
     CallPrivateEffect('suef_405jimen')
 
+
 @State
 def suef_405_aura():
 
@@ -2057,6 +2167,7 @@ def suef_405_aura():
     PaletteIndex(1)
     ParticleColorFromPalette(242, 242, 242)
     CallPrivateEffect('suef_405aura')
+
 
 @State
 def suef_405_crack():
@@ -2072,12 +2183,13 @@ def suef_405_crack():
         AddX(50000)
     sprite('null', 32767)
 
+
 @State
 def suef_405kick():
 
     def upon_IMMEDIATE():
         HitsPerCall(1, 0, 0, 0, 0, 0, 1, 0)
-        sendToLabelUpon(54, 999)
+        uponSendToLabel(54, 999)
         E0EAEffectPosition(2)
         PaletteIndex(1)
         AttackDefaults_SpecialProjectile()
@@ -2103,7 +2215,7 @@ def suef_405kick():
             Damage(1000)
             AttackP2(92)
             AirUntechableTime(29)
-            Comment('suef_405kick_Lv2')
+            GotoState('suef_405kick_Lv2')
             if SLOT_137:
                 DamageMultiplier(80)
 
@@ -2119,16 +2231,16 @@ def suef_405kick():
             GuardCrush(100, 1)
             SetActionMark(481)
             GuardCrushHitstun(30)
-            Comment('suef_405kick_Lv3')
+            GotoState('suef_405kick_Lv3')
             if SLOT_137:
                 DamageMultiplier(80)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
             if SLOT_2:
-                if SLOT_126:
+                if SLOT_IsOppAirborne:
                     GuardCrushHitstun(42)
-            PassbackAddActionMarkToFunction('Shot', 32)
+            TriggerUponForState('Shot', 32)
     sprite('vrsuef405_10', 3)
     CreateObject('suef_405_rock', -1)
     sprite('vrsuef405_11', 3)
@@ -2153,6 +2265,7 @@ def suef_405kick():
     ExitState()
     label(999)
     sprite('null', 1)
+
 
 @State
 def suef_405kick_SP():
@@ -2185,6 +2298,7 @@ def suef_405kick_SP():
     AddScaleSpeed(10)
     sprite('vrsuef405_15', 3)
 
+
 @State
 def suef_405_rock():
 
@@ -2205,6 +2319,7 @@ def suef_405_rock():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def suef_406_roll_3d():
 
@@ -2223,6 +2338,7 @@ def suef_406_roll_3d():
     sprite('null', 2)
     gotoLabel(0)
 
+
 @State
 def suef_406():
 
@@ -2235,6 +2351,7 @@ def suef_406():
     CreateObject('suef_406_3d', -1)
     CreateObject('suef_406_rock', -1)
     CreateObject('suef_406_crack', -1)
+
 
 @State
 def suef_406_3d():
@@ -2254,6 +2371,7 @@ def suef_406_3d():
     SetScaleXPerFrame(10)
     sprite('null', 3)
     ConstantAlphaModifier(-64)
+
 
 @State
 def suef_406_OD():
@@ -2277,6 +2395,7 @@ def suef_406_OD():
     else:
         CreateObject('suef_406_Atk', -1)
 
+
 @State
 def suef_406_SP():
 
@@ -2290,6 +2409,7 @@ def suef_406_SP():
     CreateObject('suef_406_crack', -1)
     sprite('null', 1)
     CreateObject('suef_406_OD_3d', -1)
+
 
 @State
 def suef_406_Atk():
@@ -2314,12 +2434,13 @@ def suef_406_Atk():
         Visibility(1)
         TeleportToObject(3)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('MidAssault', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('MidAssault', 32)
         if SLOT_137:
             DamageMultiplier(80)
         NoDamageAction(1)
     sprite('su406_10ex00', 8)
+
 
 @State
 def suef_406_Atk_Air():
@@ -2343,12 +2464,13 @@ def suef_406_Atk_Air():
         Visibility(1)
         TeleportToObject(3)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('AirMidAssault', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('AirMidAssault', 32)
         if SLOT_137:
             DamageMultiplier(80)
         NoDamageAction(1)
     sprite('su406_10ex00', 8)
+
 
 @State
 def suef_406_OD_3d():
@@ -2366,6 +2488,7 @@ def suef_406_OD_3d():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def suef_406_OD_pt():
 
@@ -2376,6 +2499,7 @@ def suef_406_OD_pt():
     sprite('null', 8)
     sprite('null', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def suef_406_rock():
@@ -2391,6 +2515,7 @@ def suef_406_rock():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def suef_406_OD_rock():
 
@@ -2405,6 +2530,7 @@ def suef_406_OD_rock():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def suef_406_crack():
 
@@ -2416,6 +2542,7 @@ def suef_406_crack():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_406jimen', -1)
     CreateParticle('suef_406smoke', -1)
+
 
 @State
 def suef_407_jiware():
@@ -2432,6 +2559,7 @@ def suef_407_jiware():
     CreateObject('suef_407_aura3', -1)
     gotoLabel(0)
 
+
 @State
 def suef_407_rock():
 
@@ -2446,6 +2574,7 @@ def suef_407_rock():
     sprite('null', 8)
     sprite('null', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def suef_407_aura():
@@ -2468,6 +2597,7 @@ def suef_407_aura():
     ConstantAlphaModifier(-64)
     CreateObject('suef_407_aura2', -1)
 
+
 @State
 def suef_407_aura2():
 
@@ -2487,6 +2617,7 @@ def suef_407_aura2():
     sprite('null', 12)
     sprite('null', 4)
     ConstantAlphaModifier(-64)
+
 
 @State
 def suef_407_aura3():
@@ -2508,6 +2639,7 @@ def suef_407_aura3():
     sprite('null', 4)
     ConstantAlphaModifier(-64)
 
+
 @State
 def suef_407_kick():
 
@@ -2521,6 +2653,7 @@ def suef_407_kick():
     CreateObject('suef_407_kick2', -1)
     sprite('null', 5)
     CreateObject('suef_407_kick2', -1)
+
 
 @State
 def suef_407_kick1():
@@ -2538,6 +2671,7 @@ def suef_407_kick1():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def suef_407_kick2():
 
@@ -2552,6 +2686,7 @@ def suef_407_kick2():
         RandAddScale(-250, 0)
     sprite('null', 20)
     SetScaleSpeed(10)
+
 
 @State
 def suef_407_kick_rock():
@@ -2568,6 +2703,7 @@ def suef_407_kick_rock():
     sprite('null', 24)
     ConstantAlphaModifier(-10)
 
+
 @State
 def suef_430_sword():
 
@@ -2576,7 +2712,7 @@ def suef_430_sword():
         E0EAEffectPosition(2)
         IgnorePauses(2)
         PaletteIndex(1)
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
     sprite('vrsuef430_00', 3)
     CreateObject('suef_dust_front', 0)
     CreateObject('suef_dust_front', 1)
@@ -2619,6 +2755,7 @@ def suef_430_sword():
     sprite('vrsuef430_19', 6)
     sprite('vrsuef430_20', 6)
 
+
 @State
 def suef_430_slash():
 
@@ -2636,6 +2773,7 @@ def suef_430_slash():
     CallCustomizableParticle('suef_430bg', -1)
     CreateParticle('suef_430bg', -1)
 
+
 @State
 def suef_430_bg():
 
@@ -2650,6 +2788,7 @@ def suef_430_bg():
     sprite('null', 20)
     SetScaleSpeedY(-50)
     AlphaValue(204)
+
 
 @State
 def suef_431_punch():
@@ -2682,6 +2821,7 @@ def suef_431_punch():
     sprite('vrsuef431_06', 3)
     CreateObject('suef_dust', 0)
 
+
 @State
 def suef_431_punch2():
 
@@ -2692,6 +2832,7 @@ def suef_431_punch2():
     PaletteIndex(1)
     ParticleColorFromPalette(242, 242, 242)
     CallPrivateEffect('suef_431punch')
+
 
 @State
 def suef_431_charge():
@@ -2713,6 +2854,7 @@ def suef_431_charge():
     sprite('null', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def suef_431_ring():
 
@@ -2727,6 +2869,7 @@ def suef_431_ring():
     sprite('suef431_91', 6)
     AddX(60000)
     AddX(-72000)
+
 
 @State
 def suef_431_beam():
@@ -2754,6 +2897,7 @@ def suef_431_beam():
     CreateObject('suef_431_rock', -1)
     gotoLabel(0)
 
+
 @State
 def suef_431_beam0():
 
@@ -2776,6 +2920,7 @@ def suef_431_beam0():
     CallCustomizableParticle('suef_431mouth_clr', -1)
     gotoLabel(0)
 
+
 @State
 def suef_431_beam1():
 
@@ -2791,6 +2936,7 @@ def suef_431_beam1():
         AddX(-70000)
     sprite('null', 90)
 
+
 @State
 def suef_431_beam2():
 
@@ -2803,6 +2949,7 @@ def suef_431_beam2():
         AddX(-70000)
         BlendMode_Add()
     sprite('null', 90)
+
 
 @State
 def suef_431_ring2():
@@ -2821,6 +2968,7 @@ def suef_431_ring2():
     sprite('suef431_80', 30)
     ConstantAlphaModifier(-8)
 
+
 @State
 def suef_431_ring2b():
 
@@ -2833,6 +2981,7 @@ def suef_431_ring2b():
         BlendMode_Add()
         RenderLayer(12)
     sprite('suef431_80b', 50)
+
 
 @State
 def suef_431_ring3():
@@ -2851,6 +3000,7 @@ def suef_431_ring3():
     sprite('suef431_80', 30)
     ConstantAlphaModifier(-8)
 
+
 @State
 def suef_431_ring3b():
 
@@ -2863,6 +3013,7 @@ def suef_431_ring3b():
         BlendMode_Add()
         RenderLayer(11)
     sprite('suef431_80b', 50)
+
 
 @State
 def suef_431_wave():
@@ -2877,6 +3028,7 @@ def suef_431_wave():
         AddX(100000)
         Size(650)
     sprite('null', 90)
+
 
 @State
 def suef_431_dome():
@@ -2893,6 +3045,7 @@ def suef_431_dome():
     sprite('null', 30)
     physicsXImpulse(-16000)
 
+
 @State
 def suef_431_dome2():
 
@@ -2906,6 +3059,7 @@ def suef_431_dome2():
     physicsXImpulse(-16000)
     ConstantAlphaModifier(-8)
 
+
 @State
 def suef_431_rock():
 
@@ -2915,6 +3069,7 @@ def suef_431_rock():
     sprite('null', 1)
     CreateParticle('suef_431rock00', -1)
     CreateParticle('suef_431rock01', -1)
+
 
 @State
 def suef_432_aura():
@@ -2934,6 +3089,7 @@ def suef_432_aura():
     SetScaleSpeed(10)
     SetScaleSpeedY(15)
     sprite('null', 10)
+
 
 @State
 def suef_432_aura2():
@@ -2964,6 +3120,7 @@ def suef_432_aura2():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def suef_432_auradust():
 
@@ -2978,6 +3135,7 @@ def suef_432_auradust():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_432aura_dust', -1)
     gotoLabel(0)
+
 
 @State
 def suef_440():
@@ -2997,6 +3155,7 @@ def suef_440():
     ParticleColorFromPalette(240, 240, 240)
     CallCustomizableParticle('suef_313', -1)
 
+
 @State
 def suef_440_smoke():
     sprite('null', 3)
@@ -3004,6 +3163,7 @@ def suef_440_smoke():
     CreateObject('suef_440_smoke1', -1)
     sprite('null', 3)
     CreateObject('suef_440_smoke2', -1)
+
 
 @State
 def suef_440_smoke1():
@@ -3026,6 +3186,7 @@ def suef_440_smoke1():
     sprite('null', 6)
     sprite('null', 32767)
 
+
 @State
 def suef_440_smoke2():
 
@@ -3047,6 +3208,7 @@ def suef_440_smoke2():
     sprite('null', 6)
     sprite('null', 32767)
 
+
 @State
 def suef_440_kick():
     sprite('null', 5)
@@ -3057,6 +3219,7 @@ def suef_440_kick():
     CreateObject('suef_440_kick2', -1)
     sprite('null', 5)
     CreateObject('suef_440_kick2', -1)
+
 
 @State
 def suef_440_kick1():
@@ -3073,6 +3236,7 @@ def suef_440_kick1():
     sprite('null', 32)
     ConstantAlphaModifier(-8)
 
+
 @State
 def suef_440_kick2():
 
@@ -3087,6 +3251,7 @@ def suef_440_kick2():
         RandAddScale(-250, 0)
     sprite('null', 20)
     SetScaleSpeed(10)
+
 
 @State
 def suef_440_kick_rock():
@@ -3105,6 +3270,7 @@ def suef_440_kick_rock():
     sprite('null', 24)
     ConstantAlphaModifier(-10)
 
+
 @State
 def suef_440_rolling():
 
@@ -3122,7 +3288,7 @@ def suef_440_rolling():
         ParticleColorFromPalette(240, 240, 240)
         ParticleLayer(11)
         CallPrivateEffect('suef_440rolling')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 4)
     AlphaValue(0)
     ConstantAlphaModifier(50)
@@ -3133,6 +3299,7 @@ def suef_440_rolling():
     sprite('null', 30)
     ConstantAlphaModifier(-9)
 
+
 @State
 def suef_440_fireaura():
 
@@ -3142,6 +3309,7 @@ def suef_440_fireaura():
     sprite('null', 3)
     CreateObject('suef_440_fireaura_pt', -1)
     gotoLabel(0)
+
 
 @State
 def suef_440_fireaura_pt():
@@ -3154,6 +3322,7 @@ def suef_440_fireaura_pt():
     ParticleColorFromPalette(240, 240, 240)
     CallCustomizableParticle('suef_440aura', -1)
 
+
 @State
 def suef_440_finish():
     sprite('null', 30)
@@ -3162,6 +3331,7 @@ def suef_440_finish():
     CreateObject('suef_440_tornado', -1)
     sprite('null', 1)
     DespawnEAEffect('suef_440_fireaura')
+
 
 @State
 def suef_440_finish_sp():
@@ -3173,6 +3343,7 @@ def suef_440_finish_sp():
     CreateObject('suef_440_tornado2', -1)
     sprite('null', 1)
     DespawnEAEffect('suef_440_fireaura')
+
 
 @State
 def suef_440_crack():
@@ -3193,6 +3364,7 @@ def suef_440_crack():
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-10)
 
+
 @State
 def suef_440_crack_sp():
 
@@ -3212,6 +3384,7 @@ def suef_440_crack_sp():
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-6)
 
+
 @State
 def suef_440_rock():
 
@@ -3219,6 +3392,7 @@ def suef_440_rock():
         E0EAEffectPosition(3)
     sprite('null', 90)
     LinkParticle('suef_440rock')
+
 
 @State
 def suef_440_aurasmoke():
@@ -3233,6 +3407,7 @@ def suef_440_aurasmoke():
     CallPrivateEffect('suef_440smoke')
     CreateParticle('suef_401stone', -1)
 
+
 @State
 def suef_440_shock():
 
@@ -3242,6 +3417,7 @@ def suef_440_shock():
     sprite('null', 1)
     CreateObject('suef_440_shock1', -1)
     CreateObject('suef_440_shock2', -1)
+
 
 @State
 def suef_440_shock1():
@@ -3254,6 +3430,7 @@ def suef_440_shock1():
     ParticleColorFromPalette(240, 240, 240)
     CallPrivateEffect('suef_440finish')
 
+
 @State
 def suef_440_shock2():
 
@@ -3262,6 +3439,7 @@ def suef_440_shock2():
     sprite('null', 60)
     ParticleLayer(12)
     CallPrivateEffect('suef_440finish2')
+
 
 @State
 def suef_440_tornado():
@@ -3280,6 +3458,7 @@ def suef_440_tornado():
     SetScaleSpeed(10)
     SetScaleSpeedY(15)
     sprite('null', 10)
+
 
 @State
 def suef_440_tornado2():
@@ -3304,6 +3483,7 @@ def suef_440_tornado2():
     SetScaleSpeedY(-35)
     ConstantAlphaModifier(-6)
 
+
 @State
 def suef_440_wave():
 
@@ -3314,6 +3494,7 @@ def suef_440_wave():
     CreateObject('suef_440_wave1', -1)
     CreateObject('suef_440_wave2', -1)
     CreateObject('suef_440_wave3', -1)
+
 
 @State
 def suef_440_wave1():
@@ -3330,6 +3511,7 @@ def suef_440_wave1():
     sprite('null', 40)
     ConstantAlphaModifier(-6)
 
+
 @State
 def suef_440_wave2():
 
@@ -3345,6 +3527,7 @@ def suef_440_wave2():
     sprite('null', 40)
     ConstantAlphaModifier(-6)
 
+
 @State
 def suef_440_wave3():
 
@@ -3359,14 +3542,15 @@ def suef_440_wave3():
     sprite('null', 40)
     ConstantAlphaModifier(-4)
 
+
 @State
 def AstralHeat_Camera():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(3)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(41, 9)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(41, 9)
     sprite('null', 32767)
     CameraControlEnable(1)
     CameraNoScreenCollision(1)
@@ -3431,6 +3615,7 @@ def AstralHeat_Camera():
     CameraNoScreenCollision(0)
     Unknown20008(0)
 
+
 @State
 def suef_450_hand():
 
@@ -3461,6 +3646,7 @@ def suef_450_hand():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_450hand', 0)
     gotoLabel(0)
+
 
 @State
 def suef_450_atk1():
@@ -3500,6 +3686,7 @@ def suef_450_atk1():
     sprite('suef450_07', 6)
     sprite('suef450_08', 3)
 
+
 @State
 def suef_450_atk1_3d():
 
@@ -3519,6 +3706,7 @@ def suef_450_atk1_3d():
     sprite('null', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def suef_450_atk2():
     sprite('null', 1)
@@ -3528,36 +3716,37 @@ def suef_450_atk2():
     BlendMode_Normal()
     ColorFromPaletteIndex(240)
     CreateObject('suef_450_atk2_3d', -1)
-    ApplyFunctionsToObjects(1)
-    XSpeed2(4000, 0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        XSpeed2(4000, 0)
     CreateObject('suef_450_atk2_3d', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    XSpeed2(4000, 0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        XSpeed2(4000, 0)
     CreateObject('suef_450_atk2_3d', -1)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(-50000)
-    XSpeed2(4000, 0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(-50000)
+        XSpeed2(4000, 0)
     CreateObject('suef_450_atk2_3d', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    RotationAngle(-50000)
-    XSpeed2(4000, 0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        RotationAngle(-50000)
+        XSpeed2(4000, 0)
     CreateObject('suef_450_atk2_3d', -1)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(50000)
-    XSpeed2(4000, 0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(50000)
+        XSpeed2(4000, 0)
     CreateObject('suef_450_atk2_3d', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    RotationAngle(50000)
-    XSpeed2(4000, 0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        RotationAngle(50000)
+        XSpeed2(4000, 0)
+
 
 @State
 def suef_450_atk2_3d():
@@ -3572,6 +3761,7 @@ def suef_450_atk2_3d():
         AddScale(500)
     sprite('null', 32)
 
+
 @State
 def suef_450_sword():
 
@@ -3582,7 +3772,7 @@ def suef_450_sword():
         PaletteIndex(1)
         AddX(32000)
         AddY(19000)
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
         RenderLayer(7)
     sprite('suef450_15', 6)
     AddX(-100000)
@@ -3634,6 +3824,7 @@ def suef_450_sword():
     sprite('suef450_32', 3)
     gotoLabel(0)
 
+
 @State
 def suef_450_swordaura():
 
@@ -3646,7 +3837,7 @@ def suef_450_swordaura():
         AddY(400000)
         RotationAngle(-44000)
         RenderLayer(6)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 15)
     AlphaValue(0)
     ConstantAlphaModifier(14)
@@ -3659,6 +3850,7 @@ def suef_450_swordaura():
     AddX(-75000)
     Size(2000)
     RotationAngle(-20000)
+
 
 @State
 def suef_450_bg():
@@ -3677,13 +3869,14 @@ def suef_450_bg():
     AlphaValue(255)
     ConstantAlphaModifier(0)
 
+
 @State
 def suef_450_shake():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 10)
-        sendToLabelUpon(33, 20)
-        sendToLabelUpon(34, 30)
+        uponSendToLabel(32, 10)
+        uponSendToLabel(33, 20)
+        uponSendToLabel(34, 30)
     label(0)
     sprite('null', 5)
     ScreenShake(2000, 2000)
@@ -3701,19 +3894,21 @@ def suef_450_shake():
     ScreenShake(25000, 25000)
     gotoLabel(30)
 
+
 @State
 def suef_450_storm_group():
 
     def upon_IMMEDIATE():
 
         def upon_STATE_END():
-            PassbackAddActionMarkToFunction('suef_450_storm', 32)
-            PassbackAddActionMarkToFunction('suef_450_storm_b', 32)
+            TriggerUponForState('suef_450_storm', 32)
+            TriggerUponForState('suef_450_storm_b', 32)
     sprite('null', 4)
     CreateObject('suef_450_stormdust', -1)
     sprite('null', 32767)
     CreateObject('suef_450_storm', -1)
     CreateObject('suef_450_storm_b', -1)
+
 
 @State
 def suef_450_stormdust():
@@ -3729,6 +3924,7 @@ def suef_450_stormdust():
     CommonSE('019_quake_0')
     gotoLabel(0)
 
+
 @State
 def suef_450_storm():
 
@@ -3737,7 +3933,7 @@ def suef_450_storm():
         BlendMode_Normal()
         ColorFromPaletteIndex(240)
         Eff3DEffect('suef_450storm.DIG', '')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 30)
     AlphaValue(0)
     ConstantAlphaModifier(4)
@@ -3747,6 +3943,7 @@ def suef_450_storm():
     label(0)
     sprite('null', 4)
     ConstantAlphaModifier(-32)
+
 
 @State
 def suef_450_storm_b():
@@ -3757,7 +3954,7 @@ def suef_450_storm_b():
         ColorFromPaletteIndex(240)
         Eff3DEffect('suef_450storm2.DIG', '')
         RenderLayer(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 30)
     AlphaValue(0)
     ConstantAlphaModifier(4)
@@ -3767,6 +3964,7 @@ def suef_450_storm_b():
     label(0)
     sprite('null', 4)
     ConstantAlphaModifier(-32)
+
 
 @State
 def suef_450_swordaura2():
@@ -3781,12 +3979,13 @@ def suef_450_swordaura2():
         AddY(-115000)
     sprite('null', 32767)
 
+
 @State
 def suef_450_storm2_group():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 10)
-        sendToLabelUpon(33, 20)
+        uponSendToLabel(32, 10)
+        uponSendToLabel(33, 20)
         CreateObject('suef_450_stormdust2', -1)
     label(0)
     sprite('null', 5)
@@ -3806,6 +4005,7 @@ def suef_450_storm2_group():
     CreateObject('suef_450_storm2_b', -1)
     gotoLabel(20)
 
+
 @State
 def suef_450_stormdust2():
 
@@ -3817,6 +4017,7 @@ def suef_450_stormdust2():
     ParticleColorFromPalette(240, 240, 240)
     CallCustomizableParticle('suef_450stormdust2', -1)
     gotoLabel(0)
+
 
 @State
 def suef_450_storm2():
@@ -3838,6 +4039,7 @@ def suef_450_storm2():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def suef_450_storm2_b():
 
@@ -3858,6 +4060,7 @@ def suef_450_storm2_b():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def suef_450_storm3_group():
     sprite('null', 10)
@@ -3870,6 +4073,7 @@ def suef_450_storm3_group():
     CreateObject('suef_450_storm3_d', -1)
     sprite('null', 5)
     CreateObject('suef_450_storm3_e', -1)
+
 
 @State
 def suef_450_storm3_a():
@@ -3887,6 +4091,7 @@ def suef_450_storm3_a():
         RenderLayer(8)
         SetScaleSpeed(100)
     sprite('null', 32767)
+
 
 @State
 def suef_450_storm3_b():
@@ -3906,6 +4111,7 @@ def suef_450_storm3_b():
         SetScaleSpeed(100)
     sprite('null', 32767)
 
+
 @State
 def suef_450_storm3_c():
 
@@ -3923,6 +4129,7 @@ def suef_450_storm3_c():
         RenderLayer(9)
         SetScaleSpeed(100)
     sprite('null', 32767)
+
 
 @State
 def suef_450_storm3_d():
@@ -3942,6 +4149,7 @@ def suef_450_storm3_d():
         SetScaleSpeed(100)
     sprite('null', 32767)
 
+
 @State
 def suef_450_storm3_e():
 
@@ -3959,11 +4167,13 @@ def suef_450_storm3_e():
     sprite('null', 9)
     sprite('null', 1)
 
+
 @State
 def suef_450_end():
     sprite('null', 32767)
     CreateObject('suef_450_end_bg', -1)
     CreateObject('suef_450_end_perticle', -1)
+
 
 @State
 def suef_450_end_bg():
@@ -3978,6 +4188,7 @@ def suef_450_end_bg():
         RenderLayer(2)
     sprite('null', 32767)
 
+
 @State
 def suef_450_end_perticle():
 
@@ -3991,6 +4202,7 @@ def suef_450_end_perticle():
     ParticleColorFromPalette(242, 242, 242)
     CallCustomizableParticle('suef_450end_pt', -1)
 
+
 @State
 def suef_450_HitEff():
 
@@ -4003,6 +4215,7 @@ def suef_450_HitEff():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmz', 0)
 
+
 @State
 def su600_ha():
 
@@ -4013,7 +4226,7 @@ def su600_ha():
         BlendMode_Normal()
         ForceBloomMaskOn(1)
         RenderLayer(14)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('su600_ha', 32767)
     label(0)
     sprite('su600_ha', 90)
@@ -4023,6 +4236,7 @@ def su600_ha():
     CreateObject('suef_60_denki_ha', -1)
     sprite('su600_ha', 90)
     ConstantAlphaModifier(-2)
+
 
 @State
 def suef_60_denki_ha():
@@ -4041,6 +4255,7 @@ def suef_60_denki_ha():
     sprite('null', 60)
     ConstantAlphaModifier(-10)
 
+
 @State
 def suef_600_smoke_ha():
     label(0)
@@ -4048,6 +4263,7 @@ def suef_600_smoke_ha():
     ParticleLayer(15)
     CallCustomizableParticle('suef_600smoke', -1)
     gotoLabel(0)
+
 
 @State
 def suef_600_ground():
@@ -4059,6 +4275,7 @@ def suef_600_ground():
     CreateParticle('suef_600ground', -1)
     gotoLabel(0)
 
+
 @State
 def su600_tm():
 
@@ -4069,7 +4286,7 @@ def su600_tm():
         BlendMode_Normal()
         ForceBloomMaskOn(1)
         RenderLayer(11)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('su600_tm610', 32767)
     label(0)
     sprite('su600_tm00', 8)
@@ -4141,6 +4358,7 @@ def su600_tm():
     DespawnEAEffect('suef_600_smoke_tm')
     DespawnEAEffect('suef_600_ground')
 
+
 @State
 def suef_600_denki_tm():
 
@@ -4155,6 +4373,7 @@ def suef_600_denki_tm():
     sprite('null', 60)
     ConstantAlphaModifier(-5)
 
+
 @State
 def suef_600_smoke_tm():
 
@@ -4165,6 +4384,7 @@ def suef_600_smoke_tm():
     ParticleLayer(14)
     CallCustomizableParticle('suef_600smoke2', -1)
     gotoLabel(0)
+
 
 @State
 def suef_600_aura():
@@ -4181,6 +4401,7 @@ def suef_600_aura():
     sprite('null', 90)
     ConstantAlphaModifier(-3)
 
+
 @State
 def suef_600_dust_tm():
     sprite('null', 32)
@@ -4188,6 +4409,7 @@ def suef_600_dust_tm():
     AddX(125000)
     ParticleLayer(8)
     CallCustomizableParticle('suef_600dust_tm', -1)
+
 
 @State
 def suef_600():
@@ -4203,6 +4425,7 @@ def suef_600():
     sprite('suef600_11', 8)
     sprite('suef600_12', 8)
 
+
 @State
 def suef_600_bloom():
 
@@ -4210,7 +4433,7 @@ def suef_600_bloom():
         RemoveOnCallStateEnd(2)
         PaletteIndex(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('suef600_50', 6)
     AlphaValue(0)
     ConstantAlphaModifier(4)
@@ -4224,6 +4447,7 @@ def suef_600_bloom():
     label(1)
     sprite('suef600_53', 10)
 
+
 @State
 def suef_600_splash():
 
@@ -4235,6 +4459,7 @@ def suef_600_splash():
     CallCustomizableParticle('suef_600splash', -1)
     CreateParticle('suef_600splash2', -1)
 
+
 @State
 def suef_601():
     CreateObject('suef_601_aura', -1)
@@ -4244,6 +4469,7 @@ def suef_601():
     CreateObject('suef_601_wave', -1)
     CreateObject('suef_601_wave2', -1)
     CreateObject('suef_601_screen', -1)
+
 
 @State
 def suef_601_aura():
@@ -4257,6 +4483,7 @@ def suef_601_aura():
     CallCustomizableParticle('suef_601aura', -1)
     gotoLabel(0)
 
+
 @State
 def suef_601_stone():
 
@@ -4267,6 +4494,7 @@ def suef_601_stone():
     CreateParticle('suef_601stone2', -1)
     gotoLabel(0)
 
+
 @State
 def suef_601_dust():
 
@@ -4276,6 +4504,7 @@ def suef_601_dust():
     sprite('null', 1)
     CallCustomizableParticle('suef_601dust', -1)
     gotoLabel(0)
+
 
 @State
 def suef_601_bloom():
@@ -4291,6 +4520,7 @@ def suef_601_bloom():
     sprite('suef020_01', 4)
     gotoLabel(0)
 
+
 @State
 def suef_601_bloom2():
 
@@ -4304,6 +4534,7 @@ def suef_601_bloom2():
     sprite('suef020_07', 5)
     sprite('suef020_08', 5)
     gotoLabel(0)
+
 
 @State
 def suef_601_bloom_add():
@@ -4323,6 +4554,7 @@ def suef_601_bloom_add():
     sprite('null', 60)
     ConstantAlphaModifier(-4)
 
+
 @State
 def suef_601_wave():
 
@@ -4336,6 +4568,7 @@ def suef_601_wave():
     sprite('null', 60)
     ConstantAlphaModifier(-4)
 
+
 @State
 def suef_601_wave2():
 
@@ -4347,6 +4580,7 @@ def suef_601_wave2():
     sprite('null', 30)
     sprite('null', 60)
     ConstantAlphaModifier(-4)
+
 
 @State
 def suef_601_screen():
@@ -4360,6 +4594,7 @@ def suef_601_screen():
     sprite('suef601_screen', 60)
     sprite('suef601_screen', 60)
     ConstantAlphaModifier(-4)
+
 
 @State
 def suef_601_crack():
@@ -4377,6 +4612,7 @@ def suef_601_crack():
     sprite('null', 30)
     ConstantAlphaModifier(-8)
 
+
 @State
 def suef_610_soul():
 
@@ -4386,7 +4622,7 @@ def suef_610_soul():
         PaletteIndex(2)
         EffectPosition(22, 100)
         RenderLayer(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('suef610_00', 12)
     AbsoluteY(64000)
     sprite('suef610_01', 6)
@@ -4405,6 +4641,7 @@ def suef_610_soul():
     label(0)
     sprite('suef610_06', 8)
 
+
 @State
 def suef_610_soul2():
 
@@ -4412,7 +4649,7 @@ def suef_610_soul2():
         RemoveOnCallStateEnd(2)
         BlendMode_Add()
         PaletteIndex(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('suef610_07', 6)
     AddX(256000)
     CommonSE('015_blaze_0')
@@ -4438,6 +4675,7 @@ def suef_610_soul2():
     CreateParticle('suef_610', 0)
     sprite('suef610_21', 4)
     sprite('suef610_22', 4)
+
 
 @State
 def suef_611():
@@ -4469,6 +4707,7 @@ def suef_611():
     CreateObject('suef_dust_front', 0)
     CreateObject('suef_dust_front', 1)
 
+
 @State
 def suef_611_b():
 
@@ -4490,6 +4729,7 @@ def suef_611_b():
     sprite('suef611_11', 6)
     gotoLabel(0)
 
+
 @State
 def suef_611_dust():
 
@@ -4500,6 +4740,7 @@ def suef_611_dust():
     sprite('null', 1)
     ParticleColorFromPalette(240, 240, 240)
     CallCustomizableParticle('suef_611sword', -1)
+
 
 @State
 def suef_611_ah():
@@ -4518,6 +4759,7 @@ def suef_611_ah():
     sprite('suef611_11', 6)
     gotoLabel(0)
 
+
 @State
 def suef_001():
 
@@ -4527,6 +4769,7 @@ def suef_001():
     sprite('null', 100)
     CreateObject('suef_001_dummy', -1)
     CallPrivateEffect('suef_001dust@')
+
 
 @State
 def suef_001_dummy():
@@ -4539,22 +4782,23 @@ def suef_001_dummy():
     CreateObject('suef_001_aura', 0)
     sprite('vrsuef001_dummy', 4)
     CreateObject('suef_001_aura2', 1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
     sprite('vrsuef001_dummy', 4)
     CreateObject('suef_001_aura', 2)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
     sprite('vrsuef001_dummy', 4)
     CreateObject('suef_001_aura', 3)
     sprite('vrsuef001_dummy', 4)
     CreateObject('suef_001_aura2', 4)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
     CreateObject('suef_001_aura2', 5)
+
 
 @State
 def suef_001_aura():
@@ -4573,6 +4817,7 @@ def suef_001_aura():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def suef_001_aura2():
 
@@ -4589,6 +4834,7 @@ def suef_001_aura2():
     ConstantAlphaModifier(8)
     sprite('null', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def suef_001_blm():
@@ -4607,6 +4853,7 @@ def suef_001_blm():
     ConstantAlphaModifier(0)
     sprite('null', 30)
     ConstantAlphaModifier(-8)
+
 
 @State
 def suef_001_blm_2d():
@@ -4632,6 +4879,7 @@ def suef_001_blm_2d():
     sprite('vrsuef001_09', 6)
     sprite('vrsuef001_10', 6)
 
+
 @State
 def suef_300():
 
@@ -4641,6 +4889,7 @@ def suef_300():
     sprite('null', 100)
     CreateObject('suef_300_dummy', -1)
     CallPrivateEffect('suef_001dust@')
+
 
 @State
 def suef_300_blm_2d():
@@ -4664,6 +4913,7 @@ def suef_300_blm_2d():
     sprite('vrsuef300_05', 7)
     sprite('vrsuef300_06', 7)
 
+
 @State
 def suef_300_dummy():
 
@@ -4674,14 +4924,15 @@ def suef_300_dummy():
     sprite('vrsuef300_dummy', 1)
     CreateObject('suef_001_aura', 0)
     CreateObject('suef_001_aura', 1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
     CreateObject('suef_001_aura', 2)
     CreateObject('suef_001_aura', 3)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+
 
 @State
 def suef_300_blm():
@@ -4700,6 +4951,7 @@ def suef_300_blm():
     ConstantAlphaModifier(0)
     sprite('null', 30)
     ConstantAlphaModifier(-8)
+
 
 @State
 def suef_900_circle():

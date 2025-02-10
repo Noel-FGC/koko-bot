@@ -19,6 +19,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_NT_OD():
 
@@ -39,6 +40,7 @@ def EMB_NT_OD():
     sprite('null', 8)
     ColorTransition(4278223103, 10)
     sprite('null', 80)
+
 
 @State
 def EMB_NT_AH():
@@ -61,6 +63,7 @@ def EMB_NT_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def ModelMagicCircle1():
 
@@ -72,6 +75,7 @@ def ModelMagicCircle1():
         IgnoreScreenfreeze(1)
     sprite('null', 74)
 
+
 @State
 def BackThrow_DashStop():
 
@@ -79,6 +83,7 @@ def BackThrow_DashStop():
         ForceFaceSprite()
     sprite('null', 20)
     SkidEffects(100, 1, 1)
+
 
 @State
 def ntef_340():
@@ -106,6 +111,7 @@ def ntef_340():
     sprite('vr_nt340_04', 4)
     sprite('vr_nt340_05', 4)
 
+
 @State
 def ntef_340_pt():
 
@@ -113,6 +119,7 @@ def ntef_340_pt():
         BlendMode_Normal()
         IgnoreScreenfreeze(1)
         IgnoreFinishStop(1)
+
 
 @State
 def ntef_400_aura():
@@ -129,6 +136,7 @@ def ntef_400_aura():
     sprite('vr_nt400_04', 2)
     sprite('vr_nt400_05', 2)
 
+
 @State
 def ntef_401_aura1():
 
@@ -138,6 +146,7 @@ def ntef_401_aura1():
         RemoveOnCallStateEnd(2)
         IgnorePauses(2)
     sprite('vr_nt401_00', 32767)
+
 
 @State
 def ntef_401_aura2():
@@ -153,6 +162,7 @@ def ntef_401_aura2():
     CreateParticle('ntef_402_aura2_pos', 0)
     CreateParticle('ntef_402_aura3_pos', 1)
     sprite('vr_nt401_04', 2)
+
 
 @State
 def ntef_402():
@@ -179,6 +189,7 @@ def ntef_402():
     CreateParticle('ntef_402_aura4', 2)
     sprite('vr_nt402_05', 2)
 
+
 @State
 def ntef_403():
 
@@ -200,6 +211,7 @@ def ntef_403():
     CreateParticle('ntef_403_aura2', 4)
     sprite('vr_nt403_05', 2)
 
+
 @State
 def ntef_405Weak():
 
@@ -212,15 +224,15 @@ def ntef_405Weak():
         AddX(100000)
         RotationAngle(15000)
         AlphaValue(210)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 2)
     sprite('vr_nt405_20', 32767)
     CreateObject('ntef_405WeakSub', -1)
     CreateObject('ntef_405WeakSmoke', -1)
     Size(750)
     label(0)
     sprite('vr_nt405_20', 2)
-    PassbackAddActionMarkToFunction('ntef_405WeakSub', 32)
+    TriggerUponForState('ntef_405WeakSub', 32)
     AddY(100000)
     AddX(50000)
     Size(1200)
@@ -234,6 +246,7 @@ def ntef_405Weak():
     CreateObject('ntef_405WeakEnd', -1)
     DespawnEAEffect('ntef_405WeakSub')
 
+
 @State
 def ntef_405WeakSub():
 
@@ -245,7 +258,7 @@ def ntef_405WeakSub():
         E0EAEffectScale(2)
         E0EAEffectRotation(2)
         RenderLayer(11)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         AlphaValue(210)
     sprite('vr_nt405_30', 32767)
     label(1)
@@ -253,6 +266,7 @@ def ntef_405WeakSub():
     sprite('vr_nt405_32', 2)
     sprite('vr_nt405_30', 2)
     gotoLabel(1)
+
 
 @State
 def ntef_405WeakEnd():
@@ -268,6 +282,7 @@ def ntef_405WeakEnd():
     ConstantAlphaModifier(-15)
     AddX(-160000)
 
+
 @State
 def ntef_405WeakAir():
 
@@ -280,13 +295,13 @@ def ntef_405WeakAir():
         AddX(100000)
         Size(650)
         AlphaValue(210)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 2)
     sprite('vr_nt405_20', 32767)
     CreateObject('ntef_405WeakSub', -1)
     label(0)
     sprite('vr_nt405_20', 2)
-    PassbackAddActionMarkToFunction('ntef_405WeakSub', 32)
+    TriggerUponForState('ntef_405WeakSub', 32)
     AddY(100000)
     AddX(50000)
     Size(800)
@@ -301,6 +316,7 @@ def ntef_405WeakAir():
     DespawnEAEffect('ntef_405WeakSub')
     CreateObject('ntef_405WeakEnd', -1)
 
+
 @State
 def ntef_405WeakSmoke():
 
@@ -311,6 +327,7 @@ def ntef_405WeakSmoke():
         AbsoluteY(0)
         Size(1100)
     sprite('null', 30)
+
 
 @State
 def ntef_405Test():
@@ -324,7 +341,7 @@ def ntef_405Test():
         Rotation(10000)
         AddX(50000)
         Size(1300)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 3)
     CreateObject('ntef_405Sub', -1)
     CreateParticle('ntef_405_nokosi', -1)
@@ -354,6 +371,7 @@ def ntef_405Test():
     sprite('null', 5)
     CreateParticle('ntef_405_nokosi', -1)
 
+
 @State
 def ntef_405():
 
@@ -363,7 +381,7 @@ def ntef_405():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         IgnorePauses(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         ParticleLayer(12)
         CallPrivateEffect('tef_405_back')
     sprite('vr_nt405_00', 1)
@@ -395,6 +413,7 @@ def ntef_405():
     sprite('null', 1)
     CreateObject('ntef_405end', -1)
 
+
 @State
 def ntef_405end():
 
@@ -407,6 +426,7 @@ def ntef_405end():
     sprite('vr_nt405_03', 4)
     sprite('vr_nt405_04', 4)
     sprite('vr_nt405_05', 4)
+
 
 @State
 def ntef_405Sub():
@@ -429,6 +449,7 @@ def ntef_405Sub():
     sprite('vr_nt405_15', 4)
     sprite('vr_nt405_16', 4)
 
+
 @State
 def ntef_405AirTest():
 
@@ -441,7 +462,7 @@ def ntef_405AirTest():
         Rotation(10000)
         AddX(50000)
         Size(1300)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 3)
     CreateParticle('ntef_405_nokosi', -1)
     sprite('null', 1)
@@ -470,6 +491,7 @@ def ntef_405AirTest():
     sprite('null', 5)
     CreateParticle('ntef_405_nokosi', -1)
 
+
 @State
 def ntef_405Air():
 
@@ -481,7 +503,7 @@ def ntef_405Air():
         IgnorePauses(2)
         ParticleLayer(12)
         CallPrivateEffect('tef_405_back')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vr_nt405_00', 1)
     sprite('vr_nt405_01', 2)
     sprite('vr_nt405_00', 2)
@@ -509,6 +531,7 @@ def ntef_405Air():
     sprite('null', 2)
     CreateObject('ntef_405end', -1)
 
+
 @State
 def ntef_409():
 
@@ -522,6 +545,7 @@ def ntef_409():
         Size(1700)
     sprite('null', 14)
 
+
 @State
 def ntef_410():
 
@@ -534,11 +558,12 @@ def ntef_410():
         AddY(300000)
         AddX(50000)
         Size(1500)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     sprite('null', 9)
     Eff3DEffect('ntef409_strike02', '')
     physicsYImpulse(-15000)
+
 
 @State
 def ntef_430_bloodMatome():
@@ -553,17 +578,18 @@ def ntef_430_bloodMatome():
     sprite('null', 6)
     CreateObject('ntef_430_blood2', -1)
     CreateObject('ntef_430_blood', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(35000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(35000)
     CreateObject('ntef_430_aura00', -1)
     sprite('null', 6)
     CreateObject('ntef_430_blood', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-35000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-35000)
     sprite('null', 6)
     CreateObject('ntef_430_blood2', -1)
+
 
 @State
 def ntef_430_blood():
@@ -575,6 +601,7 @@ def ntef_430_blood():
         CancelIfPlayerHit(3)
     sprite('null', 24)
     SetScaleSpeed(-5)
+
 
 @State
 def ntef_430_blood2():
@@ -593,6 +620,7 @@ def ntef_430_blood2():
     SetScaleSpeedY(75)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ntef_430_aura00():
@@ -670,6 +698,7 @@ def ntef_430_aura00():
     CallCustomizableParticle('tef_430_auranml', 4)
     CallCustomizableParticle('tef_430_auranml', 5)
 
+
 @State
 def ntef_430atk():
 
@@ -681,8 +710,8 @@ def ntef_430atk():
         CancelIfPlayerHit(2)
         BlendMode_Normal()
         AlphaValue(230)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 3)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 3)
     label(0)
     sprite('vr_nt430_00', 2)
     sprite('vr_nt430_01', 2)
@@ -715,11 +744,11 @@ def ntef_430atk():
     label(3)
     sprite('vr_nt430_21', 2)
     RemoveOnCallStateEnd(0)
-    PassbackAddActionMarkToFunction('ntef_atksub', 32)
+    TriggerUponForState('ntef_atksub', 32)
     sprite('vr_nt430_22', 4)
     RenderLayer(0)
     E0EAEffectPosition(0)
-    PassbackAddActionMarkToFunction('ntef_430blood_3d', 32)
+    TriggerUponForState('ntef_430blood_3d', 32)
     sprite('vr_nt430_23', 2)
     sprite('vr_nt430_23', 2)
     CreateParticle('ntef_430_sibuki', 1)
@@ -735,6 +764,7 @@ def ntef_430atk():
     CreateParticle('tef_430_last', 2)
     CreateParticle('tef_430_last', 3)
 
+
 @State
 def ntef_atksub():
 
@@ -744,7 +774,7 @@ def ntef_atksub():
         RemoveOnCallStateEnd(2)
         LinkParticle('tef_430_core')
         Visibility(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         E0EAEffectRotation(2)
     label(0)
     sprite('vr_nt430_22', 7)
@@ -763,6 +793,7 @@ def ntef_atksub():
     CreateParticle('tef_430_tossin_00', 3)
     CreateParticle('tef_430_tossin_00', 4)
 
+
 @State
 def ntef_430blood_3d():
 
@@ -776,12 +807,13 @@ def ntef_430blood_3d():
         RemoveOnContact(2)
         RenderLayer(11)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 15)
     RenderLayer(0)
     Eff3DEffect('ntef430_blood2.DIG', '')
+
 
 @State
 def ntef_Air430atk():
@@ -796,8 +828,8 @@ def ntef_Air430atk():
         AlphaValue(230)
         AddY(80000)
         AddX(20000)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 3)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 3)
     label(0)
     sprite('vr_nt430_00', 2)
     sprite('vr_nt430_01', 2)
@@ -829,12 +861,12 @@ def ntef_Air430atk():
     label(3)
     sprite('vr_nt430_21', 2)
     RemoveOnCallStateEnd(0)
-    PassbackAddActionMarkToFunction('ntef_atksub', 32)
+    TriggerUponForState('ntef_atksub', 32)
     XPositionRelativeFacing(290000)
     AbsoluteY(-50000)
     RotationAngle(45000)
     sprite('vr_nt430_22', 3)
-    PassbackAddActionMarkToFunction('ntef_430blood_3d', 32)
+    TriggerUponForState('ntef_430blood_3d', 32)
     RenderLayer(0)
     E0EAEffectPosition(0)
     sprite('vr_nt430_23', 3)
@@ -844,6 +876,7 @@ def ntef_Air430atk():
     CreateParticle('tef_430_last', 1)
     CreateParticle('tef_430_last', 2)
     CreateParticle('tef_430_last', 3)
+
 
 @State
 def ntef_430_AirbloodMatome():
@@ -857,20 +890,21 @@ def ntef_430_AirbloodMatome():
         CancelIfPlayerHit(3)
     sprite('null', 6)
     CreateObject('ntef_430_blood', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(35000)
-    SetScaleSpeed(-30)
-    AddScale(300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(35000)
+        SetScaleSpeed(-30)
+        AddScale(300)
     CreateObject('ntef_430_aura00', -1)
     sprite('null', 6)
     CreateObject('ntef_430_blood', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-35000)
-    SetScaleSpeed(-15)
-    AddScale(100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-35000)
+        SetScaleSpeed(-15)
+        AddScale(100)
     sprite('null', 6)
+
 
 @State
 def ntef_430atkOD():
@@ -906,6 +940,7 @@ def ntef_430atkOD():
     sprite('vr_nt430_43', 4)
     sprite('vr_nt430_44', 4)
 
+
 @State
 def ntef_430atkODsub():
 
@@ -920,6 +955,7 @@ def ntef_430atkODsub():
     sprite('null', 17)
     SetScaleSpeed(75)
 
+
 @State
 def ntef_430_moya():
 
@@ -932,13 +968,14 @@ def ntef_430_moya():
         LinkParticle('tef_430a_yotyou')
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(3)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 15)
     sprite('null', 32767)
     CreateObject('ntef_430_moyaa', -1)
     E0EAEffectPosition(0)
     label(0)
     sprite('null', 1)
+
 
 @State
 def ntef_430_moyaa():
@@ -956,6 +993,7 @@ def ntef_430_moyaa():
     ConstantAlphaModifier(15)
     sprite('null', 21)
     ConstantAlphaModifier(0)
+
 
 @State
 def ntef_431():
@@ -1004,19 +1042,19 @@ def ntef_431():
     AddScale(300)
     physicsXImpulse(3000)
     CreateObject('ntef_431OdLastSub', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleX(1500)
-    SetScaleY(1000)
-    AddY(30000)
-    AddX(-250000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleX(1500)
+        SetScaleY(1000)
+        AddY(30000)
+        AddX(-250000)
     sprite('vr_nt431_02', 6)
     RefreshMultihit()
     physicsXImpulse(0)
     sprite('vr_nt431_03', 4)
     sprite('vr_nt431_04', 4)
-    PassbackAddActionMarkToFunction('ntef_431_3d', 32)
-    PassbackAddActionMarkToFunction('ntef_431Sub', 32)
+    TriggerUponForState('ntef_431_3d', 32)
+    TriggerUponForState('ntef_431Sub', 32)
     sprite('vr_nt431_05', 4)
     CreateParticle('tef_430a_tossin_00', 0)
     CreateParticle('tef_430a_tossin_00', 1)
@@ -1024,6 +1062,7 @@ def ntef_431():
     CreateParticle('tef_430a_tossin_00', 3)
     CreateParticle('tef_430a_tossin_00', 4)
     CreateParticle('tef_430a_tossin_00', 5)
+
 
 @State
 def ntef_431_3d():
@@ -1036,7 +1075,7 @@ def ntef_431_3d():
         BlendMode_Normal()
         RemoveOnContact(2)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Size(1200)
         AddY(-16000)
         AddX(32000)
@@ -1056,6 +1095,7 @@ def ntef_431_3d():
     Eff3DEffect('ntef431_upper2.DIG', '')
     AlphaValue(175)
     sprite('null', 4)
+
 
 @State
 def ntef_431_OD():
@@ -1105,19 +1145,19 @@ def ntef_431_OD():
     AddScale(300)
     physicsXImpulse(3000)
     CreateObject('ntef_431OdLastSub', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleX(1500)
-    SetScaleY(1000)
-    AddY(30000)
-    AddX(-250000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleX(1500)
+        SetScaleY(1000)
+        AddY(30000)
+        AddX(-250000)
     sprite('vr_nt431_02', 6)
     RefreshMultihit()
     physicsXImpulse(0)
     sprite('vr_nt431_03', 4)
     sprite('vr_nt431_04', 4)
-    PassbackAddActionMarkToFunction('ntef_431_3d', 32)
-    PassbackAddActionMarkToFunction('ntef_431Sub', 32)
+    TriggerUponForState('ntef_431_3d', 32)
+    TriggerUponForState('ntef_431Sub', 32)
     sprite('vr_nt431_05', 4)
     CreateParticle('tef_430a_tossin_00', 0)
     CreateParticle('tef_430a_tossin_00', 1)
@@ -1125,6 +1165,7 @@ def ntef_431_OD():
     CreateParticle('tef_430a_tossin_00', 3)
     CreateParticle('tef_430a_tossin_00', 4)
     CreateParticle('tef_430a_tossin_00', 5)
+
 
 @State
 def ntef_431AddAtk():
@@ -1150,6 +1191,7 @@ def ntef_431AddAtk():
     sprite('null', 10)
     SetScaleSpeedY(-200)
 
+
 @State
 def ntef_431shockwave():
 
@@ -1165,6 +1207,7 @@ def ntef_431shockwave():
     sprite('null', 5)
     SetScaleSpeed(100)
 
+
 @State
 def ntef_431Sub():
 
@@ -1175,12 +1218,13 @@ def ntef_431Sub():
         Size(850)
         AddX(75000)
         Flip()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
     loopRest()
+
 
 @State
 def ntef_431OD():
@@ -1210,6 +1254,7 @@ def ntef_431OD():
     sprite('vr_nt431_21', 6)
     sprite('vr_nt431_22', 6)
 
+
 @State
 def ntef_431OdSub():
 
@@ -1229,6 +1274,7 @@ def ntef_431OdSub():
     CameraControlEnable(2)
     CameraPosition(900)
 
+
 @State
 def ntef_431OdShake():
 
@@ -1241,6 +1287,7 @@ def ntef_431OdShake():
     ScreenShake(10000, 10000)
     gotoLabel(0)
 
+
 @State
 def ntef_431OdLastAtk():
 
@@ -1251,6 +1298,7 @@ def ntef_431OdLastAtk():
         Size(1200)
     sprite('null', 120)
     ScreenShake(20000, 20000)
+
 
 @State
 def ntef_431OdLastSubMato():
@@ -1275,7 +1323,7 @@ def ntef_431OdLastSubMato():
         Visibility(1)
 
         def upon_OPPONENT_HIT():
-            PassbackAddActionMarkToFunction('UltimateEdgeAssault_Exe_OD', 32)
+            TriggerUponForState('UltimateEdgeAssault_Exe_OD', 32)
     sprite('vr_nt431_atk', 4)
     CreateObject('ntef_431OdLastSub', 0)
     sprite('vr_nt431_atk', 4)
@@ -1294,6 +1342,7 @@ def ntef_431OdLastSubMato():
     sprite('vr_nt431_atk', 4)
     CreateObject('ntef_431OdLastSub', 1)
 
+
 @State
 def ntef_431OdLastSub():
 
@@ -1304,6 +1353,7 @@ def ntef_431OdLastSub():
         RandAddScale(-300, 300)
     sprite('null', 23)
 
+
 @State
 def ntef_440Axe():
 
@@ -1313,31 +1363,32 @@ def ntef_440Axe():
         RemoveOnCallStateEnd(2)
     sprite('vr_nt440_06', 3)
     CreateObject('ntef_440Last', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(200000)
-    AddScaleY(1000)
-    AddScaleX(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(200000)
+        AddScaleY(1000)
+        AddScaleX(600)
     sprite('vr_nt440_06', 3)
     Visibility(1)
     CreateObject('ntef_440Last', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(400000)
-    AddScale(400)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(400000)
+        AddScale(400)
     sprite('vr_nt440_06', 3)
     Visibility(1)
     CreateObject('ntef_440Last', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(600000)
-    AddScaleX(1200)
-    AddScaleY(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(600000)
+        AddScaleX(1200)
+        AddScaleY(0)
     CreateParticle('ntef_611_end', 0)
     CreateParticle('ntef_611_end', 1)
     CreateParticle('ntef_611_end', 2)
     CreateParticle('ntef_611_end', 3)
     CreateParticle('ntef_611_end', 4)
+
 
 @State
 def ntef_440Last():
@@ -1347,6 +1398,7 @@ def ntef_440Last():
         Eff3DEffect('ntef_cmnblood00', '')
         Size(1000)
     sprite('null', 23)
+
 
 @State
 def ntef_440LastEx():
@@ -1363,6 +1415,7 @@ def ntef_440LastEx():
     sprite('null', 30)
     ConstantAlphaModifier(-8)
 
+
 @State
 def BurstDD_Camera():
 
@@ -1376,6 +1429,7 @@ def BurstDD_Camera():
         AddX(200000)
     sprite('null', 32767)
 
+
 @State
 def ntef_451aura():
 
@@ -1386,6 +1440,7 @@ def ntef_451aura():
         Size(300)
     sprite('null', 24)
     SetScaleSpeed(65)
+
 
 @State
 def ntef_451():
@@ -1408,6 +1463,7 @@ def ntef_451():
     CreateParticle('tef_451_tame00', 6)
     ExitState()
 
+
 @State
 def ntef_451_hit():
 
@@ -1428,6 +1484,7 @@ def ntef_451_hit():
     CreateParticle('tef_451_tame00', 5)
     CreateParticle('tef_451_tame00', 6)
 
+
 @State
 def ntef_451_2():
 
@@ -1436,9 +1493,9 @@ def ntef_451_2():
         BlendMode_Normal()
         RemoveOnCallStateEnd(2)
         IgnorePauses(2)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 3)
-        sendToLabelUpon(34, 10)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 3)
+        uponSendToLabel(34, 10)
     sprite('vr_nt451_04', 2)
     label(0)
     sprite('vr_nt451_05', 2)
@@ -1474,6 +1531,7 @@ def ntef_451_2():
     sprite('vr_nt451_33', 3)
     sprite('vr_nt451_34', 3)
 
+
 @State
 def ntef_451slash():
 
@@ -1484,6 +1542,7 @@ def ntef_451slash():
         Size(1400)
     sprite('null', 21)
 
+
 @State
 def ntef_451slash2():
 
@@ -1493,6 +1552,7 @@ def ntef_451slash2():
         Eff3DEffect('ntef451_slash01', '')
         Size(1400)
     sprite('null', 21)
+
 
 @State
 def ntef_451slash3():
@@ -1515,6 +1575,7 @@ def ntef_451slash3():
     ScreenShake(20000, 20000)
     sprite('null', 2)
 
+
 @State
 def ntef_451SubMato():
 
@@ -1524,45 +1585,46 @@ def ntef_451SubMato():
         AddX(-600000)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 0)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 2)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 3)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 1)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
     sprite('null', 6)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 0)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 2)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 3)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
     sprite('nt431_23', 4)
     CreateObject('ntef_431OdLastSub', 1)
-    ApplyFunctionsToObjects(1)
-    AddScale(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(600)
+
 
 @State
 def ntef_451slash_kyushu():
@@ -1572,10 +1634,10 @@ def ntef_451slash_kyushu():
         Size(1000)
         PerAngleSpeed(20)
         LinkParticle('tef_451_core')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 1)
     CreateObject('ntef_451slash_kyushuSub', -1)
-    PassbackAddActionMarkToFunction('ntef_451_BG', 32)
+    TriggerUponForState('ntef_451_BG', 32)
     label(0)
     sprite('null', 4)
     ScreenShake(10000, 10000)
@@ -1587,6 +1649,7 @@ def ntef_451slash_kyushu():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def ntef_451slash_kyushuSub():
 
@@ -1597,6 +1660,7 @@ def ntef_451slash_kyushuSub():
         PerAngleSpeed(20)
     sprite('null', 19)
 
+
 @State
 def ntef_451_BG():
 
@@ -1604,11 +1668,12 @@ def ntef_451_BG():
         BlendMode_Normal()
         LinkParticle('tef_451_bg')
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ntef_611():
@@ -1645,6 +1710,7 @@ def ntef_611():
     ConstantAlphaModifier(-26)
     sprite('vr_nt611_08', 3)
 
+
 @State
 def ntef_OverDrive():
 
@@ -1655,11 +1721,12 @@ def ntef_OverDrive():
         E0EAEffectPosition(3)
         RemoveOnCallStateEnd(3)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     SetScaleSpeed(75)
     ConstantAlphaModifier(-13)
     sprite('null', 10)
+
 
 @State
 def ntef_D_bodyaura():
@@ -1669,7 +1736,7 @@ def ntef_D_bodyaura():
         RemoveOnCallStateEnd(3)
         IgnorePauses(3)
         LinkParticle('ntef_D_bodyaura')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 8)
     AlphaValue(0)
     ConstantAlphaModifier(32)
@@ -1677,6 +1744,7 @@ def ntef_D_bodyaura():
     label(0)
     sprite('null', 25)
     ConstantAlphaModifier(-10)
+
 
 @State
 def ntef_D_handaura():
@@ -1687,7 +1755,7 @@ def ntef_D_handaura():
         CancelIfPlayerHit(3)
         IgnorePauses(3)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     label(1)
     sprite('null', 9)
     CreateObject('ntef_D_handaura_1', -1)
@@ -1696,6 +1764,7 @@ def ntef_D_handaura():
     label(0)
     sprite('null', 0)
     DeleteObject(23)
+
 
 @State
 def ntef_D_handaura_1():
@@ -1709,6 +1778,7 @@ def ntef_D_handaura_1():
         LinkParticle('ntef_D_handaura')
     sprite('null', 30)
 
+
 @State
 def ntef_D_handaura_3D():
 
@@ -1718,7 +1788,7 @@ def ntef_D_handaura_3D():
         CancelIfPlayerHit(3)
         IgnorePauses(3)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     label(1)
     sprite('null', 6)
     CreateObject('ntef_D_handaura_3D_1', -1)
@@ -1727,6 +1797,7 @@ def ntef_D_handaura_3D():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
     IgnorePauses(0)
+
 
 @State
 def ntef_D_handaura_3D_1():
@@ -1744,6 +1815,7 @@ def ntef_D_handaura_3D_1():
         RenderLayer(11)
         Size(1250)
     sprite('null', 15)
+
 
 @Subroutine
 def BloodEdge():
@@ -1786,15 +1858,18 @@ def BloodEdge():
     AlphaIsColorOnPalette(244, 255)
     AlphaIsColorOnPalette(254, 127)
 
+
 @State
 def MaskTexture():
 
     def upon_IMMEDIATE():
-        ArakuneSpriteOverlay('vrntef000_00', 16, 0, 128000, 0, 2000, 2147483647, 1000, 500)
+        ArakuneSpriteOverlay('vrntef000_00', 16, 0, 128000, 0, 2000, 
+            2147483647, 1000, 500)
         PaletteIndex(1)
         BlendMode_Add()
         AddY(192000)
     sprite('vr_nt203_20', 300)
+
 
 @Subroutine
 def BloodEdge_Particle():
@@ -1804,6 +1879,7 @@ def BloodEdge_Particle():
     CreateParticle('ntef_test', 3)
     CreateParticle('ntef_test', 4)
     CreateParticle('ntef_test', 5)
+
 
 @State
 def ntef_looptest():
@@ -1823,6 +1899,7 @@ def ntef_looptest():
     sprite('null', 32)
     Eff3DEffect('ntef_looptest.DIG', '')
 
+
 @State
 def ntef_253_a():
 
@@ -1834,6 +1911,7 @@ def ntef_253_a():
     sprite('vr_nt253_20', 3)
     sprite('vr_nt253_21', 3)
 
+
 @State
 def ntef_253_b():
 
@@ -1844,6 +1922,7 @@ def ntef_253_b():
         ForceBloomMaskOn(1)
     sprite('vr_nt253_40', 3)
     sprite('vr_nt253_41', 3)
+
 
 @State
 def ntef_610():
@@ -1917,9 +1996,8 @@ def ntef_610():
         pass
     if CharacterIDCheck('mi'):
         pass
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(1)
     sprite('null', 1)
     CreateObject('ntef_610_a', -1)
     loopRest()
@@ -1928,26 +2006,28 @@ def ntef_610():
     CreateObject('ntef_610_b', -1)
     loopRest()
 
+
 @State
 def ntef_610_a():
     sprite('null', 1)
     CreateParticle('ntef_610_smoke', -1)
     AddX(40000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 35)
+
 
 @State
 def ntef_610_b():
@@ -1955,20 +2035,21 @@ def ntef_610_b():
     CreateParticle('ntef_610_smoke', -1)
     AddX(40000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 36)
+
 
 @State
 def ntef_601():
@@ -2058,6 +2139,7 @@ def ntef_601():
         CreateObject('ntef_601_jb', -1)
     label(99)
 
+
 @State
 def ntef_601_bg():
 
@@ -2068,23 +2150,24 @@ def ntef_601_bg():
     sprite('null', 40)
     AlphaValue(0)
     ConstantAlphaModifier(3)
-    ApplyFunctionsToObjects(22)
-    ColorTransition(4294934399, 30)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ColorTransition(4294934399, 30)
     sprite('null', 5)
     ConstantAlphaModifier(0)
     sprite('null', 25)
-    ApplyFunctionsToObjects(22)
-    ColorTransition(4294967295, 30)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ColorTransition(4294967295, 30)
     sprite('null', 30)
     sprite('null', 40)
     ConstantAlphaModifier(-3)
 
+
 @State
 def ntef_601dist():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         RenderLayer(9)
         E0EAEffectPosition(2)
         ParticleTransparency(1)
@@ -2101,6 +2184,7 @@ def ntef_601dist():
     sprite('vr_nt601_dist', 64)
     ConstantAlphaModifier(-4)
 
+
 @State
 def ntef_Number_bloom():
     sprite('null', 32)
@@ -2112,6 +2196,7 @@ def ntef_Number_bloom():
     sprite('null', 64)
     ConstantAlphaModifier(-2)
 
+
 @State
 def ntef_Number():
 
@@ -2122,16 +2207,16 @@ def ntef_Number():
         RenderLayer(10)
         AlphaValue(0)
         AddScaleX(-100)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 4)
-        sendToLabelUpon(37, 5)
-        sendToLabelUpon(38, 6)
-        sendToLabelUpon(39, 7)
-        sendToLabelUpon(40, 8)
-        sendToLabelUpon(41, 9)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 4)
+        uponSendToLabel(37, 5)
+        uponSendToLabel(38, 6)
+        uponSendToLabel(39, 7)
+        uponSendToLabel(40, 8)
+        uponSendToLabel(41, 9)
     label(0)
     sprite('vr_nt601_number0', 0)
     gotoLabel(100)
@@ -2173,13 +2258,14 @@ def ntef_Number():
     sprite('keep', 30)
     SetScaleSpeed(2)
     CreateObject('ntef_601dist', -1)
-    ApplyFunctionsToObjects(1)
-    RandRotationAngle()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RandRotationAngle()
     sprite('keep', 64)
     ConstantBlueModifier(-8)
     ConstantGreenModifier(-8)
     ConstantAlphaModifier(-4)
+
 
 @State
 def ntef_601_rg():
@@ -2187,30 +2273,31 @@ def ntef_601_rg():
     CreateObject('ntef_Number_bloom', -1)
     AddX(80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(-120000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(-160000)
+    ObjectUpon(STATE_END, 35)
+
 
 @State
 def ntef_601_jn():
@@ -2218,30 +2305,31 @@ def ntef_601_jn():
     CreateObject('ntef_Number_bloom', -1)
     AddX(80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(-120000)
+    ObjectUpon(STATE_END, 39)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(-160000)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def ntef_601_no():
@@ -2249,30 +2337,31 @@ def ntef_601_no():
     CreateObject('ntef_Number_bloom', -1)
     AddX(80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(-120000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(-160000)
+    ObjectUpon(STATE_END, 37)
+
 
 @State
 def ntef_601_rc():
@@ -2280,30 +2369,31 @@ def ntef_601_rc():
     CreateObject('ntef_Number_bloom', -1)
     AddX(80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(-120000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 38)
+
+    def RunOnObject_1():
+        AddX(-160000)
+    ObjectUpon(STATE_END, 38)
+
 
 @State
 def ntef_601_tk():
@@ -2311,30 +2401,31 @@ def ntef_601_tk():
     CreateObject('ntef_Number_bloom', -1)
     AddX(80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(-120000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(-160000)
+    ObjectUpon(STATE_END, 39)
+
 
 @State
 def ntef_601_tg():
@@ -2342,30 +2433,31 @@ def ntef_601_tg():
     CreateObject('ntef_Number_bloom', -1)
     AddX(80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(-40000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(-80000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(-120000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(-160000)
+    ObjectUpon(STATE_END, 32)
+
 
 @State
 def ntef_601_lc():
@@ -2373,30 +2465,31 @@ def ntef_601_lc():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 40)
+
 
 @State
 def ntef_601_ar():
@@ -2404,30 +2497,31 @@ def ntef_601_ar():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 39)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 32)
+
 
 @State
 def ntef_601_bn():
@@ -2435,30 +2529,31 @@ def ntef_601_bn():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 39)
+
 
 @State
 def ntef_601_ca():
@@ -2466,30 +2561,31 @@ def ntef_601_ca():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def ntef_601_ha():
@@ -2497,30 +2593,31 @@ def ntef_601_ha():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 38)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 38)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 35)
+
 
 @State
 def ntef_601_ny():
@@ -2528,30 +2625,31 @@ def ntef_601_ny():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 32)
+
 
 @State
 def ntef_601_tb():
@@ -2559,30 +2657,31 @@ def ntef_601_tb():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 39)
+
 
 @State
 def ntef_601_hz():
@@ -2590,30 +2689,31 @@ def ntef_601_hz():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 36)
+
 
 @State
 def ntef_601_mu():
@@ -2621,30 +2721,31 @@ def ntef_601_mu():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 39)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 37)
+
 
 @State
 def ntef_601_mk():
@@ -2652,30 +2753,31 @@ def ntef_601_mk():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 38)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 38)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 34)
+
 
 @State
 def ntef_601_vh():
@@ -2683,30 +2785,31 @@ def ntef_601_vh():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def ntef_601_pt():
@@ -2714,30 +2817,31 @@ def ntef_601_pt():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def ntef_601_rl():
@@ -2745,30 +2849,31 @@ def ntef_601_rl():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 33)
+
 
 @State
 def ntef_601_iz():
@@ -2776,30 +2881,31 @@ def ntef_601_iz():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 39)
+
 
 @State
 def ntef_601_am():
@@ -2807,30 +2913,31 @@ def ntef_601_am():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 40)
+
 
 @State
 def ntef_601_bl():
@@ -2838,30 +2945,31 @@ def ntef_601_bl():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 40)
+
 
 @State
 def ntef_601_az():
@@ -2869,30 +2977,31 @@ def ntef_601_az():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 38)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 38)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 35)
+
 
 @State
 def ntef_601_kg():
@@ -2900,30 +3009,31 @@ def ntef_601_kg():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 32)
+
 
 @State
 def ntef_601_kk():
@@ -2931,30 +3041,31 @@ def ntef_601_kk():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 39)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 39)
+
 
 @State
 def ntef_601_tm():
@@ -2962,30 +3073,31 @@ def ntef_601_tm():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 39)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 36)
+
 
 @State
 def ntef_601_ce():
@@ -2993,30 +3105,31 @@ def ntef_601_ce():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 33)
+
 
 @State
 def ntef_601_rm():
@@ -3024,30 +3137,31 @@ def ntef_601_rm():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 32)
+
 
 @State
 def ntef_601_hb():
@@ -3055,30 +3169,31 @@ def ntef_601_hb():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def ntef_601_nt():
@@ -3086,30 +3201,31 @@ def ntef_601_nt():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 37)
+
 
 @State
 def ntef_601_ph():
@@ -3117,30 +3233,31 @@ def ntef_601_ph():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 36)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 39)
+
 
 @State
 def ntef_601_mi():
@@ -3148,30 +3265,31 @@ def ntef_601_mi():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 32)
+
 
 @State
 def ntef_601_su():
@@ -3179,30 +3297,31 @@ def ntef_601_su():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 41)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 41)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 36)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 36)
+
 
 @State
 def ntef_601_es():
@@ -3210,30 +3329,31 @@ def ntef_601_es():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 34)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 34)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 35)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 39)
+
 
 @State
 def ntef_601_ma():
@@ -3241,30 +3361,31 @@ def ntef_601_ma():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 38)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 38)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 37)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 37)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 35)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 35)
+
 
 @State
 def ntef_601_jb():
@@ -3272,30 +3393,31 @@ def ntef_601_jb():
     CreateObject('ntef_Number_bloom', -1)
     AddX(-80000)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(0)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 40)
+
+    def RunOnObject_1():
+        AddX(0)
+    ObjectUpon(STATE_END, 40)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(40000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 39)
+
+    def RunOnObject_1():
+        AddX(40000)
+    ObjectUpon(STATE_END, 39)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 32)
+
+    def RunOnObject_1():
+        AddX(80000)
+    ObjectUpon(STATE_END, 32)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(120000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(120000)
+    ObjectUpon(STATE_END, 33)
     CreateObject('ntef_Number', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(160000)
-    ApplyFunctionsToSelf()
-    ObjectUpon(1, 33)
+
+    def RunOnObject_1():
+        AddX(160000)
+    ObjectUpon(STATE_END, 33)
+
 
 @State
 def Fade1():
@@ -3323,6 +3445,7 @@ def Fade1():
     Size(0)
     physicsYImpulse(0)
 
+
 @State
 def Fade2():
 
@@ -3340,6 +3463,7 @@ def Fade2():
     ConstantAlphaModifier(0)
     AlphaValue(255)
 
+
 @State
 def LifeLinkEff():
 
@@ -3348,6 +3472,7 @@ def LifeLinkEff():
         SetPosYByScreenPer(50)
     sprite('null', 1)
     CallCustomizableParticle('ntef_story_lifelinkeff', -1)
+
 
 @State
 def Act3Event_Black():
@@ -3361,7 +3486,7 @@ def Act3Event_Black():
         AbsoluteY(0)
         Size(20000)
         AlphaValue(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_white', 20)
     ConstantAlphaModifier(12)
     sprite('vr_white', 32767)
@@ -3375,6 +3500,7 @@ def Act3Event_Black():
     AlphaValue(0)
     ConstantAlphaModifier(0)
 
+
 @State
 def Act3Event_mivsnt_eff_sl():
 
@@ -3387,6 +3513,7 @@ def Act3Event_mivsnt_eff_sl():
     CallCustomizableParticle('ef_hitlz', 103)
     CommonSE('101_hit_slash_3')
 
+
 @State
 def Act3Event_mivsnt_01():
 
@@ -3397,6 +3524,7 @@ def Act3Event_mivsnt_01():
         SetZVal(-500)
     sprite('rl860_10', 32767)
     loopRest()
+
 
 @State
 def Act3Event_mivsnt_02_rl():
@@ -3425,6 +3553,7 @@ def Act3Event_mivsnt_02_rl():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_mivsnt_02_camera():
 
@@ -3436,7 +3565,8 @@ def Act3Event_mivsnt_02_camera():
     sprite('null', 15)
     sprite('null', 32767)
     CameraControlEnable(1)
-    PassbackAddActionMarkToFunction('Act3Event_mivsnt_02_rl', 32)
+    TriggerUponForState('Act3Event_mivsnt_02_rl', 32)
+
 
 @State
 def Act3Event_rcef_252Wind():

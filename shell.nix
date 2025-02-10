@@ -5,6 +5,6 @@ pkgs.mkShell{
     pkgs.nodejs
   ];
   shellHook = ''
-    nvim
+    nvim && exit
   '';
 }

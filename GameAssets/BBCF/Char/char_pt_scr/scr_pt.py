@@ -1,7 +1,8 @@
 @Subroutine
 def PreInit():
     CharacterID('pt')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def ChainLandDrive():
@@ -16,6 +17,7 @@ def ChainLandDrive():
     HitOrBlockCancel('NmlAtk5D_Box')
     HitOrBlockCancel('NmlAtk5D_Boomerang')
 
+
 @Subroutine
 def ChainAirDrive():
     SetActionMark(0)
@@ -29,10 +31,11 @@ def ChainAirDrive():
     HitOrBlockCancel('NmlAtkAIR5D_Box')
     HitOrBlockCancel('NmlAtkAIR5D_Boomerang')
 
+
 @Subroutine
 def TrapUpDate():
     if CheckObjectPresence(6):
-        if (not CheckObjectPresence(5)):
+        if not CheckObjectPresence(5):
             RegisterObject(5, 6)
         else:
             ObjectUpon(6, 32)
@@ -41,10 +44,11 @@ def TrapUpDate():
     CreateObject('Trap', 0)
     RegisterObject(5, 1)
 
+
 @Subroutine
 def SpTrapUpDate():
     if CheckObjectPresence(6):
-        if (not CheckObjectPresence(5)):
+        if not CheckObjectPresence(5):
             RegisterObject(5, 6)
         else:
             ObjectUpon(6, 32)
@@ -53,19 +57,22 @@ def SpTrapUpDate():
     CreateObject('SpTrap', 0)
     RegisterObject(5, 1)
 
+
 @Subroutine
 def BombThrowCtrl():
     if CheckInput(0x6c):
-        ObjectUpon(4, 35)
+        ObjectUpon(FALLING, 35)
     if CheckInput(0x5f):
-        ObjectUpon(4, 36)
+        ObjectUpon(FALLING, 36)
     if CheckInput(0x79):
-        ObjectUpon(4, 37)
+        ObjectUpon(FALLING, 37)
+
 
 @Subroutine
 def OnActionBegin():
     SLOT_59 = SLOT_4
     CallPrivateFunction('PT_LinkColor', 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @Subroutine
 def MatchInit():
@@ -342,14 +349,14 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(100000, 250000, 0, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('WeaponThrow', 0x2)
+    Move_Register('WeaponThrow', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Condition(0x3000)
     Move_Input_(INPUT_PRESS_D)
     Move_Input_(INPUT_214)
     TempPriorityMultiplierInterval(0, 1, 2, 1000, 0)
     Move_EndRegister()
-    Move_Register('WeaponThrow_Bomb', 0x2)
+    Move_Register('WeaponThrow_Bomb', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_D)
     Move_Input_(INPUT_214)
@@ -357,14 +364,14 @@ def MatchInit():
     MovePriority(3000)
     SkillEstimateRange(400000, 900000, -200000, 600000, 3000, 1)
     Move_EndRegister()
-    Move_Register('WeaponThrow_Missaile', 0x2)
+    Move_Register('WeaponThrow_Missaile', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_D)
     Move_Input_(INPUT_214)
     CallSkillConditions('CheckActivateMissaile')
     MovePriority(1)
     Move_EndRegister()
-    Move_Register('WeaponThrow_Box', 0x2)
+    Move_Register('WeaponThrow_Box', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_D)
     Move_Input_(INPUT_214)
@@ -373,20 +380,20 @@ def MatchInit():
     GuardStunPriority(2000)
     SkillEstimateRange(400000, 900000, -200000, 200000, 1000, 500)
     Move_EndRegister()
-    Move_Register('Oiuchi', 0x2)
+    Move_Register('Oiuchi', INPUT_SPECIALMOVE)
     Move_Input_(INPUT_22)
     Move_Input_(INPUT_PRESS_C)
     Move_Condition(0x307f)
     MovePriority(1)
     Move_EndRegister()
-    Move_Register('Shabon_A', 0x2)
+    Move_Register('Shabon_A', INPUT_SPECIALMOVE)
     Move_Condition(0x300b)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_A)
     SkillEstimateRange(800000, 1500000, -200000, 500000, 2000, 1)
     Move_EndRegister()
-    Move_Register('Shabon_B', 0x2)
+    Move_Register('Shabon_B', INPUT_SPECIALMOVE)
     Move_Condition(0x300b)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
@@ -394,14 +401,14 @@ def MatchInit():
     GuardStunPriority(5000)
     SkillEstimateRange(400000, 700000, -250000, 0, 500, 1)
     Move_EndRegister()
-    Move_Register('Shabon_C', 0x2)
+    Move_Register('Shabon_C', INPUT_SPECIALMOVE)
     Move_Condition(0x300b)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
     SkillEstimateRange(800000, 1500000, -200000, 500000, 2000, 1)
     Move_EndRegister()
-    Move_Register('Hopping', 0x2)
+    Move_Register('Hopping', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -409,7 +416,7 @@ def MatchInit():
     AirborneOpponentPriority(2500)
     SkillEstimateRange(50000, 300000, -250000, 50000, 1000, 0)
     Move_EndRegister()
-    Move_Register('HoppingPlus_A', 0x2)
+    Move_Register('HoppingPlus_A', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(INPUT_PRESS_A)
@@ -417,7 +424,7 @@ def MatchInit():
     MovePriority(1)
     SkillEstimateRange(50000, 300000, -300000, 100000, 20000, 50)
     Move_EndRegister()
-    Move_Register('HoppingPlus_B', 0x2)
+    Move_Register('HoppingPlus_B', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(INPUT_PRESS_B)
@@ -425,7 +432,7 @@ def MatchInit():
     MovePriority(1)
     SkillEstimateRange(-150000, 150000, -300000, -50000, 10000, 50)
     Move_EndRegister()
-    Move_Register('HoppingPlus_C', 0x2)
+    Move_Register('HoppingPlus_C', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(INPUT_PRESS_C)
@@ -433,7 +440,7 @@ def MatchInit():
     MovePriority(1)
     SkillEstimateRange(-200000, 50000, -300000, -50000, 10000, 50)
     Move_EndRegister()
-    Move_Register('AirHopping', 0x2)
+    Move_Register('AirHopping', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -442,7 +449,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(-50000, 300000, -250000, 150000, 1000, 0)
     Move_EndRegister()
-    Move_Register('SurfingU', 0x2)
+    Move_Register('SurfingU', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -451,7 +458,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 500000, -200000, 150000, 250, 0)
     Move_EndRegister()
-    Move_Register('SurfingV', 0x2)
+    Move_Register('SurfingV', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
@@ -460,7 +467,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 400000, -200000, 400000, 250, 0)
     Move_EndRegister()
-    Move_Register('CommandThrow', 0x2)
+    Move_Register('CommandThrow', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_41236)
     Move_Input_(INPUT_PRESS_D)
@@ -469,14 +476,14 @@ def MatchInit():
     GuardStunPriority(2000)
     SkillEstimateRange(0, 450000, -200000, 200000, 250, 10)
     Move_EndRegister()
-    Move_Register('AirSlide', 0x2)
+    Move_Register('AirSlide', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
     Move_Condition(0x3002)
     SkillEstimateRange(-200000, 200000, -400000, -100000, 7000, 50)
     Move_EndRegister()
-    Move_Register('Atemi', 0x2)
+    Move_Register('Atemi', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_2HOLD8)
     Move_Input_(INPUT_PRESS_C)
@@ -486,7 +493,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 100, 1000)
     SkillEstimateRange(0, 300000, -150000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('HiWeapon', 0x606)
+    Move_Register('HiWeapon', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -494,7 +501,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 1, 4, 1000, 0)
     SkillEstimateRange(300000, 1500000, -200000, 200000, 500, 1)
     Move_EndRegister()
-    Move_Register('HiWeapon_OD', 0x606)
+    Move_Register('HiWeapon_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -503,7 +510,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 1, 4, 1000, 0)
     SkillEstimateRange(300000, 1500000, -200000, 200000, 500, 1)
     Move_EndRegister()
-    Move_Register('UltimateAssault', 0x606)
+    Move_Register('UltimateAssault', INPUT_DISTORTION)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
     Move_Input_(INPUT_PRESS_C)
@@ -513,7 +520,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(-130000, 130000, -200000, 150000, 10000, 50)
     Move_EndRegister()
-    Move_Register('UltimateAssault_OD', 0x606)
+    Move_Register('UltimateAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
     Move_Input_(INPUT_PRESS_C)
@@ -524,7 +531,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(-130000, 130000, -200000, 150000, 10000, 50)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x304a)
     Move_Input_(INPUT_236236)
     Move_Input_(INPUT_PRESS_C)
@@ -533,12 +540,12 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(800000, 1500000, -200000, 200000, 1000, 1)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -546,7 +553,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 500000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -559,7 +566,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 500000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -767,69 +774,78 @@ def MatchInit():
     CreateObject('PaletteControlObj8', -1)
     CreateObject('SphereLight', -1)
 
+
 @Subroutine
 def CheckActivateHanmmer():
     SLOT_47 = 0
-    if (SLOT_4 == 1):
+    if SLOT_4 == 1:
         SLOT_47 = 1
-    elif (SLOT_4 == 2):
+    elif SLOT_4 == 2:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckActivateCat():
     SLOT_47 = 0
-    if (SLOT_4 == 3):
+    if SLOT_4 == 3:
         SLOT_47 = 1
-    elif (SLOT_4 == 4):
+    elif SLOT_4 == 4:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckActivateHarisen():
     SLOT_47 = 0
-    if (SLOT_4 == 5):
+    if SLOT_4 == 5:
         SLOT_47 = 1
-    elif (SLOT_4 == 6):
+    elif SLOT_4 == 6:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckActivateBat():
     SLOT_47 = 0
-    if (SLOT_4 == 7):
+    if SLOT_4 == 7:
         SLOT_47 = 1
-    elif (SLOT_4 == 8):
+    elif SLOT_4 == 8:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckActivateBomb():
     SLOT_47 = 0
-    if (SLOT_4 == 9):
+    if SLOT_4 == 9:
         SLOT_47 = 1
-    elif (SLOT_4 == 10):
+    elif SLOT_4 == 10:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckActivateMissaile():
     SLOT_47 = 0
-    if (SLOT_4 == 11):
+    if SLOT_4 == 11:
         SLOT_47 = 1
-    elif (SLOT_4 == 12):
+    elif SLOT_4 == 12:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckActivateBox():
     SLOT_47 = 0
-    if (SLOT_4 == 13):
+    if SLOT_4 == 13:
         SLOT_47 = 1
-    elif (SLOT_4 == 14):
+    elif SLOT_4 == 14:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckActivateBoomerang():
     SLOT_47 = 0
-    if (SLOT_4 == 15):
+    if SLOT_4 == 15:
         SLOT_47 = 1
-    elif (SLOT_4 == 16):
+    elif SLOT_4 == 16:
         SLOT_47 = 1
+
 
 @Subroutine
 def MatchInit2():
@@ -849,110 +865,114 @@ def MatchInit2():
     SLOT_4 = 0
     callSubroutine('UpdateIcon')
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def ItemCheck():
     SLOT_8 = SLOT_0
-    if (not TrainingModeSLOT('TRI_PTItemA', 2, 0)):
-        if (not TrainingModeSLOT('TRI_PTItemB', 2, 0)):
-            if (SLOT_8 == 1):
-                op(7, 2, 9, 0, 1)
-                if (SLOT_0 == 1):
+    if not PreviousStateCheck('CmnActOverDriveEnd'):
+        if not PreviousStateCheck('CmnActOverDriveEnd'):
+            if SLOT_8 == 1:
+                SLOT_9 and 1
+                if SLOT_0 == 1:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 1)
-            elif (SLOT_8 == 2):
-                op(7, 2, 9, 0, 2)
-                if (SLOT_0 == 2):
+            elif SLOT_8 == 2:
+                SLOT_9 and 2
+                if SLOT_0 == 2:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 2)
-            elif (SLOT_8 == 3):
-                op(7, 2, 9, 0, 4)
-                if (SLOT_0 == 4):
+            elif SLOT_8 == 3:
+                SLOT_9 and 4
+                if SLOT_0 == 4:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 4)
-            elif (SLOT_8 == 4):
-                op(7, 2, 9, 0, 8)
-                if (SLOT_0 == 8):
+            elif SLOT_8 == 4:
+                SLOT_9 and 8
+                if SLOT_0 == 8:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 8)
-            elif (SLOT_8 == 5):
-                op(7, 2, 9, 0, 16)
-                if (SLOT_0 == 16):
+            elif SLOT_8 == 5:
+                SLOT_9 and 16
+                if SLOT_0 == 16:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 16)
-            elif (SLOT_8 == 6):
-                op(7, 2, 9, 0, 32)
-                if (SLOT_0 == 32):
+            elif SLOT_8 == 6:
+                SLOT_9 and 32
+                if SLOT_0 == 32:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 32)
-            elif (SLOT_8 == 7):
-                op(7, 2, 9, 0, 64)
-                if (SLOT_0 == 64):
+            elif SLOT_8 == 7:
+                SLOT_9 and 64
+                if SLOT_0 == 64:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 64)
-            elif (SLOT_8 == 8):
-                op(7, 2, 9, 0, 128)
-                if (SLOT_0 == 128):
+            elif SLOT_8 == 8:
+                SLOT_9 and 128
+                if SLOT_0 == 128:
                     callSubroutine('ItemReSelect')
                 else:
                     ModifyVar_(8, 2, 9, 0, 128)
-            op(7, 2, 9, 0, 255)
-            if (SLOT_0 == 255):
+            SLOT_9 and 255
+            if SLOT_0 == 255:
                 SLOT_9 = 0
+
 
 @Subroutine
 def ItemReSelect():
-    op(7, 2, 9, 0, 1)
-    if (not (SLOT_0 == 1)):
+    SLOT_9 and 1
+    if not SLOT_0 == 1:
         SLOT_8 = 1
         ModifyVar_(8, 2, 9, 0, 1)
     else:
-        op(7, 2, 9, 0, 2)
-        if (not (SLOT_0 == 2)):
+        SLOT_9 and 2
+        if not SLOT_0 == 2:
             SLOT_8 = 2
             ModifyVar_(8, 2, 9, 0, 2)
         else:
-            op(7, 2, 9, 0, 4)
-            if (not (SLOT_0 == 4)):
+            SLOT_9 and 4
+            if not SLOT_0 == 4:
                 SLOT_8 = 3
                 ModifyVar_(8, 2, 9, 0, 4)
             else:
-                op(7, 2, 9, 0, 8)
-                if (not (SLOT_0 == 8)):
+                SLOT_9 and 8
+                if not SLOT_0 == 8:
                     SLOT_8 = 4
                     ModifyVar_(8, 2, 9, 0, 8)
                 else:
-                    op(7, 2, 9, 0, 16)
-                    if (not (SLOT_0 == 16)):
+                    SLOT_9 and 16
+                    if not SLOT_0 == 16:
                         SLOT_8 = 5
                         ModifyVar_(8, 2, 9, 0, 16)
                     else:
-                        op(7, 2, 9, 0, 32)
-                        if (not (SLOT_0 == 32)):
+                        SLOT_9 and 32
+                        if not SLOT_0 == 32:
                             SLOT_8 = 6
                             ModifyVar_(8, 2, 9, 0, 32)
                         else:
-                            op(7, 2, 9, 0, 64)
-                            if (not (SLOT_0 == 64)):
+                            SLOT_9 and 64
+                            if not SLOT_0 == 64:
                                 SLOT_8 = 7
                                 ModifyVar_(8, 2, 9, 0, 64)
                             else:
-                                op(7, 2, 9, 0, 128)
-                                if (not (SLOT_0 == 128)):
+                                SLOT_9 and 128
+                                if not SLOT_0 == 128:
                                     SLOT_8 = 8
                                     ModifyVar_(8, 2, 9, 0, 128)
+
 
 @Subroutine
 def ItemShuffle():
@@ -985,12 +1005,13 @@ def ItemShuffle():
     SLOT_59 = SLOT_4
     CallPrivateFunction('PT_LinkColor', 0, 0, 0, 0, 0, 0, 0, 0)
 
+
 @Subroutine
 def ItemShufflePowerUP():
     SLOT_4 = SLOT_5
-    op(4, 2, 4, 0, 2)
-    if (not (SLOT_0 == 0)):
-        SLOT_4 = (SLOT_4 + 1)
+    SLOT_4 % 2
+    if not SLOT_0 == 0:
+        SLOT_4 = SLOT_4 + 1
     if SLOT_61:
         TrainingModeSLOT('TRI_PTItemA', 2, 67)
         if SLOT_67:
@@ -1014,172 +1035,178 @@ def ItemShufflePowerUP():
     op(1, 2, 0, 0, 1)
     SLOT_5 = SLOT_0
     if SLOT_58:
-        SLOT_5 = (SLOT_5 + 1)
+        SLOT_5 = SLOT_5 + 1
     callSubroutine('UpdateIcon')
     SLOT_31 = 9999
     SLOT_32 = 9999
     SLOT_59 = SLOT_4
     CallPrivateFunction('PT_LinkColor', 0, 0, 0, 0, 0, 0, 0, 0)
 
+
 @Subroutine
 def ItemDiscard():
     SLOT_4 = 0
     callSubroutine('UpdateIcon')
 
+
 @Subroutine
 def ItemConsume():
-    if (not SLOT_110):
-        SLOT_31 = (SLOT_31 - 1)
-        if (not SLOT_31):
+    if not SLOT_OverdriveTimer:
+        SLOT_31 = SLOT_31 - 1
+        if not SLOT_31:
             SLOT_4 = 0
         callSubroutine('UpdateIcon')
 
+
 @Subroutine
 def ItemConsume_Throw():
-    SLOT_31 = (SLOT_31 - 1)
-    if (not SLOT_31):
+    SLOT_31 = SLOT_31 - 1
+    if not SLOT_31:
         SLOT_4 = 0
     callSubroutine('UpdateIcon')
+
 
 @Subroutine
 def UpdateIcon():
     ResourceBarVisibility2(0, 1)
-    if (SLOT_4 == 0):
+    if SLOT_4 == 0:
         ResourceBarVisibility2(0, 0)
-    if (SLOT_4 == 1):
+    if SLOT_4 == 1:
         ResourceBarIcon(0, 23)
         ResourceItemAmount(0, 2)
-    if (SLOT_4 == 2):
+    if SLOT_4 == 2:
         ResourceBarIcon(0, 24)
         ResourceItemAmount(0, 2)
-    if (SLOT_4 == 3):
+    if SLOT_4 == 3:
         ResourceBarIcon(0, 25)
         ResourceItemAmount(0, 5)
-    if (SLOT_4 == 4):
+    if SLOT_4 == 4:
         ResourceBarIcon(0, 26)
         ResourceItemAmount(0, 5)
-    if (SLOT_4 == 5):
+    if SLOT_4 == 5:
         ResourceBarIcon(0, 27)
         ResourceItemAmount(0, 4)
-    if (SLOT_4 == 6):
+    if SLOT_4 == 6:
         ResourceBarIcon(0, 28)
         ResourceItemAmount(0, 4)
-    if (SLOT_4 == 7):
+    if SLOT_4 == 7:
         ResourceBarIcon(0, 29)
         ResourceItemAmount(0, 3)
-    if (SLOT_4 == 8):
+    if SLOT_4 == 8:
         ResourceBarIcon(0, 30)
         ResourceItemAmount(0, 3)
-    if (SLOT_4 == 9):
+    if SLOT_4 == 9:
         ResourceBarIcon(0, 31)
         ResourceItemAmount(0, 3)
-    if (SLOT_4 == 10):
+    if SLOT_4 == 10:
         ResourceBarIcon(0, 32)
         ResourceItemAmount(0, 6)
-    if (SLOT_4 == 11):
+    if SLOT_4 == 11:
         ResourceBarIcon(0, 33)
         ResourceItemAmount(0, 3)
-    if (SLOT_4 == 12):
+    if SLOT_4 == 12:
         ResourceBarIcon(0, 34)
         ResourceItemAmount(0, 3)
-    if (SLOT_4 == 13):
+    if SLOT_4 == 13:
         ResourceBarIcon(0, 43)
         ResourceItemAmount(0, 2)
-    if (SLOT_4 == 14):
+    if SLOT_4 == 14:
         ResourceBarIcon(0, 44)
         ResourceItemAmount(0, 4)
-    if (SLOT_4 == 15):
+    if SLOT_4 == 15:
         ResourceBarIcon(0, 51)
         ResourceItemAmount(0, 1)
-    if (SLOT_4 == 16):
+    if SLOT_4 == 16:
         ResourceBarIcon(0, 52)
         ResourceItemAmount(0, 1)
-    if (SLOT_5 == 0):
+    if SLOT_5 == 0:
         ResourceBarIcon(1, 0)
         ResourceItemAmount(1, 0)
-    if (SLOT_5 == 1):
+    if SLOT_5 == 1:
         ResourceBarIcon(1, 23)
         ResourceItemAmount(1, 2)
-    if (SLOT_5 == 2):
+    if SLOT_5 == 2:
         ResourceBarIcon(1, 24)
         ResourceItemAmount(1, 2)
-    if (SLOT_5 == 3):
+    if SLOT_5 == 3:
         ResourceBarIcon(1, 25)
         ResourceItemAmount(1, 5)
-    if (SLOT_5 == 4):
+    if SLOT_5 == 4:
         ResourceBarIcon(1, 26)
         ResourceItemAmount(1, 5)
-    if (SLOT_5 == 5):
+    if SLOT_5 == 5:
         ResourceBarIcon(1, 27)
         ResourceItemAmount(1, 20)
-    if (SLOT_5 == 6):
+    if SLOT_5 == 6:
         ResourceBarIcon(1, 28)
         ResourceItemAmount(1, 60)
-    if (SLOT_5 == 7):
+    if SLOT_5 == 7:
         ResourceBarIcon(1, 29)
         ResourceItemAmount(1, 30)
-    if (SLOT_5 == 8):
+    if SLOT_5 == 8:
         ResourceBarIcon(1, 30)
         ResourceItemAmount(1, 70)
-    if (SLOT_5 == 9):
+    if SLOT_5 == 9:
         ResourceBarIcon(1, 31)
         ResourceItemAmount(1, 40)
-    if (SLOT_5 == 10):
+    if SLOT_5 == 10:
         ResourceBarIcon(1, 32)
         ResourceItemAmount(1, 80)
-    if (SLOT_5 == 11):
+    if SLOT_5 == 11:
         ResourceBarIcon(1, 33)
         ResourceItemAmount(1, 50)
-    if (SLOT_5 == 12):
+    if SLOT_5 == 12:
         ResourceBarIcon(1, 34)
         ResourceItemAmount(1, 90)
-    if (SLOT_5 == 13):
+    if SLOT_5 == 13:
         ResourceBarIcon(1, 43)
         ResourceItemAmount(1, 4)
-    if (SLOT_5 == 14):
+    if SLOT_5 == 14:
         ResourceBarIcon(1, 44)
         ResourceItemAmount(1, 4)
-    if (SLOT_5 == 15):
+    if SLOT_5 == 15:
         ResourceBarIcon(1, 51)
         ResourceItemAmount(1, 1)
-    if (SLOT_5 == 16):
+    if SLOT_5 == 16:
         ResourceBarIcon(1, 52)
         ResourceItemAmount(1, 10)
 
+
 @Subroutine
 def OnFrameStep():
-    if SLOT_90:
+    if SLOT_InNeutral:
         TrainingModeSLOT('TRI_PTItemRecover', 2, 67)
         if SLOT_67:
-            SLOT_31 = (SLOT_31 + 9999)
-    if SLOT_37:
+            SLOT_31 = SLOT_31 + 9999
+    if SLOT_IsGrounded:
         SLOT_6 = 1
 
-    def upon_43():
-        if (SLOT_48 == 0):
-            if (SLOT_4 == 0):
+    def upon_VALUE_RECEIVED():
+        if SLOT_ReceivedValue == 0:
+            if SLOT_4 == 0:
                 SLOT_4 = 15
                 SLOT_31 = 1
                 callSubroutine('UpdateIcon')
                 SLOT_59 = SLOT_4
                 CallPrivateFunction('PT_LinkColor', 0, 0, 0, 0, 0, 0, 0, 0)
-        if (SLOT_48 == 1):
-            if (SLOT_4 == 0):
+        if SLOT_ReceivedValue == 1:
+            if SLOT_4 == 0:
                 SLOT_4 = 16
                 SLOT_31 = 1
                 callSubroutine('UpdateIcon')
                 SLOT_59 = SLOT_4
                 CallPrivateFunction('PT_LinkColor', 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_62):
-        if (not SLOT_28):
+    if not SLOT_62:
+        if not SLOT_28:
             SLOT_62 = 1
     elif SLOT_28:
         SLOT_62 = 0
-        if (not SLOT_63):
+        if not SLOT_63:
             CreateObject('SphereLight_Shutsugen', 108)
             SLOT_63 = 34
     if SLOT_63:
-        SLOT_63 = (SLOT_63 + (-1))
+        SLOT_63 = SLOT_63 + -1
+
 
 @State
 def CmnActStand():
@@ -1199,12 +1226,10 @@ def CmnActStand():
     sprite('pt000_12', 7)
     sprite('pt000_13', 7)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     sprite('pt001_00', 7)
     SLOT_88 = 960
     SmartVoiceline('pt000')
@@ -1217,16 +1242,19 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('pt003_00', 3)
     sprite('pt003_01', 3)
     sprite('pt003_02', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('pt010_00', 4)
     sprite('pt010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -1246,28 +1274,32 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('pt013_00', 3)
     sprite('pt013_01', 3)
     sprite('pt013_02', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('pt010_01', 4)
     sprite('pt010_00', 4)
+
 
 @State
 def CmnActJumpPre():
     sprite('pt023_00', 2)
     sprite('pt023_01', 2)
 
+
 @State
 def CmnActJumpUpper():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('pt020_00', 4)
     sprite('pt020_01', 4)
     SmartVoiceline('pt002')
@@ -1288,11 +1320,13 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpUpperEnd():
     sprite('pt020_02', 3)
     sprite('pt020_03', 3)
     sprite('pt020_04', 3)
+
 
 @State
 def CmnActJumpDown():
@@ -1304,20 +1338,24 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpLanding():
     sprite('pt024_00', 3)
     sprite('pt024_01', 3)
     sprite('pt024_02', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('pt024_00', 4)
     sprite('pt024_01', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('pt024_02', 6)
+
 
 @State
 def CmnActFWalk():
@@ -1341,6 +1379,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalk():
     sprite('pt031_00', 7)
@@ -1363,6 +1402,7 @@ def CmnActBWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDash():
     sprite('pt032_00', 2)
@@ -1380,11 +1420,13 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDashStop():
     sprite('pt032_09', 4)
     sprite('pt032_10', 4)
     sprite('pt032_11', 4)
+
 
 @State
 def CmnActBDash():
@@ -1394,7 +1436,7 @@ def CmnActBDash():
         EnterStateIfEventID(8, '_NEUTRAL')
         InvincibilityDuration(7)
         EndMomentum(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
     sprite('pt033_00', 1)
@@ -1420,9 +1462,11 @@ def CmnActBDash():
     LandingEffects(100, 1, 1)
     sprite('pt033_06', 2)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1434,6 +1478,7 @@ def CmnActAirFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBDash():
     sprite('pt036_00', 3)
@@ -1444,11 +1489,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('pt050_00', 1)
     sprite('pt050_01', 1)
     sprite('pt050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1456,6 +1503,7 @@ def CmnActHitStandLv2():
     sprite('pt050_02', 1)
     sprite('pt050_01', 2)
     sprite('pt050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1465,6 +1513,7 @@ def CmnActHitStandLv3():
     sprite('pt050_01', 2)
     sprite('pt050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('pt050_03', 1)
@@ -1473,6 +1522,7 @@ def CmnActHitStandLv4():
     sprite('pt050_02', 2)
     sprite('pt050_01', 2)
     sprite('pt050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1484,11 +1534,13 @@ def CmnActHitStandLv5():
     sprite('pt050_01', 2)
     sprite('pt050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('pt052_00', 1)
     sprite('pt052_01', 1)
     sprite('pt052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1496,6 +1548,7 @@ def CmnActHitStandLowLv2():
     sprite('pt052_02', 1)
     sprite('pt052_01', 2)
     sprite('pt052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1505,6 +1558,7 @@ def CmnActHitStandLowLv3():
     sprite('pt052_01', 2)
     sprite('pt052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('pt052_03', 1)
@@ -1513,6 +1567,7 @@ def CmnActHitStandLowLv4():
     sprite('pt052_02', 2)
     sprite('pt052_01', 2)
     sprite('pt052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1524,11 +1579,13 @@ def CmnActHitStandLowLv5():
     sprite('pt052_01', 2)
     sprite('pt052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('pt054_00', 1)
     sprite('pt054_01', 1)
     sprite('pt054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1536,6 +1593,7 @@ def CmnActHitCrouchLv2():
     sprite('pt054_02', 1)
     sprite('pt054_01', 2)
     sprite('pt054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1545,6 +1603,7 @@ def CmnActHitCrouchLv3():
     sprite('pt054_01', 2)
     sprite('pt054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('pt054_03', 1)
@@ -1553,6 +1612,7 @@ def CmnActHitCrouchLv4():
     sprite('pt054_02', 2)
     sprite('pt054_01', 2)
     sprite('pt054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1564,6 +1624,7 @@ def CmnActHitCrouchLv5():
     sprite('pt054_01', 2)
     sprite('pt054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('pt060_00', 4)
@@ -1573,9 +1634,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('pt060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1586,10 +1649,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('pt060_07', 2)
     sprite('pt060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1599,9 +1664,11 @@ def CmnActBDownBound():
     sprite('pt060_12', 3)
     sprite('pt060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('pt060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1616,13 +1683,16 @@ def CmnActBDown2Stand():
     sprite('pt061_08', 2)
     sprite('pt061_09', 2)
 
+
 @State
 def CmnActFDownUpper():
     sprite('pt063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('pt063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1632,10 +1702,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('pt063_04', 3)
     sprite('pt063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1645,9 +1717,11 @@ def CmnActFDownBound():
     sprite('pt063_09', 3)
     sprite('pt063_10', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('pt063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1663,6 +1737,7 @@ def CmnActFDown2Stand():
     sprite('pt064_09', 2)
     sprite('pt064_10', 2)
 
+
 @State
 def CmnActVDownUpper():
     sprite('pt062_00', 3)
@@ -1672,10 +1747,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('pt062_03', 3)
     sprite('pt062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1687,15 +1764,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('pt062_09', 2)
     sprite('pt062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('pt062_09', 2)
     sprite('pt062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1708,6 +1788,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1718,6 +1799,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1726,14 +1808,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('pt071_06', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('pt073_00', 3)
     sprite('pt073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1743,6 +1828,7 @@ def CmnActWallBoundDown():
     sprite('pt073_04', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerLoop():
@@ -1754,6 +1840,7 @@ def CmnActStaggerLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerDown():
     sprite('pt070_04', 3)
@@ -1764,6 +1851,7 @@ def CmnActStaggerDown():
     sprite('pt070_08', 6)
     sprite('pt070_09', 5)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('pt070_10', 5)
@@ -1771,11 +1859,13 @@ def CmnActUkemiStagger():
     sprite('pt070_12', 3)
     sprite('pt070_13', 3)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('pt113_00', 3)
     sprite('pt113_01', 3)
     sprite('pt113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -1783,11 +1873,13 @@ def CmnActUkemiAirB():
     sprite('pt113_01', 3)
     sprite('pt113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('pt113_00', 3)
     sprite('pt113_01', 3)
     sprite('pt113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1802,6 +1894,7 @@ def CmnActUkemiLandF():
     sprite('pt110_08', 200)
     sprite('pt110_09', 6)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('pt111_00', 3)
@@ -1815,6 +1908,7 @@ def CmnActUkemiLandB():
     sprite('pt111_08', 200)
     sprite('pt111_09', 6)
 
+
 @State
 def CmnActUkemiLandN():
     sprite('pt112_00', 2)
@@ -1827,6 +1921,7 @@ def CmnActUkemiLandN():
     sprite('pt112_07', 2)
     sprite('pt112_08', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('pt024_00', 3)
@@ -1836,10 +1931,12 @@ def CmnActUkemiLandNLanding():
     sprite('pt024_04', 3)
     sprite('pt024_05', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('pt041_00', 3)
     sprite('pt041_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1850,10 +1947,12 @@ def CmnActMidGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('pt041_01', 3)
     sprite('pt041_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1864,6 +1963,7 @@ def CmnActMidHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('pt040_01', 3)
@@ -1871,10 +1971,12 @@ def CmnActMidHeavyGuardEnd():
     sprite('pt041_01', 3)
     sprite('pt041_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('pt041_00', 3)
     sprite('pt041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -1885,10 +1987,12 @@ def CmnActHighGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('pt041_01', 3)
     sprite('pt041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -1900,15 +2004,18 @@ def CmnActHighHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('pt041_01', 3)
     sprite('pt041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('pt043_00', 3)
     sprite('pt043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1919,10 +2026,12 @@ def CmnActCrouchGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('pt043_01', 3)
     sprite('pt043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1934,15 +2043,18 @@ def CmnActCrouchHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('pt043_01', 3)
     sprite('pt043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('pt045_00', 3)
     sprite('pt045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1952,10 +2064,12 @@ def CmnActAirGuardLoop():
     sprite('pt045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('pt045_01', 3)
     sprite('pt045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -1966,10 +2080,12 @@ def CmnActAirHeavyGuardLoop():
     sprite('pt045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('pt045_01', 3)
     sprite('pt045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1980,6 +2096,7 @@ def CmnActGuardBreakStand():
     sprite('pt090_03', 6)
     sprite('pt090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('pt091_00', 2)
@@ -1988,6 +2105,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('pt091_03', 6)
     sprite('pt091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1998,17 +2116,20 @@ def CmnActGuardBreakAir():
     sprite('pt092_03', 6)
     sprite('pt092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('pt025_00', 4)
     sprite('pt025_01', 4)
     sprite('pt025_02', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('pt040_02', 1)
     sprite('pt040_01', 3)
     sprite('pt040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -2019,11 +2140,13 @@ def CmnActLockReject():
     sprite('pt312_04', 5)
     sprite('pt312_05', 5)
 
+
 @State
 def CmnActAirLockWait():
     sprite('pt045_02', 1)
     sprite('pt045_01', 3)
     sprite('pt045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -2033,6 +2156,7 @@ def CmnActAirLockReject():
     sprite('pt322_03', 2)
     sprite('pt322_04', 3)
     sprite('pt322_05', 3)
+
 
 @State
 def CmnActLandSpin():
@@ -2050,11 +2174,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('pt071_10', 6)
     sprite('pt071_11', 5)
     sprite('pt071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -2070,6 +2196,7 @@ def CmnActVertSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideAir():
     label(0)
@@ -2084,6 +2211,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('pt077_02', 4)
@@ -2093,9 +2221,11 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('pt077_05', 5)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -2105,10 +2235,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('pt060_11', 4)
     sprite('pt060_13', 5)
+
 
 @State
 def CmnActBurstBegin():
@@ -2119,6 +2251,7 @@ def CmnActBurstBegin():
     sprite('pt331_03', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActBurstLoop():
@@ -2131,10 +2264,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('pt331_09', 3)
     sprite('pt331_10', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -2147,6 +2282,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('pt331_05', 2)
@@ -2156,6 +2292,7 @@ def CmnActAirBurstLoop():
     sprite('pt331_08', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -2167,6 +2304,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('pt333_00', 3)
@@ -2176,6 +2314,7 @@ def CmnActOverDriveBegin():
     sprite('pt333_03', 32767)
     CreateObject('EMB_PT_OD', -1)
     loopRest()
+
 
 @State
 def CmnActOverDriveLoop():
@@ -2189,11 +2328,13 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('pt333_08', 4)
     sprite('pt333_09', 4)
     sprite('pt333_10', 4)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -2204,6 +2345,7 @@ def CmnActAirOverDriveBegin():
     sprite('pt333_14', 32767)
     CreateObject('EMB_PT_OD', -1)
     loopRest()
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -2217,11 +2359,13 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('pt333_16', 4)
     sprite('pt333_17', 4)
     sprite('pt333_18', 4)
+
 
 @State
 def NmlAtk5A():
@@ -2250,23 +2394,21 @@ def NmlAtk5A():
         callSubroutine('ChainLandDrive')
         HitOrBlockJumpCancel(1)
 
-        def upon_FRAME_STEP():
-            if SLOT_IsInOverdrive2:
+        def upon_EVERY_FRAME():
+            if SLOT_54:
                 InvincibilityDuration(7)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('pt200_00', 2)
     PerInertia(60)
-    random_(2, 0, 34)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 34):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(1)
     sprite('pt200_01', 3)
     CommonSE('003_swing_grap_0_0')
     SLOT_51 = 1
     if CharacterIDCheck('pt'):
-        if OppStateCheck('NmlAtk5A'):
+        if CharacterIDCheck('pt'):
             CopyFromRightToLeft(23, 2, 54, 22, 2, 52)
     sprite('pt200_02ex01', 2)
     RandomCommonVoiceline(0)
@@ -2280,7 +2422,7 @@ def NmlAtk5A():
     CommonSE('003_swing_grap_0_0')
     SLOT_52 = 1
     if CharacterIDCheck('pt'):
-        if OppStateCheck('NmlAtk5A'):
+        if CharacterIDCheck('pt'):
             CopyFromRightToLeft(23, 2, 54, 22, 2, 53)
     sprite('pt200_02', 2)
     RandomCommonVoiceline(0)
@@ -2294,7 +2436,7 @@ def NmlAtk5A():
     CommonSE('003_swing_grap_0_0')
     SLOT_53 = 1
     if CharacterIDCheck('pt'):
-        if OppStateCheck('NmlAtk5A'):
+        if CharacterIDCheck('pt'):
             CopyFromRightToLeft(23, 2, 54, 22, 2, 51)
     sprite('pt200_02ex00', 2)
     RandomCommonVoiceline(0)
@@ -2309,6 +2451,7 @@ def NmlAtk5A():
     SLOT_52 = 0
     SLOT_53 = 0
     sprite('pt200_05', 4)
+
 
 @State
 def NmlAtk5B():
@@ -2349,6 +2492,7 @@ def NmlAtk5B():
     sprite('pt201_10', 2)
     sprite('pt201_11', 2)
 
+
 @State
 def NmlAtk5C():
 
@@ -2380,6 +2524,7 @@ def NmlAtk5C():
     sprite('pt202_08', 1)
     sprite('pt202_09', 2)
     sprite('pt202_10', 4)
+
 
 @State
 def NmlAtk2A():
@@ -2417,6 +2562,7 @@ def NmlAtk2A():
     sprite('pt230_04', 4)
     sprite('pt230_05', 3)
 
+
 @State
 def NmlAtk2B():
 
@@ -2448,6 +2594,7 @@ def NmlAtk2B():
     sprite('pt231_06', 6)
     sprite('pt231_07', 5)
     sprite('pt231_08', 5)
+
 
 @State
 def NmlAtk2C():
@@ -2494,6 +2641,7 @@ def NmlAtk2C():
     sprite('pt232_11', 3)
     sprite('pt232_12', 3)
 
+
 @State
 def NmlAtk3C():
 
@@ -2539,6 +2687,7 @@ def NmlAtk3C():
     sprite('pt234_12', 3)
     sprite('pt234_13', 2)
 
+
 @State
 def NmlAtkAIR5A():
 
@@ -2566,6 +2715,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('pt250_04', 3)
     sprite('pt250_05', 3)
+
 
 @State
 def NmlAtkAIR5A2nd():
@@ -2595,6 +2745,7 @@ def NmlAtkAIR5A2nd():
     sprite('pt250_04', 3)
     sprite('pt250_05', 3)
 
+
 @State
 def NmlAtkAIR5A3rd():
 
@@ -2622,6 +2773,7 @@ def NmlAtkAIR5A3rd():
     Unknown2063()
     sprite('pt250_04', 3)
     sprite('pt250_05', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2652,6 +2804,7 @@ def NmlAtkAIR5B():
     Unknown2063()
     sprite('pt251_07', 3)
     sprite('pt251_08', 3)
+
 
 @State
 def NmlAtkAIR5C():
@@ -2684,6 +2837,7 @@ def NmlAtkAIR5C():
     Unknown2063()
     sprite('pt252_08', 4)
     sprite('pt252_09', 3)
+
 
 @State
 def NmlAtkAIR2C():
@@ -2723,6 +2877,7 @@ def NmlAtkAIR2C():
     sprite('pt253_09', 3)
     sprite('pt253_10', 3)
     sprite('pt253_11', 3)
+
 
 @State
 def NmlAtk6A():
@@ -2765,6 +2920,7 @@ def NmlAtk6A():
     sprite('pt210_10', 2)
     sprite('pt210_11', 2)
 
+
 @State
 def NmlAtk6B():
 
@@ -2786,9 +2942,9 @@ def NmlAtk6B():
         PushbackX(19800)
         StarterRating(2)
         SpecialCancel(0)
-        sendToLabelUpon(2, 0)
+        uponSendToLabel(LANDING, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SetActionMark(1)
     sprite('pt211_00', 3)
     sprite('pt211_01', 3)
@@ -2812,7 +2968,7 @@ def NmlAtk6B():
     Recovery()
     Unknown2063()
     if SLOT_2:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('pt211_10', 4)
     sprite('pt211_11', 4)
     sprite('pt211_12', 4)
@@ -2820,6 +2976,7 @@ def NmlAtk6B():
     label(1)
     sprite('pt211_14', 2)
     sprite('pt211_15', 2)
+
 
 @State
 def NmlAtk6C():
@@ -2854,7 +3011,7 @@ def NmlAtk6C():
     sprite('pt212_04', 2)
     sprite('pt212_05', 2)
     AddX(20000)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     RandomCommonVoiceline(2)
     sprite('pt212_06', 3)
     sprite('pt212_07', 5)
@@ -2881,6 +3038,7 @@ def NmlAtk6C():
     LandingEffects(100, 1, 1)
     sprite('pt024_01', 2)
     sprite('pt024_02', 1)
+
 
 @State
 def NmlAtk5D():
@@ -2913,6 +3071,7 @@ def NmlAtk5D():
     sprite('pt203_09', 2)
     sprite('pt203_10', 2)
     sprite('pt203_11', 1)
+
 
 @State
 def NmlAtkAIR5D():
@@ -2952,10 +3111,11 @@ def NmlAtkAIR5D():
     PopSpeedX()
     PopSpeedY()
     PopGravity()
-    if (SLOT_13 < (-10000)):
+    if SLOT_YVelocity < -10000:
         physicsYImpulse(-10000)
     XImpulseAcceleration(75)
     sprite('pt203_16', 1)
+
 
 @State
 def NmlAtk5D_Hanmmer():
@@ -2972,12 +3132,12 @@ def NmlAtk5D_Hanmmer():
         HardKnockdown(1)
         GuardCrush(100, 1)
         SetActionMark(481)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtk5D_Hanmmer')
     sprite('pt204_00', 2)
     sprite('pt204_01', 2)
     sprite('pt204_02', 1)
-    if (SLOT_4 == 2):
+    if SLOT_4 == 2:
         sendToLabel(100)
     sprite('pt204_02', 1)
     AttackLevel_(4)
@@ -3026,7 +3186,7 @@ def NmlAtk5D_Hanmmer():
     EnemyHitstopAddition(4, 4, 12)
     GuardCrushHitstun(48)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         SLOT_53 = 1
     sprite('pt204_14', 4)
     callSubroutine('ItemConsume')
@@ -3038,7 +3198,7 @@ def NmlAtk5D_Hanmmer():
     CommonSE('005_swing_grap_2_1')
     ScreenShake(0, 12000)
     sprite('pt204_18', 3)
-    if (not SLOT_53):
+    if not SLOT_53:
         CreateObject('Atk5DHiquake', 100)
     CreateParticle('ptef_204dellight00', 0)
     CreateParticle('ptef_204dellight00', 1)
@@ -3065,18 +3225,19 @@ def NmlAtk5D_Hanmmer():
     sprite('pt204_13', 2)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Hanmmer():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         PushSpeedX()
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtk5D_Hanmmer')
             HitOrBlockCancel('NmlAtkAIR5D_Hanmmer')
     sprite('pt255_00', 2)
     sprite('keep', 1)
-    if (SLOT_4 == 2):
+    if SLOT_4 == 2:
         sendToLabel(100)
     sprite('pt255_01', 2)
     AttackLevel_(4)
@@ -3091,8 +3252,8 @@ def NmlAtkAIR5D_Hanmmer():
     CHHardKnockdown(20)
     HitOverhead(0)
     DamageEffect(6, 'ptef_hit_middle')
-    clearUponHandler(2)
-    sendToLabelUpon(2, 1)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 1)
     XImpulseAcceleration(0)
     PerInertia(10)
     physicsYImpulse(1000)
@@ -3107,10 +3268,10 @@ def NmlAtkAIR5D_Hanmmer():
     sprite('pt255_04', 3)
     setGravity(2000)
 
-    def upon_FRAME_STEP():
-        if (SLOT_13 < (-40000)):
+    def upon_EVERY_FRAME():
+        if SLOT_YVelocity < -40000:
             SLOT_51 = 1
-        if (SLOT_13 < (-52000)):
+        if SLOT_YVelocity < -52000:
             SLOT_51 = 2
     label(0)
     sprite('pt255_05', 3)
@@ -3133,15 +3294,15 @@ def NmlAtkAIR5D_Hanmmer():
     GroundedHitstunAnimation(9)
     PushbackX(39900)
     ResetPushback()
-    if (SLOT_51 == 0):
+    if SLOT_51 == 0:
         Damage(800)
         ScreenShake(0, 7500)
         EnemyHitstopAddition(5, 5, 10)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         Damage(900)
         ScreenShake(0, 50000)
         EnemyHitstopAddition(7, 7, 12)
-    if (SLOT_51 == 2):
+    if SLOT_51 == 2:
         Damage(1000)
         AirPushbackX(0)
         AirPushbackY(-55000)
@@ -3182,11 +3343,11 @@ def NmlAtkAIR5D_Hanmmer():
     AirUntechableTime(30)
     HardKnockdown(20)
     HitOverhead(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         SLOT_53 = 1
-    sendToLabelUpon(2, 102)
+    uponSendToLabel(LANDING, 102)
     XImpulseAcceleration(0)
     PerInertia(10)
     physicsYImpulse(1000)
@@ -3201,10 +3362,10 @@ def NmlAtkAIR5D_Hanmmer():
     sprite('pt255_17', 3)
     setGravity(2000)
 
-    def upon_FRAME_STEP():
-        if (SLOT_13 < (-40000)):
+    def upon_EVERY_FRAME():
+        if SLOT_YVelocity < -40000:
             SLOT_51 = 1
-        if (SLOT_13 < (-52000)):
+        if SLOT_YVelocity < -52000:
             SLOT_51 = 2
     label(101)
     sprite('pt255_18', 3)
@@ -3227,15 +3388,15 @@ def NmlAtkAIR5D_Hanmmer():
     GroundedHitstunAnimation(9)
     PushbackX(39900)
     ResetPushback()
-    if (SLOT_51 == 0):
+    if SLOT_51 == 0:
         Damage(1300)
         ScreenShake(0, 50000)
         EnemyHitstopAddition(5, 5, 10)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         Damage(1500)
         ScreenShake(0, 80000)
         EnemyHitstopAddition(7, 7, 12)
-    if (SLOT_51 == 2):
+    if SLOT_51 == 2:
         Damage(1700)
         AirPushbackX(0)
         AirPushbackY(-52500)
@@ -3250,7 +3411,7 @@ def NmlAtkAIR5D_Hanmmer():
     LandingEffects(100, 1, 1)
     CreateParticle('ptef_hammerDshock', 0)
     sprite('pt255_24', 3)
-    if (not SLOT_53):
+    if not SLOT_53:
         CreateObject('Atk5DHiquake', -1)
     StartMultihit()
     CreateParticle('ptef_204dellight00', 0)
@@ -3269,35 +3430,37 @@ def NmlAtkAIR5D_Hanmmer():
     sprite('pt255_15', 5)
     ExitState()
 
+
 @Subroutine
 def ThrowItemSelect():
-    if (SLOT_4 == 1):
+    if SLOT_4 == 1:
         CreateObject('Hummer', 0)
-    if (SLOT_4 == 2):
+    if SLOT_4 == 2:
         CreateObject('16t_Hummer', 0)
-    if (SLOT_4 == 3):
+    if SLOT_4 == 3:
         CreateObject('Cat_Hummer', 0)
-    if (SLOT_4 == 4):
+    if SLOT_4 == 4:
         CreateObject('Lion_Hummer', 0)
-    if (SLOT_4 == 5):
+    if SLOT_4 == 5:
         CreateObject('Frying-pan', 0)
-    if (SLOT_4 == 6):
+    if SLOT_4 == 6:
         CreateObject('Harisen', 0)
-    if (SLOT_4 == 7):
+    if SLOT_4 == 7:
         CreateObject('Bat', 0)
-    if (SLOT_4 == 8):
+    if SLOT_4 == 8:
         CreateObject('Kanabou', 0)
-    if (SLOT_4 == 15):
+    if SLOT_4 == 15:
         CreateObject('Boomerang', 0)
-    if (SLOT_4 == 16):
+    if SLOT_4 == 16:
         CreateObject('SPBoomerang', 0)
+
 
 @State
 def WeaponThrow():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        SLOT_58 = SLOT_110
+        SLOT_58 = SLOT_OverdriveTimer
     sprite('pt208_00', 3)
     EndMomentum(1)
     sprite('pt405_00', 3)
@@ -3310,8 +3473,8 @@ def WeaponThrow():
     else:
         SmartVoiceline('pt208')
     sprite('pt405_04', 1)
-    op(4, 2, 4, 0, 2)
-    if (not (SLOT_0 == 0)):
+    SLOT_4 % 2
+    if not SLOT_0 == 0:
         CreateParticle('ptef_throwsmokeshort', 2)
     else:
         CreateParticle('ptef_throwsmoke', 2)
@@ -3337,17 +3500,18 @@ def WeaponThrow():
     sprite('pt208_10', 3)
     SpriteIfNot0(2, 2, 58)
 
+
 @State
 def NmlAtk5D_Cat():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtk5D_Cat')
     sprite('pt204_00', 1)
     sprite('pt204_01', 1)
     sprite('pt204_02', 1)
-    if (SLOT_4 == 4):
+    if SLOT_4 == 4:
         sendToLabel(100)
     sprite('pt206_00', 3)
     AttackLevel_(3)
@@ -3440,16 +3604,17 @@ def NmlAtk5D_Cat():
     sprite('pt204_13', 2)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Cat():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtkAIR5D_Cat')
     sprite('pt257_00', 2)
     sprite('keep', 1)
-    if (SLOT_4 == 4):
+    if SLOT_4 == 4:
         sendToLabel(100)
     sprite('pt257_01', 4)
     AttackLevel_(3)
@@ -3544,16 +3709,17 @@ def NmlAtkAIR5D_Cat():
     sprite('pt257_12', 4)
     ExitState()
 
+
 @State
 def NmlAtk5D_Harisen():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtk5D_Harisen')
     sprite('pt205_00', 2)
     sprite('keep', 1)
-    if (SLOT_4 == 6):
+    if SLOT_4 == 6:
         sendToLabel(100)
     sprite('pt205_01', 3)
     AttackLevel_(3)
@@ -3604,7 +3770,7 @@ def NmlAtk5D_Harisen():
     Hitstop(20)
     FatalCounter(1)
     DamageEffect(2, 'ptef_hit_harisen')
-    Comment('NmlAtk5D_HarisenSP')
+    GotoState('NmlAtk5D_HarisenSP')
     sprite('pt207_05', 3)
     sprite('pt207_06', 2)
     SmartVoiceline('pt311')
@@ -3628,16 +3794,17 @@ def NmlAtk5D_Harisen():
     sprite('pt205_10', 3)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Harisen():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtkAIR5D_Harisen')
     sprite('pt257_00', 2)
     sprite('keep', 1)
-    if (SLOT_4 == 6):
+    if SLOT_4 == 6:
         sendToLabel(100)
     sprite('pt258_00', 1)
     AttackLevel_(3)
@@ -3730,6 +3897,7 @@ def NmlAtkAIR5D_Harisen():
     sprite('pt257_12', 3)
     ExitState()
 
+
 @State
 def NmlAtk5D_Bat():
 
@@ -3737,12 +3905,12 @@ def NmlAtk5D_Bat():
         AttackDefaults_StandingNormal()
         SpecialCancel(0)
         SpecialCancelOnHit(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtk5D_Bat')
     sprite('pt205_00', 2)
     setInvincible(1)
     sprite('keep', 1)
-    if (SLOT_4 == 8):
+    if SLOT_4 == 8:
         sendToLabel(100)
     sprite('pt205_01', 4)
     AttackLevel_(2)
@@ -3837,6 +4005,7 @@ def NmlAtk5D_Bat():
     sprite('pt205_10', 4)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Bat():
 
@@ -3844,12 +4013,12 @@ def NmlAtkAIR5D_Bat():
         AttackDefaults_AirNormal()
         SpecialCancel(0)
         SpecialCancelOnHit(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HitOrBlockCancel('NmlAtkAIR5D_Bat')
     sprite('pt256_00', 2)
     setInvincible(1)
     sprite('keep', 1)
-    if (SLOT_4 == 8):
+    if SLOT_4 == 8:
         sendToLabel(100)
     sprite('pt256_01', 1)
     AttackLevel_(2)
@@ -3959,18 +4128,19 @@ def NmlAtkAIR5D_Bat():
     sprite('pt256_11', 3)
     ExitState()
 
+
 @State
 def NmlAtk5D_Bomb():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtk5D_Bomb')
     sprite('pt208_00', 2)
     EndMomentum(1)
     sprite('pt208_01', 1)
-    if (SLOT_4 == 10):
+    if SLOT_4 == 10:
         sendToLabel(100)
     sprite('pt208_02', 4)
     sprite('pt208_03', 4)
@@ -4020,17 +4190,18 @@ def NmlAtk5D_Bomb():
     sprite('pt208_10', 3)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Bomb():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtkAIR5D_Bomb')
     sprite('pt208_00', 2)
     sprite('keep', 1)
-    if (SLOT_4 == 10):
+    if SLOT_4 == 10:
         sendToLabel(100)
     sprite('pt208_01', 3)
     EndMomentum(1)
@@ -4094,6 +4265,7 @@ def NmlAtkAIR5D_Bomb():
     sprite('pt208_10', 3)
     ExitState()
 
+
 @State
 def WeaponThrow_Bomb():
 
@@ -4102,7 +4274,7 @@ def WeaponThrow_Bomb():
     sprite('pt208_00', 2)
     EndMomentum(1)
     sprite('keep', 1)
-    if (SLOT_4 == 10):
+    if SLOT_4 == 10:
         sendToLabel(100)
     sprite('pt405_00', 3)
     sprite('pt405_01', 3)
@@ -4116,22 +4288,22 @@ def WeaponThrow_Bomb():
     sprite('pt405_05', 3)
     CreateObject('Bomb', 0)
     RegisterObject(4, 1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateParticle('ptef_throwsmokeshort', 0)
     callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 3)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         CreateObject('Bomb', 0)
         RegisterObject(4, 1)
-        ObjectUpon(4, 33)
-        ObjectUpon(1, 33)
+        ObjectUpon(FALLING, 33)
+        ObjectUpon(STATE_END, 33)
         CreateParticle('ptef_throwsmokeshort', 1)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 4)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         CreateObject('Bomb', 0)
         RegisterObject(4, 1)
-        ObjectUpon(4, 34)
+        ObjectUpon(FALLING, 34)
         CreateParticle('ptef_throwsmokeshort', 2)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_06', 3)
@@ -4156,19 +4328,19 @@ def WeaponThrow_Bomb():
     sprite('pt405_05', 3)
     CreateObject('SpBomb', 0)
     RegisterObject(4, 1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 3)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         CreateObject('SpBomb', 0)
         RegisterObject(4, 1)
-        ObjectUpon(4, 33)
+        ObjectUpon(FALLING, 33)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 4)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         CreateObject('SpBomb', 0)
         RegisterObject(4, 1)
-        ObjectUpon(4, 34)
+        ObjectUpon(FALLING, 34)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_06', 3)
     sprite('pt208_08', 3)
@@ -4176,18 +4348,19 @@ def WeaponThrow_Bomb():
     sprite('pt208_10', 3)
     ExitState()
 
+
 @State
 def NmlAtk5D_Missaile():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtk5D_Missaile')
     sprite('pt208_00', 2)
     EndMomentum(1)
     sprite('keep', 1)
-    if (SLOT_4 == 12):
+    if SLOT_4 == 12:
         sendToLabel(100)
     sprite('pt208_01', 3)
     sprite('pt208_02', 3)
@@ -4235,17 +4408,18 @@ def NmlAtk5D_Missaile():
     sprite('pt208_10', 3)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Missaile():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtkAIR5D_Missaile')
     sprite('pt208_00', 2)
     sprite('keep', 1)
-    if (SLOT_4 == 12):
+    if SLOT_4 == 12:
         sendToLabel(100)
     sprite('pt208_01', 3)
     EndMomentum(1)
@@ -4307,6 +4481,7 @@ def NmlAtkAIR5D_Missaile():
     sprite('pt208_10', 3)
     ExitState()
 
+
 @State
 def WeaponThrow_Missaile():
 
@@ -4315,7 +4490,7 @@ def WeaponThrow_Missaile():
     sprite('pt208_00', 2)
     EndMomentum(1)
     sprite('keep', 1)
-    if (SLOT_4 == 12):
+    if SLOT_4 == 12:
         sendToLabel(100)
     sprite('pt405_00', 3)
     sprite('pt405_01', 3)
@@ -4330,25 +4505,25 @@ def WeaponThrow_Missaile():
     physicsXImpulse(-30000)
     CreateObject('Missile', 1)
     RegisterObject(4, 1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateParticle('ptef_throwsmokeshort', 1)
     callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 3)
     XImpulseAcceleration(70)
     sprite('pt405_05', 4)
     XImpulseAcceleration(50)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         CreateObject('Missile', 0)
         RegisterObject(4, 1)
-        ObjectUpon(4, 33)
+        ObjectUpon(FALLING, 33)
         CreateParticle('ptef_throwsmokeshort', 0)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 4)
     XImpulseAcceleration(30)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         CreateObject('Missile', 2)
         RegisterObject(4, 1)
-        ObjectUpon(4, 34)
+        ObjectUpon(FALLING, 34)
         CreateParticle('ptef_throwsmokeshort', 2)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_06', 3)
@@ -4370,16 +4545,16 @@ def WeaponThrow_Missaile():
         SmartVoiceline('pt208')
     sprite('pt405_05', 1)
     physicsXImpulse(-30000)
-    if (SLOT_31 >= 2):
+    if SLOT_31 >= 2:
         CreateObject('SpMissile', 1)
         RegisterObject(4, 1)
-        ObjectUpon(4, 32)
+        ObjectUpon(FALLING, 32)
         CreateParticle('ptef_throwsmoke', 0)
         callSubroutine('ItemConsume_Throw')
     else:
         CreateObject('SpMissile', 1)
         RegisterObject(4, 1)
-        ObjectUpon(4, 34)
+        ObjectUpon(FALLING, 34)
         CreateParticle('ptef_throwsmoke', 0)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 3)
@@ -4392,7 +4567,7 @@ def WeaponThrow_Missaile():
     XImpulseAcceleration(10)
     sprite('pt208_08', 3)
     XImpulseAcceleration(0)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         gotoLabel(10)
     ExitState()
     label(10)
@@ -4405,16 +4580,16 @@ def WeaponThrow_Missaile():
     sprite('pt405_04', 3)
     sprite('pt405_05', 1)
     physicsXImpulse(-30000)
-    if (SLOT_31 >= 2):
+    if SLOT_31 >= 2:
         CreateObject('SpMissile', 1)
         RegisterObject(4, 1)
-        ObjectUpon(4, 33)
+        ObjectUpon(FALLING, 33)
         CreateParticle('ptef_throwsmoke', 0)
         callSubroutine('ItemConsume_Throw')
     else:
         CreateObject('SpMissile', 1)
         RegisterObject(4, 1)
-        ObjectUpon(4, 34)
+        ObjectUpon(FALLING, 34)
         CreateParticle('ptef_throwsmoke', 0)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 3)
@@ -4427,7 +4602,7 @@ def WeaponThrow_Missaile():
     XImpulseAcceleration(10)
     sprite('pt208_08', 3)
     XImpulseAcceleration(0)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         gotoLabel(20)
     ExitState()
     label(20)
@@ -4440,10 +4615,10 @@ def WeaponThrow_Missaile():
     sprite('pt405_04', 3)
     sprite('pt405_05', 1)
     physicsXImpulse(-30000)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         CreateObject('SpMissile', 1)
         RegisterObject(4, 1)
-        ObjectUpon(4, 34)
+        ObjectUpon(FALLING, 34)
         CreateParticle('ptef_throwsmoke', 0)
         callSubroutine('ItemConsume_Throw')
     sprite('pt405_05', 3)
@@ -4460,18 +4635,19 @@ def WeaponThrow_Missaile():
     sprite('pt208_10', 3)
     ExitState()
 
+
 @State
 def NmlAtk5D_Box():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtk5D_Box')
     sprite('pt209_00', 3)
     EndMomentum(1)
     sprite('keep', 1)
-    if (SLOT_4 == 14):
+    if SLOT_4 == 14:
         sendToLabel(100)
     sprite('pt209_01', 4)
     sprite('pt209_00', 4)
@@ -4505,17 +4681,18 @@ def NmlAtk5D_Box():
     WhiffCancelEnable(1)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Box():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtkAIR5D_Box')
     sprite('pt209_00', 4)
     sprite('keep', 1)
-    if (SLOT_4 == 14):
+    if SLOT_4 == 14:
         sendToLabel(100)
     sprite('pt209_01', 5)
     CreateObject('pt203_airmahojin', -1)
@@ -4543,7 +4720,7 @@ def NmlAtkAIR5D_Box():
     PopSpeedX()
     PopSpeedY()
     PopGravity()
-    if (SLOT_13 < (-10000)):
+    if SLOT_YVelocity < -10000:
         physicsYImpulse(-10000)
     XImpulseAcceleration(75)
     WhiffCancelEnable(1)
@@ -4578,7 +4755,7 @@ def NmlAtkAIR5D_Box():
     PopSpeedX()
     PopSpeedY()
     PopGravity()
-    if (SLOT_13 < (-10000)):
+    if SLOT_YVelocity < -10000:
         physicsYImpulse(-10000)
     XImpulseAcceleration(75)
     WhiffCancelEnable(1)
@@ -4586,6 +4763,7 @@ def NmlAtkAIR5D_Box():
     sprite('pt209_08', 3)
     sprite('pt209_09', 3)
     ExitState()
+
 
 @State
 def WeaponThrow_Box():
@@ -4595,7 +4773,7 @@ def WeaponThrow_Box():
     sprite('pt208_00', 2)
     EndMomentum(1)
     sprite('keep', 1)
-    if (SLOT_4 == 14):
+    if SLOT_4 == 14:
         sendToLabel(100)
     sprite('pt405_00', 3)
     sprite('pt405_01', 3)
@@ -4615,7 +4793,7 @@ def WeaponThrow_Box():
     RegisterObject(5, 1)
     ObjectUpon(5, 34)
     sprite('pt405_05', 3)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         callSubroutine('TrapUpDate')
         callSubroutine('ItemConsume_Throw')
         RegisterObject(5, 1)
@@ -4645,7 +4823,7 @@ def WeaponThrow_Box():
     RegisterObject(5, 1)
     ObjectUpon(5, 34)
     sprite('pt405_05', 3)
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         callSubroutine('SpTrapUpDate')
         callSubroutine('ItemConsume_Throw')
         RegisterObject(5, 1)
@@ -4657,6 +4835,7 @@ def WeaponThrow_Box():
     sprite('pt208_10', 3)
     ExitState()
 
+
 @State
 def NmlAtk5D_Boomerang():
 
@@ -4664,14 +4843,14 @@ def NmlAtk5D_Boomerang():
         AttackDefaults_StandingNormal()
         SpecialCancel(0)
         StayAfterMovement(1, 0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtk5D_Boomerang')
     sprite('pt409_00', 3)
     EndMomentum(1)
     sprite('pt409_01', 2)
     CreateObject('ptef_409_ring', -1)
     sprite('keep', 1)
-    if (SLOT_4 == 16):
+    if SLOT_4 == 16:
         sendToLabel(100)
     sprite('pt409_02', 5)
     sprite('pt409_03', 5)
@@ -4683,7 +4862,7 @@ def NmlAtk5D_Boomerang():
     CommonSE('009_swing_rapier_2')
     sprite('pt409_06', 3)
     CreateParticle('ptef409_feather', 1)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     CreateObject('BoomerangAtk', 0)
     RegisterObject(7, 1)
     callSubroutine('ItemConsume')
@@ -4706,7 +4885,7 @@ def NmlAtk5D_Boomerang():
     CommonSE('009_swing_rapier_2')
     sprite('pt409_06', 3)
     CreateParticle('ptef409_feather', 1)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     CreateObject('SPBoomerangAtk', 0)
     RegisterObject(7, 1)
     callSubroutine('ItemConsume')
@@ -4721,19 +4900,20 @@ def NmlAtk5D_Boomerang():
     sprite('pt409_12', 3)
     ExitState()
 
+
 @State
 def NmlAtkAIR5D_Boomerang():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('NmlAtkAIR5D_Boomerang')
     sprite('pt409_00', 3)
     sprite('pt409_01', 2)
     CreateObject('ptef_409_ring_air', -1)
     sprite('keep', 1)
-    if (SLOT_4 == 16):
+    if SLOT_4 == 16:
         sendToLabel(100)
     sprite('pt409_02ex01', 5)
     EndMomentum(1)
@@ -4748,7 +4928,7 @@ def NmlAtkAIR5D_Boomerang():
     CommonSE('009_swing_rapier_2')
     sprite('pt409_06ex01', 4)
     CreateParticle('ptef409_feather', 1)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     CreateObject('BoomerangAtk', 0)
     RegisterObject(7, 1)
     callSubroutine('ItemConsume')
@@ -4774,7 +4954,7 @@ def NmlAtkAIR5D_Boomerang():
     CommonSE('009_swing_rapier_2')
     sprite('pt409_06ex01', 4)
     CreateParticle('ptef409_feather', 1)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     CreateObject('SPBoomerangAtk', 0)
     RegisterObject(7, 1)
     callSubroutine('ItemConsume')
@@ -4786,6 +4966,7 @@ def NmlAtkAIR5D_Boomerang():
     sprite('pt409_20', 3)
     sprite('pt409_21', 3)
     ExitState()
+
 
 @State
 def NmlAtkExcite():
@@ -4802,9 +4983,8 @@ def NmlAtkExcite():
     sprite('pt300_01', 4)
     sprite('pt300_02', 4)
     sprite('pt300_03', 6)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(0)
     sprite('pt300_04', 6)
     SmartVoiceline('pt404')
     sprite('pt300_05', 7)
@@ -4822,6 +5002,7 @@ def NmlAtkExcite():
     label(1)
     sprite('pt300_08', 9)
     sprite('pt300_09', 6)
+
 
 @State
 def NmlAtkDeadAngle():
@@ -4849,6 +5030,7 @@ def NmlAtkDeadAngle():
     sprite('pt201_09', 4)
     sprite('pt201_11', 4)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -4873,11 +5055,11 @@ def NmlAtkGuardCrush():
         StayAfterMovement(1, 0)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -4885,8 +5067,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -4903,7 +5085,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('pt407_00', 3)
     sprite('pt407_01', 1)
@@ -4922,7 +5104,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('keep', 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('pt407_03', 2)
     sprite('pt407_04', 2)
     sprite('pt407_05', 2)
@@ -4946,6 +5128,7 @@ def NmlAtkGuardCrush():
     sprite('pt407_11', 3)
     sprite('pt407_12', 3)
 
+
 @State
 def NmlAtkThrow():
 
@@ -4965,6 +5148,7 @@ def NmlAtkThrow():
     sprite('pt310_06', 3)
     sprite('pt310_07', 3)
     sprite('pt310_08', 2)
+
 
 @State
 def ThrowExe():
@@ -5033,6 +5217,7 @@ def ThrowExe():
     sprite('pt203_11ex01', 3)
     SFX_FOOTSTEP_(100, 1, 1)
 
+
 @State
 def NmlAtkBackThrow():
 
@@ -5052,6 +5237,7 @@ def NmlAtkBackThrow():
     sprite('pt310_06', 3)
     sprite('pt310_07', 3)
     sprite('pt310_08', 2)
+
 
 @State
 def BackThrowExe():
@@ -5107,6 +5293,7 @@ def BackThrowExe():
     XImpulseAcceleration(50)
     sprite('keep', 5)
     enterState('BackThrowExeAdd')
+
 
 @State
 def BackThrowExeAdd():
@@ -5169,6 +5356,7 @@ def BackThrowExeAdd():
     sprite('pt203_11ex01', 3)
     SFX_FOOTSTEP_(100, 1, 1)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -5189,6 +5377,7 @@ def NmlAtkAirThrow():
     sprite('pt320_06', 3)
     sprite('pt320_07', 3)
     sprite('pt320_08', 2)
+
 
 @State
 def AirThrowExe():
@@ -5250,6 +5439,7 @@ def AirThrowExe():
     EndYPhysicsImpulse()
     sprite('pt203_16ex01', 3)
 
+
 @State
 def Oiuchi():
 
@@ -5266,25 +5456,25 @@ def Oiuchi():
         YImpulseBeforeWallbounce(0)
         DamageEffect(6, 'ptef_hit_middle')
         RangeCheck(170000)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         AttackOff()
         EnableAfterimage(1)
         AfterimageColor_1(255, 60, 60, 60)
         AfterimageColor_2(100, 60, 60, 60)
         AfterimageBlendMode(2)
     sprite('pt403_07ex', 1)
-    if SLOT_36:
+    if SLOT_IsAirborne:
         SLOT_67 = SLOT_19
-        if (SLOT_67 > 500000):
+        if SLOT_67 > 500000:
             SLOT_67 = 500000
-        SLOT_12 = SLOT_67
+        SLOT_XVelocity = SLOT_67
         XImpulseAcceleration(4)
-        Comment('OiuchiAIR')
+        GotoState('OiuchiAIR')
     else:
         SLOT_67 = SLOT_19
-        if (SLOT_67 > 750000):
+        if SLOT_67 > 750000:
             SLOT_67 = 750000
-        SLOT_12 = SLOT_67
+        SLOT_XVelocity = SLOT_67
         XImpulseAcceleration(8)
     physicsYImpulse(19000)
     setGravity(4400)
@@ -5317,6 +5507,7 @@ def Oiuchi():
     sprite('pt403_06ex', 3)
     sprite('pt403_07ex', 32767)
 
+
 @State
 def Shabon_A():
 
@@ -5337,12 +5528,13 @@ def Shabon_A():
     sprite('pt400_07', 2)
     CreateObject('Shabon2', 0)
     RegisterObject(4, 1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('pt400_08', 5)
     sprite('pt400_09', 4)
     sprite('pt400_10', 4)
     sprite('pt400_11', 3)
     sprite('pt400_12', 3)
+
 
 @State
 def Shabon_B():
@@ -5364,12 +5556,13 @@ def Shabon_B():
     sprite('pt400_07', 2)
     CreateObject('Shabon2', 0)
     RegisterObject(4, 1)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     sprite('pt400_08', 5)
     sprite('pt400_09', 4)
     sprite('pt400_10', 4)
     sprite('pt400_11', 3)
     sprite('pt400_12', 3)
+
 
 @State
 def Shabon_C():
@@ -5391,19 +5584,20 @@ def Shabon_C():
     sprite('pt400_07', 2)
     CreateObject('Shabon2', 0)
     RegisterObject(4, 1)
-    ObjectUpon(4, 34)
+    ObjectUpon(FALLING, 34)
     sprite('pt400_08', 5)
     sprite('pt400_09', 4)
     sprite('pt400_10', 4)
     sprite('pt400_11', 3)
     sprite('pt400_12', 3)
 
+
 @State
 def Hopping():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        sendToLabelUpon(2, 0)
+        uponSendToLabel(LANDING, 0)
         Unknown2061(1)
         WhiffCancel('HoppingPlus_A')
         WhiffCancel('HoppingPlus_B')
@@ -5429,9 +5623,10 @@ def Hopping():
     sprite('pt403_29', 2)
     setInvincible(0)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('pt403_30', 2)
     sprite('pt024_02', 2)
+
 
 @Subroutine
 def Hopping_Default():
@@ -5447,17 +5642,18 @@ def Hopping_Default():
     PushbackX(8000)
     AttackDirection(0)
     DamageEffect(6, 'ptef_hit_middle')
-    if (SLOT_60 >= 4):
+    if SLOT_60 >= 4:
         AirPushbackY(12000)
     Unknown2061(1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 1)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 1)
 
     def upon_LANDING():
         EndMomentum(1)
     HitOrBlockCancel('HoppingPlus_A')
     HitOrBlockCancel('HoppingPlus_B')
     HitOrBlockCancel('HoppingPlus_C')
+
 
 @State
 def HoppingPlus_A():
@@ -5466,8 +5662,8 @@ def HoppingPlus_A():
         AttackDefaults_AirSpecial()
         callSubroutine('Hopping_Default')
 
-        def upon_ON_HIT_OR_BLOCK():
-            if (SLOT_60 >= 4):
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            if SLOT_60 >= 4:
                 XImpulseAcceleration(80)
                 SetAcceleration(200)
             else:
@@ -5476,7 +5672,7 @@ def HoppingPlus_A():
             XSpeed(-6000)
             physicsYImpulse(15000)
             setGravity(3000)
-            if (SLOT_60 == 7):
+            if SLOT_60 == 7:
                 Damage(1000)
                 AttackP2(84)
                 SameMoveProration(80)
@@ -5484,7 +5680,7 @@ def HoppingPlus_A():
                 AirPushbackY(-50000)
                 AirUntechableTime(30)
                 XSpeed(-500)
-            if (SLOT_60 == 3):
+            if SLOT_60 == 3:
                 Damage(500)
                 AttackP2(84)
                 SameMoveProration(80)
@@ -5495,36 +5691,36 @@ def HoppingPlus_A():
                 Floorslide(10)
                 XSpeed(-6000)
     sprite('pt403_17', 1)
-    if (SLOT_60 == 2):
+    if SLOT_60 == 2:
         ChainCancel(0)
-    if (SLOT_60 == 6):
+    if SLOT_60 == 6:
         ChainCancel(0)
     sprite('pt403_18', 2)
     sprite('pt403_19', 2)
     sprite('pt403_20', 3)
-    SLOT_60 = (SLOT_60 + 1)
+    SLOT_60 = SLOT_60 + 1
     CreateObject('AssaultBwave', 0)
     PrivateSE('ptse_08')
     sprite('pt403_21', 3)
     sprite('pt403_22', 3)
     Recovery()
     sprite('pt403_10', 1)
-    if (SLOT_60 == 3):
+    if SLOT_60 == 3:
         gotoLabel(0)
-    if (SLOT_60 == 7):
+    if SLOT_60 == 7:
         gotoLabel(0)
     sprite('pt403_10', 32767)
     label(1)
     sprite('pt024_01', 4)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     WhiffCancelEnable(0)
     ChainCancel(0)
     sprite('pt024_02', 3)
     ExitState()
     label(0)
     sprite('pt403_29', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
 
     def upon_LANDING():
         physicsXImpulse(0)
@@ -5537,6 +5733,7 @@ def HoppingPlus_A():
     sprite('pt020_08', 3)
     gotoLabel(2)
 
+
 @State
 def HoppingPlus_B():
 
@@ -5544,8 +5741,8 @@ def HoppingPlus_B():
         AttackDefaults_AirSpecial()
         callSubroutine('Hopping_Default')
 
-        def upon_ON_HIT_OR_BLOCK():
-            if (SLOT_60 >= 4):
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            if SLOT_60 >= 4:
                 XImpulseAcceleration(80)
                 SetAcceleration(200)
             else:
@@ -5555,7 +5752,7 @@ def HoppingPlus_B():
             YAccel(30)
             YSpeed(25000)
             setGravity(3000)
-            if (SLOT_60 == 7):
+            if SLOT_60 == 7:
                 Damage(500)
                 AttackP2(84)
                 SameMoveProration(80)
@@ -5565,7 +5762,7 @@ def HoppingPlus_B():
                 AirUntechableTime(45)
                 GroundBounce(1)
                 BouncePercentage(50)
-            if (SLOT_60 == 3):
+            if SLOT_60 == 3:
                 Damage(500)
                 AttackP2(84)
                 SameMoveProration(80)
@@ -5577,36 +5774,36 @@ def HoppingPlus_B():
                 GroundBounce(1)
                 BouncePercentage(55)
     sprite('pt403_11', 1)
-    if (SLOT_60 == 2):
+    if SLOT_60 == 2:
         ChainCancel(0)
-    if (SLOT_60 == 6):
+    if SLOT_60 == 6:
         ChainCancel(0)
     sprite('pt403_12', 2)
     sprite('pt403_13', 2)
     sprite('pt403_14', 3)
-    SLOT_60 = (SLOT_60 + 1)
+    SLOT_60 = SLOT_60 + 1
     PrivateSE('ptse_08')
     sprite('pt403_15', 3)
     CreateObject('AssaultAwave', 0)
     sprite('pt403_16', 3)
     Recovery()
     sprite('pt403_10', 1)
-    if (SLOT_60 == 3):
+    if SLOT_60 == 3:
         gotoLabel(0)
-    if (SLOT_60 == 7):
+    if SLOT_60 == 7:
         gotoLabel(0)
     sprite('pt403_10', 30)
     label(1)
     sprite('pt024_01', 4)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     WhiffCancelEnable(0)
     ChainCancel(0)
     sprite('pt024_02', 3)
     ExitState()
     label(0)
     sprite('pt403_29', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
 
     def upon_LANDING():
         physicsXImpulse(0)
@@ -5619,6 +5816,7 @@ def HoppingPlus_B():
     sprite('pt020_08', 3)
     gotoLabel(2)
 
+
 @State
 def HoppingPlus_C():
 
@@ -5626,8 +5824,8 @@ def HoppingPlus_C():
         AttackDefaults_AirSpecial()
         callSubroutine('Hopping_Default')
 
-        def upon_ON_HIT_OR_BLOCK():
-            if (SLOT_60 >= 4):
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            if SLOT_60 >= 4:
                 XImpulseAcceleration(80)
                 SetAcceleration(200)
             else:
@@ -5636,7 +5834,7 @@ def HoppingPlus_C():
             XSpeed(8000)
             physicsYImpulse(15000)
             setGravity(3000)
-            if (SLOT_60 == 7):
+            if SLOT_60 == 7:
                 Damage(1000)
                 AttackP2(84)
                 SameMoveProration(80)
@@ -5644,7 +5842,7 @@ def HoppingPlus_C():
                 AirPushbackY(-50000)
                 AirUntechableTime(30)
                 XSpeed(4000)
-            if (SLOT_60 == 3):
+            if SLOT_60 == 3:
                 Damage(500)
                 AirUntechableTime(30)
                 AttackP2(84)
@@ -5657,36 +5855,36 @@ def HoppingPlus_C():
                 Floorslide(15)
                 XSpeed(4000)
     sprite('pt403_23', 1)
-    if (SLOT_60 == 2):
+    if SLOT_60 == 2:
         ChainCancel(0)
-    if (SLOT_60 == 6):
+    if SLOT_60 == 6:
         ChainCancel(0)
     sprite('pt403_24', 2)
     sprite('pt403_25', 2)
     sprite('pt403_26', 3)
-    SLOT_60 = (SLOT_60 + 1)
+    SLOT_60 = SLOT_60 + 1
     CreateObject('AssaultCwave', 0)
     PrivateSE('ptse_08')
     sprite('pt403_27', 3)
     sprite('pt403_28', 3)
     Recovery()
     sprite('pt403_10', 1)
-    if (SLOT_60 == 3):
+    if SLOT_60 == 3:
         gotoLabel(0)
-    if (SLOT_60 == 7):
+    if SLOT_60 == 7:
         gotoLabel(0)
     sprite('pt403_10', 32767)
     label(1)
     sprite('pt024_01', 4)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     WhiffCancelEnable(0)
     ChainCancel(0)
     sprite('pt024_02', 3)
     ExitState()
     label(0)
     sprite('pt403_29', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
 
     def upon_LANDING():
         physicsXImpulse(0)
@@ -5699,13 +5897,14 @@ def HoppingPlus_C():
     sprite('pt020_08', 3)
     gotoLabel(2)
 
+
 @State
 def AirHopping():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirSpecial()
-        clearUponHandler(2)
-        sendToLabelUpon(2, 0)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 0)
         WhiffCancel('HoppingPlus_A')
         WhiffCancel('HoppingPlus_B')
         WhiffCancel('HoppingPlus_C')
@@ -5722,14 +5921,15 @@ def AirHopping():
     sprite('pt403_09', 2)
     sprite('pt403_10', 2)
     sprite('pt403_17', 32767)
-    SLOT_60 = (SLOT_60 + 4)
+    SLOT_60 = SLOT_60 + 4
     WhiffCancelEnable(1)
     label(0)
     sprite('pt403_29', 2)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('pt403_30', 2)
     sprite('pt024_02', 2)
+
 
 @State
 def SurfingU():
@@ -5751,9 +5951,9 @@ def SurfingU():
         FatalCounter(1)
         SetYCollisionFromOrigin(120)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             physicsXImpulse(45000)
-            clearUponHandler(11)
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             sendToLabel(0)
         if SLOT_137:
             DamageMultiplier(80)
@@ -5788,7 +5988,7 @@ def SurfingU():
     sprite('pt402_09ex01', 3)
     XImpulseAcceleration(50)
     physicsYImpulse(10000)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('pt402_10ex01', 3)
     sprite('pt402_11ex01', 32767)
     label(1)
@@ -5798,6 +5998,7 @@ def SurfingU():
     sprite('pt402_13ex01', 2)
     sprite('pt402_14ex01', 2)
     sprite('pt402_15ex01', 2)
+
 
 @State
 def SurfingV():
@@ -5821,7 +6022,7 @@ def SurfingV():
         StarterRating(2)
         DamageEffect(6, 'ptef_hit_high')
         PushCollisionHeightLow(120000)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('pt402_00', 2)
@@ -5899,13 +6100,14 @@ def SurfingV():
     sprite('pt402_10', 3)
     sprite('pt402_11', 3)
     sprite('pt402_12', 32767)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     label(2)
     sprite('pt402_13', 2)
     EndMomentum(1)
     LandingEffects(104, 1, 1)
     sprite('pt402_14', 2)
     sprite('pt402_15', 3)
+
 
 @State
 def CommandThrow():
@@ -5914,10 +6116,10 @@ def CommandThrow():
         AttackDefaults_Throw('CommandThrow2', 2, 0, 0)
         RangeCheck(100000)
 
-        def upon_FRAME_STEP():
-            (SLOT_19 < 160000)
-            if op(5, 2, 0, 2, 52):
-                clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            SLOT_19 < 160000
+            if not SLOT_0 and not SLOT_52:
+                clearUponHandler(EVERY_FRAME)
                 sendToLabel(0)
     sprite('pt404_00', 5)
     physicsXImpulse(-8000)
@@ -5943,7 +6145,7 @@ def CommandThrow():
     sprite('pt404_04', 2)
     label(0)
     sprite('pt404_05', 2)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     physicsXImpulse(0)
     SkidEffects(100, 1, 1)
     sprite('pt404_06', 2)
@@ -5959,6 +6161,7 @@ def CommandThrow():
     sprite('pt310_06', 3)
     sprite('pt310_07', 3)
     sprite('pt310_08', 4)
+
 
 @State
 def CommandThrow2():
@@ -6015,7 +6218,7 @@ def CommandThrow2():
     GroundedHitstunAnimation(18)
     CommonSE('016_explode_2')
     CreateParticle('ptef_bomber_heart', 0)
-    PassbackAddActionMarkToFunction('CommandThrowMcircle', 32)
+    TriggerUponForState('CommandThrowMcircle', 32)
     if SLOT_137:
         DamageMultiplier(80)
     sprite('pt404_23', 3)
@@ -6043,6 +6246,7 @@ def CommandThrow2():
     sprite('pt203_10', 2)
     sprite('pt203_11', 1)
 
+
 @State
 def AirSlide():
 
@@ -6056,7 +6260,7 @@ def AirSlide():
             CommonSE('100_hit_grap_0')
             CreateObject('AirSlideBalloon', -1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             ForceFaceSprite()
             if SLOT_2:
                 if CheckInput(0x5f):
@@ -6103,8 +6307,8 @@ def AirSlide():
     sprite('pt401_08', 6)
     sprite('pt401_02', 7)
     sprite('pt401_03', 3)
-    clearUponHandler(3)
-    clearUponHandler(1)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(STATE_END)
     CommonSE('100_hit_grap_0')
     CreateObject('AirSlideBalloon', -1)
     physicsYImpulse(32000)
@@ -6119,6 +6323,7 @@ def AirSlide():
     sprite('pt401_06', 1)
     EndMomentum(1)
     EndYPhysicsImpulse()
+
 
 @State
 def Atemi():
@@ -6162,6 +6367,7 @@ def Atemi():
     sprite('pt406_11', 5)
     sprite('pt406_12', 5)
 
+
 @State
 def AtemiExe():
 
@@ -6181,9 +6387,8 @@ def AtemiExe():
     sprite('pt300_01', 4)
     sprite('pt300_02', 4)
     sprite('pt300_03', 6)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(30)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(30)
     sprite('pt300_04', 6)
     setInvincible(0)
     SmartVoiceline('pt404')
@@ -6201,6 +6406,7 @@ def AtemiExe():
     label(40)
     sprite('pt300_08', 9)
     sprite('pt300_09', 6)
+
 
 @State
 def HiWeapon():
@@ -6242,7 +6448,7 @@ def HiWeapon():
     sprite('pt203_03', 3)
     CreateObject('pt430_stick', 0)
     callSubroutine('ItemShufflePowerUP')
-    PassbackAddActionMarkToFunction('SphereLight_Model', 32)
+    TriggerUponForState('SphereLight_Model', 32)
     PrivateSE('ptse_13')
     sprite('pt203_04', 3)
     sprite('pt203_05', 30)
@@ -6254,12 +6460,13 @@ def HiWeapon():
     sprite('pt203_10', 3)
     sprite('pt203_11', 3)
 
+
 @State
 def HiWeapon_OD():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingDD()
-        SLOT_58 = SLOT_110
+        SLOT_58 = SLOT_OverdriveTimer
     sprite('pt430_00', 3)
     sprite('pt430_01', 3)
     sprite('pt430_02', 3)
@@ -6294,7 +6501,7 @@ def HiWeapon_OD():
     sprite('pt203_03', 3)
     CreateObject('pt430_stick', 0)
     callSubroutine('ItemShufflePowerUP')
-    PassbackAddActionMarkToFunction('SphereLight_Model', 32)
+    TriggerUponForState('SphereLight_Model', 32)
     PrivateSE('ptse_13')
     sprite('pt203_04', 3)
     sprite('pt203_05', 30)
@@ -6305,6 +6512,7 @@ def HiWeapon_OD():
     setInvincible(0)
     sprite('pt203_10', 3)
     sprite('pt203_11', 3)
+
 
 @State
 def UltimateAssault():
@@ -6325,11 +6533,11 @@ def UltimateAssault():
         Hitstun(100)
         StarterRating(2)
         EndMomentum(1)
-        if SLOT_37:
+        if SLOT_IsGrounded:
             sendToLabel(100)
-        if SLOT_36:
+        if SLOT_IsAirborne:
             sendToLabel(101)
-            Comment('UltimateAssaultAir')
+            GotoState('UltimateAssaultAir')
         setInvincible(1)
         if SLOT_137:
             DamageMultiplier(80)
@@ -6493,15 +6701,15 @@ def UltimateAssault():
     AttackOff()
     clearUponHandler(16)
 
-    def upon_FRAME_STEP():
-        if SLOT_37:
+    def upon_EVERY_FRAME():
+        if SLOT_IsGrounded:
             sendToLabel(10)
     sprite('pt431_15', 3)
     sprite('pt431_16', 3)
     gotoLabel(5)
     label(10)
     sprite('pt431_17', 5)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('pt431_18', 5)
 
     def upon_16():
@@ -6542,6 +6750,7 @@ def UltimateAssault():
     sprite('pt431_30', 6)
     ExitState()
 
+
 @State
 def UltimateAssault_OD():
 
@@ -6562,9 +6771,9 @@ def UltimateAssault_OD():
         StarterRating(2)
         AttackType(4)
         EndMomentum(1)
-        if SLOT_37:
+        if SLOT_IsGrounded:
             sendToLabel(100)
-        if SLOT_36:
+        if SLOT_IsAirborne:
             sendToLabel(101)
         setInvincible(1)
         if SLOT_137:
@@ -6729,15 +6938,15 @@ def UltimateAssault_OD():
     AttackOff()
     clearUponHandler(16)
 
-    def upon_FRAME_STEP():
-        if SLOT_37:
+    def upon_EVERY_FRAME():
+        if SLOT_IsGrounded:
             sendToLabel(10)
     sprite('pt431_15', 3)
     sprite('pt431_16', 3)
     gotoLabel(5)
     label(10)
     sprite('pt431_17', 5)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('pt431_18', 5)
 
     def upon_16():
@@ -6773,7 +6982,7 @@ def UltimateAssault_OD():
     CreateObject('DollMaker', -1)
 
     def upon_STATE_END():
-        PassbackAddActionMarkToFunction('DollMaker', 32)
+        TriggerUponForState('DollMaker', 32)
     sprite('pt431_27', 7)
     sprite('pt431_27', 8)
     sprite('pt431_27', 8)
@@ -6788,6 +6997,7 @@ def UltimateAssault_OD():
     sprite('pt431_28', 6)
     sprite('pt431_29', 6)
     sprite('pt431_30', 6)
+
 
 @State
 def AstralHeat():
@@ -6814,9 +7024,9 @@ def AstralHeat():
             SetBackground(3)
             HUDVisibillity(1)
             setInvincible(1)
-    if SLOT_37:
+    if SLOT_IsGrounded:
         gotoLabel(0)
-    if SLOT_36:
+    if SLOT_IsAirborne:
         gotoLabel(1)
     label(0)
     sprite('pt450_00', 4)
@@ -6876,7 +7086,7 @@ def AstralHeat():
         gotoLabel(4)
     sprite('pt450_09', 3)
     setInvincible(0)
-    PassbackAddActionMarkToFunction('Astral1stBeam', 32)
+    TriggerUponForState('Astral1stBeam', 32)
     EnableAfterimage(0)
     sprite('pt450_22', 3)
     sprite('pt450_23', 3)
@@ -6884,7 +7094,7 @@ def AstralHeat():
     loopRest()
     ExitState()
     label(4)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     sprite('pt450_09', 3)
     CreateObject('AstralAura', -1)
     CreateObject('AstralAura02', -1)
@@ -7038,8 +7248,8 @@ def AstralHeat():
     sprite('pt450_12', 3)
     StartMultihit()
     CreateObject('pt450_mahojin1', -1)
-    PassbackAddActionMarkToFunction('AstralAura', 32)
-    PassbackAddActionMarkToFunction('Astral1stBeam', 32)
+    TriggerUponForState('AstralAura', 32)
+    TriggerUponForState('Astral1stBeam', 32)
     sprite('pt450_13', 3)
     CharacterFlash2(0, 9)
     sprite('pt450_14', 3)
@@ -7141,14 +7351,14 @@ def AstralHeat():
     CameraControlInfinity(1)
     AbsoluteY(70000)
     XPositionRelativeFacing(0)
-    PassbackAddActionMarkToFunction('AstralAura02', 32)
+    TriggerUponForState('AstralAura02', 32)
     EnableAfterimage(0)
     setInvincible(0)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    AbsoluteY(4000000)
-    XPositionRelativeFacing(1865000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(1)
+        AbsoluteY(4000000)
+        XPositionRelativeFacing(1865000)
     sprite('pt450_13', 15)
     CreateObject('AstralAuraWin', -1)
     sprite('pt450_14', 6)
@@ -7189,6 +7399,7 @@ def AstralHeat():
     sprite('pt450_20', 6)
     gotoLabel(5)
 
+
 @State
 def RlAstralDamage():
 
@@ -7196,7 +7407,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('pt054')
     sprite('pt900_00', 6)
     EnableCollision(0)
@@ -7218,6 +7429,7 @@ def RlAstralDamage():
     gotoLabel(0)
     loopRest()
 
+
 @State
 def AmAstralDamage():
 
@@ -7237,11 +7449,12 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(100)
@@ -7260,10 +7473,10 @@ def BurstDD():
             SetBackground(1)
             EnableCollision(0)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -7288,11 +7501,12 @@ def BurstDD():
     sprite('pt204_12ex01', 5)
     sprite('pt204_13ex01', 4)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(100)
@@ -7311,10 +7525,10 @@ def BurstDD_Easy():
             SetBackground(1)
             EnableCollision(0)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -7341,11 +7555,12 @@ def BurstDD_Easy():
     sprite('pt204_12ex01', 5)
     sprite('pt204_13ex01', 4)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(3)
         Damage(800)
         AirHitstunAnimation(9)
@@ -7368,10 +7583,10 @@ def BurstDDAdd():
     sprite('pt204_10ex01', 4)
     sprite('pt204_11ex01', 4)
     CreateObject('ThrowMcircle', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddY(200000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddY(200000)
     sprite('pt204_12ex01', 4)
     sprite('pt204_13ex01', 4)
     Voiceline('pt281')
@@ -7411,7 +7626,7 @@ def BurstDDAdd():
     ForceFaceSprite()
     physicsXImpulse(75000)
     RefreshMultihit()
-    if (not SLOT_51):
+    if not SLOT_51:
         AirPushbackY(85000)
         AirUntechableTime(120)
     else:
@@ -7581,7 +7796,7 @@ def BurstDDAdd():
     sprite('pt256_11ex01', 3)
     sprite('pt020_04', 3)
     ForceFaceSprite()
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('pt020_05', 3)
     sprite('pt020_06', 3)
     label(0)
@@ -7596,113 +7811,416 @@ def BurstDDAdd():
     sprite('pt024_02', 3)
     loopRest()
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('pt000', 14689, 14179, 14433, 14179, 14177, 14179, 14177, 14179, 14689, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt055', 12641, 25394, 12337, 12897, 25392, 12342, 14433, 14435, 14433, 14435, 12641, 25400, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt292', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt400', 14433, 14435, 13153, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt401', 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt404', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt405', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt406', 14433, 14179, 14433, 13667, 14433, 14179, 14433, 14179, 14433, 14179, 14433, 14179, 14433, 14179, 14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt407', 12641, 25392, 24888, 25400, 24888, 12337, 14435, 14433, 14435, 14689, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt412', 14177, 13667, 14177, 13667, 14177, 13667, 14177, 13667, 14177, 13411, 14177, 12643, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt413', 14433, 13667, 14433, 13667, 14433, 12899, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt414', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt415', 12643, 24881, 25398, 24886, 25399, 13617, 14433, 14435, 14433, 14435, 12641, 25392, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('pt417', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt000', 14689, 14179, 14433, 14179, 14177, 14179, 14177, 
+        14179, 14689, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt055', 12641, 25394, 12337, 12897, 25392, 12342, 14433, 
+        14435, 14433, 14435, 12641, 25400, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt292', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt400', 14433, 14435, 13153, 25392, 56, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt401', 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt404', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('pt405', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('pt406', 14433, 14179, 14433, 13667, 14433, 14179, 14433, 
+        14179, 14433, 14179, 14433, 14179, 14433, 14179, 14433, 14179, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt407', 12641, 25392, 24888, 25400, 24888, 12337, 14435, 
+        14433, 14435, 14689, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('pt411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('pt412', 14177, 13667, 14177, 13667, 14177, 13667, 14177, 
+        13667, 14177, 13411, 14177, 12643, 24885, 25398, 24886, 25398, 
+        24886, 25398, 24886, 25398, 24886, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt413', 14433, 13667, 14433, 13667, 14433, 12899, 48, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt414', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 12641, 25397, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt415', 12643, 24881, 25398, 24886, 25399, 13617, 14433, 
+        14435, 14433, 14435, 12641, 25392, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('pt416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('pt417', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
     if SLOT_44:
-        Unknown18011('pt000', 14689, 14435, 14177, 14179, 14177, 14435, 12641, 25395, 57, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt292', 14433, 14435, 14433, 14435, 14433, 13411, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt400', 14433, 14435, 14433, 14435, 12641, 25398, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt401', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt404', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt405', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt406', 13153, 25397, 12341, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt407', 14433, 14435, 14433, 14435, 12641, 25397, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt412', 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt413', 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt414', 14433, 14435, 14433, 14435, 14433, 14435, 12641, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt415', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 12643, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('pt417', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('pt000', 14689, 14435, 14177, 14179, 14177, 14435, 
+            12641, 25395, 57, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt292', 14433, 14435, 14433, 14435, 14433, 13411, 
+            24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0)
+        Unknown18011('pt400', 14433, 14435, 14433, 14435, 12641, 25398, 56,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt401', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt404', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt405', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt406', 13153, 25397, 12341, 14433, 14435, 14433, 
+            14435, 14433, 14435, 14433, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt407', 14433, 14435, 14433, 14435, 12641, 25397, 
+            24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt412', 12641, 25392, 12337, 12641, 25392, 12337, 
+            12641, 25392, 12337, 12641, 25392, 12337, 12641, 48, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0)
+        Unknown18011('pt413', 14435, 14433, 14435, 14433, 14435, 14433, 
+            14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt414', 14433, 14435, 14433, 14435, 14433, 14435, 
+            12641, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt415', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 14435, 14433, 14435, 14433, 12643, 50, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('pt416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('pt417', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('tm'):
-            Unknown18011('pt000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt400', 14433, 12899, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt401', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt000', 12641, 25392, 24888, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('pt400', 14433, 12899, 24880, 25400, 24888, 25400,
+                24888, 25400, 24888, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('pt401', 14177, 14179, 14177, 14179, 14177, 14179,
+                13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
             if SLOT_44:
-                Unknown18011('pt000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25396, 24887, 13361, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt000', 12641, 25392, 24888, 12337, 14435, 
+                    12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt400', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641,
+                    25396, 24887, 13361, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt401', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('jn'):
-            Unknown18011('pt502', 13411, 24885, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt5030', 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt5031', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt502', 13411, 24885, 25399, 24887, 25399, 12340,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt5030', 14177, 14179, 14177, 14179, 14177, 13155,
+                24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0)
+            Unknown18011('pt5031', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_44:
-                Unknown18011('pt502', 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt502', 14177, 13923, 24880, 25399, 24887, 
+                    25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kg'):
-            Unknown18011('pt546', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 12338, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt547', 12897, 25392, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt546', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 
+                24887, 25399, 24887, 25399, 12338, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt547', 12897, 25392, 24888, 25400, 24888, 25400,
+                24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_44:
-                Unknown18011('pt546', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt547', 14177, 14179, 13153, 25392, 13617, 12641, 25392, 24887, 25399, 24887, 12337, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt546', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt547', 14177, 14179, 13153, 25392, 13617, 
+                    12641, 25392, 24887, 25399, 24887, 12337, 14179, 14177,
+                    14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0)
         if CharacterIDCheck('tm'):
-            Unknown18011('pt550', 14177, 14179, 14177, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt551', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt550', 14177, 14179, 14177, 14177, 14179, 14177,
+                14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 
+                25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt551', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_44:
-                Unknown18011('pt550', 12897, 25392, 12342, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt551', 14177, 14179, 14177, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt550', 12897, 25392, 12342, 14177, 14179, 
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0)
+                Unknown18011('pt551', 14177, 14179, 14177, 13411, 24885, 
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ce'):
             if SLOT_138:
-                Unknown18011('pt552', 13921, 13923, 13921, 13923, 13921, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt553', 12641, 25394, 12339, 13921, 13411, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt552', 13921, 13923, 13921, 13923, 13921, 
+                    13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt553', 12641, 25394, 12339, 13921, 13411, 
+                    13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411,
+                    24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_44:
-                    Unknown18011('pt552', 14433, 14435, 14433, 14435, 14433, 13155, 24880, 25400, 12339, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('pt553', 14689, 13923, 14689, 13923, 14689, 13923, 14689, 13923, 14689, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 24886, 12849, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('pt552', 14433, 14435, 14433, 14435, 14433,
+                        13155, 24880, 25400, 12339, 13921, 13923, 13921, 
+                        13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('pt553', 14689, 13923, 14689, 13923, 14689,
+                        13923, 14689, 13923, 14689, 13923, 13921, 13923, 
+                        13921, 13923, 13921, 13923, 24880, 25398, 24886, 
+                        12849, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('pt5520', 13665, 13667, 13665, 13667, 13665, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt5521', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt553', 12641, 25394, 12339, 13921, 13411, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt5520', 13665, 13667, 13665, 13667, 13665, 
+                    13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
+                Unknown18011('pt5521', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt553', 12641, 25394, 12339, 13921, 13411, 
+                    13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411,
+                    24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_44:
-                    Unknown18011('pt5520', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('pt5521', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('pt553', 14689, 13923, 14689, 13923, 14689, 13923, 14689, 13923, 14689, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 24886, 12849, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('pt5520', 14177, 14179, 14177, 14179, 
+                        14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('pt5521', 14177, 14179, 14177, 14179, 
+                        14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                        14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                        12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('pt553', 14689, 13923, 14689, 13923, 14689,
+                        13923, 14689, 13923, 14689, 13923, 13921, 13923, 
+                        13921, 13923, 13921, 13923, 24880, 25398, 24886, 
+                        12849, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('pt558', 13921, 13923, 13921, 13923, 13921, 13155, 24880, 25398, 24886, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt559', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt558', 13921, 13923, 13921, 13923, 13921, 13155,
+                24880, 25398, 24886, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0)
+            Unknown18011('pt559', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('pt558', 12641, 25392, 12339, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt559', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt558', 12641, 25392, 12339, 13921, 13923, 
+                    13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923,
+                    13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt559', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_44:
-                Unknown18011('pt558', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt559', 14433, 14435, 14433, 13923, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt558', 14433, 14435, 14433, 14435, 14433, 
+                    14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433,
+                    14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt559', 14433, 14435, 14433, 13923, 24880, 
+                    25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888,
+                    25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_140:
-                    Unknown18011('pt558', 14689, 14691, 14689, 14691, 14689, 13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 12339, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('pt559', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13667, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('pt558', 14689, 14691, 14689, 14691, 14689,
+                        13667, 24880, 25398, 24886, 25398, 24886, 25398, 
+                        24886, 25398, 12339, 14433, 14435, 14433, 14435, 
+                        14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('pt559', 14433, 14435, 14433, 14435, 14433,
+                        14435, 14433, 14435, 14433, 13667, 24880, 25400, 
+                        24888, 25400, 24888, 25400, 24888, 25400, 24888, 
+                        25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('jb'):
-            Unknown18011('pt000', 14177, 14179, 14177, 14179, 14177, 12899, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt400', 14433, 14435, 14433, 14435, 12897, 25392, 12339, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12897, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt401', 14177, 13667, 14177, 13667, 14177, 12899, 24880, 25400, 24888, 25400, 24888, 12338, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt570', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('pt571', 14177, 12899, 24880, 25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt000', 14177, 14179, 14177, 14179, 14177, 12899,
+                24880, 25399, 24887, 25399, 24887, 25399, 24887, 12337, 
+                14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt400', 14433, 14435, 14433, 14435, 12897, 25392,
+                12339, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+                14435, 12897, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt401', 14177, 13667, 14177, 13667, 14177, 12899,
+                24880, 25400, 24888, 25400, 24888, 12338, 14435, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt570', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('pt571', 14177, 12899, 24880, 25399, 12340, 14177,
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 
+                25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_44:
-                Unknown18011('pt000', 14689, 14435, 14177, 14179, 14177, 14435, 12641, 25395, 12339, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt400', 14433, 14435, 14433, 14435, 12897, 25392, 12852, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12897, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt401', 14433, 14435, 14433, 14435, 14433, 12899, 24880, 25400, 24888, 25400, 24888, 12338, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt570', 12899, 12341, 12897, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('pt571', 14433, 14435, 14433, 14435, 14433, 14435, 13153, 25392, 12342, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12897, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt000', 14689, 14435, 14177, 14179, 14177, 
+                    14435, 12641, 25395, 12339, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397,
+                    55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0)
+                Unknown18011('pt400', 14433, 14435, 14433, 14435, 12897, 
+                    25392, 12852, 14433, 14435, 14433, 14435, 14433, 14435,
+                    14433, 14435, 12897, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt401', 14433, 14435, 14433, 14435, 14433, 
+                    12899, 24880, 25400, 24888, 25400, 24888, 12338, 14435,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt570', 12899, 12341, 12897, 25392, 55, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('pt571', 14433, 14435, 14433, 14435, 14433, 
+                    14435, 13153, 25392, 12342, 14433, 14435, 14433, 14435,
+                    14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435,
+                    12897, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('jn'):
         SyncEntry()
         gotoLabel(110)
@@ -7728,23 +8246,21 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(440)
     label(482)
-    random_(2, 0, 34)
-    if SLOT_0:
-        _gotolabel(10)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(20)
+    if random_(2, 0, 34):
+        conditionalSendToLabel(10)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(20)
     label(0)
     sprite('pt600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('pt600_00', 39)
     Voiceline('pt412')
     label(1)
     sprite('pt600_00', 6)
     if SLOT_97:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('pt600_01', 6)
     sprite('pt600_02', 6)
     CommonSE('008_swing_pole_2')
@@ -7783,13 +8299,13 @@ def CmnActEntry():
     sprite('pt601_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('pt601_00', 30)
     Voiceline('pt414')
     label(11)
     sprite('pt601_00', 5)
     if SLOT_97:
-        _gotolabel(11)
+        conditionalSendToLabel(11)
     sprite('pt601_00', 15)
     CreateParticle('ptef_entryheartA', 0)
     PrivateSE('ptse_15')
@@ -7852,7 +8368,7 @@ def CmnActEntry():
     label(12)
     sprite('pt601_20', 9)
     if SLOT_97:
-        _gotolabel(12)
+        conditionalSendToLabel(12)
     sprite('pt601_21', 6)
     sprite('pt601_22', 5)
     DemoTimer(30)
@@ -7862,7 +8378,7 @@ def CmnActEntry():
     sprite('null', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(20)
+        conditionalSendToLabel(20)
     sprite('pt331_05', 100)
     CreateObject('FusenEntry', -1)
     XPositionRelativeFacing(-521000)
@@ -7887,7 +8403,7 @@ def CmnActEntry():
     sprite('pt331_08', 6)
     sprite('pt331_13', 6)
     physicsXImpulse(0)
-    sendToLabelUpon(2, 22)
+    uponSendToLabel(LANDING, 22)
     sprite('pt331_14', 6)
     label(21)
     sprite('pt020_07', 6)
@@ -7897,7 +8413,7 @@ def CmnActEntry():
     label(22)
     sprite('pt024_00', 3)
     XPositionRelativeFacing(-260000)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 1)
     sprite('pt024_01', 9)
     sprite('pt024_02', 5)
@@ -7909,7 +8425,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(110)
-    sendToLabelUpon(32, 112)
+    uponSendToLabel(32, 112)
     label(111)
     sprite('pt600_00', 6)
     loopRest()
@@ -7951,12 +8467,12 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(330)
-    sendToLabelUpon(32, 331)
+    uponSendToLabel(32, 331)
     sprite('pt001_00', 180)
     loopRest()
     gotoLabel(330)
     label(331)
-    sendToLabelUpon(33, 332)
+    uponSendToLabel(33, 332)
     sprite('pt001_00', 180)
     loopRest()
     gotoLabel(331)
@@ -7967,7 +8483,7 @@ def CmnActEntry():
     sprite('pt001_00', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(333)
+        conditionalSendToLabel(333)
     sprite('pt001_00', 20)
     ObjectUpon(22, 32)
     sprite('pt001_01', 5)
@@ -7983,7 +8499,7 @@ def CmnActEntry():
     sprite('pt600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(350)
+        conditionalSendToLabel(350)
     sprite('pt600_00', 220)
     Voiceline('pt550')
     sprite('pt600_01', 6)
@@ -8020,7 +8536,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(360)
-    sendToLabelUpon(32, 362)
+    uponSendToLabel(32, 362)
     label(361)
     sprite('pt600_00', 6)
     loopRest()
@@ -8063,7 +8579,7 @@ def CmnActEntry():
     ExitState()
     label(1360)
     sprite('pt601_00', 1)
-    sendToLabelUpon(32, 1361)
+    uponSendToLabel(32, 1361)
     sprite('pt601_00', 32767)
     loopRest()
     label(1361)
@@ -8131,7 +8647,7 @@ def CmnActEntry():
     sprite('pt601_20', 10)
     loopRest()
     if SLOT_97:
-        _gotolabel(1362)
+        conditionalSendToLabel(1362)
     sprite('pt601_20', 20)
     sprite('pt601_21', 6)
     ObjectUpon(22, 32)
@@ -8140,7 +8656,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(390)
-    sendToLabelUpon(32, 392)
+    uponSendToLabel(32, 392)
     label(391)
     sprite('pt600_00', 6)
     loopRest()
@@ -8192,7 +8708,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(2390)
-    sendToLabelUpon(32, 2392)
+    uponSendToLabel(32, 2392)
     label(2391)
     sprite('pt600_00', 6)
     loopRest()
@@ -8248,7 +8764,7 @@ def CmnActEntry():
     sprite('null', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(440)
+        conditionalSendToLabel(440)
     sprite('pt331_05', 100)
     CreateObject('FusenEntry', -1)
     XPositionRelativeFacing(-521000)
@@ -8272,7 +8788,7 @@ def CmnActEntry():
     sprite('pt331_08', 6)
     sprite('pt331_13', 6)
     physicsXImpulse(0)
-    sendToLabelUpon(2, 442)
+    uponSendToLabel(LANDING, 442)
     sprite('pt331_14', 6)
     label(441)
     sprite('pt020_07', 6)
@@ -8282,7 +8798,7 @@ def CmnActEntry():
     label(442)
     sprite('pt024_00', 3)
     XPositionRelativeFacing(-260000)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 1)
     sprite('pt024_01', 9)
     sprite('pt024_02', 5)
@@ -8295,15 +8811,16 @@ def CmnActEntry():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActRoundWin():
     CameraControlEnable(1)
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('pt030_00', 5)
@@ -8358,19 +8875,17 @@ def CmnActRoundWin():
     sprite('pt615_06', 32767)
     loopRest()
 
+
 @State
 def CmnActMatchWin():
     if SLOT_86:
-        _gotolabel(482)
-    CharacterIDCheck('jn')
-    if SLOT_0:
-        _gotolabel(110)
-    CharacterIDCheck('kg')
-    if SLOT_0:
-        _gotolabel(330)
-    CharacterIDCheck('tm')
-    if SLOT_0:
-        _gotolabel(350)
+        conditionalSendToLabel(482)
+    if CharacterIDCheck('jn'):
+        conditionalSendToLabel(110)
+    if CharacterIDCheck('kg'):
+        conditionalSendToLabel(330)
+    if CharacterIDCheck('tm'):
+        conditionalSendToLabel(350)
     if CharacterIDCheck('ce'):
         if SLOT_138:
             gotoLabel(360)
@@ -8381,16 +8896,13 @@ def CmnActMatchWin():
             gotoLabel(2390)
         else:
             gotoLabel(390)
-    CharacterIDCheck('jb')
-    if SLOT_0:
-        _gotolabel(440)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('jb'):
+        conditionalSendToLabel(440)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(10)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(10)
     label(0)
     SetZLine(1, 100)
     SetActionMark(1)
@@ -8398,17 +8910,17 @@ def CmnActMatchWin():
     ScreenCollision(0)
     CameraControlEnable(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 200000):
+            if SLOT_29 < 200000:
                 SetActionMark(0)
                 sendToLabel(2)
-        if (not SLOT_2):
-            ApplyFunctionsToObjects(22)
-            WallCollisionDetection(0)
-            ScreenCollision(0)
-            ApplyFunctionsToSelf()
-            if (SLOT_29 >= 1600000):
+        if not SLOT_2:
+
+            def RunOnObject_22():
+                WallCollisionDetection(0)
+                ScreenCollision(0)
+            if SLOT_29 >= 1600000:
                 sendToLabel(4)
     sprite('pt610_00', 3)
     physicsXImpulse(5000)
@@ -8554,9 +9066,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(332)
     sprite('pt030_00', 5)
@@ -8597,9 +9109,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(352)
     sprite('pt030_00', 5)
@@ -8651,9 +9163,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(362)
     sprite('pt030_00', 5)
@@ -8735,7 +9247,7 @@ def CmnActMatchWin():
     sprite('pt430_13', 3)
     sprite('pt203_02', 40)
     sprite('pt203_03', 1)
-    PassbackAddActionMarkToFunction('SphereLight_Model', 32)
+    TriggerUponForState('SphereLight_Model', 32)
     PrivateSE('ptse_13')
     label(1361)
     sprite('pt203_03', 7)
@@ -8755,9 +9267,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(392)
     sprite('pt030_00', 5)
@@ -8796,9 +9308,9 @@ def CmnActMatchWin():
     sprite('keep', 1)
     CameraControlEnable(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2392)
     sprite('pt030_00', 5)
@@ -8838,9 +9350,9 @@ def CmnActMatchWin():
     CameraControlEnable(1)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(442)
     sprite('pt030_00', 5)
@@ -8922,6 +9434,7 @@ def CmnActMatchWin():
     gotoLabel(667)
     loopRest()
 
+
 @State
 def CmnActLose():
     sprite('pt620_00', 6)
@@ -8960,6 +9473,7 @@ def CmnActLose():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -8980,17 +9494,20 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefWin():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefLose():
@@ -9001,14 +9518,17 @@ def EventDefLose():
     sprite('pt620_09', 6)
     gotoLabel(0)
 
+
 @State
 def EventDefLose2():
     sprite('pt063_11', 32767)
+
 
 @State
 def EventNoDisp():
     sprite('keep', 32767)
     Visibility(1)
+
 
 @State
 def EventChouhatsu():
@@ -9026,10 +9546,12 @@ def EventChouhatsu():
     sprite('pt000_00', 1)
     enterState('CmnActStand')
 
+
 @State
 def EventDownFaceUp():
     sprite('pt060_14', 32767)
     loopRest()
+
 
 @State
 def EventDownFaceUpToStand():
@@ -9045,6 +9567,7 @@ def EventDownFaceUpToStand():
     sprite('pt061_09', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDashLeaveOpposite():
@@ -9072,13 +9595,16 @@ def EventDashLeaveOpposite():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefLose3():
     sprite('pt620_05', 32767)
 
+
 @State
 def EventSitting():
     sprite('pt064_02', 32767)
+
 
 @State
 def EventSittingEnd():
@@ -9094,20 +9620,22 @@ def EventSittingEnd():
     sprite('pt000_00', 1)
     enterState('CmnActStand')
 
+
 @State
 def EventVSAR1():
     ScreenCollision(0)
     XPositionRelativeFacing(-2400000)
     sprite('null', 32767)
 
+
 @State
 def EventVSAR2():
     ScreenCollision(0)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('pt030_00', 7)
@@ -9136,6 +9664,7 @@ def EventVSAR2():
     CameraControlEnable(0)
     enterState('CmnActStand')
 
+
 @State
 def EventVSHA1():
     sprite('pt070_13', 8)
@@ -9143,15 +9672,16 @@ def EventVSHA1():
     sprite('pt070_11', 8)
     sprite('pt070_10', 32767)
 
+
 @State
 def EventPhantom():
     sprite('pt000_00', 7)
     CreateObject('ptPhantom_2', 0)
     RegisterObject(4, 1)
-    ApplyFunctionsToObjects(4)
-    AddX(-20000)
-    SetZVal(-500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        AddX(-20000)
+        SetZVal(-500)
     CommonSE('022_magiccircle_b')
     sprite('pt000_01', 7)
     sprite('pt000_02', 7)
@@ -9169,12 +9699,14 @@ def EventPhantom():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventPhantomDelete():
     sprite('keep', 2)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventVSHA2():
@@ -9185,6 +9717,7 @@ def EventVSHA2():
     loopRest()
     enterState('EventPhantom')
 
+
 @State
 def EventTKVsPT_StompTao():
     ForceFaceSprite()
@@ -9193,8 +9726,8 @@ def EventTKVsPT_StompTao():
     EnableCollision(0)
     SetZLine(1, 50)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 100000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 100000:
             sendToLabel(1)
     sprite('pt030_00', 7)
     sprite('pt030_01', 5)
@@ -9218,7 +9751,7 @@ def EventTKVsPT_StompTao():
     sprite('pt030_13', 5)
     gotoLabel(0)
     label(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     CameraControlEnable(0)
     EndMomentum(1)
     sprite('keep', 32767)
@@ -9228,6 +9761,7 @@ def EventTKVsPT_StompTao():
     CreateParticle('ef_hits', -1)
     CreateParticle('ef_jumpsmoke00', -1)
     loopRest()
+
 
 @State
 def EventTKVsPT_Surprised():
@@ -9249,11 +9783,10 @@ def EventTKVsPT_Surprised():
     AddX(-2000)
     sprite('pt050_01', 2)
     AddX(2000)
-    SLOT_51 = (SLOT_51 + 1)
+    SLOT_51 = SLOT_51 + 1
     loopRest()
-    (SLOT_51 < 8)
-    if SLOT_0:
-        _gotolabel(0)
+    if SLOT_51 < 8:
+        conditionalSendToLabel(0)
     sprite('pt050_01', 4)
     Unknown1005()
     sprite('pt050_00', 4)
@@ -9279,13 +9812,13 @@ def EventTKVsPT_Surprised():
     PrivateSE('ptse_25')
     sprite('pt615_10', 5)
     sprite('pt615_09', 90)
-    SLOT_51 = (SLOT_51 + 1)
+    SLOT_51 = SLOT_51 + 1
     loopRest()
-    (SLOT_51 < 3)
-    if SLOT_0:
-        _gotolabel(1)
+    if SLOT_51 < 3:
+        conditionalSendToLabel(1)
     sprite('pt615_09', 32767)
     loopRest()
+
 
 @State
 def EventTKVsPT_JumpAway():
@@ -9305,15 +9838,14 @@ def EventTKVsPT_JumpAway():
     AddX(-4000)
     sprite('pt052_03', 2)
     AddX(4000)
-    SLOT_51 = (SLOT_51 + 1)
+    SLOT_51 = SLOT_51 + 1
     loopRest()
-    (SLOT_51 < 8)
-    if SLOT_0:
-        _gotolabel(0)
+    if SLOT_51 < 8:
+        conditionalSendToLabel(0)
     sprite('pt052_02', 2)
     Unknown1005()
     loopRest()
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     sprite('pt033_01', 1)
     physicsXImpulse(-32000)
     physicsYImpulse(2000)
@@ -9328,7 +9860,7 @@ def EventTKVsPT_JumpAway():
     loopRest()
     gotoLabel(1)
     label(2)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('pt033_04', 2)
     sprite('pt033_05', 2)
     EndMomentum(1)
@@ -9338,9 +9870,11 @@ def EventTKVsPT_JumpAway():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventPTHood():
     sprite('pt600_00', 32767)
+
 
 @State
 def EventPTHoodEnd():
@@ -9373,6 +9907,7 @@ def EventPTHoodEnd():
     sprite('pt600_15', 6)
     sprite('pt600_16', 6)
     enterState('CmnActStand')
+
 
 @State
 def EventPTWalkaway():
@@ -9424,6 +9959,7 @@ def EventPTWalkaway():
     sprite('pt030_12', 5)
     sprite('pt030_13', 5)
 
+
 @State
 def EventYorokeStart():
     sprite('pt070_00', 5)
@@ -9433,6 +9969,7 @@ def EventYorokeStart():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventYorokeEnd():
     sprite('pt070_03', 5)
@@ -9441,6 +9978,7 @@ def EventYorokeEnd():
     sprite('pt070_00', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventWarp():
@@ -9484,20 +10022,22 @@ def EventWarp():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def EventPTFrameOut():
     ScreenCollision(0)
     XPositionRelativeFacing(-900000)
     sprite('null', 32767)
 
+
 @State
 def EventPTWalkFrameIn():
     ScreenCollision(0)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('pt030_00', 7)
@@ -9524,6 +10064,7 @@ def EventPTWalkFrameIn():
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
 
+
 @State
 def EventPTSuwari():
     sprite('pt620_00', 6)
@@ -9533,6 +10074,7 @@ def EventPTSuwari():
     sprite('pt620_03', 6)
     sprite('pt620_04', 6)
     sprite('pt620_05', 32767)
+
 
 @State
 def EventPTFSitDown():
@@ -9546,6 +10088,7 @@ def EventPTFSitDown():
     LandingEffects(100, 1, 1)
     sprite('pt064_03', 32767)
 
+
 @State
 def EventPTFSitDown02():
     sprite('pt064_02', 5)
@@ -9554,9 +10097,11 @@ def EventPTFSitDown02():
     sprite('pt063_11', 32767)
     KnockdownEffects(100, 1, 1)
 
+
 @State
 def EventPTFDownLoop():
     sprite('pt063_11', 32767)
+
 
 @State
 def EventPTFDown2Stand01():
@@ -9564,6 +10109,7 @@ def EventPTFDown2Stand01():
     sprite('pt064_01', 5)
     sprite('pt064_02', 5)
     sprite('pt064_03', 32767)
+
 
 @State
 def EventPTFDown2Stand02():
@@ -9576,6 +10122,7 @@ def EventPTFDown2Stand02():
     sprite('pt064_10', 5)
     sprite('pt000_00', 1)
     enterState('CmnActStand')
+
 
 @State
 def EventPTExcite():
@@ -9593,6 +10140,7 @@ def EventPTExcite():
     sprite('pt000_00', 1)
     enterState('CmnActStand')
 
+
 @State
 def EventStartWithBN():
     SetZLine(1, 100)
@@ -9602,18 +10150,21 @@ def EventStartWithBN():
     sprite('pt063_11', 32767)
     loopRest()
 
+
 @State
 def EventWorpOutBN():
     sprite('keep', 100)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     sprite('keep', 32767)
     DeleteObject(7)
     loopRest()
+
 
 @State
 def EventHZVsPT_Yoroke():
     sprite('pt043_00', 32767)
     loopRest()
+
 
 @State
 def EventHZVsPT_YorokeToWarp():
@@ -9622,26 +10173,27 @@ def EventHZVsPT_YorokeToWarp():
     loopRest()
     enterState('EventWarp')
 
+
 @State
 def EventVSHAWalk():
     ScreenCollision(0)
     SetActionMark(1)
     XPositionRelativeFacing(-900000)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('pt030_00', 7)
     CameraControlEnable(1)
     CreateObject('ptPhantom_2', 0)
     RegisterObject(4, 1)
-    ApplyFunctionsToObjects(4)
-    AddX(-40000)
-    physicsXImpulse(3250)
-    SetZVal(-500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        AddX(-40000)
+        physicsXImpulse(3250)
+        SetZVal(-500)
     physicsXImpulse(3250)
     sprite('pt030_01_ex', 6)
     label(0)
@@ -9664,10 +10216,11 @@ def EventVSHAWalk():
     physicsXImpulse(0)
     XPositionRelativeFacing(-260000)
     CameraControlEnable(0)
-    ApplyFunctionsToObjects(4)
-    physicsXImpulse(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        physicsXImpulse(0)
     enterState('CmnActStand')
+
 
 @State
 def EventPHTeni():
@@ -9701,6 +10254,7 @@ def EventPHTeni():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def EventNoAtk5C():
     sprite('pt202_00', 2)
@@ -9718,22 +10272,23 @@ def EventNoAtk5C():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventVSTKTunTUn():
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 200000):
+            if SLOT_19 < 200000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('pt030_00', 7)
     RegisterObject(4, 1)
-    ApplyFunctionsToObjects(4)
-    AddX(-40000)
-    physicsXImpulse(3250)
-    SetZVal(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        AddX(-40000)
+        physicsXImpulse(3250)
+        SetZVal(-1000)
     physicsXImpulse(3250)
     sprite('pt030_01', 6)
     label(0)
@@ -9773,15 +10328,16 @@ def EventVSTKTunTUn():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def EventVSBLWalk():
     ScreenCollision(0)
     SetActionMark(1)
     XPositionRelativeFacing(-900000)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 120000):
+            if SLOT_19 < 120000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('pt030_00', 7)
@@ -9811,13 +10367,13 @@ def EventVSBLWalk():
     setGravity(1550)
     JumpSoundEffects()
     sprite('pt033_02', 3)
-    sendToLabelUpon(2, 3)
+    uponSendToLabel(LANDING, 3)
     label(2)
     sprite('pt033_03', 3)
     sprite('pt033_02', 3)
     gotoLabel(2)
     label(3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('pt033_04', 2)
     sprite('pt033_05', 2)
     physicsXImpulse(0)
@@ -9825,6 +10381,7 @@ def EventVSBLWalk():
     sprite('pt033_06', 2)
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
+
 
 @State
 def EventDefEntryReverseWait():
@@ -9848,6 +10405,7 @@ def EventDefEntryReverseWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventStandTurn():
     sprite('pt003_00', 3)
@@ -9856,6 +10414,7 @@ def EventStandTurn():
     sprite('pt003_02', 3)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventUltimateLoop():
@@ -9901,6 +10460,7 @@ def EventUltimateLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventUltimateLoopToStop():
     sprite('pt431_17', 5)
@@ -9917,6 +10477,7 @@ def EventUltimateLoopToStop():
     sprite('pt431_27', 32767)
     loopRest()
 
+
 @State
 def EventUltimateLoopEnd():
     sprite('pt431_28', 6)
@@ -9925,10 +10486,12 @@ def EventUltimateLoopEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Evetn_Down():
     sprite('pt063_11', 32767)
     loopRest()
+
 
 @State
 def Act2Event_tmvspt_00():
@@ -9937,23 +10500,24 @@ def Act2Event_tmvspt_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_tmvspt_01():
 
     def upon_IMMEDIATE():
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
                     EndMomentum(1)
                     XPositionRelativeFacing(-260000)
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-260000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
                 EndMomentum(1)
                 XPositionRelativeFacing(-260000)
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('pt030_00', 7)
     physicsXImpulse(1000)
     sprite('pt030_01_ex', 8)
@@ -9978,11 +10542,13 @@ def Act2Event_tmvspt_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_tmvspt_02():
     sprite('pt063_11', 32767)
     XPositionRelativeFacing(-160000)
     loopRest()
+
 
 @State
 def Act2Event_NoDisp():
@@ -9995,6 +10561,7 @@ def Act2Event_NoDisp():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def Act2Event_WalkIn():
 
@@ -10002,15 +10569,15 @@ def Act2Event_WalkIn():
         ScreenCollision(0)
         XPositionRelativeFacing(-720000)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-260000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-260000)
                 EndMomentum(1)
                 sendToLabel(0)
@@ -10039,6 +10606,7 @@ def Act2Event_WalkIn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Muchorin():
     sprite('pt203_00', 4)
@@ -10052,6 +10620,7 @@ def Act2Event_Muchorin():
     sprite('pt203_05', 32767)
     loopRest()
 
+
 @State
 def Act2Event_MuchorinEnd():
     sprite('pt203_06', 4)
@@ -10062,6 +10631,7 @@ def Act2Event_MuchorinEnd():
     sprite('pt203_11', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Yoin():
@@ -10081,6 +10651,7 @@ def Act2Event_Yoin():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Chouhatsu():
     sprite('pt300_00', 4)
@@ -10097,6 +10668,7 @@ def Act2Event_Chouhatsu():
     sprite('pt000_00', 1)
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Magica():
     sprite('pt406_00', 5)
@@ -10111,6 +10683,7 @@ def Act2Event_Magica():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_MagicaEnd():
     sprite('keep', 2)
@@ -10122,6 +10695,7 @@ def Act2Event_MagicaEnd():
     sprite('pt406_12', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_RunOut():
@@ -10146,11 +10720,12 @@ def Act2Event_RunOut():
     sprite('pt032_08', 4)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 32767)
     EndMomentum(1)
     Visibility(1)
     loopRest()
+
 
 @State
 def Act2Event_cevspt_00():
@@ -10165,6 +10740,7 @@ def Act2Event_cevspt_00():
     sprite('pt203_05', 32767)
     loopRest()
 
+
 @State
 def Act2Event_cevspt_01():
     sprite('pt203_06', 4)
@@ -10175,6 +10751,7 @@ def Act2Event_cevspt_01():
     sprite('pt203_11', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_cevspt_02():
@@ -10215,6 +10792,7 @@ def Act2Event_cevspt_02():
     sprite('pt063_10', 3)
     sprite('pt063_11', 32767)
     loopRest()
+
 
 @State
 def Act2Event_ptvsmi_00():
@@ -10257,37 +10835,40 @@ def Act2Event_ptvsmi_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_ptvsmi_01():
     sprite('keep', 1)
-    ObjectUpon(11, 32)
+    ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 32)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_ptvsmi_02():
     sprite('keep', 1)
-    ObjectUpon(11, 41)
+    ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 41)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_ptvsmi_03():
 
     def upon_IMMEDIATE():
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
                     EndMomentum(1)
                     XPositionRelativeFacing(-260000)
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-260000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
                 EndMomentum(1)
                 XPositionRelativeFacing(-260000)
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('pt030_00', 7)
     physicsXImpulse(3000)
     sprite('pt030_01_ex', 6)
@@ -10312,6 +10893,7 @@ def Act2Event_ptvsmi_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_ptvsmi_04():
     sprite('pt041_00', 4)
@@ -10323,22 +10905,24 @@ def Act2Event_ptvsmi_04():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_ptvsmi_05():
     sprite('keep', 2)
     CreateObject('Act2Event_Fade', -1)
     CommonSE('022_magiccircle_c')
     ConstantAlphaModifier(-4)
-    ApplyFunctionsToObjects(22)
-    ConstantAlphaModifier(-4)
-    ObjectUpon(11, 39)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ConstantAlphaModifier(-4)
+        ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 39)
     label(0)
     sprite('pt040_00', 5)
     sprite('pt040_01', 5)
     sprite('pt040_02', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act2Event_ptvsaz_00():
@@ -10385,6 +10969,7 @@ def Act2Event_ptvsaz_00():
     sprite('pt063_11', 32767)
     loopRest()
 
+
 @State
 def Act2Event_ptvsaz_01():
     sprite('pt064_00', 4)
@@ -10401,6 +10986,7 @@ def Act2Event_ptvsaz_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_ptvsaz_02():
     sprite('pt310_02', 4)
@@ -10410,6 +10996,7 @@ def Act2Event_ptvsaz_02():
     sprite('pt310_05', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act2Event_Guard():
@@ -10425,6 +11012,7 @@ def Act2Event_Guard():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_GuardStop():
     sprite('pt041_00', 4)
@@ -10436,6 +11024,7 @@ def Act2Event_GuardStop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_GuardEnd():
     sprite('pt041_01', 4)
@@ -10443,12 +11032,13 @@ def Act2Event_GuardEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_ptvsph_00():
 
     def upon_IMMEDIATE():
         SetActionMark(0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
 
         def upon_32():
             CreateObject('Act3Event_FadeWhite', -1)
@@ -10468,7 +11058,7 @@ def Act3Event_ptvsph_00():
     label(0)
     sprite('pt040_01', 5)
     CharacterFlash2(16777215, 30)
-    if (SLOT_2 == 0):
+    if SLOT_2 == 0:
         CommonSE('022_magiccircle_d')
     sprite('pt040_02', 5)
     sprite('pt040_00', 5)
@@ -10486,10 +11076,11 @@ def Act3Event_ptvsph_00():
     gotoLabel(0)
     label(1)
     sprite('null', 32767)
-    clearUponHandler(3)
-    PassbackAddActionMarkToFunction('Act3Event_FadeWhite', 32)
-    PassbackAddActionMarkToFunction('AstralAura02', 32)
+    clearUponHandler(EVERY_FRAME)
+    TriggerUponForState('Act3Event_FadeWhite', 32)
+    TriggerUponForState('AstralAura02', 32)
     Visibility(1)
+
 
 @State
 def Act3Event_ptvsph_01():
@@ -10502,6 +11093,7 @@ def Act3Event_ptvsph_01():
     sprite('pt001_06', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_ptvstm_00():
@@ -10536,12 +11128,14 @@ def Act3Event_ptvstm_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ptvstm_01_Loop():
     sprite('pt620_00', 5)
     CameraControlEnable(1)
     sprite('pt620_01', 5)
     sprite('pt620_02', 32767)
+
 
 @State
 def Act3Event_ptvstm_01_LoopEnd():
@@ -10566,6 +11160,7 @@ def Act3Event_ptvstm_01_LoopEnd():
     sprite('pt000_13', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_ptvstm_02():
@@ -10593,6 +11188,7 @@ def Act3Event_ptvstm_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ptvstm_03():
     label(0)
@@ -10611,6 +11207,7 @@ def Act3Event_ptvstm_03():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ptvstm_04():
     sprite('pt010_01', 6)
@@ -10618,15 +11215,16 @@ def Act3Event_ptvstm_04():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_ptvsrl_00():
 
     def upon_IMMEDIATE():
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
-            SLOT_51 = (SLOT_51 + 1)
-            if (SLOT_51 >= 36):
+        def upon_EVERY_FRAME():
+            SLOT_51 = SLOT_51 + 1
+            if SLOT_51 >= 36:
                 ConstantAlphaModifier(5)
             else:
                 ConstantAlphaModifier(-5)
@@ -10651,11 +11249,13 @@ def Act3Event_ptvsrl_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ptvsrl_01():
     sprite('pt620_00', 5)
     sprite('pt620_01', 5)
     sprite('pt620_02', 32767)
+
 
 @State
 def Act3Event_ptvsrl_02():
@@ -10663,6 +11263,7 @@ def Act3Event_ptvsrl_02():
     sprite('pt620_00', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_ptvsrl_03():
@@ -10675,6 +11276,7 @@ def Act3Event_ptvsrl_03():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ptvsrl_04():
     sprite('pt064_00', 5)
@@ -10682,17 +11284,18 @@ def Act3Event_ptvsrl_04():
     sprite('pt064_02', 5)
     sprite('pt064_03', 32767)
 
+
 @State
 def Act3Event_ptvsrl_05():
 
     def upon_IMMEDIATE():
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
-            SLOT_51 = (SLOT_51 + 1)
-            if (SLOT_51 >= 36):
+        def upon_EVERY_FRAME():
+            SLOT_51 = SLOT_51 + 1
+            if SLOT_51 >= 36:
                 ConstantAlphaModifier(5)
-                if (SLOT_51 >= 84):
+                if SLOT_51 >= 84:
                     SLOT_51 = 0
                     SetActionMark(1)
             else:
@@ -10701,6 +11304,7 @@ def Act3Event_ptvsrl_05():
                     SetActionMark(0)
                     CommonSE('022_magiccircle_d')
     sprite('pt064_03', 32767)
+
 
 @State
 def Act3Event_ptvsrl_06():
@@ -10732,17 +11336,18 @@ def Act3Event_ptvsrl_06():
     loopRest()
     enterState('EventChouhatsu')
 
+
 @State
 def Act3Event_ptvsjn_00():
 
     def upon_IMMEDIATE():
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
-            SLOT_51 = (SLOT_51 + 1)
-            if (SLOT_51 >= 36):
+        def upon_EVERY_FRAME():
+            SLOT_51 = SLOT_51 + 1
+            if SLOT_51 >= 36:
                 ConstantAlphaModifier(5)
-                if (SLOT_51 >= 84):
+                if SLOT_51 >= 84:
                     SLOT_51 = 0
                     SetActionMark(1)
             else:
@@ -10756,6 +11361,7 @@ def Act3Event_ptvsjn_00():
     sprite('pt070_10', 32767)
     loopRest()
 
+
 @State
 def Act3Event_ptvsjn_01():
     sprite('pt070_11', 4)
@@ -10764,6 +11370,7 @@ def Act3Event_ptvsjn_01():
     sprite('pt070_13', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_ptvsjn_02():
@@ -10785,6 +11392,7 @@ def Act3Event_ptvsjn_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ptvsjn_03():
     sprite('pt620_07', 4)
@@ -10797,11 +11405,12 @@ def Act3Event_ptvsjn_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_ptvsjn_04():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         XPositionRelativeFacing(-60000)
     label(0)
     sprite('pt000_00', 7)
@@ -10835,7 +11444,7 @@ def Act3Event_ptvsjn_04():
     AddActionMark(-1)
     loopRest()
     if SLOT_2:
-        _gotolabel(2)
+        conditionalSendToLabel(2)
     sprite('pt070_04', 4)
     sprite('pt070_05', 4)
     sprite('pt070_06', 4)
@@ -10846,11 +11455,13 @@ def Act3Event_ptvsjn_04():
     KnockdownEffects(100, 1, 1)
     AddX(80000)
 
+
 @State
 def Act3Event_ptvsjn_05():
     sprite('pt064_00', 7)
     sprite('pt064_01', 7)
     sprite('pt064_02', 32767)
+
 
 @State
 def Act3Event_ptvsjn_06():
@@ -10864,6 +11475,7 @@ def Act3Event_ptvsjn_06():
     sprite('pt064_10', 4)
     sprite('pt000_00', 1)
     enterState('Act3Event_ptvsph_01')
+
 
 @State
 def Act3Event_ptvsjn_07():
@@ -10893,6 +11505,7 @@ def Act3Event_ptvsjn_07():
     CreateObject('pt430_aura2', 0)
     CreateObject('pt430_aura3', 0)
 
+
 @State
 def Act3Event_mavspt_00():
 
@@ -10920,6 +11533,7 @@ def Act3Event_mavspt_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_mavspt_01():
     sprite('pt003_00', 4)
@@ -10946,6 +11560,7 @@ def Act3Event_mavspt_01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_mavspt_02():
 
@@ -10959,6 +11574,7 @@ def Act3Event_mavspt_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_mavspt_03():
     sprite('pt070_10', 5)
@@ -10967,6 +11583,7 @@ def Act3Event_mavspt_03():
     sprite('pt070_13', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_mavspt_04():
@@ -10978,6 +11595,7 @@ def Act3Event_mavspt_04():
     sprite('pt620_04', 6)
     sprite('pt620_05', 32767)
     loopRest()
+
 
 @State
 def Act3Event_mavspt_05():
@@ -10991,12 +11609,14 @@ def Act3Event_mavspt_05():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_mavspt_06():
     sprite('keep', 2)
     sprite('pt620_11', 6)
     sprite('pt620_12', 32767)
     loopRest()
+
 
 @State
 def Act3Event_mavspt_07():
@@ -11009,6 +11629,7 @@ def Act3Event_mavspt_07():
     loopRest()
     gotoLabel(0)
     loopRest()
+
 
 @State
 def Act3Event_mavspt_08():
@@ -11023,6 +11644,7 @@ def Act3Event_mavspt_08():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_mavspt_09():
     sprite('pt033_00', 3)
@@ -11030,7 +11652,7 @@ def Act3Event_mavspt_09():
     physicsXImpulse(-10000)
     physicsYImpulse(5000)
     setGravity(1550)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('pt033_02', 3)
     sprite('pt033_03', 3)
     loopRest()

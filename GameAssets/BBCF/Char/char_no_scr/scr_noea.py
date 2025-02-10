@@ -18,6 +18,7 @@ def EMB_BASE():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_NO_OD():
 
@@ -38,6 +39,7 @@ def EMB_NO_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_NO_AH():
 
@@ -57,6 +59,7 @@ def EMB_NO_AH():
     sprite('null', 10)
     ColorTransition(4294901760, 10)
     sprite('null', 80)
+
 
 @State
 def DIST_NO():
@@ -110,6 +113,7 @@ def DIST_NO():
     DeviationX(-10000, 10000)
     DeviationY(-10000, 10000)
     RandAddScale(-100, 100)
+
 
 @State
 def DIST_NO2():
@@ -165,6 +169,7 @@ def DIST_NO2():
     DeviationY(-10000, 10000)
     RandAddScale(-50, 50)
 
+
 @State
 def noef229gtlptc_make():
     sprite('null', 4)
@@ -172,10 +177,12 @@ def noef229gtlptc_make():
     ParticleColorFromPalette(239, 223, 234)
     CallCustomizableParticle('noef_292henkei_tubu', 0)
 
+
 @State
 def noef_smoke():
     sprite('null', 4)
     CreateParticle('noef00', -1)
+
 
 @State
 def noef431gtlptc_make():
@@ -196,6 +203,7 @@ def noef431gtlptc_make():
     ParticleColorFromPalette(239, 239, 239)
     CallCustomizableParticle('noef600', -1)
 
+
 @State
 def noef431gunptc_make():
     sprite('null', 1)
@@ -212,6 +220,7 @@ def noef431gunptc_make():
     CallCustomizableParticle('noef600_circle00', -1)
     ParticleColorFromPalette(239, 239, 239)
     CallCustomizableParticle('noef600_light00', -1)
+
 
 @State
 def noef600ptc_R():
@@ -230,6 +239,7 @@ def noef600ptc_R():
     ParticleColorFromPalette(239, 239, 239)
     CallCustomizableParticle('noef600', -1)
 
+
 @State
 def noef600ptc_L():
     sprite('null', 1)
@@ -246,6 +256,7 @@ def noef600ptc_L():
     CallCustomizableParticle('noef600_light00', -1)
     ParticleColorFromPalette(239, 239, 239)
     CallCustomizableParticle('noef600', -1)
+
 
 @State
 def noef430bzk_make():
@@ -269,6 +280,7 @@ def noef430bzk_make():
     ParticleColorFromPalette(239, 239, 239)
     CallCustomizableParticle('noef600', -1)
 
+
 @State
 def noef_MagicShot():
     sprite('null', 1)
@@ -279,6 +291,7 @@ def noef_MagicShot():
     CallCustomizableParticle('noef202_light00', 2)
     ParticleColorFromPalette(223, 254, 223)
     CallCustomizableParticle('noef202_2', 2)
+
 
 @State
 def BLT():
@@ -300,6 +313,7 @@ def BLT():
     RandSpeedX(-1000, 1000)
     RandSpeedY(-1000, 1000)
 
+
 @State
 def EFF_SakuretsuFar():
 
@@ -309,6 +323,7 @@ def EFF_SakuretsuFar():
     CreateObject('noef_envlight', -1)
     CreateObject('noef_gfA', -1)
     CreateObject('noef_smoke', -1)
+
 
 @State
 def EFF_SakuretsuNear():
@@ -320,6 +335,7 @@ def EFF_SakuretsuNear():
     CreateObject('noef_gfA', -1)
     CreateObject('noef_smoke', -1)
 
+
 @State
 def EFF_LongFireTypeA():
 
@@ -329,6 +345,7 @@ def EFF_LongFireTypeA():
     CreateObject('noef_envlight', 2)
     CreateObject('noef_gfsideA', 2)
     CreateObject('noef_smoke', 2)
+
 
 @State
 def EFF_LongFireTypeB():
@@ -340,6 +357,7 @@ def EFF_LongFireTypeB():
     CreateObject('noef_gfsideB', 2)
     CreateObject('noef_smoke', 2)
 
+
 @State
 def EFF_LongFireTypeC():
 
@@ -349,6 +367,7 @@ def EFF_LongFireTypeC():
     CreateObject('noef_envlight', 2)
     CreateObject('noef_gfsideC', 2)
     CreateObject('noef_smoke', 2)
+
 
 @State
 def EFF_LongFireTypeD():
@@ -362,12 +381,14 @@ def EFF_LongFireTypeD():
     CreateObject('noef_gfsideD', 2)
     CreateObject('noef_smoke', 2)
 
+
 @State
 def EFF_Spark():
     sprite('null', 1)
     CreateObject('noef_envlight', 2)
     CreateObject('noef_gfB', 2)
     CreateObject('noef_smoke', 2)
+
 
 @State
 def noef_envlight():
@@ -383,6 +404,7 @@ def noef_envlight():
     BlendMode_Add()
     AlphaValue(255)
     ConstantAlphaModifier(-12)
+
 
 @State
 def noef_gfA():
@@ -402,6 +424,7 @@ def noef_gfA():
     sprite('vrnoef_gunfire05', 2)
     sprite('vrnoef_gunfire06', 2)
 
+
 @State
 def noef_gfB():
 
@@ -419,6 +442,7 @@ def noef_gfB():
     sprite('vrnoef_gunfired04', 2)
     sprite('vrnoef_gunfired05', 2)
 
+
 @State
 def noef_gfsideA():
 
@@ -434,6 +458,7 @@ def noef_gfsideA():
     sprite('vrnoef_gunfireb03', 2)
     sprite('vrnoef_gunfireb04', 2)
     sprite('vrnoef_gunfireb05', 2)
+
 
 @State
 def noef_gfsideB():
@@ -451,6 +476,7 @@ def noef_gfsideB():
     sprite('vrnoef_gunfirec03', 2)
     sprite('vrnoef_gunfirec04', 2)
     sprite('vrnoef_gunfirec05', 2)
+
 
 @State
 def noef_gfsideC():
@@ -471,6 +497,7 @@ def noef_gfsideC():
     sprite('vrnoef_gunfiree06', 2)
     sprite('vrnoef_gunfiree07', 2)
 
+
 @State
 def noef_gfsideD():
 
@@ -487,6 +514,7 @@ def noef_gfsideD():
     SetScaleXPerFrame(10)
     AlphaValue(255)
     ConstantAlphaModifier(-40)
+
 
 @State
 def noef_gfground():
@@ -513,6 +541,7 @@ def noef_gfground():
     sprite('vrnoef_gunfireg08', 1)
     sprite('vrnoef_gunfireg08', 1)
 
+
 @State
 def noef_OIUCHI():
 
@@ -530,6 +559,7 @@ def noef_OIUCHI():
     sprite('vrnoef_gunfiref03', 2)
     sprite('vrnoef_gunfiref04', 2)
     sprite('vrnoef_gunfiref05', 2)
+
 
 @State
 def EFF_TargetA():
@@ -553,14 +583,14 @@ def EFF_TargetA():
     sprite('vrnoef_202tgt00', 2)
     PrivateSE('nose_22')
     CreateObject('EFF_TargetInclude', -1)
-    ApplyFunctionsToObjects(1)
-    AlphaValue(64)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AlphaValue(64)
     sprite('vrnoef_202tgt00', 2)
     CreateObject('EFF_TargetInclude', -1)
-    ApplyFunctionsToObjects(1)
-    Size(750)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(750)
     sprite('vrnoef_202tgt00', 4)
     sprite('vrnoef_202tgt00', 4)
     CommonSE('016_explode_1')
@@ -568,11 +598,12 @@ def EFF_TargetA():
     CreateObject('Target_Mainfire', -1)
     CreateObject('noef_smoke', -1)
     CreateObject('EFF_Spark', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     NoAttackDuringAction(0)
     CancelIfPlayerHit(0)
+
 
 @State
 def EFF_TargetB():
@@ -596,14 +627,14 @@ def EFF_TargetB():
     sprite('vrnoef_202tgt00', 2)
     PrivateSE('nose_22')
     CreateObject('EFF_TargetInclude', -1)
-    ApplyFunctionsToObjects(1)
-    AlphaValue(64)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AlphaValue(64)
     sprite('vrnoef_202tgt00', 2)
     CreateObject('EFF_TargetInclude', -1)
-    ApplyFunctionsToObjects(1)
-    Size(750)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(750)
     sprite('vrnoef_202tgt00', 4)
     sprite('vrnoef_202tgt00', 4)
     CommonSE('016_explode_1')
@@ -611,11 +642,12 @@ def EFF_TargetB():
     CreateObject('Target_Mainfire', -1)
     CreateObject('noef_smoke', -1)
     CreateObject('EFF_Spark', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     NoAttackDuringAction(0)
     CancelIfPlayerHit(0)
+
 
 @State
 def EFF_TargetInclude():
@@ -629,6 +661,7 @@ def EFF_TargetInclude():
     sprite('vrnoef_202tgt00', 8)
     ConstantAlphaModifier(-15)
     SetScaleSpeed(-5)
+
 
 @State
 def Target_Mainfire():
@@ -652,6 +685,7 @@ def Target_Mainfire():
     ConstantAlphaModifier(-40)
     sprite('vrnoef_gunfire06', 3)
 
+
 @State
 def Target_Subfire():
 
@@ -673,6 +707,7 @@ def Target_Subfire():
     AddRotationPerFrame(500)
     SetScaleSpeed(10)
     ConstantAlphaModifier(-40)
+
 
 @State
 def MajuShotObj():
@@ -698,13 +733,13 @@ def MajuShotObj():
         AirPushbackY(10000)
         AirPushbackX(1400)
         YImpulseBeforeWallbounce(500)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
         ContinueState(30)
         BlendMode_Add()
         PrivateSE('nose_04')
         PaletteIndex(1)
         CopyFromRightToLeft(23, 2, 51, 3, 2, 62)
-        if (not SLOT_51):
+        if not SLOT_51:
             Damage(300)
             ResetAttackP2()
             AirPushbackY(16000)
@@ -731,6 +766,7 @@ def MajuShotObj():
     sprite('vrnoef_gunfire04', 2)
     sprite('vrnoef_gunfire05', 2)
     sprite('vrnoef_gunfire06', 2)
+
 
 @State
 def MajuShotObjOD():
@@ -757,13 +793,13 @@ def MajuShotObjOD():
         AirPushbackY(10000)
         AirPushbackX(1400)
         YImpulseBeforeWallbounce(500)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
         ContinueState(30)
         BlendMode_Add()
         PrivateSE('nose_04')
         PaletteIndex(1)
         CopyFromRightToLeft(23, 2, 51, 3, 2, 62)
-        if (not SLOT_51):
+        if not SLOT_51:
             Damage(300)
             ResetAttackP2()
             AirPushbackY(16000)
@@ -791,6 +827,7 @@ def MajuShotObjOD():
     sprite('vrnoef_gunfire05', 2)
     sprite('vrnoef_gunfire06', 2)
 
+
 @State
 def MajuShotObj_Tsuika():
 
@@ -812,7 +849,7 @@ def MajuShotObj_Tsuika():
         YImpulseBeforeWallbounce(300)
         MinimumDamage(20)
         VoodooDamageMultiplier(3)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
         ContinueState(30)
         BlendMode_Add()
         PrivateSE('nose_04')
@@ -844,6 +881,7 @@ def MajuShotObj_Tsuika():
     sprite('vrnoef_gunfire05', 2)
     sprite('vrnoef_gunfire06', 2)
 
+
 @State
 def no431_gun():
     sprite('no431_gun', 20)
@@ -853,6 +891,7 @@ def no431_gun():
     physicsXImpulse(-4000)
     physicsYImpulse(4000)
     GravityDefault()
+
 
 @State
 def noef431gun_del():
@@ -871,6 +910,7 @@ def noef431gun_del():
     CallCustomizableParticle('noef600', 1)
     sprite('vrnoef431_01', 8)
 
+
 @State
 def noef431gtl_make():
 
@@ -883,6 +923,7 @@ def noef431gtl_make():
     AlphaValue(128)
     ConstantAlphaModifier(30)
     sprite('vrnoef431_03', 8)
+
 
 @State
 def noef431gun_make():
@@ -906,6 +947,7 @@ def noef431gun_make():
     sprite('vrnoef431_04', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def noef431gun_turn():
 
@@ -921,6 +963,7 @@ def noef431gun_turn():
     sprite('vrnoef285_00', 1)
     RandRotationAngle()
     AlphaValue(128)
+
 
 @State
 def RanshaShotObj():
@@ -946,8 +989,8 @@ def RanshaShotObj():
         VoodooDamageMultiplier(3)
         StarterRating(2)
         MinimumDamage(10)
-        sendToLabelUpon(10, 1)
-        sendToLabelUpon(2, 50)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
+        uponSendToLabel(LANDING, 50)
         ContinueState(30)
         HitboxMovement(175000, -45000)
         RotationAngle(45000)
@@ -955,10 +998,11 @@ def RanshaShotObj():
         PrivateSE('nose_27')
         PaletteIndex(1)
 
-        def upon_FRAME_STEP():
-            if Unknown2065(23):
-                clearUponHandler(3)
-                ObjectUpon(3, 41)
+        def upon_EVERY_FRAME():
+            Unknown2065(23)
+            if SLOT_0:
+                clearUponHandler(EVERY_FRAME)
+                ObjectUpon(EVERY_FRAME, 41)
         CHStateIfCHStart(3)
         if SLOT_137:
             DamageMultiplier(80)
@@ -999,6 +1043,7 @@ def RanshaShotObj():
     sprite('vrnoef_gunfire05', 2)
     sprite('vrnoef_gunfire06', 2)
     label(3)
+
 
 @State
 def RanshaShotObjOD():
@@ -1025,8 +1070,8 @@ def RanshaShotObjOD():
         AttackType(4)
         VoodooDamageMultiplier(3)
         StarterRating(2)
-        sendToLabelUpon(10, 1)
-        sendToLabelUpon(2, 50)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
+        uponSendToLabel(LANDING, 50)
         ContinueState(30)
         HitboxMovement(175000, -45000)
         RotationAngle(45000)
@@ -1034,10 +1079,11 @@ def RanshaShotObjOD():
         PrivateSE('nose_27')
         PaletteIndex(1)
 
-        def upon_FRAME_STEP():
-            if Unknown2065(23):
-                clearUponHandler(3)
-                ObjectUpon(3, 41)
+        def upon_EVERY_FRAME():
+            Unknown2065(23)
+            if SLOT_0:
+                clearUponHandler(EVERY_FRAME)
+                ObjectUpon(EVERY_FRAME, 41)
         CHStateIfCHStart(3)
         if SLOT_137:
             DamageMultiplier(80)
@@ -1079,6 +1125,7 @@ def RanshaShotObjOD():
     sprite('vrnoef_gunfire06', 2)
     label(3)
 
+
 @State
 def noef430bzk_rocket():
 
@@ -1098,8 +1145,8 @@ def noef430bzk_rocket():
         Damage(1900)
         GuardCrush(2, 1)
         MoveAttributes(0, 0, 0, 1, 0)
-        sendToLabelUpon(10, 1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
+        uponSendToLabel(LANDING, 1)
         ContinueState(120)
         SetZVal(-500)
         PaletteIndex(0)
@@ -1194,6 +1241,7 @@ def noef430bzk_rocket():
     sprite('vrnoef_gunfire06', 2)
     loopRest()
     ExitState()
+
 
 @State
 def noef430bzk_rocket_OD():
@@ -1215,8 +1263,8 @@ def noef430bzk_rocket_OD():
         Damage(2000)
         GuardCrush(2, 1)
         MoveAttributes(0, 0, 0, 1, 0)
-        sendToLabelUpon(10, 1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
+        uponSendToLabel(LANDING, 1)
         ContinueState(120)
         SetZVal(-500)
         PaletteIndex(0)
@@ -1312,6 +1360,7 @@ def noef430bzk_rocket_OD():
     loopRest()
     ExitState()
 
+
 @State
 def noef430bzk_fire():
 
@@ -1330,6 +1379,7 @@ def noef430bzk_fire():
     sprite('vrnoef430_05', 3)
     sprite('vrnoef430_06', 3)
     sprite('vrnoef430_07', 3)
+
 
 @State
 def noef430rkf():
@@ -1407,6 +1457,7 @@ def noef430rkf():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def noef430rkp():
 
@@ -1424,6 +1475,7 @@ def noef430rkp():
     sprite('vrnoef430rkp_02', 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def GunThrowShotObj():
@@ -1456,8 +1508,8 @@ def GunThrowShotObj():
         AddY(30000)
         physicsYImpulse(5000)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('con6C', 32)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('con6C', 32)
     sprite('vrnoef285_00', 4)
     RefreshMultihit()
     PushbackX(30000)
@@ -1494,6 +1546,7 @@ def GunThrowShotObj():
     RefreshMultihit()
     CommonSE('003_swing_grap_0_0')
 
+
 @State
 def noef251z00():
     sprite('vrnoef251z00', 3)
@@ -1507,6 +1560,7 @@ def noef251z00():
     PaletteColor4(255)
     E0EAEffectPosition(3)
     RemoveOnCallStateEnd(3)
+
 
 @State
 def noef251z01():
@@ -1522,6 +1576,7 @@ def noef251z01():
     E0EAEffectPosition(3)
     RemoveOnCallStateEnd(3)
 
+
 @State
 def noef251z02():
     sprite('vrnoef251z02', 20)
@@ -1535,6 +1590,7 @@ def noef251z02():
     PaletteColor4(255)
     E0EAEffectPosition(3)
     RemoveOnCallStateEnd(3)
+
 
 @State
 def noef_samaso():
@@ -1551,6 +1607,7 @@ def noef_samaso():
     sprite('vrnoef289_03', 2)
     sprite('vrnoef289_04', 2)
     sprite('vrnoef289_05', 2)
+
 
 @State
 def noef_292():
@@ -1570,13 +1627,14 @@ def noef_292():
     sprite('vrnoef_292_02', 4)
     AlphaValue(200)
     CreateObject('noef_gfB', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(180000)
-    AddX(200000)
-    AddScale(500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(180000)
+        AddX(200000)
+        AddScale(500)
     sprite('vrnoef_292_03', 2)
     AlphaValue(150)
+
 
 @State
 def noef_234():
@@ -1592,6 +1650,7 @@ def noef_234():
     sprite('vrnoef_gunfirec03', 2)
     sprite('vrnoef_gunfirec04', 2)
     sprite('vrnoef_gunfirec05', 2)
+
 
 @State
 def noef_234add():
@@ -1610,6 +1669,7 @@ def noef_234add():
     sprite('vrnoef_gunfired03', 2)
     sprite('vrnoef_gunfired04', 2)
     sprite('vrnoef_gunfired05', 2)
+
 
 @State
 def noef_293():
@@ -1634,6 +1694,7 @@ def noef_293():
     sprite('vrnoef_293_04', 2)
     sprite('vrnoef_293_05', 2)
 
+
 @State
 def noef_293sml():
 
@@ -1654,6 +1715,7 @@ def noef_293sml():
     sprite('vrnoef_gunfired04', 2)
     sprite('vrnoef_gunfired05', 2)
 
+
 @State
 def noef_406():
 
@@ -1673,6 +1735,7 @@ def noef_406():
     sprite('vrnoef_406_04', 2)
     sprite('vrnoef_406_05', 2)
 
+
 @State
 def noef601manto():
 
@@ -1688,6 +1751,7 @@ def noef601manto():
     setGravity(1200)
     sprite('vrnoef601m_03', 5)
 
+
 @State
 def MajuMagicCircle():
 
@@ -1697,6 +1761,7 @@ def MajuMagicCircle():
         IgnoreScreenfreeze(1)
     sprite('null', 60)
 
+
 @State
 def ModelBeam():
 
@@ -1705,6 +1770,7 @@ def ModelBeam():
         Eff3DEffect('noef_neme2.DIG', 'noef_neme2_motion_000.mmot')
         IgnoreScreenfreeze(1)
     sprite('null', 50)
+
 
 @State
 def LookAtMe():
@@ -1717,6 +1783,7 @@ def LookAtMe():
     CameraNoScreenCollision(1)
     CameraControlInfinity(1)
 
+
 @State
 def LastLookAtMe():
 
@@ -1727,6 +1794,7 @@ def LastLookAtMe():
     CameraControlEnable(1)
     CameraNoScreenCollision(1)
     CameraControlInfinity(1)
+
 
 @State
 def AstWhiteOut():
@@ -1740,6 +1808,7 @@ def AstWhiteOut():
     Size(4000)
     sprite('vr_white', 90)
 
+
 @State
 def AstDando():
 
@@ -1749,6 +1818,7 @@ def AstDando():
     ParticleSize(1000)
     CallCustomizableParticle('noef_AH_flash', -1)
     CreateObject('DIST_NO2', -1)
+
 
 @State
 def AstLaserAll():
@@ -1856,6 +1926,7 @@ def AstLaserAll():
     sprite('null', 10)
     CreateObject('AstLaserLast', -1)
 
+
 @State
 def AstCharge():
 
@@ -1865,6 +1936,7 @@ def AstCharge():
     ParticleSize(1000)
     CallCustomizableParticle('noef_AH_charge', -1)
     CommonSE('022_magiccircle_d')
+
 
 @State
 def DIST_NO_Ast():
@@ -1881,6 +1953,7 @@ def DIST_NO_Ast():
     RandAddRotation(-90000, 90000)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EFF_AstTarget():
@@ -1913,6 +1986,7 @@ def EFF_AstTarget():
     CreateParticle('noef_AH_finishflash', -1)
     CommonSE('022_magiccircle_b')
 
+
 @State
 def AstLockLaser():
 
@@ -1924,6 +1998,7 @@ def AstLockLaser():
     CallCustomizableParticle('noef_AH_farstattack', -1)
     CommonSE('024_getset_b')
 
+
 @State
 def AstFarstFlash():
 
@@ -1933,6 +2008,7 @@ def AstFarstFlash():
     CreateParticle('noef_AH_farstflash', -1)
     CreateObject('DIST_NO', -1)
     CommonSE('022_magiccircle_d')
+
 
 @State
 def AstLaser():
@@ -1964,6 +2040,7 @@ def AstLaser():
     PrivateSE('nose_23')
     sprite('vrnoef_astatk00', 5)
     sprite('vrnoef_astatk00', 32767)
+
 
 @State
 def AstLaserLast():
@@ -2002,6 +2079,7 @@ def AstLaserLast():
     ConstantAlphaModifier(-10)
     SetScaleXPerFrame(-50)
 
+
 @State
 def AstExplPtc():
 
@@ -2021,6 +2099,7 @@ def AstExplPtc():
     CommonSE('019_quake_0')
     ScreenShake(15000, 0)
 
+
 @State
 def RLAstSmoke():
 
@@ -2034,6 +2113,7 @@ def RLAstSmoke():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def AHatemiEff():
 
@@ -2043,9 +2123,9 @@ def AHatemiEff():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(1, 1)
-        sendToLabelUpon(33, 0)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(STATE_END, 1)
+        uponSendToLabel(33, 0)
         Size(1800)
         AddY(180000)
         AddX(150000)
@@ -2066,108 +2146,110 @@ def AHatemiEff():
     label(2)
     sprite('null', 1)
 
+
 @State
 def SphereMagiMatome():
 
     def upon_IMMEDIATE():
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(33, 0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(33, 0)
+        uponSendToLabel(32, 1)
     sprite('null', 30)
     CreateObject('Bakuhapos', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
     CreateObject('Bakuhapos', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(700000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(700000)
     CreateObject('Bakuhapos', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(-700000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(-700000)
     CreateObject('Bakuhapos', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(800000)
-    AddX(-400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(800000)
+        AddX(-400000)
     CreateObject('Bakuhapos', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(800000)
-    AddX(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(800000)
+        AddX(400000)
     CreateObject('Bakuhapos', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    AddX(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        AddX(300000)
     CreateObject('Bakuhapos', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    AddX(-300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        AddX(-300000)
     sprite('null', 32767)
     label(0)
     sprite('null', 5)
     CreateObject('SphereMagi00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
     sprite('null', 5)
     CreateObject('SphereMagi01', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(700000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(700000)
     sprite('null', 5)
     CreateObject('SphereMagi01a', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    AddX(-700000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+        AddX(-700000)
     sprite('null', 5)
     CreateObject('SphereMagi02', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(800000)
-    AddX(-400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(800000)
+        AddX(-400000)
     sprite('null', 5)
     CreateObject('SphereMagi03', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(800000)
-    AddX(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(800000)
+        AddX(400000)
     sprite('null', 5)
     CreateObject('SphereMagi04', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    AddX(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        AddX(300000)
     sprite('null', 5)
     CreateObject('SphereMagi05', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    AddX(-300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        AddX(-300000)
     sprite('null', 25)
     sprite('null', 32767)
     label(1)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('SphereMagi00', 32)
+    TriggerUponForState('SphereMagi00', 32)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('SphereMagi01', 32)
-    PassbackAddActionMarkToFunction('SphereMagi01a', 32)
+    TriggerUponForState('SphereMagi01', 32)
+    TriggerUponForState('SphereMagi01a', 32)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('SphereMagi02', 32)
+    TriggerUponForState('SphereMagi02', 32)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('SphereMagi03', 32)
+    TriggerUponForState('SphereMagi03', 32)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('SphereMagi04', 32)
+    TriggerUponForState('SphereMagi04', 32)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('SphereMagi05', 32)
+    TriggerUponForState('SphereMagi05', 32)
     CreateParticle('noef_whiteout_03', -1)
+
 
 @State
 def Bakuhapos():
@@ -2178,6 +2260,7 @@ def Bakuhapos():
         Size(3000)
     sprite('null', 100)
 
+
 @State
 def SphereMagi00():
 
@@ -2185,7 +2268,7 @@ def SphereMagi00():
         BlendMode_Normal()
         Eff3DEffect('ef_emb_sphereemb', '')
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 20)
     sprite('null', 10)
@@ -2204,15 +2287,16 @@ def SphereMagi00():
     ConstantAlphaModifier(-51)
     CreateObject('AHboom', -1)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-150000)
     sprite('null', 10)
     CreateObject('AHboom', -1)
+
 
 @State
 def SphereMagi01():
@@ -2221,7 +2305,7 @@ def SphereMagi01():
         BlendMode_Normal()
         Eff3DEffect('ef_emb_sphereemb', '')
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 20)
     sprite('null', 10)
@@ -2240,14 +2324,15 @@ def SphereMagi01():
     sprite('null', 10)
     ConstantAlphaModifier(-51)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-150000)
     sprite('null', 10)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-150000)
+
 
 @State
 def SphereMagi01a():
@@ -2256,7 +2341,7 @@ def SphereMagi01a():
         BlendMode_Normal()
         Eff3DEffect('ef_emb_sphereemb', '')
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 20)
     sprite('null', 10)
@@ -2275,14 +2360,15 @@ def SphereMagi01a():
     sprite('null', 10)
     ConstantAlphaModifier(-51)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
     sprite('null', 10)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
+
 
 @State
 def SphereMagi02():
@@ -2291,7 +2377,7 @@ def SphereMagi02():
         BlendMode_Normal()
         Eff3DEffect('ef_emb_sphereemb', '')
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 20)
     sprite('null', 10)
@@ -2311,14 +2397,15 @@ def SphereMagi02():
     sprite('null', 10)
     ConstantAlphaModifier(-51)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-300000)
     sprite('null', 10)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-300000)
+
 
 @State
 def SphereMagi03():
@@ -2327,7 +2414,7 @@ def SphereMagi03():
         BlendMode_Normal()
         Eff3DEffect('ef_emb_sphereemb', '')
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 20)
     sprite('null', 10)
@@ -2347,14 +2434,15 @@ def SphereMagi03():
     sprite('null', 10)
     ConstantAlphaModifier(-51)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-300000)
     sprite('null', 10)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-300000)
+
 
 @State
 def SphereMagi04():
@@ -2363,7 +2451,7 @@ def SphereMagi04():
         BlendMode_Normal()
         Eff3DEffect('ef_emb_sphereemb', '')
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 20)
     sprite('null', 10)
@@ -2383,14 +2471,15 @@ def SphereMagi04():
     sprite('null', 10)
     ConstantAlphaModifier(-51)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
     sprite('null', 10)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+
 
 @State
 def SphereMagi05():
@@ -2399,7 +2488,7 @@ def SphereMagi05():
         BlendMode_Normal()
         Eff3DEffect('ef_emb_sphereemb', '')
         IgnoreScreenfreeze(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 20)
     sprite('null', 10)
@@ -2419,14 +2508,15 @@ def SphereMagi05():
     sprite('null', 10)
     ConstantAlphaModifier(-51)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
     sprite('null', 10)
     CreateObject('AHboom', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
+
 
 @State
 def AHboom():
@@ -2450,6 +2540,7 @@ def AHboom():
     sprite('vrnoef_gunfire06', 4)
     sprite('null', 8)
 
+
 @State
 def bommhojo():
 
@@ -2468,6 +2559,7 @@ def bommhojo():
     sprite('vrnoef_gunfirei04', 4)
     sprite('vrnoef_gunfirei05', 4)
     sprite('vrnoef_gunfirei06', 4)
+
 
 @State
 def AHmazle():
@@ -2490,6 +2582,7 @@ def AHmazle():
     sprite('vrnoef_gunfire05', 3)
     sprite('vrnoef_gunfire06', 3)
 
+
 @State
 def AHanten():
 
@@ -2497,11 +2590,12 @@ def AHanten():
         BlendMode_Normal()
         IgnoreScreenfreeze(1)
         LinkParticle('noef_anten')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def AHDaburi():
@@ -2514,6 +2608,7 @@ def AHDaburi():
     SetScaleSpeed(100)
     ConstantAlphaModifier(-26)
     physicsYImpulse(-28000)
+
 
 @State
 def AHatemiAnten():
@@ -2533,6 +2628,7 @@ def AHatemiAnten():
     sprite('vr_white', 30)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AHantenSlow():
 
@@ -2542,7 +2638,7 @@ def AHantenSlow():
         SetPosXByScreenPer(50)
         ColorForTransition(4278190080)
         RenderLayer(4)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_white', 17)
     ConstantAlphaModifier(15)
     AlphaValue(0)
@@ -2551,6 +2647,7 @@ def AHantenSlow():
     label(0)
     sprite('vr_white', 25)
     ConstantAlphaModifier(-10)
+
 
 @State
 def AHcamera():
@@ -2563,9 +2660,9 @@ def AHcamera():
         ScreenCollision(0)
         CameraControlEnable(1)
         CameraFast(1)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
     sprite('null', 32767)
     label(0)
     sprite('null', 32767)
@@ -2576,6 +2673,7 @@ def AHcamera():
     CreateObject('SphereMagiMatome', -1)
     label(2)
     sprite('null', 1)
+
 
 @State
 def EFF_TargetA_Event():
@@ -2596,14 +2694,14 @@ def EFF_TargetA_Event():
     sprite('vrnoef_202tgt00', 2)
     PrivateSE('nose_22')
     CreateObject('EFF_TargetInclude', -1)
-    ApplyFunctionsToObjects(1)
-    AlphaValue(64)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AlphaValue(64)
     sprite('vrnoef_202tgt00', 2)
     CreateObject('EFF_TargetInclude', -1)
-    ApplyFunctionsToObjects(1)
-    Size(750)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(750)
     sprite('vrnoef_202tgt00', 4)
     sprite('vrnoef_202tgt00', 4)
     CommonSE('016_explode_1')
@@ -2611,11 +2709,12 @@ def EFF_TargetA_Event():
     CreateObject('Target_Mainfire', -1)
     CreateObject('noef_smoke', -1)
     CreateObject('EFF_Spark', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     NoAttackDuringAction(0)
     CancelIfPlayerHit(0)
+
 
 @State
 def Target_Mainfire_Event():
@@ -2637,6 +2736,7 @@ def Target_Mainfire_Event():
     SetScaleSpeed(10)
     ConstantAlphaModifier(-40)
     sprite('vrnoef_gunfire06', 3)
+
 
 @State
 def noef440bzk_rocket():
@@ -2664,9 +2764,9 @@ def noef440bzk_rocket():
         EnableRapidCancel(0)
         DisableOppPushCollision(1)
         IgnoreComboTime(1)
-        sendToLabelUpon(10, 1)
-        sendToLabelUpon(2, 1)
-        sendToLabelUpon(32, 2)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
+        uponSendToLabel(LANDING, 1)
+        uponSendToLabel(32, 2)
         SetZVal(-500)
         PaletteIndex(0)
     sprite('vrnoef430_16r', 3)
@@ -2740,7 +2840,7 @@ def noef440bzk_rocket():
     label(1)
     sprite('vrnoef440_06r', 2)
     RotationAngle(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     DeleteObject(4)
     DeleteObject(5)
     DeleteObject(6)
@@ -2821,6 +2921,7 @@ def noef440bzk_rocket():
     loopRest()
     ExitState()
 
+
 @State
 def noef440bzk_rocket_Over():
 
@@ -2847,14 +2948,14 @@ def noef440bzk_rocket_Over():
         EnableRapidCancel(0)
         DisableOppPushCollision(1)
         IgnoreComboTime(1)
-        sendToLabelUpon(10, 1)
-        sendToLabelUpon(2, 1)
-        sendToLabelUpon(32, 2)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
+        uponSendToLabel(LANDING, 1)
+        uponSendToLabel(32, 2)
 
-        def upon_ON_HIT_OR_BLOCK():
-            ApplyFunctionsToObjects(22)
-            AbsoluteY(0)
-            ApplyFunctionsToSelf()
+        def upon_OPPONENT_HIT_OR_BLOCK():
+
+            def RunOnObject_22():
+                AbsoluteY(0)
         SetZVal(-500)
         PaletteIndex(0)
     sprite('vrnoef430_16rOver', 3)
@@ -2928,7 +3029,7 @@ def noef440bzk_rocket_Over():
     label(1)
     sprite('vrnoef440_06rOver', 2)
     RotationAngle(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     DeleteObject(4)
     DeleteObject(5)
     DeleteObject(6)
@@ -3008,6 +3109,7 @@ def noef440bzk_rocket_Over():
     loopRest()
     ExitState()
 
+
 @State
 def noef440rkf():
 
@@ -3086,6 +3188,7 @@ def noef440rkf():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def noef440rkf_2():
 
@@ -3127,6 +3230,7 @@ def noef440rkf_2():
     sprite('vrnoef430rkf_05', 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def noef440rkf_3():
@@ -3170,6 +3274,7 @@ def noef440rkf_3():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def no440RailGun():
 
@@ -3177,9 +3282,9 @@ def no440RailGun():
         AttackDefaults_SpecialProjectile()
         setGravity(0)
         Size(2000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
     sprite('null', 32767)
     physicsXImpulse(70000)
     CreateObject('no440RailGunMitame', -1)
@@ -3192,8 +3297,9 @@ def no440RailGun():
     physicsXImpulse(150000)
     label(2)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('no440TamaSmoke', 32)
+    TriggerUponForState('no440TamaSmoke', 32)
     loopRest()
+
 
 @State
 def no440RailGunMitame():
@@ -3218,6 +3324,7 @@ def no440RailGunMitame():
     AddX(15000)
     gotoLabel(0)
 
+
 @State
 def no440ThunderTama():
 
@@ -3232,6 +3339,7 @@ def no440ThunderTama():
         AlphaValue(100)
     sprite('null', 32767)
 
+
 @State
 def no440TamaSmoke():
 
@@ -3241,12 +3349,13 @@ def no440TamaSmoke():
         LinkParticle('noef_440shot_smoke00')
         AddY(-250000)
         AddX(-200000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     CreateParticle('noef_440shot_smoke_nokosi', -1)
     gotoLabel(0)
+
 
 @State
 def no440Shake():
@@ -3279,17 +3388,18 @@ def no440Shake():
     ScreenShake(75000, 75000)
     loopRest()
 
+
 @State
 def no440Camera():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 4)
-        sendToLabelUpon(37, 5)
-        sendToLabelUpon(41, 9)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 4)
+        uponSendToLabel(37, 5)
+        uponSendToLabel(41, 9)
         IgnoreScreenfreeze(1)
         Visibility(1)
         RemoveOnCallStateEnd(3)
@@ -3338,20 +3448,21 @@ def no440Camera():
     label(9)
     sprite('vrnoef440railguntest', 40)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         PrivateFunction3(22, 300000, 0, 100, 0)
+
 
 @State
 def no440Camera_2():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 4)
-        sendToLabelUpon(37, 5)
-        sendToLabelUpon(41, 9)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 4)
+        uponSendToLabel(37, 5)
+        uponSendToLabel(41, 9)
         IgnoreScreenfreeze(1)
         Visibility(1)
         RemoveOnCallStateEnd(3)
@@ -3400,8 +3511,9 @@ def no440Camera_2():
     label(9)
     sprite('vrnoef440railguntest', 40)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         PrivateFunction3(22, 300000, 0, 100, 0)
+
 
 @State
 def no440Tame():
@@ -3418,6 +3530,7 @@ def no440Tame():
     CreateParticle('noef_440tame', 0)
     CreateParticle('noef_440tame', 1)
     gotoLabel(0)
+
 
 @State
 def no440TameMato2():
@@ -3438,6 +3551,7 @@ def no440TameMato2():
     CreateObject('no440TameBloom', -1)
     gotoLabel(0)
 
+
 @State
 def no440Tame2():
 
@@ -3452,6 +3566,7 @@ def no440Tame2():
         Eff3DEffect('noef_thunder00', '')
     sprite('null', 6)
 
+
 @State
 def no440Tame3():
 
@@ -3465,6 +3580,7 @@ def no440Tame3():
         BlendMode_Normal()
         Eff3DEffect('noef_thunder01', '')
     sprite('null', 6)
+
 
 @State
 def no440TameBloom():
@@ -3482,6 +3598,7 @@ def no440TameBloom():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def no440ShaSha():
 
@@ -3492,6 +3609,7 @@ def no440ShaSha():
     sprite('null', 175)
     sprite('null', 39)
     CreateObject('no440ShaSha2', -1)
+
 
 @State
 def no440ShaSha2():
@@ -3506,6 +3624,7 @@ def no440ShaSha2():
         RenderLayer(1)
     sprite('null', 39)
     Eff3DEffect('noef_shasha00', '')
+
 
 @State
 def no440Ring():
@@ -3522,6 +3641,7 @@ def no440Ring():
     SetScaleSpeed(25)
     ConstantAlphaModifier(-13)
 
+
 @State
 def no440BombMato():
 
@@ -3532,30 +3652,31 @@ def no440BombMato():
     sprite('null', 3)
     sprite('null', 2)
     CreateObject('no440Bomb2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-270000)
     sprite('null', 3)
     CreateObject('no440Bomb', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-540000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-540000)
     sprite('null', 3)
     CreateObject('no440Bomb2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-810000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-810000)
     sprite('null', 3)
     CreateObject('no440Bomb', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-1080000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-1080000)
     sprite('null', 3)
     CreateObject('no440Bomb2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-1350000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-1350000)
     sprite('null', 60)
+
 
 @State
 def no440BombMatoEX():
@@ -3567,20 +3688,21 @@ def no440BombMatoEX():
     sprite('null', 3)
     sprite('null', 2)
     CreateObject('no440Bomb2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-270000)
     sprite('null', 3)
     CreateObject('no440Bomb', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-540000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-540000)
     sprite('null', 3)
     CreateObject('no440Bomb2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-810000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-810000)
     sprite('null', 60)
+
 
 @State
 def no440Bomb():
@@ -3603,6 +3725,7 @@ def no440Bomb():
     sprite('null', 15)
     CreateParticle('noef_440bomb_smoke', -1)
     ConstantAlphaModifier(-20)
+
 
 @State
 def no440Bomb2():
@@ -3627,6 +3750,7 @@ def no440Bomb2():
     sprite('null', 15)
     ConstantAlphaModifier(-20)
 
+
 @State
 def no440RingBomb():
 
@@ -3643,6 +3767,7 @@ def no440RingBomb():
     SetScaleSpeed(25)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def MajuShotObj_EA():
@@ -3670,12 +3795,12 @@ def MajuShotObj_EA():
         OnlyHitPlayer(1)
         EnableRapidCancel(0)
         IgnoreComboTime(1)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
         ContinueState(30)
         BlendMode_Add()
         PaletteIndex(1)
         CopyFromRightToLeft(23, 2, 51, 3, 2, 62)
-        if (not SLOT_51):
+        if not SLOT_51:
             Damage(140)
             AirPushbackY(16000)
             YImpulseBeforeWallbounce(1600)
@@ -3699,6 +3824,7 @@ def MajuShotObj_EA():
     sprite('vrnoef_gunfire05', 2)
     sprite('vrnoef_gunfire06', 2)
 
+
 @State
 def no440WhiteOut():
 
@@ -3715,6 +3841,7 @@ def no440WhiteOut():
     sprite('vr_white', 20)
     ConstantAlphaModifier(-15)
 
+
 @State
 def no440WhiteOut_2():
 
@@ -3730,6 +3857,7 @@ def no440WhiteOut_2():
     sprite('vr_white', 40)
     sprite('vr_white', 20)
     ConstantAlphaModifier(-15)
+
 
 @State
 def EventShakeObj():
@@ -3764,6 +3892,7 @@ def EventShakeObj():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_Fade():
 
@@ -3781,6 +3910,7 @@ def Act2Event_Fade():
     ConstantAlphaModifier(0)
     AlphaValue(255)
 
+
 @State
 def Act3Event_Image():
 
@@ -3790,7 +3920,7 @@ def Act3Event_Image():
         XPositionRelativeFacing(0)
         AbsoluteY(0)
         Size(20000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         ColorForTransition(4278190080)
     sprite('vr_white', 30)
     AlphaValue(0)
@@ -3805,6 +3935,7 @@ def Act3Event_Image():
     AlphaValue(0)
     ConstantAlphaModifier(0)
 
+
 @State
 def Act3Event_Nagenuke():
 
@@ -3815,6 +3946,7 @@ def Act3Event_Nagenuke():
     sprite('null', 10)
     CreateParticle('ef_nagenuke', 103)
     CommonSE('107_throw_comeout')
+
 
 @State
 def Act3Event_Makoto():
@@ -3839,6 +3971,7 @@ def Act3Event_Makoto():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_RCCreate():
 
@@ -3858,6 +3991,7 @@ def Act3Event_RCCreate():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ExclamationControl():
 
@@ -3867,6 +4001,7 @@ def Act3Event_ExclamationControl():
         AddY(430000)
     sprite('null', 2)
     CreateParticle('ef_girdmiss_m', 0)
+
 
 @State
 def Act3Event_HACreate():

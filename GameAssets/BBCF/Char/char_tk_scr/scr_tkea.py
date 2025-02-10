@@ -19,6 +19,7 @@ def EMB_TK():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_TK_OD():
 
@@ -39,6 +40,7 @@ def EMB_TK_OD():
     sprite('null', 10)
     ColorTransition(4278223103, 10)
     sprite('null', 80)
+
 
 @State
 def EMB_TK_AH():
@@ -61,6 +63,7 @@ def EMB_TK_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def EventCKRun():
 
@@ -75,6 +78,7 @@ def EventCKRun():
     sprite('ctk450_28', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventBN():
@@ -98,6 +102,7 @@ def EventBN():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def bn_shot():
 
@@ -109,7 +114,7 @@ def bn_shot():
         RotationAngle(45000)
         physicsXImpulse(30000)
         physicsYImpulse(-30000)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     sprite('vrbnef406_009', 4)
     CommonSE('000_airdash_1')
     label(0)
@@ -122,6 +127,7 @@ def bn_shot():
     CommonSE('105_guard_slash_0')
     CreateObject('bn_shot_reflect', -1)
     loopRest()
+
 
 @State
 def bn_shot_reflect():
@@ -141,6 +147,7 @@ def bn_shot_reflect():
     setGravity(2000)
     CreateParticle('bnef_kugi_hit', -1)
 
+
 @State
 def tkef_throw():
 
@@ -149,6 +156,7 @@ def tkef_throw():
     sprite('null', 1)
     ParticleFacing(0)
     CallCustomizableParticle('tkef_throw', -1)
+
 
 @State
 def tkef061():
@@ -160,6 +168,7 @@ def tkef061():
         PaletteIndex(1)
     sprite('vrtkef061_00', 2)
 
+
 @State
 def tkef_hit_low():
 
@@ -169,6 +178,7 @@ def tkef_hit_low():
     ParticleFacing(2)
     CallCustomizableParticle('tkef_hit_low', -1)
     PrivateSE('tkse_03')
+
 
 @State
 def tkef_hit_high():
@@ -180,6 +190,7 @@ def tkef_hit_high():
     CallCustomizableParticle('tkef_hit_high', -1)
     PrivateSE('tkse_03')
 
+
 @State
 def tkef_hit_sp():
 
@@ -188,6 +199,7 @@ def tkef_hit_sp():
     sprite('null', 1)
     ParticleFacing(2)
     CallCustomizableParticle('tkef_hit_sp', -1)
+
 
 @State
 def tkef_slash():
@@ -199,6 +211,7 @@ def tkef_slash():
     CallCustomizableParticle('tkef_hit_slash', 0)
     PrivateSE('tkse_08')
 
+
 @State
 def tkef_highslash():
 
@@ -208,6 +221,7 @@ def tkef_highslash():
     ParticleDeviation(15000, 75000)
     CallCustomizableParticle('tkef_hit_highslash', 0)
     PrivateSE('tkse_09')
+
 
 @State
 def tkef202():
@@ -231,6 +245,7 @@ def tkef202():
     AlphaValue(250)
     ConstantAlphaModifier(-22)
 
+
 @State
 def tkef202b():
 
@@ -252,6 +267,7 @@ def tkef202b():
     sprite('vrtkef202_05', 12)
     AlphaValue(250)
     ConstantAlphaModifier(-22)
+
 
 @State
 def tkef202c():
@@ -275,6 +291,7 @@ def tkef202c():
     AlphaValue(250)
     ConstantAlphaModifier(-22)
 
+
 @State
 def tkef232():
 
@@ -294,6 +311,7 @@ def tkef232():
     sprite('vrtkef232_03', 12)
     AlphaValue(250)
     ConstantAlphaModifier(-22)
+
 
 @State
 def tkef252():
@@ -317,6 +335,7 @@ def tkef252():
     AlphaValue(250)
     ConstantAlphaModifier(-22)
 
+
 @State
 def tkef252b():
 
@@ -338,6 +357,7 @@ def tkef252b():
     sprite('vrtkef252_03', 12)
     AlphaValue(250)
     ConstantAlphaModifier(-22)
+
 
 @State
 def tkef252c():
@@ -362,6 +382,7 @@ def tkef252c():
     AlphaValue(250)
     ConstantAlphaModifier(-22)
 
+
 @State
 def tkef203a():
 
@@ -381,6 +402,7 @@ def tkef203a():
     AlphaValue(250)
     ConstantAlphaModifier(-10)
 
+
 @State
 def tkef203b():
 
@@ -399,6 +421,7 @@ def tkef203b():
     RemoveOnCallStateEnd(0)
     AlphaValue(250)
     ConstantAlphaModifier(-10)
+
 
 @State
 def tkef213():
@@ -420,6 +443,7 @@ def tkef213():
     AlphaValue(250)
     ConstantAlphaModifier(-6)
 
+
 @State
 def tkef213_2():
 
@@ -438,6 +462,7 @@ def tkef213_2():
     RemoveOnCallStateEnd(0)
     AlphaValue(250)
     ConstantAlphaModifier(-6)
+
 
 @State
 def tkef253a():
@@ -460,6 +485,7 @@ def tkef253a():
     AlphaValue(250)
     ConstantAlphaModifier(-10)
 
+
 @State
 def tkef253b():
 
@@ -480,6 +506,7 @@ def tkef253b():
     RemoveOnCallStateEnd(0)
     AlphaValue(250)
     ConstantAlphaModifier(-10)
+
 
 @State
 def tkef416a():
@@ -503,6 +530,7 @@ def tkef416a():
     AlphaValue(250)
     ConstantAlphaModifier(-10)
 
+
 @State
 def tkef416b():
 
@@ -525,6 +553,7 @@ def tkef416b():
     AlphaValue(250)
     ConstantAlphaModifier(-10)
 
+
 @Subroutine
 def tk_shot_Init():
     AttackDefaults_SpecialProjectile()
@@ -543,6 +572,7 @@ def tk_shot_Init():
     CollideWithWall(1)
     ContinueState(450)
 
+
 @State
 def tk_shot_A():
 
@@ -555,12 +585,13 @@ def tk_shot_A():
         physicsYImpulse(28000)
         setGravity(1200)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             YSpeed(22500)
             XSpeed(-10000)
             setGravity(2400)
             SetScaleSpeed(20)
     sprite('vrtkef412_30', 32767)
+
 
 @State
 def tk_shot_A2():
@@ -574,7 +605,7 @@ def tk_shot_A2():
         physicsXImpulse(20000)
         physicsYImpulse(28000)
         setGravity(1200)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
     label(0)
     sprite('vrtkef412_21', 1)
     CreateObject('BombHibana', 0)
@@ -582,13 +613,14 @@ def tk_shot_A2():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrtkef412_21', 1)
     CommonSE('016_explode_1')
     CommonSE('016_explode_1')
     CreateParticle('tkef_expl', 0)
     sprite('vrtkef412_21', 1)
     RefreshMultihit()
+
 
 @State
 def BombHibana():
@@ -597,6 +629,7 @@ def BombHibana():
         LinkParticle('tkef_412a_bomsparks')
         E0EAEffectPosition(2)
     sprite('null', 10)
+
 
 @State
 def tk_shot_A3():
@@ -608,26 +641,27 @@ def tk_shot_A3():
         physicsXImpulse(20000)
         physicsYImpulse(28000)
         setGravity(1200)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
     sprite('vrtkef412_20', 32767)
     loopRest()
     label(1)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrtkef412_20', 20)
     AddRotationPerFrame(25000)
     physicsYImpulse(36000)
     physicsXImpulse(2200)
     setGravity(1800)
-    sendToLabelUpon(10, 2)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 2)
     sprite('vrtkef412_20', 32767)
     RefreshMultihit()
     loopRest()
     label(2)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrtkef412_20', 32767)
     YSpeed(22500)
     XSpeed(1200)
     loopRest()
+
 
 @State
 def tk_shot_A4():
@@ -640,13 +674,14 @@ def tk_shot_A4():
         physicsYImpulse(28000)
         setGravity(1200)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             EnableAfterimage(0)
             YSpeed(22500)
             XSpeed(-10000)
             setGravity(2400)
             SetScaleSpeed(20)
     sprite('vrtkef412_22', 32767)
+
 
 @State
 def tk_shot_B():
@@ -659,12 +694,13 @@ def tk_shot_B():
         physicsYImpulse(3000)
         setGravity(400)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             EnableAfterimage(0)
             YSpeed(30000)
             XSpeed(-10000)
             setGravity(2400)
     sprite('vrtkef412_00', 32767)
+
 
 @State
 def tk_shot_B2():
@@ -678,15 +714,15 @@ def tk_shot_B2():
         physicsXImpulse(48000)
         physicsYImpulse(3000)
         setGravity(400)
-        sendToLabelUpon(7, 1)
-        sendToLabelUpon(10, 2)
+        uponSendToLabel(CORNERED, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 2)
         if CharacterIDCheck('ta'):
-            clearUponHandler(7)
+            clearUponHandler(CORNERED)
             ScreenCollision(0)
     sprite('vrtkef412_01', 32767)
     loopRest()
     label(1)
-    clearUponHandler(7)
+    clearUponHandler(CORNERED)
     sprite('null', 120)
     CancelIfPlayerHit(3)
     ScreenCollision(0)
@@ -698,8 +734,8 @@ def tk_shot_B2():
     physicsXImpulse(48000)
     loopRest()
     label(2)
-    clearUponHandler(7)
-    clearUponHandler(10)
+    clearUponHandler(CORNERED)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrtkef412_01', 32767)
     EnableAfterimage(0)
     YSpeed(30000)
@@ -708,6 +744,7 @@ def tk_shot_B2():
     CollideWithWall(1)
     ScreenCollision(0)
     loopRest()
+
 
 @State
 def tk_shot_B3():
@@ -722,12 +759,13 @@ def tk_shot_B3():
         physicsYImpulse(3000)
         setGravity(400)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             EnableAfterimage(0)
             YSpeed(30000)
             XSpeed(-10000)
             setGravity(2400)
     sprite('vrtkef412_02', 32767)
+
 
 @State
 def tk_shot_C():
@@ -742,16 +780,16 @@ def tk_shot_C():
         AttackOff()
 
         def upon_5():
-            if (SLOT_2 == 0):
+            if SLOT_2 == 0:
                 YAccel(-50)
                 CreateParticle('tkef_412c_ballbound', 0)
                 CommonSE('209_down_normal_0')
                 RefreshMultihit()
                 XImpulseAcceleration(300)
-            if (SLOT_2 == 1):
+            if SLOT_2 == 1:
                 YAccel(-50)
                 CommonSE('209_down_normal_0')
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 physicsYImpulse(0)
                 CommonSE('209_down_normal_0')
             AddActionMark(1)
@@ -761,15 +799,15 @@ def tk_shot_C():
         def upon_32():
             SLOT_59 = 3
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             setGravity(1600)
             physicsYImpulse(9000)
-            SLOT_59 = (SLOT_59 + (-1))
-            if (SLOT_59 == 0):
+            SLOT_59 = SLOT_59 + -1
+            if SLOT_59 == 0:
                 FloorCollision(0)
                 clearUponHandler(5)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
             FloorCollision(0)
             clearUponHandler(5)
@@ -778,26 +816,27 @@ def tk_shot_C():
         def upon_STATE_END():
             SetPrivateValue(0, 0)
 
-        def upon_FRAME_STEP():
-            if (SLOT_22 > 2000000):
+        def upon_EVERY_FRAME():
+            if SLOT_XDistanceFromCenterOfStage > 2000000:
                 DeleteObject(23)
-            if (SLOT_22 < (-2000000)):
+            if SLOT_XDistanceFromCenterOfStage < -2000000:
                 DeleteObject(23)
-            if (SLOT_23 < (-2000000)):
+            if SLOT_YDistanceFromFloor < -2000000:
                 DeleteObject(23)
         if CharacterIDCheck('ta'):
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
 
-            def upon_FRAME_STEP():
-                if (SLOT_22 > 5500000):
+            def upon_EVERY_FRAME():
+                if SLOT_XDistanceFromCenterOfStage > 5500000:
                     DeleteObject(23)
-                if (SLOT_22 < (-5500000)):
+                if SLOT_XDistanceFromCenterOfStage < -5500000:
                     DeleteObject(23)
-                if (SLOT_23 < (-2000000)):
+                if SLOT_YDistanceFromFloor < -2000000:
                     DeleteObject(23)
     sprite('vrtkef412_10_dummy', 32767)
     CreateObject('tk_shot_C_roll', 0)
     CreateObject('tk_shot_C_shadow', 0)
+
 
 @State
 def tk_shot_C_roll():
@@ -811,11 +850,12 @@ def tk_shot_C_roll():
         CollideWithWall(1)
         ForceShadowOff(1)
         E0EAEffect('cmn_judgment', 65535)
-        ApplyFunctionsToObjects(1)
-        AbsoluteY(80000)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_1():
+            AbsoluteY(80000)
         AddRotationPerFrame(7500)
     sprite('vrtkef412_10', 32767)
+
 
 @State
 def tk_shot_C_shadow():
@@ -827,6 +867,7 @@ def tk_shot_C_shadow():
         BlendMode_Sub()
     sprite('vrtkef412_11', 32767)
 
+
 @State
 def GuardCrash():
 
@@ -835,6 +876,7 @@ def GuardCrash():
         FaceLeft()
     sprite('null', 30)
     LinkParticle('tkef_guardcrash')
+
 
 @State
 def chocho():
@@ -846,7 +888,7 @@ def chocho():
         BlendMode_Normal()
         EnableAfterimage(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             RandSpeedX(-1000, 1000)
             RandSpeedY(-1000, 1000)
             XImpulseAcceleration(90)
@@ -868,6 +910,7 @@ def chocho():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def denchu():
 
@@ -878,6 +921,7 @@ def denchu():
     sprite('vr_denchu', 32767)
     XPositionRelativeFacing(1800000)
     SetZVal(500)
+
 
 @State
 def tk600HandX():
@@ -894,6 +938,7 @@ def tk600HandX():
     sprite('vrtk600_hand', 4)
     physicsXImpulse(-50000)
 
+
 @State
 def tk600HandY():
     sprite('vrtk600_hand', 4)
@@ -907,6 +952,7 @@ def tk600HandY():
     physicsYImpulse(0)
     sprite('vrtk600_hand', 4)
     physicsYImpulse(-50000)
+
 
 @State
 def tk600Eye():
@@ -940,6 +986,7 @@ def tk600Eye():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def tk600Mouth():
 
@@ -955,6 +1002,7 @@ def tk600Mouth():
     SetScaleSpeed(-5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def tk600Face():
@@ -985,6 +1033,7 @@ def tk600Face():
     sprite('vrtk600_face', 16)
     physicsXImpulse(-80000)
 
+
 @State
 def vrtkef430_upR():
 
@@ -998,6 +1047,7 @@ def vrtkef430_upR():
     sprite('vrtkef430_01', 4)
     sprite('vrtkef430_02', 4)
     sprite('vrtkef430_03', 4)
+
 
 @State
 def vrtkef430_downR():
@@ -1014,6 +1064,7 @@ def vrtkef430_downR():
     sprite('vrtkef430_02', 4)
     sprite('vrtkef430_03', 4)
 
+
 @State
 def vrtkef430_upL():
 
@@ -1027,6 +1078,7 @@ def vrtkef430_upL():
     sprite('vrtkef430_01', 4)
     sprite('vrtkef430_02', 4)
     sprite('vrtkef430_03', 4)
+
 
 @State
 def vrtkef430_downL():
@@ -1043,6 +1095,7 @@ def vrtkef430_downL():
     sprite('vrtkef430_02', 4)
     sprite('vrtkef430_03', 4)
 
+
 @State
 def vrtkef431_00():
     PaletteIndex(1)
@@ -1050,6 +1103,7 @@ def vrtkef431_00():
     SetScaleY(1000)
     SetZVal(-500)
     sprite('vrtkef431_00', 60)
+
 
 @State
 def vrtkef431_01():
@@ -1066,6 +1120,7 @@ def vrtkef431_01():
     physicsXImpulse(-10000)
     physicsYImpulse(-10000)
 
+
 @State
 def vrtkef431_02():
     sprite('vrtkef431_02', 12)
@@ -1078,6 +1133,7 @@ def vrtkef431_02():
     physicsXImpulse(35000)
     physicsYImpulse(-25000)
 
+
 @State
 def vrtkef431_03():
     sprite('vrtkef431_03', 10)
@@ -1089,6 +1145,7 @@ def vrtkef431_03():
     sprite('vrtkef431_03', 8)
     physicsYImpulse(-30000)
 
+
 @State
 def vrtkef431_04():
     sprite('vrtkef431_04', 8)
@@ -1099,6 +1156,7 @@ def vrtkef431_04():
     physicsXImpulse(0)
     sprite('vrtkef431_04', 8)
     physicsXImpulse(-50000)
+
 
 @State
 def BunshinAtkObj():
@@ -1117,6 +1175,7 @@ def BunshinAtkObj():
     StartMultihit()
     sprite('vrdmy_bunshin_atk', 3)
 
+
 @State
 def AstWhite():
     sprite('vr_white', 20)
@@ -1131,6 +1190,7 @@ def AstWhite():
     Size(4000)
     sprite('vr_white', 30)
     ConstantAlphaModifier(-15)
+
 
 @State
 def AST_TkAttack():
@@ -1180,6 +1240,7 @@ def AST_TkAttack():
     CreateObject('AST_CtkAttackLast', -1)
     sprite('null', 19)
 
+
 @State
 def AST_TkAttackA():
 
@@ -1206,6 +1267,7 @@ def AST_TkAttackA():
     sprite('tk450_10', 15)
     sprite('null', 30)
 
+
 @State
 def AST_TkAttackB():
 
@@ -1229,6 +1291,7 @@ def AST_TkAttackB():
     Voiceline('tk298')
     sprite('tk450_13', 15)
     sprite('null', 30)
+
 
 @State
 def AST_TkAttackC():
@@ -1255,6 +1318,7 @@ def AST_TkAttackC():
     sprite('tk450_16', 15)
     sprite('null', 30)
 
+
 @State
 def AST_TkAttackD():
 
@@ -1278,6 +1342,7 @@ def AST_TkAttackD():
     sprite('tk450_19', 15)
     sprite('null', 30)
 
+
 @State
 def AST_TkAttackE():
 
@@ -1300,6 +1365,7 @@ def AST_TkAttackE():
     Voiceline('tk297')
     sprite('tk450_22', 15)
     sprite('null', 30)
+
 
 @State
 def AST_CtkAttackA():
@@ -1325,6 +1391,7 @@ def AST_CtkAttackA():
     sprite('ctk450_02', 15)
     sprite('null', 30)
 
+
 @State
 def AST_CtkAttackB():
 
@@ -1347,6 +1414,7 @@ def AST_CtkAttackB():
     sprite('ctk450_04', 4)
     sprite('ctk450_05', 15)
     sprite('null', 30)
+
 
 @State
 def AST_CtkAttackC():
@@ -1373,6 +1441,7 @@ def AST_CtkAttackC():
     sprite('ctk450_08', 15)
     sprite('null', 30)
 
+
 @State
 def AST_CtkAttackD():
 
@@ -1398,6 +1467,7 @@ def AST_CtkAttackD():
     sprite('ctk450_11', 15)
     sprite('null', 30)
 
+
 @State
 def AST_CtkAttackE():
 
@@ -1419,6 +1489,7 @@ def AST_CtkAttackE():
     sprite('ctk450_13', 5)
     sprite('ctk450_14', 15)
     sprite('null', 30)
+
 
 @State
 def AST_CtkAttackLast():
@@ -1448,6 +1519,7 @@ def AST_CtkAttackLast():
     Visibility(1)
     CreateObject('ctk_run1', 0)
     CreateObject('ctk_run2', 1)
+
 
 @State
 def tkef450_jyubei():
@@ -1520,6 +1592,7 @@ def tkef450_jyubei():
     sprite('vrtkef450_01', 1)
     sprite('vrtkef450_02', 1)
 
+
 @State
 def tkef450_tora():
 
@@ -1591,6 +1664,7 @@ def tkef450_tora():
     sprite('tk432_t13ex00', 1)
     sprite('tk432_t12ex00', 1)
 
+
 @State
 def tkef450_jyubei_win():
 
@@ -1604,6 +1678,7 @@ def tkef450_jyubei_win():
     physicsXImpulse(0)
     sprite('vrtkef450_03', 60)
     physicsXImpulse(-6000)
+
 
 @State
 def ctk_run1():
@@ -1620,6 +1695,7 @@ def ctk_run1():
     sprite('ctk450_24', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ctk_run2():
@@ -1638,8 +1714,9 @@ def ctk_run2():
     loopRest()
     gotoLabel(0)
 
+
 @State
-def tkef450_?():
+def tkef450___qu__():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(3)
@@ -1652,6 +1729,7 @@ def tkef450_?():
     Size(1000)
     SetScaleSpeed(0)
 
+
 @State
 def LookAtMeAstStart():
 
@@ -1659,6 +1737,7 @@ def LookAtMeAstStart():
         SetPosXByScreenPer(50)
         CameraControlEnable(1)
     sprite('null', 60)
+
 
 @State
 def LookAtMe():
@@ -1670,6 +1749,7 @@ def LookAtMe():
     sprite('null', 32767)
     CameraControlEnable(1)
 
+
 @State
 def UltimateAirRushAttackTao():
 
@@ -1679,27 +1759,28 @@ def UltimateAirRushAttackTao():
     CreateObject('UltimateAirRushAttackTaoJ8D', -1)
     sprite('null', 25)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('null', 10)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     sprite('null', 8)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('null', 6)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     sprite('null', 4)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('null', 4)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     sprite('null', 20)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('null', 1)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def UltimateAirRushAttackODTao():
@@ -1708,117 +1789,118 @@ def UltimateAirRushAttackODTao():
         pass
     sprite('null', 45)
     CreateObject('UltimateAirRushAttackTaoJ8D', -1)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 25)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 25)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 15)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 10)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 8)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 8)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 6)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 6)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 4)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 4)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 3)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 3)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 3)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 2)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 2)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 2)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 2)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 2)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ5D', -1)
-    ObjectUpon(1, 32)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 32)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
     CreateObject('UltimateAirRushAttackTaoJ2D', -1)
-    ObjectUpon(1, 33)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 33)
+    ObjectUpon(STATE_END, 35)
     sprite('null', 1)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @Subroutine
 def UltimateAirRushAttackTaoInit():
@@ -1839,11 +1921,12 @@ def UltimateAirRushAttackTaoInit():
     MinimumDamage(15)
     CopyFromRightToLeft(23, 2, 2, 3, 2, 66)
     if SLOT_2:
-        SLOT_78 = 70
+        SLOT_DamageMultiplier = 70
     NoDamageAction(1)
     EndMomentum(1)
     EnableAfterimage(1)
     AfterimageBlendMode(0)
+
 
 @State
 def UltimateAirRushAttackTaoJ8D():
@@ -1879,6 +1962,7 @@ def UltimateAirRushAttackTaoJ8D():
     sprite('tk401_01', 4)
     AirDashEffects(1)
     sprite('tk401_02', 4)
+
 
 @State
 def UltimateAirRushAttackTaoJ5D():
@@ -1916,6 +2000,7 @@ def UltimateAirRushAttackTaoJ5D():
     sprite('tk400_08', 3)
     sprite('tk400_07', 3)
     sprite('tk400_08', 3)
+
 
 @State
 def UltimateAirRushAttackTaoJ2D():
@@ -1956,6 +2041,7 @@ def UltimateAirRushAttackTaoJ2D():
     sprite('tk404_07', 3)
     sprite('tk404_05', 3)
     sprite('tk404_06', 3)
+
 
 @State
 def UltimateAirRushTorakaka():
@@ -2068,6 +2154,7 @@ def UltimateAirRushTorakaka():
     sprite('tk432_t01', 2)
     sprite('tk432_t02', 2)
 
+
 @Subroutine
 def Func_BurstDD():
     ContinueState(300)
@@ -2092,20 +2179,21 @@ def Func_BurstDD():
         AddY(20833)
     Unknown61(0, 1, 0, 4, 0, 0, 0, 9999, 0, 9999, 0, 9999)
     SLOT_2 = SLOT_0
-    if (SLOT_2 <= 1):
+    if SLOT_2 <= 1:
         sendToLabel(1)
-    if (SLOT_2 == 2):
+    if SLOT_2 == 2:
         SLOT_51 = 1
         sendToLabel(2)
-    if (SLOT_2 == 3):
+    if SLOT_2 == 3:
         SLOT_52 = 1
         sendToLabel(3)
-    if (SLOT_2 >= 4):
+    if SLOT_2 >= 4:
         sendToLabel(4)
     RunLoopUpon(17, 30)
 
     def upon_17():
         CollideWithWall(1)
+
 
 @State
 def BurstDD_ChibiMatome():
@@ -2122,19 +2210,20 @@ def BurstDD_ChibiMatome():
     sprite('null', 3)
     AddActionMark(-1)
     CreateObject('BurstDD_Chibi', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('null', 3)
     CreateObject('BurstDD_Chibi', -1)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     sprite('null', 3)
     CreateObject('BurstDD_Chibi', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 1)
     sprite('null', 100)
     CreateObject('BurstDD_ChibiLast', -1)
+
 
 @State
 def BurstDD_Chibi1st():
@@ -2161,25 +2250,25 @@ def BurstDD_Chibi1st():
         PassByArmor(1)
         CopyFromRightToLeft(23, 2, 2, 3, 2, 66)
         if SLOT_2:
-            SLOT_78 = 70
+            SLOT_DamageMultiplier = 70
 
         def upon_45():
             CopyFromRightToLeft(23, 2, 51, 3, 2, 22)
-            if SLOT_38:
+            if SLOT_IsFacingRight:
                 PrivateFunction(1, 2, 51, 2, 22, 2, 52)
             else:
                 PrivateFunction(1, 2, 22, 2, 51, 2, 52)
-            if (SLOT_52 <= 100000):
-                ObjectUpon(3, 32)
+            if SLOT_52 <= 100000:
+                ObjectUpon(EVERY_FRAME, 32)
                 clearUponHandler(45)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             SetActionMark(26)
 
-            def upon_FRAME_STEP():
-                if (not SLOT_2):
-                    clearUponHandler(3)
+            def upon_EVERY_FRAME():
+                if not SLOT_2:
+                    clearUponHandler(EVERY_FRAME)
                     RefreshMultihit()
                     Damage(0)
                     HitsparkSize(0)
@@ -2233,6 +2322,7 @@ def BurstDD_Chibi1st():
     loopRest()
     gotoLabel(4)
 
+
 @State
 def BurstDD_Chibi():
 
@@ -2272,6 +2362,7 @@ def BurstDD_Chibi():
     loopRest()
     gotoLabel(4)
 
+
 @State
 def BurstDD_ChibiLast():
 
@@ -2296,6 +2387,7 @@ def BurstDD_ChibiLast():
     sprite('ctk450_28', 5)
     loopRest()
     gotoLabel(1)
+
 
 @State
 def BurstDD_Bokosuka():
@@ -2322,12 +2414,12 @@ def BurstDD_Bokosuka():
         CHStateIfCHStart(3)
         CopyFromRightToLeft(23, 2, 2, 3, 2, 66)
         if SLOT_2:
-            SLOT_78 = 70
-        ApplyFunctionsToObjects(22)
-        TeleportToObject(22)
-        AddX(900000)
-        AbsoluteY(300000)
-        ApplyFunctionsToSelf()
+            SLOT_DamageMultiplier = 70
+
+        def RunOnObject_22():
+            TeleportToObject(22)
+            AddX(900000)
+            AbsoluteY(300000)
         Visibility(1)
         TeleportToObject(22)
         CopyFromRightToLeft(23, 2, 51, 3, 2, 51)
@@ -2346,7 +2438,7 @@ def BurstDD_Bokosuka():
     AddActionMark(-1)
     ScreenShake(0, 6000)
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     loopRest()
     sprite('vrctk440_00', 30)
     CreateObject('tkef_440smoke', -1)
@@ -2363,6 +2455,7 @@ def BurstDD_Bokosuka():
     Hitstop(20)
     DefeatOpponentBehavior(0)
     ScreenShake(50000, 50000)
+
 
 @State
 def BurstDD_BokosukaSP():
@@ -2389,13 +2482,13 @@ def BurstDD_BokosukaSP():
         CHStateIfCHStart(3)
         CopyFromRightToLeft(23, 2, 2, 3, 2, 66)
         if SLOT_2:
-            SLOT_78 = 70
-        ApplyFunctionsToObjects(22)
-        TeleportToObject(22)
-        AddX(900000)
-        AbsoluteY(300000)
-        AlphaMultiplier(0)
-        ApplyFunctionsToSelf()
+            SLOT_DamageMultiplier = 70
+
+        def RunOnObject_22():
+            TeleportToObject(22)
+            AddX(900000)
+            AbsoluteY(300000)
+            AlphaMultiplier(0)
         Visibility(1)
         TeleportToObject(22)
         SetActionMark(6)
@@ -2413,7 +2506,7 @@ def BurstDD_BokosukaSP():
     AddActionMark(-1)
     ScreenShake(0, 6000)
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     loopRest()
     sprite('vrctk440_00', 30)
     CreateObject('tkef_440smoke', -1)
@@ -2431,18 +2524,18 @@ def BurstDD_BokosukaSP():
     RefreshMultihit()
     AirPushbackY(-100000)
     AirPushbackX(0)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('ctk440_16', 3)
     TeleportToObject(22)
     SetZVal(-501)
     Visibility(0)
-    if (SLOT_25 <= 600000):
+    if SLOT_XDistanceFromFowardCorner <= 600000:
         Flip()
     physicsYImpulse(30000)
     setGravity(1800)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         physicsXImpulse(10000)
         sendToLabel(1)
 
@@ -2453,7 +2546,7 @@ def BurstDD_BokosukaSP():
         physicsXImpulse(-15000)
         sendToLabel(2)
     ScreenShake(0, 10000)
-    PassbackAddActionMarkToFunction('tkef_440CatGot', 32)
+    TriggerUponForState('tkef_440CatGot', 32)
     sprite('ctk440_17', 3)
     RefreshMultihit()
     AttackType(4)
@@ -2466,9 +2559,9 @@ def BurstDD_BokosukaSP():
     HardKnockdownReset()
     OppPositionOnHit(3, 0, 150000)
     DefeatOpponentBehavior(0)
-    ApplyFunctionsToObjects(22)
-    AlphaValue(255)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AlphaValue(255)
     sprite('ctk440_18', 10)
     label(1)
     sprite('ctk450_19ex01', 3)
@@ -2485,6 +2578,7 @@ def BurstDD_BokosukaSP():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def tkef_440smoke():
 
@@ -2492,6 +2586,7 @@ def tkef_440smoke():
         TeleportToObject(22)
         AbsoluteY(0)
         CallCustomizableParticle('tkef_431smoke02', -1)
+
 
 @State
 def tkef_440CatGot():
@@ -2503,7 +2598,7 @@ def tkef_440CatGot():
         FaceRight()
         WallCollisionDetection(1)
         SetZVal(-500)
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
 
         def upon_LANDING():
             sendToLabel(0)
@@ -2532,13 +2627,14 @@ def tkef_440CatGot():
     ConstantAlphaModifier(-26)
     sprite('vrtkef440_04', 4)
 
+
 @State
 def tkef_440RandomItem():
 
     def upon_IMMEDIATE():
         PaletteIndex(1)
-        SLOT_51 = (SLOT_51 + SLOT_22)
-        SLOT_52 = (SLOT_52 + SLOT_23)
+        SLOT_51 = SLOT_51 + SLOT_XDistanceFromCenterOfStage
+        SLOT_52 = SLOT_52 + SLOT_YDistanceFromFloor
         if SLOT_39:
             DeviationX(-10000, -30000)
         else:
@@ -2557,93 +2653,93 @@ def tkef_440RandomItem():
             sendToLabel(100)
         Unknown61(0, 1, 0, 44, 0, 0, 0, 9999, 0, 9999, 0, 9999)
         SLOT_2 = SLOT_0
-        if (SLOT_2 == 1):
+        if SLOT_2 == 1:
             sendToLabel(1)
-        if (SLOT_2 == 2):
+        if SLOT_2 == 2:
             sendToLabel(2)
-        if (SLOT_2 == 3):
+        if SLOT_2 == 3:
             sendToLabel(3)
-        if (SLOT_2 == 4):
+        if SLOT_2 == 4:
             sendToLabel(4)
-        if (SLOT_2 == 5):
+        if SLOT_2 == 5:
             sendToLabel(5)
-        if (SLOT_2 == 6):
+        if SLOT_2 == 6:
             sendToLabel(6)
-        if (SLOT_2 == 7):
+        if SLOT_2 == 7:
             sendToLabel(7)
-        if (SLOT_2 == 8):
+        if SLOT_2 == 8:
             sendToLabel(8)
-        if (SLOT_2 == 9):
+        if SLOT_2 == 9:
             sendToLabel(9)
-        if (SLOT_2 == 10):
+        if SLOT_2 == 10:
             sendToLabel(10)
-        if (SLOT_2 == 11):
+        if SLOT_2 == 11:
             sendToLabel(11)
-        if (SLOT_2 == 12):
+        if SLOT_2 == 12:
             sendToLabel(12)
-        if (SLOT_2 == 13):
+        if SLOT_2 == 13:
             sendToLabel(13)
-        if (SLOT_2 == 14):
+        if SLOT_2 == 14:
             sendToLabel(14)
-        if (SLOT_2 == 15):
+        if SLOT_2 == 15:
             sendToLabel(15)
-        if (SLOT_2 == 16):
+        if SLOT_2 == 16:
             sendToLabel(16)
-        if (SLOT_2 == 17):
+        if SLOT_2 == 17:
             sendToLabel(17)
-        if (SLOT_2 == 18):
+        if SLOT_2 == 18:
             sendToLabel(18)
-        if (SLOT_2 == 19):
+        if SLOT_2 == 19:
             sendToLabel(19)
-        if (SLOT_2 == 20):
+        if SLOT_2 == 20:
             sendToLabel(20)
-        if (SLOT_2 == 21):
+        if SLOT_2 == 21:
             sendToLabel(21)
-        if (SLOT_2 == 22):
+        if SLOT_2 == 22:
             sendToLabel(22)
-        if (SLOT_2 == 23):
+        if SLOT_2 == 23:
             sendToLabel(23)
-        if (SLOT_2 == 24):
+        if SLOT_2 == 24:
             sendToLabel(24)
-        if (SLOT_2 == 25):
+        if SLOT_2 == 25:
             sendToLabel(25)
-        if (SLOT_2 == 26):
+        if SLOT_2 == 26:
             sendToLabel(26)
-        if (SLOT_2 == 27):
+        if SLOT_2 == 27:
             sendToLabel(27)
-        if (SLOT_2 == 28):
+        if SLOT_2 == 28:
             sendToLabel(28)
-        if (SLOT_2 == 29):
+        if SLOT_2 == 29:
             sendToLabel(29)
-        if (SLOT_2 == 30):
+        if SLOT_2 == 30:
             sendToLabel(30)
-        if (SLOT_2 == 31):
+        if SLOT_2 == 31:
             sendToLabel(31)
-        if (SLOT_2 == 32):
+        if SLOT_2 == 32:
             sendToLabel(32)
-        if (SLOT_2 == 33):
+        if SLOT_2 == 33:
             sendToLabel(33)
-        if (SLOT_2 == 34):
+        if SLOT_2 == 34:
             sendToLabel(34)
-        if (SLOT_2 == 35):
+        if SLOT_2 == 35:
             sendToLabel(35)
-        if (SLOT_2 == 36):
+        if SLOT_2 == 36:
             sendToLabel(36)
-        if (SLOT_2 == 37):
+        if SLOT_2 == 37:
             sendToLabel(37)
-        if (SLOT_2 == 38):
+        if SLOT_2 == 38:
             sendToLabel(38)
-        if (SLOT_2 == 39):
+        if SLOT_2 == 39:
             sendToLabel(39)
-        if (SLOT_2 == 40):
+        if SLOT_2 == 40:
             sendToLabel(40)
-        if (SLOT_2 == 41):
+        if SLOT_2 == 41:
             sendToLabel(41)
-        if (SLOT_2 == 42):
+        if SLOT_2 == 42:
             sendToLabel(42)
-        if (SLOT_2 == 43):
+        if SLOT_2 == 43:
             sendToLabel(43)
-        if (SLOT_2 == 44):
+        if SLOT_2 == 44:
             sendToLabel(44)
     sprite('null', 32767)
     label(1)
@@ -2739,6 +2835,7 @@ def tkef_440RandomItem():
     sprite('keep', 20)
     ConstantAlphaModifier(-15)
 
+
 @Subroutine
 def FoodInit():
     AttackDefaults_SpecialProjectile()
@@ -2751,8 +2848,9 @@ def FoodInit():
 
     def upon_17():
         ConstantAlphaModifier(-10)
-    sendToLabelUpon(2, 10)
-    sendToLabelUpon(32, 100)
+    uponSendToLabel(LANDING, 10)
+    uponSendToLabel(32, 100)
+
 
 @State
 def RushPlusFood_RG():
@@ -2765,12 +2863,13 @@ def RushPlusFood_RG():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_JN():
@@ -2783,12 +2882,13 @@ def RushPlusFood_JN():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_NO():
@@ -2801,12 +2901,13 @@ def RushPlusFood_NO():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_RC():
@@ -2819,12 +2920,13 @@ def RushPlusFood_RC():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_TK():
@@ -2837,12 +2939,13 @@ def RushPlusFood_TK():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_TG():
@@ -2855,12 +2958,13 @@ def RushPlusFood_TG():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_AR():
@@ -2873,12 +2977,13 @@ def RushPlusFood_AR():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_LC():
@@ -2891,12 +2996,13 @@ def RushPlusFood_LC():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_BN():
@@ -2909,12 +3015,13 @@ def RushPlusFood_BN():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_CA():
@@ -2927,12 +3034,13 @@ def RushPlusFood_CA():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_HA():
@@ -2945,12 +3053,13 @@ def RushPlusFood_HA():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_NY():
@@ -2963,12 +3072,13 @@ def RushPlusFood_NY():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_TB():
@@ -2981,12 +3091,13 @@ def RushPlusFood_TB():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_HZ():
@@ -2999,12 +3110,13 @@ def RushPlusFood_HZ():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_MU():
@@ -3017,12 +3129,13 @@ def RushPlusFood_MU():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_MK():
@@ -3035,12 +3148,13 @@ def RushPlusFood_MK():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_VH():
@@ -3053,12 +3167,13 @@ def RushPlusFood_VH():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_PT():
@@ -3071,12 +3186,13 @@ def RushPlusFood_PT():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_RL():
@@ -3089,12 +3205,13 @@ def RushPlusFood_RL():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_IZ():
@@ -3107,12 +3224,13 @@ def RushPlusFood_IZ():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_AM():
@@ -3125,12 +3243,13 @@ def RushPlusFood_AM():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_BL():
@@ -3143,12 +3262,13 @@ def RushPlusFood_BL():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_AZ():
@@ -3161,12 +3281,13 @@ def RushPlusFood_AZ():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_KG():
@@ -3179,12 +3300,13 @@ def RushPlusFood_KG():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_KK():
@@ -3197,12 +3319,13 @@ def RushPlusFood_KK():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_TM():
@@ -3215,12 +3338,13 @@ def RushPlusFood_TM():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_CE():
@@ -3233,12 +3357,13 @@ def RushPlusFood_CE():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_RM():
@@ -3251,12 +3376,13 @@ def RushPlusFood_RM():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_HB():
@@ -3269,12 +3395,13 @@ def RushPlusFood_HB():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_NT():
@@ -3287,12 +3414,13 @@ def RushPlusFood_NT():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_PH():
@@ -3305,12 +3433,13 @@ def RushPlusFood_PH():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_MI():
@@ -3323,12 +3452,13 @@ def RushPlusFood_MI():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_SU():
@@ -3341,12 +3471,13 @@ def RushPlusFood_SU():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_ES():
@@ -3359,21 +3490,21 @@ def RushPlusFood_ES():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
+
 
 @State
 def RushPlusFood_MA():
 
     def upon_IMMEDIATE():
         callSubroutine('FoodInit')
-    random_(2, 0, 20)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 20):
+        conditionalSendToLabel(1)
     sprite('vrtkef417_ma', 32767)
     label(1)
     sprite('vrtkef417_ma2', 32767)
@@ -3382,12 +3513,13 @@ def RushPlusFood_MA():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def RushPlusFood_JB():
@@ -3400,12 +3532,13 @@ def RushPlusFood_JB():
     setGravity(0)
     physicsYImpulse(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('keep', 32767)
     label(100)
     sprite('null', 1)
     clearUponHandler(32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def EventAR():
@@ -3447,6 +3580,7 @@ def EventAR():
     sprite('ar232_10', 6)
     loopRest()
 
+
 @State
 def Act2Event_Kemuri():
 
@@ -3457,6 +3591,7 @@ def Act2Event_Kemuri():
     ParticleSize(1000)
     CallCustomizableParticle('tkef_431smoke02', -1)
     loopRest()
+
 
 @State
 def EventShakeObj():
@@ -3490,8 +3625,9 @@ def EventShakeObj():
     loopRest()
     gotoLabel(0)
 
+
 @State
-def Eventtk450_?():
+def Eventtk450___qu__():
 
     def upon_IMMEDIATE():
         PaletteIndex(1)
@@ -3506,30 +3642,32 @@ def Eventtk450_?():
     Size(1000)
     SetScaleSpeed(0)
 
+
 @State
 def Act3Event_Cam():
 
     def upon_IMMEDIATE():
         CameraControlEnable(1)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 <= 0):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage <= 0:
                     XPositionRelativeFacing(0)
                     EndMomentum(1)
                     CameraControlEnable(0)
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 >= 0):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage >= 0:
                 XPositionRelativeFacing(0)
                 EndMomentum(1)
                 CameraControlEnable(0)
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('null', 600)
     AddInertia(15000)
     label(0)
     sprite('null', 5)
+
 
 @State
 def Act3Event_Damage():
@@ -3540,6 +3678,7 @@ def Act3Event_Damage():
     sprite('null', 10)
     CreateParticle('tkef_hit_high', 103)
     PrivateSE('tkse_03')
+
 
 @State
 def Act3Event_Black():
@@ -3553,7 +3692,7 @@ def Act3Event_Black():
         AbsoluteY(0)
         Size(20000)
         AlphaValue(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_white', 20)
     ConstantAlphaModifier(12)
     sprite('vr_white', 32767)

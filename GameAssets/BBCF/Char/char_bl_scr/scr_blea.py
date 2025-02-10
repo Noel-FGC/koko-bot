@@ -20,6 +20,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_BL_OD():
 
@@ -42,6 +43,7 @@ def EMB_BL_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_BL_AH():
 
@@ -63,6 +65,7 @@ def EMB_BL_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def BLEF_LockOnZone():
 
@@ -79,21 +82,21 @@ def BLEF_LockOnZone():
         else:
             SLOT_4 = 1800
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 if SLOT_51:
-                    SLOT_4 = (SLOT_4 + 8)
+                    SLOT_4 = SLOT_4 + 8
                 else:
-                    SLOT_4 = (SLOT_4 + 11)
+                    SLOT_4 = SLOT_4 + 11
                 CallPrivateFunction('BulletLockOnZone', 2, 4, 0, 0, 0, 0, 0, 0)
 
-        def upon_44():
-            clearUponHandler(44)
+        def upon_PLAYER_DAMAGED():
+            clearUponHandler(PLAYER_DAMAGED)
             clearUponHandler(32)
             sendToLabel(2)
 
         def upon_32():
-            clearUponHandler(44)
+            clearUponHandler(PLAYER_DAMAGED)
             clearUponHandler(32)
             sendToLabel(2)
         EffectPosition(3, 103)
@@ -149,6 +152,7 @@ def BLEF_LockOnZone():
     SetScaleSpeed(0)
     ConstantAlphaModifier(-26)
 
+
 @State
 def BLEF_LockOnMarker():
 
@@ -160,8 +164,8 @@ def BLEF_LockOnMarker():
         SetZVal(-500)
         TeleportToObject(22)
         AddY(200000)
-        sendToLabelUpon(32, 10)
-        sendToLabelUpon(33, 20)
+        uponSendToLabel(32, 10)
+        uponSendToLabel(33, 20)
 
         def upon_16():
             PrivateFunction3(22, 0, 0, 60, 1)
@@ -185,6 +189,7 @@ def BLEF_LockOnMarker():
     SetScaleSpeed(200)
     ConstantAlphaModifier(-16)
 
+
 @State
 def blef405Atk():
 
@@ -198,7 +203,7 @@ def blef405Atk():
         AirUntechableTime(17)
         Hitstun(17)
         DamageEffect(5, '')
-        if (SLOT_5 == 1):
+        if SLOT_5 == 1:
             AttackLevel_(4)
             Damage(1500)
             AttackP2(72)
@@ -218,7 +223,7 @@ def blef405Atk():
                 ScreenShake(15000, 15000)
                 CommonSE('100_hit_grap_3')
                 PrivateSE('blse_05')
-        if (SLOT_5 == 2):
+        if SLOT_5 == 2:
             AttackLevel_(5)
             Damage(3350)
             AttackP2(74)
@@ -233,7 +238,7 @@ def blef405Atk():
             Wallbounce(1)
             WallbounceReboundTime(4)
             Wallstick(1)
-            if SLOT_110:
+            if SLOT_OverdriveTimer:
                 WallbounceReboundTime(40)
 
             def upon_OPPONENT_HIT():
@@ -246,6 +251,7 @@ def blef405Atk():
             AddY(250000)
     sprite('vrblef405_test', 3)
 
+
 @State
 def __202_Blast00():
 
@@ -255,6 +261,7 @@ def __202_Blast00():
         IgnorePauses(2)
     sprite('null', 60)
     LinkParticle('blef_5C_start')
+
 
 @State
 def __202_Blast01():
@@ -266,6 +273,7 @@ def __202_Blast01():
     LinkParticle('blef_5C')
     CreateParticle('blef_5C_add', 100)
 
+
 @State
 def shot_charge():
 
@@ -275,6 +283,7 @@ def shot_charge():
         IgnorePauses(2)
     sprite('null', 64)
     LinkParticle('blef_charge')
+
 
 @State
 def shot_fire():
@@ -293,6 +302,7 @@ def shot_fire():
     sprite('vrblef401_03', 2)
     sprite('vrblef401_04', 2)
 
+
 @State
 def shot_mazzle():
 
@@ -303,6 +313,7 @@ def shot_mazzle():
         RotationAngle(135000)
     sprite('null', 60)
     LinkParticle('blef_shot_mazzle')
+
 
 @State
 def shot():
@@ -344,14 +355,14 @@ def shot():
             SLOT_51 = 3
             clearUponHandler(33)
 
-        def upon_ON_HIT_OR_BLOCK():
-            if (SLOT_52 >= 1):
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            if SLOT_52 >= 1:
                 Damage(350)
-            SLOT_52 = (SLOT_52 + 1)
+            SLOT_52 = SLOT_52 + 1
             XImpulseAcceleration(75)
-            SLOT_51 = (SLOT_51 + (-1))
-            if (SLOT_51 <= 0):
-                clearUponHandler(10)
+            SLOT_51 = SLOT_51 + -1
+            if SLOT_51 <= 0:
+                clearUponHandler(OPPONENT_HIT_OR_BLOCK)
                 SetActionMark(0)
                 physicsXImpulse(10000)
                 sendToLabel(1)
@@ -382,6 +393,7 @@ def shot():
     sprite('vrblef401_22', 2)
     sprite('vrblef401_23', 2)
 
+
 @State
 def shot_add():
 
@@ -394,6 +406,7 @@ def shot_add():
     sprite('null', 3)
     CreateParticle('blef_shot_add', -1)
     gotoLabel(0)
+
 
 @State
 def shot_geyser():
@@ -420,7 +433,7 @@ def shot_geyser():
 
         def upon_32():
             SetActionMark(1)
-            sendToLabelUpon(10, 200)
+            uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 200)
             AddX(74000)
             Size(1300)
             physicsXImpulse(20000)
@@ -439,7 +452,7 @@ def shot_geyser():
 
         def upon_33():
             SetActionMark(2)
-            sendToLabelUpon(10, 200)
+            uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 200)
             AddX(74000)
             Size(1300)
             physicsXImpulse(20000)
@@ -487,7 +500,7 @@ def shot_geyser():
     sprite('vrblef401_12', 2)
     sprite('vrblef401_13', 2)
     sprite('vrblef401_14', 2)
-    if (SLOT_2 == 0):
+    if SLOT_2 == 0:
         physicsXImpulse(2000)
         sendToLabel(1)
     else:
@@ -496,18 +509,19 @@ def shot_geyser():
     gotoLabel(0)
     label(1)
     sprite('vrblef401_20', 2)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('keep', 2)
     AddX(-60000)
     sendToLabel(999)
     label(200)
     sprite('vrblef401_20', 2)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     physicsXImpulse(2000)
     EnemyHitstopAddition(14, 14, 16)
     sprite('keep', 2)
     AddX(-120000)
     sendToLabel(999)
+
 
 @State
 def shot_geyser_col():
@@ -516,6 +530,7 @@ def shot_geyser_col():
         AttackDefaults_SpecialProjectile()
         CancelIfPlayerHit(3)
     sprite('vrblef401_geyser_col', 15)
+
 
 @State
 def shot_geyser_2():
@@ -536,6 +551,7 @@ def shot_geyser_2():
     sprite('vrblef401_54', 3)
     sprite('vrblef401_55', 3)
 
+
 @State
 def shot_geyser_3():
 
@@ -554,6 +570,7 @@ def shot_geyser_3():
     sprite('vrblef401_54', 3)
     sprite('vrblef401_55', 3)
 
+
 @State
 def shot_geyser_4():
 
@@ -571,6 +588,7 @@ def shot_geyser_4():
     sprite('vrblef401_54', 3)
     sprite('vrblef401_55', 3)
 
+
 @State
 def shot_geyser_3d():
 
@@ -587,6 +605,7 @@ def shot_geyser_3d():
     sprite('null', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def __400_mazzle():
 
@@ -597,6 +616,7 @@ def __400_mazzle():
         Size(750)
     sprite('null', 60)
     LinkParticle('blef_DashThrow_fire')
+
 
 @State
 def __400_mazzle2():
@@ -611,6 +631,7 @@ def __400_mazzle2():
     sprite('null', 10)
     SetScaleSpeed(30)
 
+
 @State
 def __403_mazzle():
 
@@ -619,6 +640,7 @@ def __403_mazzle():
     sprite('null', 60)
     CreateObject('403_firewave00', 0)
     CreateParticle('blef_GraspThrow_fire', 0)
+
 
 @State
 def __403_firewave00():
@@ -635,6 +657,7 @@ def __403_firewave00():
     sprite('null', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def __404_mazzle():
 
@@ -645,6 +668,7 @@ def __404_mazzle():
         DespawnEAEffect('shot_charge')
     sprite('null', 60)
     LinkParticle('blef_DashThrow_fire')
+
 
 @State
 def __404_mazzle2():
@@ -659,6 +683,7 @@ def __404_mazzle2():
     sprite('null', 10)
     SetScaleSpeed(30)
 
+
 @State
 def __405_mazzle():
 
@@ -668,6 +693,7 @@ def __405_mazzle():
         DespawnEAEffect('shot_charge')
     sprite('null', 60)
     LinkParticle('blef_GuardCrush')
+
 
 @State
 def blef_410_fire():
@@ -684,6 +710,7 @@ def blef_410_fire():
     ParticleSize(2000)
     CallCustomizableParticle('blef_410fire', -1)
 
+
 @State
 def blef_410_finish():
 
@@ -692,6 +719,7 @@ def blef_410_finish():
     sprite('null', 1)
     ParticleRotationAngle(-60000)
     CallCustomizableParticle('blef_410finish', -1)
+
 
 @State
 def __430_handaura():
@@ -704,6 +732,7 @@ def __430_handaura():
     SetScaleSpeed(-25)
     LinkParticle('blef_430tame_pos')
 
+
 @State
 def __430_handaura2():
 
@@ -713,6 +742,7 @@ def __430_handaura2():
         Size(1000)
     sprite('null', 300)
     LinkParticle('blef_430tame_pos')
+
 
 @State
 def __430_mazzle():
@@ -729,6 +759,7 @@ def __430_mazzle():
     CallCustomizableParticle('blef_430atk_hinoko', -1)
     SetScaleSpeed(30)
 
+
 @State
 def __430_mazzle2():
 
@@ -743,6 +774,7 @@ def __430_mazzle2():
     ParticleRotationAngle(-45000)
     CallCustomizableParticle('blef_430atk_circle', -1)
     SetScaleSpeed(30)
+
 
 @State
 def __430_mazzlelast():
@@ -761,6 +793,7 @@ def __430_mazzlelast():
     SetScaleSpeed(30)
     sprite('null', 7)
 
+
 @State
 def __430_bigmazzleShockDown():
 
@@ -775,6 +808,7 @@ def __430_bigmazzleShockDown():
     CallCustomizableParticle('blef_430atk_circle', -1)
     SetScaleSpeed(30)
 
+
 @State
 def __430_bigmazzleFireMatoDown():
 
@@ -783,6 +817,7 @@ def __430_bigmazzleFireMatoDown():
         IgnoreScreenfreeze(1)
     sprite('null', 5)
     CreateObject('430_bigmazzleFire2Down', -1)
+
 
 @State
 def __430_bigmazzleFire2Down():
@@ -797,6 +832,7 @@ def __430_bigmazzleFire2Down():
     sprite('null', 11)
     sprite('null', 4)
     ConstantAlphaModifier(-61)
+
 
 @State
 def __430_ShockCircleDown():
@@ -815,6 +851,7 @@ def __430_ShockCircleDown():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __431_mazzle():
 
@@ -823,6 +860,7 @@ def __431_mazzle():
         RotationAngle(30000)
     sprite('null', 60)
     LinkParticle('blef_DD_fire')
+
 
 @State
 def __431_bigmazzleShockmatome():
@@ -839,6 +877,7 @@ def __431_bigmazzleShockmatome():
     sprite('null', 3)
     CreateObject('431_ShockCircle', -1)
 
+
 @State
 def __431_bigmazzleShock():
 
@@ -853,6 +892,7 @@ def __431_bigmazzleShock():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __431_bigmazzleFireMato():
 
@@ -863,6 +903,7 @@ def __431_bigmazzleFireMato():
     CreateObject('431_bigmazzleFire', -1)
     sprite('null', 5)
     CreateObject('431_bigmazzleFire', -1)
+
 
 @State
 def __431_bigmazzleFire():
@@ -883,6 +924,7 @@ def __431_bigmazzleFire():
     sprite('null', 4)
     physicsYImpulse(1500)
 
+
 @State
 def __431_bigmazzleFire2():
 
@@ -899,6 +941,7 @@ def __431_bigmazzleFire2():
     sprite('null', 4)
     ConstantAlphaModifier(-61)
 
+
 @State
 def __431_ShockCircle():
 
@@ -912,6 +955,7 @@ def __431_ShockCircle():
     sprite('null', 14)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __431_bigmazzleShockmatomeDown():
@@ -933,6 +977,7 @@ def __431_bigmazzleShockmatomeDown():
     sprite('null', 3)
     CreateObject('431_ShockCircleDown', -1)
 
+
 @State
 def __431_bigmazzleShockDown():
 
@@ -947,6 +992,7 @@ def __431_bigmazzleShockDown():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __431_bigmazzleFireMatoDown():
 
@@ -957,6 +1003,7 @@ def __431_bigmazzleFireMatoDown():
     CreateObject('431_bigmazzleFire2Down', -1)
     sprite('null', 5)
     CreateObject('431_bigmazzleFire2Down', -1)
+
 
 @State
 def __431_bigmazzleFire2Down():
@@ -975,6 +1022,7 @@ def __431_bigmazzleFire2Down():
     sprite('null', 4)
     ConstantAlphaModifier(-61)
 
+
 @State
 def __431_ShockCircleDown():
 
@@ -990,6 +1038,7 @@ def __431_ShockCircleDown():
     sprite('null', 14)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __431_bigmazzleShockmatomeUp():
@@ -1010,6 +1059,7 @@ def __431_bigmazzleShockmatomeUp():
     CreateObject('431_bigmazzleFireMatoUp', -1)
     CreateObject('431_ShockCircleUp', -1)
 
+
 @State
 def __431_bigmazzleShockUp():
 
@@ -1024,6 +1074,7 @@ def __431_bigmazzleShockUp():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __431_bigmazzleFireMatoUp():
 
@@ -1034,6 +1085,7 @@ def __431_bigmazzleFireMatoUp():
     CreateObject('431_bigmazzleFire2Up', -1)
     sprite('null', 5)
     CreateObject('431_bigmazzleFire2Up', -1)
+
 
 @State
 def __431_bigmazzleFire2Up():
@@ -1053,6 +1105,7 @@ def __431_bigmazzleFire2Up():
     sprite('null', 4)
     ConstantAlphaModifier(-61)
 
+
 @State
 def __431_ShockCircleUp():
 
@@ -1069,6 +1122,7 @@ def __431_ShockCircleUp():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def blef_entry():
 
@@ -1080,6 +1134,7 @@ def blef_entry():
     sprite('vrblef601_00', 3)
     sprite('vrblef601_01', 3)
     sprite('vrblef601_02', 3)
+
 
 @State
 def __408_BodyFire():
@@ -1093,6 +1148,7 @@ def __408_BodyFire():
     sprite('null', 30)
     sprite('null', 10)
 
+
 @State
 def __408_Fireroop():
 
@@ -1101,13 +1157,14 @@ def __408_Fireroop():
         IgnoreScreenfreeze(1)
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 10)
     CreateObject('408_Fire', -1)
     gotoLabel(0)
     label(1)
     sprite('null', 16)
+
 
 @State
 def __408_Fire():
@@ -1124,6 +1181,7 @@ def __408_Fire():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __408_Kaiho():
 
@@ -1132,7 +1190,7 @@ def __408_Kaiho():
         IgnoreScreenfreeze(1)
         E0EAEffectPosition(2)
         SetScaleY(2000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 5)
     CreateObject('408_Kaiho00', -1)
@@ -1141,6 +1199,7 @@ def __408_Kaiho():
     CreateObject('408_Kaiho01', -1)
     sprite('null', 5)
     CreateObject('408_Kaiho02', -1)
+
 
 @State
 def __408_Kaiho00():
@@ -1158,6 +1217,7 @@ def __408_Kaiho00():
     SetScaleXPerFrame(-5)
     sprite('null', 4)
     physicsYImpulse(1500)
+
 
 @State
 def __408_Kaiho01():
@@ -1177,6 +1237,7 @@ def __408_Kaiho01():
     SetScaleXPerFrame(-5)
     sprite('null', 4)
     physicsYImpulse(1500)
+
 
 @State
 def __408_Kaiho02():
@@ -1199,6 +1260,7 @@ def __408_Kaiho02():
     sprite('null', 4)
     physicsYImpulse(1000)
 
+
 @State
 def __450_gandredfireroop():
 
@@ -1207,13 +1269,14 @@ def __450_gandredfireroop():
         IgnoreScreenfreeze(1)
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 10)
     CreateObject('450_gandredfire', -1)
     gotoLabel(0)
     label(1)
     sprite('null', 10)
+
 
 @State
 def __450_gandredfire():
@@ -1230,6 +1293,7 @@ def __450_gandredfire():
     SetScaleXPerFrame(-10)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __450_Zanzo():
@@ -1250,6 +1314,7 @@ def __450_Zanzo():
     CreateParticle('blef_450atk1_sub', 1)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __450_tamesmokeroop():
 
@@ -1258,7 +1323,7 @@ def __450_tamesmokeroop():
         IgnoreScreenfreeze(1)
         E0EAEffectPosition(2)
         SetScaleY(2000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 5)
     CreateObject('450_tamesmoke00', -1)
@@ -1271,6 +1336,7 @@ def __450_tamesmokeroop():
     gotoLabel(0)
     label(1)
     sprite('null', 20)
+
 
 @State
 def __450_tamesmoke00():
@@ -1287,6 +1353,7 @@ def __450_tamesmoke00():
     SetScaleXPerFrame(-5)
     sprite('null', 4)
     physicsYImpulse(1500)
+
 
 @State
 def __450_tamesmoke01():
@@ -1306,6 +1373,7 @@ def __450_tamesmoke01():
     sprite('null', 4)
     physicsYImpulse(1500)
 
+
 @State
 def __450_tamesmoke02():
 
@@ -1324,6 +1392,7 @@ def __450_tamesmoke02():
     SetScaleXPerFrame(-5)
     sprite('null', 4)
     physicsYImpulse(1500)
+
 
 @State
 def __450_bigmazzle00():
@@ -1347,6 +1416,7 @@ def __450_bigmazzle00():
     sprite('null', 3)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __450_bigmazzle01():
 
@@ -1368,6 +1438,7 @@ def __450_bigmazzle01():
     AddScale(300)
     sprite('null', 3)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __450_bigmazzle02():
@@ -1391,6 +1462,7 @@ def __450_bigmazzle02():
     sprite('null', 3)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __450_bigmazzleShock():
 
@@ -1404,6 +1476,7 @@ def __450_bigmazzleShock():
     SetScaleSpeed(50)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __450_bigmazzleShock2():
@@ -1420,6 +1493,7 @@ def __450_bigmazzleShock2():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __450_bigmazzleFire():
 
@@ -1433,6 +1507,7 @@ def __450_bigmazzleFire():
     SetScaleXPerFrame(-15)
     sprite('null', 4)
     physicsYImpulse(1500)
+
 
 @State
 def __450_fire():
@@ -1450,6 +1525,7 @@ def __450_fire():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def __450_ryuhai():
 
@@ -1459,7 +1535,7 @@ def __450_ryuhai():
         Eff3DEffect('bl_450ryuhai_00', '')
         FaceSpawnLocation()
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(0)
     sprite('null', 10)
     ConstantAlphaModifier(26)
@@ -1467,6 +1543,7 @@ def __450_ryuhai():
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __450_lastAtk00():
@@ -1484,6 +1561,7 @@ def __450_lastAtk00():
     ConstantAlphaModifier(-51)
     CreateObject('450_lastAtkrenzoku', -1)
 
+
 @State
 def __450_lastAtk01():
 
@@ -1495,6 +1573,7 @@ def __450_lastAtk01():
         Size(1500)
     sprite('null', 11)
     sprite('null', 4)
+
 
 @State
 def __450_lastAtkrenzoku():
@@ -1508,6 +1587,7 @@ def __450_lastAtkrenzoku():
     ParticleSize(2400)
     CallCustomizableParticle('blef_433hibana_add2', -1)
 
+
 @State
 def __450_lastTame():
 
@@ -1515,15 +1595,16 @@ def __450_lastTame():
         BlendMode_Normal()
         IgnoreScreenfreeze(1)
         LinkParticle('blef_450lasttame_circle')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Size(2000)
     sprite('null', 32767)
     CreateObject('450_lastTame2', -1)
     SetScaleSpeed(-10)
     label(0)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('450_lastTame2', 32)
+    TriggerUponForState('450_lastTame2', 32)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __450_lastTame2():
@@ -1532,11 +1613,12 @@ def __450_lastTame2():
         BlendMode_Normal()
         IgnoreScreenfreeze(1)
         LinkParticle('blef_450lasttame_speed')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __450_Nokoribi():
@@ -1549,6 +1631,7 @@ def __450_Nokoribi():
     sprite('null', 28)
     ConstantAlphaModifier(-10)
 
+
 @State
 def __450nageBG():
 
@@ -1557,12 +1640,13 @@ def __450nageBG():
         IgnoreScreenfreeze(1)
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     LinkParticle('blef_450ahbg2_01')
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __450_rock():
@@ -1579,6 +1663,7 @@ def __450_rock():
     sprite('null', 30)
     AlphaValue(0)
 
+
 @State
 def __450_rock00():
 
@@ -1594,6 +1679,7 @@ def __450_rock00():
     sprite('null', 49)
     CreateObject('450_rock01', -1)
 
+
 @State
 def __450_rock01():
 
@@ -1604,6 +1690,7 @@ def __450_rock01():
         IgnoreFinishStop(1)
         Size(600)
     sprite('null', 59)
+
 
 @State
 def HeatUpEff():
@@ -1616,6 +1703,7 @@ def HeatUpEff():
     sprite('null', 65)
     CreateParticle('blef_lvup_hinoko', -1)
     PrivateSE('blse_08')
+
 
 @State
 def __440_frameEffEX():
@@ -1639,12 +1727,13 @@ def __440_frameEffEX():
     ScreenShake(8000, 8000)
     sprite('vrblef440_04', 3)
     CreateObject('440_frameEffSub2', -1)
-    PassbackAddActionMarkToFunction('440_frameEffSub', 32)
+    TriggerUponForState('440_frameEffSub', 32)
     sprite('vrblef440_05', 3)
     sprite('vrblef440_06', 3)
     sprite('vrblef440_07', 3)
     sprite('vrblef440_08', 2)
     sprite('vrblef440_09', 2)
+
 
 @State
 def __440_frameEff():
@@ -1667,12 +1756,13 @@ def __440_frameEff():
     IgnorePauses(2)
     ScreenShake(8000, 8000)
     sprite('vrblef440_04', 3)
-    PassbackAddActionMarkToFunction('440_frameEffSub', 32)
+    TriggerUponForState('440_frameEffSub', 32)
     sprite('vrblef440_05', 3)
     sprite('vrblef440_06', 3)
     sprite('vrblef440_07', 3)
     sprite('vrblef440_08', 2)
     sprite('vrblef440_09', 2)
+
 
 @State
 def __440_Brust():
@@ -1693,6 +1783,7 @@ def __440_Brust():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __440_frameEffSub():
 
@@ -1704,12 +1795,13 @@ def __440_frameEffSub():
         SetScaleZ(750)
         RemoveOnCallStateEnd(2)
         LinkParticle('blef_440bloom_00')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     SetScaleSpeed(60)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __440_frameEffSub2():
@@ -1729,6 +1821,7 @@ def __440_frameEffSub2():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def EventCKRun():
 
@@ -1744,12 +1837,13 @@ def EventCKRun():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTG():
 
     def upon_IMMEDIATE():
         LoadSpritePalette(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         XPositionRelativeFacing(-50000)
         SetZVal(1000)
     sprite('tg620_02', 32767)

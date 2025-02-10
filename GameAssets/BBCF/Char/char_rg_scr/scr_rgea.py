@@ -19,6 +19,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_OD():
 
@@ -40,6 +41,7 @@ def EMB_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_RG_AH():
 
@@ -60,6 +62,7 @@ def EMB_RG_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def ModelMagicCircle1():
 
@@ -70,6 +73,7 @@ def ModelMagicCircle1():
         ColorFromPaletteIndex(224)
         IgnoreScreenfreeze(1)
     sprite('null', 74)
+
 
 @State
 def DIST_RG():
@@ -109,12 +113,14 @@ def DIST_RG():
     DeviationY(-10000, 10000)
     RandAddScale(-500, 500)
 
+
 @State
 def rgef_drains():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(224, 224, 224)
     CallCustomizableParticle('rgef_draina', -1)
+
 
 @State
 def rgef_drain():
@@ -123,11 +129,13 @@ def rgef_drain():
     ParticleColorFromPalette(224, 224, 224)
     CallCustomizableParticle('rgef_drainb', -1)
 
+
 @State
 def ThrowMazzle():
     sprite('null', 120)
     CreateParticle('rgef_muzzle00', -1)
     CreateParticle('rgef_muzzle00', -1)
+
 
 @State
 def rgef431_Start():
@@ -144,6 +152,7 @@ def rgef431_Start():
     ParticleLayer(2)
     ParticleColor(4294901760, 4294901760, 16711680)
     CallCustomizableParticle('rgef_bloodkineback', -1)
+
 
 @State
 def rgef203atk():
@@ -235,6 +244,7 @@ def rgef203atk():
     CreateParticle('rgef02', 3)
     sprite('vrrgef203atk_10', 3)
     CreateParticle('rgef02', 0)
+
 
 @State
 def rgef203atkD():
@@ -333,6 +343,7 @@ def rgef203atkD():
     sprite('vrrgef203atk_10', 3)
     CreateParticle('rgef02', 0)
 
+
 @State
 def rgef213atk():
 
@@ -382,6 +393,7 @@ def rgef213atk():
     sprite('vrrgef213atk_05', 2)
     CreateParticle('rgef03', 0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef213atkD():
@@ -437,6 +449,7 @@ def rgef213atkD():
     sprite('vrrgef213atk_05', 2)
     CreateParticle('rgef03', 0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef233atk():
@@ -508,6 +521,7 @@ def rgef233atk():
     CreateParticle('rgef03', 1)
     CreateParticle('rgef03', 2)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef233atkD():
@@ -590,6 +604,7 @@ def rgef233atkD():
     CreateParticle('rgef03', 2)
     ConstantAlphaModifier(-10)
 
+
 @State
 def rgef253atk():
 
@@ -632,6 +647,7 @@ def rgef253atk():
     CreateParticle('rgef03', 3)
     CreateParticle('rgef03', 4)
 
+
 @State
 def rgef253atkD():
 
@@ -673,6 +689,7 @@ def rgef253atkD():
     CreateParticle('rgef03', 2)
     CreateParticle('rgef03', 3)
     CreateParticle('rgef03', 4)
+
 
 @State
 def rgef400loop():
@@ -742,6 +759,7 @@ def rgef400loop():
     gotoLabel(0)
     sprite('null', 20)
 
+
 @State
 def rgef400end():
 
@@ -775,6 +793,7 @@ def rgef400end():
     sprite('vrrgef400atk_08', 4)
     sprite('null', 20)
 
+
 @State
 def rgef400nokori():
 
@@ -799,6 +818,7 @@ def rgef400nokori():
     sprite('vrrgef400b_09', 3)
     sprite('null', 9)
     ConstantAlphaModifier(-6)
+
 
 @State
 def rgef401atk():
@@ -907,6 +927,7 @@ def rgef401atk():
     CreateParticle('rgef02', 1)
     CreateParticle('rgef02', 2)
 
+
 @State
 def rgef402atk():
 
@@ -961,6 +982,7 @@ def rgef402atk():
     CreateObject('rgef_drains', 1)
     CreateObject('rgef_drains', 2)
 
+
 @State
 def rgef406atk():
 
@@ -983,6 +1005,7 @@ def rgef406atk():
     CreateParticle('rgef02', 2)
     sprite('vrrgef406atk_02', 3)
     sprite('vrrgef406atk_03', 3)
+
 
 @State
 def rgef406batk():
@@ -1039,6 +1062,7 @@ def rgef406batk():
     CreateParticle('rgef03', 1)
     CreateParticle('rgef03', 2)
     ConstantAlphaModifier(-20)
+
 
 @State
 def rgef406batkD():
@@ -1100,6 +1124,7 @@ def rgef406batkD():
     CreateParticle('rgef03', 0)
     ConstantAlphaModifier(-20)
 
+
 @State
 def rgef408nokori():
 
@@ -1122,6 +1147,7 @@ def rgef408nokori():
     sprite('vrrgef408b_04', 2)
     sprite('vrrgef408b_05', 2)
     sprite('vrrgef408b_06', 2)
+
 
 @State
 def rgef408Shot():
@@ -1147,10 +1173,10 @@ def rgef408Shot():
         AddX(250000)
         Size(1000)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
             NoAttackDuringAction(1)
             sendToLabel(0)
@@ -1180,7 +1206,7 @@ def rgef408Shot():
     sprite('vrrgef408_shot01', 1)
     XImpulseAcceleration(60)
     label(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrrgef408_shot02', 2)
     XImpulseAcceleration(60)
     sprite('vrrgef408_shot02', 2)
@@ -1196,6 +1222,7 @@ def rgef408Shot():
     sprite('vrrgef408_shot06', 3)
     Visibility(1)
     sprite('vrrgef408_shot07', 3)
+
 
 @State
 def rgef408ShotD():
@@ -1223,21 +1250,21 @@ def rgef408ShotD():
         AddX(250000)
         Size(1000)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(80)
             AddActionMark(1)
-            if (SLOT_2 == 3):
+            if SLOT_2 == 3:
                 XImpulseAcceleration(50)
                 AttackOff()
                 NoAttackDuringAction(1)
     Visibility(1)
     CreateObject('408_dog', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(175)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(175)
     sprite('vrrgef408_shot00', 1)
     sprite('vrrgef408_shot01', 1)
     AttackOff()
@@ -1280,6 +1307,7 @@ def rgef408ShotD():
     Visibility(1)
     sprite('vrrgef408_shot07', 3)
 
+
 @State
 def __408_dog():
 
@@ -1300,10 +1328,10 @@ def __408_dog():
         ChipPercentage(0)
         StarterRating(2)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
             NoAttackDuringAction(1)
             sendToLabel(0)
@@ -1358,7 +1386,7 @@ def __408_dog():
     sprite('vrrgef408_02', 1)
     XImpulseAcceleration(90)
     label(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrrgef408_03', 2)
     CreateParticle('rgef03', 0)
     CreateParticle('rgef03', 1)
@@ -1397,6 +1425,7 @@ def __408_dog():
     CreateObject('rgef_drains', 2)
     sprite('vrrgef408_08', 4)
 
+
 @State
 def __408_dogD():
 
@@ -1418,19 +1447,19 @@ def __408_dogD():
         ChipPercentage(0)
         StarterRating(2)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
         def upon_OPPONENT_HIT():
             if SLOT_51:
-                clearUponHandler(12)
+                clearUponHandler(OPPONENT_HIT)
                 Damage(300)
             SLOT_51 = 1
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(80)
             AddActionMark(1)
-            if (SLOT_2 == 3):
+            if SLOT_2 == 3:
                 XImpulseAcceleration(50)
                 AttackOff()
                 NoAttackDuringAction(1)
@@ -1505,7 +1534,7 @@ def __408_dogD():
     sprite('vrrgef408_02', 1)
     XImpulseAcceleration(90)
     label(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrrgef408_03', 2)
     WallCollisionDetection(0)
     CreateParticle('rgef03', 0)
@@ -1544,6 +1573,7 @@ def __408_dogD():
     CreateObject('rgef_drains', 1)
     CreateObject('rgef_drains', 2)
     sprite('vrrgef408_08', 4)
+
 
 @State
 def rgef412effpos():
@@ -1617,6 +1647,7 @@ def rgef412effpos():
     CreateObject('rgef_drains', 28)
     CreateObject('rgef_drains', 29)
 
+
 @State
 def rgef_414():
 
@@ -1630,6 +1661,7 @@ def rgef_414():
     sprite('vrrgef414_10', 3)
     sprite('vrrgef414_11', 3)
     sprite('vrrgef414_12', 3)
+
 
 @State
 def rgef_414_fall():
@@ -1646,6 +1678,7 @@ def rgef_414_fall():
     sprite('vrrgef414_02', 5)
     gotoLabel(0)
 
+
 @State
 def rgef432lock():
 
@@ -1659,7 +1692,8 @@ def rgef432lock():
     sprite('vrrgef432lock_03', 4)
     sprite('vrrgef432lock_04', 4)
     sprite('vrrgef432lock_05', 4)
-sprite('null', 1)
+    sprite('null', 1)
+
 
 @State
 def rgef432loop():
@@ -1724,6 +1758,7 @@ def rgef432loop():
     CommonSE('007_swing_knife_1')
     sprite('null', 2)
     CommonSE('007_swing_knife_1')
+
 
 @State
 def rgef432loop_SP():
@@ -1852,6 +1887,7 @@ def rgef432loop_SP():
     sprite('null', 2)
     CommonSE('007_swing_knife_1')
 
+
 @State
 def rgef440():
 
@@ -1888,6 +1924,7 @@ def rgef440():
     CreateParticle('rgef02', 9)
     CreateObject('rgef_drains', 9)
     sprite('vrrgef440_05', 3)
+
 
 @State
 def rgef440Ex():
@@ -1926,6 +1963,7 @@ def rgef440Ex():
     CreateObject('rgef_drains', 9)
     sprite('vrrgef440_05', 3)
 
+
 @State
 def rgef440StartEff():
 
@@ -1956,6 +1994,7 @@ def rgef440StartEff():
     CreateParticle('rgef02', 0)
     CreateObject('rgef_drains', 0)
 
+
 @State
 def rgef450():
 
@@ -1973,6 +2012,7 @@ def rgef450():
     sprite('vrrgef450atk_05', 5)
     sprite('vrrgef450atk_06', 5)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef451atk():
@@ -2096,6 +2136,7 @@ def rgef451atk():
     CreateParticle('rgef02', 2)
     sprite('vrrgef451atk_10', 3)
     sprite('null', 12)
+
 
 @State
 def rgef451atkOD():
@@ -2280,6 +2321,7 @@ def rgef451atkOD():
     sprite('vrrgef451atk_10', 3)
     sprite('null', 12)
 
+
 @State
 def rgef610wingmake():
 
@@ -2296,6 +2338,7 @@ def rgef610wingmake():
     sprite('rgef610_05', 3)
     sprite('rgef610_06', 3)
     sprite('rgef610_06ex01', 3)
+
 
 @State
 def rgef610wingbreak():
@@ -2363,6 +2406,7 @@ def rgef610wingbreak():
     sprite('rgef610_16', 4)
     sprite('null', 30)
 
+
 @State
 def AstralMoveSword():
 
@@ -2373,6 +2417,7 @@ def AstralMoveSword():
     sprite('rg460_swd01', 4)
     sprite('rg460_swd02', 4)
     physicsYImpulse(2000)
+
 
 @State
 def ChangeToDeathscythe():
@@ -2415,6 +2460,7 @@ def ChangeToDeathscythe():
     sprite('rg460_kama07ex01', 2)
     sprite('rg460_kama07ex02', 2)
     loopRest()
+
 
 @State
 def nyPhantom():
@@ -2483,6 +2529,7 @@ def nyPhantom():
     sprite('ny600_12', 6)
     sprite('ny600_13', 6)
     sprite('ny600_14', 6)
+
 
 @State
 def rgef203atkD3rd():
@@ -2602,6 +2649,7 @@ def rgef203atkD3rd():
     sprite('vrrgef203atk_10', 4)
     CreateParticle('rgef02', 0)
 
+
 @State
 def EventEffectRGVsTB_Hakumen():
     sprite('ha041_03', 32767)
@@ -2610,6 +2658,7 @@ def EventEffectRGVsTB_Hakumen():
     Flip()
     AddX(-520000)
     loopRest()
+
 
 @State
 def NOISE():
@@ -2623,6 +2672,7 @@ def NOISE():
         SetPosYByScreenPer(50)
     sprite('null', 60)
     loopRest()
+
 
 @State
 def rgef414atk():
@@ -2723,6 +2773,7 @@ def rgef414atk():
     sprite('vrrgef203atk_10', 4)
     CreateParticle('rgef02', 0)
 
+
 @State
 def DS_Niku_Head():
 
@@ -2737,6 +2788,7 @@ def DS_Niku_Head():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Niku_Body():
@@ -2753,6 +2805,7 @@ def DS_Niku_Body():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Niku_Leg():
 
@@ -2767,6 +2820,7 @@ def DS_Niku_Leg():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Niku_Approach():
@@ -2783,6 +2837,7 @@ def DS_Niku_Approach():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Niku_Throw():
 
@@ -2797,6 +2852,7 @@ def DS_Niku_Throw():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Shot_Head():
@@ -2813,6 +2869,7 @@ def DS_Shot_Head():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Shot_Body():
 
@@ -2827,6 +2884,7 @@ def DS_Shot_Body():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Shot_Leg():
@@ -2843,6 +2901,7 @@ def DS_Shot_Leg():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Shot_Approach():
 
@@ -2857,6 +2916,7 @@ def DS_Shot_Approach():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Shot_Throw():
@@ -2873,6 +2933,7 @@ def DS_Shot_Throw():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def Eventrgef_drains():
     sprite('null', 200)
@@ -2880,6 +2941,7 @@ def Eventrgef_drains():
     CallPrivateEffect('rgef_draina')
     Size(2000)
     Visibility(1)
+
 
 @State
 def Eventrgef_drains2():
@@ -2896,6 +2958,7 @@ def Eventrgef_drains2():
     ParticleRotationAngle(90000)
     CallCustomizableParticle('rgef00', 2)
 
+
 @State
 def Eventrgef_drains3():
 
@@ -2908,6 +2971,7 @@ def Eventrgef_drains3():
     ParticleColorFromPalette(215, 215, 209)
     CallCustomizableParticle('rgef432break', 0)
 
+
 @State
 def HAKUMEN_NOUNAI():
 
@@ -2917,7 +2981,7 @@ def HAKUMEN_NOUNAI():
         XPositionRelativeFacing(-640000)
         AbsoluteY(0)
         Size(20000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_screen_black', 30)
     AlphaValue(0)
     ConstantAlphaModifier(4)
@@ -2930,6 +2994,7 @@ def HAKUMEN_NOUNAI():
     sprite('vr_screen_black', 10)
     AlphaValue(0)
     ConstantAlphaModifier(0)
+
 
 @State
 def Eventrgef414atk():
@@ -3030,6 +3095,7 @@ def Eventrgef414atk():
     sprite('vrrgef203atk_10', 4)
     CreateParticle('rgef02', 0)
 
+
 @State
 def Eventoffset():
 
@@ -3042,12 +3108,13 @@ def Eventoffset():
     CommonSE('108_attack_offset')
     ScreenShake(30000, 30000)
 
+
 @State
 def EventRC():
 
     def upon_IMMEDIATE():
         LoadSpritePalette(0)
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
         XPositionRelativeFacing(-340000)
         SetZVal(501)
     label(0)
@@ -3078,6 +3145,7 @@ def EventRC():
     sprite('rc033_04', 3)
     sprite('rc033_05', 3)
 
+
 @State
 def EventWhiteOut():
 
@@ -3093,6 +3161,7 @@ def EventWhiteOut():
     AlphaValue(200)
     ConstantAlphaModifier(-10)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -3101,6 +3170,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Noise():
@@ -3115,6 +3185,7 @@ def Noise():
     CommonSE('014_electric_ml')
     loopRest()
 
+
 @State
 def Noise_Long():
 
@@ -3127,19 +3198,19 @@ def Noise_Long():
         SetActionMark(5)
         SLOT_58 = 10
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 AddActionMark(-1)
-                if (SLOT_2 <= 0):
-                    SLOT_58 = (SLOT_58 + (-1))
+                if SLOT_2 <= 0:
+                    SLOT_58 = SLOT_58 + -1
                     Unknown61(0, 30, 0, 90, 0, 0, 0, 0, 0, 0, 0, 0)
                     SLOT_2 = SLOT_0
                     CommonSE('014_electric_l')
-            if (SLOT_58 <= 0):
-                clearUponHandler(3)
+            if SLOT_58 <= 0:
+                clearUponHandler(EVERY_FRAME)
 
         def upon_32():
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
             clearUponHandler(32)
             sendToLabel(0)
     sprite('null', 32767)

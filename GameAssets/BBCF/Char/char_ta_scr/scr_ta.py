@@ -2,6 +2,7 @@
 def PreInit():
     CharacterID('ta')
 
+
 @Subroutine
 def MatchInit():
     Health(200000)
@@ -139,19 +140,21 @@ def MatchInit():
     CreateObject('MikadoCreate', -1)
     RegisterObject(11, 1)
 
+
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_81):
+    if not SLOT_81:
         if SLOT_21:
-            SLOT_31 = (SLOT_31 + 1)
-            if (SLOT_31 >= 1800):
+            SLOT_31 = SLOT_31 + 1
+            if SLOT_31 >= 1800:
                 SLOT_31 = 1800
-            SLOT_32 = (SLOT_32 + 1)
-            if (SLOT_32 >= 1800):
+            SLOT_32 = SLOT_32 + 1
+            if SLOT_32 >= 1800:
                 SLOT_32 = 1800
         else:
-            PassbackAddActionMarkToFunction('EffAtkBall', 32)
-            PassbackAddActionMarkToFunction('EffAtkFunnel', 32)
+            TriggerUponForState('EffAtkBall', 32)
+            TriggerUponForState('EffAtkFunnel', 32)
+
 
 @Subroutine
 def DefSetting():
@@ -165,6 +168,7 @@ def DefSetting():
     NoDamageAction(1)
     SetActionMark(481)
 
+
 @State
 def CmnActStand():
 
@@ -173,98 +177,122 @@ def CmnActStand():
     sprite('null', 32767)
     loopRest()
 
+
 @Subroutine
 def CheckTakemiAtk():
     SLOT_47 = 0
-    if (SLOT_4 == 0):
-        if (SLOT_5 == 0):
+    if SLOT_4 == 0:
+        if SLOT_5 == 0:
             SLOT_47 = 1
+
 
 @Subroutine
 def CheckTakemiAtkSpLaser():
     SLOT_47 = 0
-    if (SLOT_4 == 0):
-        if (SLOT_5 == 0):
-            if (SLOT_7 == 1):
+    if SLOT_4 == 0:
+        if SLOT_5 == 0:
+            if SLOT_7 == 1:
                 SLOT_47 = 1
+
 
 @Subroutine
 def CheckTakemiOverDrive():
     SLOT_47 = 0
-    if (SLOT_4 == 0):
-        if (SLOT_5 == 0):
-            if (SLOT_6 == 1):
+    if SLOT_4 == 0:
+        if SLOT_5 == 0:
+            if SLOT_6 == 1:
                 SLOT_47 = 1
-            if (SLOT_6 == 3):
+            if SLOT_6 == 3:
                 SLOT_47 = 1
+
 
 @Subroutine
 def Func_Atk_Punch():
     ObjectUpon2(11, 101, 0)
 
+
 @Subroutine
 def Func_Atk_Shot():
     ObjectUpon2(11, 102, 0)
+
 
 @Subroutine
 def Func_Atk_Land():
     ObjectUpon2(11, 103, 0)
 
+
 @Subroutine
 def Func_Atk_Rain():
     ObjectUpon2(11, 104, 0)
+
 
 @Subroutine
 def Func_Atk_Rain_R():
     ObjectUpon2(11, 105, 0)
 
+
 @Subroutine
 def Func_Atk_Eat():
     ObjectUpon2(11, 106, 0)
+
 
 @Subroutine
 def Func_Atk_Quake():
     ObjectUpon2(11, 107, 0)
 
+
 @Subroutine
 def Func_Atk_Move():
     ObjectUpon2(11, 108, 0)
 
+
 @Subroutine
 def Func_Atk_Thunder():
     ObjectUpon2(11, 109, 0)
+
 
 @Subroutine
 def Func_Atk_MK_Funnel():
     SLOT_32 = 0
     ObjectUpon2(11, 200, 0)
 
+
 @Subroutine
 def Func_Atk_MK_Ball():
     SLOT_31 = 0
     ObjectUpon2(11, 201, 0)
+
 
 @Subroutine
 def Func_Atk_Sp_Beam():
     SLOT_7 = 1
     ObjectUpon2(11, 301, 0)
 
+
 @Subroutine
 def Func_Atk_Sp_Laser():
     SLOT_7 = 0
     ObjectUpon2(11, 302, 0)
 
+
 @Subroutine
 def Func_Atk_AstralHeat():
     ObjectUpon2(11, 400, 0)
+
 
 @Subroutine
 def Func_OverDrive():
     ObjectUpon2(11, 600, 0)
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('rg502', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14433, 12643, 24884, 25399, 24887, 25399, 13617, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('rg502', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14433, 12643, 24884, 25399, 24887, 25399, 13617, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
@@ -278,6 +306,7 @@ def CmnActEntry():
     sprite('keep', 100)
     enterState('CmnActStand')
 
+
 @State
 def CmnActRoundWin():
 
@@ -287,6 +316,7 @@ def CmnActRoundWin():
     ObjectUpon2(11, 810, 0)
     DemoTimer(240)
 
+
 @State
 def CmnActMatchWin():
 
@@ -295,6 +325,7 @@ def CmnActMatchWin():
     sprite('null', 32767)
     ObjectUpon2(11, 810, 0)
     DemoTimer(300)
+
 
 @State
 def CmnActLose():

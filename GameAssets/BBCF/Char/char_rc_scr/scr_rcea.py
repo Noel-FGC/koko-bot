@@ -2,6 +2,7 @@
 def dmy():
     sprite('vrdmy', 120)
 
+
 @State
 def EMB():
 
@@ -22,6 +23,7 @@ def EMB():
     sprite('null', 10)
     ColorTransition(4286625023, 10)
     sprite('null', 80)
+
 
 @State
 def EMB_RC_OD():
@@ -44,6 +46,7 @@ def EMB_RC_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_RC_AH():
 
@@ -65,6 +68,7 @@ def EMB_RC_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def Gi():
 
@@ -76,6 +80,7 @@ def Gi():
         IgnorePauses(3)
     sprite('vrgi000_00', 100)
     enterState('GiNeutral')
+
 
 @State
 def GiNeutral():
@@ -105,6 +110,7 @@ def GiNeutral():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def GiPlayerDamage():
     sprite('vrgi060_00', 3)
@@ -120,6 +126,7 @@ def GiPlayerDamage():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def GiTurn():
     sprite('vrgi000_10', 2)
@@ -128,6 +135,7 @@ def GiTurn():
     sprite('vrgi000_10', 1)
     sprite('keep', 100)
     enterState('GiNeutral')
+
 
 @State
 def GiDash():
@@ -139,6 +147,7 @@ def GiDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def GiDashDown():
     sprite('vrgi032_00', 3)
@@ -149,6 +158,7 @@ def GiDashDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def GiDashUp():
     sprite('vrgi033_00', 3)
@@ -158,6 +168,7 @@ def GiDashUp():
     sprite('vrgi033_03', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def gi_GirdBreak():
@@ -170,6 +181,7 @@ def gi_GirdBreak():
     sprite('vrgi090_03', 3)
     sprite('vrgi090_04', 3)
     ConstantAlphaModifier(-20)
+
 
 @State
 def GiStorm():
@@ -218,6 +230,7 @@ def GiStorm():
     sprite('vrgi432_14', 4)
     enterState('GiNeutral')
 
+
 @State
 def GiHide():
     label(0)
@@ -225,6 +238,7 @@ def GiHide():
     Visibility(1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def nago_medama():
@@ -246,17 +260,19 @@ def nago_medama():
     sprite('rc063_11nex09', 20)
     ConstantAlphaModifier(-20)
 
+
 @Subroutine
 def FlogDie():
-    clearUponHandler(3)
-    clearUponHandler(2)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(LANDING)
     clearUponHandler(19)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     SLOT_59 = 0
     SetActionMark(0)
     NoAttackDuringAction(1)
     NoDamageAction(1)
     sendToLabel(324)
+
 
 @Subroutine
 def FlogReset():
@@ -264,6 +280,7 @@ def FlogReset():
     SelfWind(0, 0, 0)
     ExternalForcesRate(0, 0)
     SLOT_52 = 0
+
 
 @State
 def Flog():
@@ -306,7 +323,7 @@ def Flog():
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
         GuardpointHitstop(-2, -1)
-        if SLOT_85:
+        if SLOT_IsUnlimited:
             MaxHP(1600)
             CurrentHP(1600)
             EnableAfterimage(1)
@@ -323,8 +340,8 @@ def Flog():
             if SLOT_59:
                 callSubroutine('FlogDie')
 
-        def upon_44():
-            if (not SLOT_85):
+        def upon_PLAYER_DAMAGED():
+            if not SLOT_IsUnlimited:
                 if SLOT_59:
                     callSubroutine('FlogDie')
 
@@ -336,29 +353,29 @@ def Flog():
             if SLOT_53:
                 SLOT_9 = 1
 
-        def upon_FRAME_STEP():
-            if (not SLOT_85):
-                SLOT_56 = (SLOT_56 + (-1))
-                if (SLOT_56 < 0):
+        def upon_EVERY_FRAME():
+            if not SLOT_IsUnlimited:
+                SLOT_56 = SLOT_56 + -1
+                if SLOT_56 < 0:
                     if SLOT_59:
                         callSubroutine('FlogDie')
-            if SLOT_85:
-                if (not SLOT_21):
+            if SLOT_IsUnlimited:
+                if not SLOT_21:
                     if SLOT_59:
                         callSubroutine('FlogDie')
             if SLOT_2:
-                if (SLOT_29 < 280000):
+                if SLOT_29 < 280000:
                     SetActionMark(0)
                     sendToLabel(661)
             if SLOT_2:
                 CallPrivateFunction('RC_FlogWindCheck', 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_2:
-                if (SLOT_40 < 0):
-                    if (SLOT_38 == 0):
+                if SLOT_40 < 0:
+                    if SLOT_IsFacingRight == 0:
                         SetActionMark(0)
                         sendToLabel(322)
-                if (SLOT_40 > 0):
-                    if (SLOT_38 == 1):
+                if SLOT_40 > 0:
+                    if SLOT_IsFacingRight == 1:
                         SetActionMark(0)
                         sendToLabel(322)
 
@@ -373,9 +390,9 @@ def Flog():
     sprite('vrrcef_fgjp03', 3)
     PrivateSE('rcse_24')
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(100000)
     Size(500)
     SetScaleSpeed(50)
 
@@ -390,8 +407,8 @@ def Flog():
     gotoLabel(55)
     loopRest()
     label(50)
-    clearUponHandler(2)
-    sendToLabelUpon(42, 136)
+    clearUponHandler(LANDING)
+    uponSendToLabel(GUARDPOINT_ACTIVATION, 136)
     callSubroutine('FlogReset')
     AbsoluteY(0)
     sprite('vrrcef_fgjp06', 2)
@@ -523,7 +540,7 @@ def Flog():
     physicsXImpulse(12000)
     physicsYImpulse(13000)
     setGravity(1300)
-    sendToLabelUpon(2, 100)
+    uponSendToLabel(LANDING, 100)
     sprite('vrrcef_fgjp04', 3)
     label(101)
     sprite('vrrcef_fgjp05', 3)
@@ -531,7 +548,7 @@ def Flog():
     gotoLabel(101)
     label(100)
     callSubroutine('FlogReset')
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     sprite('vrrcef_fgjp06', 2)
@@ -556,7 +573,7 @@ def Flog():
     SetActionMark(0)
     physicsXImpulse(0)
     NoAttackDuringAction(1)
-    clearUponHandler(42)
+    clearUponHandler(GUARDPOINT_ACTIVATION)
     sprite('vrrcef_fggr00', 2)
     SLOT_53 = 1
     PerExternalForces(80)
@@ -639,8 +656,8 @@ def Flog():
     sprite('vrrcef_fggr01', 6)
     sprite('vrrcef_fggr00', 6)
     loopRest()
-    if SLOT_85:
-        _gotolabel(337)
+    if SLOT_IsUnlimited:
+        conditionalSendToLabel(337)
     sprite('vrrcef_fggr00', 6)
     sprite('vrrcef_fggr01', 6)
     sprite('vrrcef_fggr02', 6)
@@ -673,6 +690,7 @@ def Flog():
     ConstantAlphaModifier(-14)
     CreateObject('FrogDelete', 0)
 
+
 @State
 def LightningFrog():
 
@@ -693,6 +711,7 @@ def LightningFrog():
     RandAddRotation(-180000, 180000)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def LightningFrogDelete():
@@ -717,6 +736,7 @@ def LightningFrogDelete():
     sprite('vrrcef_lightning03', 2)
     RandAddRotation(-180000, 180000)
 
+
 @State
 def StayThunder():
 
@@ -737,10 +757,12 @@ def StayThunder():
     sprite('null', 1)
     sprite('vrrcef_stlt03', 1)
 
+
 @State
 def ExWindRight():
     sprite('null', 100)
     CreateParticle('rcef_exwindR', -1)
+
 
 @State
 def rcef_212Rose():
@@ -750,11 +772,13 @@ def rcef_212Rose():
     CallCustomizableParticle('rcef_212rose00', -1)
     CreateParticle('rcef_212light00', -1)
 
+
 @State
 def rcef_252Wind():
     sprite('null', 100)
     E0EAEffectPosition(2)
     CreateParticle('rcef_252up_mc02', -1)
+
 
 @State
 def rc201_Wind():
@@ -768,6 +792,7 @@ def rc201_Wind():
     BlendMode_Add()
     CommonSE('006_swing_blade_0')
     Eff3DEffect('rcef_windA.DIG', 'rcef_windA_mot_000.mmot')
+
 
 @State
 def rcef_201rose():
@@ -785,17 +810,20 @@ def rcef_201rose():
     CallCustomizableParticle('rcef_201rose03', 0)
     CreateParticle('rcef_201rose04', 0)
 
+
 @State
 def rcef_202rose():
     sprite('null', 120)
     ParticleColorFromPalette(225, 226, 227)
     CallCustomizableParticle('rcef_202rose00', -1)
 
+
 @State
 def rcef_202wind():
     sprite('null', 120)
     CreateParticle('rcef_202wind00', -1)
     CreateParticle('rcef_202wind01', -1)
+
 
 @State
 def rcef_202tsuki():
@@ -804,12 +832,14 @@ def rcef_202tsuki():
     ParticleColorFromPalette(233, 127, 127)
     CallCustomizableParticle('rcef_202tsuki', -1)
 
+
 @State
 def rc231_Wind():
     sprite('null', 19)
     BlendMode_Add()
     CommonSE('006_swing_blade_0')
     Eff3DEffect('rcef_windB.DIG', 'rcef_windB_mot_000.mmot')
+
 
 @State
 def rcef_231rose():
@@ -821,11 +851,13 @@ def rcef_231rose():
     CallCustomizableParticle('rcef_231rose03', 0)
     CreateParticle('rcef_231rose04', 0)
 
+
 @State
 def rcef232ChairMc():
     sprite('null', 120)
     CreateParticle('rcef_elchair_mc00', 0)
     CreateParticle('rcef_elchair_mc01', 0)
+
 
 @State
 def rcef_602EntryPtc():
@@ -838,6 +870,7 @@ def rcef_602EntryPtc():
     CreateObject('rcef_602EntryRose', -1)
     CreateObject('rcef_602EntryWind', -1)
 
+
 @State
 def rcef_602EntryRose():
 
@@ -847,6 +880,7 @@ def rcef_602EntryRose():
     ParticleColorFromPalette(225, 226, 227)
     CallPrivateEffect('rcef_602entryrose00')
 
+
 @State
 def rcef_602EntryLight():
 
@@ -855,6 +889,7 @@ def rcef_602EntryLight():
     sprite('null', 100)
     LinkParticle('rcef_602entrylight00')
 
+
 @State
 def rcef_602EntryWind():
 
@@ -862,6 +897,7 @@ def rcef_602EntryWind():
         E0EAEffectPosition(2)
     sprite('null', 100)
     LinkParticle('rcef_602entrywind00')
+
 
 @State
 def ModelMagicCircle1():
@@ -879,6 +915,7 @@ def ModelMagicCircle1():
     sprite('null', 49)
     E0EAEffectPosition(0)
 
+
 @State
 def ModelMagicCircleAST():
 
@@ -888,6 +925,7 @@ def ModelMagicCircleAST():
     sprite('null', 300)
     CreateObject('AstralMagicCircleA', -1)
     CreateObject('AstralMagicCircleB', -1)
+
 
 @State
 def AstralMagicCircleA():
@@ -913,6 +951,7 @@ def AstralMagicCircleA():
     sprite('null', 20)
     ColorTransition(4278190080, 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def AstralMagicCircleB():
@@ -942,17 +981,20 @@ def AstralMagicCircleB():
     ConstantAlphaModifier(-12)
     SetScaleSpeed(2)
 
+
 @State
 def rcef_mc():
     sprite('null', 100)
     ParticleColorFromPalette(225, 226, 227)
     CallCustomizableParticle('rcef_mc', -1)
 
+
 @State
 def rcef_600rose():
     sprite('null', 100)
     ParticleColorFromPalette(265, 266, 266)
     CallCustomizableParticle('rcef_600rose', 0)
+
 
 @State
 def rcef_404flog():
@@ -961,6 +1003,7 @@ def rcef_404flog():
     ParticleColorFromPalette(225, 226, 227)
     CallCustomizableParticle('rcef_404flog', 0)
 
+
 @State
 def LightningRodStart():
     sprite('null', 100)
@@ -968,6 +1011,7 @@ def LightningRodStart():
     PaletteIndex(1)
     ParticleColorFromPalette(230, 230, 230)
     CallCustomizableParticle('rcef_lightrod_make', -1)
+
 
 @State
 def LightningRodRoop():
@@ -978,6 +1022,7 @@ def LightningRodRoop():
     CallCustomizableParticle('rcef_lightrod00', -1)
     ParticleColorFromPalette(230, 230, 230)
     CallCustomizableParticle('rcef_lightrod_roop', -1)
+
 
 @State
 def LightningRodDelete():
@@ -991,6 +1036,7 @@ def LightningRodDelete():
     ParticleColorFromPalette(230, 230, 230)
     CallCustomizableParticle('rcef_lightrod_del', -1)
 
+
 @State
 def BatSummons():
     sprite('null', 100)
@@ -999,6 +1045,7 @@ def BatSummons():
     CallCustomizableParticle('rcef_gi_act00', -1)
     ParticleColorFromPalette(28, 28, 28)
     CallCustomizableParticle('rcef_gi_actb', -1)
+
 
 @State
 def BatDelete():
@@ -1010,6 +1057,7 @@ def BatDelete():
     CallCustomizableParticle('rcef_gi_act01', -1)
     CreateParticle('rcef_gi_act', -1)
 
+
 @State
 def BirdSummons():
     sprite('null', 120)
@@ -1017,6 +1065,7 @@ def BirdSummons():
     CreateParticle('rcef_birdkirakira00', 0)
     ParticleColorFromPalette(239, 175, 127)
     CallCustomizableParticle('rcef_birdsummons', 0)
+
 
 @State
 def FrogDelete():
@@ -1028,6 +1077,7 @@ def FrogDelete():
     ParticleColorFromPalette(236, 236, 236)
     CallCustomizableParticle('rcef_gi_act01', -1)
     CreateParticle('rcef_gi_act', -1)
+
 
 @State
 def rcef212windA():
@@ -1041,6 +1091,7 @@ def rcef212windA():
         E0EAEffectRotation(2)
     sprite('null', 120)
 
+
 @State
 def rcef212windB():
 
@@ -1052,6 +1103,7 @@ def rcef212windB():
         E0EAEffectDirection(2)
         E0EAEffectRotation(2)
     sprite('null', 120)
+
 
 @State
 def rcef252windA():
@@ -1065,6 +1117,7 @@ def rcef252windA():
         E0EAEffectRotation(2)
     sprite('null', 120)
 
+
 @State
 def rcef252windB():
 
@@ -1077,6 +1130,7 @@ def rcef252windB():
         E0EAEffectRotation(2)
     sprite('null', 120)
 
+
 @State
 def AstralFinishRose():
 
@@ -1086,6 +1140,7 @@ def AstralFinishRose():
     sprite('null', 100)
     ParticleColorFromPalette(226, 226, 225)
     CallCustomizableParticle('rcef_astwinrose', -1)
+
 
 @State
 def BirdFire():
@@ -1102,6 +1157,7 @@ def BirdFire():
     sprite('null', 3)
     CreateParticle('rcef_birdfire', -1)
 
+
 @State
 def DownFallMcA():
 
@@ -1114,6 +1170,7 @@ def DownFallMcA():
         E0EAEffectRotation(2)
     sprite('null', 30)
 
+
 @State
 def DownFallMcB():
 
@@ -1125,6 +1182,7 @@ def DownFallMcB():
         E0EAEffectDirection(2)
         E0EAEffectRotation(2)
     sprite('null', 30)
+
 
 @State
 def ReichelStormLv0():
@@ -1140,13 +1198,13 @@ def ReichelStormLv0():
         AbsoluteY(0)
         AlphaValue(0)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(56, 1)
     sprite('null', 30)
     ConstantAlphaModifier(3)
     if CharacterIDCheck('ta'):
         ConstantAlphaModifier(0)
-        ObjectUpon(4, 32)
+        ObjectUpon(FALLING, 32)
         ObjectUpon(5, 32)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
@@ -1155,9 +1213,10 @@ def ReichelStormLv0():
     clearUponHandler(33)
     clearUponHandler(56)
     sprite('null', 60)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ObjectUpon(5, 32)
     ConstantAlphaModifier(-5)
+
 
 @State
 def ReichelStormLv1():
@@ -1173,13 +1232,13 @@ def ReichelStormLv1():
         AbsoluteY(0)
         AlphaValue(0)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(56, 1)
     sprite('null', 30)
     ConstantAlphaModifier(3)
     if CharacterIDCheck('ta'):
         ConstantAlphaModifier(0)
-        ObjectUpon(4, 32)
+        ObjectUpon(FALLING, 32)
         ObjectUpon(5, 32)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
@@ -1188,9 +1247,10 @@ def ReichelStormLv1():
     clearUponHandler(33)
     clearUponHandler(56)
     sprite('null', 60)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ObjectUpon(5, 32)
     ConstantAlphaModifier(-5)
+
 
 @State
 def ReichelStormLv2():
@@ -1207,13 +1267,13 @@ def ReichelStormLv2():
         AbsoluteY(32000)
         AlphaValue(0)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(56, 1)
     sprite('null', 30)
     ConstantAlphaModifier(4)
     if CharacterIDCheck('ta'):
         ConstantAlphaModifier(0)
-        ObjectUpon(4, 32)
+        ObjectUpon(FALLING, 32)
         ObjectUpon(5, 32)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
@@ -1222,9 +1282,10 @@ def ReichelStormLv2():
     clearUponHandler(33)
     clearUponHandler(56)
     sprite('null', 60)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ObjectUpon(5, 32)
     ConstantAlphaModifier(-5)
+
 
 @State
 def ReichelStormLv3():
@@ -1242,14 +1303,14 @@ def ReichelStormLv3():
         XPositionRelativeFacing(0)
         AbsoluteY(64000)
         AlphaValue(0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(56, 1)
     IgnoreScreenfreeze(1)
     sprite('null', 30)
     ConstantAlphaModifier(5)
     if CharacterIDCheck('ta'):
         ConstantAlphaModifier(0)
-        ObjectUpon(4, 32)
+        ObjectUpon(FALLING, 32)
         ObjectUpon(5, 32)
         ObjectUpon(6, 32)
     sprite('null', 32767)
@@ -1259,10 +1320,11 @@ def ReichelStormLv3():
     clearUponHandler(33)
     clearUponHandler(56)
     sprite('null', 60)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ObjectUpon(5, 32)
     ObjectUpon(6, 32)
     ConstantAlphaModifier(-5)
+
 
 @State
 def ReichelStormLv4():
@@ -1281,13 +1343,13 @@ def ReichelStormLv4():
         AbsoluteY(160000)
         AlphaValue(0)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(56, 1)
     sprite('null', 30)
     ConstantAlphaModifier(6)
     if CharacterIDCheck('ta'):
         ConstantAlphaModifier(0)
-        ObjectUpon(4, 32)
+        ObjectUpon(FALLING, 32)
         ObjectUpon(5, 32)
         ObjectUpon(6, 32)
     sprite('null', 32767)
@@ -1297,10 +1359,11 @@ def ReichelStormLv4():
     clearUponHandler(33)
     clearUponHandler(56)
     sprite('null', 60)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ObjectUpon(5, 32)
     ObjectUpon(6, 32)
     ConstantAlphaModifier(-5)
+
 
 @State
 def GeneratorLv0():
@@ -1325,6 +1388,7 @@ def GeneratorLv0():
     CreateObject('ReichelStormA', -1)
     sprite('null', 10)
     CreateObject('ReichelStormA', -1)
+
 
 @State
 def GeneratorLv0_OD():
@@ -1358,6 +1422,7 @@ def GeneratorLv0_OD():
     sprite('null', 10)
     CreateObject('ReichelStormA_ODFinish', -1)
 
+
 @State
 def GeneratorLv1():
 
@@ -1385,7 +1450,8 @@ def GeneratorLv1():
     CreateObject('ReichelStormA', -1)
     sprite('null', 10)
     CreateObject('ReichelStormA', -1)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def GeneratorLv1_OD():
@@ -1424,7 +1490,8 @@ def GeneratorLv1_OD():
     CreateObject('ReichelStormA_OD', -1)
     sprite('null', 10)
     CreateObject('ReichelStormA_ODFinish', -1)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def GeneratorLv2():
@@ -1457,7 +1524,8 @@ def GeneratorLv2():
     CreateObject('ReichelStormA', -1)
     sprite('null', 10)
     CreateObject('ReichelStormB', -1)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
+
 
 @State
 def GeneratorLv2_OD():
@@ -1490,15 +1558,16 @@ def GeneratorLv2_OD():
     CreateObject('ReichelStormA_OD', -1)
     sprite('null', 6)
     CreateObject('ReichelStormA_OD', -1)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     sprite('null', 10)
     CreateObject('ReichelStormA_OD', -1)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     sprite('null', 13)
     CreateObject('ReichelStormA_OD', -1)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     sprite('null', 13)
     CreateObject('ReichelStormB_OD', -1)
+
 
 @State
 def GeneratorLv3():
@@ -1527,6 +1596,7 @@ def GeneratorLv3():
     CreateObject('ReichelStormB', -1)
     sprite('null', 10)
     CreateObject('ReichelStormC', -1)
+
 
 @State
 def GeneratorLv3_OD():
@@ -1563,9 +1633,10 @@ def GeneratorLv3_OD():
     CreateObject('ReichelStormB_OD', -1)
     sprite('null', 15)
     CreateObject('ReichelStormB_OD', -1)
-    ObjectUpon(1, 40)
+    ObjectUpon(STATE_END, 40)
     sprite('null', 10)
     CreateObject('ReichelStormC_OD', -1)
+
 
 @State
 def GeneratorLv4():
@@ -1590,6 +1661,7 @@ def GeneratorLv4():
     CreateObject('ReichelStormC', -1)
     sprite('null', 10)
     CreateObject('ReichelStormD', -1)
+
 
 @State
 def GeneratorLv4_OD():
@@ -1619,6 +1691,7 @@ def GeneratorLv4_OD():
     sprite('null', 10)
     CreateObject('ReichelStormD_ODFinish', -1)
 
+
 @Subroutine
 def ReichelStorm_Matome():
     TeleportToObject(3)
@@ -1638,8 +1711,8 @@ def ReichelStorm_Matome():
     IgnoreScreenfreeze(0)
     ContinueState(480)
 
-    def upon_ON_HIT_OR_BLOCK():
-        clearUponHandler(10)
+    def upon_OPPONENT_HIT_OR_BLOCK():
+        clearUponHandler(OPPONENT_HIT_OR_BLOCK)
         PerExternalForces(0)
         ExternalForcesRate(0, 0)
         XImpulseAcceleration(20)
@@ -1678,8 +1751,9 @@ def ReichelStorm_Matome():
             YAccel(150)
         setGravity(1000)
 
-    def upon_44():
+    def upon_PLAYER_DAMAGED():
         ExternalForcesRate(0, 0)
+
 
 @Subroutine
 def ReichelStorm_Koumori():
@@ -1709,6 +1783,7 @@ def ReichelStorm_Koumori():
         clearUponHandler(54)
         sendToLabel(1)
     AttackOff()
+
 
 @Subroutine
 def ReichelStorm_Ushi():
@@ -1747,6 +1822,7 @@ def ReichelStorm_Ushi():
         Damage(600)
         Size(1300)
 
+
 @Subroutine
 def ReichelStorm_Pumpkin():
     AttackDefaults_SuperProjectile()
@@ -1779,6 +1855,7 @@ def ReichelStorm_Pumpkin():
         Damage(800)
         Size(1500)
 
+
 @Subroutine
 def ReichelStorm_KingFlog():
     AttackDefaults_SuperProjectile()
@@ -1802,6 +1879,7 @@ def ReichelStorm_KingFlog():
     LandingHeight(120000)
     AttackOff()
 
+
 @State
 def ReichelStormA():
 
@@ -1819,6 +1897,7 @@ def ReichelStormA():
     label(1)
     sprite('vrrcef_stmA', 200)
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormA_OD():
@@ -1839,6 +1918,7 @@ def ReichelStormA_OD():
     sprite('vrrcef_stmA', 200)
     NoAttackDuringAction(1)
 
+
 @State
 def ReichelStormA_ODFinish():
 
@@ -1857,6 +1937,7 @@ def ReichelStormA_ODFinish():
     label(1)
     sprite('vrrcef_stmA', 200)
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormB():
@@ -1877,6 +1958,7 @@ def ReichelStormB():
     sprite('vrrcef_stmB00', 200)
     PrivateSE('rcse_20')
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormB_OD():
@@ -1902,6 +1984,7 @@ def ReichelStormB_OD():
     PrivateSE('rcse_20')
     NoAttackDuringAction(1)
 
+
 @State
 def ReichelStormC():
 
@@ -1921,12 +2004,13 @@ def ReichelStormC():
     RefreshMultihit()
     Hitstop(11)
     HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
-    sendToLabelUpon(54, 580)
+    uponSendToLabel(54, 580)
     label(580)
     sprite('vrrcef_stmC', 180)
     clearUponHandler(54)
     PrivateSE('rcse_22')
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormC_OD():
@@ -1936,7 +2020,7 @@ def ReichelStormC_OD():
         callSubroutine('ReichelStorm_Pumpkin')
         AttackType(4)
         CreateObject('ReichelStormCoption', -1)
-        ObjectUpon(1, 32)
+        ObjectUpon(STATE_END, 32)
         Size(1400)
     sprite('vrrcef_stmC', 5)
     sprite('vrrcef_stmC', 1)
@@ -1949,12 +2033,13 @@ def ReichelStormC_OD():
     RefreshMultihit()
     Hitstop(11)
     HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
-    sendToLabelUpon(54, 580)
+    uponSendToLabel(54, 580)
     label(580)
     sprite('vrrcef_stmC', 180)
     clearUponHandler(54)
     PrivateSE('rcse_22')
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormCoption():
@@ -1986,6 +2071,7 @@ def ReichelStormCoption():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def ReichelStormD():
 
@@ -2006,12 +2092,13 @@ def ReichelStormD():
     RefreshMultihit()
     Hitstop(20)
     HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
-    sendToLabelUpon(54, 580)
+    uponSendToLabel(54, 580)
     label(580)
     sprite('vrrcef_stmD', 150)
     clearUponHandler(54)
     PrivateSE('rcse_21')
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormD_OD():
@@ -2034,12 +2121,13 @@ def ReichelStormD_OD():
     RefreshMultihit()
     Hitstop(20)
     HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
-    sendToLabelUpon(54, 580)
+    uponSendToLabel(54, 580)
     label(580)
     sprite('vrrcef_stmD', 150)
     clearUponHandler(54)
     PrivateSE('rcse_21')
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormD_ODFinish():
@@ -2063,12 +2151,13 @@ def ReichelStormD_ODFinish():
     RefreshMultihit()
     Hitstop(20)
     HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
-    sendToLabelUpon(54, 580)
+    uponSendToLabel(54, 580)
     label(580)
     sprite('vrrcef_stmD', 150)
     clearUponHandler(54)
     PrivateSE('rcse_21')
     NoAttackDuringAction(1)
+
 
 @State
 def ReichelStormDoption():
@@ -2094,6 +2183,7 @@ def ReichelStormDoption():
     Rotation(10000)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ReichelStormDoptionOver():
@@ -2121,6 +2211,7 @@ def ReichelStormDoptionOver():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def ReichelStormBG_Air_Lv1():
 
@@ -2141,6 +2232,7 @@ def ReichelStormBG_Air_Lv1():
     label(1)
     sprite('null', 60)
     ConstantAlphaModifier(-5)
+
 
 @State
 def ReichelStormBG_Air_Lv2():
@@ -2163,6 +2255,7 @@ def ReichelStormBG_Air_Lv2():
     sprite('null', 60)
     ConstantAlphaModifier(-5)
 
+
 @State
 def ReichelStormBG_Air_Lv3():
 
@@ -2183,6 +2276,7 @@ def ReichelStormBG_Air_Lv3():
     label(1)
     sprite('null', 60)
     ConstantAlphaModifier(-5)
+
 
 @State
 def ReichelStormBG_Air_Lv4():
@@ -2205,11 +2299,13 @@ def ReichelStormBG_Air_Lv4():
     sprite('null', 60)
     ConstantAlphaModifier(-5)
 
+
 @State
 def ReichelStormBG_Rain_Lv1():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('rcef_storm_rain_Lv1.DIG', 'rcef_storm_rain_Lv1_motion_000.')
+        Eff3DEffect('rcef_storm_rain_Lv1.DIG',
+            'rcef_storm_rain_Lv1_motion_000.')
         BlendMode_Add()
         XPositionRelativeFacing(0)
         AbsoluteY(0)
@@ -2227,11 +2323,13 @@ def ReichelStormBG_Rain_Lv1():
     sprite('null', 15)
     ConstantAlphaModifier(-20)
 
+
 @State
 def ReichelStormBG_Rain_Lv2():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('rcef_storm_rain_Lv2.DIG', 'rcef_storm_rain_Lv2_motion_000.')
+        Eff3DEffect('rcef_storm_rain_Lv2.DIG',
+            'rcef_storm_rain_Lv2_motion_000.')
         BlendMode_Add()
         XPositionRelativeFacing(0)
         AbsoluteY(0)
@@ -2249,11 +2347,13 @@ def ReichelStormBG_Rain_Lv2():
     sprite('null', 15)
     ConstantAlphaModifier(-20)
 
+
 @State
 def ReichelStormBG_Rain_Lv3():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('rcef_storm_rain_Lv3.DIG', 'rcef_storm_rain_Lv3_motion_000.')
+        Eff3DEffect('rcef_storm_rain_Lv3.DIG',
+            'rcef_storm_rain_Lv3_motion_000.')
         BlendMode_Add()
         XPositionRelativeFacing(0)
         AbsoluteY(0)
@@ -2270,12 +2370,14 @@ def ReichelStormBG_Rain_Lv3():
     label(1)
     sprite('null', 15)
     ConstantAlphaModifier(-20)
+
 
 @State
 def ReichelStormBG_Rain_Lv4():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('rcef_storm_rain_Lv4.DIG', 'rcef_storm_rain_Lv4_motion_000.')
+        Eff3DEffect('rcef_storm_rain_Lv4.DIG',
+            'rcef_storm_rain_Lv4_motion_000.')
         BlendMode_Add()
         XPositionRelativeFacing(0)
         AbsoluteY(0)
@@ -2292,6 +2394,7 @@ def ReichelStormBG_Rain_Lv4():
     label(1)
     sprite('null', 15)
     ConstantAlphaModifier(-20)
+
 
 @State
 def rc202SwordLight():
@@ -2307,6 +2410,7 @@ def rc202SwordLight():
     AlphaValue(255)
     sprite('vrrcef202_12', 8)
     ConstantAlphaModifier(-30)
+
 
 @State
 def rc232ElectlicChair():
@@ -2324,6 +2428,7 @@ def rc232ElectlicChair():
     sprite('vrrcef_232_08add02', 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Bird():
@@ -2343,9 +2448,9 @@ def Bird():
         PaletteIndex(1)
         FloorCollision(1)
         E0EAEffect('cmn_judgment', 65535)
-        ApplyFunctionsToObjects(1)
-        AbsoluteY(80000)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_1():
+            AbsoluteY(80000)
         SetActionMark(4)
         SLOT_51 = 300
 
@@ -2401,18 +2506,18 @@ def Bird():
                 AddActionMark(-1)
                 sendToLabel(9)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                SLOT_51 = (SLOT_51 + (-1))
-                if (not SLOT_51):
+                SLOT_51 = SLOT_51 + -1
+                if not SLOT_51:
                     SLOT_2 = 0
-        sendToLabelUpon(2, 129)
+        uponSendToLabel(LANDING, 129)
         HitsPerCall(1, 0, 0, 1, 1, 0, 1, 1)
 
         def upon_54():
             SetActionMark(0)
     label(0)
-    if (not SLOT_2):
+    if not SLOT_2:
         sendToLabel(99)
     sprite('vrrcef_pump00', 2)
     CreateObject('BirdFire', -1)
@@ -2421,7 +2526,7 @@ def Bird():
     physicsYImpulse(1000)
     Size(1000)
     SetScaleSpeed(0)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     sprite('vrrcef_pump01', 2)
     sprite('vrrcef_pump02', 2)
     CreateObject('BirdFire', -1)
@@ -2439,7 +2544,7 @@ def Bird():
     physicsYImpulse(1000)
     Size(1000)
     SetScaleSpeed(0)
-    sendToLabelUpon(2, 129)
+    uponSendToLabel(LANDING, 129)
     loopRest()
     gotoLabel(0)
     label(1)
@@ -2709,7 +2814,7 @@ def Bird():
     loopRest()
     gotoLabel(0)
     label(99)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     NoAttackDuringAction(1)
     AttackOff()
     physicsXImpulse(0)
@@ -2717,11 +2822,12 @@ def Bird():
     SetScaleSpeed(0)
     Size(1000)
     SLOT_2 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('vrrcef_sbbreak00', 2)
     sprite('vrrcef_sbbreak01', 2)
     sprite('vrrcef_sbbreak02', 2)
     sprite('vrrcef_sbbreak03', 2)
+
 
 @Subroutine
 def LightningRod_Initialize():
@@ -2732,8 +2838,8 @@ def LightningRod_Initialize():
     WallCollisionDetection(1)
 
     def upon_CORNERED():
-        if SLOT_IsInOverdrive2:
-            clearUponHandler(7)
+        if SLOT_54:
+            clearUponHandler(CORNERED)
             XImpulseAcceleration(-60)
             SLOT_55 = 40
     ExternalForcesRate(100, 100)
@@ -2747,30 +2853,30 @@ def LightningRod_Initialize():
 
     def upon_33():
         if SLOT_2:
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             SLOT_58 = 0
             AttackOff()
             sendToLabel(47)
 
     def upon_41():
         if SLOT_2:
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             SLOT_54 = 0
             AttackOff()
             sendToLabel(49)
 
     def upon_40():
         if SLOT_2:
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             SLOT_54 = 0
             AttackOff()
             sendToLabel(48)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
             if SLOT_66:
-                SLOT_55 = (SLOT_55 + (-1))
-                if (not SLOT_55):
+                SLOT_55 = SLOT_55 + -1
+                if not SLOT_55:
                     RefreshMultihit()
     AttackLevel_(3)
     Damage(850)
@@ -2817,7 +2923,7 @@ def LightningRod_Initialize():
         physicsXImpulse(13000)
         physicsYImpulse(-30000)
         setGravity(1000)
-    sendToLabelUpon(2, 70)
+    uponSendToLabel(LANDING, 70)
     HitsPerCall(1, 0, 0, 1, 1, 0, 0, 0)
 
     def upon_54():
@@ -2830,7 +2936,7 @@ def LightningRod_Initialize():
         ResetExternalForces()
         AddRotationPerFrame(-10000)
 
-    def upon_44():
+    def upon_PLAYER_DAMAGED():
         CreateObject('StayThunder', 100)
         CreateObject('StayThunder', 100)
         CreateObject('StayThunder', 100)
@@ -2839,27 +2945,28 @@ def LightningRod_Initialize():
         EnableAfterimage(1)
         AfterimageCount(6)
         EndAttack()
-        clearUponHandler(44)
+        clearUponHandler(PLAYER_DAMAGED)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         SLOT_66 = 1
         AttackOff()
 
     def upon_58():
         if EnteredState('ShotCatch'):
-            if (SLOT_2 == 1):
+            if SLOT_2 == 1:
                 if SLOT_66:
                     sendToLabel(50)
         if EnteredState('SummonWindRateUpGhost'):
             if SLOT_2:
-                clearUponHandler(2)
+                clearUponHandler(LANDING)
                 AttackOff()
                 sendToLabel(51)
         if EnteredState('SummonWindSuctionGhost'):
             if SLOT_2:
-                clearUponHandler(2)
+                clearUponHandler(LANDING)
                 AttackOff()
                 sendToLabel(52)
+
 
 @State
 def LightningRodA():
@@ -2881,7 +2988,7 @@ def LightningRodA():
     loopRest()
     label(70)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     StopCharacterFlash1(0)
@@ -2891,7 +2998,7 @@ def LightningRodA():
     ResetExternalForces()
     SetActionMark(2)
     SLOT_66 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     RotationAngle(0)
@@ -2904,13 +3011,13 @@ def LightningRodA():
     sprite('vrrcef_lightrod03', 3)
     sprite('vrrcef_lightrod04', 3)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(512000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(512000)
     label(77)
     sprite('vrrcef_lightrod05', 5)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     SetZVal(500)
@@ -2941,13 +3048,13 @@ def LightningRodA():
     SetActionMark(0)
     sprite('keep', 20)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     ConstantAlphaModifier(-12)
     CreateObject('LightningRodDelete', -1)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     loopRest()
     ExitState()
@@ -2955,10 +3062,10 @@ def LightningRodA():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -2972,10 +3079,10 @@ def LightningRodA():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -2989,10 +3096,10 @@ def LightningRodA():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3007,11 +3114,11 @@ def LightningRodA():
     AttackOff()
     sprite('keep', 15)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
@@ -3024,11 +3131,11 @@ def LightningRodA():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3043,11 +3150,11 @@ def LightningRodA():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3055,6 +3162,7 @@ def LightningRodA():
     CreateObject('WindSuctionGhost', 0)
     ConstantAlphaModifier(-12)
     loopRest()
+
 
 @State
 def LightningRodB():
@@ -3081,7 +3189,7 @@ def LightningRodB():
     loopRest()
     label(70)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     StopCharacterFlash1(0)
@@ -3091,7 +3199,7 @@ def LightningRodB():
     ResetExternalForces()
     SetActionMark(2)
     SLOT_66 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     RotationAngle(0)
@@ -3104,13 +3212,13 @@ def LightningRodB():
     sprite('vrrcef_lightrod03', 3)
     sprite('vrrcef_lightrod04', 3)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(512000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(512000)
     label(77)
     sprite('vrrcef_lightrod05', 5)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     SetZVal(500)
@@ -3141,13 +3249,13 @@ def LightningRodB():
     SetActionMark(0)
     sprite('keep', 20)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     ConstantAlphaModifier(-12)
     CreateObject('LightningRodDelete', -1)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     loopRest()
     ExitState()
@@ -3155,10 +3263,10 @@ def LightningRodB():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3172,10 +3280,10 @@ def LightningRodB():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3189,10 +3297,10 @@ def LightningRodB():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3207,11 +3315,11 @@ def LightningRodB():
     AttackOff()
     sprite('keep', 15)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
@@ -3224,11 +3332,11 @@ def LightningRodB():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3243,11 +3351,11 @@ def LightningRodB():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3255,6 +3363,7 @@ def LightningRodB():
     CreateObject('WindSuctionGhost', 0)
     ConstantAlphaModifier(-12)
     loopRest()
+
 
 @State
 def LightningRodC():
@@ -3281,7 +3390,7 @@ def LightningRodC():
     loopRest()
     label(70)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     StopCharacterFlash1(0)
@@ -3291,7 +3400,7 @@ def LightningRodC():
     ResetExternalForces()
     SetActionMark(2)
     SLOT_66 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     RotationAngle(0)
@@ -3304,13 +3413,13 @@ def LightningRodC():
     sprite('vrrcef_lightrod03', 3)
     sprite('vrrcef_lightrod04', 3)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(512000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(512000)
     label(77)
     sprite('vrrcef_lightrod05', 5)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     SetZVal(500)
@@ -3341,13 +3450,13 @@ def LightningRodC():
     SetActionMark(0)
     sprite('keep', 20)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     ConstantAlphaModifier(-12)
     CreateObject('LightningRodDelete', -1)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     loopRest()
     ExitState()
@@ -3355,10 +3464,10 @@ def LightningRodC():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3372,10 +3481,10 @@ def LightningRodC():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3389,10 +3498,10 @@ def LightningRodC():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3407,11 +3516,11 @@ def LightningRodC():
     AttackOff()
     sprite('keep', 15)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
@@ -3424,11 +3533,11 @@ def LightningRodC():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3443,11 +3552,11 @@ def LightningRodC():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3455,6 +3564,7 @@ def LightningRodC():
     CreateObject('WindSuctionGhost', 0)
     ConstantAlphaModifier(-12)
     loopRest()
+
 
 @State
 def LightningRodA_Air():
@@ -3476,7 +3586,7 @@ def LightningRodA_Air():
     loopRest()
     label(70)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     StopCharacterFlash1(0)
@@ -3486,7 +3596,7 @@ def LightningRodA_Air():
     ResetExternalForces()
     SetActionMark(2)
     SLOT_66 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     RotationAngle(0)
@@ -3499,13 +3609,13 @@ def LightningRodA_Air():
     sprite('vrrcef_lightrod03', 3)
     sprite('vrrcef_lightrod04', 3)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(512000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(512000)
     label(77)
     sprite('vrrcef_lightrod05', 5)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     SetZVal(500)
@@ -3536,13 +3646,13 @@ def LightningRodA_Air():
     SetActionMark(0)
     sprite('keep', 20)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     ConstantAlphaModifier(-12)
     CreateObject('LightningRodDelete', -1)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     loopRest()
     ExitState()
@@ -3550,10 +3660,10 @@ def LightningRodA_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3567,10 +3677,10 @@ def LightningRodA_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3584,10 +3694,10 @@ def LightningRodA_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3602,11 +3712,11 @@ def LightningRodA_Air():
     AttackOff()
     sprite('keep', 15)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
@@ -3619,11 +3729,11 @@ def LightningRodA_Air():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3638,11 +3748,11 @@ def LightningRodA_Air():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3650,6 +3760,7 @@ def LightningRodA_Air():
     CreateObject('WindSuctionGhost', 0)
     ConstantAlphaModifier(-12)
     loopRest()
+
 
 @State
 def LightningRodB_Air():
@@ -3669,7 +3780,7 @@ def LightningRodB_Air():
     loopRest()
     label(70)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     StopCharacterFlash1(0)
@@ -3679,7 +3790,7 @@ def LightningRodB_Air():
     ResetExternalForces()
     SetActionMark(2)
     SLOT_66 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     RotationAngle(0)
@@ -3692,13 +3803,13 @@ def LightningRodB_Air():
     sprite('vrrcef_lightrod03', 3)
     sprite('vrrcef_lightrod04', 3)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(512000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(512000)
     label(77)
     sprite('vrrcef_lightrod05', 5)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     SetZVal(500)
@@ -3729,13 +3840,13 @@ def LightningRodB_Air():
     SetActionMark(0)
     sprite('keep', 20)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     ConstantAlphaModifier(-12)
     CreateObject('LightningRodDelete', -1)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     loopRest()
     ExitState()
@@ -3743,10 +3854,10 @@ def LightningRodB_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3760,10 +3871,10 @@ def LightningRodB_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3777,10 +3888,10 @@ def LightningRodB_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3795,11 +3906,11 @@ def LightningRodB_Air():
     AttackOff()
     sprite('keep', 15)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
@@ -3812,11 +3923,11 @@ def LightningRodB_Air():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3831,11 +3942,11 @@ def LightningRodB_Air():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3843,6 +3954,7 @@ def LightningRodB_Air():
     CreateObject('WindSuctionGhost', 0)
     ConstantAlphaModifier(-12)
     loopRest()
+
 
 @State
 def LightningRodC_Air():
@@ -3862,7 +3974,7 @@ def LightningRodC_Air():
     loopRest()
     label(70)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     StopCharacterFlash1(0)
@@ -3872,7 +3984,7 @@ def LightningRodC_Air():
     ResetExternalForces()
     SetActionMark(2)
     SLOT_66 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     RotationAngle(0)
@@ -3885,13 +3997,13 @@ def LightningRodC_Air():
     sprite('vrrcef_lightrod03', 3)
     sprite('vrrcef_lightrod04', 3)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(512000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(512000)
     label(77)
     sprite('vrrcef_lightrod05', 5)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     SetZVal(500)
@@ -3922,13 +4034,13 @@ def LightningRodC_Air():
     SetActionMark(0)
     sprite('keep', 20)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     ConstantAlphaModifier(-12)
     CreateObject('LightningRodDelete', -1)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     loopRest()
     ExitState()
@@ -3936,10 +4048,10 @@ def LightningRodC_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3953,10 +4065,10 @@ def LightningRodC_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3970,10 +4082,10 @@ def LightningRodC_Air():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -3988,11 +4100,11 @@ def LightningRodC_Air():
     AttackOff()
     sprite('keep', 15)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
@@ -4005,11 +4117,11 @@ def LightningRodC_Air():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -4024,11 +4136,11 @@ def LightningRodC_Air():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -4036,6 +4148,7 @@ def LightningRodC_Air():
     CreateObject('WindSuctionGhost', 0)
     ConstantAlphaModifier(-12)
     loopRest()
+
 
 @State
 def LightningRod_Event():
@@ -4061,12 +4174,12 @@ def LightningRod_Event():
 
         def upon_33():
             if SLOT_2:
-                clearUponHandler(2)
+                clearUponHandler(LANDING)
                 sendToLabel(47)
 
         def upon_40():
             if SLOT_2:
-                clearUponHandler(2)
+                clearUponHandler(LANDING)
                 sendToLabel(48)
         AttackLevel_(4)
         AttackP1(80)
@@ -4127,7 +4240,7 @@ def LightningRod_Event():
             AirPushbackY(-27000)
             Hitstun(23)
             AirUntechableTime(30)
-        sendToLabelUpon(2, 70)
+        uponSendToLabel(LANDING, 70)
         HitsPerCall(1, 0, 0, 1, 1, 0, 0, 0)
 
         def upon_54():
@@ -4140,7 +4253,7 @@ def LightningRod_Event():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             CreateObject('StayThunder', 100)
             CreateObject('StayThunder', 100)
             CreateObject('StayThunder', 100)
@@ -4149,23 +4262,23 @@ def LightningRod_Event():
             EnableAfterimage(1)
             AfterimageCount(6)
             EndAttack()
-            clearUponHandler(44)
+            clearUponHandler(PLAYER_DAMAGED)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SLOT_66 = 1
 
         def upon_58():
             if EnteredState('ShotCatch'):
-                if (SLOT_2 == 1):
+                if SLOT_2 == 1:
                     if SLOT_66:
                         sendToLabel(50)
             if EnteredState('SummonWindRateUpGhost'):
                 if SLOT_2:
-                    clearUponHandler(2)
+                    clearUponHandler(LANDING)
                     sendToLabel(51)
             if EnteredState('SummonWindSuctionGhost'):
                 if SLOT_2:
-                    clearUponHandler(2)
+                    clearUponHandler(LANDING)
                     sendToLabel(52)
     sprite('vrrcef_lightrod00', 2)
     Size(500)
@@ -4178,7 +4291,7 @@ def LightningRod_Event():
     loopRest()
     label(70)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     StopCharacterFlash1(0)
@@ -4188,7 +4301,7 @@ def LightningRod_Event():
     ResetExternalForces()
     SetActionMark(2)
     SLOT_66 = 0
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     AbsoluteY(0)
     RotationAngle(0)
@@ -4201,13 +4314,13 @@ def LightningRod_Event():
     sprite('vrrcef_lightrod03', 3)
     sprite('vrrcef_lightrod04', 3)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(512000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(512000)
     label(77)
     sprite('vrrcef_lightrod05', 5)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     SetZVal(500)
@@ -4238,13 +4351,13 @@ def LightningRod_Event():
     SetActionMark(0)
     sprite('keep', 20)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
     ConstantAlphaModifier(-12)
     CreateObject('LightningRodDelete', -1)
     EndMomentum(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndAttack()
     loopRest()
     ExitState()
@@ -4252,15 +4365,15 @@ def LightningRod_Event():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_52 = 1
     if SLOT_52:
         CreateObject('LightningObjAtkSubOD', 104)
@@ -4274,10 +4387,10 @@ def LightningRod_Event():
     SetActionMark(0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
@@ -4292,11 +4405,11 @@ def LightningRod_Event():
     AttackOff()
     sprite('keep', 15)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
@@ -4309,17 +4422,17 @@ def LightningRod_Event():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
     CreateObject('WindRateUpGhost', 0)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     ConstantAlphaModifier(-12)
     loopRest()
     ExitState()
@@ -4329,26 +4442,28 @@ def LightningRod_Event():
     CreateObject('rcef_412rose', 0)
     sprite('keep', 30)
     HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(58)
     ColorForTransition(4294967295)
     EnableAfterimage(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SelfWind(0, 0, 0)
     ResetExternalForces()
     AddRotationPerFrame(0)
     CreateObject('WindSuctionGhost', 0)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     ConstantAlphaModifier(-12)
     loopRest()
     ExitState()
+
 
 @State
 def rcef_412rose():
     sprite('null', 120)
     ParticleColorFromPalette(225, 226, 227)
     CallCustomizableParticle('rcef_412_rose', -1)
+
 
 @State
 def LightningObjAtk():
@@ -4436,6 +4551,7 @@ def LightningObjAtk():
     CreateObject('LightningOption', -1)
     CreateObject('LightningOption', -1)
 
+
 @State
 def LightningObjAtk_Matome():
 
@@ -4461,7 +4577,7 @@ def LightningObjAtk_Matome():
     sprite('null', 6)
     CreateObject('LightningObjAtk_OD', 100)
     CreateObject('LightningObjAtk_OD', 100)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     sprite('vrrcef_lightning00_atk', 2)
     RefreshMultihit()
     sprite('vrrcef_lightning00_atk', 2)
@@ -4487,6 +4603,7 @@ def LightningObjAtk_Matome():
     sprite('vrrcef_lightning00_atk', 2)
     RefreshMultihit()
     sprite('null', 4)
+
 
 @State
 def LightningObjAtk_OD():
@@ -4584,23 +4701,25 @@ def LightningObjAtk_OD():
     CreateObject('LightningOption', -1)
     CreateObject('LightningOption', -1)
 
+
 @State
 def LightningObjAtkSub_Matome():
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB', 32)
-    PassbackAddActionMarkToFunction('LightningAirB', 32)
+    TriggerUponForState('LightningLandB', 32)
+    TriggerUponForState('LightningAirB', 32)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB', 35)
-    PassbackAddActionMarkToFunction('LightningAirB', 35)
+    TriggerUponForState('LightningLandB', 35)
+    TriggerUponForState('LightningAirB', 35)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB', 33)
-    PassbackAddActionMarkToFunction('LightningAirB', 33)
+    TriggerUponForState('LightningLandB', 33)
+    TriggerUponForState('LightningAirB', 33)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB', 36)
-    PassbackAddActionMarkToFunction('LightningAirB', 36)
+    TriggerUponForState('LightningLandB', 36)
+    TriggerUponForState('LightningAirB', 36)
     sprite('null', 60)
-    PassbackAddActionMarkToFunction('LightningLandB', 34)
-    PassbackAddActionMarkToFunction('LightningAirB', 34)
+    TriggerUponForState('LightningLandB', 34)
+    TriggerUponForState('LightningAirB', 34)
+
 
 @State
 def LightningObjAtkSub():
@@ -4691,23 +4810,25 @@ def LightningObjAtkSub():
     CreateObject('LightningOption', -1)
     CreateObject('LightningOption', -1)
 
+
 @State
 def LightningObjAtkSubOD_Matome():
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB_OD', 32)
-    PassbackAddActionMarkToFunction('LightningAirB_OD', 32)
+    TriggerUponForState('LightningLandB_OD', 32)
+    TriggerUponForState('LightningAirB_OD', 32)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB_OD', 35)
-    PassbackAddActionMarkToFunction('LightningAirB_OD', 35)
+    TriggerUponForState('LightningLandB_OD', 35)
+    TriggerUponForState('LightningAirB_OD', 35)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB_OD', 33)
-    PassbackAddActionMarkToFunction('LightningAirB_OD', 33)
+    TriggerUponForState('LightningLandB_OD', 33)
+    TriggerUponForState('LightningAirB_OD', 33)
     sprite('null', 2)
-    PassbackAddActionMarkToFunction('LightningLandB_OD', 36)
-    PassbackAddActionMarkToFunction('LightningAirB_OD', 36)
+    TriggerUponForState('LightningLandB_OD', 36)
+    TriggerUponForState('LightningAirB_OD', 36)
     sprite('null', 60)
-    PassbackAddActionMarkToFunction('LightningLandB_OD', 34)
-    PassbackAddActionMarkToFunction('LightningAirB_OD', 34)
+    TriggerUponForState('LightningLandB_OD', 34)
+    TriggerUponForState('LightningAirB_OD', 34)
+
 
 @State
 def LightningObjAtkSubOD():
@@ -4734,11 +4855,11 @@ def LightningObjAtkSubOD():
         AttackType(4)
         SameMoveProration(-1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 == 4):
+        def upon_EVERY_FRAME():
+            if SLOT_2 == 4:
                 AttackOff()
         if SLOT_137:
             DamageMultiplier(80)
@@ -4832,14 +4953,13 @@ def LightningObjAtkSubOD():
     CreateObject('LightningOption', -1)
     CreateObject('LightningOption', -1)
 
+
 @State
 def EffLightningMiniBoss():
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(1)
     sprite('null', 30)
     SetPosXByScreenPer(40)
     CreateObject('LightningObjAtkMini', -1)
@@ -4883,6 +5003,7 @@ def EffLightningMiniBoss():
     CreateObject('LightningObjAtkMini', -1)
     ExitState()
 
+
 @State
 def EffLightningMiniEntryHZ():
     sprite('null', 30)
@@ -4896,6 +5017,7 @@ def EffLightningMiniEntryHZ():
     AddX(250000)
     CreateObject('LightningObjAtkMini', -1)
     sprite('null', 30)
+
 
 @State
 def LightningObjAtkMini():
@@ -4957,6 +5079,7 @@ def LightningObjAtkMini():
     sprite('null', 2)
     CreateObject('LightningOption', -1)
 
+
 @State
 def LightningObjAtkMini_Event():
 
@@ -5012,6 +5135,7 @@ def LightningObjAtkMini_Event():
     sprite('null', 2)
     CreateObject('LightningOption', -1)
 
+
 @State
 def LightningOption():
 
@@ -5028,6 +5152,7 @@ def LightningOption():
     RandSpeedX(-50000, 50000)
     SetScaleY(1000)
 
+
 @State
 def LightningLand():
 
@@ -5036,7 +5161,7 @@ def LightningLand():
         BlendMode_Add()
         SetZVal(100)
         IgnorePauses(2)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_52 = 1
         if SLOT_52:
             SetScaleX(3900)
@@ -5049,6 +5174,7 @@ def LightningLand():
     SetScaleSpeed(-200)
     sprite('vrrcef_lightning02', 3)
     ConstantAlphaModifier(-85)
+
 
 @State
 def LightningLandSub():
@@ -5066,6 +5192,7 @@ def LightningLandSub():
     SetScaleSpeed(-200)
     sprite('vrrcef_lightning02', 3)
     ConstantAlphaModifier(-85)
+
 
 @State
 def rc600giPot():
@@ -5086,6 +5213,7 @@ def rc600giPot():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def rc620nago():
 
@@ -5102,6 +5230,7 @@ def rc620nago():
     sprite('rc620_07nex04', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def dengeki():
@@ -5124,6 +5253,7 @@ def dengeki():
     Size(1000)
     loopRest()
 
+
 @State
 def dengeki_ng():
 
@@ -5136,6 +5266,7 @@ def dengeki_ng():
         def upon_16():
             SkeletonPaletteEffectOnNoStopIdling()
     sprite('rc082_00n', 32767)
+
 
 @State
 def AstralNago():
@@ -5158,6 +5289,7 @@ def AstralNago():
     sprite('rc450_n08ex01', 3)
     sprite('rc450_n08ex01', 1)
     CreateObject('BatDelete', 0)
+
 
 @State
 def LightningObjAST():
@@ -5300,6 +5432,7 @@ def LightningObjAST():
     CreateObject('LightningOption', -1)
     CreateObject('LightningOption', -1)
 
+
 @State
 def light():
     sprite('vr_light', 40)
@@ -5325,6 +5458,7 @@ def light():
     SetScaleXPerFrame(5)
     CommonSE('019_quake_0')
 
+
 @State
 def haka():
     sprite('vr_haka', 10)
@@ -5334,6 +5468,7 @@ def haka():
     SetScaleSpeedY(300)
     sprite('vr_haka', 1000)
     SetScaleSpeedY(0)
+
 
 @State
 def TestAstLightning():
@@ -5440,6 +5575,7 @@ def TestAstLightning():
     CreateObject('LightningOption', -1)
     CreateObject('LightningOption', -1)
 
+
 @State
 def WindRateUpGhost():
 
@@ -5477,21 +5613,21 @@ def WindRateUpGhost():
             SLOT_5 = 0
 
         def upon_53():
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 sendToLabel(99)
 
         def upon_32():
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 sendToLabel(99)
 
         def upon_33():
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 sendToLabel(99)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             clearUponHandler(54)
-            PassbackAddActionMarkToFunction('WindRateUpGhost', 33)
+            TriggerUponForState('WindRateUpGhost', 33)
             SLOT_5 = 360
             SetActionMark(2)
             EndAttack()
@@ -5503,16 +5639,16 @@ def WindRateUpGhost():
         def upon_54():
             sendToLabel(99)
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 == 1):
+        def upon_EVERY_FRAME():
+            if SLOT_2 == 1:
                 ForceFaceSprite()
                 ObjectUpon26(22, 0, -200000, 4000, 1)
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 ForceFaceSprite()
                 PrivateFunction3(22, -100000, 25000, 5, 1)
                 physicsXImpulse(0)
-            SLOT_51 = (SLOT_51 + 1)
-            if (SLOT_51 >= 26):
+            SLOT_51 = SLOT_51 + 1
+            if SLOT_51 >= 26:
                 SLOT_51 = 0
                 PrivateSE('rcse_27')
     sprite('vrrcef412_00', 4)
@@ -5558,7 +5694,8 @@ def WindRateUpGhost():
     sprite('vrrcef412_00', 3)
     sprite('vrrcef412_01', 3)
     sprite('vrrcef412_02', 3)
-    GotoIf0(99, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(99)
     loopRest()
     gotoLabel(51)
     label(99)
@@ -5571,6 +5708,7 @@ def WindRateUpGhost():
     enterState('WindRateUpGhostEnd')
     label(100)
     sprite('keep', 1)
+
 
 @State
 def WindRateUpGhostEnd():
@@ -5590,6 +5728,7 @@ def WindRateUpGhostEnd():
     sprite('vrrcef412_01', 6)
     sprite('vrrcef412_02', 13)
 
+
 @State
 def WindRateUpGhost_fin():
 
@@ -5604,6 +5743,7 @@ def WindRateUpGhost_fin():
         ForceBloomMaskOn(1)
     sprite('vrrcef412_10', 32767)
     AddRotationPerFrame(30000)
+
 
 @State
 def WindRateUpGhost_fin_end():
@@ -5620,6 +5760,7 @@ def WindRateUpGhost_fin_end():
     sprite('vrrcef412_10', 32767)
     AddRotationPerFrame(30000)
     ConstantAlphaModifier(-25)
+
 
 @State
 def WindSuctionGhost():
@@ -5662,21 +5803,21 @@ def WindSuctionGhost():
             SLOT_6 = 0
 
         def upon_53():
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 sendToLabel(99)
 
         def upon_32():
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 sendToLabel(99)
 
         def upon_33():
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 sendToLabel(99)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             clearUponHandler(54)
-            PassbackAddActionMarkToFunction('WindSuctionGhost', 33)
+            TriggerUponForState('WindSuctionGhost', 33)
             SLOT_6 = 360
             SetActionMark(2)
             EndAttack()
@@ -5688,16 +5829,16 @@ def WindSuctionGhost():
         def upon_54():
             sendToLabel(99)
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 == 1):
+        def upon_EVERY_FRAME():
+            if SLOT_2 == 1:
                 ForceFaceSprite()
                 ObjectUpon26(22, 0, -200000, 4000, 1)
-            if (SLOT_2 == 2):
+            if SLOT_2 == 2:
                 ForceFaceSprite()
                 PrivateFunction3(22, 0, 5000, 8, 1)
                 physicsXImpulse(0)
-            SLOT_51 = (SLOT_51 + 1)
-            if (SLOT_51 >= 26):
+            SLOT_51 = SLOT_51 + 1
+            if SLOT_51 >= 26:
                 SLOT_51 = 0
                 PrivateSE('rcse_27')
     sprite('vrrcef412_00', 4)
@@ -5743,7 +5884,8 @@ def WindSuctionGhost():
     sprite('vrrcef412_00', 3)
     sprite('vrrcef412_01', 3)
     sprite('vrrcef412_02', 3)
-    GotoIf0(99, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(99)
     loopRest()
     gotoLabel(51)
     label(99)
@@ -5756,6 +5898,7 @@ def WindSuctionGhost():
     enterState('WindSuctionGhostEnd')
     label(100)
     sprite('keep', 1)
+
 
 @State
 def WindSuctionGhostEnd():
@@ -5775,6 +5918,7 @@ def WindSuctionGhostEnd():
     sprite('vrrcef412_01', 6)
     sprite('vrrcef412_02', 13)
 
+
 @State
 def WindSuctionGhost_fin():
 
@@ -5790,6 +5934,7 @@ def WindSuctionGhost_fin():
         RemoveOnContact(22)
     sprite('vrrcef412_10', 32767)
     AddRotationPerFrame(30000)
+
 
 @State
 def WindSuctionGhost_fin_end():
@@ -5808,6 +5953,7 @@ def WindSuctionGhost_fin_end():
     AddRotationPerFrame(30000)
     ConstantAlphaModifier(-25)
 
+
 @State
 def BurstDD_Camera():
 
@@ -5818,10 +5964,10 @@ def BurstDD_Camera():
         CameraControlEnable(1)
         CameraNoScreenCollision(1)
         AddX(50000)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 4)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 4)
     sprite('null', 32767)
     label(1)
     sprite('null', 10)
@@ -5841,6 +5987,7 @@ def BurstDD_Camera():
     sprite('null', 32767)
     label(3)
     sprite('null', 1)
+
 
 @State
 def BurstDD_WindEff():
@@ -5877,6 +6024,7 @@ def BurstDD_WindEff():
     SetScaleXPerFrame(-80)
     SetScaleSpeedZ(-80)
 
+
 @State
 def BurstDD_WindEffEx():
 
@@ -5892,10 +6040,10 @@ def BurstDD_WindEffEx():
     sprite('null', 10)
     CreateObject('BurstDD_WindThunderEff', -1)
     CreateObject('ModelMagicCircle1', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(1500)
-    AddY(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(1500)
+        AddY(400000)
     ConstantAlphaModifier(18)
     SetScaleXPerFrame(115)
     SetScaleSpeedZ(115)
@@ -5920,6 +6068,7 @@ def BurstDD_WindEffEx():
     SetScaleXPerFrame(-80)
     SetScaleSpeedZ(-80)
 
+
 @State
 def BurstDD_WindThunderEff():
 
@@ -5943,6 +6092,7 @@ def BurstDD_WindThunderEff():
     AlphaValue(0)
     gotoLabel(0)
 
+
 @State
 def BurstDD_Shasha():
 
@@ -5955,29 +6105,31 @@ def BurstDD_Shasha():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @Subroutine
 def IvyBlossom_WindRate():
     ExternalForcesRate(100, 100)
-    if (SLOT_53 == 0):
+    if SLOT_53 == 0:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 1):
+    if SLOT_53 == 1:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 2):
+    if SLOT_53 == 2:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 3):
+    if SLOT_53 == 3:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 4):
+    if SLOT_53 == 4:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 5):
+    if SLOT_53 == 5:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 6):
+    if SLOT_53 == 6:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 7):
+    if SLOT_53 == 7:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 8):
+    if SLOT_53 == 8:
         callSubroutine('IvyBlossom_WindRandom')
-    if (SLOT_53 == 9):
+    if SLOT_53 == 9:
         callSubroutine('IvyBlossom_WindRandom')
+
 
 @Subroutine
 def IvyBlossom_WindRandom():
@@ -5988,51 +6140,54 @@ def IvyBlossom_WindRandom():
     else:
         SelfWind(120, 120, 120)
 
+
 @Subroutine
 def IvyBlossom_Homing():
-    if (SLOT_53 == 0):
+    if SLOT_53 == 0:
         Unknown23144(2, 0, 1, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 1):
+    if SLOT_53 == 1:
         Unknown23144(2, 0, 2, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 2):
+    if SLOT_53 == 2:
         Unknown23144(2, 0, 3, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 3):
+    if SLOT_53 == 3:
         Unknown23144(2, 0, 4, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 4):
+    if SLOT_53 == 4:
         Unknown23144(2, 0, 5, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 5):
+    if SLOT_53 == 5:
         Unknown23144(2, 0, 6, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 6):
+    if SLOT_53 == 6:
         Unknown23144(2, 0, 7, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 7):
+    if SLOT_53 == 7:
         Unknown23144(2, 0, 8, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 8):
+    if SLOT_53 == 8:
         Unknown23144(2, 0, 9, 0, 0, 0, 0, 0, 80, 0, 1)
-    if (SLOT_53 == 9):
+    if SLOT_53 == 9:
         Unknown23144(2, 0, 10, 0, 0, 0, 0, 0, 80, 0, 1)
+
 
 @Subroutine
 def IvyBlossom_Homing2():
-    if (SLOT_53 == 0):
+    if SLOT_53 == 0:
         Unknown23144(2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 1):
+    if SLOT_53 == 1:
         Unknown23144(2, 0, 2, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 2):
+    if SLOT_53 == 2:
         Unknown23144(2, 0, 3, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 3):
+    if SLOT_53 == 3:
         Unknown23144(2, 0, 4, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 4):
+    if SLOT_53 == 4:
         Unknown23144(2, 0, 5, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 5):
+    if SLOT_53 == 5:
         Unknown23144(2, 0, 6, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 6):
+    if SLOT_53 == 6:
         Unknown23144(2, 0, 7, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 7):
+    if SLOT_53 == 7:
         Unknown23144(2, 0, 8, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 8):
+    if SLOT_53 == 8:
         Unknown23144(2, 0, 9, 0, 0, 0, 0, 0, 1, 0, 1)
-    if (SLOT_53 == 9):
+    if SLOT_53 == 9:
         Unknown23144(2, 0, 10, 0, 0, 0, 0, 0, 1, 0, 1)
+
 
 @State
 def rcef_414():
@@ -6061,7 +6216,7 @@ def rcef_414():
 
         def upon_36():
             AddActionMark(-1)
-            if (not SLOT_2):
+            if not SLOT_2:
                 Unknown23090(23)
 
         def upon_35():
@@ -6080,9 +6235,9 @@ def rcef_414():
         SelfWind(100, 100, 0)
     sprite('vrrcef414_00', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(100000)
     CreateParticle('rcef_414', 0)
     ParticleColorFromPalette(225, 226, 227)
     CallCustomizableParticle('rcef_414b', 0)
@@ -6102,13 +6257,11 @@ def rcef_414():
     CommonSE('012_stab_fast')
     loopRest()
     if SLOT_51:
-        _gotolabel(9)
-    random_(2, 0, 10)
-    if SLOT_0:
-        _gotolabel(5)
-    random_(2, 0, 10)
-    if SLOT_0:
-        _gotolabel(6)
+        conditionalSendToLabel(9)
+    if random_(2, 0, 10):
+        conditionalSendToLabel(5)
+    if random_(2, 0, 10):
+        conditionalSendToLabel(6)
     sprite('vrrcef414_10b', 2)
     CreateParticle('rcef_414open', 0)
     SLOT_51 = 1
@@ -6119,39 +6272,39 @@ def rcef_414():
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 40)
+    ObjectUpon(STATE_END, 40)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     AddActionMark(1)
     sprite('vrrcef414_11', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     AddActionMark(1)
     sprite('vrrcef414_11', 32767)
     SetZVal(500)
@@ -6167,39 +6320,39 @@ def rcef_414():
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 40)
+    ObjectUpon(STATE_END, 40)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     AddActionMark(1)
     sprite('vrrcef414_11ex00', 32767)
     SetZVal(500)
@@ -6215,39 +6368,39 @@ def rcef_414():
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 40)
+    ObjectUpon(STATE_END, 40)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 2)
     CreateObject('rcef_414_bat', 0)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     AddActionMark(1)
     sprite('vrrcef414_11ex01', 32767)
     SetZVal(500)
@@ -6271,6 +6424,7 @@ def rcef_414():
     sprite('vrrcef414_10', 20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def rcef_414_test():
     sprite('vrrcef414_10', 20)
@@ -6278,6 +6432,7 @@ def rcef_414_test():
     sprite('vrrcef414_10b', 4)
     sprite('vrrcef414_10c', 4)
     sprite('vrrcef414_11', 60)
+
 
 @State
 def rcef_414_bat():
@@ -6328,48 +6483,48 @@ def rcef_414_bat():
             Size(1025)
             SLOT_53 = 9
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_23 > 40000):
+                if SLOT_YDistanceFromFloor > 40000:
                     ObjectUpon24(23, 0, 22, 103)
-                    if (SLOT_0 < 150000):
-                        if (not SLOT_56):
+                    if SLOT_0 < 150000:
+                        if not SLOT_56:
                             SLOT_56 = 1
-                            SLOT_11 = (SLOT_11 + 1)
+                            SLOT_11 = SLOT_11 + 1
                     elif SLOT_56:
                         SLOT_56 = 0
-                        SLOT_11 = (SLOT_11 + (-1))
+                        SLOT_11 = SLOT_11 + -1
                 elif SLOT_56:
                     SLOT_56 = 0
-                    SLOT_11 = (SLOT_11 + (-1))
+                    SLOT_11 = SLOT_11 + -1
             if SLOT_56:
                 PerExternalForces(92)
             CopyFromRightToLeft(23, 2, 54, 3, 2, 62)
-            if SLOT_IsInOverdrive2:
+            if SLOT_54:
                 SLOT_51 = 1
                 SLOT_57 = 40
                 SLOT_52 = 240
                 Unknown23144(0, 0, 103, 0, 0, 0, 0, 0, 0, 0, 0)
                 XImpulseAcceleration(0)
-                if (SLOT_54 <= 15):
-                    if (SLOT_54 >= 1):
+                if SLOT_54 <= 15:
+                    if SLOT_54 >= 1:
                         PerExternalForces(80)
                         YAccel(80)
-                if (SLOT_54 <= 1):
+                if SLOT_54 <= 1:
                     sendToLabel(0)
             elif SLOT_51:
-                SLOT_57 = (SLOT_57 + (-1))
-                if (not SLOT_57):
+                SLOT_57 = SLOT_57 + -1
+                if not SLOT_57:
                     callSubroutine('IvyBlossom_Homing2')
             else:
                 callSubroutine('IvyBlossom_Homing')
-            if (SLOT_23 < 30000):
+            if SLOT_YDistanceFromFloor < 30000:
                 AbsoluteY(30000)
-            SLOT_52 = (SLOT_52 + (-1))
-            if (SLOT_52 <= 0):
+            SLOT_52 = SLOT_52 + -1
+            if SLOT_52 <= 0:
                 Unknown23090(23)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             NoAttackDuringAction(1)
 
         def upon_32():
@@ -6381,7 +6536,7 @@ def rcef_414_bat():
 
         def upon_54():
             clearUponHandler(54)
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
             NoDamageAction(1)
             PerExternalForces(15)
             YAccel(15)
@@ -6395,19 +6550,20 @@ def rcef_414_bat():
     label(1)
     sprite('vrrcef414_atk', 3)
     SLOT_2 = 1
-    SLOT_55 = (SLOT_55 + (-1))
+    SLOT_55 = SLOT_55 + -1
     loopRest()
     if SLOT_55:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(9)
     sprite('keep', 16)
     clearUponHandler(54)
     Unknown23144(0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_56:
-        SLOT_11 = (SLOT_11 + (-1))
-    PassbackAddActionMarkToFunction('rcef_414', 36)
+        SLOT_11 = SLOT_11 + -1
+    TriggerUponForState('rcef_414', 36)
     ConstantAlphaModifier(-15)
     AttackOff()
+
 
 @State
 def rcef_414_anm():
@@ -6422,7 +6578,7 @@ def rcef_414_anm():
         RemoveOnContact(2)
 
         def upon_33():
-            if (not SLOT_2):
+            if not SLOT_2:
                 SLOT_2 = 1
                 CharacterFlash(16711680, 30, 100)
 
@@ -6445,6 +6601,7 @@ def rcef_414_anm():
     CallCustomizableParticle('rcef_414bat_pt', -1)
     gotoLabel(0)
 
+
 @State
 def rcef_414_anm_2p():
 
@@ -6458,7 +6615,7 @@ def rcef_414_anm_2p():
         RemoveOnContact(2)
 
         def upon_33():
-            if (not SLOT_2):
+            if not SLOT_2:
                 SLOT_2 = 1
                 CharacterFlash(9830600, 30, 100)
 
@@ -6481,6 +6638,7 @@ def rcef_414_anm_2p():
     CallCustomizableParticle('rcef_414bat_pt_2p', -1)
     gotoLabel(0)
 
+
 @State
 def IvyBlossom_EnergyDrain():
 
@@ -6496,6 +6654,7 @@ def IvyBlossom_EnergyDrain():
     CreateParticle('rcef_414drain', -1)
     gotoLabel(1)
 
+
 @State
 def IvyBlossom_SE():
 
@@ -6505,6 +6664,7 @@ def IvyBlossom_SE():
     sprite('null', 26)
     PrivateSE('rcse_27')
     gotoLabel(1)
+
 
 @State
 def Fade1():
@@ -6525,6 +6685,7 @@ def Fade1():
     physicsYImpulse(12000)
     sprite('rc000_00', 2)
     Size(0)
+
 
 @State
 def LightningObjAtkMini_Event2():
@@ -6573,6 +6734,7 @@ def LightningObjAtkMini_Event2():
     CreateObject('LightningOption', -1)
     sprite('null', 2)
     CreateObject('LightningOption', -1)
+
 
 @State
 def EventShakeObj():

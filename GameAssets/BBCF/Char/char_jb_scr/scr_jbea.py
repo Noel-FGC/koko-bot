@@ -20,6 +20,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_OD():
 
@@ -42,6 +43,7 @@ def EMB_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_JB_AH():
 
@@ -63,6 +65,7 @@ def EMB_JB_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def jb611_Tail():
 
@@ -79,6 +82,7 @@ def jb611_Tail():
     loopRest()
     gotoLabel(0)
 
+
 @Subroutine
 def zanzou():
     TurnParticleColorable1(1)
@@ -88,6 +92,7 @@ def zanzou():
     PaletteColor1(242)
     PaletteColor4(0)
 
+
 @Subroutine
 def zanzou2():
     TurnParticleColorable1(1)
@@ -96,6 +101,7 @@ def zanzou2():
     PaletteColor3(241)
     PaletteColor1(242)
     PaletteColor4(1)
+
 
 @State
 def jbef202_zanzou():
@@ -111,6 +117,7 @@ def jbef202_zanzou():
     sprite('vrefjb202_00', 3)
     sprite('vrefjb202_01', 4)
 
+
 @State
 def jbef202_zanzou_2nd():
 
@@ -125,6 +132,7 @@ def jbef202_zanzou_2nd():
     sprite('vrefjb202_10', 3)
     sprite('vrefjb202_11', 4)
 
+
 @State
 def jbef232_zanzou():
 
@@ -138,6 +146,7 @@ def jbef232_zanzou():
     sprite('vrefjb232_00', 6)
     sprite('vrefjb232_01', 4)
 
+
 @State
 def jbef212_zanzou():
 
@@ -150,6 +159,7 @@ def jbef212_zanzou():
         callSubroutine('zanzou')
     sprite('vrefjb212_00', 10)
     AddX(64000)
+
 
 @State
 def jbef235_zanzou():
@@ -165,6 +175,7 @@ def jbef235_zanzou():
     sprite('vrefjb235_00', 3)
     sprite('vrefjb235_01', 3)
     E0EAEffectPosition(0)
+
 
 @State
 def jbef235_zanzou_2nd():
@@ -183,6 +194,7 @@ def jbef235_zanzou_2nd():
     sprite('vrefjb235_10', 8)
     E0EAEffectPosition(0)
 
+
 @State
 def jbef252_zanzou():
 
@@ -197,6 +209,7 @@ def jbef252_zanzou():
     sprite('vrefjb252_01', 4)
     sprite('vrefjb252_01', 4)
     E0EAEffectPosition(0)
+
 
 @State
 def jbef252_zanzou_2nd():
@@ -213,6 +226,7 @@ def jbef252_zanzou_2nd():
     sprite('vrefjb252_10', 4)
     E0EAEffectPosition(0)
 
+
 @State
 def jbef255_zanzou():
 
@@ -228,6 +242,7 @@ def jbef255_zanzou():
     sprite('vrefjb255_01', 4)
     E0EAEffectPosition(0)
 
+
 @State
 def jbef340_zanzou():
 
@@ -241,6 +256,7 @@ def jbef340_zanzou():
     sprite('vrefjb340_00', 3)
     AddX(128000)
     sprite('vrefjb340_01', 7)
+
 
 @State
 def jbef210_atemi():
@@ -263,6 +279,7 @@ def jbef210_atemi():
     sprite('keep', 15)
     ConstantAlphaModifier(-16)
 
+
 @State
 def jbef211_atemi():
 
@@ -284,6 +301,7 @@ def jbef211_atemi():
     sprite('keep', 15)
     ConstantAlphaModifier(-16)
 
+
 @State
 def jbef_210_bloom():
 
@@ -292,6 +310,7 @@ def jbef_210_bloom():
         RemoveOnCallStateEnd(3)
         LinkParticle('jbef_210bloom')
     sprite('null', 30)
+
 
 @State
 def jbef311_claw():
@@ -307,6 +326,7 @@ def jbef311_claw():
     sprite('vrefjb311_01', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def jbef_DashSmoke():
 
@@ -314,6 +334,7 @@ def jbef_DashSmoke():
         pass
     sprite('null', 15)
     CreateParticle('jbef_403smoke', 100)
+
 
 @State
 def jbef_claw_pt():
@@ -324,6 +345,7 @@ def jbef_claw_pt():
     sprite('null', 3)
     sprite('null', 60)
     E0EAEffectPosition(0)
+
 
 @State
 def jbef400_slash():
@@ -341,6 +363,7 @@ def jbef400_slash():
     sprite('vrefjb400_01', 12)
     ConstantAlphaModifier(-21)
 
+
 @State
 def jbef400_slash2():
 
@@ -356,6 +379,7 @@ def jbef400_slash2():
     E0EAEffectPosition(0)
     sprite('vrefjb400_11', 12)
     ConstantAlphaModifier(-21)
+
 
 @State
 def jbef401_slash():
@@ -375,6 +399,7 @@ def jbef401_slash():
     sprite('vrefjb401_01', 12)
     ConstantAlphaModifier(-21)
 
+
 @State
 def jbef402_slash():
 
@@ -391,6 +416,7 @@ def jbef402_slash():
     sprite('vrefjb402_01', 12)
     ConstantAlphaModifier(-21)
 
+
 @State
 def jbef402_slash2():
 
@@ -403,6 +429,7 @@ def jbef402_slash2():
     E0EAEffectPosition(0)
     sprite('vrefjb402_11', 12)
     ConstantAlphaModifier(-21)
+
 
 @State
 def jbef403_zanzou():
@@ -417,6 +444,7 @@ def jbef403_zanzou():
     sprite('vrefjb403_00', 3)
     sprite('vrefjb403_01', 10)
 
+
 @State
 def jbef403_zanzou2():
 
@@ -429,6 +457,7 @@ def jbef403_zanzou2():
         callSubroutine('zanzou2')
     sprite('vrefjb403_10', 3)
     sprite('vrefjb403_11', 10)
+
 
 @State
 def jbef404_zanzou():
@@ -444,6 +473,7 @@ def jbef404_zanzou():
     sprite('vrefjb404_01', 10)
     E0EAEffectPosition(0)
 
+
 @State
 def jbef404_zanzou_air():
 
@@ -458,6 +488,7 @@ def jbef404_zanzou_air():
     sprite('vrefjb404_01ex', 10)
     E0EAEffectPosition(0)
 
+
 @State
 def jbef405_loop():
 
@@ -468,6 +499,7 @@ def jbef405_loop():
     sprite('null', 32767)
     CreateObject('jbef405_loop_swords', 100)
     CreateObject('jbef405_loop_claws', 100)
+
 
 @State
 def jbef405_loop_swords():
@@ -491,6 +523,7 @@ def jbef405_loop_swords():
     CommonSE('010_swing_sword_0')
     gotoLabel(0)
 
+
 @State
 def jbef405_loop_claws():
 
@@ -512,6 +545,7 @@ def jbef405_loop_claws():
     CreateObject('jbef405_loop_claw4', 100)
     gotoLabel(0)
 
+
 @State
 def jbef405_loop_sword():
 
@@ -526,6 +560,7 @@ def jbef405_loop_sword():
     sprite('vrefjb405_00', 3)
     sprite('vrefjb405_01', 3)
 
+
 @State
 def jbef405_loop_sword2():
 
@@ -538,6 +573,7 @@ def jbef405_loop_sword2():
         callSubroutine('zanzou')
     sprite('vrefjb405_10', 3)
     sprite('vrefjb405_11', 3)
+
 
 @State
 def jbef405_loop_sword3():
@@ -552,6 +588,7 @@ def jbef405_loop_sword3():
     sprite('vrefjb405_20', 3)
     sprite('vrefjb405_21', 3)
 
+
 @State
 def jbef405_loop_sword4():
 
@@ -564,6 +601,7 @@ def jbef405_loop_sword4():
         callSubroutine('zanzou')
     sprite('vrefjb405_30', 3)
     sprite('vrefjb405_31', 3)
+
 
 @State
 def jbef405_loop_claw():
@@ -582,6 +620,7 @@ def jbef405_loop_claw():
     sprite('vrefjb405_40', 2)
     sprite('vrefjb405_41', 2)
     sprite('vrefjb405_42', 2)
+
 
 @State
 def jbef405_loop_claw2():
@@ -602,6 +641,7 @@ def jbef405_loop_claw2():
     sprite('vrefjb405_41', 2)
     sprite('vrefjb405_42', 2)
 
+
 @State
 def jbef405_loop_claw3():
 
@@ -619,6 +659,7 @@ def jbef405_loop_claw3():
     sprite('vrefjb405_40', 2)
     sprite('vrefjb405_41', 2)
     sprite('vrefjb405_42', 2)
+
 
 @State
 def jbef405_loop_claw4():
@@ -638,6 +679,7 @@ def jbef405_loop_claw4():
     sprite('vrefjb405_41', 2)
     sprite('vrefjb405_42', 2)
 
+
 @State
 def jbef405_zanzou():
 
@@ -651,6 +693,7 @@ def jbef405_zanzou():
     sprite('vrefjb405_80', 3)
     sprite('vrefjb405_81', 10)
 
+
 @State
 def jbef406_zanzou():
 
@@ -663,6 +706,7 @@ def jbef406_zanzou():
         callSubroutine('zanzou')
     sprite('vrefjb406_00', 6)
 
+
 @State
 def jbef406_zanzou2():
 
@@ -674,6 +718,7 @@ def jbef406_zanzou2():
         BlendMode_Add()
         callSubroutine('zanzou')
     sprite('vrefjb406_10', 6)
+
 
 @State
 def jbef600_manto():
@@ -691,6 +736,7 @@ def jbef600_manto():
     physicsYImpulse(8000)
     sprite('efjb600_00', 60)
 
+
 @State
 def __5DStartEff():
 
@@ -703,7 +749,7 @@ def __5DStartEff():
         Eff3DEffect('jbef_markerMove', '')
         AddX(100000)
         AddY(150000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     SetScaleXPerFrame(40)
     CreateObject('MAKERMoveEffSumi', 100)
@@ -712,6 +758,7 @@ def __5DStartEff():
     CancelIfPlayerHit(0)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-42)
+
 
 @State
 def AIR5DStartEff():
@@ -725,7 +772,7 @@ def AIR5DStartEff():
         Eff3DEffect('jbef_markerMove', '')
         AddX(100000)
         RotationAngle(60000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     SetScaleXPerFrame(40)
     CreateObject('MAKERMoveEffSumi', 100)
@@ -734,6 +781,7 @@ def AIR5DStartEff():
     CancelIfPlayerHit(0)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-42)
+
 
 @State
 def AIR6DStartEff():
@@ -748,7 +796,7 @@ def AIR6DStartEff():
         AddX(100000)
         AddY(100000)
         RotationAngle(30000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     SetScaleXPerFrame(40)
     CreateObject('MAKERMoveEffSumi', 100)
@@ -757,6 +805,7 @@ def AIR6DStartEff():
     CancelIfPlayerHit(0)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-42)
+
 
 @State
 def Drive_AddAtk():
@@ -776,15 +825,16 @@ def Drive_AddAtk():
         HitsparkSize(700)
         DamageEffect(4, 'jbef_driveslash_sumi')
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SLOT_32 = 300
-            PassbackAddActionMarkToFunction('NmlAtk5D', 32)
-            PassbackAddActionMarkToFunction('NmlAtkAIR5D', 32)
-            PassbackAddActionMarkToFunction('AN_NmlAtkAIR6D', 32)
+            TriggerUponForState('NmlAtk5D', 32)
+            TriggerUponForState('NmlAtkAIR5D', 32)
+            TriggerUponForState('AN_NmlAtkAIR6D', 32)
     sprite('null', 25)
     sprite('Drive_Atk', 3)
     EffectPosition(22, 103)
     RefreshMultihit()
+
 
 @State
 def jbef_DriveHit():
@@ -805,6 +855,7 @@ def jbef_DriveHit():
     sprite('null', 58)
     SetScaleSpeed(10)
     Eff3DEffect('jbef_DriveSlashEnd', '')
+
 
 @State
 def jbef_Air5DHit():
@@ -828,6 +879,7 @@ def jbef_Air5DHit():
     SetScaleSpeed(10)
     Eff3DEffect('jbef_DriveSlashEnd', '')
 
+
 @State
 def jbef_Air6DHit():
 
@@ -850,28 +902,30 @@ def jbef_Air6DHit():
     SetScaleSpeed(10)
     Eff3DEffect('jbef_DriveSlashEnd', '')
 
+
 @Subroutine
 def DriveAtk_AtkVector():
-    if (SLOT_12 >= 90000):
+    if SLOT_XVelocity >= 90000:
         AirPushbackX(60000)
-    elif (SLOT_12 > 0):
+    elif SLOT_XVelocity > 0:
         AirPushbackX(30000)
-    elif (SLOT_12 == 0):
+    elif SLOT_XVelocity == 0:
         AirPushbackX(0)
-    elif (SLOT_12 < 0):
+    elif SLOT_XVelocity < 0:
         AirPushbackX(-30000)
-    elif (SLOT_12 <= (-90000)):
+    elif SLOT_XVelocity <= -90000:
         AirPushbackX(-60000)
-    if (SLOT_13 >= 90000):
+    if SLOT_YVelocity >= 90000:
         AirPushbackY(60000)
-    elif (SLOT_13 > 0):
+    elif SLOT_YVelocity > 0:
         AirPushbackY(30000)
-    elif (SLOT_13 == 0):
+    elif SLOT_YVelocity == 0:
         AirPushbackY(0)
-    elif (SLOT_13 < 0):
+    elif SLOT_YVelocity < 0:
         AirPushbackY(-30000)
-    elif (SLOT_13 <= (-90000)):
+    elif SLOT_YVelocity <= -90000:
         AirPushbackY(-60000)
+
 
 @Subroutine
 def DriveAtk():
@@ -897,6 +951,7 @@ def DriveAtk():
     def upon_OPPONENT_HIT():
         SLOT_32 = 300
 
+
 @Subroutine
 def DriveAtkFinish():
     AttackLevel_(4)
@@ -919,6 +974,7 @@ def DriveAtkFinish():
     UseSlashHitspark(1)
     StarterRating(2)
 
+
 @Subroutine
 def LeverInput():
     if CheckInput(0x45):
@@ -927,16 +983,18 @@ def LeverInput():
         SLOT_57 = 8
     SLOT_55 = 1
 
+
 @Subroutine
 def CheckPosY():
-    if (SLOT_57 == 2):
+    if SLOT_57 == 2:
         AddY(-200000)
-    elif (SLOT_57 == 8):
+    elif SLOT_57 == 8:
         AddY(200000)
-    if (SLOT_23 <= 150000):
+    if SLOT_YDistanceFromFloor <= 150000:
         AbsoluteY(150000)
-    elif (SLOT_23 >= 3000000):
+    elif SLOT_YDistanceFromFloor >= 3000000:
         AbsoluteY(3000000)
+
 
 @Subroutine
 def CourseSetting():
@@ -944,45 +1002,45 @@ def CourseSetting():
     CopyFromRightToLeft(23, 2, 58, 3, 2, 58)
     if SLOT_51:
         clearUponHandler(32)
-        if 
         if SLOT_58:
-            (SLOT_55 == 1)
+            SLOT_55 == 1
         else:
-            (SLOT_55 == 3):
+            SLOT_55 == 3
+        if SLOT_0:
             AddX(200000)
             AddY(400000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(5, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 2)
+            SLOT_55 == 2
         else:
-            (SLOT_55 == 6):
+            SLOT_55 == 6
+        if SLOT_0:
             AddX(400000)
             AddY(-400000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(6, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 3)
+            SLOT_55 == 3
         else:
-            (SLOT_55 == 9):
+            SLOT_55 == 9
+        if SLOT_0:
             AddX(400000)
             AddY(400000)
-            if (SLOT_57 == 2):
+            if SLOT_57 == 2:
                 AddY(200000)
-            elif (SLOT_57 == 8):
+            elif SLOT_57 == 8:
                 AddY(-200000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(7, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 4)
+            SLOT_55 == 4
         else:
-            (SLOT_55 == 12):
+            SLOT_55 == 12
+        if SLOT_0:
             AddX(400000)
             AddY(-400000)
             callSubroutine('CheckPosY')
@@ -990,45 +1048,45 @@ def CourseSetting():
             RegisterObject(8, 1)
     if SLOT_52:
         clearUponHandler(32)
-        if 
         if SLOT_58:
-            (SLOT_55 == 1)
+            SLOT_55 == 1
         else:
-            (SLOT_55 == 3):
+            SLOT_55 == 3
+        if SLOT_0:
             AddX(200000)
             AddY(400000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(5, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 2)
+            SLOT_55 == 2
         else:
-            (SLOT_55 == 6):
+            SLOT_55 == 6
+        if SLOT_0:
             AddX(800000)
             AddY(0)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(6, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 3)
+            SLOT_55 == 3
         else:
-            (SLOT_55 == 9):
+            SLOT_55 == 9
+        if SLOT_0:
             AddX(-400000)
             AddY(-400000)
-            if (SLOT_57 == 2):
+            if SLOT_57 == 2:
                 AddY(200000)
-            elif (SLOT_57 == 8):
+            elif SLOT_57 == 8:
                 AddY(-200000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(7, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 4)
+            SLOT_55 == 4
         else:
-            (SLOT_55 == 12):
+            SLOT_55 == 12
+        if SLOT_0:
             AddX(800000)
             AddY(0)
             callSubroutine('CheckPosY')
@@ -1036,128 +1094,130 @@ def CourseSetting():
             RegisterObject(8, 1)
     if SLOT_53:
         clearUponHandler(32)
-        if 
         if SLOT_58:
-            (SLOT_55 == 1)
+            SLOT_55 == 1
         else:
-            (SLOT_55 == 3):
+            SLOT_55 == 3
+        if SLOT_0:
             AddX(200000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(5, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 2)
+            SLOT_55 == 2
         else:
-            (SLOT_55 == 6):
+            SLOT_55 == 6
+        if SLOT_0:
             AddX(400000)
             AddY(400000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(6, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 3)
+            SLOT_55 == 3
         else:
-            (SLOT_55 == 9):
+            SLOT_55 == 9
+        if SLOT_0:
             AddX(400000)
             AddY(-400000)
-            if (SLOT_57 == 2):
+            if SLOT_57 == 2:
                 AddY(200000)
-            elif (SLOT_57 == 8):
+            elif SLOT_57 == 8:
                 AddY(-200000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(7, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 4)
+            SLOT_55 == 4
         else:
-            (SLOT_55 == 12):
+            SLOT_55 == 12
+        if SLOT_0:
             AddX(400000)
             AddY(400000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(8, 1)
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         clearUponHandler(32)
-        if 
         if SLOT_58:
-            (SLOT_55 == 1)
+            SLOT_55 == 1
         else:
-            (SLOT_55 == 3):
+            SLOT_55 == 3
+        if SLOT_0:
             AddX(200000)
             AddY(0)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(5, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 2)
+            SLOT_55 == 2
         else:
-            (SLOT_55 == 6):
+            SLOT_55 == 6
+        if SLOT_0:
             AddX(400000)
             AddY(0)
-            if (SLOT_57 == 2):
+            if SLOT_57 == 2:
                 AddX(-100000)
                 AddY(-100000)
-            elif (SLOT_57 == 8):
+            elif SLOT_57 == 8:
                 AddX(-100000)
                 AddY(100000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(6, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 3)
+            SLOT_55 == 3
         else:
-            (SLOT_55 == 9):
+            SLOT_55 == 9
+        if SLOT_0:
             AddX(400000)
             AddY(0)
-            if (SLOT_57 == 2):
+            if SLOT_57 == 2:
                 AddX(-100000)
                 AddY(-100000)
-            elif (SLOT_57 == 8):
+            elif SLOT_57 == 8:
                 AddX(-100000)
                 AddY(100000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(7, 1)
-        if 
         if SLOT_58:
-            (SLOT_55 == 4)
+            SLOT_55 == 4
         else:
-            (SLOT_55 == 12):
+            SLOT_55 == 12
+        if SLOT_0:
             AddX(400000)
             AddY(0)
-            if (SLOT_57 == 2):
+            if SLOT_57 == 2:
                 AddX(-100000)
                 AddY(-100000)
-            elif (SLOT_57 == 8):
+            elif SLOT_57 == 8:
                 AddX(-100000)
                 AddY(100000)
             callSubroutine('CheckPosY')
             CreateObject('Mark', 100)
             RegisterObject(8, 1)
-    if 
     if SLOT_58:
-        (SLOT_55 == 5)
+        SLOT_55 == 5
     else:
-        (SLOT_55 == 13):
-        clearUponHandler(3)
+        SLOT_55 == 13
+    if SLOT_0:
+        clearUponHandler(EVERY_FRAME)
         sendToLabel(0)
-    SLOT_55 = (SLOT_55 + 1)
+    SLOT_55 = SLOT_55 + 1
+
 
 @Subroutine
 def DriveSpeed():
     XImpulseAcceleration(20)
     YAccel(20)
     RotationSomething(0)
-    if SLOT_12:
-        if SLOT_13:
+    if SLOT_XVelocity:
+        if SLOT_YVelocity:
             CreateObject('MAKERMoveEff', -1)
     CopyFromRightToLeft(3, 2, 12, 23, 2, 12)
     CopyFromRightToLeft(3, 2, 13, 23, 2, 13)
+
 
 @State
 def __5D_SPMark():
@@ -1183,28 +1243,28 @@ def __5D_SPMark():
             else:
                 SLOT_57 = 8
 
-        def upon_FRAME_STEP():
-            if (not SLOT_55):
-                if CheckInput(0x1):
+        def upon_EVERY_FRAME():
+            if not SLOT_55:
+                if CheckInput(INPUT_HOLD_A):
                     callSubroutine('LeverInput')
                     SLOT_51 = 1
                     SLOT_52 = 0
                     SLOT_53 = 0
                     SLOT_54 = 0
-                elif CheckInput(0xa):
+                elif CheckInput(INPUT_HOLD_B):
                     callSubroutine('LeverInput')
                     SLOT_51 = 0
                     SLOT_52 = 1
                     SLOT_53 = 0
                     SLOT_54 = 0
-                elif CheckInput(0x13):
+                elif CheckInput(INPUT_HOLD_C):
                     callSubroutine('LeverInput')
                     SLOT_51 = 0
                     SLOT_52 = 0
                     SLOT_53 = 1
                     SLOT_54 = 0
                 elif SLOT_11:
-                    if CheckInput(0x1c):
+                    if CheckInput(INPUT_HOLD_D):
                         callSubroutine('LeverInput')
                         SLOT_51 = 0
                         SLOT_52 = 0
@@ -1225,13 +1285,13 @@ def __5D_SPMark():
     AddY(150000)
     label(0)
     sprite('null', 5)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     TeleportToObject(3)
     AddY(150000)
     CommonSE('000_airdash_0')
     sprite('Drive_TameMoveAtk', 5)
     CopyFromRightToLeft(23, 2, 56, 5, 2, 22)
-    if SLOT_38:
+    if SLOT_IsFacingRight:
         PrivateFunction(1, 2, 22, 2, 56, 2, 12)
     else:
         PrivateFunction(1, 2, 56, 2, 22, 2, 12)
@@ -1251,7 +1311,7 @@ def __5D_SPMark():
     CreateObject('test1', 0)
     sprite('Drive_TameMoveAtk', 5)
     CopyFromRightToLeft(23, 2, 56, 6, 2, 22)
-    if SLOT_38:
+    if SLOT_IsFacingRight:
         PrivateFunction(1, 2, 22, 2, 56, 2, 12)
     else:
         PrivateFunction(1, 2, 56, 2, 22, 2, 12)
@@ -1271,7 +1331,7 @@ def __5D_SPMark():
     CreateObject('test2', 0)
     sprite('Drive_TameMoveAtk', 5)
     CopyFromRightToLeft(23, 2, 56, 7, 2, 22)
-    if SLOT_38:
+    if SLOT_IsFacingRight:
         PrivateFunction(1, 2, 22, 2, 56, 2, 12)
     else:
         PrivateFunction(1, 2, 56, 2, 22, 2, 12)
@@ -1282,7 +1342,7 @@ def __5D_SPMark():
     callSubroutine('DriveAtk')
     PrivateSE('jbse_10')
     sprite('Drive_TameMoveAtk', 5)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     EndMomentum(1)
     CopyFromRightToLeft(3, 2, 12, 23, 2, 12)
     CopyFromRightToLeft(3, 2, 13, 23, 2, 13)
@@ -1291,7 +1351,7 @@ def __5D_SPMark():
     CreateObject('test3', 0)
     sprite('Drive_TameMoveAtk', 5)
     CopyFromRightToLeft(23, 2, 56, 8, 2, 22)
-    if SLOT_38:
+    if SLOT_IsFacingRight:
         PrivateFunction(1, 2, 22, 2, 56, 2, 12)
     else:
         PrivateFunction(1, 2, 56, 2, 22, 2, 12)
@@ -1303,9 +1363,10 @@ def __5D_SPMark():
     PrivateSE('jbse_10')
     sprite('Drive_TameMoveAtk', 5)
     ObjectUpon(8, 32)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     EndMomentum(1)
     TeleportToObject(8)
+
 
 @State
 def Mark():
@@ -1322,15 +1383,16 @@ def Mark():
         def upon_32():
             CreateParticle('jbef_drive_move', -1)
             sendToLabel(0)
-        sendToLabelUpon(44, 0)
+        uponSendToLabel(PLAYER_DAMAGED, 0)
     sprite('null', 120)
     label(0)
     sprite('null', 6)
     clearUponHandler(32)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     sprite('null', 6)
     SetScaleSpeed(120)
     ConstantAlphaModifier(-42)
+
 
 @State
 def MAKERMoveEff():
@@ -1356,6 +1418,7 @@ def MAKERMoveEff():
     sprite('null', 6)
     ConstantAlphaModifier(-42)
 
+
 @State
 def MAKERMoveEffSumi():
 
@@ -1370,6 +1433,7 @@ def MAKERMoveEffSumi():
     CallCustomizableParticle('jbef_drive_sumi', 1)
     CallCustomizableParticle('jbef_drive_sumi', 2)
 
+
 @State
 def jbef203_zanzou():
 
@@ -1382,6 +1446,7 @@ def jbef203_zanzou():
         BlendMode_Add()
         callSubroutine('zanzou2')
     sprite('vrefjb203_00', 10)
+
 
 @State
 def test1():
@@ -1398,6 +1463,7 @@ def test1():
     sprite('jb252_08', 10)
     ConstantAlphaModifier(-20)
 
+
 @State
 def test2():
 
@@ -1413,6 +1479,7 @@ def test2():
     sprite('jb431_09', 10)
     ConstantAlphaModifier(-20)
 
+
 @State
 def test3():
 
@@ -1427,6 +1494,7 @@ def test3():
     ConstantAlphaModifier(30)
     sprite('jb404_05', 10)
     ConstantAlphaModifier(-20)
+
 
 @State
 def MarkingPoint():
@@ -1449,6 +1517,7 @@ def MarkingPoint():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def jbeff_warp():
 
@@ -1464,6 +1533,7 @@ def jbeff_warp():
     SetScaleSpeed(350)
     sprite('null', 14)
     SetScaleSpeed(30)
+
 
 @State
 def Shot_Eff():
@@ -1492,15 +1562,15 @@ def Shot_Eff():
         def upon_54():
             sendToLabel(580)
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 >= 3):
+        def upon_EVERY_FRAME():
+            if SLOT_2 >= 3:
                 sendToLabel(0)
         LandingHeight(100000)
 
         def upon_5():
             AddActionMark(1)
             YAccel(-90)
-            if (SLOT_13 <= 26000):
+            if SLOT_YVelocity <= 26000:
                 physicsYImpulse(26000)
             LandingEffects(104, 1, 0)
             CommonSE('015_blaze_1')
@@ -1513,14 +1583,15 @@ def Shot_Eff():
     CreateObject('jbef407_Nekodama', -1)
     label(0)
     sprite('Shot_Atk', 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     label(580)
     sprite('null', 20)
     AttackOff()
     EndMomentum(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     clearUponHandler(54)
-    PassbackAddActionMarkToFunction('jbef407_Nekodama', 32)
+    TriggerUponForState('jbef407_Nekodama', 32)
+
 
 @State
 def jbef407_NekodamaRady():
@@ -1567,6 +1638,7 @@ def jbef407_NekodamaRady():
     ParticleColorFromPalette(2, 2, 2)
     CallCustomizableParticle('jbef_407_nokosi', 0)
 
+
 @State
 def jbef407_Nekodama():
 
@@ -1581,7 +1653,7 @@ def jbef407_Nekodama():
         EnableAfterimage(1)
         AfterimageCount(3)
         AfterimageInterval(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrefjb407_10', 1)
     ParticleSize(800)
     ParticleRotationAngle(-30000)
@@ -1612,6 +1684,7 @@ def jbef407_Nekodama():
     sprite('vrefjb407_24', 2)
     loopRest()
 
+
 @State
 def jbef407_NekodamaAura():
 
@@ -1635,6 +1708,7 @@ def jbef407_NekodamaAura():
     SetScaleSpeed(15)
     loopRest()
 
+
 @State
 def jbef408_DashEff():
 
@@ -1643,12 +1717,13 @@ def jbef408_DashEff():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         LinkParticle('jbef_408_dash')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 8)
     ConstantAlphaModifier(-31)
     loopRest()
+
 
 @State
 def jb430_slashMatome():
@@ -1674,12 +1749,13 @@ def jb430_slashMatome():
     sprite('null', 15)
     sprite('null', 58)
     RemoveOnCallStateEnd(0)
-    PassbackAddActionMarkToFunction('jb430_slashAdd', 32)
+    TriggerUponForState('jb430_slashAdd', 32)
     CreateObject('jb430_slashEnd', 100)
     DespawnEAEffect('jb430_slash1')
     DespawnEAEffect('jb430_slash2')
     DespawnEAEffect('jb430_slash3')
     DespawnEAEffect('jb430_slash4')
+
 
 @State
 def jb430_slashEnd():
@@ -1699,6 +1775,7 @@ def jb430_slashEnd():
     DespawnEAEffect('jb430_slash4')
     SetScaleSpeedY(7)
 
+
 @State
 def jb430_slashAdd():
 
@@ -1710,7 +1787,7 @@ def jb430_slashAdd():
         AbsoluteY(0)
         AddY(-20000)
         AddScaleX(400)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         RenderLayer(12)
     sprite('null', 32767)
     Eff3DEffect('jbef_430baclkaura00', '')
@@ -1720,6 +1797,7 @@ def jb430_slashAdd():
     SetScaleXPerFrame(20)
     sprite('null', 30)
     ConstantAlphaModifier(-8)
+
 
 @State
 def jb430_slash1():
@@ -1736,6 +1814,7 @@ def jb430_slash1():
     ConstantAlphaModifier(51)
     sprite('null', 32767)
 
+
 @State
 def jb430_slash2():
 
@@ -1750,6 +1829,7 @@ def jb430_slash2():
     AlphaValue(0)
     ConstantAlphaModifier(51)
     sprite('null', 32767)
+
 
 @State
 def jb430_slash3():
@@ -1766,6 +1846,7 @@ def jb430_slash3():
     ConstantAlphaModifier(51)
     sprite('null', 32767)
 
+
 @State
 def jb430_slash4():
 
@@ -1780,6 +1861,7 @@ def jb430_slash4():
     AlphaValue(0)
     ConstantAlphaModifier(51)
     sprite('null', 32767)
+
 
 @State
 def jb430_ODSlash00():
@@ -1805,6 +1887,7 @@ def jb430_ODSlash00():
     Eff3DEffect('jbef_430OD_slash02End', '')
     RemoveOnCallStateEnd(0)
 
+
 @State
 def jb430_ODSlash00BG():
 
@@ -1819,6 +1902,7 @@ def jb430_ODSlash00BG():
     sprite('null', 58)
     ConstantAlphaModifier(-4)
     RemoveOnCallStateEnd(0)
+
 
 @State
 def jb431_SlashEndEff():
@@ -1849,6 +1933,7 @@ def jb431_SlashEndEff():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def jb431_SlashEff():
 
@@ -1861,6 +1946,7 @@ def jb431_SlashEff():
     sprite('null', 15)
     CreateObject('jb431_SlashBloomEff', 100)
 
+
 @State
 def jb431_SlashBloomEff():
 
@@ -1870,6 +1956,7 @@ def jb431_SlashBloomEff():
         ParticleColorFromPalette(1, 1, 1)
         CallPrivateEffect('jbef_431slashBloom')
     sprite('null', 15)
+
 
 @State
 def jb431_CircleShockEff():
@@ -1882,12 +1969,13 @@ def jb431_CircleShockEff():
     Eff3DEffect('jbef_430circle00.DIG', '')
     SetScaleSpeed(40)
 
+
 @State
 def jb431OD_SlashEffMatome():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 4)
     CreateObject('jb431OD_SlashEff00', -1)
     sprite('null', 4)
@@ -1896,11 +1984,12 @@ def jb431OD_SlashEffMatome():
     CreateObject('jb431OD_SlashEff02', -1)
     label(0)
     sprite('null', 4)
-    PassbackAddActionMarkToFunction('jb431OD_SlashEff00', 32)
+    TriggerUponForState('jb431OD_SlashEff00', 32)
     sprite('null', 4)
-    PassbackAddActionMarkToFunction('jb431OD_SlashEff01', 32)
+    TriggerUponForState('jb431OD_SlashEff01', 32)
     sprite('null', 1)
-    PassbackAddActionMarkToFunction('jb431OD_SlashEff02', 32)
+    TriggerUponForState('jb431OD_SlashEff02', 32)
+
 
 @State
 def jb431OD_SlashEff00():
@@ -1916,7 +2005,7 @@ def jb431OD_SlashEff00():
         Eff3DEffect('jbef_430ODslash00.DIG', '')
         ParticleColorFromPalette(1, 1, 1)
         CallPrivateEffect('jbef_431od_slashadd')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 5)
     AlphaValue(0)
     ScreenShake(2500, 2500)
@@ -1932,6 +2021,7 @@ def jb431OD_SlashEff00():
     sprite('null', 30)
     ConstantAlphaModifier(-8)
 
+
 @State
 def jb431OD_SlashEff01():
 
@@ -1946,7 +2036,7 @@ def jb431OD_SlashEff01():
         ParticleColorFromPalette(1, 1, 1)
         CallPrivateEffect('jbef_431od_slashadd')
         Eff3DEffect('jbef_430ODslash01.DIG', '')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 5)
     AlphaValue(0)
     ScreenShake(2500, 2500)
@@ -1962,6 +2052,7 @@ def jb431OD_SlashEff01():
     sprite('null', 30)
     ConstantAlphaModifier(-8)
 
+
 @State
 def jb431OD_SlashEff02():
 
@@ -1976,7 +2067,7 @@ def jb431OD_SlashEff02():
         ParticleColorFromPalette(1, 1, 1)
         CallPrivateEffect('jbef_431od_slashadd')
         Eff3DEffect('jbef_430ODslash02.DIG', '')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 5)
     AlphaValue(0)
     ScreenShake(2500, 2500)
@@ -1991,6 +2082,7 @@ def jb431OD_SlashEff02():
     SetScaleSpeed(5)
     sprite('null', 30)
     ConstantAlphaModifier(-8)
+
 
 @State
 def jb431OD_jubei00():
@@ -2007,6 +2099,7 @@ def jb431OD_jubei00():
     ConstantAlphaModifier(-26)
     physicsXImpulse(3000)
 
+
 @State
 def jb431OD_jubei01():
 
@@ -2020,6 +2113,7 @@ def jb431OD_jubei01():
     sprite('jb211_06', 10)
     ConstantAlphaModifier(-26)
     physicsXImpulse(3000)
+
 
 @State
 def jb431OD_jubei02():
@@ -2036,6 +2130,7 @@ def jb431OD_jubei02():
     ConstantAlphaModifier(-26)
     physicsXImpulse(3000)
 
+
 @State
 def jb432_eyerayEff():
 
@@ -2049,6 +2144,7 @@ def jb432_eyerayEff():
     sprite('vrefjb432_02', 6)
     sprite('vrefjb432_03', 6)
     CallCustomizableParticle('jbef_432buff_hatudo', 100)
+
 
 @State
 def jb432_BodyAuraEff():
@@ -2073,6 +2169,7 @@ def jb432_BodyAuraEff():
     sprite('null', 20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def jb432_BodyAuraEffCore():
 
@@ -2090,6 +2187,7 @@ def jb432_BodyAuraEffCore():
     sprite('null', 10)
     sprite('null', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def jb440_startAtk00():
@@ -2128,6 +2226,7 @@ def jb440_startAtk00():
     Eff3DEffect('jbef_440startAtk01end', '')
     ConstantAlphaModifier(-4)
 
+
 @State
 def jb440_slash00():
 
@@ -2151,6 +2250,7 @@ def jb440_slash00():
     sprite('null', 57)
     Eff3DEffect('jbef_440slash00End.DIG', '')
     SetScaleSpeed(2)
+
 
 @State
 def jb440_AddAtk():
@@ -2179,6 +2279,7 @@ def jb440_AddAtk():
     Eff3DEffect('jbef_440AddAtk02End.DIG', '')
     RemoveOnCallStateEnd(0)
 
+
 @State
 def jb440_AddAtk00():
 
@@ -2194,6 +2295,7 @@ def jb440_AddAtk00():
     sprite('null', 5)
     AlphaValue(128)
     ConstantAlphaModifier(-25)
+
 
 @State
 def jb440_AddAtk01():
@@ -2211,6 +2313,7 @@ def jb440_AddAtk01():
     AlphaValue(128)
     ConstantAlphaModifier(-25)
 
+
 @State
 def jb430_Eff():
 
@@ -2221,6 +2324,7 @@ def jb430_Eff():
         SetScaleY(6000)
     sprite('null', 30)
 
+
 @State
 def jb430_EffOD():
 
@@ -2230,6 +2334,7 @@ def jb430_EffOD():
         SetScaleX(1000)
         SetScaleY(10000)
     sprite('null', 30)
+
 
 @State
 def jb430_BunshinA():
@@ -2244,6 +2349,7 @@ def jb430_BunshinA():
     physicsXImpulse(25000)
     ConstantAlphaModifier(-21)
 
+
 @State
 def jb430_BunshinB():
 
@@ -2257,6 +2363,7 @@ def jb430_BunshinB():
     physicsXImpulse(-25000)
     ConstantAlphaModifier(-21)
 
+
 @State
 def jb431_Eff():
 
@@ -2267,6 +2374,7 @@ def jb431_Eff():
         SetScaleY(600)
     sprite('null', 30)
     LinkParticle('ef_ukemi')
+
 
 @State
 def jb431_EffOD():
@@ -2279,6 +2387,7 @@ def jb431_EffOD():
         RandAddRotation(10000, 60000)
     sprite('null', 3)
     LinkParticle('ef_ukemi')
+
 
 @State
 def jb431_BunshinA():
@@ -2293,6 +2402,7 @@ def jb431_BunshinA():
     physicsXImpulse(25000)
     ConstantAlphaModifier(-21)
 
+
 @State
 def jb431_BunshinB():
 
@@ -2305,6 +2415,7 @@ def jb431_BunshinB():
     sprite('jb431_01', 12)
     physicsXImpulse(-25000)
     ConstantAlphaModifier(-21)
+
 
 @State
 def UltimateChage_Atk():
@@ -2326,6 +2437,7 @@ def UltimateChage_Atk():
         Size(1200)
     sprite('Chage_Atk', 3)
 
+
 @State
 def UltimateChageEX_Atk():
 
@@ -2343,6 +2455,7 @@ def UltimateChageEX_Atk():
         Size(1200)
     sprite('Chage_Atk', 3)
 
+
 @State
 def jb432_Eff():
 
@@ -2354,21 +2467,23 @@ def jb432_Eff():
     sprite('null', 30)
     LinkParticle('ef_ukemi')
 
+
 @State
 def ChageAuraGenerator():
 
     def upon_IMMEDIATE():
 
-        def upon_FRAME_STEP():
-            SLOT_51 = (SLOT_51 + 1)
-            if (not op(4, 2, 51, 0, 30)):
+        def upon_EVERY_FRAME():
+            SLOT_51 = SLOT_51 + 1
+            if not SLOT_51 % 30:
                 SLOT_52 = 0
                 CopyFromRightToLeft(23, 2, 52, 2, 2, 30)
-                if (not SLOT_52):
-                    ApplyFunctionsToObjects(3)
-                    CreateObject('ChageAura', 103)
-                    ApplyFunctionsToSelf()
+                if not SLOT_52:
+
+                    def RunOnObject_3():
+                        CreateObject('ChageAura', 103)
     sprite('null', 32767)
+
 
 @State
 def ChageAura():
@@ -2383,6 +2498,7 @@ def ChageAura():
     sprite('null', 30)
     LinkParticle('jbef_432_buffNml')
 
+
 @State
 def ChageAura2():
 
@@ -2395,6 +2511,7 @@ def ChageAura2():
         Size(1000)
     sprite('null', 30)
     LinkParticle('jbef_432_buff2')
+
 
 @State
 def BurstDD_Camera():
@@ -2411,6 +2528,7 @@ def BurstDD_Camera():
     sprite('null', 1)
     CameraControlEnable(0)
     CameraFollowTarget(0, 0)
+
 
 @State
 def Astral_Camera():
@@ -2476,6 +2594,7 @@ def Astral_Camera():
     sprite('null', 32767)
     EndMomentum(1)
 
+
 @State
 def jb450_ZanEff():
 
@@ -2484,6 +2603,7 @@ def jb450_ZanEff():
     sprite('null', 6)
     CommonSE('006_swing_blade_1')
     CommonSE('010_swing_sword_2')
+
 
 @State
 def jb450_AtkAura():
@@ -2494,7 +2614,7 @@ def jb450_AtkAura():
         BlendMode_Normal()
         Eff3DEffect('jbef_450atkaura00', '')
         LinkParticle('jbef_450_underlight')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     AlphaValue(0)
     CreateObject('jb450_AtkAura2', -1)
@@ -2509,6 +2629,7 @@ def jb450_AtkAura():
     SetScaleSpeed(15)
     ConstantAlphaModifier(-12)
 
+
 @State
 def jb450_AtkAura2():
 
@@ -2517,6 +2638,7 @@ def jb450_AtkAura2():
         Eff3DEffect('jbef_450atkaura01', '')
         Size(500)
     sprite('null', 39)
+
 
 @State
 def jb450_kaihouAura():
@@ -2536,6 +2658,7 @@ def jb450_kaihouAura():
     ConstantAlphaModifier(-17)
     E0EAEffectPosition(0)
 
+
 @State
 def jb450_kaihouShock():
 
@@ -2552,6 +2675,7 @@ def jb450_kaihouShock():
     ConstantAlphaModifier(-26)
     SetScaleXPerFrame(10)
 
+
 @State
 def jb450_kidou():
 
@@ -2564,6 +2688,7 @@ def jb450_kidou():
         AlphaValue(180)
     sprite('vrefjb450_00kidou', 8)
     sprite('vrefjb450_01kidou', 16)
+
 
 @State
 def jb450_kidou2():
@@ -2578,6 +2703,7 @@ def jb450_kidou2():
     sprite('vrefjb450_02kidou', 8)
     sprite('vrefjb450_03kidou', 24)
 
+
 @State
 def jbef_450flash():
 
@@ -2586,6 +2712,7 @@ def jbef_450flash():
         BlendMode_Normal()
         LinkParticle('jbef_450flash')
     sprite('null', 30)
+
 
 @State
 def jbef_450weakpointBG():
@@ -2599,13 +2726,14 @@ def jbef_450weakpointBG():
         TeleportToObject(22)
         AddY(180000)
         AddX(-10000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 20)
     SetScaleSpeed(120)
     ConstantAlphaModifier(-12)
     loopRest()
+
 
 @State
 def jbef_450weakpoint():
@@ -2614,7 +2742,7 @@ def jbef_450weakpoint():
         CameraNoScreenCollision(1)
         BlendMode_Normal()
         LinkParticle('jbef_450weakpoint')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         EffectPosition(22, 109)
         E0EAEffectPosition(22)
     sprite('null', 20)
@@ -2630,6 +2758,7 @@ def jbef_450weakpoint():
     SetScaleSpeed(-80)
     loopRest()
 
+
 @State
 def jbef_450weakpoint_Terumi():
 
@@ -2638,10 +2767,10 @@ def jbef_450weakpoint_Terumi():
         BlendMode_Normal()
         Flip()
         PaletteIndex(4)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         TeleportToObject(22)
         E0EAEffectPosition(22)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Eff3DEffect('jbef_450terumi', '')
         AddY(25000)
     sprite('null', 30)
@@ -2659,6 +2788,7 @@ def jbef_450weakpoint_Terumi():
     ConstantAlphaModifier(-26)
     loopRest()
 
+
 @State
 def jbef_450weakpoint_Hazama():
 
@@ -2667,10 +2797,10 @@ def jbef_450weakpoint_Hazama():
         BlendMode_Normal()
         Flip()
         PaletteIndex(4)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         TeleportToObject(22)
         E0EAEffectPosition(22)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Eff3DEffect('jbef_450terumi', '')
         AddY(25000)
     sprite('null', 30)
@@ -2687,6 +2817,7 @@ def jbef_450weakpoint_Hazama():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
     loopRest()
+
 
 @State
 def jb450_BG():
@@ -2705,6 +2836,7 @@ def jb450_BG():
     sprite('null', 9)
     ConstantAlphaModifier(-26)
 
+
 @State
 def jb450_BGsub():
 
@@ -2719,6 +2851,7 @@ def jb450_BGsub():
     sprite('null', 9)
     ConstantAlphaModifier(-26)
 
+
 @State
 def jbef_450ZanzoNokosiMato():
 
@@ -2728,24 +2861,25 @@ def jbef_450ZanzoNokosiMato():
         AbsoluteY(0)
     sprite('null', 3)
     CreateObject('jbef_450ZanzoNokosi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-400000)
     sprite('null', 3)
     CreateObject('jbef_450ZanzoNokosi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-300000)
     sprite('null', 3)
     CreateObject('jbef_450ZanzoNokosi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-200000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-200000)
     sprite('null', 60)
     CreateObject('jbef_450ZanzoNokosi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-100000)
+
 
 @State
 def jbef_450ZanzoNokosi():
@@ -2757,6 +2891,7 @@ def jbef_450ZanzoNokosi():
         AbsoluteY(0)
     sprite('jb450_26', 50)
     ConstantAlphaModifier(-5)
+
 
 @State
 def jb450_RedBG():
@@ -2771,6 +2906,7 @@ def jb450_RedBG():
     AlphaValue(0)
     sprite('null', 55)
     AlphaValue(255)
+
 
 @State
 def jb450_BG2():
@@ -2789,6 +2925,7 @@ def jb450_BG2():
     sprite('null', 1)
     CreateObject('jb450_BGEnd', -1)
 
+
 @State
 def jb450_BGEnd():
 
@@ -2801,6 +2938,7 @@ def jb450_BGEnd():
         RenderLayer(4)
         AddX(-1300000)
     sprite('null', 115)
+
 
 @State
 def jb450_Slash():
@@ -2827,6 +2965,7 @@ def jb450_Slash():
     sprite('null', 40)
     CreateObject('jb450_SlashSub', -1)
     AlphaValue(0)
+
 
 @State
 def jb450_SlashSub():
@@ -2871,6 +3010,7 @@ def jb450_SlashSub():
     sprite('null', 4)
     Rotation(600000)
 
+
 @State
 def jb610_Slash():
 
@@ -2888,6 +3028,7 @@ def jb610_Slash():
     ConstantAlphaModifier(-4)
     Eff3DEffect('jbef_610slash01', '')
 
+
 @State
 def jb900_Ase():
 
@@ -2898,6 +3039,7 @@ def jb900_Ase():
     AlphaValue(0)
     ConstantAlphaModifier(12)
     sprite('null', 32767)
+
 
 @State
 def jb611_Tail_Event():
@@ -2914,6 +3056,7 @@ def jb611_Tail_Event():
     sprite('jb611_06s', 10)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def NOISE():

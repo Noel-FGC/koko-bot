@@ -1,7 +1,8 @@
 @Subroutine
 def PreInit():
     CharacterID('tm')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def MatchInit():
@@ -22,7 +23,7 @@ def MatchInit():
     NegativePenaltyResistance(4)
     Unknown12054(3, 2)
     OverdriveDuration(240, 270, 300, 330, 360, 390, 420, 480, 480, 480)
-    if SLOT_IsUnlimitedCharacter:
+    if SLOT_116:
         Health(14000)
         WalkFSpeed(9300)
         WalkBSpeed(7200)
@@ -144,7 +145,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 250000, 0, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('Oiuchi', 0x2)
+    Move_Register('Oiuchi', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_22)
     Move_Input_(INPUT_PRESS_C)
@@ -154,7 +155,7 @@ def MatchInit():
     Unknown15027(250)
     SkillEstimateRange(0, 250000, -200000, 150000, 2000, 0)
     Move_EndRegister()
-    Move_Register('Assault', 0x2)
+    Move_Register('Assault', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_D)
@@ -163,7 +164,7 @@ def MatchInit():
     GuardStunPriority(0)
     SkillEstimateRange(0, 550000, -200000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('CommandThrow', 0x2)
+    Move_Register('CommandThrow', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_D)
@@ -176,7 +177,7 @@ def MatchInit():
     GuardStunPriority(1500)
     SkillEstimateRange(0, 400000, -200000, 200000, 1000, 0)
     Move_EndRegister()
-    Move_Register('MidAssault', 0x2)
+    Move_Register('MidAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
@@ -185,7 +186,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 300000, -200000, 200000, 1000, 0)
     Move_EndRegister()
-    Move_Register('UltimateAntiAir', 0x606)
+    Move_Register('UltimateAntiAir', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_623)
@@ -194,7 +195,7 @@ def MatchInit():
     OpponentAttackPriority(4000)
     SkillEstimateRange(0, 400000, -200000, 450000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateAntiAir_OD', 0x606)
+    Move_Register('UltimateAntiAir_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_623)
@@ -204,7 +205,7 @@ def MatchInit():
     OpponentAttackPriority(4000)
     SkillEstimateRange(0, 400000, -200000, 450000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateAntiAir_Air', 0x606)
+    Move_Register('UltimateAntiAir_Air', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_623)
@@ -213,7 +214,7 @@ def MatchInit():
     OpponentAttackPriority(4000)
     SkillEstimateRange(0, 400000, -200000, 300000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateAntiAir_Air_OD', 0x606)
+    Move_Register('UltimateAntiAir_Air_OD', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_623)
@@ -223,7 +224,7 @@ def MatchInit():
     OpponentAttackPriority(4000)
     SkillEstimateRange(0, 400000, -200000, 300000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateAssault', 0x606)
+    Move_Register('UltimateAssault', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_41236)
@@ -232,7 +233,7 @@ def MatchInit():
     OpponentAttackPriority(2000)
     SkillEstimateRange(0, 650000, -200000, 200000, 300, 0)
     Move_EndRegister()
-    Move_Register('UltimateAssault_OD', 0x606)
+    Move_Register('UltimateAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_41236)
@@ -242,7 +243,7 @@ def MatchInit():
     OpponentAttackPriority(2000)
     SkillEstimateRange(0, 650000, -200000, 200000, 300, 0)
     Move_EndRegister()
-    Move_Register('UltimateAirAssault', 0x606)
+    Move_Register('UltimateAirAssault', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_41236)
@@ -252,7 +253,7 @@ def MatchInit():
     GuardStunPriority(0)
     SkillEstimateRange(-50000, 550000, -600000, -50000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateAirAssault_OD', 0x606)
+    Move_Register('UltimateAirAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_41236)
@@ -263,7 +264,7 @@ def MatchInit():
     GuardStunPriority(0)
     SkillEstimateRange(-50000, 550000, -600000, -50000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateRushLow', 0x606)
+    Move_Register('UltimateRushLow', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_63214)
@@ -272,7 +273,7 @@ def MatchInit():
     MoveLow()
     SkillEstimateRange(0, 380000, -200000, 200000, 300, 50)
     Move_EndRegister()
-    Move_Register('UltimateRushLow_OD', 0x606)
+    Move_Register('UltimateRushLow_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_63214)
@@ -282,7 +283,7 @@ def MatchInit():
     MoveLow()
     SkillEstimateRange(0, 380000, -200000, 200000, 300, 50)
     Move_EndRegister()
-    Move_Register('UltimateRushMid', 0x606)
+    Move_Register('UltimateRushMid', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_63214)
@@ -291,7 +292,7 @@ def MatchInit():
     MoveMid()
     SkillEstimateRange(0, 380000, -200000, 200000, 400, 50)
     Move_EndRegister()
-    Move_Register('UltimateRushMid_OD', 0x606)
+    Move_Register('UltimateRushMid_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_63214)
@@ -301,7 +302,7 @@ def MatchInit():
     MoveMid()
     SkillEstimateRange(0, 380000, -200000, 200000, 400, 50)
     Move_EndRegister()
-    Move_Register('UltimateAtemi', 0x606)
+    Move_Register('UltimateAtemi', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -313,7 +314,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(0, 350000, -200000, 200000, 100, 0)
     Move_EndRegister()
-    Move_Register('UltimateAtemi_OD', 0x606)
+    Move_Register('UltimateAtemi_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -326,7 +327,7 @@ def MatchInit():
     DamageStunPriority(0)
     SkillEstimateRange(0, 350000, -200000, 200000, 100, 0)
     Move_EndRegister()
-    Move_Register('UltimateShot_AntiLand', 0x606)
+    Move_Register('UltimateShot_AntiLand', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2003)
     Move_Input_(INPUT_236236)
@@ -335,7 +336,7 @@ def MatchInit():
     OpponentAttackPriority(6000)
     SkillEstimateRange(800000, 1500000, -200000, 200000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateShot_AntiAir', 0x606)
+    Move_Register('UltimateShot_AntiAir', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2003)
     Move_Input_(INPUT_214214)
@@ -344,7 +345,7 @@ def MatchInit():
     OpponentAttackPriority(6000)
     SkillEstimateRange(800000, 1500000, 200000, 600000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateShot_AntiLand_OD', 0x606)
+    Move_Register('UltimateShot_AntiLand_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2003)
     Move_Input_(INPUT_236236)
@@ -354,7 +355,7 @@ def MatchInit():
     OpponentAttackPriority(6000)
     SkillEstimateRange(800000, 1500000, -200000, 200000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateShot_AntiAir_OD', 0x606)
+    Move_Register('UltimateShot_AntiAir_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2003)
     Move_Input_(INPUT_214214)
@@ -364,10 +365,10 @@ def MatchInit():
     OpponentAttackPriority(6000)
     SkillEstimateRange(800000, 1500000, 200000, 600000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateLock', 0x606)
+    Move_Register('UltimateLock', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
-    Move_Input_(0xb6)
+    Move_Input_(INPUT_632146)
     Move_Input_(INPUT_PRESS_D)
     Move_Condition(0x3072)
     AirborneOpponentPriority(750)
@@ -375,10 +376,10 @@ def MatchInit():
     MoveHeatValuePriority(500, 1000, 100, 4000)
     SkillEstimateRange(0, 400000, -200000, 400000, 250, 0)
     Move_EndRegister()
-    Move_Register('UltimateLock_OD', 0x606)
+    Move_Register('UltimateLock_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
-    Move_Input_(0xb6)
+    Move_Input_(INPUT_632146)
     Move_Input_(INPUT_PRESS_D)
     Move_Condition(0x3081)
     Move_Condition(0x3072)
@@ -387,21 +388,21 @@ def MatchInit():
     MoveHeatValuePriority(500, 1000, 1000, 4000)
     SkillEstimateRange(0, 400000, -200000, 400000, 250, 0)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x2000)
     Move_Condition(0x304a)
-    Move_Input_(0xcd)
+    Move_Input_(INPUT_222)
     Move_Input_(INPUT_PRESS_D)
     Move_Condition(0x3072)
     OpponentAttackPriority(6000)
     SkillEstimateRange(300000, 600000, -200000, 400000, 500, 0)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -409,7 +410,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 400000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -422,7 +423,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 400000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -647,6 +648,7 @@ def MatchInit():
     CommonVoicelines(73, 'tm402')
     CommonVoicelines(74, 'tm403')
 
+
 @Subroutine
 def SuperCancel():
     CtrlDirectionVsTarget()
@@ -673,6 +675,7 @@ def SuperCancel():
     HitOrBlockCancel('BurstDD_Cancel')
     HitOrBlockCancel('AstralHeat')
 
+
 @Subroutine
 def SuperCancel_DeriveInputBegin():
     BeginBuffer('UltimateAssault')
@@ -697,6 +700,7 @@ def SuperCancel_DeriveInputBegin():
     BeginBuffer('UltimateShot_AntiLand_OD')
     BeginBuffer('BurstDD_Cancel')
     BeginBuffer('AstralHeat')
+
 
 @Subroutine
 def SuperCancel_DeriveTimingBegin():
@@ -723,6 +727,7 @@ def SuperCancel_DeriveTimingBegin():
     BufferedOrPressedGoto('BurstDD_Cancel')
     BufferedOrPressedGoto('AstralHeat')
 
+
 @Subroutine
 def SuperCancel_DeriveClear():
     DisallowGoto('UltimateAssault')
@@ -748,46 +753,50 @@ def SuperCancel_DeriveClear():
     DisallowGoto('BurstDD_Cancel')
     DisallowGoto('AstralHeat')
 
+
 @Subroutine
 def HeatGaugeBonus():
     HeatGainMultiplier(200)
     OppHeatGainMultiplier(0)
     CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         HeatChange(500)
         CreateObject('HeatDrainEff', 103)
         if SLOT_51:
             HeatChange(200)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-200)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-200)
             callSubroutine('HeatGaugeDrain')
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_51 = 1
+
 
 @Subroutine
 def HeatGaugeDrain():
     CopyFromRightToLeft(23, 2, 57, 22, 2, 122)
     PrivateFunction(1, 2, 56, 2, 57, 2, 58)
-    SLOT_122 = (SLOT_122 + SLOT_58)
+    SLOT_Meter = SLOT_Meter + SLOT_58
     CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
+
 
 @Subroutine
 def HeatGaugeDrainSP():
     CopyFromRightToLeft(23, 2, 57, 22, 2, 122)
     PrivateFunction(1, 2, 56, 2, 57, 2, 58)
-    SLOT_58 = (SLOT_58 / 5)
-    SLOT_122 = (SLOT_122 + SLOT_58)
+    SLOT_58 = SLOT_58 / 5
+    SLOT_Meter = SLOT_Meter + SLOT_58
     CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
+
 
 @Subroutine
 def __435_ODaura():
     SLOT_52 = 45
 
-    def upon_FRAME_STEP():
-        SLOT_52 = (SLOT_52 + 1)
-        if (SLOT_52 >= 45):
+    def upon_EVERY_FRAME():
+        SLOT_52 = SLOT_52 + 1
+        if SLOT_52 >= 45:
             CreateObject('tmef_435_ODaura', 1)
             CreateObject('tmef_435_ODaura', 2)
             CreateObject('tmef_435_ODaura', 3)
@@ -796,24 +805,28 @@ def __435_ODaura():
             CreateObject('tmef_435_ODaura', 6)
             SLOT_52 = 0
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def OnPreDraw():
     CallPrivateFunction('TM_AST_Light', 0, 0, 0, 0, 0, 0, 0, 0)
 
+
 @Subroutine
 def OnFrameStep():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         HeatCooldown(-1)
-    if (not SLOT_81):
+    if not SLOT_81:
         if SLOT_21:
-            if SLOT_IsUnlimitedCharacter:
+            if SLOT_116:
                 HeatChange(6)
+
 
 @State
 def CmnActStand():
@@ -828,12 +841,10 @@ def CmnActStand():
     sprite('tm000_07', 8)
     sprite('tm000_08', 8)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     sprite('tm001_00', 10)
     SLOT_88 = 960
     SmartVoiceline('tm000')
@@ -852,6 +863,7 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('tm003_00', 3)
@@ -859,10 +871,12 @@ def CmnActStandTurn():
     sprite('tm003_01', 3)
     sprite('tm003_02', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('tm010_00', 4)
     sprite('tm010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -878,16 +892,19 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('tm013_00', 3)
     sprite('tm013_01', 3)
     sprite('tm013_02', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('tm010_01', 4)
     sprite('tm010_00', 4)
+
 
 @State
 def CmnActJumpPre():
@@ -895,12 +912,13 @@ def CmnActJumpPre():
     sprite('tm023_01', 1)
     sprite('tm023_02', 1)
 
+
 @State
 def CmnActJumpUpper():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('tm020_00', 3)
     sprite('tm020_01', 3)
     SmartVoiceline('tm002')
@@ -928,12 +946,13 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(22)
 
+
 @State
 def CmnActJumpUpperEnd():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('tm020_02', 3)
     sprite('tm020_03', 3)
     sprite('tm020_04', 3)
@@ -952,12 +971,13 @@ def CmnActJumpUpperEnd():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActJumpDown():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('tm020_05', 3)
     sprite('tm020_06', 3)
     label(0)
@@ -981,6 +1001,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(22)
 
+
 @State
 def CmnActJumpLanding():
     sprite('tm024_00', 3)
@@ -990,17 +1011,20 @@ def CmnActJumpLanding():
     sprite('tm024_04', 3)
     sprite('tm024_05', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('tm024_00', 2)
     sprite('tm024_01', 2)
     sprite('tm024_02', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('tm024_03', 3)
     sprite('tm024_04', 3)
     sprite('tm024_05', 3)
+
 
 @State
 def CmnActFWalk():
@@ -1022,6 +1046,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalk():
     sprite('tm031_00', 7)
@@ -1041,6 +1066,7 @@ def CmnActBWalk():
     sprite('tm031_11', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActFDash():
@@ -1065,12 +1091,14 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDashStop():
     sprite('tm032_09', 3)
     sprite('tm032_10', 3)
     sprite('tm032_11', 3)
     sprite('tm032_12', 3)
+
 
 @State
 def CmnActBDash():
@@ -1080,7 +1108,7 @@ def CmnActBDash():
         EnterStateIfEventID(8, '_NEUTRAL')
         setInvincible(1)
         EndMomentum(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
     sprite('tm033_00', 1)
@@ -1108,9 +1136,11 @@ def CmnActBDash():
     sprite('tm033_06', 2)
     sprite('tm033_07', 2)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1124,6 +1154,7 @@ def CmnActAirFDash():
     sprite('tm035_02', 3)
     sprite('tm035_03', 3)
     gotoLabel(0)
+
 
 @State
 def CmnActAirBDash():
@@ -1139,11 +1170,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('tm050_00', 1)
     sprite('tm050_01', 1)
     sprite('tm050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1151,6 +1184,7 @@ def CmnActHitStandLv2():
     sprite('tm050_02', 1)
     sprite('tm050_01', 2)
     sprite('tm050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1160,6 +1194,7 @@ def CmnActHitStandLv3():
     sprite('tm050_01', 2)
     sprite('tm050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('tm050_03', 1)
@@ -1168,6 +1203,7 @@ def CmnActHitStandLv4():
     sprite('tm050_02', 2)
     sprite('tm050_01', 2)
     sprite('tm050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1179,11 +1215,13 @@ def CmnActHitStandLv5():
     sprite('tm050_01', 2)
     sprite('tm050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('tm052_00', 1)
     sprite('tm052_01', 1)
     sprite('tm052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1191,6 +1229,7 @@ def CmnActHitStandLowLv2():
     sprite('tm052_02', 1)
     sprite('tm052_01', 2)
     sprite('tm052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1200,6 +1239,7 @@ def CmnActHitStandLowLv3():
     sprite('tm052_01', 2)
     sprite('tm052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('tm052_03', 1)
@@ -1208,6 +1248,7 @@ def CmnActHitStandLowLv4():
     sprite('tm052_02', 2)
     sprite('tm052_01', 2)
     sprite('tm052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1219,11 +1260,13 @@ def CmnActHitStandLowLv5():
     sprite('tm052_01', 2)
     sprite('tm052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('tm054_00', 1)
     sprite('tm054_01', 1)
     sprite('tm054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1231,6 +1274,7 @@ def CmnActHitCrouchLv2():
     sprite('tm054_02', 1)
     sprite('tm054_01', 2)
     sprite('tm054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1240,6 +1284,7 @@ def CmnActHitCrouchLv3():
     sprite('tm054_01', 2)
     sprite('tm054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('tm054_03', 1)
@@ -1248,6 +1293,7 @@ def CmnActHitCrouchLv4():
     sprite('tm054_02', 2)
     sprite('tm054_01', 2)
     sprite('tm054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1259,6 +1305,7 @@ def CmnActHitCrouchLv5():
     sprite('tm054_01', 2)
     sprite('tm054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('tm060_00', 4)
@@ -1268,9 +1315,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('tm060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1281,10 +1330,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('tm060_07', 2)
     sprite('tm060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1294,9 +1345,11 @@ def CmnActBDownBound():
     sprite('tm060_12', 3)
     sprite('tm060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('tm060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1315,13 +1368,16 @@ def CmnActBDown2Stand():
     sprite('tm061_12', 3)
     sprite('tm061_13', 3)
 
+
 @State
 def CmnActFDownUpper():
     sprite('tm063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('tm063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1331,10 +1387,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('tm063_04', 3)
     sprite('tm063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1345,9 +1403,11 @@ def CmnActFDownBound():
     sprite('tm063_10', 3)
     sprite('tm063_11', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('tm063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1364,6 +1424,7 @@ def CmnActFDown2Stand():
     sprite('tm064_10', 3)
     sprite('tm064_11', 3)
 
+
 @State
 def CmnActVDownUpper():
     sprite('tm062_00', 3)
@@ -1373,10 +1434,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('tm062_03', 3)
     sprite('tm062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1388,15 +1451,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('tm062_09', 2)
     sprite('tm062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('tm062_09', 2)
     sprite('tm062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1409,6 +1475,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1419,6 +1486,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1427,14 +1495,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('tm062_01', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('tm073_00', 3)
     sprite('tm073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1444,6 +1515,7 @@ def CmnActWallBoundDown():
     sprite('tm073_04', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerLoop():
@@ -1461,6 +1533,7 @@ def CmnActStaggerLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerDown():
     sprite('tm070_04', 4)
@@ -1470,6 +1543,7 @@ def CmnActStaggerDown():
     sprite('tm070_08', 4)
     sprite('tm070_09', 4)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('tm070_10', 2)
@@ -1477,11 +1551,13 @@ def CmnActUkemiStagger():
     sprite('tm070_12', 2)
     sprite('tm070_13', 2)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('tm113_00', 3)
     sprite('tm113_01', 3)
     sprite('tm113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -1489,11 +1565,13 @@ def CmnActUkemiAirB():
     sprite('tm113_01', 3)
     sprite('tm113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('tm113_00', 3)
     sprite('tm113_01', 3)
     sprite('tm113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1508,6 +1586,7 @@ def CmnActUkemiLandF():
     sprite('tm110_09', 3)
     sprite('tm110_10', 3)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('tm111_00', 2)
@@ -1521,6 +1600,7 @@ def CmnActUkemiLandB():
     sprite('tm111_09', 3)
     sprite('tm111_10', 3)
 
+
 @State
 def CmnActUkemiLandN():
     sprite('tm112_00', 2)
@@ -1533,6 +1613,7 @@ def CmnActUkemiLandN():
     sprite('tm112_07', 2)
     sprite('tm112_08', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('tm024_00', 3)
@@ -1542,10 +1623,12 @@ def CmnActUkemiLandNLanding():
     sprite('tm024_04', 3)
     sprite('tm024_05', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('tm040_00', 3)
     sprite('tm040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1561,10 +1644,12 @@ def CmnActMidGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('tm040_01', 3)
     sprite('tm040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1578,15 +1663,18 @@ def CmnActMidHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('tm040_01', 3)
     sprite('tm040_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('tm041_00', 3)
     sprite('tm041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -1602,10 +1690,12 @@ def CmnActHighGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('tm041_01', 3)
     sprite('tm041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -1619,15 +1709,18 @@ def CmnActHighHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('tm041_01', 3)
     sprite('tm041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('tm043_00', 3)
     sprite('tm043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1643,10 +1736,12 @@ def CmnActCrouchGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('tm043_01', 3)
     sprite('tm043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1660,15 +1755,18 @@ def CmnActCrouchHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('tm043_01', 3)
     sprite('tm043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('tm045_00', 3)
     sprite('tm045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1684,10 +1782,12 @@ def CmnActAirGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('tm045_01', 3)
     sprite('tm045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -1701,10 +1801,12 @@ def CmnActAirHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('tm045_01', 3)
     sprite('tm045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1715,6 +1817,7 @@ def CmnActGuardBreakStand():
     sprite('tm090_03', 6)
     sprite('tm090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('tm091_00', 2)
@@ -1723,6 +1826,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('tm091_03', 6)
     sprite('tm091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1733,17 +1837,20 @@ def CmnActGuardBreakAir():
     sprite('tm092_03', 6)
     sprite('tm092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('tm025_00', 4)
     sprite('tm025_01', 4)
     sprite('tm025_02', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('tm040_02', 1)
     sprite('tm040_01', 3)
     sprite('tm040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1758,11 +1865,13 @@ def CmnActLockReject():
     sprite('tm312_08', 3)
     sprite('tm312_09', 3)
 
+
 @State
 def CmnActAirLockWait():
     sprite('tm045_02', 1)
     sprite('tm045_01', 3)
     sprite('tm045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1775,6 +1884,7 @@ def CmnActAirLockReject():
     sprite('tm322_06', 4)
     sprite('tm322_07', 3)
     sprite('tm322_08', 3)
+
 
 @State
 def CmnActLandSpin():
@@ -1792,11 +1902,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('tm071_10', 6)
     sprite('tm071_11', 5)
     sprite('tm071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1812,6 +1924,7 @@ def CmnActVertSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideAir():
     label(0)
@@ -1826,19 +1939,6 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
-@State
-def CmnActSlideKeep():
-    sprite('tm077_02', 4)
-    label(0)
-    sprite('tm077_03', 3)
-    sprite('tm077_04', 3)
-    loopRest()
-    gotoLabel(0)
-
-@State
-def CmnActSlideEnd():
-    sprite('tm077_05', 5)
-    sprite('tm077_06', 4)
 
 @State
 def CmnActSlideKeep():
@@ -1849,10 +1949,28 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('tm077_05', 5)
     sprite('tm077_06', 4)
+
+
+@State
+def CmnActSlideKeep():
+    sprite('tm077_02', 4)
+    label(0)
+    sprite('tm077_03', 3)
+    sprite('tm077_04', 3)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def CmnActSlideEnd():
+    sprite('tm077_05', 5)
+    sprite('tm077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1862,10 +1980,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('tm060_11', 4)
     sprite('tm060_13', 5)
+
 
 @State
 def CmnActBurstBegin():
@@ -1877,6 +1997,7 @@ def CmnActBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstLoop():
     sprite('tm331_04', 3)
@@ -1887,10 +2008,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('tm331_08', 3)
     sprite('tm331_09', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -1902,6 +2025,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('tm331_04', 3)
@@ -1911,6 +2035,7 @@ def CmnActAirBurstLoop():
     sprite('tm331_07', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -1923,6 +2048,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('tm333_00', 3)
@@ -1932,6 +2058,7 @@ def CmnActOverDriveBegin():
     sprite('tm333_03', 32767)
     CreateObject('EMB_TM_OD', -1)
     loopRest()
+
 
 @State
 def CmnActOverDriveLoop():
@@ -1948,10 +2075,12 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('tm333_08', 6)
     sprite('tm333_09', 6)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -1962,6 +2091,7 @@ def CmnActAirOverDriveBegin():
     sprite('tm333_13', 32767)
     CreateObject('EMB_TM_OD', -1)
     loopRest()
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -1978,10 +2108,12 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('tm333_15', 6)
     sprite('tm333_16', 6)
+
 
 @Subroutine
 def DriveChain():
@@ -1989,6 +2121,7 @@ def DriveChain():
     HitOrBlockCancel('NmlAtk2D')
     HitOrBlockCancel('NmlAtk6D')
     HitOrBlockCancel('NmlAtk4D')
+
 
 @State
 def NmlAtk5A():
@@ -2028,6 +2161,7 @@ def NmlAtk5A():
     sprite('tm200_05', 3)
     sprite('tm200_06', 3)
 
+
 @State
 def NmlAtk5B():
 
@@ -2057,6 +2191,7 @@ def NmlAtk5B():
     sprite('tm201_07', 3)
     SFX_FOOTSTEP_(100, 1, 1)
 
+
 @State
 def NmlAtk5C():
 
@@ -2081,13 +2216,13 @@ def NmlAtk5C():
         HitOrBlockCancel('NmlAtk3C')
         callSubroutine('DriveChain')
 
-        def upon_4():
-            clearUponHandler(4)
+        def upon_FALLING():
+            clearUponHandler(FALLING)
             XImpulseAcceleration(60)
             PerGravity(150)
             sendToLabel(0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
     sprite('tm202_00', 4)
     PerInertia(60)
     sprite('tm202_01', 4)
@@ -2132,6 +2267,7 @@ def NmlAtk5C():
     sprite('tm202_10', 3)
     sprite('tm202_11', 3)
 
+
 @State
 def NmlAtk5D():
 
@@ -2155,7 +2291,7 @@ def NmlAtk5D():
     sprite('tm203_00', 3)
     sprite('tm203_01', 3)
     PrivateSE('tmse_04')
-    if (not SLOT_51):
+    if not SLOT_51:
         CreateObject('tmef203', -1)
     else:
         CreateObject('tmef203_OD', -1)
@@ -2176,6 +2312,7 @@ def NmlAtk5D():
     sprite('tm203_11', 2)
     sprite('tm203_12', 2)
     sprite('tm203_13', 2)
+
 
 @State
 def NmlAtk2A():
@@ -2214,6 +2351,7 @@ def NmlAtk2A():
     sprite('tm230_05', 3)
     sprite('tm230_06', 3)
 
+
 @State
 def NmlAtk2B():
 
@@ -2248,6 +2386,7 @@ def NmlAtk2B():
     sprite('tm231_09', 3)
     sprite('tm231_10', 3)
     sprite('tm231_11', 3)
+
 
 @State
 def NmlAtk2C():
@@ -2285,6 +2424,7 @@ def NmlAtk2C():
     sprite('tm232_10', 4)
     sprite('tm232_11', 4)
     sprite('tm232_12', 3)
+
 
 @State
 def NmlAtk3C():
@@ -2325,13 +2465,14 @@ def NmlAtk3C():
     sprite('tm235_13', 3)
     sprite('tm235_14', 3)
 
+
 @State
 def NmlAtk2D():
 
     def upon_IMMEDIATE():
         AttackDefaults_CrouchingNormal()
         SpecialCancel(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_51 = 1
     sprite('tm233_00', 3)
     sprite('tm233_01', 3)
@@ -2385,6 +2526,7 @@ def NmlAtk2D():
     DespawnEAEffect('tmef_233_arm_g')
     sprite('tm233_17', 6)
 
+
 @State
 def NmlAtkAIR5A():
 
@@ -2411,6 +2553,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('tm250_05', 3)
     sprite('tm250_06', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2446,6 +2589,7 @@ def NmlAtkAIR5B():
     sprite('tm251_06', 4)
     sprite('tm251_07', 3)
     sprite('tm251_08', 3)
+
 
 @State
 def NmlAtkAIR5C():
@@ -2516,6 +2660,7 @@ def NmlAtkAIR5C():
     sprite('tm252_22', 2)
     sprite('tm252_23', 2)
 
+
 @State
 def NmlAtkAIR5D():
 
@@ -2565,6 +2710,7 @@ def NmlAtkAIR5D():
     sprite('tm253_10', 3)
     sprite('tm253_11', 3)
 
+
 @State
 def NmlAtkAIR2D():
 
@@ -2608,7 +2754,7 @@ def NmlAtkAIR2D():
         physicsYImpulse(12000)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(1)
     sprite('tm254_01', 3)
     YAccel(80)
@@ -2640,6 +2786,7 @@ def NmlAtkAIR2D():
     sprite('tm024_02', 2)
     SpriteIfNot0(1, 2, 51)
     sprite('tm024_03', 1)
+
 
 @State
 def NmlAtk6A():
@@ -2687,6 +2834,7 @@ def NmlAtk6A():
     sprite('tm210_11', 3)
     sprite('tm210_12', 3)
 
+
 @State
 def NmlAtk6B():
 
@@ -2720,10 +2868,9 @@ def NmlAtk6B():
     XImpulseAcceleration(200)
     DashEffects(100, 1, 1)
     sprite('tm212_03', 1)
-    if (not SLOT_94):
-        CheckInput(0xa)
-        if SLOT_0:
-            _gotolabel(9)
+    if not SLOT_94:
+        if CheckInput(INPUT_HOLD_B):
+            conditionalSendToLabel(9)
     sprite('tm211_00', 3)
     XImpulseAcceleration(50)
     setInvincible(1)
@@ -2766,6 +2913,7 @@ def NmlAtk6B():
     WhiffSpecialCancel(1)
     sprite('tm212_08', 2)
     sprite('tm212_09', 2)
+
 
 @State
 def NmlAtk6C():
@@ -2877,6 +3025,7 @@ def NmlAtk6C():
     sprite('tm213_22', 4)
     sprite('tm213_23', 3)
 
+
 @State
 def NmlAtk6D():
 
@@ -2898,15 +3047,15 @@ def NmlAtk6D():
             SetZVal(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
-            if (SLOT_19 <= 400000):
+            clearUponHandler(OPPONENT_HIT)
+            if SLOT_19 <= 400000:
                 AirPushbackY(8000)
                 PushbackX(-6000)
                 if SLOT_51:
                     enterState('AN_NmlAtk6DExeOD')
                 else:
                     enterState('AN_NmlAtk6DExe')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_51 = 1
     sprite('tm214_00', 3)
     sprite('tm214_01', 3)
@@ -2927,6 +3076,7 @@ def NmlAtk6D():
     sprite('tm214_33', 3)
     sprite('tm214_34', 3)
     sprite('tm214_35', 3)
+
 
 @State
 def AN_NmlAtk6DExe():
@@ -3004,7 +3154,7 @@ def AN_NmlAtk6DExe():
     AirPushbackY(28000)
     HeatGainMultiplier(100)
     OppHeatGainMultiplier(100)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
 
     def upon_OPPONENT_HIT():
         CommonSE('025_cleanhit_grap')
@@ -3018,13 +3168,14 @@ def AN_NmlAtk6DExe():
     XImpulseAcceleration(80)
     CommonSE('004_swing_grap_1_2')
     sprite('tm214_25', 32767)
-    sendToLabelUpon(2, 9)
+    uponSendToLabel(LANDING, 9)
     label(9)
     sprite('tm214_26', 3)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
     sprite('tm214_27', 4)
     sprite('tm214_28', 4)
+
 
 @State
 def AN_NmlAtk6DExeOD():
@@ -3053,9 +3204,9 @@ def AN_NmlAtk6DExeOD():
 
         def upon_OPPONENT_HIT():
             HeatChange(300)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-100)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-100)
             callSubroutine('HeatGaugeDrain')
         SetActionMark(2)
     sprite('tm214_06', 2)
@@ -3066,8 +3217,8 @@ def AN_NmlAtk6DExeOD():
     RandomCommonVoiceline(1)
     label(1)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        clearUponHandler(11)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
         CreateObject('HeatDrainEff', 103)
     sprite('tm214_09', 2)
     CreateObject('tmef214sp', -1)
@@ -3091,7 +3242,8 @@ def AN_NmlAtk6DExeOD():
     PushbackX(-1000)
     sprite('tm214_16', 2)
     AddActionMark(-1)
-    GotoIf0(8, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(8)
     sprite('tm214_17', 2)
     loopRest()
     gotoLabel(1)
@@ -3116,7 +3268,7 @@ def AN_NmlAtk6DExeOD():
     AirPushbackY(36000)
     HeatGainMultiplier(100)
     OppHeatGainMultiplier(100)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
 
     def upon_OPPONENT_HIT():
         CommonSE('016_explode_1')
@@ -3131,13 +3283,14 @@ def AN_NmlAtk6DExeOD():
     XImpulseAcceleration(80)
     CommonSE('004_swing_grap_1_2')
     sprite('tm214_25', 32767)
-    sendToLabelUpon(2, 9)
+    uponSendToLabel(LANDING, 9)
     label(9)
     sprite('tm214_26', 3)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
     sprite('tm214_27', 4)
     sprite('tm214_28', 4)
+
 
 @State
 def NmlAtk4D():
@@ -3150,7 +3303,7 @@ def NmlAtk4D():
         AirPushbackY(36000)
         HitOrBlockJumpCancel(1)
         callSubroutine('HeatGaugeBonus')
-        if (not SLOT_51):
+        if not SLOT_51:
             AirUntechableTime(26)
             GroundedHitstunAnimation(9)
             AirHitstunAnimation(9)
@@ -3191,6 +3344,7 @@ def NmlAtk4D():
     WhiffOverdriveCancel(1)
     sprite('tm215_09', 6)
 
+
 @State
 def NmlAtkExcite():
 
@@ -3226,6 +3380,7 @@ def NmlAtkExcite():
     sprite('tm300_08', 8)
     sprite('tm300_09', 8)
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -3250,6 +3405,7 @@ def NmlAtkDeadAngle():
     sprite('tm210_11', 4)
     sprite('tm210_12', 4)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -3269,11 +3425,11 @@ def NmlAtkGuardCrush():
         HitBackReturnIgnore(1)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3281,8 +3437,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -3299,7 +3455,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('tm340_00', 3)
     CreateObject('EffKnifeSignal', 1)
@@ -3322,7 +3478,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('keep', 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tm340_07', 1)
     sprite('tm340_07', 3)
     sprite('tm340_08', 2)
@@ -3341,6 +3497,7 @@ def NmlAtkGuardCrush():
     sprite('tm340_15', 3)
     sprite('tm340_16', 2)
     sprite('tm340_17', 2)
+
 
 @State
 def NmlAtkThrow():
@@ -3365,6 +3522,7 @@ def NmlAtkThrow():
     sprite('tm310_07', 4)
     sprite('tm310_08', 4)
 
+
 @State
 def ThrowExe():
 
@@ -3386,8 +3544,8 @@ def ThrowExe():
 
         def upon_STATE_END():
             SetZVal(0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
     sprite('tm310_02', 3)
     OppThrowAnimation(8, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
@@ -3428,6 +3586,7 @@ def ThrowExe():
     sprite('tm311_13', 3)
     sprite('tm311_14', 3)
 
+
 @State
 def NmlAtkBackThrow():
 
@@ -3450,6 +3609,7 @@ def NmlAtkBackThrow():
     sprite('tm310_06', 4)
     sprite('tm310_07', 4)
     sprite('tm310_08', 4)
+
 
 @State
 def BackThrowExe():
@@ -3484,6 +3644,7 @@ def BackThrowExe():
     sprite('tm311_01', 1)
     enterState('BackThrowExe2')
 
+
 @State
 def BackThrowExe2():
 
@@ -3513,6 +3674,7 @@ def BackThrowExe2():
     sprite('tm313_12', 3)
     sprite('tm313_13', 3)
 
+
 @State
 def BackThrowExe3():
 
@@ -3530,8 +3692,8 @@ def BackThrowExe3():
         Wallbounce(1)
         WallbounceReboundTime(1)
         Floorslide(10)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
     sprite('tm313_03', 6)
     OppThrowAnimation(0, 0)
     OppThrowPosition(0, 0, 0, 0, 0)
@@ -3562,6 +3724,7 @@ def BackThrowExe3():
     sprite('tm313_12', 3)
     sprite('tm313_13', 3)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -3578,6 +3741,7 @@ def NmlAtkAirThrow():
     sprite('tm320_04', 7)
     sprite('tm320_05', 6)
     sprite('tm320_06', 5)
+
 
 @State
 def AirThrowExe():
@@ -3608,6 +3772,7 @@ def AirThrowExe():
     sprite('tm321_01', 2)
     sprite('tm321_01', 1)
     enterState('AirThrowExe2')
+
 
 @State
 def AirThrowExe2():
@@ -3640,6 +3805,7 @@ def AirThrowExe2():
     sprite('tm313_09', 3)
     sprite('tm313_10', 3)
     sprite('tm313_11', 3)
+
 
 @State
 def AirThrowExe3():
@@ -3683,6 +3849,7 @@ def AirThrowExe3():
     sprite('tm313_11', 1)
     enterState('CmnActJumpDown')
 
+
 @State
 def Assault():
 
@@ -3700,33 +3867,33 @@ def Assault():
         DistanceCheck(300000, -300000, 290000, 0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
-            clearUponHandler(11)
+            clearUponHandler(OPPONENT_HIT)
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             CopyFromRightToLeft(23, 2, 0, 22, 2, 23)
-            if (SLOT_0 <= 100000):
+            if SLOT_0 <= 100000:
                 AirPushbackY(5000)
                 AirUntechableTimeReset()
                 EnemyHitstopAddition(0, 9, 9)
                 OppPositionOnHit(1, 180000, 20000)
 
-                def upon_FRAME_STEP():
+                def upon_EVERY_FRAME():
                     if SLOT_2:
-                        if Unknown23146(22, 'Assault'):
+                        if SLOT_0 <= 100000:
                             CopyFromRightToLeft(22, 2, 83, 4, 2, 83)
                             CopyFromRightToLeft(23, 2, 51, 4, 2, 23)
-                            SLOT_51 = (SLOT_51 + (-250000))
+                            SLOT_51 = SLOT_51 + -250000
                             CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
                 sendToLabel(100)
-            if (not SLOT_94):
+            if not SLOT_94:
                 callSubroutine('SuperCancel')
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(12)
-            clearUponHandler(11)
-            if (not SLOT_94):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT)
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
+            if not SLOT_94:
                 callSubroutine('SuperCancel')
             sendToLabel(9)
-        SLOT_52 = SLOT_110
+        SLOT_52 = SLOT_OverdriveTimer
         SLOT_54 = 1
         if SLOT_137:
             DamageMultiplier(80)
@@ -3820,14 +3987,14 @@ def Assault():
         CreateObject('HeatDrainEff', 103)
         if SLOT_52:
             CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-250)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-250)
             callSubroutine('HeatGaugeDrain')
     SetXCollisionFromOrigin(-1)
     sprite('tm400_10', 2)
     sprite('tm400_11', 2)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('tm400_12', 2)
     sprite('tm400_13', 5)
     sprite('tm400_14', 5)
@@ -3846,7 +4013,7 @@ def Assault():
     SetActionMark(0)
     if SLOT_94:
         callSubroutine('SuperCancel')
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
 
     def upon_OPPONENT_HIT():
         HeatChange(700)
@@ -3854,9 +4021,9 @@ def Assault():
         ChainCancel(1)
         if SLOT_52:
             CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-250)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-250)
             callSubroutine('HeatGaugeDrain')
     sprite('tm400_16', 3)
     NoAttackDuringAction(1)
@@ -3875,6 +4042,7 @@ def Assault():
     sprite('tm400_22', 3)
     sprite('tm400_23', 3)
     sprite('tm400_24', 3)
+
 
 @State
 def CommandThrow():
@@ -3909,7 +4077,7 @@ def CommandThrow():
     CreateObject('tmef_401_hand', 1)
     CreateObject('tmef_401_hand', 2)
     sprite('tm401_07', 3)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     XImpulseAcceleration(50)
     sprite('tm401_08', 5)
     SkidEffects(100, 1, 1)
@@ -3924,6 +4092,7 @@ def CommandThrow():
     sprite('tm401_28', 5)
     sprite('tm401_29', 5)
     sprite('tm401_30', 5)
+
 
 @State
 def CommandThrowExe():
@@ -3948,7 +4117,7 @@ def CommandThrowExe():
         EnableRapidCancel(0)
         HeatGainMultiplier(0)
         OppHeatGainMultiplier(0)
-        SLOT_52 = SLOT_110
+        SLOT_52 = SLOT_OverdriveTimer
         if SLOT_137:
             DamageMultiplier(80)
     sprite('tm401_06', 1)
@@ -4008,9 +4177,9 @@ def CommandThrowExe():
         PrivateSE('tmse_08')
         if SLOT_52:
             CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-50)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-50)
             callSubroutine('HeatGaugeDrain')
     sprite('tm401_16', 3)
     RefreshMultihit()
@@ -4025,9 +4194,9 @@ def CommandThrowExe():
         PrivateSE('tmse_08')
         if SLOT_52:
             CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-100)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-100)
             callSubroutine('HeatGaugeDrain')
     CreateObject('HeatDrainEff', 103)
     sprite('tm401_16', 3)
@@ -4043,9 +4212,9 @@ def CommandThrowExe():
         PrivateSE('tmse_08')
         if SLOT_52:
             CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-100)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-100)
             callSubroutine('HeatGaugeDrain')
     sprite('tm401_16', 3)
     RefreshMultihit()
@@ -4073,18 +4242,18 @@ def CommandThrowExe():
     DamageEffect(0, '')
     DefeatOpponentBehavior(0)
     CreateObject('HeatDrainEff', 103)
-    clearUponHandler(3)
-    clearUponHandler(12)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(OPPONENT_HIT)
 
     def upon_OPPONENT_HIT():
         EnableRapidCancel(1)
-        if (not SLOT_94):
+        if not SLOT_94:
             callSubroutine('SuperCancel')
         if SLOT_52:
             CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-250)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-250)
             callSubroutine('HeatGaugeDrain')
     sprite('tm401_22', 6)
     sprite('tm401_24', 5)
@@ -4098,6 +4267,7 @@ def CommandThrowExe():
     sprite('tm401_29', 4)
     sprite('tm401_30', 4)
     sprite('tm401_30', 4)
+
 
 @State
 def MidAssault():
@@ -4116,7 +4286,7 @@ def MidAssault():
         HardKnockdown(1)
         CHHardKnockdown(15)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(3000, 10000)
         callSubroutine('SuperCancel')
         if SLOT_137:
@@ -4152,6 +4322,7 @@ def MidAssault():
     sprite('tm403_13', 2)
     sprite('tm403_14', 2)
 
+
 @State
 def Oiuchi():
 
@@ -4181,9 +4352,9 @@ def Oiuchi():
 
         def upon_16():
             CheckInput(0x14)
-            SLOT_51 = (SLOT_51 + SLOT_0)
+            SLOT_51 = SLOT_51 + SLOT_0
         StayAfterMovement(1, 0)
-        if (not SLOT_94):
+        if not SLOT_94:
             callSubroutine('SuperCancel')
     sprite('tm402_00', 3)
     sprite('tm402_01', 3)
@@ -4200,7 +4371,7 @@ def Oiuchi():
         PreventSelfPush(1)
     sprite('tm402_04', 1)
     if SLOT_2:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     Recovery()
     label(0)
     sprite('tm402_04', 8)
@@ -4215,7 +4386,8 @@ def Oiuchi():
     sprite('tm402_04', 3)
     CommonSE('213_bound_1')
     Voiceline('tm204')
-    GotoIf0(0, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(0)
     SetActionMark(0)
     sprite('tm402_05', 3)
     sprite('tm402_06', 3)
@@ -4231,8 +4403,8 @@ def Oiuchi():
     clearUponHandler(16)
     if SLOT_94:
         sendToLabel(12)
-    if (not SLOT_94):
-        if (SLOT_51 >= 4):
+    if not SLOT_94:
+        if SLOT_51 >= 4:
             sendToLabel(1)
         else:
             sendToLabel(12)
@@ -4244,7 +4416,8 @@ def Oiuchi():
     SLOT_51 = 0
     Damage(250)
     Hitstop(1)
-    GotoIf0(0, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(0)
     SetActionMark(0)
     sprite('tm402_05', 1)
     sprite('tm402_06', 1)
@@ -4255,7 +4428,8 @@ def Oiuchi():
     RefreshMultihit()
     sprite('tm402_04', 1)
     CommonSE('213_bound_1')
-    GotoIf0(0, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(0)
     SetActionMark(0)
     sprite('tm402_05', 1)
     sprite('tm402_06', 1)
@@ -4270,7 +4444,8 @@ def Oiuchi():
     sprite('tm402_04', 3)
     CommonSE('213_bound_1')
     PreventSelfPush(0)
-    GotoIf0(0, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(0)
     SetActionMark(0)
     sprite('tm402_05', 3)
     sprite('tm402_06', 3)
@@ -4286,7 +4461,8 @@ def Oiuchi():
     label(12)
     sprite('tm402_04', 6)
     CommonSE('213_bound_1')
-    GotoIf0(0, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(0)
     SetActionMark(0)
     sprite('tm402_05', 4)
     sprite('tm402_08', 4)
@@ -4321,7 +4497,7 @@ def Oiuchi():
     DefeatOpponentBehavior(0)
     if SLOT_53:
         BonusProration(110)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
 
     def upon_OPPONENT_HIT():
         ChainCancel(1)
@@ -4336,6 +4512,7 @@ def Oiuchi():
     sprite('tm402_15', 6)
     sprite('tm402_16', 6)
     sprite('tm402_17', 6)
+
 
 @State
 def UltimateAssault():
@@ -4359,8 +4536,8 @@ def UltimateAssault():
         EnableRapidCancel(0)
         FatalCounter(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             EnableCollision(0)
             EffectPosition(22, 104)
             AddX(50000)
@@ -4369,7 +4546,7 @@ def UltimateAssault():
             sendToLabel(9)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             PushbackX(0)
             SLOT_51 = 1
             NoDamageAction(1)
@@ -4394,7 +4571,7 @@ def UltimateAssault():
     SpecificInvincibility(0, 0, 0, 1, 0)
     sprite('tm430_05', 3)
     physicsXImpulse(5000)
-    PassbackAddActionMarkToFunction('eftm430_snake00', 32)
+    TriggerUponForState('eftm430_snake00', 32)
     sprite('tm430_06', 3)
     XImpulseAcceleration(200)
     AlphaValue(200)
@@ -4417,7 +4594,7 @@ def UltimateAssault():
     sprite('tm430_08', 3)
     if SLOT_51:
         CreateObject('UltimateAssault_Atk', -1)
-    PassbackAddActionMarkToFunction('eftm430_snake00', 33)
+    TriggerUponForState('eftm430_snake00', 33)
     AttackOff()
     setInvincible(0)
     DashEffects(100, 1, 0)
@@ -4429,7 +4606,7 @@ def UltimateAssault():
     EnableCollision(1)
     SetXCollisionFromOrigin(-1)
     XImpulseAcceleration(30)
-    PassbackAddActionMarkToFunction('UltimateAssault_Atk', 32)
+    TriggerUponForState('UltimateAssault_Atk', 32)
     sprite('tm430_09', 7)
     EnableRapidCancel(1)
     sprite('tm430_10', 8)
@@ -4441,6 +4618,7 @@ def UltimateAssault():
     sprite('tm430_12', 4)
     sprite('tm430_13', 4)
     sprite('tm430_14', 3)
+
 
 @State
 def UltimateAssault_OD():
@@ -4466,15 +4644,15 @@ def UltimateAssault_OD():
         EnableRapidCancel(0)
         FatalCounter(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             EnableCollision(0)
             EffectPosition(22, 104)
             AddX(50000)
             sendToLabel(9)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             PushbackX(0)
             SLOT_51 = 1
             NoDamageAction(1)
@@ -4498,7 +4676,7 @@ def UltimateAssault_OD():
     sprite('tm430_05', 1)
     SpecificInvincibility(0, 0, 0, 1, 0)
     sprite('tm430_05', 3)
-    PassbackAddActionMarkToFunction('eftm430_snake00', 32)
+    TriggerUponForState('eftm430_snake00', 32)
     physicsXImpulse(5000)
     sprite('tm430_06', 3)
     XImpulseAcceleration(300)
@@ -4524,7 +4702,7 @@ def UltimateAssault_OD():
     sprite('tm430_07', 2)
     if SLOT_51:
         CreateObject('UltimateAssault_OD_Atk', -1)
-    PassbackAddActionMarkToFunction('eftm430_snake00', 33)
+    TriggerUponForState('eftm430_snake00', 33)
     AttackOff()
     XImpulseAcceleration(60)
     AlphaValue(150)
@@ -4533,7 +4711,7 @@ def UltimateAssault_OD():
     XImpulseAcceleration(60)
     DashEffects(100, 1, 0)
     sprite('tm430_15ex', 1)
-    PassbackAddActionMarkToFunction('UltimateAssault_OD_Atk', 32)
+    TriggerUponForState('UltimateAssault_OD_Atk', 32)
     Flip()
     XImpulseAcceleration(60)
     EnableCollision(1)
@@ -4560,7 +4738,7 @@ def UltimateAssault_OD():
     EnableCollision(0)
     SetXCollisionFromOrigin(50)
     AirDashEffects(1)
-    PassbackAddActionMarkToFunction('eftm430_snakeOD', 32)
+    TriggerUponForState('eftm430_snakeOD', 32)
     sprite('tm430_07', 4)
     RefreshMultihit()
     PushbackX(-29800)
@@ -4575,8 +4753,8 @@ def UltimateAssault_OD():
         SetActionMark(1)
     label(10)
     sprite('tm430_08', 4)
-    PassbackAddActionMarkToFunction('eftm430_snake00', 33)
-    PassbackAddActionMarkToFunction('eftm430_snakeOD', 33)
+    TriggerUponForState('eftm430_snake00', 33)
+    TriggerUponForState('eftm430_snakeOD', 33)
     AttackOff()
     AlphaValue(150)
     ConstantAlphaModifier(20)
@@ -4588,7 +4766,7 @@ def UltimateAssault_OD():
     SetXCollisionFromOrigin(-1)
     XImpulseAcceleration(30)
     if SLOT_2:
-        PassbackAddActionMarkToFunction('UltimateAssault_OD_Atk', 33)
+        TriggerUponForState('UltimateAssault_OD_Atk', 33)
     sprite('tm430_09', 7)
     EnableRapidCancel(1)
     ChainCancel(1)
@@ -4602,6 +4780,7 @@ def UltimateAssault_OD():
     sprite('tm430_12', 4)
     sprite('tm430_13', 3)
     sprite('tm430_14', 3)
+
 
 @State
 def UltimateAirAssault():
@@ -4622,8 +4801,8 @@ def UltimateAirAssault():
         HeatCooldown(120)
         FatalCounter(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             CreateObject('eftm430_snake01air', -1)
             DespawnEAEffect('eftm430_snake02')
             EffectPosition(22, 103)
@@ -4637,7 +4816,7 @@ def UltimateAirAssault():
         def upon_OPPONENT_HIT():
             SLOT_51 = 1
             NoDamageAction(1)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
 
         def upon_LANDING():
             setInvincible(0)
@@ -4678,7 +4857,7 @@ def UltimateAirAssault():
     sprite('tm431_03', 2)
     sprite('tm431_04', 3)
     SpecificInvincibility(0, 0, 0, 1, 0)
-    PassbackAddActionMarkToFunction('eftm430_snake02', 32)
+    TriggerUponForState('eftm430_snake02', 32)
     EndMomentum(1)
     physicsXImpulse(8000)
     physicsYImpulse(-8000)
@@ -4705,7 +4884,7 @@ def UltimateAirAssault():
     AlphaValue(0)
     label(9)
     sprite('tm232_08', 4)
-    PassbackAddActionMarkToFunction('eftm430_snake02', 33)
+    TriggerUponForState('eftm430_snake02', 33)
     XImpulseAcceleration(60)
     LandingEffects(100, 1, 1)
     DashEffects(100, 1, 0)
@@ -4721,6 +4900,7 @@ def UltimateAirAssault():
     SkidEffects(100, 1, 1)
     sprite('tm232_11', 3)
     sprite('tm232_12', 3)
+
 
 @State
 def UltimateAirAssault_OD():
@@ -4744,8 +4924,8 @@ def UltimateAirAssault_OD():
         HeatCooldown(120)
         FatalCounter(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             CreateObject('eftm430_snake01air', -1)
             DespawnEAEffect('eftm430_snake02')
             EffectPosition(22, 103)
@@ -4760,7 +4940,7 @@ def UltimateAirAssault_OD():
         def upon_OPPONENT_HIT():
             SLOT_51 = 1
             NoDamageAction(1)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
 
         def upon_LANDING():
             setInvincible(0)
@@ -4804,7 +4984,7 @@ def UltimateAirAssault_OD():
     sprite('tm431_03', 2)
     sprite('tm431_04', 3)
     SpecificInvincibility(0, 0, 0, 1, 0)
-    PassbackAddActionMarkToFunction('eftm430_snake02', 32)
+    TriggerUponForState('eftm430_snake02', 32)
     EndMomentum(1)
     physicsXImpulse(8000)
     physicsYImpulse(-8000)
@@ -4832,7 +5012,7 @@ def UltimateAirAssault_OD():
     AlphaValue(0)
     label(8)
     sprite('tm232_08', 4)
-    PassbackAddActionMarkToFunction('eftm430_snake02', 33)
+    TriggerUponForState('eftm430_snake02', 33)
     AttackOff()
     XImpulseAcceleration(80)
     LandingEffects(100, 1, 1)
@@ -4882,7 +5062,7 @@ def UltimateAirAssault_OD():
     EnableCollision(0)
     SetXCollisionFromOrigin(50)
     AirDashEffects(1)
-    PassbackAddActionMarkToFunction('eftm430_snakeOD', 32)
+    TriggerUponForState('eftm430_snakeOD', 32)
     PrivateSE('tmse_02')
     sprite('tm430_07', 4)
     RefreshMultihit()
@@ -4897,7 +5077,7 @@ def UltimateAirAssault_OD():
         SLOT_51 = 1
     label(10)
     sprite('tm430_08', 4)
-    PassbackAddActionMarkToFunction('eftm430_snakeOD', 33)
+    TriggerUponForState('eftm430_snakeOD', 33)
     AttackOff()
     AlphaValue(150)
     ConstantAlphaModifier(20)
@@ -4909,7 +5089,7 @@ def UltimateAirAssault_OD():
     SetXCollisionFromOrigin(-1)
     XImpulseAcceleration(30)
     if SLOT_51:
-        PassbackAddActionMarkToFunction('UltimateAirAssault_OD_Atk', 32)
+        TriggerUponForState('UltimateAirAssault_OD_Atk', 32)
     sprite('tm430_09', 7)
     EnableRapidCancel(1)
     ChainCancel(1)
@@ -4923,6 +5103,7 @@ def UltimateAirAssault_OD():
     sprite('tm430_12', 4)
     sprite('tm430_13', 3)
     sprite('tm430_14', 3)
+
 
 @State
 def UltimateAntiAir():
@@ -4946,8 +5127,8 @@ def UltimateAntiAir():
         HeatCooldown(120)
         AttackDirection(0)
         HitsparkSize(750)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
     sprite('tm435_48', 3)
     setInvincible(1)
     EndMomentum(1)
@@ -5027,6 +5208,7 @@ def UltimateAntiAir():
     sprite('tm435_63', 3)
     sprite('tm435_64', 3)
     sprite('tm435_65', 3)
+
 
 @State
 def UltimateAntiAir_OD():
@@ -5117,11 +5299,11 @@ def UltimateAntiAir_OD():
     sprite('tm432_07', 3)
     sprite('tm432_08', 3)
     if SLOT_2:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('tm435_56', 3)
     XImpulseAcceleration(80)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 9)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 9)
     label(1)
     sprite('tm435_57', 3)
     PerGravity(110)
@@ -5147,10 +5329,10 @@ def UltimateAntiAir_OD():
     sprite('tm432_10', 2)
     sprite('tm432_11', 2)
     CreateObject('tmef254', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    AddY(-48000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(80000)
+        AddY(-48000)
     sprite('tm432_12', 2)
     sprite('tm432_13', 2)
     sprite('tm432_14', 2)
@@ -5177,8 +5359,8 @@ def UltimateAntiAir_OD():
     sprite('tm432_22', 3)
     sprite('tm432_23', 3)
     sprite('tm432_24', 3)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 19)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 19)
     label(11)
     sprite('tm020_07', 3)
     sprite('tm020_08', 3)
@@ -5190,6 +5372,7 @@ def UltimateAntiAir_OD():
     LandingEffects(100, 1, 1)
     sprite('tm024_01', 2)
     sprite('tm024_02', 4)
+
 
 @State
 def UltimateAntiAir_Air():
@@ -5211,8 +5394,8 @@ def UltimateAntiAir_Air():
         HeatCooldown(120)
         AttackDirection(0)
         HitsparkSize(750)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('tm432_25', 3)
@@ -5296,6 +5479,7 @@ def UltimateAntiAir_Air():
     sprite('tm435_63', 3)
     sprite('tm435_64', 3)
     sprite('tm435_65', 3)
+
 
 @State
 def UltimateAntiAir_Air_OD():
@@ -5386,11 +5570,11 @@ def UltimateAntiAir_Air_OD():
     sprite('tm432_07', 3)
     sprite('tm432_08', 3)
     if SLOT_2:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('tm435_56', 3)
     XImpulseAcceleration(80)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 9)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 9)
     label(1)
     sprite('tm435_57', 3)
     PerGravity(110)
@@ -5417,10 +5601,10 @@ def UltimateAntiAir_Air_OD():
     sprite('tm432_10', 2)
     sprite('tm432_11', 2)
     CreateObject('tmef254', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    AddY(-48000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(80000)
+        AddY(-48000)
     sprite('tm432_12', 2)
     sprite('tm432_13', 2)
     sprite('tm432_14', 2)
@@ -5447,8 +5631,8 @@ def UltimateAntiAir_Air_OD():
     sprite('tm432_22', 3)
     sprite('tm432_23', 3)
     sprite('tm432_24', 3)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 19)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 19)
     label(11)
     sprite('tm020_07', 3)
     sprite('tm020_08', 3)
@@ -5460,6 +5644,7 @@ def UltimateAntiAir_Air_OD():
     LandingEffects(100, 1, 1)
     sprite('tm024_01', 2)
     sprite('tm024_02', 4)
+
 
 @State
 def UltimateRushLow():
@@ -5486,7 +5671,7 @@ def UltimateRushLow():
         AttackDirection(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             enterState('UltimateRushLow2')
     sprite('tm433_00', 4)
     sprite('tm433_01', 4)
@@ -5520,6 +5705,7 @@ def UltimateRushLow():
     sprite('tm433_47', 6)
     sprite('tm433_48', 6)
     sprite('tm433_49', 6)
+
 
 @State
 def UltimateRushLow2():
@@ -5555,9 +5741,9 @@ def UltimateRushLow2():
     RefreshMultihit()
     ScreenShake(1000, 20000)
     sprite('tm433_15', 6)
-    if (not SLOT_123):
-        if (not SLOT_124):
-            if (not SLOT_21):
+    if not SLOT_123:
+        if not SLOT_124:
+            if not SLOT_21:
                 sendToLabel(100)
     sprite('tm433_16', 8)
     EnableRapidCancel(0)
@@ -5575,7 +5761,7 @@ def UltimateRushLow2():
     sprite('tm433_19', 3)
     CreateObject('tmef433', -1)
     sprite('tm433_20', 6)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     CommonSE('005_swing_grap_2_0')
     CommonSE('213_bound_1')
     RefreshMultihit()
@@ -5595,7 +5781,7 @@ def UltimateRushLow2():
     physicsYImpulse(15000)
     setGravity(1500)
     DefeatOpponentBehavior(1)
-    Comment('UltimateRushLow2Finish')
+    GotoState('UltimateRushLow2Finish')
     sprite('tm433_21', 4)
     PrivateSE('tmse_06')
     sprite('tm433_22', 4)
@@ -5658,6 +5844,7 @@ def UltimateRushLow2():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def UltimateRushMid():
 
@@ -5685,7 +5872,7 @@ def UltimateRushMid():
         StarterRating(2)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             enterState('UltimateRushMid2')
     sprite('tm433_00', 4)
     sprite('tm433_01', 4)
@@ -5717,6 +5904,7 @@ def UltimateRushMid():
     StartMultihit()
     sprite('tm433_34', 6)
     sprite('tm433_35', 6)
+
 
 @State
 def UltimateRushMid2():
@@ -5757,7 +5945,8 @@ def UltimateRushMid2():
     sprite('tm433_14', 2)
     RefreshMultihit()
     AddActionMark(-1)
-    GotoIf0(1, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(1)
     loopRest()
     gotoLabel(0)
     label(1)
@@ -5765,7 +5954,7 @@ def UltimateRushMid2():
     CreateObject('tmef433', -1)
     SetXCollisionFromOrigin(400)
     sprite('tm433_20', 6)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     CommonSE('005_swing_grap_2_0')
     CommonSE('213_bound_1')
     RefreshMultihit()
@@ -5797,7 +5986,7 @@ def UltimateRushMid2():
     CommonSE('025_cleanhit_grap')
     PrivateSE('tmse_07')
     RefreshMultihit()
-    Comment('UltimateRushMid2Finish')
+    GotoState('UltimateRushMid2Finish')
     Damage(2500)
     Hitstop(16)
     DefeatOpponentBehavior(0)
@@ -5817,6 +6006,7 @@ def UltimateRushMid2():
     sprite('tm433_28', 7)
     sprite('tm433_29', 7)
     ExitState()
+
 
 @State
 def UltimateRushLow_OD():
@@ -5846,7 +6036,7 @@ def UltimateRushLow_OD():
         SLOT_59 = 0
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             enterState('UltimateRushLowAtk_OD')
     sprite('tm433_00', 4)
     sprite('tm433_01', 4)
@@ -5881,6 +6071,7 @@ def UltimateRushLow_OD():
     sprite('tm433_48', 6)
     sprite('tm433_49', 6)
 
+
 @State
 def UltimateRushLowAtk_OD():
 
@@ -5908,7 +6099,7 @@ def UltimateRushLowAtk_OD():
     sprite('keep', 2)
     StartMultihit()
     if SLOT_59:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('tm433_42', 4)
     sprite('tm433_43', 6)
     sprite('tm433_44', 6)
@@ -5939,9 +6130,8 @@ def UltimateRushLowAtk_OD():
     sprite('tm433_14', 3)
     RefreshMultihit()
     AddActionMark(-1)
-    (SLOT_2 == 8)
-    if SLOT_0:
-        _gotolabel(3)
+    if SLOT_2 == 8:
+        conditionalSendToLabel(3)
     loopRest()
     gotoLabel(2)
     label(3)
@@ -5951,9 +6141,8 @@ def UltimateRushLowAtk_OD():
     sprite('tm433_14', 3)
     RefreshMultihit()
     AddActionMark(-1)
-    (SLOT_2 == 4)
-    if SLOT_0:
-        _gotolabel(4)
+    if SLOT_2 == 4:
+        conditionalSendToLabel(4)
     loopRest()
     gotoLabel(3)
     label(4)
@@ -5963,14 +6152,15 @@ def UltimateRushLowAtk_OD():
     sprite('tm433_14', 2)
     RefreshMultihit()
     AddActionMark(-1)
-    GotoIf0(5, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(5)
     loopRest()
     gotoLabel(4)
     label(5)
     sprite('tm433_19', 3)
     CreateObject('tmef433', -1)
     sprite('tm433_20', 6)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     CommonSE('005_swing_grap_2_0')
     CommonSE('213_bound_1')
     RefreshMultihit()
@@ -6018,6 +6208,7 @@ def UltimateRushLowAtk_OD():
     sprite('tm433_27', 7)
     sprite('tm433_28', 7)
     sprite('tm433_29', 7)
+
 
 @State
 def UltimateRushMid_OD():
@@ -6050,7 +6241,7 @@ def UltimateRushMid_OD():
         SLOT_59 = 1
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             enterState('UltimateRushMidAtk_OD')
     sprite('tm433_00', 4)
     sprite('tm433_01', 4)
@@ -6083,6 +6274,7 @@ def UltimateRushMid_OD():
     sprite('tm433_34', 6)
     sprite('tm433_35', 6)
 
+
 @State
 def UltimateRushMidAtk_OD():
 
@@ -6110,7 +6302,7 @@ def UltimateRushMidAtk_OD():
     sprite('keep', 2)
     StartMultihit()
     if SLOT_59:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('tm433_42', 4)
     sprite('tm433_43', 6)
     sprite('tm433_44', 6)
@@ -6141,9 +6333,8 @@ def UltimateRushMidAtk_OD():
     sprite('tm433_14', 3)
     RefreshMultihit()
     AddActionMark(-1)
-    (SLOT_2 == 8)
-    if SLOT_0:
-        _gotolabel(3)
+    if SLOT_2 == 8:
+        conditionalSendToLabel(3)
     loopRest()
     gotoLabel(2)
     label(3)
@@ -6153,9 +6344,8 @@ def UltimateRushMidAtk_OD():
     sprite('tm433_14', 3)
     RefreshMultihit()
     AddActionMark(-1)
-    (SLOT_2 == 4)
-    if SLOT_0:
-        _gotolabel(4)
+    if SLOT_2 == 4:
+        conditionalSendToLabel(4)
     loopRest()
     gotoLabel(3)
     label(4)
@@ -6165,14 +6355,15 @@ def UltimateRushMidAtk_OD():
     sprite('tm433_14', 2)
     RefreshMultihit()
     AddActionMark(-1)
-    GotoIf0(5, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(5)
     loopRest()
     gotoLabel(4)
     label(5)
     sprite('tm433_19', 3)
     CreateObject('tmef433', -1)
     sprite('tm433_20', 6)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     CommonSE('005_swing_grap_2_0')
     CommonSE('213_bound_1')
     RefreshMultihit()
@@ -6221,6 +6412,7 @@ def UltimateRushMidAtk_OD():
     sprite('tm433_28', 7)
     sprite('tm433_29', 7)
 
+
 @State
 def UltimateAtemi():
 
@@ -6251,7 +6443,7 @@ def UltimateAtemi():
         def upon_GUARDPOINT_ACTIVATION():
             SetActionMark(8)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 NoAttackDuringAction(0)
                 AddActionMark(-1)
@@ -6260,8 +6452,8 @@ def UltimateAtemi():
 
         def upon_OPPONENT_HIT():
             Voiceline('tm257')
-            clearUponHandler(12)
-            clearUponHandler(3)
+            clearUponHandler(OPPONENT_HIT)
+            clearUponHandler(EVERY_FRAME)
             enterState('UltimateAtemiExe')
         setInvincible(1)
         GuardPoint_(1)
@@ -6288,9 +6480,8 @@ def UltimateAtemi():
     sprite('tm030_09ex01', 7)
     sprite('tm030_10ex01', 7)
     sprite('tm030_11ex01', 7)
-    CheckInput(0x1)
-    if SLOT_0:
-        _gotolabel(0)
+    if CheckInput(INPUT_HOLD_A):
+        conditionalSendToLabel(0)
     sprite('tm030_02ex01', 7)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('tm030_03ex01', 7)
@@ -6316,6 +6507,7 @@ def UltimateAtemi():
     sprite('tm620_02', 5)
     sprite('tm620_01', 5)
     sprite('tm620_00', 5)
+
 
 @State
 def UltimateAtemiExe():
@@ -6344,14 +6536,14 @@ def UltimateAtemiExe():
         setInvincible(1)
         SetXCollisionFromOrigin(40)
         EnableRapidCancel(0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
 
         def upon_STATE_END():
             ForceFaceSprite()
     sprite('tm434_00', 8)
     DistortionSettings(95, -1, 0)
-    SLOT_12 = (SLOT_12 + SLOT_19)
+    SLOT_XVelocity = SLOT_XVelocity + SLOT_19
     XImpulseAcceleration(2)
     XImpulseAcceleration(50)
     EnableCollision(0)
@@ -6422,7 +6614,7 @@ def UltimateAtemiExe():
     gotoLabel(0)
     label(9)
     sprite('tm434_11', 1)
-    PassbackAddActionMarkToFunction('eftm434_Chain00', 32)
+    TriggerUponForState('eftm434_Chain00', 32)
     SetXCollisionFromOrigin(200)
     EndMomentum(1)
     EnableCollision(1)
@@ -6448,7 +6640,7 @@ def UltimateAtemiExe():
     CreateObject('tmef434_hand_2', 1)
     sprite('tm434_14', 6)
     SetXCollisionFromOrigin(-1)
-    PassbackAddActionMarkToFunction('eftm434_Chain00', 33)
+    TriggerUponForState('eftm434_Chain00', 33)
     CreateObject('eftm434_Chain01', 0)
     EnableAfterimage(0)
     RefreshMultihit()
@@ -6464,7 +6656,7 @@ def UltimateAtemiExe():
     CommonSE('025_cleanhit_slash')
 
     def upon_OPPONENT_HIT():
-        clearUponHandler(12)
+        clearUponHandler(OPPONENT_HIT)
         EnableRapidCancel(1)
     DespawnEAEffect('tmef434_hand_2')
     CreateObject('tmef434_hand_3', 0)
@@ -6477,6 +6669,7 @@ def UltimateAtemiExe():
     sprite('tm003_02', 2)
     sprite('tm003_01', 3)
     sprite('tm003_00', 1)
+
 
 @State
 def UltimateAtemi_OD():
@@ -6508,7 +6701,7 @@ def UltimateAtemi_OD():
         def upon_GUARDPOINT_ACTIVATION():
             SetActionMark(8)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 NoAttackDuringAction(0)
                 AddActionMark(-1)
@@ -6517,8 +6710,8 @@ def UltimateAtemi_OD():
 
         def upon_OPPONENT_HIT():
             Voiceline('tm257')
-            clearUponHandler(12)
-            clearUponHandler(3)
+            clearUponHandler(OPPONENT_HIT)
+            clearUponHandler(EVERY_FRAME)
             enterState('UltimateAtemiExe_OD')
         setInvincible(1)
         GuardPoint_(1)
@@ -6544,9 +6737,8 @@ def UltimateAtemi_OD():
     sprite('tm030_09ex01', 7)
     sprite('tm030_10ex01', 7)
     sprite('tm030_11ex01', 7)
-    CheckInput(0x1)
-    if SLOT_0:
-        _gotolabel(0)
+    if CheckInput(INPUT_HOLD_A):
+        conditionalSendToLabel(0)
     sprite('tm030_02ex01', 7)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('tm030_03ex01', 7)
@@ -6571,6 +6763,7 @@ def UltimateAtemi_OD():
     sprite('tm620_02', 5)
     sprite('tm620_01', 5)
     sprite('tm620_00', 5)
+
 
 @State
 def UltimateAtemiExe_OD():
@@ -6601,14 +6794,14 @@ def UltimateAtemiExe_OD():
         setInvincible(1)
         SetXCollisionFromOrigin(40)
         EnableRapidCancel(0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
 
         def upon_STATE_END():
             ForceFaceSprite()
     sprite('tm434_00', 8)
     DistortionSettings(95, -1, 0)
-    SLOT_12 = (SLOT_12 + SLOT_19)
+    SLOT_XVelocity = SLOT_XVelocity + SLOT_19
     XImpulseAcceleration(2)
     XImpulseAcceleration(50)
     EnableCollision(0)
@@ -6675,7 +6868,7 @@ def UltimateAtemiExe_OD():
     gotoLabel(0)
     label(9)
     sprite('tm434_11', 1)
-    PassbackAddActionMarkToFunction('eftm434_Chain00', 32)
+    TriggerUponForState('eftm434_Chain00', 32)
     SetXCollisionFromOrigin(200)
     EndMomentum(1)
     EnableCollision(1)
@@ -6700,7 +6893,7 @@ def UltimateAtemiExe_OD():
     CreateObject('tmef434_hand_2', 0)
     CreateObject('tmef434_hand_2', 1)
     sprite('tm434_14', 1)
-    PassbackAddActionMarkToFunction('eftm434_Chain00', 33)
+    TriggerUponForState('eftm434_Chain00', 33)
     CreateObject('eftm434_Chain01', 0)
     EnableAfterimage(0)
     RefreshMultihit()
@@ -6735,7 +6928,7 @@ def UltimateAtemiExe_OD():
     DefeatOpponentBehavior(0)
 
     def upon_OPPONENT_HIT():
-        clearUponHandler(12)
+        clearUponHandler(OPPONENT_HIT)
         EnableRapidCancel(1)
         callSubroutine('SuperCancel')
     sprite('tm434_14', 1)
@@ -6746,6 +6939,7 @@ def UltimateAtemiExe_OD():
     sprite('tm003_02', 2)
     sprite('tm003_01', 3)
     sprite('tm003_00', 1)
+
 
 @State
 def UltimateLock():
@@ -6769,7 +6963,7 @@ def UltimateLock():
         StarterRating(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             SetActionMark(1)
         if SLOT_137:
             DamageMultiplier(80)
@@ -6807,7 +7001,8 @@ def UltimateLock():
     EndMomentum(1)
     sprite('tm435_10', 3)
     sprite('tm435_11', 3)
-    GotoIf0(9, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(9)
     sprite('tm435_12', 3)
     physicsXImpulse(3000)
     EnableCollision(0)
@@ -6874,6 +7069,7 @@ def UltimateLock():
     sprite('tm435_84', 3)
     sprite('tm435_85', 3)
 
+
 @State
 def UltimateLockExe():
 
@@ -6899,22 +7095,22 @@ def UltimateLockExe():
         NoAttackDuringAction(1)
         setInvincible(1)
         SetBackground(2)
-        SLOT_60 = SLOT_122
+        SLOT_60 = SLOT_Meter
         SetActionMark(15)
 
         def upon_OPPONENT_HIT():
             HeatChange(-500)
             ScreenShake(2000, 8000)
-            if (SLOT_2 <= 10):
+            if SLOT_2 <= 10:
                 ScreenShake(4000, 16000)
-            if (SLOT_2 <= 1):
+            if SLOT_2 <= 1:
                 Damage(2000)
                 ScreenShake(5000, 20000)
             AddActionMark(-1)
             if SLOT_51:
-                if (not SLOT_CurrentMeter):
+                if not SLOT_Meter:
                     sendToLabel(9)
-                if (not SLOT_2):
+                if not SLOT_2:
                     sendToLabel(9)
         CameraNoScreenCollision(1)
         CameraControlEnable(1)
@@ -7020,13 +7216,14 @@ def UltimateLockExe():
     gotoLabel(3)
     label(9)
     sprite('tm435_26', 3)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     AttackDefaults_Throw('UltimateLockExe2', 3, 0, 0)
     RefreshMultihit()
     DistanceCheck(-1, -1, -1, -1)
     RangeCheck(-1)
     ThrowTechWindow(-1)
     PreventAirborneHit(0)
+
 
 @State
 def UltimateLockExe2():
@@ -7075,12 +7272,13 @@ def UltimateLockExe2():
     sprite('tm435_34', 2)
     CommonSE('025_cleanhit_grap')
     sprite('tm435_35', 1)
-    if (SLOT_60 >= 5000):
+    if SLOT_60 >= 5000:
         enterState('UltimateLockFinish3')
-    elif (SLOT_60 >= 2500):
+    elif SLOT_60 >= 2500:
         enterState('UltimateLockFinish2')
     else:
         enterState('UltimateLockFinish1')
+
 
 @State
 def UltimateLockFinish1():
@@ -7119,6 +7317,7 @@ def UltimateLockFinish1():
     sprite('tm435_46', 6)
     sprite('tm435_47', 6)
 
+
 @State
 def UltimateLockFinish2():
 
@@ -7136,8 +7335,8 @@ def UltimateLockFinish2():
         UseSlashHitspark(1)
         CHStateIfCHStart(3)
         setInvincible(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('keep', 18)
@@ -7182,6 +7381,7 @@ def UltimateLockFinish2():
     sprite('tm435_64', 4)
     sprite('tm435_65', 4)
 
+
 @State
 def UltimateLockFinish3():
 
@@ -7211,9 +7411,9 @@ def UltimateLockFinish3():
     AddX(-50000)
     Voiceline('tm261')
     CreateObject('tmef433', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(100000)
     physicsXImpulse(24000)
     sprite('tm433_20', 6)
     CommonSE('005_swing_grap_2_0')
@@ -7260,6 +7460,7 @@ def UltimateLockFinish3():
     sprite('tm433_32', 5)
     sprite('tm433_33', 5)
 
+
 @State
 def UltimateLock_OD():
 
@@ -7283,7 +7484,7 @@ def UltimateLock_OD():
         callSubroutine('SuperCancel')
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             SetActionMark(1)
         if SLOT_137:
             DamageMultiplier(80)
@@ -7321,7 +7522,8 @@ def UltimateLock_OD():
     EndMomentum(1)
     sprite('tm435_10', 3)
     sprite('tm435_11', 3)
-    GotoIf0(9, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(9)
     sprite('tm435_12', 3)
     physicsXImpulse(3000)
     EnableCollision(0)
@@ -7386,6 +7588,7 @@ def UltimateLock_OD():
     sprite('tm435_84', 3)
     sprite('tm435_85', 3)
 
+
 @State
 def UltimateLockExe_OD():
 
@@ -7411,26 +7614,26 @@ def UltimateLockExe_OD():
         NoAttackDuringAction(1)
         setInvincible(1)
         SetBackground(2)
-        SLOT_60 = SLOT_122
+        SLOT_60 = SLOT_Meter
         SetActionMark(15)
         CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
 
         def upon_OPPONENT_HIT():
             HeatChange(-500)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-500)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-500)
             ScreenShake(2000, 8000)
-            if (SLOT_2 <= 10):
+            if SLOT_2 <= 10:
                 ScreenShake(4000, 16000)
-            if (SLOT_2 <= 1):
+            if SLOT_2 <= 1:
                 Damage(2000)
                 ScreenShake(5000, 20000)
             AddActionMark(-1)
             if SLOT_51:
-                if (not SLOT_CurrentMeter):
+                if not SLOT_Meter:
                     sendToLabel(9)
-                if (not SLOT_2):
+                if not SLOT_2:
                     sendToLabel(9)
         CameraNoScreenCollision(1)
         CameraControlEnable(1)
@@ -7557,13 +7760,14 @@ def UltimateLockExe_OD():
     gotoLabel(3)
     label(9)
     sprite('tm435_26', 3)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     AttackDefaults_Throw('UltimateLockExe2_OD', 3, 0, 0)
     RefreshMultihit()
     DistanceCheck(-1, -1, -1, -1)
     RangeCheck(-1)
     ThrowTechWindow(-1)
     PreventAirborneHit(0)
+
 
 @State
 def UltimateLockExe2_OD():
@@ -7613,12 +7817,13 @@ def UltimateLockExe2_OD():
     sprite('tm435_34', 2)
     CommonSE('213_bound_1')
     sprite('tm435_35', 1)
-    if (SLOT_60 >= 5000):
+    if SLOT_60 >= 5000:
         enterState('UltimateLockFinish3_OD')
-    elif (SLOT_60 >= 2500):
+    elif SLOT_60 >= 2500:
         enterState('UltimateLockFinish2_OD')
     else:
         enterState('UltimateLockFinish1_OD')
+
 
 @State
 def UltimateLockFinish1_OD():
@@ -7659,6 +7864,7 @@ def UltimateLockFinish1_OD():
     sprite('tm435_46', 6)
     sprite('tm435_47', 6)
 
+
 @State
 def UltimateLockFinish2_OD():
 
@@ -7677,8 +7883,8 @@ def UltimateLockFinish2_OD():
         CHStateIfCHStart(3)
         callSubroutine('SuperCancel')
         setInvincible(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('keep', 18)
@@ -7756,6 +7962,7 @@ def UltimateLockFinish2_OD():
     sprite('tm435_64', 4)
     sprite('tm435_65', 4)
 
+
 @State
 def UltimateLockFinish3_OD():
 
@@ -7816,9 +8023,9 @@ def UltimateLockFinish3_OD():
     sprite('tm433_18', 8)
     sprite('tm433_19', 3)
     CreateObject('tmef433', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(100000)
     physicsXImpulse(24000)
     sprite('tm433_20', 6)
     CommonSE('005_swing_grap_2_0')
@@ -7875,6 +8082,7 @@ def UltimateLockFinish3_OD():
     sprite('tm433_32', 5)
     sprite('tm433_33', 5)
 
+
 @State
 def UltimateShot_AntiLand():
 
@@ -7901,7 +8109,7 @@ def UltimateShot_AntiLand():
         StrikeProjectileLevel(0)
         MoveAttributes(0, 0, 0, 1, 0)
         SLOT_54 = 1
-        sendToLabelUpon(11, 0)
+        uponSendToLabel(OPPONENT_CHAR_HIT_OR_BLOCK, 0)
         setInvincible(1)
     sprite('tm436_00', 4)
     sprite('tm436_01', 4)
@@ -7941,7 +8149,7 @@ def UltimateShot_AntiLand():
     setInvincible(0)
     sprite('tm436_55', 3)
     sprite('tm436_92', 3)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     sprite('tm436_93', 3)
     sprite('tm436_94', 3)
     sprite('tm436_95', 3)
@@ -7961,8 +8169,8 @@ def UltimateShot_AntiLand():
     label(0)
     sprite('tm436_53', 4)
     StartMultihit()
-    ObjectUpon(4, 32)
-    clearUponHandler(11)
+    ObjectUpon(FALLING, 32)
+    clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
     sprite('tm436_54', 4)
     StartMultihit()
     sprite('tm436_55', 4)
@@ -7981,12 +8189,12 @@ def UltimateShot_AntiLand():
     EnemyHitstopAddition(0, 0, 0)
 
     def upon_OPPONENT_HIT():
-        clearUponHandler(12)
+        clearUponHandler(OPPONENT_HIT)
         SLOT_52 = 1
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        clearUponHandler(11)
-        clearUponHandler(12)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
+        clearUponHandler(OPPONENT_HIT)
         if SLOT_52:
             sendToLabel(10)
         else:
@@ -7998,7 +8206,7 @@ def UltimateShot_AntiLand():
     sprite('tm436_61', 3)
     label(1)
     sprite('tm436_59', 4)
-    ObjectUpon(4, 35)
+    ObjectUpon(FALLING, 35)
     ObjectUpon(5, 35)
     NoAttackDuringAction(1)
     sprite('tm436_60', 4)
@@ -8013,24 +8221,25 @@ def UltimateShot_AntiLand():
     ObjectUpon(5, 32)
     SLOT_53 = 1
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_53:
-            if Unknown23146(22, 'UltimateShot_AntiLand'):
+            if SLOT_60 >= 2500:
                 CopyFromRightToLeft(22, 2, 83, 5, 2, 83)
                 CopyFromRightToLeft(23, 2, 51, 5, 2, 23)
-                SLOT_51 = (SLOT_51 + (-250000))
+                SLOT_51 = SLOT_51 + -250000
                 CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
     sprite('tm436_60', 3)
     sprite('tm436_61', 3)
     sprite('tm436_62', 4)
     sprite('tm436_63', 4)
-    ObjectUpon(4, 34)
+    ObjectUpon(FALLING, 34)
     ObjectUpon(5, 34)
     sprite('tm436_64', 4)
     sprite('tm436_65', 8)
     sprite('tm436_66', 6)
     sprite('tm436_17', 6)
     enterState('UltimateShotExe')
+
 
 @State
 def UltimateShot_AntiAir():
@@ -8060,7 +8269,7 @@ def UltimateShot_AntiAir():
         StrikeProjectileLevel(0)
         MoveAttributes(0, 0, 0, 1, 0)
         SLOT_54 = 1
-        sendToLabelUpon(11, 0)
+        uponSendToLabel(OPPONENT_CHAR_HIT_OR_BLOCK, 0)
         setInvincible(1)
     sprite('tm436_00', 4)
     sprite('tm436_01', 4)
@@ -8101,7 +8310,7 @@ def UltimateShot_AntiAir():
     sprite('tm436_09', 3)
     sprite('tm436_10', 3)
     sprite('tm436_79', 3)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     sprite('tm436_80', 4)
     sprite('tm436_81', 3)
     sprite('tm436_82', 3)
@@ -8122,8 +8331,8 @@ def UltimateShot_AntiAir():
     label(0)
     sprite('tm436_09', 3)
     StartMultihit()
-    ObjectUpon(4, 32)
-    clearUponHandler(11)
+    ObjectUpon(FALLING, 32)
+    clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
     sprite('tm436_10', 3)
     StartMultihit()
     sprite('tm436_09', 3)
@@ -8134,21 +8343,21 @@ def UltimateShot_AntiAir():
     CreateObject('UltimateChainAir2nd', 109)
     RegisterObject(5, 1)
     ObjectHitbox(5)
-    ApplyFunctionsToObjects(5)
-    Unknown1111(200000, 22)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_5():
+        Unknown1111(200000, 22)
     PrivateSE('tmse_01')
     sprite('tm436_14', 3)
     RefreshMultihit()
     EnemyHitstopAddition(0, 0, 0)
 
     def upon_OPPONENT_HIT():
-        clearUponHandler(12)
+        clearUponHandler(OPPONENT_HIT)
         SLOT_52 = 1
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        clearUponHandler(11)
-        clearUponHandler(12)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
+        clearUponHandler(OPPONENT_HIT)
         if SLOT_52:
             sendToLabel(10)
         else:
@@ -8161,7 +8370,7 @@ def UltimateShot_AntiAir():
     SLOT_53 = 1
     label(1)
     sprite('tm436_14', 4)
-    ObjectUpon(4, 35)
+    ObjectUpon(FALLING, 35)
     ObjectUpon(5, 35)
     NoAttackDuringAction(1)
     sprite('tm436_15', 4)
@@ -8176,21 +8385,22 @@ def UltimateShot_AntiAir():
     ObjectUpon(5, 32)
     SLOT_53 = 1
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_53:
-            if Unknown23146(22, 'UltimateShot_AntiAir'):
+            if SLOT_60 >= 2500:
                 CopyFromRightToLeft(22, 2, 83, 5, 2, 83)
                 CopyFromRightToLeft(23, 2, 51, 5, 2, 23)
-                SLOT_51 = (SLOT_51 + (-250000))
+                SLOT_51 = SLOT_51 + -250000
                 CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
     sprite('tm436_14', 4)
     sprite('tm436_15', 4)
     sprite('tm436_16', 4)
     SpriteCall('', 6, 2, 53)
-    ObjectUpon(4, 34)
+    ObjectUpon(FALLING, 34)
     ObjectUpon(5, 34)
     sprite('tm436_17', 6)
     enterState('UltimateShotExe')
+
 
 @State
 def UltimateShotExe():
@@ -8216,11 +8426,11 @@ def UltimateShotExe():
         SLOT_54 = 1
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 CopyFromRightToLeft(22, 2, 83, 5, 2, 83)
                 CopyFromRightToLeft(23, 2, 51, 5, 2, 23)
-                SLOT_51 = (SLOT_51 + (-250000))
+                SLOT_51 = SLOT_51 + -250000
                 CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
 
         def upon_STATE_END():
@@ -8255,7 +8465,7 @@ def UltimateShotExe():
     sprite('tm436_24', 3)
     sprite('tm436_25', 3)
     sprite('tm436_26', 3)
-    sendToLabelUpon(2, 10)
+    uponSendToLabel(LANDING, 10)
     sprite('tm436_27', 2)
     CreateObject('UltimateChain3rd', 109)
     RegisterObject(4, 1)
@@ -8281,7 +8491,7 @@ def UltimateShotExe():
     EndMomentum(1)
     SkidEffects(100, 1, 1)
     sprite('tm436_33', 2)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     JumpEffects(1, 0)
     physicsXImpulse(-70000)
     physicsYImpulse(25000)
@@ -8345,6 +8555,7 @@ def UltimateShotExe():
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
 
+
 @State
 def UltimateShot_AntiLand_OD():
 
@@ -8374,7 +8585,7 @@ def UltimateShot_AntiLand_OD():
         StrikeProjectileLevel(0)
         MoveAttributes(0, 0, 0, 1, 0)
         SLOT_54 = 1
-        sendToLabelUpon(11, 0)
+        uponSendToLabel(OPPONENT_CHAR_HIT_OR_BLOCK, 0)
         setInvincible(1)
     sprite('tm436_00', 4)
     sprite('tm436_01', 4)
@@ -8414,7 +8625,7 @@ def UltimateShot_AntiLand_OD():
     setInvincible(0)
     sprite('tm436_55', 3)
     sprite('tm436_92', 3)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     sprite('tm436_93', 3)
     sprite('tm436_94', 3)
     sprite('tm436_95', 3)
@@ -8434,8 +8645,8 @@ def UltimateShot_AntiLand_OD():
     label(0)
     sprite('tm436_53', 4)
     StartMultihit()
-    ObjectUpon(4, 32)
-    clearUponHandler(11)
+    ObjectUpon(FALLING, 32)
+    clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
     sprite('tm436_54', 4)
     StartMultihit()
     sprite('tm436_55', 4)
@@ -8454,12 +8665,12 @@ def UltimateShot_AntiLand_OD():
     EnemyHitstopAddition(0, 0, 0)
 
     def upon_OPPONENT_HIT():
-        clearUponHandler(12)
+        clearUponHandler(OPPONENT_HIT)
         SLOT_52 = 1
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        clearUponHandler(11)
-        clearUponHandler(12)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
+        clearUponHandler(OPPONENT_HIT)
         if SLOT_52:
             sendToLabel(10)
         else:
@@ -8471,7 +8682,7 @@ def UltimateShot_AntiLand_OD():
     sprite('tm436_61', 3)
     label(1)
     sprite('tm436_59', 4)
-    ObjectUpon(4, 35)
+    ObjectUpon(FALLING, 35)
     ObjectUpon(5, 35)
     NoAttackDuringAction(1)
     sprite('tm436_60', 4)
@@ -8486,24 +8697,25 @@ def UltimateShot_AntiLand_OD():
     ObjectUpon(5, 32)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if Unknown23146(22, 'UltimateShot_AntiLand_OD'):
+            if SLOT_60 >= 2500:
                 CopyFromRightToLeft(22, 2, 83, 5, 2, 83)
                 CopyFromRightToLeft(23, 2, 51, 5, 2, 23)
-                SLOT_51 = (SLOT_51 + (-250000))
+                SLOT_51 = SLOT_51 + -250000
                 CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
     sprite('tm436_60', 4)
     sprite('tm436_61', 4)
     sprite('tm436_62', 4)
     sprite('tm436_63', 4)
-    ObjectUpon(4, 34)
+    ObjectUpon(FALLING, 34)
     ObjectUpon(5, 34)
     sprite('tm436_64', 4)
     sprite('tm436_65', 8)
     sprite('tm436_66', 6)
     sprite('tm436_17', 6)
     enterState('UltimateShotExe_OD')
+
 
 @State
 def UltimateShot_AntiAir_OD():
@@ -8536,7 +8748,7 @@ def UltimateShot_AntiAir_OD():
         StrikeProjectileLevel(0)
         MoveAttributes(0, 0, 0, 1, 0)
         SLOT_54 = 1
-        sendToLabelUpon(11, 0)
+        uponSendToLabel(OPPONENT_CHAR_HIT_OR_BLOCK, 0)
         setInvincible(1)
     sprite('tm436_00', 4)
     sprite('tm436_01', 4)
@@ -8577,7 +8789,7 @@ def UltimateShot_AntiAir_OD():
     sprite('tm436_09', 3)
     sprite('tm436_10', 3)
     sprite('tm436_79', 3)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     sprite('tm436_80', 4)
     sprite('tm436_81', 3)
     sprite('tm436_82', 3)
@@ -8598,8 +8810,8 @@ def UltimateShot_AntiAir_OD():
     label(0)
     sprite('tm436_09', 3)
     StartMultihit()
-    ObjectUpon(4, 32)
-    clearUponHandler(11)
+    ObjectUpon(FALLING, 32)
+    clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
     sprite('tm436_10', 3)
     StartMultihit()
     sprite('tm436_09', 3)
@@ -8610,21 +8822,21 @@ def UltimateShot_AntiAir_OD():
     CreateObject('UltimateChainAir2nd', 109)
     RegisterObject(5, 1)
     ObjectHitbox(5)
-    ApplyFunctionsToObjects(5)
-    Unknown1111(200000, 22)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_5():
+        Unknown1111(200000, 22)
     PrivateSE('tmse_01')
     sprite('tm436_14', 3)
     RefreshMultihit()
     EnemyHitstopAddition(0, 0, 0)
 
     def upon_OPPONENT_HIT():
-        clearUponHandler(12)
+        clearUponHandler(OPPONENT_HIT)
         SLOT_52 = 1
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        clearUponHandler(11)
-        clearUponHandler(12)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
+        clearUponHandler(OPPONENT_HIT)
         if SLOT_52:
             sendToLabel(10)
         else:
@@ -8635,7 +8847,7 @@ def UltimateShot_AntiAir_OD():
     sprite('tm436_15', 3)
     label(1)
     sprite('tm436_13', 4)
-    ObjectUpon(4, 35)
+    ObjectUpon(FALLING, 35)
     ObjectUpon(5, 35)
     NoAttackDuringAction(1)
     sprite('tm436_14', 4)
@@ -8650,20 +8862,21 @@ def UltimateShot_AntiAir_OD():
     ObjectUpon(5, 32)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if Unknown23146(22, 'UltimateShot_AntiAir_OD'):
+            if SLOT_60 >= 2500:
                 CopyFromRightToLeft(22, 2, 83, 5, 2, 83)
                 CopyFromRightToLeft(23, 2, 51, 5, 2, 23)
-                SLOT_51 = (SLOT_51 + (-250000))
+                SLOT_51 = SLOT_51 + -250000
                 CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
     sprite('tm436_14', 4)
     sprite('tm436_15', 4)
     sprite('tm436_16', 4)
-    ObjectUpon(4, 34)
+    ObjectUpon(FALLING, 34)
     ObjectUpon(5, 34)
     sprite('tm436_17', 6)
     enterState('UltimateShotExe_OD')
+
 
 @State
 def UltimateShotExe_OD():
@@ -8690,11 +8903,11 @@ def UltimateShotExe_OD():
         SLOT_54 = 1
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 CopyFromRightToLeft(22, 2, 83, 5, 2, 83)
                 CopyFromRightToLeft(23, 2, 51, 5, 2, 23)
-                SLOT_51 = (SLOT_51 + (-250000))
+                SLOT_51 = SLOT_51 + -250000
                 CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
 
         def upon_STATE_END():
@@ -8729,7 +8942,7 @@ def UltimateShotExe_OD():
     sprite('tm436_24', 3)
     sprite('tm436_25', 3)
     sprite('tm436_26', 3)
-    sendToLabelUpon(2, 10)
+    uponSendToLabel(LANDING, 10)
     sprite('tm436_27', 2)
     CreateObject('UltimateChain3rd', 109)
     RegisterObject(4, 1)
@@ -8755,7 +8968,7 @@ def UltimateShotExe_OD():
     EndMomentum(1)
     SkidEffects(100, 1, 1)
     sprite('tm436_33', 2)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     JumpEffects(1, 0)
     physicsXImpulse(-70000)
     physicsYImpulse(25000)
@@ -8824,6 +9037,7 @@ def UltimateShotExe_OD():
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
 
+
 @State
 def AstralHeat():
 
@@ -8845,10 +9059,10 @@ def AstralHeat():
         DisableOppPushCollision(1)
 
         def upon_OPPONENT_HIT():
-            ApplyFunctionsToObjects(22)
-            Visibility(1)
-            AlphaValue(0)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                Visibility(1)
+                AlphaValue(0)
         setInvincible(1)
         EndMomentum(1)
         NoAttackDuringAction(1)
@@ -8859,16 +9073,16 @@ def AstralHeat():
             PlayPlayAstralBGM(0)
             HUDVisibillity(1)
             CreateObject('ASTcamera', -1)
-            ApplyFunctionsToObjects(22)
-            EnableCollision(0)
-            ScreenCollision(0)
-            ScreenCollision(0)
-            WallCollisionDetection(0)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                EnableCollision(0)
+                ScreenCollision(0)
+                ScreenCollision(0)
+                WallCollisionDetection(0)
             sendToLabel(0)
 
         def upon_STATE_END():
-            PassbackAddActionMarkToFunction('tmef_aststartcircle', 32)
+            TriggerUponForState('tmef_aststartcircle', 32)
     sprite('tm450_00', 4)
     BlendMode_Normal()
     TurnParticleColorable1(1)
@@ -8903,7 +9117,7 @@ def AstralHeat():
     sprite('tm450_06', 4)
     sprite('tm450_07', 4)
     sprite('tm450_05', 4)
-    PassbackAddActionMarkToFunction('tmef_aststartcircle', 32)
+    TriggerUponForState('tmef_aststartcircle', 32)
     sprite('tm450_06', 4)
     sprite('tm450_07', 4)
     sprite('tm450_41', 4)
@@ -8950,15 +9164,16 @@ def AstralHeat():
     sprite('tm450_17', 3)
     ScreenShake(5000, 5000)
     AddActionMark(-1)
-    GotoIf0(2, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(2)
     loopRest()
     gotoLabel(1)
     label(2)
     sprite('tm450_15', 3)
     sprite('tm450_16', 3)
     sprite('tm450_17', 3)
-    PassbackAddActionMarkToFunction('tmef_450_hole', 32)
-    PassbackAddActionMarkToFunction('AstralHeat_3rd', 32)
+    TriggerUponForState('tmef_450_hole', 32)
+    TriggerUponForState('AstralHeat_3rd', 32)
     sprite('tm450_15', 6)
     sprite('tm450_16', 6)
     sprite('tm450_17', 6)
@@ -9156,7 +9371,8 @@ def AstralHeat():
     CommonSE('019_quake_1')
     loopRest()
     gotoLabel(101)
-endState()
+    endState()
+
 
 @State
 def StorySpecialAction():
@@ -9178,6 +9394,7 @@ def StorySpecialAction():
     sprite('tm620_03', 7)
     sprite('tm620_02', 7)
 
+
 @State
 def RlAstralDamage():
 
@@ -9185,7 +9402,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('tm054')
     sprite('tm900_00', 32767)
     EnableCollision(0)
@@ -9199,6 +9416,7 @@ def RlAstralDamage():
     AbsoluteY(0)
     EndMomentum(1)
     loopRest()
+
 
 @State
 def AmAstralDamage():
@@ -9235,11 +9453,12 @@ def AmAstralDamage():
     sprite('tm901_05', 4)
     gotoLabel(0)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(17)
         GroundedHitstunAnimation(17)
         AirUntechableTime(80)
@@ -9261,15 +9480,15 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
             sendToLabel(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -9305,11 +9524,12 @@ def BurstDD():
     sprite('tm214_27ex01', 5)
     sprite('tm214_28ex01', 5)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(17)
         GroundedHitstunAnimation(17)
         AirUntechableTime(80)
@@ -9331,15 +9551,15 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
             sendToLabel(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -9377,11 +9597,12 @@ def BurstDD_Easy():
     sprite('tm214_27ex01', 5)
     sprite('tm214_28ex01', 5)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         DamageFromStateOnly('BurstDDAdd')
         MinimumDamage(10)
         AttackOff()
@@ -9391,7 +9612,7 @@ def BurstDDAdd():
         AddX(-100000)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(1)
     sprite('tm440_21', 3)
     Voiceline('tm281')
@@ -9484,7 +9705,7 @@ def BurstDDAdd():
     gotoLabel(200)
     label(200)
     sprite('tm440_13', 7)
-    PassbackAddActionMarkToFunction('tmef_440_magiccircle', 32)
+    TriggerUponForState('tmef_440_magiccircle', 32)
     CommonSE('022_magiccircle_b')
     sprite('tm401_21ex01', 7)
     sprite('tm401_22ex01', 7)
@@ -9492,175 +9713,672 @@ def BurstDDAdd():
     sprite('tm401_24ex01', 7)
     sprite('tm440_18', 6)
     sprite('tm440_19', 6)
-    PassbackAddActionMarkToFunction('BurstDDCamera', 33)
+    TriggerUponForState('BurstDDCamera', 33)
     sprite('tm401_28ex01', 6)
     sprite('tm401_29ex01', 6)
     sprite('tm401_30ex01', 6)
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('tm000', 13921, 13923, 13921, 13923, 13921, 13667, 13921, 13667, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm055', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm156', 13665, 13667, 13665, 13667, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 24888, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm255', 12643, 24880, 12340, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm262', 12641, 25392, 24886, 12337, 12899, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 12338, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm303', 13923, 12641, 25392, 24888, 12337, 13155, 24880, 12337, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm325', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm330', 12643, 24880, 12340, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm331', 13409, 25397, 24886, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm307', 14177, 13923, 14177, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13153, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm312', 14433, 13923, 14433, 13923, 14433, 13923, 12641, 25392, 12337, 12641, 25394, 12340, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm400', 13923, 12897, 25396, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 12849, 12643, 24880, 25398, 24884, 12338, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm401', 13923, 12897, 25396, 24886, 25400, 24886, 12338, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm402', 12641, 25392, 12339, 12641, 25392, 12338, 12641, 25392, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm403', 13921, 13923, 13921, 13155, 24880, 25400, 24888, 25400, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm404', 12897, 25392, 24888, 25400, 12337, 13921, 13923, 13921, 13923, 13921, 14435, 14433, 14435, 14433, 12643, 24880, 12337, 14435, 12641, 25397, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm405', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 14433, 14435, 12641, 25392, 24888, 13617, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm406', 13923, 12641, 25392, 12337, 12897, 25392, 12339, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12897, 25397, 12337, 13921, 13411, 13921, 13411, 13921, 13411, 12641, 25397, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm407', 13921, 13923, 14433, 13155, 24880, 25400, 24888, 25400, 24888, 12337, 13411, 24880, 12338, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12340, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm408', 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 12643, 24880, 25400, 24886, 12337, 13923, 13921, 13923, 12641, 25394, 12339, 12641, 25397, 24886, 25398, 24886, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm411', 12641, 25392, 12337, 12641, 25392, 12339, 14433, 14435, 12897, 25392, 24888, 25400, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm412', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm413', 12641, 25394, 24888, 12338, 14435, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm414', 12897, 25397, 12337, 14433, 12643, 24882, 25398, 24886, 25398, 24886, 25398, 24886, 12339, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm415', 12897, 25392, 12338, 12897, 25392, 12337, 12641, 25392, 13875, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm416', 12897, 25392, 24886, 25398, 12849, 14433, 13923, 13921, 13923, 13921, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tm417', 12641, 25392, 12338, 12641, 25392, 12337, 14433, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25394, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm000', 13921, 13923, 13921, 13923, 13921, 13667, 13921, 
+        13667, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm055', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm156', 13665, 13667, 13665, 13667, 13921, 13923, 13921, 
+        13923, 13921, 13923, 12641, 25392, 24888, 25398, 54, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm255', 12643, 24880, 12340, 13923, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm262', 12641, 25392, 24886, 12337, 12899, 24880, 25400, 
+        24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 12338, 
+        14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm303', 13923, 12641, 25392, 24888, 12337, 13155, 24880, 
+        12337, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm325', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+        13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm330', 12643, 24880, 12340, 13923, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm331', 13409, 25397, 24886, 12337, 14179, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm307', 14177, 13923, 14177, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13153, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm312', 14433, 13923, 14433, 13923, 14433, 13923, 12641, 
+        25392, 12337, 12641, 25394, 12340, 12641, 25392, 12337, 12641, 
+        25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
+    Unknown18011('tm400', 13923, 12897, 25396, 24886, 25400, 24886, 25400, 
+        24886, 25400, 24886, 12849, 12643, 24880, 25398, 24884, 12338, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0)
+    Unknown18011('tm401', 13923, 12897, 25396, 24886, 25400, 24886, 12338, 
+        13923, 14433, 13923, 14433, 13923, 14433, 13923, 12897, 25392, 54, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm402', 12641, 25392, 12339, 12641, 25392, 12338, 12641, 
+        25392, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm403', 13921, 13923, 13921, 13155, 24880, 25400, 24888, 
+        25400, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm404', 12897, 25392, 24888, 25400, 12337, 13921, 13923, 
+        13921, 13923, 13921, 14435, 14433, 14435, 14433, 12643, 24880, 
+        12337, 14435, 12641, 25397, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm405', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+        13921, 13923, 13921, 13923, 13921, 13923, 14433, 14435, 12641, 
+        25392, 24888, 13617, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm406', 13923, 12641, 25392, 12337, 12897, 25392, 12339, 
+        14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+        14435, 14433, 14435, 12897, 25397, 12337, 13921, 13411, 13921, 
+        13411, 13921, 13411, 12641, 25397, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm407', 13921, 13923, 14433, 13155, 24880, 25400, 24888, 
+        25400, 24888, 12337, 13411, 24880, 12338, 14435, 12641, 25392, 
+        24888, 12337, 14435, 12641, 25392, 24888, 12340, 13923, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm408', 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+        14433, 14435, 14433, 14435, 14433, 12643, 24880, 25400, 24886, 
+        12337, 13923, 13921, 13923, 12641, 25394, 12339, 12641, 25397, 
+        24886, 25398, 24886, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm411', 12641, 25392, 12337, 12641, 25392, 12339, 14433, 
+        14435, 12897, 25392, 24888, 25400, 24888, 12337, 14435, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm412', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('tm413', 12641, 25394, 24888, 12338, 14435, 13921, 13923, 
+        13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0)
+    Unknown18011('tm414', 12897, 25397, 12337, 14433, 12643, 24882, 25398, 
+        24886, 25398, 24886, 25398, 24886, 12339, 13923, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm415', 12897, 25392, 12338, 12897, 25392, 12337, 12641, 
+        25392, 13875, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm416', 12897, 25392, 24886, 25398, 12849, 14433, 13923, 
+        13921, 13923, 13921, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tm417', 12641, 25392, 12338, 12641, 25392, 12337, 14433, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25394, 54, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('tm000', 13923, 13921, 13923, 13921, 14179, 14177, 14179, 12641, 25394, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm156', 13665, 13667, 13665, 13667, 13665, 13667, 13665, 13667, 12641, 25392, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm255', 12643, 24880, 13620, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm262', 13923, 12641, 25392, 24886, 12337, 12643, 24885, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm303', 13923, 12641, 25392, 24888, 12337, 13155, 24880, 12337, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm325', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm330', 12643, 24880, 12340, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm331', 12643, 24880, 13620, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm307', 12643, 24880, 12338, 13923, 14433, 13923, 14433, 13923, 13153, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm312', 14433, 13923, 14433, 13923, 14433, 13923, 12641, 25392, 12337, 12641, 25394, 12340, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm400', 12897, 25392, 24886, 25399, 24886, 25399, 12339, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 12337, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm401', 12641, 25394, 12337, 14433, 12643, 24885, 25400, 24884, 12338, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm402', 13921, 13923, 13921, 13923, 13921, 13923, 14433, 13923, 14433, 13923, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm403', 13923, 12641, 25392, 24886, 12338, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm404', 12897, 25392, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 12337, 13923, 12641, 25392, 24886, 13617, 12899, 24880, 25398, 24884, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm405', 12897, 25397, 12337, 14177, 13923, 14177, 12643, 24880, 12849, 13923, 13921, 13923, 13153, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm406', 14433, 14435, 14433, 14435, 14433, 12643, 24882, 25400, 24888, 25400, 24888, 25400, 24888, 12338, 13923, 14433, 13923, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm407', 13921, 13411, 13921, 13411, 13921, 13411, 14433, 12899, 24880, 12337, 14435, 12641, 25392, 24888, 12337, 12643, 24880, 12337, 13155, 24880, 12338, 14435, 12641, 25392, 24888, 12337, 14435, 13409, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm408', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25397, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm411', 12897, 25392, 12339, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm412', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm413', 14433, 13923, 12641, 25392, 12342, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12641, 25392, 24886, 12338, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm414', 12897, 25392, 12338, 12897, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm415', 14177, 14179, 14177, 14179, 14177, 14179, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm416', 13923, 13409, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tm417', 12641, 25392, 24886, 25398, 24886, 25398, 24886, 25400, 24888, 12337, 13155, 24880, 12337, 14435, 12897, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('tm000', 13923, 13921, 13923, 13921, 14179, 14177, 
+            14179, 12641, 25394, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm156', 13665, 13667, 13665, 13667, 13665, 13667, 
+            13665, 13667, 12641, 25392, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm255', 12643, 24880, 13620, 13923, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm262', 13923, 12641, 25392, 24886, 12337, 12643, 
+            24885, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 
+            25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm303', 13923, 12641, 25392, 24888, 12337, 13155, 
+            24880, 12337, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('tm325', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm330', 12643, 24880, 12340, 13923, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm331', 12643, 24880, 13620, 13923, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm307', 12643, 24880, 12338, 13923, 14433, 13923, 
+            14433, 13923, 13153, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm312', 14433, 13923, 14433, 13923, 14433, 13923, 
+            12641, 25392, 12337, 12641, 25394, 12340, 12641, 25392, 12337, 
+            12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm400', 12897, 25392, 24886, 25399, 24886, 25399, 
+            12339, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 12641, 25392, 12337, 12897, 25392, 
+            54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm401', 12641, 25394, 12337, 14433, 12643, 24885, 
+            25400, 24884, 12338, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm402', 13921, 13923, 13921, 13923, 13921, 13923, 
+            14433, 13923, 14433, 13923, 12641, 25392, 24888, 12337, 14435, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm403', 13923, 12641, 25392, 24886, 12338, 13923, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm404', 12897, 25392, 24886, 25398, 24886, 25398, 
+            24886, 25398, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 
+            25400, 24886, 12337, 13923, 12641, 25392, 24886, 13617, 12899, 
+            24880, 25398, 24884, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0)
+        Unknown18011('tm405', 12897, 25397, 12337, 14177, 13923, 14177, 
+            12643, 24880, 12849, 13923, 13921, 13923, 13153, 25392, 12337, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm406', 14433, 14435, 14433, 14435, 14433, 12643, 
+            24882, 25400, 24888, 25400, 24888, 25400, 24888, 12338, 13923, 
+            14433, 13923, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm407', 13921, 13411, 13921, 13411, 13921, 13411, 
+            14433, 12899, 24880, 12337, 14435, 12641, 25392, 24888, 12337, 
+            12643, 24880, 12337, 13155, 24880, 12338, 14435, 12641, 25392, 
+            24888, 12337, 14435, 13409, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('tm408', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 12641, 25397, 54, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm411', 12897, 25392, 12339, 13921, 13923, 13921, 
+            13923, 14177, 14179, 14177, 13923, 12641, 25392, 54, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0)
+        Unknown18011('tm412', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm413', 14433, 13923, 12641, 25392, 12342, 14433, 
+            14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+            12641, 25392, 24886, 12338, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm414', 12897, 25392, 12338, 12897, 25392, 12337, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm415', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm416', 13923, 13409, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tm417', 12641, 25392, 24886, 25398, 24886, 25398, 
+            24886, 25400, 24888, 12337, 13155, 24880, 12337, 14435, 12897, 
+            25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('rg'):
-            Unknown18011('tm000', 14433, 14435, 14433, 12643, 24885, 25399, 24887, 25399, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 12641, 25392, 24888, 12337, 12643, 24885, 25401, 24887, 25401, 24887, 25401, 24887, 25401, 24887, 25401, 24887, 13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 12641, 25397, 24887, 25399, 24887, 25399, 24887, 25399, 12341, 14177, 14179, 12641, 25392, 24887, 12337, 12899, 24885, 12337, 14179, 14177, 12643, 24880, 25399, 12337, 12641, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 24880, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 14433, 14435, 14433, 12643, 24885, 25399,
+                24887, 25399, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('tm400', 12641, 25392, 24888, 12337, 12643, 24885,
+                25401, 24887, 25401, 24887, 25401, 24887, 25401, 24887, 
+                25401, 24887, 13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 12641, 25397, 24887, 25399, 24887, 25399,
+                24887, 25399, 12341, 14177, 14179, 12641, 25392, 24887, 
+                12337, 12899, 24885, 12337, 14179, 14177, 12643, 24880, 
+                25399, 12337, 12641, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 
+                24880, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rc'):
-            Unknown18011('tm000', 14433, 14435, 12641, 25392, 12337, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 12641, 25392, 24888, 12337, 12643, 24885, 25401, 12339, 14689, 14179, 14689, 14179, 14689, 14179, 14689, 14179, 14689, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 12641, 25392, 24888, 12337, 14691, 14689, 14179, 14689, 14179, 14689, 12899, 24885, 25401, 24887, 13617, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13155, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 14433, 14435, 12641, 25392, 12337, 12641,
+                25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('tm400', 12641, 25392, 24888, 12337, 12643, 24885,
+                25401, 12339, 14689, 14179, 14689, 14179, 14689, 14179, 
+                14689, 14179, 14689, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 12641, 25392, 24888, 12337, 14691, 14689,
+                14179, 14689, 14179, 14689, 12899, 24885, 25401, 24887, 
+                13617, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 13155, 
+                24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ha'):
-            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 24880, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 12641, 25392, 56, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 14435, 14433, 13923, 24880, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('hz'):
-            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13155, 24880, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 13155, 24880, 25400, 24888, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 
+                24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tm262', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 14433, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm262', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 14433, 13667, 24880, 25399, 24887, 25399, 24887,
+                    25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('vh'):
-            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12641, 25397, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13155, 24880, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+                12641, 25397, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 13155, 24880, 25400, 
+                24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 13411, 24880, 25400, 
+                24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rl'):
-            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12641, 25397, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 14433, 13923, 24880, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 12641, 25397, 24888, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 14433, 13923, 24880, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 
+                14435, 12641, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 
+                24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kk'):
-            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 24885, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 13411, 24885, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 13617, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 13411, 24885, 12849, 12643, 24882, 12849, 12643, 24882, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 
+                14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 13411, 24885, 12337, 14435, 12641, 25392, 24888, 
+                12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 13411,
+                24885, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 
+                24888, 13617, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 13411, 24885, 12849,
+                12643, 24882, 12849, 12643, 24882, 25400, 24888, 25400, 
+                24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 24880, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435, 12641, 25397, 12341, 14433, 14435, 14433, 14435, 14433, 14435, 12641, 25397, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 12641, 25392, 24888, 12337, 14435, 12641,
+                25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
+            Unknown18011('tm400', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 13411, 24880, 12337, 14435, 12641, 25392, 24888, 
+                12337, 14435, 12641, 25392, 24888, 12337, 14435, 12641, 
+                25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0)
+            Unknown18011('tm401', 14433, 14435, 14433, 14435, 14433, 14435,
+                12641, 25397, 12341, 14433, 14435, 14433, 14435, 14433, 
+                14435, 12641, 25397, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 13923, 24880, 25400, 24888, 25400, 24888, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rg'):
             if SLOT_138:
-                Unknown18011('tm500', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 12339, 14177, 14179, 14177, 14179, 12897, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tm501_1', 14177, 14179, 12641, 25397, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12338, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tm501_2', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13409, 25392, 24888, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 13363, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm500', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641,
+                    25397, 12339, 14177, 14179, 14177, 14179, 12897, 25392,
+                    55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm501_1', 14177, 14179, 12641, 25397, 24887, 
+                    25399, 24887, 25399, 24887, 25399, 24887, 12338, 14435,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm501_2', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 13409, 25392, 24888,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    13363, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('tm500', 14433, 14435, 14177, 14179, 14177, 14179, 12641, 25394, 12341, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tm501', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 12897, 25392, 12341, 14177, 14179, 12897, 25392, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12897, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm500', 14433, 14435, 14177, 14179, 14177, 
+                    14179, 12641, 25394, 12341, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm501', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921,
+                    13923, 13921, 13923, 12897, 25392, 12341, 14177, 14179,
+                    12897, 25392, 12340, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 12897,
+                    25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('jn'):
-            Unknown18011('tm502', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13667, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm503', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 12345, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm502', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+                14433, 14435, 14433, 13667, 24880, 25400, 24888, 25400, 
+                24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 
+                24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm503', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13923, 24880, 25399, 24887, 12345, 14435, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rc'):
-            Unknown18011('tm506', 12641, 25392, 24886, 12337, 13923, 12641, 25392, 24886, 12337, 13923, 12641, 25392, 13620, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm507', 12641, 25392, 12339, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13155, 24880, 25400, 24886, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm506', 12641, 25392, 24886, 12337, 13923, 12641,
+                25392, 24886, 12337, 13923, 12641, 25392, 13620, 13921, 
+                13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 
+                25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tm507', 12641, 25392, 12339, 14177, 14179, 13921,
+                13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 13921, 13155, 24880, 
+                25400, 24886, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('no'):
-            Unknown18011('tm504', 14177, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 12342, 12641, 25392, 24886, 12337, 13923, 12641, 25392, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm505', 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm504', 14177, 13155, 24880, 25398, 24886, 25398,
+                24886, 25398, 12342, 12641, 25392, 24886, 12337, 13923, 
+                12641, 25392, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('tm505', 14177, 14179, 14177, 14179, 14177, 13923,
+                24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ha'):
-            Unknown18011('tm521', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 13617, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm521', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 13617, 14179, 14177, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('hz'):
             if SLOT_138:
-                Unknown18011('tm526', 14177, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tm527', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm526', 14177, 13923, 24880, 25398, 24886, 
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm527', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('tm526', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tm527', 13665, 25392, 13618, 12641, 25396, 24886, 25398, 24886, 25400, 24888, 25398, 24886, 25398, 24886, 25400, 24886, 25398, 24886, 25399, 24887, 25399, 24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm526', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 13155, 24880, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm527', 13665, 25392, 13618, 12641, 25396, 
+                    24886, 25398, 24886, 25400, 24888, 25398, 24886, 25398,
+                    24886, 25400, 24886, 25398, 24886, 25399, 24887, 25399,
+                    24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_140:
-                    Unknown18011('tm526', 12897, 25392, 13623, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('tm527', 13665, 25392, 13618, 12641, 25396, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25400, 24886, 25398, 24886, 25399, 24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('tm526', 12897, 25392, 13623, 14177, 14179,
+                        13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                        13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                        13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                        13923, 14177, 14179, 14177, 14179, 12641, 25394, 55,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('tm527', 13665, 25392, 13618, 12641, 25396,
+                        24886, 25398, 24886, 25398, 24886, 25398, 24886, 
+                        25398, 24886, 25400, 24886, 25398, 24886, 25399, 
+                        24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('vh'):
-            Unknown18011('tm532', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm533', 14689, 14691, 14689, 14691, 14689, 14691, 14689, 14691, 14689, 14691, 14689, 14691, 14689, 13155, 24880, 12340, 14691, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm532', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm533', 14689, 14691, 14689, 14691, 14689, 14691,
+                14689, 14691, 14689, 14691, 14689, 14691, 14689, 13155, 
+                24880, 12340, 14691, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('pt'):
-            Unknown18011('tm534', 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm535', 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 12849, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm534', 14177, 13923, 24880, 25399, 24887, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm535', 13921, 13923, 24880, 25398, 24886, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 12849, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rl'):
-            Unknown18011('tm536', 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm537', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm536', 13921, 13923, 24880, 25398, 24886, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm537', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kk'):
-            Unknown18011('tm548', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 24885, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm549', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm548', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 13411, 24885, 25400, 24888, 25400, 24888, 25400, 56,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm549', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tm549', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tm549', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ce'):
-            Unknown18011('tm552', 12641, 25400, 12344, 14433, 14179, 12641, 25394, 12339, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm553', 12641, 25397, 13617, 12641, 25397, 12339, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm552', 12641, 25400, 12344, 14433, 14179, 12641,
+                25394, 12339, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm553', 12641, 25397, 13617, 12641, 25397, 12339,
+                13921, 13411, 24880, 25398, 24886, 25398, 24886, 54, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('tm558', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm559', 12897, 25392, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 12340, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm558', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 13411, 24880, 25400, 
+                24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm559', 12897, 25392, 24888, 25400, 24888, 25400,
+                24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 
+                24888, 25400, 12340, 14433, 14435, 14433, 14435, 14433, 
+                14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mi'):
-            Unknown18011('tm562', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13411, 24888, 12849, 14435, 14433, 13923, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm563', 12641, 25392, 12337, 12641, 25392, 12342, 12641, 25392, 24886, 12337, 13923, 13665, 13667, 13665, 13923, 12641, 25392, 24886, 25398, 24886, 25398, 24886, 25400, 24886, 25398, 24886, 12338, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm562', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 14435, 14433, 14435, 14433, 13411, 24888, 12849, 
+                14435, 14433, 13923, 14433, 14435, 14433, 14435, 14433, 
+                14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tm563', 12641, 25392, 12337, 12641, 25392, 12342,
+                12641, 25392, 24886, 12337, 13923, 13665, 13667, 13665, 
+                13923, 12641, 25392, 24886, 25398, 24886, 25398, 24886, 
+                25400, 24886, 25398, 24886, 12338, 14435, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('jb'):
-            Unknown18011('tm000', 12641, 25392, 24888, 12337, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm401', 12641, 25394, 24888, 25400, 24888, 25400, 24888, 12849, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm570', 12641, 25392, 24888, 12337, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm571', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tm262', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 12342, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm000', 12641, 25392, 24888, 12337, 13155, 24880,
+                25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm400', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm401', 12641, 25394, 24888, 25400, 24888, 25400,
+                24888, 12849, 13667, 24880, 25399, 24887, 25399, 24887, 
+                25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                25399, 24887, 13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm570', 12641, 25392, 24888, 12337, 13667, 24880,
+                25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('tm571', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tm262', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 12641, 25397, 12342, 14177, 14179, 14177, 
+                14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
-    if Unknown60('rg'):
+        conditionalSendToLabel(482)
+    if CharacterIDCheck('jb'):
         SyncEntry()
         if SLOT_138:
             gotoLabel(100)
@@ -9669,7 +10387,7 @@ def CmnActEntry():
     if CharacterIDCheck('jn'):
         SyncEntry()
         gotoLabel(110)
-    if Unknown63('no'):
+    if CharacterIDCheck('jn'):
         SyncEntry()
         gotoLabel(120)
     if CharacterIDCheck('rc'):
@@ -9710,17 +10428,15 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(440)
     label(482)
-    random_(2, 0, 34)
-    if SLOT_0:
-        _gotolabel(10)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(20)
+    if random_(2, 0, 34):
+        conditionalSendToLabel(10)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(20)
     label(0)
     sprite('tm600_00', 40)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('tm600_00', 20)
     sprite('tm600_00ex1', 7)
     sprite('tm600_01', 20)
@@ -9766,7 +10482,7 @@ def CmnActEntry():
     sprite('tm601_07', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('tm601_00', 7)
     sprite('tm601_01', 7)
     PrivateSE('tmse_05')
@@ -9790,7 +10506,7 @@ def CmnActEntry():
     PrivateSE('tmse_05')
     sprite('tm601_07', 8)
     if SLOT_97:
-        _gotolabel(11)
+        conditionalSendToLabel(11)
     sprite('tm601_09', 8)
     sprite('tm601_10', 6)
     sprite('tm601_11', 8)
@@ -9823,7 +10539,7 @@ def CmnActEntry():
     sprite('tm000_08ex', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(20)
+        conditionalSendToLabel(20)
     sprite('keep', 2)
     Voiceline('tm416')
     sprite('tm602_00', 7)
@@ -9851,9 +10567,9 @@ def CmnActEntry():
     label(100)
     sprite('tm603_00', 1)
     if SLOT_17:
-        _gotolabel(100)
+        conditionalSendToLabel(100)
     sprite('tm603_00', 32767)
-    sendToLabelUpon(32, 101)
+    uponSendToLabel(32, 101)
     label(101)
     sprite('tm603_00', 120)
     Voiceline('tm500')
@@ -9878,10 +10594,10 @@ def CmnActEntry():
     ScreenCollision(0)
     EnableCollision(0)
     AttackDefaults_StandingNormal()
-    sendToLabelUpon(32, 1101)
-    sendToLabelUpon(2, 1102)
+    uponSendToLabel(32, 1101)
+    uponSendToLabel(LANDING, 1102)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         ScreenShake(50000, 50000)
         AddInertia(-1000)
     loopRest()
@@ -9931,7 +10647,7 @@ def CmnActEntry():
     sprite('tm203_09', 2)
     sprite('tm210_00', 2)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         ScreenShake(50000, 50000)
         AddInertia(-3000)
     CreateObject('EffKnifeSignal', 0)
@@ -9952,7 +10668,7 @@ def CmnActEntry():
     sprite('tm210_12', 3)
     sprite('tm403_00', 2)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         ScreenShake(50000, 50000)
         AddInertia(-2000)
     CreateParticle('hzef_432backaura_01', 0)
@@ -10011,7 +10727,7 @@ def CmnActEntry():
     sprite('tm001_06ex3', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(1103)
+        conditionalSendToLabel(1103)
     sprite('keep', 1)
     ObjectUpon(22, 32)
     SetActionMark(6)
@@ -10023,7 +10739,7 @@ def CmnActEntry():
     sprite('tm001_06ex3', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(1104)
+        conditionalSendToLabel(1104)
     sprite('tm001_01', 8)
     sprite('tm001_00', 8)
     loopRest()
@@ -10039,7 +10755,7 @@ def CmnActEntry():
     sprite('tm601_07', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(110)
+        conditionalSendToLabel(110)
     sprite('tm601_00', 7)
     sprite('tm601_01', 7)
     PrivateSE('tmse_05')
@@ -10111,7 +10827,7 @@ def CmnActEntry():
     sprite('tm600_00', 40)
     loopRest()
     if SLOT_17:
-        _gotolabel(120)
+        conditionalSendToLabel(120)
     sprite('tm600_00', 20)
     sprite('tm600_00ex1', 7)
     sprite('tm600_01', 20)
@@ -10172,7 +10888,7 @@ def CmnActEntry():
     sprite('tm601_07', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(130)
+        conditionalSendToLabel(130)
     sprite('tm601_00', 7)
     sprite('tm601_01', 7)
     PrivateSE('tmse_05')
@@ -10245,7 +10961,7 @@ def CmnActEntry():
     sprite('tm611_02', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(200)
+        conditionalSendToLabel(200)
     sprite('tm611_01', 6)
     sprite('tm611_02', 6)
     sprite('tm611_01', 6)
@@ -10259,7 +10975,7 @@ def CmnActEntry():
     sprite('tm611_02', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(201)
+        conditionalSendToLabel(201)
     sprite('tm611_03', 6)
     sprite('tm611_04', 6)
     SetActionMark(2)
@@ -10277,7 +10993,7 @@ def CmnActEntry():
     ScreenShake(0, 3000)
     loopRest()
     if SLOT_2:
-        _gotolabel(202)
+        conditionalSendToLabel(202)
     sprite('tm611_05', 6)
     ScreenShake(0, 5000)
     CommonSE('019_quake_0')
@@ -10300,14 +11016,14 @@ def CmnActEntry():
     sprite('tm333_07', 3)
     loopRest()
     if SLOT_2:
-        _gotolabel(203)
+        conditionalSendToLabel(203)
     sprite('tm333_08', 6)
     ObjectUpon(22, 32)
     sprite('tm333_09', 6)
     loopRest()
     enterState('CmnActStand')
     label(230)
-    sendToLabelUpon(32, 232)
+    uponSendToLabel(32, 232)
     label(231)
     sprite('tm600_00', 40)
     loopRest()
@@ -10353,16 +11069,16 @@ def CmnActEntry():
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(1231)
+        conditionalSendToLabel(1231)
     sprite('tm030_00', 7)
     physicsXImpulse(5600)
     sprite('tm030_01', 7)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 780000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 780000:
             ObjectUpon(22, 32)
-        if (SLOT_19 <= 520000):
-            clearUponHandler(3)
+        if SLOT_19 <= 520000:
+            clearUponHandler(EVERY_FRAME)
             ObjectUpon(22, 32)
             XPositionRelativeFacing(-260000)
             EndMomentum(1)
@@ -10384,7 +11100,7 @@ def CmnActEntry():
     gotoLabel(1232)
     label(1233)
     sprite('tm001_00', 10)
-    sendToLabelUpon(32, 1235)
+    uponSendToLabel(32, 1235)
     sprite('tm001_01', 8)
     sprite('tm001_02', 10)
     sprite('tm001_03', 8)
@@ -10410,7 +11126,7 @@ def CmnActEntry():
     sprite('tm001_06ex3', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(1236)
+        conditionalSendToLabel(1236)
     sprite('tm001_01', 8)
     sprite('tm001_00', 8)
     loopRest()
@@ -10424,16 +11140,16 @@ def CmnActEntry():
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(2231)
+        conditionalSendToLabel(2231)
     sprite('tm030_00', 7)
     physicsXImpulse(5600)
     sprite('tm030_01', 7)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 780000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 780000:
             ObjectUpon(22, 32)
-        if (SLOT_19 <= 520000):
-            clearUponHandler(3)
+        if SLOT_19 <= 520000:
+            clearUponHandler(EVERY_FRAME)
             ObjectUpon(22, 32)
             XPositionRelativeFacing(-260000)
             EndMomentum(1)
@@ -10455,7 +11171,7 @@ def CmnActEntry():
     gotoLabel(2232)
     label(2233)
     sprite('tm001_00', 10)
-    sendToLabelUpon(32, 2235)
+    uponSendToLabel(32, 2235)
     sprite('tm001_01', 8)
     sprite('tm001_02', 10)
     sprite('tm001_03', 8)
@@ -10480,7 +11196,7 @@ def CmnActEntry():
     sprite('tm001_06ex3', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(2236)
+        conditionalSendToLabel(2236)
     sprite('tm001_01', 8)
     sprite('tm001_00', 7)
     sprite('tm601_07', 7)
@@ -10504,7 +11220,7 @@ def CmnActEntry():
     sprite('tm600_00', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(260)
+        conditionalSendToLabel(260)
     sprite('tm600_00', 20)
     sprite('tm600_00', 20)
     sprite('tm600_00ex1', 7)
@@ -10537,7 +11253,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(270)
-    sendToLabelUpon(32, 272)
+    uponSendToLabel(32, 272)
     label(271)
     sprite('tm600_00', 40)
     loopRest()
@@ -10575,7 +11291,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(280)
-    sendToLabelUpon(32, 282)
+    uponSendToLabel(32, 282)
     label(281)
     sprite('tm600_00', 40)
     loopRest()
@@ -10613,7 +11329,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(340)
-    sendToLabelUpon(32, 342)
+    uponSendToLabel(32, 342)
     label(341)
     sprite('tm600_00', 40)
     loopRest()
@@ -10651,7 +11367,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(360)
-    sendToLabelUpon(32, 362)
+    uponSendToLabel(32, 362)
     Flip()
     XPositionRelativeFacing(0)
     label(361)
@@ -10672,7 +11388,7 @@ def CmnActEntry():
     Flip()
     sprite('tm003_01', 1)
     sprite('tm003_02', 1)
-    sendToLabelUpon(2, 364)
+    uponSendToLabel(LANDING, 364)
     loopRest()
     sprite('tm033_00', 1)
     sprite('tm033_01', 2)
@@ -10693,7 +11409,7 @@ def CmnActEntry():
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tm033_05', 2)
     sprite('tm033_06', 2)
     sprite('tm033_07', 2)
@@ -10736,7 +11452,7 @@ def CmnActEntry():
     sprite('tm600_00', 40)
     loopRest()
     if SLOT_17:
-        _gotolabel(390)
+        conditionalSendToLabel(390)
     sprite('tm600_00', 20)
     sprite('tm600_00ex1', 7)
     sprite('tm600_01', 20)
@@ -10763,7 +11479,7 @@ def CmnActEntry():
     sprite('tm600_11', 12)
     sprite('tm600_12', 6)
     sprite('tm600_13', 6)
-    sendToLabelUpon(32, 392)
+    uponSendToLabel(32, 392)
     loopRest()
     label(391)
     sprite('tm000_00', 8)
@@ -10806,7 +11522,7 @@ def CmnActEntry():
     ExitState()
     label(410)
     sprite('tm600_00', 32767)
-    sendToLabelUpon(32, 411)
+    uponSendToLabel(32, 411)
     loopRest()
     label(411)
     sprite('tm600_00', 20)
@@ -10880,7 +11596,7 @@ def CmnActEntry():
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(441)
+        conditionalSendToLabel(441)
     label(442)
     sprite('null', 20)
     sprite('tm213_00', 3)
@@ -10897,7 +11613,7 @@ def CmnActEntry():
     CreateObject('Eff6CZanzo', -1)
     CommonSE('007_swing_knife_1')
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         XImpulseAcceleration(5)
     sprite('tm213_05', 2)
     StartMultihit()
@@ -10951,7 +11667,7 @@ def CmnActEntry():
     sprite('tm001_03', 8)
     sprite('tm001_04', 8)
     sprite('tm001_05', 10)
-    sendToLabelUpon(32, 444)
+    uponSendToLabel(32, 444)
     label(443)
     sprite('tm001_06', 6)
     sprite('tm001_06ex1', 6)
@@ -10981,6 +11697,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActRoundWin():
     sprite('tm615_00', 5)
@@ -10995,31 +11712,28 @@ def CmnActRoundWin():
     sprite('tm615_06', 4)
     sprite('tm615_07', 32767)
 
+
 @State
 def CmnActMatchWin():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if SLOT_109:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if SLOT_123:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('rg'):
         if SLOT_138:
             gotoLabel(100)
         else:
             gotoLabel(1100)
-    CharacterIDCheck('jn')
-    if SLOT_0:
-        _gotolabel(110)
-    CharacterIDCheck('no')
-    if SLOT_0:
-        _gotolabel(120)
-    CharacterIDCheck('rc')
-    if SLOT_0:
-        _gotolabel(130)
-    CharacterIDCheck('ha')
-    if SLOT_0:
-        _gotolabel(200)
+    if CharacterIDCheck('jn'):
+        conditionalSendToLabel(110)
+    if CharacterIDCheck('no'):
+        conditionalSendToLabel(120)
+    if CharacterIDCheck('rc'):
+        conditionalSendToLabel(130)
+    if CharacterIDCheck('ha'):
+        conditionalSendToLabel(200)
     if CharacterIDCheck('hz'):
         if SLOT_138:
             gotoLabel(230)
@@ -11027,46 +11741,38 @@ def CmnActMatchWin():
             gotoLabel(1230)
         else:
             gotoLabel(2230)
-    CharacterIDCheck('vh')
-    if SLOT_0:
-        _gotolabel(260)
-    CharacterIDCheck('pt')
-    if SLOT_0:
-        _gotolabel(270)
-    CharacterIDCheck('rl')
-    if SLOT_0:
-        _gotolabel(280)
-    CharacterIDCheck('kg')
-    if SLOT_0:
-        _gotolabel(10)
+    if CharacterIDCheck('vh'):
+        conditionalSendToLabel(260)
+    if CharacterIDCheck('pt'):
+        conditionalSendToLabel(270)
+    if CharacterIDCheck('rl'):
+        conditionalSendToLabel(280)
+    if CharacterIDCheck('kg'):
+        conditionalSendToLabel(10)
     if CharacterIDCheck('kk'):
         if SLOT_140:
             gotoLabel(2340)
         else:
             gotoLabel(340)
-    CharacterIDCheck('ce')
-    if SLOT_0:
-        _gotolabel(360)
-    CharacterIDCheck('ph')
-    if SLOT_0:
-        _gotolabel(390)
+    if CharacterIDCheck('ce'):
+        conditionalSendToLabel(360)
+    if CharacterIDCheck('ph'):
+        conditionalSendToLabel(390)
     if CharacterIDCheck('mi'):
         if SLOT_138:
             gotoLabel(410)
         else:
             gotoLabel(1410)
-    CharacterIDCheck('jb')
-    if SLOT_0:
-        _gotolabel(440)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('jb'):
+        conditionalSendToLabel(440)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
     sprite('keep', 1)
     if SLOT_123:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     if SLOT_124:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     if SLOT_109:
         if random_(2, 0, 50):
             sendToLabel(10)
@@ -11207,9 +11913,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             if random_(2, 0, 33):
                 sendToLabel(30)
@@ -11404,9 +12110,9 @@ def CmnActMatchWin():
     HardKnockdown(999)
     HitAnywhere(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(102)
     sprite('tm030_00', 7)
@@ -11449,15 +12155,13 @@ def CmnActMatchWin():
     SLOT_58 = SLOT_0
     label(104)
     sprite('tm433_12', 1)
-    SLOT_58 = (SLOT_58 - 1)
+    SLOT_58 = SLOT_58 - 1
     loopRest()
-    (SLOT_58 > 0)
-    if SLOT_0:
-        _gotolabel(104)
+    if SLOT_58 > 0:
+        conditionalSendToLabel(104)
     sprite('keep', 1)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(105)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(105)
     sprite('tm433_13', 2)
     CommonSE('004_swing_grap_1_0')
     sprite('tm433_11', 2)
@@ -11467,10 +12171,9 @@ def CmnActMatchWin():
     sprite('tm433_10', 4)
     sprite('tm433_11', 4)
     loopRest()
-    SLOT_51 = (SLOT_51 - 1)
-    (SLOT_51 <= 4)
-    if SLOT_0:
-        _gotolabel(106)
+    SLOT_51 = SLOT_51 - 1
+    if SLOT_51 <= 4:
+        conditionalSendToLabel(106)
     gotoLabel(103)
     label(105)
     sprite('tm433_13', 4)
@@ -11479,25 +12182,22 @@ def CmnActMatchWin():
     RefreshMultihit()
     ScreenShake(0, 8000)
     loopRest()
-    SLOT_51 = (SLOT_51 - 1)
-    (SLOT_51 <= 4)
-    if SLOT_0:
-        _gotolabel(106)
+    SLOT_51 = SLOT_51 - 1
+    if SLOT_51 <= 4:
+        conditionalSendToLabel(106)
     gotoLabel(103)
     label(106)
     Unknown61(0, 2, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0)
     SLOT_58 = SLOT_0
     label(107)
     sprite('tm433_12', 1)
-    SLOT_58 = (SLOT_58 - 1)
+    SLOT_58 = SLOT_58 - 1
     loopRest()
-    (SLOT_58 > 0)
-    if SLOT_0:
-        _gotolabel(107)
+    if SLOT_58 > 0:
+        conditionalSendToLabel(107)
     sprite('keep', 1)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(108)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(108)
     sprite('tm433_13', 1)
     CommonSE('004_swing_grap_1_0')
     sprite('tm433_11', 1)
@@ -11507,10 +12207,9 @@ def CmnActMatchWin():
     sprite('tm433_10', 2)
     sprite('tm433_11', 2)
     loopRest()
-    SLOT_51 = (SLOT_51 - 1)
-    (SLOT_51 <= 0)
-    if SLOT_0:
-        _gotolabel(109)
+    SLOT_51 = SLOT_51 - 1
+    if SLOT_51 <= 0:
+        conditionalSendToLabel(109)
     gotoLabel(106)
     label(108)
     sprite('tm433_13', 2)
@@ -11519,10 +12218,9 @@ def CmnActMatchWin():
     RefreshMultihit()
     ScreenShake(0, 8000)
     loopRest()
-    SLOT_51 = (SLOT_51 - 1)
-    (SLOT_51 <= 0)
-    if SLOT_0:
-        _gotolabel(109)
+    SLOT_51 = SLOT_51 - 1
+    if SLOT_51 <= 0:
+        conditionalSendToLabel(109)
     gotoLabel(106)
     label(109)
     sprite('tm402_02', 6)
@@ -11585,9 +12283,9 @@ def CmnActMatchWin():
     HardKnockdown(0)
     HitAnywhere(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(1102)
     sprite('tm030_00', 7)
@@ -11635,15 +12333,13 @@ def CmnActMatchWin():
     SLOT_58 = SLOT_0
     label(1104)
     sprite('tm433_12', 1)
-    SLOT_58 = (SLOT_58 - 1)
+    SLOT_58 = SLOT_58 - 1
     loopRest()
-    (SLOT_58 > 0)
-    if SLOT_0:
-        _gotolabel(1104)
+    if SLOT_58 > 0:
+        conditionalSendToLabel(1104)
     sprite('keep', 1)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(1105)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(1105)
     sprite('tm433_13', 2)
     CommonSE('004_swing_grap_1_0')
     sprite('tm433_11', 2)
@@ -11652,10 +12348,9 @@ def CmnActMatchWin():
     sprite('tm433_10', 3)
     sprite('tm433_11', 3)
     loopRest()
-    SLOT_51 = (SLOT_51 - 1)
-    (SLOT_51 <= 0)
-    if SLOT_0:
-        _gotolabel(1106)
+    SLOT_51 = SLOT_51 - 1
+    if SLOT_51 <= 0:
+        conditionalSendToLabel(1106)
     gotoLabel(1103)
     label(1105)
     sprite('tm433_13', 2)
@@ -11663,10 +12358,9 @@ def CmnActMatchWin():
     sprite('tm433_14', 2)
     RefreshMultihit()
     loopRest()
-    SLOT_51 = (SLOT_51 - 1)
-    (SLOT_51 <= 0)
-    if SLOT_0:
-        _gotolabel(1106)
+    SLOT_51 = SLOT_51 - 1
+    if SLOT_51 <= 0:
+        conditionalSendToLabel(1106)
     gotoLabel(1103)
     label(1106)
     sprite('tm433_12', 5)
@@ -11750,9 +12444,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(112)
     sprite('tm030_00', 7)
@@ -11812,9 +12506,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(122)
     sprite('tm030_00', 7)
@@ -11925,9 +12619,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(132)
     sprite('tm030_00', 7)
@@ -11987,9 +12681,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(202)
     sprite('tm030_00', 7)
@@ -12078,9 +12772,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2232)
     sprite('tm030_00', 7)
@@ -12140,9 +12834,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(262)
     sprite('tm030_00', 7)
@@ -12413,9 +13107,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(392)
     sprite('tm030_00', 7)
@@ -12476,9 +13170,9 @@ def CmnActMatchWin():
     WallCollisionDetection(0)
     ScreenCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             physicsXImpulse(0)
             sendToLabel(1412)
     sprite('tm030_00', 7)
@@ -12619,6 +13313,7 @@ def CmnActMatchWin():
     loopRest()
     gotoLabel(667)
 
+
 @State
 def CmnActLose():
     sprite('tm620_00', 6)
@@ -12632,6 +13327,7 @@ def CmnActLose():
     CommonSE('200_walk_normal_1')
     sprite('tm620_06', 6)
     sprite('tm620_07', 32767)
+
 
 @State
 def EventDefEntryWait():
@@ -12647,11 +13343,13 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTMDefWin():
@@ -12669,10 +13367,12 @@ def EventTMDefWin():
     sprite('tm610_23', 6)
     sprite('tm610_24', 32767)
 
+
 @State
 def EventTMDefEntryStand():
     sprite('tm601_18', 32767)
     loopRest()
+
 
 @State
 def EventTMDefEntryStandToStand():
@@ -12682,19 +13382,23 @@ def EventTMDefEntryStandToStand():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefLose():
     sprite('hz620_05', 32767)
 
+
 @State
 def EventDefDown():
     sprite('hz060_14', 32767)
+
 
 @State
 def SummonHZ():
@@ -12702,6 +13406,7 @@ def SummonHZ():
     CreateObject('SummonHZ', 0)
     RegisterObject(4, 1)
     sprite('null', 32767)
+
 
 @State
 def TakeBowHZ():
@@ -12711,6 +13416,7 @@ def TakeBowHZ():
     RegisterObject(5, 1)
     sprite('null', 32767)
 
+
 @State
 def TakeBowHZEnd():
     sprite('null', 2)
@@ -12718,6 +13424,7 @@ def TakeBowHZEnd():
     CreateObject('TakeBowHZEnd', 0)
     RegisterObject(6, 1)
     sprite('null', 32767)
+
 
 @State
 def ThinkingHZ():
@@ -12727,6 +13434,7 @@ def ThinkingHZ():
     RegisterObject(7, 1)
     sprite('null', 32767)
 
+
 @State
 def ThinkingHZEnd():
     sprite('null', 2)
@@ -12734,6 +13442,7 @@ def ThinkingHZEnd():
     CreateObject('ThinkingHZEnd', 0)
     RegisterObject(8, 1)
     sprite('null', 32767)
+
 
 @State
 def LaughingHZ():
@@ -12743,10 +13452,12 @@ def LaughingHZ():
     RegisterObject(9, 1)
     sprite('null', 32767)
 
+
 @State
 def DeleteHZ():
     sprite('null', 2)
     DeleteObject(9)
+
 
 @State
 def EventTMLaghing():
@@ -12754,6 +13465,7 @@ def EventTMLaghing():
     sprite('tm611_01', 6)
     sprite('tm611_02', 6)
     gotoLabel(0)
+
 
 @State
 def EventTMLaghing2():
@@ -12786,6 +13498,7 @@ def EventTMLaghing2():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def EventTMLaghing2End():
     sprite('tm611_08', 6)
@@ -12793,6 +13506,7 @@ def EventTMLaghing2End():
     sprite('tm611_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTMLaghingEnd():
@@ -12802,6 +13516,7 @@ def EventTMLaghingEnd():
     sprite('tm611_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTMAkire():
@@ -12814,6 +13529,7 @@ def EventTMAkire():
     CommonSE('200_walk_normal_1')
     sprite('tm620_06', 6)
     sprite('tm620_07', 32767)
+
 
 @State
 def EventTMAkireEnd():
@@ -12828,6 +13544,7 @@ def EventTMAkireEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventTMChouhatsu():
     sprite('tm300_00', 6)
@@ -12839,6 +13556,7 @@ def EventTMChouhatsu():
     sprite('tm300_05', 8)
     gotoLabel(0)
 
+
 @State
 def EventTMChouhatsuEnd():
     sprite('tm300_06', 8)
@@ -12848,12 +13566,14 @@ def EventTMChouhatsuEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventTMODStart():
     sprite('tm333_00', 7)
     sprite('tm333_01', 7)
     sprite('tm333_02', 7)
     sprite('tm333_03', 32767)
+
 
 @State
 def EventTMODLv1():
@@ -12866,6 +13586,7 @@ def EventTMODLv1():
     ScreenShake(0, 3000)
     gotoLabel(0)
 
+
 @State
 def EventTMODLv2():
     sprite('tm333_03', 8)
@@ -12876,6 +13597,7 @@ def EventTMODLv2():
     CommonSE('019_quake_0')
     ScreenShake(1000, 5000)
     gotoLabel(0)
+
 
 @State
 def EventTMODLv3():
@@ -12889,6 +13611,7 @@ def EventTMODLv3():
     sprite('tm333_03', 6)
     CommonSE('019_quake_1')
     gotoLabel(0)
+
 
 @State
 def EventTMODEnd():
@@ -12912,11 +13635,13 @@ def EventTMODEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventNoDisp():
     sprite('null', 32767)
     Visibility(1)
     loopRest()
+
 
 @State
 def EventTMAppear():
@@ -12944,6 +13669,7 @@ def EventTMAppear():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTMKnife():
     sprite('tm601_00', 7)
@@ -12966,6 +13692,7 @@ def EventTMKnife():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTMKnifeEnd():
     sprite('tm610_09', 8)
@@ -12984,6 +13711,7 @@ def EventTMKnifeEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventTMReaction():
     sprite('tm001_00', 10)
@@ -13000,6 +13728,7 @@ def EventTMReaction():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTMReactionEnd():
     sprite('tm001_04', 8)
@@ -13008,12 +13737,13 @@ def EventTMReactionEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventTMKerare():
     XPositionRelativeFacing(-160000)
     EnableCollision(0)
-    sendToLabelUpon(32, 1)
-    sendToLabelUpon(33, 2)
+    uponSendToLabel(32, 1)
+    uponSendToLabel(33, 2)
     label(0)
     sprite('tm063_11', 1)
     loopRest()
@@ -13037,6 +13767,7 @@ def EventTMKerare():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTMKick1():
     XPositionRelativeFacing(-170000)
@@ -13048,14 +13779,12 @@ def EventTMKick1():
     SLOT_51 = SLOT_0
     label(2)
     sprite('tm433_12', 1)
-    SLOT_51 = (SLOT_51 - 1)
+    SLOT_51 = SLOT_51 - 1
     loopRest()
-    (SLOT_51 > 0)
-    if SLOT_0:
-        _gotolabel(2)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(3)
+    if SLOT_51 > 0:
+        conditionalSendToLabel(2)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(3)
     sprite('tm433_13', 2)
     CommonSE('004_swing_grap_1_0')
     sprite('tm433_11', 2)
@@ -13066,10 +13795,9 @@ def EventTMKick1():
     sprite('tm433_10', 5)
     sprite('tm433_11', 5)
     loopRest()
-    SLOT_52 = (SLOT_52 - 1)
-    (SLOT_52 <= 0)
-    if SLOT_0:
-        _gotolabel(4)
+    SLOT_52 = SLOT_52 - 1
+    if SLOT_52 <= 0:
+        conditionalSendToLabel(4)
     gotoLabel(1)
     label(3)
     sprite('tm433_13', 5)
@@ -13079,10 +13807,9 @@ def EventTMKick1():
     ObjectUpon(22, 32)
     ScreenShake(0, 8000)
     loopRest()
-    SLOT_52 = (SLOT_52 - 1)
-    (SLOT_52 <= 0)
-    if SLOT_0:
-        _gotolabel(4)
+    SLOT_52 = SLOT_52 - 1
+    if SLOT_52 <= 0:
+        conditionalSendToLabel(4)
     gotoLabel(1)
     label(4)
     sprite('tm433_12', 6)
@@ -13095,6 +13822,7 @@ def EventTMKick1():
     loopRest()
     sprite('tm433_15', 32767)
     loopRest()
+
 
 @State
 def EventTMKick2():
@@ -13141,6 +13869,7 @@ def EventTMKick2():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTMKick3():
     XPositionRelativeFacing(-170000)
@@ -13148,6 +13877,7 @@ def EventTMKick3():
     SetZLine(1, 100)
     sprite('tm433_16', 32767)
     loopRest()
+
 
 @State
 def EventWin1():
@@ -13168,12 +13898,14 @@ def EventWin1():
     sprite('tm602_09', 8)
     sprite('tm602_10', 32767)
 
+
 @State
 def EventWin1End():
     sprite('tm602_11', 6)
     sprite('tm602_12', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventWin2():
@@ -13187,12 +13919,14 @@ def EventWin2():
     sprite('tm615_06', 4)
     sprite('tm615_07', 32767)
 
+
 @State
 def EventWin2End():
     sprite('tm615_04', 4)
     sprite('tm615_00', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTMLaghing3():
@@ -13234,11 +13968,13 @@ def EventTMLaghing3():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def Act2Event_NoDisp():
     sprite('null', 32767)
     Visibility(1)
     loopRest()
+
 
 @State
 def Act2Event_Reaction():
@@ -13256,6 +13992,7 @@ def Act2Event_Reaction():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_ReactionEnd():
     sprite('keep', 2)
@@ -13263,6 +14000,7 @@ def Act2Event_ReactionEnd():
     sprite('tm001_00', 8)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_WalkIn():
@@ -13273,18 +14011,18 @@ def Act2Event_WalkIn():
         ScreenCollision(0)
         EnableCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
                     EndMomentum(1)
                     XPositionRelativeFacing(-260000)
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-260000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
                 EndMomentum(1)
                 XPositionRelativeFacing(-260000)
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('null', 1)
     sprite('tm030_00', 7)
     Visibility(0)
@@ -13310,6 +14048,7 @@ def Act2Event_WalkIn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_TimeUp():
     sprite('tm620_00', 6)
@@ -13321,6 +14060,7 @@ def Act2Event_TimeUp():
     CommonSE('200_walk_normal_1')
     sprite('tm620_06', 6)
     sprite('tm620_07', 32767)
+
 
 @State
 def Act2Event_TimeUpEnd():
@@ -13335,6 +14075,7 @@ def Act2Event_TimeUpEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Win():
     sprite('tm615_00', 5)
@@ -13347,6 +14088,7 @@ def Act2Event_Win():
     sprite('tm615_06', 4)
     sprite('tm615_07', 32767)
 
+
 @State
 def Act2Event_WinEnd():
     sprite('keep', 2)
@@ -13354,6 +14096,7 @@ def Act2Event_WinEnd():
     sprite('tm615_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Laugh():
@@ -13366,13 +14109,13 @@ def Act2Event_Laugh():
     sprite('tm611_01', 1)
     AddActionMark(-1)
     loopRest()
-    (SLOT_2 > 0)
-    if SLOT_0:
-        _gotolabel(0)
+    if SLOT_2 > 0:
+        conditionalSendToLabel(0)
     loopRest()
     sprite('tm611_02', 6)
     loopRest()
     gotoLabel(9)
+
 
 @State
 def Act2Event_LaughEnd():
@@ -13380,6 +14123,7 @@ def Act2Event_LaughEnd():
     sprite('tm611_00', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Chouhatsu():
@@ -13393,6 +14137,7 @@ def Act2Event_Chouhatsu():
     sprite('tm300_04', 8)
     gotoLabel(0)
 
+
 @State
 def Act2Event_ChouhatsuEnd():
     sprite('keep', 2)
@@ -13403,12 +14148,14 @@ def Act2Event_ChouhatsuEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Face():
     sprite('tm403_14', 6)
     sprite('tm403_13', 6)
     sprite('tm403_12', 32767)
     loopRest()
+
 
 @State
 def Act2Event_FaceEnd():
@@ -13417,6 +14164,7 @@ def Act2Event_FaceEnd():
     sprite('tm403_14', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_tmvshz_00():
@@ -13427,18 +14175,18 @@ def Act2Event_tmvshz_00():
         ScreenCollision(0)
         EnableCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
                     EndMomentum(1)
                     XPositionRelativeFacing(-260000)
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-260000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
                 EndMomentum(1)
                 XPositionRelativeFacing(-260000)
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('null', 1)
     sprite('tm030_00', 7)
     Visibility(0)
@@ -13474,11 +14222,13 @@ def Act2Event_tmvshz_00():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def Act2Event_tmvspt_00():
     sprite('tm602_10', 32767)
     XPositionRelativeFacing(-80000)
     loopRest()
+
 
 @State
 def Act2Event_tmvspt_01():
@@ -13487,6 +14237,7 @@ def Act2Event_tmvspt_01():
     sprite('tm602_12', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_rmvstm_00():
@@ -13507,7 +14258,8 @@ def Act2Event_rmvstm_00():
     sprite('tm601_06', 7)
     sprite('tm601_07', 7)
     loopRest()
-    GotoIf0(9, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(9)
     sprite('tm601_09', 8)
     sprite('tm601_10', 6)
     sprite('tm601_11', 8)
@@ -13523,6 +14275,7 @@ def Act2Event_rmvstm_00():
     sprite('tm601_20', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_rmvstm_01():
@@ -13540,6 +14293,7 @@ def Act2Event_rmvstm_01():
     sprite('tm070_03', 32767)
     loopRest()
 
+
 @State
 def Act2Event_rmvstm_02():
     sprite('tm070_10', 5)
@@ -13548,6 +14302,7 @@ def Act2Event_rmvstm_02():
     sprite('tm070_13', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_rmvstm_03():
@@ -13577,6 +14332,7 @@ def Act2Event_rmvstm_03():
     sprite('tm031_09', 8)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_rmvstm_04():
@@ -13611,11 +14367,12 @@ def Act2Event_rmvstm_04():
     sprite('tm032_08', 4)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 32767)
     EndMomentum(1)
     Visibility(1)
     loopRest()
+
 
 @State
 def Act2Event_tmvsha_00():
@@ -13635,6 +14392,7 @@ def Act2Event_tmvsha_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_tmvsha_01():
     sprite('keep', 2)
@@ -13642,6 +14400,7 @@ def Act2Event_tmvsha_01():
     CreateObject('Act2Event_Yure', -1)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_tmvsha_02():
@@ -13674,11 +14433,12 @@ def Act2Event_tmvsha_02():
     sprite('tm030_11', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 32767)
     EndMomentum(1)
     Visibility(1)
     loopRest()
+
 
 @State
 def Act3Event_NoDisp():
@@ -13690,6 +14450,7 @@ def Act3Event_NoDisp():
             Visibility(0)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def Act3Event_novstm_00():
@@ -13706,6 +14467,7 @@ def Act3Event_novstm_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_novstm_01():
     sprite('keep', 2)
@@ -13714,9 +14476,11 @@ def Act3Event_novstm_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_hzvstm_00():
     sprite('tm061_07', 32767)
+
 
 @State
 def Act3Event_hzvstm_01():
@@ -13728,6 +14492,7 @@ def Act3Event_hzvstm_01():
     sprite('tm061_13', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_CrouchLoop():
@@ -13743,10 +14508,12 @@ def Act3Event_CrouchLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_CrouchToStand():
     sprite('tm010_01', 4)
     sprite('tm010_00', 4)
+
 
 @State
 def Act3Event_rcvstm_00():
@@ -13773,6 +14540,7 @@ def Act3Event_rcvstm_00():
     sprite('tm030_11', 7)
     loopRest()
     gotoLabel(9)
+
 
 @State
 def Act3Event_cevstm_00():
@@ -13810,6 +14578,7 @@ def Act3Event_cevstm_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_cevskk_00_Loop():
     sprite('tm043_00', 3)
@@ -13826,12 +14595,14 @@ def Act3Event_cevskk_00_Loop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_cevskk_00_LoopEnd():
     sprite('tm043_01', 3)
     sprite('tm043_00', 3)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tmvskk_00():
@@ -13851,6 +14622,7 @@ def Act3Event_tmvskk_00():
     sprite('tm601_20', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tmvskk_01():
@@ -13891,6 +14663,7 @@ def Act3Event_tmvskk_01():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(2)
+
 
 @State
 def Act3Event_tmvskk_02():
@@ -13940,6 +14713,7 @@ def Act3Event_tmvskk_02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tmvskk_03():
     sprite('tm610_14', 6)
@@ -13957,6 +14731,7 @@ def Act3Event_tmvskk_03():
     sprite('tm610_23', 6)
     sprite('tm610_24', 32767)
     loopRest()
+
 
 @State
 def Act3Event_tmvskk_04():
@@ -13991,7 +14766,8 @@ def Act3Event_tmvskk_04():
     sprite('tm030_11', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
+
 
 @State
 def Act3Event_tmvsph_00():
@@ -14019,7 +14795,7 @@ def Act3Event_tmvsph_00():
     sprite('tm030_11', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 32767)
     EndMomentum(1)
     Visibility(1)

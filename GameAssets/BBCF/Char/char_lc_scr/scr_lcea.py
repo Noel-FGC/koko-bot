@@ -14,7 +14,7 @@ def RodReset():
     IgnorePauses(0)
     SetZVal(1)
     LandingHeight(220000)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     FloorCollision(0)
     E0EAEffectObjectZ(3)
     SetZVal(1)
@@ -27,125 +27,126 @@ def RodReset():
     E0EAEffectDirection(0)
     E0EAEffectPosition(0)
 
-    def upon_43():
-        if (SLOT_48 == 0):
+    def upon_VALUE_RECEIVED():
+        if SLOT_ReceivedValue == 0:
             PrivateFunction2('RodNeutral', 100)
-        if (SLOT_48 == 1):
+        if SLOT_ReceivedValue == 1:
             PrivateFunction2('RodAtk5D', 200)
-        if (SLOT_48 == 6):
+        if SLOT_ReceivedValue == 6:
             PrivateFunction2('RodAtk6D', 200)
-        if (SLOT_48 == 4):
+        if SLOT_ReceivedValue == 4:
             PrivateFunction2('RodAtk4D', 200)
-        if (SLOT_48 == 2):
+        if SLOT_ReceivedValue == 2:
             PrivateFunction2('RodReturn', 200)
             callSubroutine('RodNoReturnable')
-        if (SLOT_48 == 3):
+        if SLOT_ReceivedValue == 3:
             PrivateFunction2('RodAtk2C', 200)
-        if (SLOT_48 == 8):
+        if SLOT_ReceivedValue == 8:
             PrivateFunction2('RodAtk6A', 200)
-        if (SLOT_48 == 9):
+        if SLOT_ReceivedValue == 9:
             ModifyVar_(8, 2, 64, 0, 2)
-        if (SLOT_48 == 10):
+        if SLOT_ReceivedValue == 10:
             PrivateFunction2('RodNeutral', 150)
-        if (SLOT_48 == 11):
+        if SLOT_ReceivedValue == 11:
             PrivateFunction2('RodNeutralHide', 150)
-        if (SLOT_48 == 13):
+        if SLOT_ReceivedValue == 13:
             PrivateFunction2('RodAtk2D', 200)
-        if (SLOT_48 == 14):
-            if (SLOT_65 == 0):
+        if SLOT_ReceivedValue == 14:
+            if SLOT_65 == 0:
                 PrivateFunction2('RodNeutral', 100)
                 ModifyVar_(14, 2, 64, 0, 4)
-        if (SLOT_48 == 19):
+        if SLOT_ReceivedValue == 19:
             PrivateFunction2('RodAtk5C', 200)
-        if (SLOT_48 == 15):
+        if SLOT_ReceivedValue == 15:
             PrivateFunction2('RodRenchanB', 200)
-        if (SLOT_48 == 16):
+        if SLOT_ReceivedValue == 16:
             PrivateFunction2('RodRenchanC', 200)
-        if (SLOT_48 == 17):
+        if SLOT_ReceivedValue == 17:
             PrivateFunction2('RodKick', 200)
-        if (SLOT_48 == 18):
+        if SLOT_ReceivedValue == 18:
             PrivateFunction2('RodJump', 200)
-        if (SLOT_48 == 20):
+        if SLOT_ReceivedValue == 20:
             PrivateFunction2('RodTonNanShaPeiAntiAir', 200)
-        if (SLOT_48 == 21):
+        if SLOT_ReceivedValue == 21:
             PrivateFunction2('RodTonNanShaPeiAntiLand', 200)
-        if (SLOT_48 == 22):
+        if SLOT_ReceivedValue == 22:
             PrivateFunction2('RodKantsuPre', 200)
-        if (SLOT_48 == 23):
+        if SLOT_ReceivedValue == 23:
             PrivateFunction2('RodKantsuA', 200)
-        if (SLOT_48 == 24):
+        if SLOT_ReceivedValue == 24:
             PrivateFunction2('RodKantsuB', 200)
-        if (SLOT_48 == 25):
+        if SLOT_ReceivedValue == 25:
             PrivateFunction2('RodKantsuC', 200)
-        if (SLOT_48 == 26):
+        if SLOT_ReceivedValue == 26:
             PrivateFunction2('RodKantsuA2nd', 200)
-        if (SLOT_48 == 27):
+        if SLOT_ReceivedValue == 27:
             PrivateFunction2('RodKantsuB2nd', 200)
-        if (SLOT_48 == 28):
+        if SLOT_ReceivedValue == 28:
             PrivateFunction2('RodKantsuC2nd', 200)
-        if (SLOT_48 == 29):
+        if SLOT_ReceivedValue == 29:
             PrivateFunction2('RodEnkakuSousa', 200)
-        if (SLOT_48 == 30):
+        if SLOT_ReceivedValue == 30:
             PrivateFunction2('RodShinaru', 200)
-        if (SLOT_48 == 31):
+        if SLOT_ReceivedValue == 31:
             PrivateFunction2('RodAntiAir', 200)
-        if (SLOT_48 == 32):
+        if SLOT_ReceivedValue == 32:
             PrivateFunction2('RodAir5D', 200)
-        if (SLOT_48 == 33):
+        if SLOT_ReceivedValue == 33:
             PrivateFunction2('RodRocketF', 200)
-        if (SLOT_48 == 34):
+        if SLOT_ReceivedValue == 34:
             PrivateFunction2('RodRocketB', 200)
-        if (SLOT_48 == 35):
+        if SLOT_ReceivedValue == 35:
             PrivateFunction2('RodNingyou', 200)
-        if (SLOT_48 == 36):
+        if SLOT_ReceivedValue == 36:
             PrivateFunction2('RodAtk5B', 200)
-        if (SLOT_48 == 37):
+        if SLOT_ReceivedValue == 37:
             PrivateFunction2('RodAtk6B', 200)
-        if (SLOT_48 == 38):
+        if SLOT_ReceivedValue == 38:
             PrivateFunction2('RodAtk6C', 200)
-        if (SLOT_48 == 39):
+        if SLOT_ReceivedValue == 39:
             PrivateFunction2('RodAtk2B', 200)
-        if (SLOT_48 == 40):
+        if SLOT_ReceivedValue == 40:
             PrivateFunction2('RodAtk3C', 200)
-        if (SLOT_48 == 41):
+        if SLOT_ReceivedValue == 41:
             PrivateFunction2('RodAtkAir5B', 200)
-        if (SLOT_48 == 43):
+        if SLOT_ReceivedValue == 43:
             PrivateFunction2('RodAtk6B_Faint', 200)
-        if (SLOT_48 == 44):
+        if SLOT_ReceivedValue == 44:
             PrivateFunction2('RodOverDriveIdle', 200)
-        if (SLOT_48 == 45):
-            if (SLOT_65 == 4):
+        if SLOT_ReceivedValue == 45:
+            if SLOT_65 == 4:
                 PrivateFunction2('RodOverDriveAttack', 200)
-        if (SLOT_48 == 46):
+        if SLOT_ReceivedValue == 46:
             PrivateFunction2('RodAtk4B', 200)
-        if (SLOT_48 == 47):
+        if SLOT_ReceivedValue == 47:
             PrivateFunction2('RodNingyouU', 200)
-        if (SLOT_48 == 48):
+        if SLOT_ReceivedValue == 48:
             PrivateFunction2('RodNingyouD', 200)
-        if (SLOT_48 == 49):
+        if SLOT_ReceivedValue == 49:
             PrivateFunction2('RodBurstDD', 200)
-        if (SLOT_48 == 50):
+        if SLOT_ReceivedValue == 50:
             PrivateFunction2('RodEventDown', 200)
-        if (SLOT_48 == 52):
+        if SLOT_ReceivedValue == 52:
             PrivateFunction2('RodEventReturn', 200)
-        if (SLOT_48 == 53):
+        if SLOT_ReceivedValue == 53:
             PrivateFunction2('RodEventAir5D', 200)
-        if (SLOT_48 == 54):
+        if SLOT_ReceivedValue == 54:
             PrivateFunction2('RodEventReturn2', 200)
-        if (SLOT_48 == 55):
+        if SLOT_ReceivedValue == 55:
             PrivateFunction2('RodEventVsTgAssault', 200)
-        if (SLOT_48 == 56):
+        if SLOT_ReceivedValue == 56:
             PrivateFunction2('RodRocketAirF', 200)
-        if (SLOT_48 == 57):
+        if SLOT_ReceivedValue == 57:
             PrivateFunction2('RodRocketAirB', 200)
-        if (SLOT_48 == 58):
+        if SLOT_ReceivedValue == 58:
             PrivateFunction2('RodEvent_Act3Event_Attack', 200)
-        if (SLOT_48 == 59):
+        if SLOT_ReceivedValue == 59:
             PrivateFunction2('RodEvent_Act3Event_Down', 200)
 
     def upon_53():
         PrivateFunction2('RodNeutral', 100)
         Visibility(1)
+
 
 @Subroutine
 def RodGrip():
@@ -153,47 +154,58 @@ def RodGrip():
     SLOT_65 = 0
     IgnorePauses(3)
 
+
 @Subroutine
 def RodNoReturnable():
     SLOT_65 = 3
 
+
 @Subroutine
 def RodReturnable():
     SLOT_65 = 1
+
 
 @Subroutine
 def RodStanding():
     SLOT_65 = 2
     SetZVal(500)
 
+
 @Subroutine
 def RodODAttackOK():
     SLOT_65 = 4
+
 
 @Subroutine
 def RodODAttackNG():
     SLOT_65 = 5
 
+
 @Subroutine
 def RodStatusUp():
     ModifyVar_(8, 2, 64, 0, 8)
+
 
 @Subroutine
 def RodStatusDown():
     ModifyVar_(14, 2, 64, 0, 8)
 
+
 @Subroutine
 def RodDamageToDown():
     ModifyVar_(8, 2, 64, 0, 32)
+
 
 @Subroutine
 def RodGuardToDown():
     ModifyVar_(8, 2, 64, 0, 64)
 
+
 @Subroutine
 def RodSlowReturn():
     ModifyVar_(8, 2, 64, 0, 1)
     ModifyVar_(8, 2, 64, 0, 16)
+
 
 @State
 def RodCreate():
@@ -203,6 +215,7 @@ def RodCreate():
         callSubroutine('RodReset')
     sprite('null', 32767)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodNeutral():
@@ -221,6 +234,7 @@ def RodNeutral():
     setGravity(15)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def RodNeutralHide():
@@ -241,6 +255,7 @@ def RodNeutralHide():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def RodGuardDown():
 
@@ -253,7 +268,7 @@ def RodGuardDown():
     physicsYImpulse(0)
     AddRotationPerFrame(500)
     setGravity(1000)
-    sendToLabelUpon(2, 121)
+    uponSendToLabel(LANDING, 121)
     LandingHeight(0)
     label(120)
     sprite('vrrod_000', 6)
@@ -270,6 +285,7 @@ def RodGuardDown():
     sprite('vrrod_000', 32767)
     callSubroutine('RodSlowReturn')
 
+
 @State
 def RodDamageDown():
 
@@ -277,20 +293,20 @@ def RodDamageDown():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         AddRotationPerFrame(30000)
-        sendToLabelUpon(2, 101)
+        uponSendToLabel(LANDING, 101)
         setGravity(900)
         physicsYImpulse(30000)
         TurnAround()
         CopyFromRightToLeft(23, 2, 57, 3, 2, 22)
         CopyFromRightToLeft(23, 2, 58, 3, 2, 38)
         if SLOT_58:
-            if (SLOT_57 >= SLOT_22):
+            if SLOT_57 >= SLOT_XDistanceFromCenterOfStage:
                 PrivateFunction(1, 2, 57, 2, 22, 2, 57)
                 PrivateFunction(3, 2, 57, 0, -60, 2, 12)
             else:
                 PrivateFunction(1, 2, 57, 2, 22, 2, 57)
                 PrivateFunction(3, 2, 57, 0, -90, 2, 12)
-        elif (SLOT_52 <= SLOT_22):
+        elif SLOT_52 <= SLOT_XDistanceFromCenterOfStage:
             PrivateFunction(1, 2, 57, 2, 22, 2, 57)
             PrivateFunction(3, 2, 57, 0, 60, 2, 12)
         else:
@@ -301,12 +317,12 @@ def RodDamageDown():
     sprite('vrrod_000', 32767)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
     SetZVal(500)
     AbsoluteY(212000)
@@ -314,6 +330,7 @@ def RodDamageDown():
     RotationAngle(0)
     AddRotationPerFrame(0)
     PrivateSE('lcse_01')
+
 
 @State
 def RodRenchanB():
@@ -345,9 +362,9 @@ def RodRenchanB():
         setGravity(2000)
         RefreshMultihit()
         SetActionMark(20)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
         if SLOT_137:
             DamageMultiplier(80)
@@ -367,13 +384,13 @@ def RodRenchanB():
     CreateParticle('lcef_rodptc', 1)
     loopRest()
     if SLOT_2:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(9)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     PrivateSE('lcse_01')
     AttackOff()
     callSubroutine('RodReset')
@@ -385,8 +402,9 @@ def RodRenchanB():
     EndMomentum(1)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
+
 
 @State
 def RodRenchanC():
@@ -418,9 +436,9 @@ def RodRenchanC():
         setGravity(2000)
         RefreshMultihit()
         SetActionMark(20)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
     label(1)
     sprite('vrrod905_00', 5)
@@ -438,13 +456,13 @@ def RodRenchanC():
     CreateParticle('lcef_rodptc', 1)
     loopRest()
     if SLOT_2:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(9)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     PrivateSE('lcse_01')
     AttackOff()
     callSubroutine('RodReset')
@@ -456,8 +474,9 @@ def RodRenchanC():
     EndMomentum(1)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
+
 
 @State
 def RodKick():
@@ -480,9 +499,9 @@ def RodKick():
         setGravity(2400)
         RefreshMultihit()
         SetActionMark(20)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
     label(1)
     sprite('vrrod905_00', 5)
@@ -500,17 +519,17 @@ def RodKick():
     CreateParticle('lcef_rodptc', 1)
     loopRest()
     if SLOT_2:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(9)
     sprite('vrrod_000', 32767)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     PrivateSE('lcse_01')
     AttackOff()
     callSubroutine('RodStanding')
@@ -519,6 +538,7 @@ def RodKick():
     AddRotationPerFrame(0)
     EndMomentum(1)
     RotationAngle(0)
+
 
 @State
 def RodJump():
@@ -538,9 +558,10 @@ def RodJump():
     sprite('vrrod412_06', 3)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
+
 
 @State
 def RodTonNanShaPeiAntiAir():
@@ -682,6 +703,7 @@ def RodTonNanShaPeiAntiAir():
     SetAcceleration(0)
     setGravity(0)
 
+
 @State
 def RodTonNanShaPeiAntiLand():
 
@@ -792,6 +814,7 @@ def RodTonNanShaPeiAntiLand():
     SetAcceleration(0)
     setGravity(0)
 
+
 @State
 def RodKantsuPre():
 
@@ -800,7 +823,7 @@ def RodKantsuPre():
         callSubroutine('RodReturnable')
         TurnAround()
         RotationAngle(0)
-        sendToLabelUpon(44, 1)
+        uponSendToLabel(PLAYER_DAMAGED, 1)
     sprite('vrrod400_00', 1)
     PrivateFunction3(3, 0, 250000, 30, 0)
     sprite('vrrod400_00', 1)
@@ -834,7 +857,7 @@ def RodKantsuPre():
     sprite('vrrod400_09', 3)
     sprite('vrrod400_04', 3)
     label(1)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     sprite('vrrod400_10', 3)
     SetZVal(100)
     sprite('vrrod400_11', 3)
@@ -842,6 +865,7 @@ def RodKantsuPre():
     sprite('null', 100)
     RotationAngle(180000)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodKantsuA():
@@ -853,8 +877,8 @@ def RodKantsuA():
         TurnAround()
         RotationAngle(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('KantsuA', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('KantsuA', 32)
 
         def upon_39():
             NoAttackDuringAction(1)
@@ -906,7 +930,7 @@ def RodKantsuA():
     sprite('vrrod901_00', 2)
     CreateParticle('lcef_kantsuA', 0)
     sprite('vrrod_000', 3)
-    PassbackAddActionMarkToFunction('KantsuA', 33)
+    TriggerUponForState('KantsuA', 33)
     SetZVal(100)
     NoAttackDuringAction(1)
     RotationAngle(238000)
@@ -923,6 +947,7 @@ def RodKantsuA():
     callSubroutine('RodSlowReturn')
     physicsXImpulse(0)
     physicsYImpulse(0)
+
 
 @State
 def RodKantsuA2nd():
@@ -980,6 +1005,7 @@ def RodKantsuA2nd():
     sprite('null', 100)
     PrivateFunction2('RodRollingToStand', 200)
 
+
 @State
 def RodKantsuB():
 
@@ -990,8 +1016,8 @@ def RodKantsuB():
         TurnAround()
         RotationAngle(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('KantsuB', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('KantsuB', 32)
 
         def upon_39():
             NoAttackDuringAction(1)
@@ -1032,7 +1058,7 @@ def RodKantsuB():
     sprite('vrrod901_01', 2)
     CreateParticle('lcef_kantsuB', 0)
     sprite('vrrod_000', 3)
-    PassbackAddActionMarkToFunction('KantsuB', 33)
+    TriggerUponForState('KantsuB', 33)
     RotationAngle(-90000)
     physicsXImpulse(0)
     NoAttackDuringAction(1)
@@ -1045,6 +1071,7 @@ def RodKantsuB():
     callSubroutine('RodSlowReturn')
     physicsXImpulse(0)
     physicsYImpulse(0)
+
 
 @State
 def RodKantsuB2nd():
@@ -1106,6 +1133,7 @@ def RodKantsuB2nd():
     sprite('null', 100)
     PrivateFunction2('RodRollingToStand', 200)
 
+
 @State
 def RodKantsuC():
 
@@ -1116,8 +1144,8 @@ def RodKantsuC():
         TurnAround()
         RotationAngle(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('KantsuC', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('KantsuC', 32)
 
         def upon_39():
             NoAttackDuringAction(1)
@@ -1162,7 +1190,7 @@ def RodKantsuC():
     sprite('vrrod901_02', 2)
     CreateParticle('lcef_kantsuC', 0)
     sprite('vrrod_000', 3)
-    PassbackAddActionMarkToFunction('KantsuC', 33)
+    TriggerUponForState('KantsuC', 33)
     RotationAngle(120000)
     physicsXImpulse(0)
     physicsYImpulse(0)
@@ -1178,6 +1206,7 @@ def RodKantsuC():
     callSubroutine('RodSlowReturn')
     physicsXImpulse(0)
     physicsYImpulse(0)
+
 
 @State
 def RodKantsuC2nd():
@@ -1236,6 +1265,7 @@ def RodKantsuC2nd():
     sprite('null', 100)
     PrivateFunction2('RodRollingToStand', 200)
 
+
 @State
 def RodRollingToStand():
 
@@ -1243,7 +1273,7 @@ def RodRollingToStand():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         AddRotationPerFrame(30000)
-        sendToLabelUpon(2, 101)
+        uponSendToLabel(LANDING, 101)
         setGravity(600)
         physicsXImpulse(-9000)
         physicsYImpulse(24000)
@@ -1252,12 +1282,12 @@ def RodRollingToStand():
     sprite('vrrod_000', 32767)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
     SetZVal(500)
     AbsoluteY(212000)
@@ -1265,6 +1295,7 @@ def RodRollingToStand():
     RotationAngle(0)
     AddRotationPerFrame(0)
     PrivateSE('lcse_01')
+
 
 @State
 def RodShinaru():
@@ -1282,7 +1313,7 @@ def RodShinaru():
     sprite('vrrod412_02', 1)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     PrivateSE('lcse_01')
     sprite('vrrod412_03', 1)
@@ -1291,14 +1322,15 @@ def RodShinaru():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
     AbsoluteY(212000)
     EndMomentum(1)
     RotationAngle(0)
     AddRotationPerFrame(0)
+
 
 @State
 def RodAntiAir():
@@ -1376,7 +1408,7 @@ def RodAntiAir():
     AirPushbackY(-44000)
     RefreshMultihit()
 
-    def upon_44():
+    def upon_PLAYER_DAMAGED():
         AttackOff()
     if SLOT_137:
         DamageMultiplier(80)
@@ -1398,15 +1430,15 @@ def RodAntiAir():
     sprite('vrrod_000', 32767)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     EndAttack()
     AfterimageCount(0)
     CreateObject('EffAntiAirLanding', -1)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
     SetZVal(500)
     AbsoluteY(212000)
@@ -1416,6 +1448,7 @@ def RodAntiAir():
     PaletteIndex(0)
     BlendMode_Normal()
     PrivateSE('lcse_01')
+
 
 @State
 def EffAntiAirLanding():
@@ -1434,6 +1467,7 @@ def EffAntiAirLanding():
     sprite('vrlcef413_drgn09', 2)
     sprite('vrlcef413_drgn10', 2)
 
+
 @State
 def RodRocketF():
 
@@ -1441,7 +1475,7 @@ def RodRocketF():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodStatusUp')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         TurnAround()
         RotationAngle(0)
         SetZVal(500)
@@ -1456,7 +1490,7 @@ def RodRocketF():
     sprite('vrrod412_02', 1)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     PrivateSE('lcse_01')
     EndAttack()
@@ -1471,10 +1505,11 @@ def RodRocketF():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
+
 
 @State
 def RodRocketB():
@@ -1483,7 +1518,7 @@ def RodRocketB():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodStatusDown')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         TurnAround()
         RotationAngle(0)
         SetZVal(500)
@@ -1498,7 +1533,7 @@ def RodRocketB():
     sprite('vrrod412_02', 1)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     PrivateSE('lcse_01')
     EndAttack()
@@ -1513,10 +1548,11 @@ def RodRocketB():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
+
 
 @State
 def RodRocketAirF():
@@ -1525,7 +1561,7 @@ def RodRocketAirF():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodStatusUp')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         TurnAround()
         RotationAngle(0)
         SetZVal(500)
@@ -1540,7 +1576,7 @@ def RodRocketAirF():
     sprite('vrrod412_02', 1)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     PrivateSE('lcse_01')
     EndAttack()
@@ -1555,10 +1591,11 @@ def RodRocketAirF():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
+
 
 @State
 def RodRocketAirB():
@@ -1567,7 +1604,7 @@ def RodRocketAirB():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodStatusDown')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         TurnAround()
         RotationAngle(0)
         SetZVal(500)
@@ -1582,7 +1619,7 @@ def RodRocketAirB():
     sprite('vrrod412_02', 1)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     PrivateSE('lcse_01')
     EndAttack()
@@ -1597,10 +1634,11 @@ def RodRocketAirB():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
+
 
 @State
 def RodNingyouU():
@@ -1626,7 +1664,7 @@ def RodNingyouU():
         RotationAngle(0)
         StarterRating(2)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateParticle('lcef_202airwall01', 101)
 
         def upon_39():
@@ -1697,8 +1735,9 @@ def RodNingyouU():
     CommonSE('005_swing_grap_2_1')
     RefreshMultihit()
     sprite('vrrod432_20', 1)
-    SLOT_51 = (SLOT_51 + (-1))
-    GotoIf0(1, 2, 51)
+    SLOT_51 = SLOT_51 + -1
+    if not SLOT_51:
+        notConditionalSendToLabel(1)
     loopRest()
     gotoLabel(0)
     label(1)
@@ -1712,6 +1751,7 @@ def RodNingyouU():
     callSubroutine('RodSlowReturn')
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodNingyouD():
@@ -1737,7 +1777,7 @@ def RodNingyouD():
         StarterRating(2)
         RotationAngle(0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateParticle('lcef_202airwall01', 101)
 
         def upon_39():
@@ -1801,8 +1841,9 @@ def RodNingyouD():
     sprite('vrrod432_11', 2)
     sprite('vrrod432_12', 1)
     sprite('vrrod432_12', 1)
-    SLOT_51 = (SLOT_51 + (-2))
-    GotoIf0(1, 2, 51)
+    SLOT_51 = SLOT_51 + -2
+    if not SLOT_51:
+        notConditionalSendToLabel(1)
     loopRest()
     gotoLabel(0)
     label(1)
@@ -1822,6 +1863,7 @@ def RodNingyouD():
     callSubroutine('RodSlowReturn')
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodBurstDD():
@@ -1851,7 +1893,7 @@ def RodBurstDD():
         DamageFromStateOnly('RodBurstDD')
         WallCollisionDetection(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateParticle('lcef_202airwall01', 101)
         CopyFromRightToLeft(23, 2, 51, 3, 2, 51)
         if SLOT_51:
@@ -1861,8 +1903,8 @@ def RodBurstDD():
             SLOT_52 = 6
 
         def upon_OPPONENT_HIT():
-            SLOT_52 = (SLOT_52 + (-1))
-            if (not SLOT_52):
+            SLOT_52 = SLOT_52 + -1
+            if not SLOT_52:
                 WallCollisionDetection(0)
                 sendToLabel(11)
         EnableAfterimage(1)
@@ -1940,8 +1982,8 @@ def RodBurstDD():
     gotoLabel(1)
     label(11)
     sprite('vrrod432_18ex01', 3)
-    PassbackAddActionMarkToFunction('BurstDDAdd', 33)
-    clearUponHandler(12)
+    TriggerUponForState('BurstDDAdd', 33)
+    clearUponHandler(OPPONENT_HIT)
     CommonSE('011_spin_2')
     CommonSE('011_spin_1')
     CommonSE('011_spin_0')
@@ -1974,16 +2016,16 @@ def RodBurstDD():
     CommonSE('005_swing_grap_2_1')
     physicsXImpulse(-22000)
     CopyFromRightToLeft(23, 2, 52, 3, 2, 52)
-    if SLOT_38:
+    if SLOT_IsFacingRight:
         PrivateFunction(0, 2, 52, 0, 900000, 2, 53)
     else:
         PrivateFunction(0, 2, 52, 0, -900000, 2, 53)
 
-    def upon_FRAME_STEP():
-        if SLOT_38:
-            if (SLOT_53 <= SLOT_22):
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_53 <= SLOT_XDistanceFromCenterOfStage:
                 XImpulseAcceleration(0)
-        elif (SLOT_53 >= SLOT_22):
+        elif SLOT_53 >= SLOT_XDistanceFromCenterOfStage:
             XImpulseAcceleration(0)
     sprite('vrrod432_18ex01', 3)
     CommonSE('011_spin_2')
@@ -2016,12 +2058,12 @@ def RodBurstDD():
     loopRest()
     label(111)
     sprite('vrrod440_02', 5)
-    sendToLabelUpon(34, 2)
+    uponSendToLabel(34, 2)
     sprite('vrrod440_03', 32767)
     label(2)
     sprite('vrrod440_03', 3)
-    clearUponHandler(3)
-    sendToLabelUpon(35, 3)
+    clearUponHandler(EVERY_FRAME)
+    uponSendToLabel(35, 3)
     EndMomentum(1)
     CommonSE('002_highjump_2')
     sprite('vrrod440_04', 2)
@@ -2034,7 +2076,7 @@ def RodBurstDD():
     loopRest()
     label(3)
     sprite('vrrod440_08', 6)
-    sendToLabelUpon(37, 5)
+    uponSendToLabel(37, 5)
     sprite('vrrod440_09', 30)
     IgnorePauses(3)
     physicsXImpulse(52800)
@@ -2046,7 +2088,8 @@ def RodBurstDD():
     EndMomentum(1)
     EnableAfterimage(0)
     loopRest()
-    GotoIf0(31, 2, 51)
+    if not SLOT_51:
+        notConditionalSendToLabel(31)
     sprite('vrrod440_09', 27)
     label(31)
     sprite('vrrod440_09', 2)
@@ -2064,7 +2107,7 @@ def RodBurstDD():
     YAccel(50)
     label(5)
     sprite('vrrod440_11', 3)
-    sendToLabelUpon(2, 6)
+    uponSendToLabel(LANDING, 6)
     clearUponHandler(37)
     XImpulseAcceleration(70)
     gotoLabel(5)
@@ -2077,10 +2120,11 @@ def RodBurstDD():
     CreateObject('LcefRodReturnDD', 0)
     CreateParticle('lcef_mantenlight', 0)
     sprite('null', 100)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         PrivateFunction2('RodOverDriveIdle', 200)
     else:
         PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodAtk6A():
@@ -2143,6 +2187,7 @@ def RodAtk6A():
     sprite('vrrod_000', 32767)
     callSubroutine('RodSlowReturn')
 
+
 @State
 def RodAtk5B():
 
@@ -2155,7 +2200,7 @@ def RodAtk5B():
         SetZVal(10)
 
         def upon_45():
-            if (SLOT_18 < 15):
+            if SLOT_StateDuration < 15:
                 PrivateFunction3(3, 64000, 256000, 40, 0)
     sprite('rod201_00', 2)
     sprite('rod201_01', 1)
@@ -2184,6 +2229,7 @@ def RodAtk5B():
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
 
+
 @State
 def RodAtk6B():
 
@@ -2195,7 +2241,7 @@ def RodAtk6B():
         SetZVal(10)
 
         def upon_45():
-            if (SLOT_18 < 5):
+            if SLOT_StateDuration < 5:
                 PrivateFunction3(3, 0, 256000, 80, 0)
     sprite('vrrod_000', 1)
     RotationAngle(180000)
@@ -2238,6 +2284,7 @@ def RodAtk6B():
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
 
+
 @State
 def RodAtk6B_Faint():
 
@@ -2270,6 +2317,7 @@ def RodAtk6B_Faint():
     Rotation(-20000)
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodAtk4B():
@@ -2317,6 +2365,7 @@ def RodAtk4B():
     AddY(70000)
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodAtk2B():
@@ -2377,6 +2426,7 @@ def RodAtk2B():
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
 
+
 @State
 def RodAtk5C():
 
@@ -2422,6 +2472,7 @@ def RodAtk5C():
     AddRotationPerFrame(-10000)
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodAtk6C():
@@ -2489,6 +2540,7 @@ def RodAtk6C():
     sprite('vrrod_000', 32767)
     callSubroutine('RodSlowReturn')
 
+
 @State
 def RodAtk2C():
 
@@ -2532,6 +2584,7 @@ def RodAtk2C():
     SetZVal(1)
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodAtk3C():
@@ -2603,6 +2656,7 @@ def RodAtk3C():
     sprite('vrrod_000', 32767)
     callSubroutine('RodSlowReturn')
 
+
 @State
 def RodAtk5D():
 
@@ -2612,7 +2666,7 @@ def RodAtk5D():
         callSubroutine('RodStatusUp')
         ForceFaceSprite()
         SLOT_67 = SLOT_19
-        if (SLOT_67 < 70000):
+        if SLOT_67 < 70000:
             TurnAround()
         WallCollisionDetection(1)
     sprite('vrrod203_00', 2)
@@ -2621,20 +2675,21 @@ def RodAtk5D():
     sprite('vrrod203_02', 2)
     sprite('vrrod203_03', 2)
     sprite('vrrod203_04', 2)
-    sendToLabelUpon(2, 101)
+    uponSendToLabel(LANDING, 101)
     loopRest()
     label(101)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     SetZVal(500)
     callSubroutine('RodStanding')
     AbsoluteY(212000)
     EndMomentum(1)
     RotationAngle(0)
     loopRest()
+
 
 @State
 def RodAtk6D():
@@ -2656,24 +2711,25 @@ def RodAtk6D():
     sprite('vrrod233_04', 2)
     physicsYImpulse(-8000)
     sprite('vrrod233_05', 2)
-    sendToLabelUpon(2, 101)
+    uponSendToLabel(LANDING, 101)
     loopRest()
     label(101)
     sprite('vrrod_000', 32767)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     SetZVal(500)
     callSubroutine('RodStanding')
     AbsoluteY(212000)
     EndMomentum(1)
     RotationAngle(0)
     loopRest()
+
 
 @State
 def RodAtk4D():
@@ -2695,13 +2751,14 @@ def RodAtk4D():
     sprite('vrrod_000', 32767)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
+
 
 @State
 def RodAtk2D():
@@ -2712,7 +2769,7 @@ def RodAtk2D():
         callSubroutine('RodStatusDown')
         ForceFaceSprite()
         SLOT_67 = SLOT_19
-        if (SLOT_67 < 70000):
+        if SLOT_67 < 70000:
             TurnAround()
         WallCollisionDetection(1)
     sprite('vrrod233_00', 2)
@@ -2726,20 +2783,21 @@ def RodAtk2D():
     sprite('vrrod233_04', 2)
     physicsYImpulse(-8000)
     sprite('vrrod233_05', 2)
-    sendToLabelUpon(2, 101)
+    uponSendToLabel(LANDING, 101)
     loopRest()
     label(101)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     SetZVal(500)
     callSubroutine('RodStanding')
     AbsoluteY(212000)
     EndMomentum(1)
     RotationAngle(0)
     loopRest()
+
 
 @State
 def RodReturn():
@@ -2753,54 +2811,52 @@ def RodReturn():
         WallCollisionDetection(1)
         SLOT_51 = 12
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                CheckInput(0x1c)
-                if (not 
+                CheckInput(INPUT_HOLD_D)
                 if SLOT_94:
-                    CheckInput(0xa)):
-                    SLOT_51 = 0
-                    sendToLabel(2)
-            if SLOT_53:
-                ObjectUpon26(3, 0, 0, 35000, 1)
-                XImpulseAcceleration(90)
-                YAccel(90)
-                if (SLOT_50 < 80000):
-                    PrivateFunction2('RodNeutral', 100)
-        EnableAfterimage(1)
-        AfterimageBlendMode(1)
-        AfterimageInterval(2)
-        AfterimageCount(2)
-        AfterimageColor_1(255, 255, 255, 255)
-        AfterimageColor_2(100, 255, 255, 255)
-        AfterimageSize_1(1000)
-        AfterimageSize_2(1000)
+                    CheckInput(INPUT_HOLD_B)
+                SLOT_51 = 0
+                sendToLabel(2)
+        if SLOT_53:
+            ObjectUpon26(3, 0, 0, 35000, 1)
+            XImpulseAcceleration(90)
+            YAccel(90)
+            if SLOT_50 < 80000:
+                PrivateFunction2('RodNeutral', 100)
+    EnableAfterimage(1)
+    AfterimageBlendMode(1)
+    AfterimageInterval(2)
+    AfterimageCount(2)
+    AfterimageColor_1(255, 255, 255, 255)
+    AfterimageColor_2(100, 255, 255, 255)
+    AfterimageSize_1(1000)
+    AfterimageSize_2(1000)
 
-        def upon_ON_HIT_OR_BLOCK():
-            EnableAfterimage(0)
-            AfterimageCount(0)
-            AttackOff()
+    def upon_OPPONENT_HIT_OR_BLOCK():
+        EnableAfterimage(0)
+        AfterimageCount(0)
+        AttackOff()
 
-        def upon_39():
-            NoAttackDuringAction(1)
+    def upon_39():
+        NoAttackDuringAction(1)
 
-        def upon_40():
-            NoAttackDuringAction(0)
+    def upon_40():
+        NoAttackDuringAction(0)
     sprite('vrrod_000', 2)
     AddRotationPerFrame(-1250)
     label(1)
     sprite('vrrod_000', 4)
-    SLOT_51 = (SLOT_51 + (-1))
+    SLOT_51 = SLOT_51 + -1
     AddRotationPerFrame(2500)
     sprite('vrrod_000', 4)
     AddRotationPerFrame(-2500)
     loopRest()
     if SLOT_51:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(2)
-    op(7, 2, 64, 0, 8)
-    if SLOT_0:
-        _gotolabel(201)
+    if SLOT_64 and 8:
+        conditionalSendToLabel(201)
     sprite('vrrod904_00', 2)
     AttackLevel_(3)
     Damage(500)
@@ -2823,8 +2879,8 @@ def RodReturn():
     physicsYImpulse(-7000)
     FloorCollision(1)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        if (not SLOT_53):
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        if not SLOT_53:
             XImpulseAcceleration(70)
             YAccel(70)
     CreateParticle('lcef_rodptc', 0)
@@ -2863,8 +2919,8 @@ def RodReturn():
     sprite('vrrod904_07', 2)
     loopRest()
     AddActionMark(1)
-    (SLOT_2 >= 2)
-    GotoIf0(3, 2, 0)
+    if not SLOT_2 >= 2:
+        notConditionalSendToLabel(3)
     sprite('vrrod904_00', 2)
     CreateParticle('lcef_rodptc', 0)
     CreateParticle('lcef_rodptc', 1)
@@ -2906,8 +2962,8 @@ def RodReturn():
     sprite('vrrod904_07', 2)
     loopRest()
     AddActionMark(1)
-    (SLOT_2 >= 6)
-    GotoIf0(4, 2, 0)
+    if not SLOT_2 >= 6:
+        notConditionalSendToLabel(4)
     sprite('vrrod904_00', 2)
     CommonSE('011_spin_2')
     CommonSE('011_spin_1')
@@ -2965,8 +3021,8 @@ def RodReturn():
     CreateParticle('lcef_rodptc', 1)
     loopRest()
     AddActionMark(1)
-    (SLOT_2 >= 3)
-    GotoIf0(202, 2, 0)
+    if not SLOT_2 >= 3:
+        notConditionalSendToLabel(202)
     sprite('vrrod905_00', 5)
     AirPushbackX(-5400)
     PushbackX(-19800)
@@ -3003,10 +3059,11 @@ def RodReturn():
     CreateParticle('lcef_rodptc', 1)
     loopRest()
     AddActionMark(1)
-    (SLOT_2 >= 8)
-    GotoIf0(203, 2, 0)
+    if not SLOT_2 >= 8:
+        notConditionalSendToLabel(203)
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
+
 
 @State
 def RodAtkAir5B():
@@ -3072,6 +3129,7 @@ def RodAtkAir5B():
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
 
+
 @State
 def RodAir5D():
 
@@ -3090,12 +3148,12 @@ def RodAir5D():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodStatusDown')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         TurnAround()
         WallCollisionDetection(1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_25 <= 55000):
+        def upon_EVERY_FRAME():
+            if SLOT_XDistanceFromFowardCorner <= 55000:
                 sendToLabel(10)
     sprite('vrrod_000', 32767)
     RefreshMultihit()
@@ -3112,7 +3170,7 @@ def RodAir5D():
     CommonSE('003_swing_grap_0_2')
     loopRest()
     label(10)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('vrrod_000', 32767)
     AddRotationPerFrame(22000)
     setGravity(1300)
@@ -3121,7 +3179,7 @@ def RodAir5D():
     EndAttack()
     loopRest()
     label(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('vrrod412_02', 1)
     PrivateSE('lcse_01')
     SetZVal(500)
@@ -3133,7 +3191,7 @@ def RodAir5D():
     AddRotationPerFrame(0)
     ForceFaceSprite()
     SLOT_67 = SLOT_19
-    if (SLOT_67 < 70000):
+    if SLOT_67 < 70000:
         TurnAround()
     sprite('vrrod412_03', 1)
     sprite('vrrod412_06', 2)
@@ -3141,10 +3199,11 @@ def RodAir5D():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
     E0EAEffect('cmn_judgment', 65535)
-    ApplyFunctionsToObjects(1)
-    AbsoluteY(270000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AbsoluteY(270000)
     callSubroutine('RodStanding')
+
 
 @State
 def RodEventDown():
@@ -3158,6 +3217,7 @@ def RodEventDown():
     RotationAngle(-90000)
     AbsoluteY(0)
     AttackOff()
+
 
 @State
 def RodEventReturn():
@@ -3513,6 +3573,7 @@ def RodEventReturn():
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
 
+
 @State
 def RodEventAir5D():
 
@@ -3520,7 +3581,7 @@ def RodEventAir5D():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodDamageToDown')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         XPositionRelativeFacing(-600000)
         AbsoluteY(1000000)
     sprite('vrrod_000', 32767)
@@ -3537,7 +3598,7 @@ def RodEventAir5D():
     CommonSE('003_swing_grap_0_2')
     loopRest()
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('vrrod412_02', 1)
     PrivateSE('lcse_01')
     SetZVal(500)
@@ -3551,6 +3612,7 @@ def RodEventAir5D():
     sprite('vrrod412_02', 2)
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
+
 
 @State
 def RodEventReturn2():
@@ -3641,6 +3703,7 @@ def RodEventReturn2():
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
 
+
 @State
 def RodEventVsTgAssault():
 
@@ -3648,7 +3711,7 @@ def RodEventVsTgAssault():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodDamageToDown')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         XPositionRelativeFacing(-1200000)
         AbsoluteY(2000000)
         physicsXImpulse(35000)
@@ -3672,7 +3735,7 @@ def RodEventVsTgAssault():
     CommonSE('008_swing_pole_2')
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('vrrod412_02', 1)
     PrivateSE('lcse_01')
     CommonSE('202_walk_steal_0')
@@ -3688,6 +3751,7 @@ def RodEventVsTgAssault():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
 
+
 @State
 def RodEvent_Act3Event_Attack():
 
@@ -3695,7 +3759,7 @@ def RodEvent_Act3Event_Attack():
         callSubroutine('RodReset')
         callSubroutine('RodReturnable')
         callSubroutine('RodDamageToDown')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         XPositionRelativeFacing(-1200000)
         physicsXImpulse(45000)
         physicsYImpulse(30000)
@@ -3719,7 +3783,7 @@ def RodEvent_Act3Event_Attack():
     gotoLabel(0)
     label(1)
     sprite('vrrod412_02', 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     PrivateSE('lcse_01')
     CommonSE('202_walk_steal_0')
     SetZVal(500)
@@ -3734,6 +3798,7 @@ def RodEvent_Act3Event_Attack():
     sprite('vrrod412_03', 3)
     sprite('vrrod_000', 32767)
 
+
 @State
 def RodEvent_Act3Event_Down():
 
@@ -3746,7 +3811,7 @@ def RodEvent_Act3Event_Down():
     physicsYImpulse(0)
     AddRotationPerFrame(500)
     setGravity(1000)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     LandingHeight(0)
     label(0)
     sprite('vrrod_000', 6)
@@ -3761,6 +3826,7 @@ def RodEvent_Act3Event_Down():
     AddRotationPerFrame(0)
     EndMomentum(1)
     sprite('vrrod_000', 32767)
+
 
 @State
 def EMB_LC():
@@ -3783,6 +3849,7 @@ def EMB_LC():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_LC_OD():
 
@@ -3804,6 +3871,7 @@ def EMB_LC_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_LC_AH():
 
@@ -3824,10 +3892,11 @@ def EMB_LC_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def DIST_LC():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         BlendMode_Normal()
         AlphaValue(255)
         ConstantAlphaModifier(-10)
@@ -3841,10 +3910,11 @@ def DIST_LC():
     sprite('null', 1)
     CreateObject('DIST_LCC', 0)
 
+
 @State
 def DIST_LCA():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -3854,10 +3924,11 @@ def DIST_LCA():
     SetScaleXPerFrame(100)
     SetScaleSpeedY(200)
 
+
 @State
 def DIST_LCB():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -3867,10 +3938,11 @@ def DIST_LCB():
     SetScaleXPerFrame(120)
     SetScaleSpeedY(220)
 
+
 @State
 def DIST_LCC():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -3879,6 +3951,7 @@ def DIST_LCC():
     SetScaleY(300)
     SetScaleXPerFrame(130)
     SetScaleSpeedY(230)
+
 
 @State
 def Lcef202RodAuraA():
@@ -3890,6 +3963,7 @@ def Lcef202RodAuraA():
     ParticleColorFromPalette(224, 225, 225)
     CallCustomizableParticle('lcef_rodauraA', -1)
 
+
 @State
 def Lcef202RodAuraB():
 
@@ -3899,6 +3973,7 @@ def Lcef202RodAuraB():
     E0EAEffectPosition(2)
     ParticleColorFromPalette(226, 226, 226)
     CallCustomizableParticle('lcef_rodauraB', -1)
+
 
 @State
 def LcefUpper():
@@ -3914,6 +3989,7 @@ def LcefUpper():
     ParticleColorFromPalette(227, 227, 227)
     CallCustomizableParticle('lcef_232sub01', -1)
 
+
 @State
 def LcefKikouCharge():
 
@@ -3927,6 +4003,7 @@ def LcefKikouCharge():
     CallCustomizableParticle('lcef_202charge01', -1)
     ParticleColorFromPalette(225, 225, 226)
     CallCustomizableParticle('lcef_202light00', -1)
+
 
 @State
 def LcefKikouPtc():
@@ -3942,6 +4019,7 @@ def LcefKikouPtc():
     ParticleColorFromPalette(225, 224, 225)
     CallCustomizableParticle('lcef_202kakusan00', -1)
 
+
 @State
 def LcefKikouPtcRod():
 
@@ -3951,6 +4029,7 @@ def LcefKikouPtcRod():
     CreateParticle('lcef_202airwall01', 1)
     ParticleColorFromPalette(225, 225, 226)
     CallCustomizableParticle('lcef_rodkakusan00', 1)
+
 
 @State
 def LcefRodSet():
@@ -3963,6 +4042,7 @@ def LcefRodSet():
     CreateObject('LcefTaikyokuMark', -1)
     PrivateSE('lcse_23')
 
+
 @State
 def LcefRodSetNotPosLink():
 
@@ -3973,6 +4053,7 @@ def LcefRodSetNotPosLink():
     sprite('null', 200)
     CreateObject('LcefTaikyokuMark', -1)
     PrivateSE('lcse_23')
+
 
 @State
 def LcefRodReturn():
@@ -3985,6 +4066,7 @@ def LcefRodReturn():
     sprite('null', 200)
     CreateObject('LcefTaikyokuMark', -1)
     PrivateSE('lcse_23')
+
 
 @State
 def LcefRodReturnDD():
@@ -3999,6 +4081,7 @@ def LcefRodReturnDD():
     CallCustomizableParticle('lcef_rodreturnEx', -1)
     CreateObject('LcefTaikyokuMark', -1)
     PrivateSE('lcse_23')
+
 
 @State
 def LcefTaikyokuMark():
@@ -4019,6 +4102,7 @@ def LcefTaikyokuMark():
     SetScaleSpeed(5)
     ConstantAlphaModifier(-12)
 
+
 @State
 def LcefTaikyokuMarkDD():
 
@@ -4038,6 +4122,7 @@ def LcefTaikyokuMarkDD():
     SetScaleSpeed(5)
     ConstantAlphaModifier(-15)
 
+
 @State
 def LcefTetsuzanko():
 
@@ -4046,6 +4131,7 @@ def LcefTetsuzanko():
         LinkParticle('lcef_tetsuzanko')
         Size(1200)
     sprite('null', 200)
+
 
 @State
 def LcefKikouPtc417():
@@ -4056,6 +4142,7 @@ def LcefKikouPtc417():
     sprite('null', 200)
     ParticleColorFromPalette(228, 228, 225)
     CallCustomizableParticle('lcef_417kakusan00', -1)
+
 
 @State
 def LcefKikouWave():
@@ -4072,15 +4159,18 @@ def LcefKikouWave():
     SetScaleSpeed(-50)
     ConstantAlphaModifier(-30)
 
+
 @State
 def DragonAura2():
     sprite('null', 1)
     CreateParticle('lcef_pollkakusan01', -1)
 
+
 @State
 def DistAura():
     sprite('null', 1)
     CreateParticle('lcef_pollkakusan01', -1)
+
 
 @State
 def DragonAura():
@@ -4128,6 +4218,7 @@ def DragonAura():
     sprite('vrlcef413_drgn10', 2)
     sprite('null', 12)
 
+
 @State
 def AuraPoll():
 
@@ -4160,6 +4251,7 @@ def AuraPoll():
     sprite('vrlcef433_atk10', 3)
     sprite('vrlcef433_atk11', 3)
     sprite('vrlcef433_atk12', 3)
+
 
 @State
 def AuraPoll_OD():
@@ -4194,6 +4286,7 @@ def AuraPoll_OD():
     sprite('vrlcef433_atk11', 3)
     sprite('vrlcef433_atk12', 3)
 
+
 @State
 def AuraPollSubB():
 
@@ -4224,6 +4317,7 @@ def AuraPollSubB():
     sprite('vrlcef433_atk11', 3)
     sprite('vrlcef433_atk12', 3)
 
+
 @State
 def AuraPollSubC():
 
@@ -4253,6 +4347,7 @@ def AuraPollSubC():
     sprite('vrlcef433_atk10', 3)
     sprite('vrlcef433_atk11', 3)
     sprite('vrlcef433_atk12', 3)
+
 
 @State
 def AuraPollAttack():
@@ -4305,6 +4400,7 @@ def AuraPollAttack():
     sprite('vrlcef433_atk11', 3)
     sprite('vrlcef433_atk12', 3)
 
+
 @State
 def AuraPollAttackOD_Parts():
 
@@ -4322,6 +4418,7 @@ def AuraPollAttackOD_Parts():
     sprite('vrlcef433_atk10', 2)
     sprite('vrlcef433_atk11', 2)
     sprite('vrlcef433_atk12', 2)
+
 
 @State
 def AuraPollAttackOD():
@@ -4413,6 +4510,7 @@ def AuraPollAttackOD():
     ConstantAlphaModifier(-20)
     sprite('vrlcef433_drgn10', 3)
 
+
 @State
 def AuraPollHand():
 
@@ -4434,6 +4532,7 @@ def AuraPollHand():
     sprite('lcef202_aura01', 10)
     SetScaleSpeed(-5)
 
+
 @State
 def DashPanda():
 
@@ -4445,6 +4544,7 @@ def DashPanda():
     sprite('vrpnd000_01', 6)
     sprite('vrpnd000_00', 6)
     sprite('vrpnd000_01', 6)
+
 
 @State
 def EF_Ton():
@@ -4458,6 +4558,7 @@ def EF_Ton():
     sprite('vrrod417font_00ton', 16)
     ConstantAlphaModifier(-20)
 
+
 @State
 def EF_Nan():
 
@@ -4469,6 +4570,7 @@ def EF_Nan():
         E0EAEffectRotation(2)
     sprite('vrrod417font_01nan', 16)
     ConstantAlphaModifier(-20)
+
 
 @State
 def EF_Sha():
@@ -4482,6 +4584,7 @@ def EF_Sha():
     sprite('vrrod417font_02sha', 16)
     ConstantAlphaModifier(-20)
 
+
 @State
 def EF_Pei():
 
@@ -4493,6 +4596,7 @@ def EF_Pei():
         E0EAEffectRotation(2)
     sprite('vrrod417font_03pei', 16)
     ConstantAlphaModifier(-20)
+
 
 @State
 def EF_PandaWin():
@@ -4508,6 +4612,7 @@ def EF_PandaWin():
     sprite('lcef610_panda02', 5)
     sprite('lcef610_panda03', 5)
     gotoLabel(98)
+
 
 @State
 def lcef610_flowerA():
@@ -4533,6 +4638,7 @@ def lcef610_flowerA():
     sprite('lcef610_flower01_10', 3)
     sprite('lcef610_flower01_11', 32767)
 
+
 @State
 def lcef610_flowerB():
 
@@ -4556,6 +4662,7 @@ def lcef610_flowerB():
     sprite('lcef610_flower02_09', 3)
     sprite('lcef610_flower02_10', 32767)
 
+
 @State
 def lcef610_flowerC():
 
@@ -4576,6 +4683,7 @@ def lcef610_flowerC():
     sprite('lcef610_flower03_05', 3)
     sprite('lcef610_flower03_06', 3)
     sprite('lcef610_flower03_06', 32767)
+
 
 @State
 def lcef610_dragon():
@@ -4610,6 +4718,7 @@ def lcef610_dragon():
     sprite('vrlcef610_dragon11', 40)
     physicsYImpulse(150)
     gotoLabel(91)
+
 
 @State
 def RodEntry600():
@@ -4646,6 +4755,7 @@ def RodEntry600():
     AddX(10000)
     AddY(10000)
 
+
 @State
 def AstJumpLC():
 
@@ -4664,6 +4774,7 @@ def AstJumpLC():
     sprite('lc020_00', 4)
     sprite('lc020_01', 4)
 
+
 @State
 def LastLookAtStage():
 
@@ -4675,6 +4786,7 @@ def LastLookAtStage():
     CameraControlEnable(1)
     CameraNoScreenCollision(1)
     CameraControlInfinity(1)
+
 
 @State
 def AstWhite():
@@ -4694,6 +4806,7 @@ def AstWhite():
     sprite('vr_white', 30)
     sprite('vr_white', 30)
     ConstantAlphaModifier(-15)
+
 
 @State
 def AstCutA():
@@ -4746,6 +4859,7 @@ def AstCutA():
     CommonSE('019_cloth_a')
     sprite('null', 20)
 
+
 @State
 def AstSyuCyu():
 
@@ -4757,6 +4871,7 @@ def AstSyuCyu():
     CreateObject('AstRayLine', -1)
     gotoLabel(0)
 
+
 @State
 def AstRayLine():
 
@@ -4766,6 +4881,7 @@ def AstRayLine():
         AbsoluteY(320000)
     ParticleLayer(1)
     CallCustomizableParticle('ef_speed_center', -1)
+
 
 @State
 def CyuRenPouTou():
@@ -4786,6 +4902,7 @@ def CyuRenPouTou():
     CreateObject('AstFontD', -1)
     ScreenShake(0, 8500)
     sprite('null', 32767)
+
 
 @State
 def AstFontA():
@@ -4823,6 +4940,7 @@ def AstFontA():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
 
+
 @State
 def AstFontB():
 
@@ -4858,6 +4976,7 @@ def AstFontB():
     physicsYImpulse(-10000)
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
+
 
 @State
 def AstFontC():
@@ -4895,6 +5014,7 @@ def AstFontC():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
 
+
 @State
 def AstFontD():
 
@@ -4931,6 +5051,7 @@ def AstFontD():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
 
+
 @State
 def RLAstLockmc():
 
@@ -4945,6 +5066,7 @@ def RLAstLockmc():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def RLAstLockAura():
 
@@ -4958,11 +5080,13 @@ def RLAstLockAura():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @Subroutine
 def RodODEff():
     CreateParticle('lcef_pollctrlfire', 106)
     CreateParticle('lcef_pollctrlfire', 106)
     CreateParticle('lcef_pollctrlfire', 106)
+
 
 @State
 def RodOverDriveIdle():
@@ -4981,12 +5105,12 @@ def RodOverDriveIdle():
         def upon_16():
             PrivateFunction3(3, 0, 0, 20, 1)
 
-        def upon_FRAME_STEP():
-            if SLOT_110:
+        def upon_EVERY_FRAME():
+            if SLOT_OverdriveTimer:
                 if SLOT_8:
                     PrivateFunction2('RodOverDriveAttack', 200)
             else:
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 SLOT_8 = 0
                 sendToLabel(1)
     sprite('vrrod905_00', 32767)
@@ -4995,9 +5119,10 @@ def RodOverDriveIdle():
     sprite('null', 100)
     PrivateFunction2('RodNeutral', 100)
 
+
 @Subroutine
 def RodAngleSet():
-    if (SLOT_55 == 1):
+    if SLOT_55 == 1:
         GroundedHitstunAnimation(3)
         AirPushbackX(-8000)
         AirPushbackY(-39000)
@@ -5006,7 +5131,7 @@ def RodAngleSet():
         BouncePercentage(60)
         RotationAngle(-315000)
         HitboxMovement(20000, 225000)
-    if (SLOT_55 == 2):
+    if SLOT_55 == 2:
         GroundedHitstunAnimation(3)
         AirPushbackX(2000)
         AirPushbackY(-39000)
@@ -5015,7 +5140,7 @@ def RodAngleSet():
         BouncePercentage(60)
         RotationAngle(0)
         HitboxMovement(20000, -90000)
-    if (SLOT_55 == 3):
+    if SLOT_55 == 3:
         GroundedHitstunAnimation(3)
         AirPushbackX(8000)
         AirPushbackY(-39000)
@@ -5024,35 +5149,35 @@ def RodAngleSet():
         BouncePercentage(60)
         RotationAngle(-45000)
         HitboxMovement(20000, -45000)
-    if (SLOT_55 == 4):
+    if SLOT_55 == 4:
         AirPushbackX(-12000)
         AirPushbackY(26000)
         AirHitstunAnimation(12)
         RotationAngle(90000)
         HitboxMovement(20000, 180000)
-    if (SLOT_55 == 5):
+    if SLOT_55 == 5:
         RotationAngle(-90000)
         HitboxMovement(20000, 0)
-    if (SLOT_55 == 6):
+    if SLOT_55 == 6:
         AirPushbackX(12000)
         AirPushbackY(26000)
         AirHitstunAnimation(12)
         RotationAngle(-90000)
         HitboxMovement(20000, 0)
-    if (SLOT_55 == 7):
+    if SLOT_55 == 7:
         GroundedHitstunAnimation(1)
         AirPushbackX(-8000)
         AirPushbackY(39000)
         RotationAngle(-225000)
         HitboxMovement(20000, 135000)
-    if (SLOT_55 == 8):
+    if SLOT_55 == 8:
         GroundedHitstunAnimation(1)
         AirPushbackX(2000)
         AirPushbackY(39000)
         AirHitstunAnimation(10)
         RotationAngle(-180000)
         HitboxMovement(20000, 90000)
-    if (SLOT_55 == 9):
+    if SLOT_55 == 9:
         GroundedHitstunAnimation(1)
         AirPushbackX(8000)
         AirPushbackY(39000)
@@ -5062,6 +5187,7 @@ def RodAngleSet():
     PushSpeedY()
     EndMomentum(1)
     SLOT_8 = 0
+
 
 @State
 def RodOverDriveAttack():
@@ -5106,7 +5232,7 @@ def RodOverDriveAttack():
             SLOT_55 = 6
             Damage(400)
             CallPrivateFunction('LC_OverDriveRod5D', 2, 55, 0, 0, 0, 0, 0, 0)
-        elif (SLOT_55 == 5):
+        elif SLOT_55 == 5:
             SLOT_55 = 6
             Damage(400)
             CallPrivateFunction('LC_OverDriveRod5D', 2, 55, 0, 0, 0, 0, 0, 0)
@@ -5114,11 +5240,11 @@ def RodOverDriveAttack():
         def upon_39():
             NoAttackDuringAction(1)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             SLOT_8 = 0
             sendToLabel(3)
 
-        def upon_47():
+        def upon_PLAYER_BLOCKS():
             SLOT_8 = 0
             sendToLabel(3)
 
@@ -5139,7 +5265,7 @@ def RodOverDriveAttack():
     CommonSE('006_swing_blade_1')
     label(2)
     sprite('vrrod921_00', 3)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     callSubroutine('RodAngleSet')
     AddRotationPerFrame(0)
     PopSpeedX()
@@ -5164,6 +5290,7 @@ def RodOverDriveAttack():
     callSubroutine('RodODEff')
     PrivateFunction2('RodOverDriveIdle', 200)
 
+
 @State
 def GuardCrushDragon():
 
@@ -5174,7 +5301,7 @@ def GuardCrushDragon():
         def upon_32():
             clearUponHandler(32)
             sendToLabel(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(481)
         PaletteIndex(4)
         BlendMode_Normal()
@@ -5211,6 +5338,7 @@ def GuardCrushDragon():
     sprite('vrlcef420_06', 2)
     sprite('vrlcef420_07', 1)
 
+
 @State
 def auraball():
 
@@ -5245,6 +5373,7 @@ def auraball():
     CreateParticle('lcef_434enagybrake_tubu', -1)
     physicsXImpulse(0)
 
+
 @State
 def aurastart():
 
@@ -5265,6 +5394,7 @@ def aurastart():
     sprite('null', 20)
     ConstantAlphaModifier(-13)
 
+
 @State
 def __434atkeff():
 
@@ -5281,6 +5411,7 @@ def __434atkeff():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __434atkeffimp():
 
@@ -5296,6 +5427,7 @@ def __434atkeffimp():
     sprite('null', 20)
     ConstantAlphaModifier(-13)
 
+
 @State
 def __434smoke():
 
@@ -5304,6 +5436,7 @@ def __434smoke():
         AddY(-200000)
     sprite('null', 5)
     CreateParticle('lcef_434atkfinlod_smoke', -1)
+
 
 @State
 def __434atkeff2():
@@ -5319,6 +5452,7 @@ def __434atkeff2():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def __434atkeff3():
 
@@ -5332,6 +5466,7 @@ def __434atkeff3():
     sprite('null', 20)
     ConstantAlphaModifier(-13)
 
+
 @State
 def __419smoke():
 
@@ -5339,7 +5474,7 @@ def __419smoke():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         E0EAEffectDirection(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         AddX(15000)
     sprite('null', 1)
     label(0)
@@ -5349,6 +5484,7 @@ def __419smoke():
     gotoLabel(0)
     label(1)
     sprite('null', 1)
+
 
 @State
 def __419atkeff():
@@ -5363,6 +5499,7 @@ def __419atkeff():
     sprite('null', 45)
     ParticleFacing(2)
     CallPrivateEffect('lcef_419atk_circle01')
+
 
 @State
 def UltimateRush_Dragon():
@@ -5393,8 +5530,8 @@ def UltimateRush_Dragon():
         BlendMode_Normal()
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
-            PassbackAddActionMarkToFunction('UltimateRush_OD_Ranbu', 32)
+            clearUponHandler(OPPONENT_HIT)
+            TriggerUponForState('UltimateRush_OD_Ranbu', 32)
     sprite('vrlcef610_dragon00', 1)
     AbsoluteY(280000)
     AddX(30000)
@@ -5420,6 +5557,7 @@ def UltimateRush_Dragon():
     sprite('vrlcef420_06', 2)
     sprite('vrlcef420_07', 1)
 
+
 @State
 def BurstDD_Camera():
 
@@ -5429,9 +5567,9 @@ def BurstDD_Camera():
         IgnorePauses(3)
         SetPosXByScreenPer(50)
         CameraControlEnable(1)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 32767)
     label(1)
     sprite('null', 32767)
@@ -5459,6 +5597,7 @@ def BurstDD_Camera():
     physicsYImpulse(0)
     AddGravity(2500)
 
+
 @State
 def BurstDD_BG():
 
@@ -5466,11 +5605,12 @@ def BurstDD_BG():
         RemoveOnCallStateEnd(3)
         LinkParticle('lcef_440bg')
         Size(800)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def BurstDD_bomb():
@@ -5484,6 +5624,7 @@ def BurstDD_bomb():
     CallCustomizableParticle('lcef_440_bombbg', -1)
     sprite('null', 7)
     CreateObject('BurstDD_bombsub', -1)
+
 
 @State
 def BurstDD_bombsub():
@@ -5506,6 +5647,7 @@ def BurstDD_bombsub():
     AddScale(50)
     sprite('null', 10)
 
+
 @State
 def BurstDD_bombsub2():
 
@@ -5518,6 +5660,7 @@ def BurstDD_bombsub2():
     sprite('null', 5)
     SetScaleSpeed(1200)
     ConstantAlphaModifier(-51)
+
 
 @State
 def Act2Event_Yure():

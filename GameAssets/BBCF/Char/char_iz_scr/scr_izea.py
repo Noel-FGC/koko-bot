@@ -20,6 +20,7 @@ def EMB_IZ():
     ColorTransition(4286625023, 10)
     sprite('null', 18)
 
+
 @State
 def EMB_IZ_OD():
 
@@ -41,6 +42,7 @@ def EMB_IZ_OD():
     sprite('null', 8)
     ColorTransition(4278223103, 10)
     sprite('null', 18)
+
 
 @State
 def EMB_IZ_AH():
@@ -64,15 +66,17 @@ def EMB_IZ_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 18)
 
+
 @Subroutine
 def AdditionalExGage():
-    if (not SLOT_4):
+    if not SLOT_4:
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            SLOT_31 = (SLOT_31 + 1)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            SLOT_31 = SLOT_31 + 1
 
         def upon_OPPONENT_HIT():
-            SLOT_31 = (SLOT_31 + 1)
+            SLOT_31 = SLOT_31 + 1
+
 
 @Subroutine
 def LightSaverSwitch():
@@ -91,12 +95,14 @@ def LightSaverSwitch():
         PaletteColor1(241)
         PaletteColor3(242)
 
+
 @Subroutine
 def ShotColorSwitch():
     if SLOT_6:
         PaletteIndex(5)
     else:
         PaletteIndex(4)
+
 
 @State
 def KakuseiMagicCircle():
@@ -111,7 +117,7 @@ def KakuseiMagicCircle():
         AddY(10000)
         AlphaValue(160)
         RotationAngle(0)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(56, 1)
     sprite('null', 8)
     ColorForTransition(4291328255)
     ColorTransition(4294967168, 8)
@@ -125,6 +131,7 @@ def KakuseiMagicCircle():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(20)
 
+
 @State
 def Install():
 
@@ -136,7 +143,7 @@ def Install():
         Size(500)
         AddX(-20000)
         AlphaValue(255)
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(56, 1)
     sprite('null', 10)
     ColorForTransition(4291328255)
     ColorTransition(4294967168, 8)
@@ -148,6 +155,7 @@ def Install():
     RemoveOnCallStateEnd(0)
     AlphaValue(200)
     ConstantAlphaModifier(-50)
+
 
 @State
 def __5DLightsaber_on():
@@ -164,6 +172,7 @@ def __5DLightsaber_on():
     sprite('vrizef204_00', 6)
     ConstantAlphaModifier(-50)
 
+
 @State
 def __5DLightsaber_off():
 
@@ -176,6 +185,7 @@ def __5DLightsaber_off():
     ConstantAlphaModifier(50)
     sprite('vrizef204_00', 4)
     ConstantAlphaModifier(-50)
+
 
 @State
 def KakuseiAura():
@@ -192,6 +202,7 @@ def KakuseiAura():
     sprite('null', 4)
     SetScaleSpeedY(-40)
     ConstantAlphaModifier(-30)
+
 
 @State
 def KakuseiAura_oku():
@@ -210,6 +221,7 @@ def KakuseiAura_oku():
     SetScaleSpeedY(-60)
     ConstantAlphaModifier(-30)
 
+
 @State
 def __2DLightsaber_on():
 
@@ -225,6 +237,7 @@ def __2DLightsaber_on():
     sprite('vrizef234_00', 6)
     ConstantAlphaModifier(-50)
 
+
 @State
 def __2DLightsaber_off():
 
@@ -237,6 +250,7 @@ def __2DLightsaber_off():
     ConstantAlphaModifier(50)
     sprite('vrizef234_00', 4)
     ConstantAlphaModifier(-50)
+
 
 @State
 def __2DKakuseiAura():
@@ -253,6 +267,7 @@ def __2DKakuseiAura():
     sprite('null', 4)
     SetScaleSpeedY(-60)
     ConstantAlphaModifier(-30)
+
 
 @State
 def __2DKakuseiAura_oku():
@@ -271,6 +286,7 @@ def __2DKakuseiAura_oku():
     SetScaleSpeedY(-60)
     ConstantAlphaModifier(-30)
 
+
 @State
 def AirLightsaber_on():
 
@@ -286,6 +302,7 @@ def AirLightsaber_on():
     sprite('vrizef254_00', 6)
     ConstantAlphaModifier(-50)
 
+
 @State
 def AirLightsaber_off():
 
@@ -298,6 +315,7 @@ def AirLightsaber_off():
     ConstantAlphaModifier(50)
     sprite('vrizef254_00', 4)
     ConstantAlphaModifier(-50)
+
 
 @State
 def AirKakuseiAura():
@@ -312,6 +330,7 @@ def AirKakuseiAura():
     sprite('null', 4)
     SetScaleSpeedY(-60)
     ConstantAlphaModifier(-30)
+
 
 @State
 def AirKakuseiAura_oku():
@@ -328,6 +347,7 @@ def AirKakuseiAura_oku():
     SetScaleSpeedY(-60)
     ConstantAlphaModifier(-30)
 
+
 @State
 def OverDriveAura():
 
@@ -340,6 +360,7 @@ def OverDriveAura():
         SetScaleX(300)
         RotationAngle(-20000)
     sprite('null', 32767)
+
 
 @State
 def OverDriveAura_oku():
@@ -354,6 +375,7 @@ def OverDriveAura_oku():
         RotationAngle(-40000)
         RenderLayer(5)
     sprite('null', 32767)
+
 
 @State
 def __5CKakuseiAura():
@@ -375,6 +397,7 @@ def __5CKakuseiAura():
     SetScaleX(200)
     AddX(130000)
 
+
 @State
 def __5CKakuseiAura_oku():
 
@@ -395,6 +418,7 @@ def __5CKakuseiAura_oku():
     SetScaleY(100)
     SetScaleX(200)
     AddX(130000)
+
 
 @State
 def __2CKakuseiAura():
@@ -420,6 +444,7 @@ def __2CKakuseiAura():
     RotationAngle(-20000)
     ConstantAlphaModifier(-30)
 
+
 @State
 def Kakusei3CAura():
 
@@ -431,7 +456,7 @@ def Kakusei3CAura():
         SetScaleY(350)
         SetScaleX(400)
         AlphaValue(200)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 3)
     RotationAngle(15000)
     sprite('null', 40)
@@ -443,6 +468,7 @@ def Kakusei3CAura():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def Kakusei3CAuraFire():
 
@@ -452,11 +478,12 @@ def Kakusei3CAuraFire():
         E0EAEffectPosition(3)
         BlendMode_Add()
         RotationAngle(180000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AirThrowAura1():
@@ -472,6 +499,7 @@ def AirThrowAura1():
         RotationAngle(30000)
     sprite('null', 40)
 
+
 @State
 def AirThrowAura2():
 
@@ -484,13 +512,14 @@ def AirThrowAura2():
         SetScaleX(400)
         AlphaValue(200)
         RotationAngle(30000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     label(1)
     sprite('null', 1)
     AddX(-20000)
     AddY(-30000)
     RotationAngle(20000)
+
 
 @State
 def AirThrowAuraFire():
@@ -501,11 +530,12 @@ def AirThrowAuraFire():
         E0EAEffectPosition(3)
         Flip()
         RotationAngle(-30000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def HoverDashAura():
@@ -519,16 +549,17 @@ def HoverDashAura():
         SetScaleX(400)
         AlphaValue(255)
         RotationAngle(-20000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     CreateObject('HoverDashFire', -1)
     label(1)
     sprite('null', 3)
-    PassbackAddActionMarkToFunction('HoverDashFire', 32)
+    TriggerUponForState('HoverDashFire', 32)
     AddY(5000)
     RotationAngle(-15000)
     SetScaleSpeedY(-70)
     ConstantAlphaModifier(-20)
+
 
 @State
 def HoverDashFire():
@@ -539,11 +570,12 @@ def HoverDashFire():
         E0EAEffectPosition(3)
         BlendMode_Add()
         RotationAngle(170000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def HoverDashAura_oku():
@@ -558,12 +590,13 @@ def HoverDashAura_oku():
         AlphaValue(200)
         RotationAngle(-25000)
         RenderLayer(5)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     label(1)
     sprite('null', 3)
     SetScaleSpeedY(-70)
     ConstantAlphaModifier(-20)
+
 
 @State
 def BackHoverDashAura():
@@ -577,12 +610,13 @@ def BackHoverDashAura():
         AlphaValue(200)
         RotationAngle(-25000)
         Flip()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     CreateObject('BackHoverDashFire', -1)
     label(1)
     sprite('null', 3)
     AlphaValue(0)
+
 
 @State
 def BackHoverDashFire():
@@ -593,11 +627,12 @@ def BackHoverDashFire():
         E0EAEffectPosition(3)
         BlendMode_Add()
         RotationAngle(160000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def BackHoverDashAura_oku():
@@ -612,11 +647,12 @@ def BackHoverDashAura_oku():
         RotationAngle(-20000)
         RenderLayer(5)
         Flip()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 40)
     label(1)
     sprite('null', 3)
     AlphaValue(0)
+
 
 @State
 def ShotD_Aura():
@@ -642,6 +678,7 @@ def ShotD_Aura():
     SetScaleY(150)
     SetScaleX(250)
 
+
 @State
 def ShotD_Aura_back():
 
@@ -661,6 +698,7 @@ def ShotD_Aura_back():
     RotationAngle(-45000)
     SetScaleY(150)
     SetScaleX(250)
+
 
 @State
 def AirShotAura():
@@ -682,6 +720,7 @@ def AirShotAura():
     SetScaleY(110)
     ConstantAlphaModifier(-30)
 
+
 @State
 def AirShotAura_oku():
 
@@ -698,6 +737,7 @@ def AirShotAura_oku():
     sprite('null', 4)
     SetScaleSpeedY(-60)
     ConstantAlphaModifier(-30)
+
 
 @State
 def ShieildBit():
@@ -730,14 +770,14 @@ def ShieildBit():
             sendToLabel(200)
 
         def upon_35():
-            PassbackAddActionMarkToFunction('Bit_wing00', 33)
-            PassbackAddActionMarkToFunction('Bit_wing01', 33)
+            TriggerUponForState('Bit_wing00', 33)
+            TriggerUponForState('Bit_wing01', 33)
             sendToLabel(100)
 
         def upon_41():
             clearUponHandler(41)
             sendToLabel(300)
-        if (not SLOT_21):
+        if not SLOT_21:
             SLOT_32 = 0
             if SLOT_2:
                 sendToLabel(300)
@@ -745,17 +785,17 @@ def ShieildBit():
         def upon_53():
             SLOT_32 = 0
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 TurnAround()
                 if SLOT_56:
                     PrivateFunction3(3, -125000, 150000, 15, 1)
                 else:
                     PrivateFunction3(3, -45000, 180000, 15, 1)
-            if (SLOT_32 <= 0):
+            if SLOT_32 <= 0:
                 if SLOT_2:
                     sendToLabel(300)
     sprite('vrizef431_00', 10)
@@ -766,8 +806,8 @@ def ShieildBit():
     CreateObject('Bit_wing01', 1)
     SetActionMark(1)
     sprite('keep', 1)
-    PassbackAddActionMarkToFunction('Bit_wing00', 32)
-    PassbackAddActionMarkToFunction('Bit_wing01', 32)
+    TriggerUponForState('Bit_wing00', 32)
+    TriggerUponForState('Bit_wing01', 32)
     label(0)
     sprite('vrizef431_00', 32767)
     label(100)
@@ -810,6 +850,7 @@ def ShieildBit():
     CreateParticle('izef_bit_lost', 100)
     DeleteObject(23)
 
+
 @State
 def Bit_wing00():
 
@@ -825,7 +866,7 @@ def Bit_wing00():
         def upon_32():
             E0EAEffectPosition(0)
             sendToLabel(0)
-        sendToLabelUpon(33, 100)
+        uponSendToLabel(33, 100)
         SetActionMark(1)
 
         def upon_48():
@@ -857,6 +898,7 @@ def Bit_wing00():
     AddRotationPerFrame(0)
     gotoLabel(0)
 
+
 @State
 def Bit_wing01():
 
@@ -872,7 +914,7 @@ def Bit_wing01():
         def upon_32():
             E0EAEffectPosition(0)
             sendToLabel(0)
-        sendToLabelUpon(33, 100)
+        uponSendToLabel(33, 100)
         SetActionMark(1)
 
         def upon_48():
@@ -904,6 +946,7 @@ def Bit_wing01():
     AddRotationPerFrame(0)
     gotoLabel(0)
 
+
 @State
 def Bit_particle():
 
@@ -916,6 +959,7 @@ def Bit_particle():
     CreateParticle('izef_bit_dust', 103)
     gotoLabel(0)
 
+
 @State
 def Bit_Particle_Attack():
 
@@ -926,6 +970,7 @@ def Bit_Particle_Attack():
         RemoveOnCallStateEnd(2)
         LinkParticle('izef_bit_attack')
     sprite('null', 35)
+
 
 @State
 def Bit_particle_add():
@@ -939,6 +984,7 @@ def Bit_particle_add():
     CreateParticle('izef_bit_dust', 103)
     gotoLabel(0)
 
+
 @State
 def EffLightSaber():
 
@@ -946,6 +992,7 @@ def EffLightSaber():
         Visibility(1)
         CallObject('IzEffLightSaber')
     sprite('null', 32767)
+
 
 @State
 def __6AZanzo():
@@ -968,6 +1015,7 @@ def __6AZanzo():
     CreateObject('6Afanel', -1)
     sprite('null', 10)
 
+
 @State
 def __6Afanel():
 
@@ -977,6 +1025,7 @@ def __6Afanel():
         RemoveOnCallStateEnd(3)
     sprite('iz210_f04', 3)
     AlphaValue(255)
+
 
 @State
 def __6BZanzo():
@@ -996,6 +1045,7 @@ def __6BZanzo():
         AlphaValue(200)
     sprite('vrizef211_f09', 3)
 
+
 @State
 def __6CZanzo():
 
@@ -1014,6 +1064,7 @@ def __6CZanzo():
         AlphaValue(200)
     sprite('vrizef212_f06', 2)
     sprite('vrizef212_f07', 3)
+
 
 @State
 def __5CZanzo():
@@ -1035,6 +1086,7 @@ def __5CZanzo():
     sprite('vrizef202_01', 7)
     ConstantAlphaModifier(-20)
 
+
 @State
 def Kaku5CZanzo():
 
@@ -1053,6 +1105,7 @@ def Kaku5CZanzo():
     sprite('vrizef203_00', 3)
     sprite('vrizef203_00', 4)
     ConstantAlphaModifier(-20)
+
 
 @State
 def __2CZanzo():
@@ -1077,6 +1130,7 @@ def __2CZanzo():
     sprite('vrizef232_02', 6)
     AlphaValue(100)
 
+
 @State
 def ParAtk2C():
 
@@ -1090,6 +1144,7 @@ def ParAtk2C():
     sprite('null', 10)
     sprite('null', 6)
     ConstantAlphaModifier(-40)
+
 
 @State
 def Kaku2CZanzo00():
@@ -1110,6 +1165,7 @@ def Kaku2CZanzo00():
     sprite('vrizef233_01', 10)
     CreateObject('ParAtk2C', 0)
 
+
 @State
 def Kaku2CZanzo01():
 
@@ -1128,6 +1184,7 @@ def Kaku2CZanzo01():
     sprite('vrizef233_02', 10)
     sprite('vrizef233_02', 10)
     ConstantAlphaModifier(-10)
+
 
 @State
 def __3CZanzo00():
@@ -1148,6 +1205,7 @@ def __3CZanzo00():
     sprite('vrizef235_00', 2)
     sprite('vrizef235_01', 10)
 
+
 @State
 def AIR5CZanzo():
 
@@ -1167,6 +1225,7 @@ def AIR5CZanzo():
     sprite('vrizef252_01', 7)
     E0EAEffectPosition(0)
 
+
 @State
 def ParSpDash_6():
 
@@ -1178,6 +1237,7 @@ def ParSpDash_6():
     AlphaValue(255)
     sprite('null', 6)
 
+
 @State
 def GuardCrushZanzo():
 
@@ -1188,6 +1248,7 @@ def GuardCrushZanzo():
         callSubroutine('LightSaverSwitch')
         RenderLayer(3)
     sprite('vrizef412_00', 10)
+
 
 @State
 def ThrowLock_MagicCircle():
@@ -1214,16 +1275,18 @@ def ThrowLock_MagicCircle():
     SetScaleXPerFrame(200)
     SetScaleSpeedY(100)
 
+
 @State
 def ThrowFunnel():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(22)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(33, 99)
+        uponSendToLabel(33, 99)
     sprite('iz311_f02', 32767)
     label(99)
     sprite('null', 1)
+
 
 @State
 def AirThrowLock_MagicCircle():
@@ -1251,6 +1314,7 @@ def AirThrowLock_MagicCircle():
     SetScaleXPerFrame(200)
     SetScaleSpeedY(100)
 
+
 @State
 def Iaimcircle():
 
@@ -1260,7 +1324,7 @@ def Iaimcircle():
         RemoveOnCallStateEnd(2)
         ParticleColorFromPalette(48, 48, 48)
         CallPrivateEffect('izef_iaimcircle')
-        sendToLabelUpon(33, 99)
+        uponSendToLabel(33, 99)
     sprite('null', 6)
     AlphaValue(0)
     ConstantAlphaModifier(30)
@@ -1276,6 +1340,7 @@ def Iaimcircle():
     SetScaleSpeed(200)
     ConstantAlphaModifier(-30)
 
+
 @State
 def Iaimcircle_EntryVsMu():
 
@@ -1286,7 +1351,7 @@ def Iaimcircle_EntryVsMu():
         RemoveOnCallStateEnd(3)
         ParticleColorFromPalette(48, 48, 48)
         CallPrivateEffect('izef_iaimcircle')
-        sendToLabelUpon(33, 99)
+        uponSendToLabel(33, 99)
     sprite('null', 6)
     AlphaValue(0)
     ConstantAlphaModifier(30)
@@ -1302,6 +1367,7 @@ def Iaimcircle_EntryVsMu():
     sprite('null', 8)
     SetScaleSpeed(200)
     ConstantAlphaModifier(-15)
+
 
 @State
 def izef_413_a():
@@ -1327,6 +1393,7 @@ def izef_413_a():
     sprite('vrizef_413_04', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def izef_413_b():
 
@@ -1351,6 +1418,7 @@ def izef_413_b():
     sprite('vrizef_413_15', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def izef_413_c():
 
@@ -1374,6 +1442,7 @@ def izef_413_c():
     sprite('vrizef_413_23', 3)
     sprite('vrizef_413_24', 3)
     ConstantAlphaModifier(-32)
+
 
 @State
 def Iai_SlashZanzo00():
@@ -1402,6 +1471,7 @@ def Iai_SlashZanzo00():
     sprite('vrizef_402_05', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def Iai_SlashZanzo_Gedan():
 
@@ -1428,6 +1498,7 @@ def Iai_SlashZanzo_Gedan():
     sprite('vrizef_402_14', 2)
     sprite('vrizef_402_15', 8)
     ConstantAlphaModifier(-32)
+
 
 @State
 def Iai_SlashZanzo_AntiAirA():
@@ -1457,6 +1528,7 @@ def Iai_SlashZanzo_AntiAirA():
     sprite('vrizef_404_05', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def Iai_SlashZanzo_AntiAirB():
 
@@ -1483,6 +1555,7 @@ def Iai_SlashZanzo_AntiAirB():
     sprite('vrizef_405_05', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def Iai_AntiAirNext_Zanzo():
 
@@ -1493,7 +1566,7 @@ def Iai_AntiAirNext_Zanzo():
         RenderLayer(3)
         callSubroutine('ShotColorSwitch')
         BlendMode_Add()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('vrizef_406_00', 3)
     CreateParticle('izef_Iai_feather', 0)
@@ -1507,6 +1580,7 @@ def Iai_AntiAirNext_Zanzo():
     AddY(-5000)
     sprite('vrizef_406_01', 5)
     ConstantAlphaModifier(-20)
+
 
 @State
 def IaiAntiAirNextAuraL():
@@ -1522,7 +1596,7 @@ def IaiAntiAirNextAuraL():
         SetScaleY(450)
         AlphaValue(255)
         RotationAngle(110000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 2)
     sprite('null', 2)
@@ -1539,6 +1613,7 @@ def IaiAntiAirNextAuraL():
     Size(300)
     Rotation(5000)
 
+
 @State
 def IaiAntiAirNextAuraR():
 
@@ -1552,7 +1627,7 @@ def IaiAntiAirNextAuraR():
         SetScaleY(450)
         AlphaValue(255)
         RotationAngle(110000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 2)
     sprite('null', 2)
@@ -1567,6 +1642,7 @@ def IaiAntiAirNextAuraR():
     AddX(5000)
     AddY(-10000)
     Rotation(5000)
+
 
 @State
 def Iai_AntiAir_Next_404F():
@@ -1585,6 +1661,7 @@ def Iai_AntiAir_Next_404F():
     sprite('iz404_04', 2)
     sprite('iz404_05', 6)
 
+
 @State
 def Iai_AntiAir_Next_404B():
 
@@ -1601,6 +1678,7 @@ def Iai_AntiAir_Next_404B():
     ConstantAlphaModifier(-20)
     sprite('iz404_04', 2)
     sprite('iz404_05', 6)
+
 
 @State
 def Iai_AntiAir_Next_405F():
@@ -1619,6 +1697,7 @@ def Iai_AntiAir_Next_405F():
     sprite('iz405_08', 2)
     sprite('iz405_09', 6)
 
+
 @State
 def Iai_AntiAir_Next_405B():
 
@@ -1636,6 +1715,7 @@ def Iai_AntiAir_Next_405B():
     sprite('iz405_08', 2)
     sprite('iz405_09', 6)
 
+
 @State
 def Iai_AntiAir_Next_408F():
 
@@ -1651,6 +1731,7 @@ def Iai_AntiAir_Next_408F():
     SetAcceleration(2000)
     ConstantAlphaModifier(-20)
     sprite('iz408_08', 7)
+
 
 @State
 def Iai_AntiAir_Next_408B():
@@ -1668,6 +1749,7 @@ def Iai_AntiAir_Next_408B():
     ConstantAlphaModifier(-20)
     sprite('iz408_08', 7)
 
+
 @State
 def Iai_AntiAir_Next_403F():
 
@@ -1684,6 +1766,7 @@ def Iai_AntiAir_Next_403F():
     physicsXImpulse(-80000)
     AlphaValue(128)
 
+
 @State
 def Iai_AntiAir_Next_403B():
 
@@ -1699,6 +1782,7 @@ def Iai_AntiAir_Next_403B():
     AddX(-400000)
     physicsXImpulse(80000)
     AlphaValue(128)
+
 
 @State
 def Iai_AntiAir_Next_406F():
@@ -1718,6 +1802,7 @@ def Iai_AntiAir_Next_406F():
     sprite('iz406_01', 4)
     sprite('iz406_02', 3)
 
+
 @State
 def Iai_AntiAir_Next_406B():
 
@@ -1736,6 +1821,7 @@ def Iai_AntiAir_Next_406B():
     sprite('iz406_01', 4)
     sprite('iz406_02', 3)
 
+
 @State
 def Iai_AntiAir_Next_413F():
 
@@ -1752,6 +1838,7 @@ def Iai_AntiAir_Next_413F():
     ConstantAlphaModifier(-20)
     sprite('iz413_16', 2)
     sprite('iz413_17', 6)
+
 
 @State
 def Iai_AntiAir_Next_413B():
@@ -1770,6 +1857,7 @@ def Iai_AntiAir_Next_413B():
     sprite('iz413_16', 2)
     sprite('iz413_17', 6)
 
+
 @State
 def Iai_hold():
 
@@ -1784,6 +1872,7 @@ def Iai_hold():
     CallCustomizableParticle('izef_Iai_hold', 0)
     gotoLabel(0)
 
+
 @State
 def Iai_hold_add():
 
@@ -1795,6 +1884,7 @@ def Iai_hold_add():
     sprite('null', 1)
     CreateParticle('izef_Iai_hold_add', 0)
     gotoLabel(0)
+
 
 @State
 def AirAssaultZanzo():
@@ -1819,6 +1909,7 @@ def AirAssaultZanzo():
     CreateParticle('izef_Iai_feather', 3)
     sprite('vrizef_408_02', 2)
     sprite('null', 5)
+
 
 @State
 def Ia_SlashNextZanzo():
@@ -1846,6 +1937,7 @@ def Ia_SlashNextZanzo():
     sprite('vrizef_402_15', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def Ia_SlashNextZanzo_EntryVsMu():
 
@@ -1872,6 +1964,7 @@ def Ia_SlashNextZanzo_EntryVsMu():
     sprite('vrizef_402_15', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def IaiSlashNextAura():
 
@@ -1891,10 +1984,11 @@ def IaiSlashNextAura():
     AddX(40000)
     RotationAngle(-25000)
 
+
 @State
 def DIST_IZShot():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -1910,10 +2004,11 @@ def DIST_IZShot():
     SetScaleSpeedY(-100)
     SetScaleSpeedY(-100)
 
+
 @State
 def DIST_IZSpecial_Shot():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -1929,6 +2024,7 @@ def DIST_IZSpecial_Shot():
     SetScaleSpeedY(-100)
     SetScaleSpeedY(-100)
 
+
 @State
 def Shot():
 
@@ -1940,10 +2036,10 @@ def Shot():
         AfterimageCount(3)
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
-        SLOT_7 = (SLOT_7 + 1)
+        SLOT_7 = SLOT_7 + 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         ContinueState(120)
         AttackLevel_(2)
         Damage(800)
@@ -1962,16 +2058,16 @@ def Shot():
         Unknown12052(1)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         callSubroutine('AdditionalExGage')
         callSubroutine('ShotColorSwitch')
@@ -2020,6 +2116,7 @@ def Shot():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Air_Shot():
 
@@ -2031,10 +2128,10 @@ def Air_Shot():
         AfterimageCount(3)
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
-        SLOT_7 = (SLOT_7 + 1)
+        SLOT_7 = SLOT_7 + 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         ContinueState(120)
         AttackLevel_(2)
         Damage(800)
@@ -2053,17 +2150,17 @@ def Air_Shot():
         Unknown12052(1)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(54, 580)
+        uponSendToLabel(LANDING, 1)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         callSubroutine('AdditionalExGage')
         callSubroutine('ShotColorSwitch')
@@ -2122,53 +2219,58 @@ def Air_Shot():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def shotD_Matome():
     sprite('iz400_expoint', 90)
     CreateObject('Shot_D', 0)
     CreateObject('Shot_D', 1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('Shot_D', 2)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('Shot_D_circle', 1)
+
 
 @State
 def shotD_MatomeOD():
     sprite('iz400_expointOD', 90)
     CreateObject('Shot_D_OD', 0)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('Shot_D_OD', 1)
     CreateObject('Shot_D_OD', 2)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('Shot_D_OD', 3)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('Shot_D_OD', 4)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     CreateObject('Shot_D_OD_circle', 1)
+
 
 @State
 def AirshotD_Matome():
     sprite('iz401_expoint', 90)
     CreateObject('Air_Shot_D', 0)
     CreateObject('Air_Shot_D', 1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('Air_Shot_D', 2)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('Air_Shot_D_circle', 0)
+
 
 @State
 def AirshotD_MatomeOD():
     sprite('iz401_expointOD', 90)
     CreateObject('Air_Shot_D_OD', 0)
     CreateObject('Air_Shot_D_OD', 1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('Air_Shot_D_OD', 2)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CreateObject('Air_Shot_D_OD', 3)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('Air_Shot_D_OD', 4)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     CreateObject('Air_Shot_D_OD_circle', 0)
+
 
 @State
 def Shot_D():
@@ -2182,10 +2284,10 @@ def Shot_D():
         AfterimageCount(3)
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
-        SLOT_7 = (SLOT_7 + 1)
+        SLOT_7 = SLOT_7 + 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         ContinueState(120)
         AttackLevel_(2)
         Damage(600)
@@ -2205,16 +2307,16 @@ def Shot_D():
         VoodooDamageMultiplier(2)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         callSubroutine('AdditionalExGage')
         callSubroutine('ShotColorSwitch')
@@ -2279,6 +2381,7 @@ def Shot_D():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Air_Shot_D():
 
@@ -2291,10 +2394,10 @@ def Air_Shot_D():
         AfterimageCount(3)
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
-        SLOT_7 = (SLOT_7 + 1)
+        SLOT_7 = SLOT_7 + 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         ContinueState(120)
         AttackLevel_(2)
         Damage(600)
@@ -2314,17 +2417,17 @@ def Air_Shot_D():
         VoodooDamageMultiplier(2)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(54, 580)
+        uponSendToLabel(LANDING, 1)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         callSubroutine('AdditionalExGage')
         callSubroutine('ShotColorSwitch')
@@ -2395,6 +2498,7 @@ def Air_Shot_D():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Shot_D_OD():
 
@@ -2407,10 +2511,10 @@ def Shot_D_OD():
         AfterimageCount(3)
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
-        SLOT_7 = (SLOT_7 + 1)
+        SLOT_7 = SLOT_7 + 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         ContinueState(120)
         AttackLevel_(2)
         Damage(600)
@@ -2430,16 +2534,16 @@ def Shot_D_OD():
         VoodooDamageMultiplier(2)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         callSubroutine('AdditionalExGage')
         callSubroutine('ShotColorSwitch')
@@ -2504,6 +2608,7 @@ def Shot_D_OD():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Air_Shot_D_OD():
 
@@ -2516,10 +2621,10 @@ def Air_Shot_D_OD():
         AfterimageCount(3)
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
-        SLOT_7 = (SLOT_7 + 1)
+        SLOT_7 = SLOT_7 + 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         ContinueState(120)
         AttackLevel_(2)
         Damage(600)
@@ -2539,17 +2644,17 @@ def Air_Shot_D_OD():
         VoodooDamageMultiplier(2)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(54, 580)
+        uponSendToLabel(LANDING, 1)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         callSubroutine('AdditionalExGage')
         callSubroutine('ShotColorSwitch')
@@ -2620,6 +2725,7 @@ def Air_Shot_D_OD():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Shot_D_circle():
     sprite('null', 1)
@@ -2628,6 +2734,7 @@ def Shot_D_circle():
     ParticleColorFromPalette(240, 241, 241)
     CallCustomizableParticle('izef_shot_circle', 100)
 
+
 @State
 def Shot_D_OD_circle():
     sprite('null', 1)
@@ -2635,6 +2742,7 @@ def Shot_D_OD_circle():
     ParticleSize(1750)
     ParticleColorFromPalette(240, 241, 241)
     CallCustomizableParticle('izef_shot_circle', 100)
+
 
 @State
 def Air_Shot_D_circle():
@@ -2645,6 +2753,7 @@ def Air_Shot_D_circle():
     ParticleColorFromPalette(240, 241, 241)
     CallCustomizableParticle('izef_shot_circle', 100)
 
+
 @State
 def Air_Shot_D_OD_circle():
     sprite('null', 1)
@@ -2653,6 +2762,7 @@ def Air_Shot_D_OD_circle():
     ParticleRotationAngle(45000)
     ParticleColorFromPalette(240, 241, 241)
     CallCustomizableParticle('izef_shot_circle', 100)
+
 
 @State
 def Special_Shot():
@@ -2683,8 +2793,8 @@ def Special_Shot():
         AttackP1(85)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
-        if SLOT_110:
+        uponSendToLabel(54, 580)
+        if SLOT_OverdriveTimer:
             SLOT_52 = 1
         callSubroutine('ShotColorSwitch')
         ParticleColorFromPalette(240, 241, 241)
@@ -2692,24 +2802,24 @@ def Special_Shot():
         ParticleColorFromPalette(241, 240, 240)
         CallCustomizableParticle('izef_shot_dust', 100)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 32)
+        ObjectUpon(STATE_END, 32)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 33)
+        ObjectUpon(STATE_END, 33)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 34)
+        ObjectUpon(STATE_END, 34)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 35)
+        ObjectUpon(STATE_END, 35)
         if SLOT_52:
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 36)
+            ObjectUpon(STATE_END, 36)
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 37)
+            ObjectUpon(STATE_END, 37)
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 38)
+            ObjectUpon(STATE_END, 38)
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 39)
+            ObjectUpon(STATE_END, 39)
     sprite('vrizef_shot01a', 5)
     AlphaValue(0)
     CreateObject('Shot_particle', 100)
@@ -2763,6 +2873,7 @@ def Special_Shot():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Special_Shot_Event():
 
@@ -2787,22 +2898,22 @@ def Special_Shot_Event():
         AttackP1(85)
         AttackOff()
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
         callSubroutine('ShotColorSwitch')
         ParticleColorFromPalette(240, 241, 241)
         CallCustomizableParticle('izef_SPshot_circle', 100)
         ParticleColorFromPalette(241, 240, 240)
         CallCustomizableParticle('izef_shot_dust', 100)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 32)
+        ObjectUpon(STATE_END, 32)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 33)
+        ObjectUpon(STATE_END, 33)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 34)
+        ObjectUpon(STATE_END, 34)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 35)
+        ObjectUpon(STATE_END, 35)
     sprite('vrizef_shot01a', 5)
     AlphaValue(0)
     CreateObject('Shot_particle', 100)
@@ -2858,6 +2969,7 @@ def Special_Shot_Event():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Special_Shot_Air():
 
@@ -2885,11 +2997,11 @@ def Special_Shot_Air():
         PushbackX(0)
         AttackP1(85)
         AttackOff()
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_52 = 1
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(54, 580)
+        uponSendToLabel(LANDING, 1)
         callSubroutine('ShotColorSwitch')
         ParticleColorFromPalette(240, 241, 241)
         ParticleRotationAngle(45000)
@@ -2897,24 +3009,24 @@ def Special_Shot_Air():
         ParticleColorFromPalette(241, 240, 240)
         CallCustomizableParticle('izef_shot_dust', 100)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 32)
+        ObjectUpon(STATE_END, 32)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 33)
+        ObjectUpon(STATE_END, 33)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 34)
+        ObjectUpon(STATE_END, 34)
         CreateObject('Special_Shot_Next', -1)
-        ObjectUpon(1, 35)
+        ObjectUpon(STATE_END, 35)
         if SLOT_52:
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 36)
+            ObjectUpon(STATE_END, 36)
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 37)
+            ObjectUpon(STATE_END, 37)
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 38)
+            ObjectUpon(STATE_END, 38)
             CreateObject('Special_Shot_Next', -1)
-            ObjectUpon(1, 39)
+            ObjectUpon(STATE_END, 39)
     sprite('vrizef_shot01a', 5)
     RotationAngle(45000)
     physicsXImpulse(300)
@@ -2976,6 +3088,7 @@ def Special_Shot_Air():
     CallCustomizableParticle('izef_shot_delete_circle', 100)
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
+
 
 @State
 def Special_Shot_Next():
@@ -3102,7 +3215,7 @@ def Special_Shot_Next():
             ParticleRotationAngle(-90000)
             CallCustomizableParticle('izef_shot_circle_small', 1)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
     label(7)
     sprite('vrizef_shot02a', 1)
     sprite('vrizef_shot02b', 1)
@@ -3211,8 +3324,8 @@ def Special_Shot_Next():
     XSpeed2(40000, 0)
     sprite('vrizef_shot02', 20)
     RefreshMultihit()
-    sendToLabelUpon(10, 11)
-    sendToLabelUpon(2, 11)
+    uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 11)
+    uponSendToLabel(LANDING, 11)
     label(11)
     sprite('vrizef_shot02', 12)
     AttackOff()
@@ -3240,6 +3353,7 @@ def Special_Shot_Next():
     ParticleColorFromPalette(241, 240, 240)
     CallCustomizableParticle('izef_shot_dust', 100)
 
+
 @State
 def Shot_particle():
 
@@ -3251,6 +3365,7 @@ def Shot_particle():
     sprite('null', 1)
     CreateParticle('izef_shot_dust', 100)
     gotoLabel(0)
+
 
 @State
 def WarpHoverAura():
@@ -3281,6 +3396,7 @@ def WarpHoverAura():
     AddY(30000)
     RotationAngle(-25000)
 
+
 @State
 def WarpHoverAura_Air():
 
@@ -3306,6 +3422,7 @@ def WarpHoverAura_Air():
     AddY(-10000)
     sprite('null', 2)
 
+
 @State
 def WarpEff():
 
@@ -3318,6 +3435,7 @@ def WarpEff():
     ParticleSize(900)
     CallCustomizableParticle('izef_warpair00', 100)
 
+
 @State
 def WarpEff_D():
 
@@ -3329,6 +3447,7 @@ def WarpEff_D():
     ParticleColorFromPalette(240, 241, 241)
     CallCustomizableParticle('izef_warpair01', 100)
     CreateParticle('izef_warpair', 100)
+
 
 @State
 def Warp_D_Land_Zanzo00():
@@ -3344,6 +3463,7 @@ def Warp_D_Land_Zanzo00():
     physicsXImpulse(16000)
     ConstantAlphaModifier(-30)
 
+
 @State
 def Warp_D_Land_Zanzo01():
 
@@ -3357,6 +3477,7 @@ def Warp_D_Land_Zanzo01():
     CharacterFlash(16777215, 6, 2)
     physicsXImpulse(-16000)
     ConstantAlphaModifier(-30)
+
 
 @State
 def Warp_A_Zanzo00():
@@ -3373,6 +3494,7 @@ def Warp_A_Zanzo00():
     ConstantAlphaModifier(30)
     AlphaValue(0)
 
+
 @State
 def Warp_A_Zanzo01():
 
@@ -3388,6 +3510,7 @@ def Warp_A_Zanzo01():
     ConstantAlphaModifier(30)
     AlphaValue(0)
 
+
 @State
 def firespark():
 
@@ -3395,6 +3518,7 @@ def firespark():
         LinkParticle('izef_firespark')
     sprite('null', 45)
     Flip()
+
 
 @State
 def Warp_D_Air_Zanzo00():
@@ -3410,6 +3534,7 @@ def Warp_D_Air_Zanzo00():
     physicsXImpulse(16000)
     ConstantAlphaModifier(-30)
 
+
 @State
 def Warp_D_Air_Zanzo01():
 
@@ -3423,6 +3548,7 @@ def Warp_D_Air_Zanzo01():
     CharacterFlash(16777215, 6, 2)
     physicsXImpulse(-16000)
     ConstantAlphaModifier(-30)
+
 
 @State
 def DD_3d_zanzoh():
@@ -3442,6 +3568,7 @@ def DD_3d_zanzoh():
     sprite('null', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def DD_pt_edge():
 
@@ -3453,6 +3580,7 @@ def DD_pt_edge():
     sprite('null', 60)
     ParticleColorFromPalette(246, 246, 246)
     CallCustomizableParticle('izef_DD_edge', 100)
+
 
 @State
 def DD_pt_circle():
@@ -3467,6 +3595,7 @@ def DD_pt_circle():
     LinkParticle('izef_DD_circle')
     sprite('null', 30)
     ConstantAlphaModifier(-8)
+
 
 @State
 def DD_3Dcircle_out():
@@ -3489,6 +3618,7 @@ def DD_3Dcircle_out():
     sprite('null', 40)
     SetScaleSpeed(20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def DD_3Dcircle_in():
@@ -3515,6 +3645,7 @@ def DD_3Dcircle_in():
     SetScaleSpeed(20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def DD_sword():
 
@@ -3536,6 +3667,7 @@ def DD_sword():
     CreateParticle('izef_dellight', 5)
     CreateParticle('izef_dellight', 6)
 
+
 @State
 def DD_sword_env():
 
@@ -3549,6 +3681,7 @@ def DD_sword_env():
     sprite('vrizef430swd_env', 20)
     sprite('vrizef430swd_env', 10)
     ConstantAlphaModifier(-10)
+
 
 @State
 def DD_3d_swordaura():
@@ -3564,11 +3697,12 @@ def DD_3d_swordaura():
         Eff3DEffect('izef_430_aura.DIG', '')
         FaceSpawnLocation()
         RenderLayer(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 8)
     ConstantAlphaModifier(-32)
+
 
 @State
 def DD_sword_OD():
@@ -3597,6 +3731,7 @@ def DD_sword_OD():
     CreateParticle('izef_dellight', 11)
     CreateParticle('izef_dellight', 12)
 
+
 @State
 def DD_sword_env_OD():
 
@@ -3610,6 +3745,7 @@ def DD_sword_env_OD():
     sprite('vrizef430swd01_env', 20)
     sprite('vrizef430swd01_env', 10)
     ConstantAlphaModifier(-10)
+
 
 @State
 def UltimateAssaultAura():
@@ -3630,6 +3766,7 @@ def UltimateAssaultAura():
     SetScaleY(200)
     RotationAngle(-5000)
 
+
 @State
 def UltimateAssaultAura_back():
 
@@ -3649,6 +3786,7 @@ def UltimateAssaultAura_back():
     SetScaleY(200)
     RotationAngle(-5000)
 
+
 @State
 def iz431_mahojin():
 
@@ -3666,6 +3804,7 @@ def iz431_mahojin():
     sprite('null', 24)
     ConstantAlphaModifier(-10)
 
+
 @State
 def SummonFunnelAuraR():
 
@@ -3678,7 +3817,7 @@ def SummonFunnelAuraR():
         BlendMode_Add()
         SetScaleX(750)
         RotationAngle(-35000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
@@ -3686,6 +3825,7 @@ def SummonFunnelAuraR():
     sprite('null', 3)
     Size(600)
     Rotation(-3000)
+
 
 @State
 def SummonFunnelAuraL():
@@ -3700,7 +3840,7 @@ def SummonFunnelAuraL():
         Flip()
         SetScaleX(750)
         RotationAngle(-35000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
@@ -3708,6 +3848,7 @@ def SummonFunnelAuraL():
     sprite('null', 3)
     Size(600)
     Rotation(-3000)
+
 
 @State
 def SummonFunnelF():
@@ -3730,9 +3871,10 @@ def SummonFunnelF():
     sprite('iz431_f20', 16)
     sprite('iz431_f20', 16)
     sprite('iz431_f24', 4)
-    PassbackAddActionMarkToFunction('SummonFunnelAuraL', 32)
-    PassbackAddActionMarkToFunction('SummonFunnelAuraR', 32)
+    TriggerUponForState('SummonFunnelAuraL', 32)
+    TriggerUponForState('SummonFunnelAuraR', 32)
     sprite('iz431_f25', 4)
+
 
 @State
 def AST1st_mahojin():
@@ -3753,6 +3895,7 @@ def AST1st_mahojin():
     sprite('null', 24)
     ConstantAlphaModifier(-10)
 
+
 @State
 def AST_changelightC():
 
@@ -3764,6 +3907,7 @@ def AST_changelightC():
         LinkParticle('izef_AH_changelightC')
     sprite('null', 60)
 
+
 @State
 def AST_changeBG():
 
@@ -3773,13 +3917,14 @@ def AST_changeBG():
         RenderLayer(5)
         BlendMode_Add()
         LinkParticle('izef_AH_changeBG')
-        sendToLabelUpon(32, 90)
+        uponSendToLabel(32, 90)
     sprite('null', 60)
     loopRest()
     label(90)
     sprite('null', 5)
     AlphaValue(0)
     ConstantAlphaModifier(-25)
+
 
 @State
 def AstWhite():
@@ -3799,6 +3944,7 @@ def AstWhite():
     AlphaValue(240)
     ConstantAlphaModifier(-8)
 
+
 @State
 def AST_1stAuraL():
 
@@ -3811,7 +3957,7 @@ def AST_1stAuraL():
         BlendMode_Add()
         SetScaleX(1000)
         SetScaleY(1400)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 16)
     sprite('null', 6)
     AddX(-20000)
@@ -3832,6 +3978,7 @@ def AST_1stAuraL():
     sprite('null', 20)
     SetScaleY(1000)
     label(1)
+
 
 @State
 def AST_1stAuraR():
@@ -3872,6 +4019,7 @@ def AST_1stAuraR():
     SetScaleY(1000)
     SetScaleX(400)
     AddX(-20000)
+
 
 @State
 def AST_2ndAurafront():
@@ -3929,6 +4077,7 @@ def AST_2ndAurafront():
     Rotation(-28000)
     AddX(30000)
 
+
 @State
 def AST_2ndAuraback():
 
@@ -3973,6 +4122,7 @@ def AST_2ndAuraback():
     sprite('null', 4)
     sprite('null', 4)
 
+
 @State
 def AST_2ndAura():
 
@@ -3982,6 +4132,7 @@ def AST_2ndAura():
     sprite('iz450cutin_15', 5)
     CreateObject('AST_2ndAurafront', 0)
     CreateObject('AST_2ndAuraback', 1)
+
 
 @State
 def AST_3rdAurafront():
@@ -3993,7 +4144,7 @@ def AST_3rdAurafront():
         RenderLayer(1)
         BlendMode_Add()
         SetScaleX(900)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     RotationAngle(-30000)
     label(1)
@@ -4016,6 +4167,7 @@ def AST_3rdAurafront():
     SetScaleX(800)
     AddY(15000)
 
+
 @State
 def AST_3rdAuraback():
 
@@ -4027,7 +4179,7 @@ def AST_3rdAuraback():
         BlendMode_Add()
         Size(900)
         AlphaValue(200)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     RotationAngle(-45000)
     label(1)
@@ -4049,6 +4201,7 @@ def AST_3rdAuraback():
     SetScaleY(1400)
     SetScaleX(400)
     AddY(15000)
+
 
 @State
 def iz450cutin():
@@ -4125,6 +4278,7 @@ def iz450cutin():
     sprite('iz450cutin_25', 4)
     physicsYImpulse(0)
 
+
 @State
 def iz450_shield():
 
@@ -4132,6 +4286,7 @@ def iz450_shield():
         RenderLayer(4)
         BlendMode_Normal()
     sprite('iz450_26ex', 45)
+
 
 @State
 def iz450_shieldlight():
@@ -4146,6 +4301,7 @@ def iz450_shieldlight():
     CallCustomizableParticle('izef_shieldDel', 0)
     ParticleSize(1500)
     CallCustomizableParticle('izef_shieldDel', 1)
+
 
 @State
 def iz450dammy():
@@ -4172,8 +4328,8 @@ def iz450dammy():
     CreateObject('iz450_shieldlight', -1)
     sprite('iz450_30', 5)
     sprite('iz450_31', 5)
-    PassbackAddActionMarkToFunction('AST_3rdAurafront', 32)
-    PassbackAddActionMarkToFunction('AST_3rdAuraback', 32)
+    TriggerUponForState('AST_3rdAurafront', 32)
+    TriggerUponForState('AST_3rdAuraback', 32)
     sprite('iz450_32', 5)
     PrivateSE('izse_05')
     sprite('iz450_33', 5)
@@ -4248,14 +4404,14 @@ def iz450dammy():
     AddY(-2000)
     physicsXImpulse(-5000)
     physicsYImpulse(-2000)
-    PassbackAddActionMarkToFunction('izef_ah_javelin_backfire', 32)
+    TriggerUponForState('izef_ah_javelin_backfire', 32)
     sprite('iz450_42', 5)
     XImpulseAcceleration(50)
     YAccel(50)
     sprite('iz450_43', 5)
     XImpulseAcceleration(40)
     YAccel(40)
-    PassbackAddActionMarkToFunction('izef_ah_javelin_backfire', 33)
+    TriggerUponForState('izef_ah_javelin_backfire', 33)
     sprite('iz450_41', 5)
     XImpulseAcceleration(30)
     YAccel(30)
@@ -4267,6 +4423,7 @@ def iz450dammy():
     physicsYImpulse(0)
     sprite('iz450_41', 5)
     sprite('iz450_42', 5)
+
 
 @State
 def izef_ah_javelinwind():
@@ -4296,6 +4453,7 @@ def izef_ah_javelinwind():
     SetScaleSpeedY(30)
     SetScaleXPerFrame(100)
 
+
 @State
 def izef_ah_javelin():
 
@@ -4304,8 +4462,8 @@ def izef_ah_javelin():
         RemoveOnCallStateEnd(3)
         RenderLayer(5)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 10)
     AlphaValue(0)
     ConstantAlphaModifier(24)
@@ -4328,6 +4486,7 @@ def izef_ah_javelin():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def izef_ah_cloud():
 
@@ -4340,6 +4499,7 @@ def izef_ah_cloud():
         RenderLayer(2)
         AlphaValue(80)
     sprite('null', 550)
+
 
 @State
 def izef_ah_javelin2():
@@ -4360,6 +4520,7 @@ def izef_ah_javelin2():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def izef_ah_javelin3():
 
@@ -4378,6 +4539,7 @@ def izef_ah_javelin3():
     sprite('null', 60)
     CreateObject('izef_ah_killwhite', -1)
 
+
 @State
 def izef_ah_Ryuhai():
 
@@ -4390,6 +4552,7 @@ def izef_ah_Ryuhai():
         BlendMode_Normal()
         Eff3DEffect('izef_ah_kirikae', '')
     sprite('null', 30)
+
 
 @State
 def izef_ah_kirikaeWhite():
@@ -4410,6 +4573,7 @@ def izef_ah_kirikaeWhite():
     sprite('vr_white', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def izef_ah_killwhite():
 
@@ -4428,6 +4592,7 @@ def izef_ah_killwhite():
     sprite('vr_white', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def izef_ah_javelin_backfire():
 
@@ -4436,8 +4601,8 @@ def izef_ah_javelin_backfire():
         RemoveOnCallStateEnd(3)
         RenderLayer(5)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 10)
     Size(1400)
     AlphaValue(0)
@@ -4452,6 +4617,7 @@ def izef_ah_javelin_backfire():
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AstWhitefinish():
@@ -4472,6 +4638,7 @@ def AstWhitefinish():
     sprite('vr_white', 30)
     ConstantAlphaModifier(-20)
 
+
 @State
 def izef_ah_javelin00():
 
@@ -4480,7 +4647,7 @@ def izef_ah_javelin00():
         RenderLayer(0)
         RotationAngle(-30000)
         Size(2000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 30)
     AddX(-1240000)
     AddY(-475000)
@@ -4499,6 +4666,7 @@ def izef_ah_javelin00():
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def izef_ah_javelin_backfire00():
@@ -4508,7 +4676,7 @@ def izef_ah_javelin_backfire00():
         RenderLayer(0)
         RotationAngle(-30000)
         Size(2000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 30)
     AddX(-1240000)
     AddY(-475000)
@@ -4527,6 +4695,7 @@ def izef_ah_javelin_backfire00():
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def ASTbg():
@@ -4538,12 +4707,13 @@ def ASTbg():
         E0EAEffectPosition(3)
         RenderLayer(2)
         AbsoluteY(250000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     LinkParticle('izef_shot_ahspeed')
     label(1)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AstralHeatNotKillObject():
@@ -4564,6 +4734,7 @@ def AstralHeatNotKillObject():
         Visibility(1)
     sprite('vrASTact', 1)
     TeleportToObject(22)
+
 
 @State
 def AstralHeatKillObject():
@@ -4586,6 +4757,7 @@ def AstralHeatKillObject():
     sprite('vrASTact', 1)
     TeleportToObject(22)
 
+
 @State
 def Twindrive0():
 
@@ -4597,13 +4769,14 @@ def Twindrive0():
         PaletteIndex(1)
         ColorForTransition(4278255488)
     label(0)
-    if (SLOT_60 == 1):
+    if SLOT_60 == 1:
         CreateParticle('izef_twindrivePtc_f', 0)
-    if (SLOT_60 == 2):
+    if SLOT_60 == 2:
         CreateParticle('izef_twindrivePtc_b', 0)
     sprite('vr_light', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Twindrive1():
@@ -4616,13 +4789,14 @@ def Twindrive1():
         PaletteIndex(1)
         ColorForTransition(4278255488)
     label(0)
-    if (SLOT_60 == 1):
+    if SLOT_60 == 1:
         CreateParticle('izef_twindrivePtc_f', -1)
-    if (SLOT_60 == 2):
+    if SLOT_60 == 2:
         CreateParticle('izef_twindrivePtc_b', -1)
     sprite('vr_light', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def TwindriveParts_Front0():
@@ -4638,6 +4812,7 @@ def TwindriveParts_Front0():
     sprite('vr_light', 3)
     CreateParticle('izef_twindrivePtc_f', 0)
 
+
 @State
 def iz601amourlight():
 
@@ -4650,6 +4825,7 @@ def iz601amourlight():
     ConstantAlphaModifier(-20)
     sprite('vrizef601_11', 7)
 
+
 @State
 def iz601swdlight():
 
@@ -4660,6 +4836,7 @@ def iz601swdlight():
     sprite('vrizef601_18', 7)
     ConstantAlphaModifier(-20)
     sprite('vrizef601_19', 7)
+
 
 @State
 def EntryFallSword():
@@ -4686,11 +4863,12 @@ def EntryFallSword():
     sprite('iz601_f00', 6)
     CreateParticle('izef_entrylight01', 0)
 
+
 @State
 def EventJNVsRCDownLoop():
     PaletteIndex(7)
     XPositionRelativeFacing(140000)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     label(0)
     sprite('jn063_09', 1)
     loopRest()
@@ -4710,9 +4888,10 @@ def EventJNVsRCDownLoop():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def EventTBYoroke():
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     PaletteIndex(3)
     label(0)
     sprite('tb070_02', 5)
@@ -4722,6 +4901,7 @@ def EventTBYoroke():
     clearUponHandler(32)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def BurstDDTwindrive0():
@@ -4735,13 +4915,14 @@ def BurstDDTwindrive0():
         PaletteIndex(1)
         ColorForTransition(4278255488)
     label(0)
-    if (SLOT_60 == 1):
+    if SLOT_60 == 1:
         CreateParticle('izef_twindrivePtc_f', 0)
-    if (SLOT_60 == 2):
+    if SLOT_60 == 2:
         CreateParticle('izef_twindrivePtc_b', 0)
     sprite('vr_light', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def BurstDDTwindrive1():
@@ -4755,13 +4936,14 @@ def BurstDDTwindrive1():
         PaletteIndex(1)
         ColorForTransition(4278255488)
     label(0)
-    if (SLOT_60 == 1):
+    if SLOT_60 == 1:
         CreateParticle('izef_twindrivePtc_f', -1)
-    if (SLOT_60 == 2):
+    if SLOT_60 == 2:
         CreateParticle('izef_twindrivePtc_b', -1)
     sprite('vr_light', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def BurstDDFunnel():
@@ -4804,7 +4986,7 @@ def BurstDDFunnel():
     ScreenShake(10000, 10000)
     RefreshMultihit()
     sprite('iz440_f09', 3)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     sprite('iz440_f10', 2)
     sprite('iz440_f11', 2)
     sprite('iz440_f13', 2)
@@ -4825,7 +5007,7 @@ def BurstDDFunnel():
     sprite('iz440_f19', 5)
     sprite('iz440_f21', 5)
     sprite('iz440_f23', 5)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('iz440_f24', 6)
     sprite('iz440_f25', 6)
     sprite('iz440_f26', 6)
@@ -4840,9 +5022,9 @@ def BurstDDFunnel():
     AlphaValue(0)
     ConstantAlphaModifier(0)
     CreateObject('BurstDDFunnelLastAtk', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('BurstDDFunnelLastAtk', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     ExitState()
     label(100)
     sprite('iz440_f05', 2)
@@ -4867,8 +5049,8 @@ def BurstDDFunnel():
     sprite('iz440_f12', 3)
     RefreshMultihit()
     sprite('iz440_f09', 3)
-    PassbackAddActionMarkToFunction('BurstDDSlashEX', 32)
-    ObjectUpon(3, 32)
+    TriggerUponForState('BurstDDSlashEX', 32)
+    ObjectUpon(EVERY_FRAME, 32)
     sprite('iz440_f10', 2)
     sprite('iz440_f11', 2)
     sprite('iz440_f13', 2)
@@ -4896,10 +5078,10 @@ def BurstDDFunnel():
     RefreshMultihit()
     DamageFromStateOnly('BurstDDFunnelLastAtk')
     sprite('iz440_f19', 5)
-    PassbackAddActionMarkToFunction('BurstDDSlashEX2', 32)
+    TriggerUponForState('BurstDDSlashEX2', 32)
     sprite('iz440_f21', 5)
     sprite('iz440_f23', 5)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('iz440_f24', 6)
     sprite('iz440_f25', 6)
     sprite('iz440_f26', 6)
@@ -4914,10 +5096,11 @@ def BurstDDFunnel():
     AlphaValue(0)
     ConstantAlphaModifier(0)
     CreateObject('BurstDDFunnelLastAtk', -1)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CreateObject('BurstDDFunnelLastAtk', -1)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     ExitState()
+
 
 @State
 def BurstDDFunnelLastAtk():
@@ -4991,7 +5174,7 @@ def BurstDDFunnelLastAtk():
     AlphaValue(255)
     physicsXImpulse(-150000)
     physicsYImpulse(-100000)
-    PassbackAddActionMarkToFunction('BurstDD_MagicCircle', 32)
+    TriggerUponForState('BurstDD_MagicCircle', 32)
     sprite('iz440_f29ex02', 1)
     RefreshMultihit()
     sprite('iz440_f29ex02', 2)
@@ -5007,7 +5190,7 @@ def BurstDDFunnelLastAtk():
     sprite('iz440_f29ex02', 4)
     XImpulseAcceleration(50)
     YAccel(50)
-    PassbackAddActionMarkToFunction('BurstDDLastAtk', 32)
+    TriggerUponForState('BurstDDLastAtk', 32)
     ExitState()
     label(100)
     sprite('null', 4)
@@ -5036,7 +5219,7 @@ def BurstDDFunnelLastAtk():
     AlphaValue(255)
     physicsXImpulse(-150000)
     physicsYImpulse(-100000)
-    PassbackAddActionMarkToFunction('BurstDD_MagicCircle', 32)
+    TriggerUponForState('BurstDD_MagicCircle', 32)
     sprite('iz440_f29ex02', 1)
     RefreshMultihit()
     sprite('iz440_f29ex02', 2)
@@ -5051,8 +5234,9 @@ def BurstDDFunnelLastAtk():
     sprite('iz440_f29ex02', 4)
     XImpulseAcceleration(50)
     YAccel(50)
-    PassbackAddActionMarkToFunction('BurstDDLastAtkEX', 32)
+    TriggerUponForState('BurstDDLastAtkEX', 32)
     ExitState()
+
 
 @State
 def BurstDD_MagicCircle():
@@ -5065,7 +5249,7 @@ def BurstDD_MagicCircle():
         Size(800)
         ColorForTransition(4294967220)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             TeleportToObject(22)
             AddX(-25000)
             AddY(200000)
@@ -5082,6 +5266,7 @@ def BurstDD_MagicCircle():
     SetScaleXPerFrame(200)
     SetScaleSpeedY(100)
 
+
 @State
 def BurstDDCamera():
 
@@ -5089,20 +5274,23 @@ def BurstDDCamera():
         RemoveOnCallStateEnd(3)
         CancelIfPlayerHit(3)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             TeleportToObject(3)
             ForceFaceSprite()
             SLOT_51 = SLOT_19
-            SLOT_51 = (SLOT_51 / 2)
+            SLOT_51 = SLOT_51 / 2
             CopyFromRightToLeft(23, 2, 52, 3, 2, 22)
             CopyFromRightToLeft(23, 2, 53, 22, 2, 22)
-            if (SLOT_52 < SLOT_53):
-                SLOT_22 = (SLOT_22 + SLOT_51)
-            elif (SLOT_52 > SLOT_53):
-                SLOT_22 = (SLOT_22 - SLOT_51)
+            if SLOT_52 < SLOT_53:
+                SLOT_XDistanceFromCenterOfStage = (
+                    SLOT_XDistanceFromCenterOfStage + SLOT_51)
+            elif SLOT_52 > SLOT_53:
+                SLOT_XDistanceFromCenterOfStage = (
+                    SLOT_XDistanceFromCenterOfStage - SLOT_51)
             else:
                 pass
-            SLOT_22 = (SLOT_22 + 0)
+            SLOT_XDistanceFromCenterOfStage = (
+                SLOT_XDistanceFromCenterOfStage + 0)
 
         def upon_33():
             clearUponHandler(33)
@@ -5115,6 +5303,7 @@ def BurstDDCamera():
     sprite('null', 1)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
+
 
 @State
 def BurstDDSlash():
@@ -5133,6 +5322,7 @@ def BurstDDSlash():
     ConstantAlphaModifier(-48)
     sprite('vrizef440_01', 2)
 
+
 @State
 def BurstDDSlash2():
 
@@ -5149,6 +5339,7 @@ def BurstDDSlash2():
     ConstantAlphaModifier(-31)
     sprite('vrizef440_12', 3)
 
+
 @State
 def BurstDDSlashEX():
 
@@ -5158,7 +5349,7 @@ def BurstDDSlashEX():
         IgnorePauses(2)
         PaletteIndex(2)
         BlendMode_Add()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('vrizef440_00', 3)
     sprite('vrizef440_01', 3)
@@ -5172,6 +5363,7 @@ def BurstDDSlashEX():
     sprite('vrizef440_00', 2)
     sprite('vrizef440_01', 2)
 
+
 @State
 def BurstDDSlashEX2():
 
@@ -5181,7 +5373,7 @@ def BurstDDSlashEX2():
         IgnorePauses(2)
         PaletteIndex(2)
         BlendMode_Add()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('vrizef440_10', 3)
     sprite('vrizef440_11', 3)
@@ -5193,6 +5385,7 @@ def BurstDDSlashEX2():
     sprite('vrizef440_13', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def BurstDDLastAtk():
 
@@ -5203,7 +5396,7 @@ def BurstDDLastAtk():
         AddY(250000)
         Eff3DEffect('izef_440cross_00', '')
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 6)
     SetScaleSpeed(150)
     ScreenShake(10000, 10000)
@@ -5222,6 +5415,7 @@ def BurstDDLastAtk():
     CreateParticle('izef_440endkira_posL', -1)
     CreateParticle('izef_440endkira_posR', -1)
 
+
 @State
 def BurstDDLastAtkEX():
 
@@ -5232,7 +5426,7 @@ def BurstDDLastAtkEX():
         AddY(250000)
         Eff3DEffect('izef_440cross_01', '')
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 6)
     SetScaleSpeed(200)
     ScreenShake(10000, 10000)
@@ -5254,6 +5448,7 @@ def BurstDDLastAtkEX():
     ParticleSize(1300)
     CallCustomizableParticle('izef_440endkiraEX_posR', -1)
 
+
 @State
 def BurstDDRetrunEff():
 
@@ -5266,6 +5461,7 @@ def BurstDDRetrunEff():
     sprite('vrizef440_23', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def BurstDDSlashEff():
 
@@ -5276,6 +5472,7 @@ def BurstDDSlashEff():
         BlendMode_Add()
     sprite('vrizef440_30', 2)
     sprite('vrizef440_31', 2)
+
 
 @State
 def BurstDDSlashEff2():
@@ -5289,6 +5486,7 @@ def BurstDDSlashEff2():
     sprite('vrizef440_50', 6)
     sprite('vrizef440_51', 4)
     sprite('vrizef440_52', 4)
+
 
 @State
 def BurstDDSordEff():
@@ -5305,6 +5503,7 @@ def BurstDDSordEff():
     sprite('vrizef440_44', 4)
     sprite('vrizef440_45', 32767)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -5313,6 +5512,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_IZDummy():

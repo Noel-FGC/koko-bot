@@ -20,6 +20,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_AZ_OD():
 
@@ -42,6 +43,7 @@ def EMB_AZ_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_AZ_AH():
 
@@ -62,6 +64,7 @@ def EMB_AZ_AH():
     sprite('null', 10)
     ColorTransition(2533294080, 10)
     sprite('null', 80)
+
 
 @State
 def az406_dummy():
@@ -87,7 +90,7 @@ def az406_dummy():
             Wallbounce(1)
             Wallstick(1)
             WallstickDuration(30)
-            if (SLOT_4 > 1):
+            if SLOT_4 > 1:
                 AirUntechableTime(30)
                 AirHitstunAfterWallbounce(30)
                 GroundedHitstunAnimation(17)
@@ -95,6 +98,7 @@ def az406_dummy():
                 PushSpeedX()
     sprite('null', 2)
     sprite('vr_azef406_col', 3)
+
 
 @State
 def az406_dummy2():
@@ -120,7 +124,7 @@ def az406_dummy2():
             Wallbounce(1)
             Wallstick(1)
             WallstickDuration(30)
-            if (SLOT_4 > 1):
+            if SLOT_4 > 1:
                 AirUntechableTime(30)
                 AirHitstunAfterWallbounce(30)
                 GroundedHitstunAnimation(17)
@@ -128,6 +132,7 @@ def az406_dummy2():
                 PushSpeedX()
     sprite('null', 2)
     sprite('vr_azef406_col', 3)
+
 
 @State
 def rocktest():
@@ -147,6 +152,7 @@ def rocktest():
     ConstantAlphaModifier(-10)
     sprite('null', 14)
 
+
 @State
 def hibiware():
 
@@ -158,6 +164,7 @@ def hibiware():
     Eff3DEffect('azef_hibiware.DIG', '')
     sprite('null', 8)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __203swing():
@@ -172,6 +179,7 @@ def __203swing():
     CreateObject('203yugami', -1)
     Eff3DEffect('azef_203swing00.DIG', '')
     FaceSpawnLocation()
+
 
 @State
 def __203yugami():
@@ -188,6 +196,7 @@ def __203yugami():
     PlayerTransparency(35000)
     Unknown3059(-2500)
 
+
 @State
 def __213swing():
 
@@ -203,6 +212,7 @@ def __213swing():
     Eff3DEffect('azef_213swing00.DIG', '')
     FaceSpawnLocation()
 
+
 @State
 def __213yugami():
 
@@ -217,6 +227,7 @@ def __213yugami():
     ParticleTransparency(1)
     PlayerTransparency(35000)
     Unknown3059(-2500)
+
 
 @State
 def __213rock():
@@ -234,6 +245,7 @@ def __213rock():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __253swing():
 
@@ -246,6 +258,7 @@ def __253swing():
     sprite('null', 6)
     Eff3DEffect('azef_253swing00.DIG', '')
     FaceSpawnLocation()
+
 
 @State
 def __253yugami():
@@ -262,6 +275,7 @@ def __253yugami():
     ParticleTransparency(1)
     PlayerTransparency(17500)
     Unknown3059(-2500)
+
 
 @State
 def __232rock():
@@ -286,6 +300,7 @@ def __232rock():
     sprite('null', 20)
     CreateObject('232rock04', -1)
 
+
 @State
 def __232rock01():
 
@@ -296,6 +311,7 @@ def __232rock01():
         FaceSpawnLocation()
     sprite('null', 2)
 
+
 @State
 def __232rock02():
 
@@ -304,6 +320,7 @@ def __232rock02():
         Size(1500)
         Eff3DEffect('azef_232rock02.DIG', '')
     sprite('null', 4)
+
 
 @State
 def __232rock03():
@@ -316,6 +333,7 @@ def __232rock03():
         Eff3DEffect('azef_232rock03.DIG', '')
         LinkParticle('azef_rockshadow_00')
     sprite('null', 2)
+
 
 @State
 def __232rock04():
@@ -331,6 +349,7 @@ def __232rock04():
     CreateParticle('azef_232brokerock_rock2', -1)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __232rock_col():
@@ -361,7 +380,7 @@ def __232rock_col():
             Wallbounce(1)
             Wallstick(1)
             WallstickDuration(30)
-            if (SLOT_4 > 1):
+            if SLOT_4 > 1:
                 AirUntechableTime(30)
                 AirHitstunAfterWallbounce(30)
                 GroundedHitstunAnimation(17)
@@ -373,13 +392,14 @@ def __232rock_col():
             sendToLabel(580)
         SetActionMark(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtk2C', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtk2C', 32)
     sprite('null', 5)
     sprite('vr_azef232_00col', 4)
     sprite('vr_azef232_01col', 2)
     label(580)
     sprite('null', 2)
+
 
 @State
 def __255swing():
@@ -396,6 +416,7 @@ def __255swing():
     AlphaValue(255)
     Eff3DEffect('azef_255swing00.DIG', '')
     FaceSpawnLocation()
+
 
 @State
 def __400impact():
@@ -414,6 +435,7 @@ def __400impact():
     CreateObject('400yugami', -1)
     sprite('null', 5)
 
+
 @State
 def __400yugami():
 
@@ -430,6 +452,7 @@ def __400yugami():
     PlayerTransparency(50000)
     Unknown3059(-3000)
 
+
 @State
 def __401swing():
 
@@ -442,6 +465,7 @@ def __401swing():
         AlphaValue(200)
     sprite('null', 10)
     sprite('null', 5)
+
 
 @State
 def azef_guardcrash():
@@ -458,6 +482,7 @@ def azef_guardcrash():
     sprite('null', 10)
     sprite('null', 5)
 
+
 @State
 def azef_guardcrash_hold():
 
@@ -470,6 +495,7 @@ def azef_guardcrash_hold():
     CreateParticle('azef_guardcrash_hold', -1)
     gotoLabel(0)
 
+
 @State
 def azef_dustattack_hold():
 
@@ -481,6 +507,7 @@ def azef_dustattack_hold():
     sprite('null', 4)
     CreateParticle('azef_dustattack_hold', -1)
     gotoLabel(0)
+
 
 @State
 def __402rock1():
@@ -496,6 +523,7 @@ def __402rock1():
     CreateParticle('azef_402rocksmoke_pos', -1)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __402swing():
@@ -513,6 +541,7 @@ def __402swing():
         AddX(100000)
     sprite('null', 14)
 
+
 @State
 def __403swing():
 
@@ -529,6 +558,7 @@ def __403swing():
     CreateParticle('azef_403backadd_00', -1)
     CreateObject('403yugami', -1)
 
+
 @State
 def __403yugami():
 
@@ -544,6 +574,7 @@ def __403yugami():
     PlayerTransparency(40000)
     Unknown3059(-2500)
 
+
 @State
 def __404tame():
 
@@ -555,11 +586,12 @@ def __404tame():
         LinkParticle('azef_404tame_addcircle')
         AddY(250000)
         AddX(-50000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __404swing():
@@ -583,6 +615,7 @@ def __404swing():
     sprite('null', 8)
     CreateParticle('azef_blood_01', -1)
 
+
 @State
 def __404nigiyakasi():
 
@@ -598,6 +631,7 @@ def __404nigiyakasi():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def __405smoke():
 
@@ -610,6 +644,7 @@ def __405smoke():
     sprite('null', 1)
     CreateParticle('azef_405tossin', -1)
     gotoLabel(0)
+
 
 @State
 def __405rock():
@@ -625,6 +660,7 @@ def __405rock():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __405punch():
 
@@ -637,6 +673,7 @@ def __405punch():
     sprite('null', 15)
     Eff3DEffect('azef_405punch00.DIG', '')
     FaceSpawnLocation()
+
 
 @State
 def __405yugami():
@@ -653,6 +690,7 @@ def __405yugami():
     PlayerTransparency(35000)
     Unknown3059(-2500)
 
+
 @State
 def __032rock():
 
@@ -667,6 +705,7 @@ def __032rock():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def azef_rlah_circle():
 
@@ -677,6 +716,7 @@ def azef_rlah_circle():
     sprite('null', 32767)
     LinkParticle('rlef_ah_az_circle')
     ConstantAlphaModifier(16)
+
 
 @State
 def __407aura():
@@ -818,6 +858,7 @@ def __407aura():
     sprite('vr_azef407_efpos00', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __407boya():
 
@@ -836,6 +877,7 @@ def __407boya():
     RandAddScaleY(-300, 500)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __407boya2():
@@ -857,6 +899,7 @@ def __407boya2():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def __407yugami():
 
@@ -874,6 +917,7 @@ def __407yugami():
     PlayerTransparency(10000)
     Unknown3059(-1500)
 
+
 @State
 def __407Kyushu():
 
@@ -888,6 +932,7 @@ def __407Kyushu():
     sprite('null', 25)
     LinkParticle('azef_407kyushu_tubusub')
     CommonSE('022_magiccircle_b')
+
 
 @State
 def __407Mutekicol():
@@ -905,16 +950,17 @@ def __407Mutekicol():
         GuardPoint_(1)
 
         def upon_GUARDPOINT_ACTIVATION():
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
 
         def upon_32():
             clearUponHandler(32)
-            clearUponHandler(42)
+            clearUponHandler(GUARDPOINT_ACTIVATION)
             setInvincible(0)
             sendToLabel(0)
     sprite('az407_03ex', 32767)
     label(0)
     sprite('null', 3)
+
 
 @State
 def azef_409_fall():
@@ -928,6 +974,7 @@ def azef_409_fall():
     sprite('null', 2)
     CreateParticle('azef_409punch_add', -1)
     gotoLabel(0)
+
 
 @State
 def azef_409_rock():
@@ -945,6 +992,7 @@ def azef_409_rock():
     sprite('null', 20)
     ConstantAlphaModifier(-10)
 
+
 @State
 def azef_409_hibiware():
 
@@ -957,6 +1005,7 @@ def azef_409_hibiware():
     sprite('null', 4)
     sprite('null', 8)
     ConstantAlphaModifier(-26)
+
 
 @State
 def weakhit00():
@@ -972,6 +1021,7 @@ def weakhit00():
     sprite('null', 30)
     LinkParticle('azef_weakhit_red')
 
+
 @State
 def weakhit01():
 
@@ -985,6 +1035,7 @@ def weakhit01():
         FaceLeft()
     sprite('null', 30)
     LinkParticle('azef_weakhit_yellow')
+
 
 @State
 def weakpoint01():
@@ -1001,7 +1052,7 @@ def weakpoint01():
         def upon_16():
             PrivateFunction3(22, 0, 60000, 100, 1)
         RemoveOnContact(22)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 20)
     CreateObject('weakstart01', -1)
     SetScaleSpeed(-27)
@@ -1011,6 +1062,7 @@ def weakpoint01():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(300)
+
 
 @State
 def weakpoint00():
@@ -1028,7 +1080,7 @@ def weakpoint00():
         def upon_16():
             PrivateFunction3(22, 0, -80000, 100, 1)
         RemoveOnContact(22)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 20)
     CreateObject('weakstart00', -1)
     SetScaleSpeed(-25)
@@ -1039,17 +1091,18 @@ def weakpoint00():
     ConstantAlphaModifier(-27)
     SetScaleSpeed(300)
 
+
 @State
 def weakstart00():
 
     def upon_IMMEDIATE():
         BlendMode_Normal()
         E0EAEffectPosition(2)
-    sendToLabelUpon(32, 0)
-sprite('null', 5)
-sprite('null', 30)
-LinkParticle('azef_weakhit_02')
-endState()
+    uponSendToLabel(32, 0)
+    sprite('null', 5)
+    sprite('null', 30)
+    LinkParticle('azef_weakhit_02')
+
 
 @State
 def weakstart01():
@@ -1057,11 +1110,11 @@ def weakstart01():
     def upon_IMMEDIATE():
         BlendMode_Normal()
         E0EAEffectPosition(2)
-    sendToLabelUpon(32, 0)
-sprite('null', 5)
-sprite('null', 30)
-LinkParticle('azef_weakhit_03')
-endState()
+    uponSendToLabel(32, 0)
+    sprite('null', 5)
+    sprite('null', 30)
+    LinkParticle('azef_weakhit_03')
+
 
 @State
 def __408sphere():
@@ -1086,7 +1139,7 @@ def __408sphere():
         StarterRating(2)
         UsePunchHitspark(1)
         Hitstop(3)
-        sendToLabelUpon(10, 580)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 580)
         CancelIfPlayerHit(3)
         Visibility(1)
         LinkParticle('azef_408_ambient00')
@@ -1114,7 +1167,7 @@ def __408sphere():
             Wallbounce(1)
             Wallstick(1)
             WallstickDuration(30)
-            if (SLOT_4 > 1):
+            if SLOT_4 > 1:
                 AirUntechableTime(30)
                 AirHitstunAfterWallbounce(30)
                 GroundedHitstunAnimation(17)
@@ -1183,6 +1236,7 @@ def __408sphere():
     sprite('vr_azef408_col', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __408sphereStart():
 
@@ -1198,6 +1252,7 @@ def __408sphereStart():
     SetScaleSpeed(30)
     physicsXImpulse(1500)
 
+
 @State
 def __408JizokuSmoke():
 
@@ -1209,6 +1264,7 @@ def __408JizokuSmoke():
     sprite('null', 2)
     CreateParticle('azef_408_jizokuaura_tubu', -1)
     gotoLabel(0)
+
 
 @State
 def __408sphereJizoku():
@@ -1227,6 +1283,7 @@ def __408sphereJizoku():
     SetScaleSpeedY(-30)
     ConstantAlphaModifier(-37)
 
+
 @State
 def __430Cam():
 
@@ -1241,6 +1298,7 @@ def __430Cam():
     physicsXImpulse(0)
     sprite('null', 20)
     physicsXImpulse(-3700)
+
 
 @State
 def __430HandAura():
@@ -1314,6 +1372,7 @@ def __430HandAura():
     CreateParticle('azef_408handaura_add', 27)
     CreateParticle('azef_408handaura_add', 28)
 
+
 @State
 def __430BodyAura():
 
@@ -1367,6 +1426,7 @@ def __430BodyAura():
     CreateObject('430Hand02', 6)
     CreateObject('430Hand02', 7)
 
+
 @State
 def __430Hand01():
 
@@ -1381,6 +1441,7 @@ def __430Hand01():
     RandAddRotation(-45000, 45000)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __430Hand02():
@@ -1400,6 +1461,7 @@ def __430Hand02():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def __430aura():
 
@@ -1407,7 +1469,7 @@ def __430aura():
         RemoveOnCallStateEnd(2)
         IgnoreScreenfreeze(1)
         Visibility(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     label(1)
     sprite('vr_azef430_efpos02', 2)
     ParticleLayer(2)
@@ -1454,6 +1516,7 @@ def __430aura():
     sprite('vr_azef430_efpos02', 1)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __430boya():
 
@@ -1472,6 +1535,7 @@ def __430boya():
     RandAddScaleY(500, 1000)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __430Atk():
@@ -1500,6 +1564,7 @@ def __430Atk():
     ConstantAlphaModifier(-51)
     SetScaleSpeed(-90)
 
+
 @State
 def __430shock():
 
@@ -1519,8 +1584,9 @@ def __430shock():
     sprite('null', 5)
     ConstantAlphaModifier(-26)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('430Speed', 32)
+    TriggerUponForState('430Speed', 32)
     sprite('null', 15)
+
 
 @State
 def __430shock01():
@@ -1533,18 +1599,20 @@ def __430shock01():
     sprite('null', 45)
     LinkParticle('azef_408_tukihit_add2')
 
+
 @State
 def __430Speed():
 
     def upon_IMMEDIATE():
         IgnoreScreenfreeze(1)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     LinkParticle('azef_408_speedline_down')
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __431ODAura():
@@ -1553,7 +1621,7 @@ def __431ODAura():
         RemoveOnCallStateEnd(2)
         IgnoreScreenfreeze(1)
         Visibility(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Eff3DEffect('azef_431aura.DIG', '')
         FaceSpawnLocation()
         BlendMode_Normal()
@@ -1584,8 +1652,9 @@ def __431ODAura():
     gotoLabel(1)
     label(0)
     sprite('vr_azef430_efpos02', 10)
-    PassbackAddActionMarkToFunction('431Odaura', 32)
+    TriggerUponForState('431Odaura', 32)
     ConstantAlphaModifier(-51)
+
 
 @State
 def __431Odaura():
@@ -1597,7 +1666,7 @@ def __431Odaura():
         RemoveOnCallStateEnd(2)
         PaletteIndex(1)
         AlphaValue(170)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         SetZVal(100)
     sprite('null', 5)
     label(1)
@@ -1610,6 +1679,7 @@ def __431Odaura():
     ConstantAlphaModifier(-26)
     sprite('vr_azef431_01', 3)
     sprite('vr_azef431_02', 3)
+
 
 @State
 def __431swing():
@@ -1628,6 +1698,7 @@ def __431swing():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __431yugami():
 
@@ -1642,6 +1713,7 @@ def __431yugami():
     ParticleTransparency(1)
     PlayerTransparency(30000)
     Unknown3059(-1500)
+
 
 @State
 def __450neppaMatome():
@@ -1659,6 +1731,7 @@ def __450neppaMatome():
     CreateObject('450neppa01', -1)
     sprite('null', 7)
 
+
 @State
 def __450neppa00():
 
@@ -1671,6 +1744,7 @@ def __450neppa00():
     sprite('null', 7)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __450neppa01():
 
@@ -1682,7 +1756,8 @@ def __450neppa01():
     sprite('null', 7)
     sprite('null', 7)
     ConstantAlphaModifier(-51)
-endState()
+    endState()
+
 
 @State
 def nepparock():
@@ -1698,6 +1773,7 @@ def nepparock():
     CreateParticle('azef_406_stone', -1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __450swing():
@@ -1716,6 +1792,7 @@ def __450swing():
         Rotation(100000)
     sprite('null', 10)
 
+
 @State
 def __450rock():
 
@@ -1726,44 +1803,45 @@ def __450rock():
         AddX(280000)
     sprite('null', 6)
     CreateObject('450smoke', -1)
-    ApplyFunctionsToObjects(22)
-    AddY(15000)
-    setGravity(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AddY(15000)
+        setGravity(0)
     Rotation(3250)
     AddY(70000)
     sprite('null', 50)
     Rotation(1625)
     AddY(35000)
-    ApplyFunctionsToObjects(22)
-    AddY(30000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AddY(30000)
     sprite('null', 40)
     Rotation(812)
     AddY(40000)
-    ApplyFunctionsToObjects(22)
-    AddY(30000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AddY(30000)
     sprite('null', 40)
     Rotation(406)
     AddY(20000)
-    ApplyFunctionsToObjects(22)
-    AddY(15000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AddY(15000)
     sprite('null', 60)
-    ApplyFunctionsToObjects(22)
-    AddY(15000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AddY(15000)
     Rotation(203)
     AddY(10000)
     sprite('null', 20)
     CreateObject('AHsection', -1)
     physicsYImpulse(60000)
-    ApplyFunctionsToObjects(22)
-    AddY(15000)
-    physicsYImpulse(100000)
-    RenderLayer(2)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AddY(15000)
+        physicsYImpulse(100000)
+        RenderLayer(2)
+
 
 @State
 def __450smoke():
@@ -1791,6 +1869,7 @@ def __450smoke():
     ParticleLayer(4)
     CallCustomizableParticle('azef_450stonesmoke_stone2', -1)
 
+
 @State
 def __450smokeb():
 
@@ -1816,6 +1895,7 @@ def __450smokeb():
     ParticleLayer(2)
     CallCustomizableParticle('azef_450stonesmoke_b', -1)
 
+
 @State
 def __450smokec():
 
@@ -1828,6 +1908,7 @@ def __450smokec():
         Size(1500)
         LinkParticle('azef_utiagesmoke_02')
     sprite('null', 50)
+
 
 @State
 def IrezumiRay():
@@ -1845,6 +1926,7 @@ def IrezumiRay():
     sprite('vr_azef450_00', 30)
     ConstantAlphaModifier(-26)
 
+
 @State
 def IrezumiRayLine():
 
@@ -1858,6 +1940,7 @@ def IrezumiRayLine():
     ConstantAlphaModifier(26)
     sprite('vr_azef450_01', 20)
     ConstantAlphaModifier(-13)
+
 
 @State
 def az450_dummy():
@@ -1877,11 +1960,11 @@ def az450_dummy():
         TeleportToObject(22)
         Visibility(1)
         Size(3000)
-sprite('null', 7)
-sprite('vr_azef450_col', 10)
-HitAnywhere(1)
-sprite('az450cutin_01', 3000)
-endState()
+    sprite('null', 7)
+    sprite('vr_azef450_col', 10)
+    HitAnywhere(1)
+    sprite('az450cutin_01', 3000)
+
 
 @State
 def __450Cam():
@@ -1973,6 +2056,7 @@ def __450Cam():
     AddY(-800000)
     CameraControlEnable(0)
 
+
 @State
 def AHshadow():
 
@@ -1982,6 +2066,7 @@ def AHshadow():
         LinkParticle('azef_ahshadow_00')
         AddY(300000)
     sprite('null', 165)
+
 
 @State
 def AHanten00():
@@ -1993,6 +2078,7 @@ def AHanten00():
         SetPosXByScreenPer(50)
     sprite('null', 90)
 
+
 @State
 def AHanten01():
 
@@ -2001,6 +2087,7 @@ def AHanten01():
         IgnoreScreenfreeze(1)
         LinkParticle('azef_ahanten04')
     sprite('null', 90)
+
 
 @State
 def AHanten02():
@@ -2013,6 +2100,7 @@ def AHanten02():
         SetPosXByScreenPer(50)
     sprite('null', 90)
 
+
 @State
 def AHsection():
 
@@ -2020,6 +2108,7 @@ def AHsection():
         Eff3DEffect('azef_section', '')
         FaceSpawnLocation()
     sprite('null', 60)
+
 
 @State
 def AHSmoke():
@@ -2030,6 +2119,7 @@ def AHSmoke():
         LinkParticle('azef_ahfinishbg03')
     sprite('null', 32767)
 
+
 @State
 def AHaura():
 
@@ -2037,7 +2127,7 @@ def AHaura():
         RemoveOnCallStateEnd(2)
         IgnoreScreenfreeze(1)
         Visibility(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Eff3DEffect('azef_aura02', '')
         FaceSpawnLocation()
         BlendMode_Normal()
@@ -2065,6 +2155,7 @@ def AHaura():
     sprite('vr_azef430_efpos02', 1)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __610aura():
 
@@ -2072,7 +2163,7 @@ def __610aura():
         RemoveOnCallStateEnd(2)
         IgnoreScreenfreeze(1)
         Visibility(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Eff3DEffect('azef_610aura00', '')
         FaceSpawnLocation()
         BlendMode_Normal()
@@ -2106,6 +2197,7 @@ def __610aura():
     sprite('vr_azef430_efpos02', 1)
     ConstantAlphaModifier(-51)
 
+
 @State
 def dashEff():
 
@@ -2115,6 +2207,7 @@ def dashEff():
         LinkParticle('azef_newdash2')
     sprite('null', 50)
 
+
 @State
 def dashEff2():
 
@@ -2123,6 +2216,7 @@ def dashEff2():
         IgnoreScreenfreeze(1)
         LinkParticle('azef_newdash3')
     sprite('null', 50)
+
 
 @State
 def BrustDD_SlashEff():
@@ -2143,6 +2237,7 @@ def BrustDD_SlashEff():
     sprite('vr_azef440_03', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def BrustDD_SlashEffEx():
 
@@ -2158,25 +2253,26 @@ def BrustDD_SlashEffEx():
         BlendMode_Normal()
     sprite('vr_azef440_00', 4)
     CreateObject('BrustDD_EXeff', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-10000)
-    AddX(-125000)
-    AddScale(500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-10000)
+        AddX(-125000)
+        AddScale(500)
     CreateObject('BrustDD_EXeff', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-45000)
-    AddX(-125000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-45000)
+        AddX(-125000)
     CreateObject('BrustDD_EXeff', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-90000)
-    AddX(-125000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-90000)
+        AddX(-125000)
     sprite('vr_azef440_01', 4)
     sprite('vr_azef440_02', 4)
     sprite('vr_azef440_03', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def BrustDD_SlashEff2():
@@ -2203,6 +2299,7 @@ def BrustDD_SlashEff2():
     sprite('vr_azef440_14', 4)
     ConstantAlphaModifier(-51)
 
+
 @State
 def BrustDD_SlashEff2Ex():
 
@@ -2224,27 +2321,28 @@ def BrustDD_SlashEff2Ex():
     Size(1800)
     SetScaleSpeed(40)
     CreateObject('BrustDD_EXeff', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(450000)
-    AddScale(250)
-    RenderLayer(6)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(450000)
+        AddScale(250)
+        RenderLayer(6)
     CreateObject('BrustDD_EXeff', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-450000)
-    AddScale(500)
-    RenderLayer(6)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-450000)
+        AddScale(500)
+        RenderLayer(6)
     CreateObject('BrustDD_EXeff', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(1800000)
-    AddScale(500)
-    RenderLayer(6)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(1800000)
+        AddScale(500)
+        RenderLayer(6)
     sprite('vr_azef440_13', 4)
     CreateParticle('azef_440brust_01', -1)
     sprite('vr_azef440_14', 4)
     ConstantAlphaModifier(-51)
+
 
 @State
 def BrustDD_SlashEff3():
@@ -2264,23 +2362,23 @@ def BrustDD_SlashEff3():
     sprite('vr_azef440_22', 2)
     AddX(35000)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(20000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(20000)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(150000)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-45000)
-    RenderLayer(11)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-45000)
+        RenderLayer(11)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-140000)
-    RenderLayer(11)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-140000)
+        RenderLayer(11)
     sprite('vr_azef440_22', 4)
     AddX(35000)
     sprite('vr_azef440_23', 4)
@@ -2293,6 +2391,7 @@ def BrustDD_SlashEff3():
     ConstantAlphaModifier(-26)
     sprite('vr_azef440_26', 5)
     AddX(35000)
+
 
 @State
 def BrustDD_SlashEff3Ex():
@@ -2314,25 +2413,25 @@ def BrustDD_SlashEff3Ex():
     sprite('vr_azef440_22', 4)
     AddX(35000)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(45000)
-    AddScale(700)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(45000)
+        AddScale(700)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(120000)
-    AddScale(700)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(120000)
+        AddScale(700)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-45000)
-    RenderLayer(11)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-45000)
+        RenderLayer(11)
     CreateObject('BrustDD_EXeff2', -1)
-    ApplyFunctionsToObjects(1)
-    Rotation(-140000)
-    RenderLayer(11)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(-140000)
+        RenderLayer(11)
     sprite('vr_azef440_23', 4)
     AddX(35000)
     IgnoreFinishStop(0)
@@ -2344,6 +2443,7 @@ def BrustDD_SlashEff3Ex():
     sprite('vr_azef440_26', 5)
     AddX(35000)
 
+
 @State
 def BrustDD_brust():
 
@@ -2353,6 +2453,7 @@ def BrustDD_brust():
     sprite('null', 10)
     sprite('null', 50)
     IgnoreFinishStop(0)
+
 
 @State
 def BrustDD_EXeff():
@@ -2371,6 +2472,7 @@ def BrustDD_EXeff():
     sprite('vr_azef440_36', 3)
     sprite('vr_azef440_37', 3)
 
+
 @State
 def BrustDD_EXeff2():
 
@@ -2386,6 +2488,7 @@ def BrustDD_EXeff2():
     sprite('vr_azef440_36', 3)
     sprite('vr_azef440_37', 3)
 
+
 @State
 def __440Aura():
 
@@ -2394,7 +2497,7 @@ def __440Aura():
         RemoveOnCallStateEnd(2)
         IgnoreScreenfreeze(1)
         Visibility(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Eff3DEffect('azef_aura02', '')
         FaceSpawnLocation()
         BlendMode_Normal()
@@ -2423,6 +2526,7 @@ def __440Aura():
     sprite('vr_azef430_efpos02', 10)
     ConstantAlphaModifier(-51)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -2431,6 +2535,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Eventoffset_Sosai():
@@ -2444,6 +2549,7 @@ def Eventoffset_Sosai():
     CommonSE('108_attack_offset')
     ScreenShake(30000, 30000)
 
+
 @State
 def Act2Event_Bang():
 
@@ -2454,10 +2560,10 @@ def Act2Event_Bang():
         XPositionRelativeFacing(360000)
         Flip()
         StayAfterMovement(1, 0)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(LANDING, 9)
     sprite('bn070_03', 32767)
     loopRest()
     label(0)
@@ -2515,15 +2621,17 @@ def Act2Event_Bang():
     sprite('null', 2)
     loopRest()
 
+
 @State
 def Act3Event_ar():
 
     def upon_IMMEDIATE():
-        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647, 1000, 1000)
+        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647,
+            1000, 1000)
         LoadSpritePalette(0)
         AddX(-80000)
         SetZVal(-1000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('ar000_00', 5)
     sprite('ar000_01', 5)
@@ -2550,21 +2658,23 @@ def Act3Event_ar():
     physicsXImpulse(-45000)
     physicsYImpulse(27000)
     setGravity(2700)
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     sprite('ar060_03', 4)
     sprite('ar060_04', 32767)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     loopRest()
     label(2)
     sprite('keep', 2)
     CommonSE('012_stab_deep')
     CommonSE('209_down_normal_0')
 
+
 @State
 def Act3Event_ar_01():
 
     def upon_IMMEDIATE():
-        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647, 1000, 1000)
+        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647,
+            1000, 1000)
         LoadSpritePalette(0)
         ScreenCollision(0)
         EnableCollision(0)
@@ -2573,19 +2683,19 @@ def Act3Event_ar_01():
         def upon_32():
             sendToLabel(2)
 
-            def upon_FRAME_STEP():
-                if (SLOT_50 < 350000):
-                    clearUponHandler(3)
+            def upon_EVERY_FRAME():
+                if SLOT_50 < 350000:
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
 
         def upon_33():
             sendToLabel(2)
 
-            def upon_FRAME_STEP():
-                if (SLOT_19 < 240000):
-                    clearUponHandler(3)
+            def upon_EVERY_FRAME():
+                if SLOT_19 < 240000:
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
-        sendToLabelUpon(36, 4)
+        uponSendToLabel(36, 4)
     sprite('null', 32767)
     XPositionRelativeFacing(-920000)
     label(0)
@@ -2627,7 +2737,7 @@ def Act3Event_ar_01():
     sprite('ar610_09', 1)
     TeleportToObject(22)
     EndMomentum(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('ar610_09', 1)
     sprite('ar610_10', 2)
     sprite('ar610_11', 2)
@@ -2639,15 +2749,17 @@ def Act3Event_ar_01():
     loopRest()
     gotoLabel(5)
 
+
 @State
 def Act3Event_ar_02():
 
     def upon_IMMEDIATE():
-        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647, 1000, 1000)
+        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647,
+            1000, 1000)
         LoadSpritePalette(0)
         ScreenCollision(0)
         TeleportToObject(22)
-        sendToLabelUpon(36, 4)
+        uponSendToLabel(36, 4)
     label(0)
     sprite('ar610_09', 2)
     sprite('ar610_10', 2)
@@ -2655,17 +2767,19 @@ def Act3Event_ar_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ar_03():
 
     def upon_IMMEDIATE():
-        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647, 1000, 1000)
+        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647,
+            1000, 1000)
         LoadSpritePalette(0)
         ScreenCollision(0)
         EnableCollision(0)
         TeleportToObject(2)
         SetZVal(1000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('ar060_15', 32767)
     AddX(-50000)
     loopRest()
@@ -2679,10 +2793,10 @@ def Act3Event_ar_03():
     physicsXImpulse(-45000)
     physicsYImpulse(27000)
     setGravity(2700)
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     sprite('ar060_03', 4)
     sprite('ar060_04', 32767)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     loopRest()
     label(2)
     sprite('keep', 2)

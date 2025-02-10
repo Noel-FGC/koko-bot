@@ -20,6 +20,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_OD():
 
@@ -42,6 +43,7 @@ def EMB_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_MA_AH():
 
@@ -63,6 +65,7 @@ def EMB_MA_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def ModelMagicCircle1():
 
@@ -73,6 +76,7 @@ def ModelMagicCircle1():
         ColorFromPaletteIndex(224)
         IgnoreScreenfreeze(1)
     sprite('null', 74)
+
 
 @State
 def DIST_RG():
@@ -112,12 +116,14 @@ def DIST_RG():
     DeviationY(-10000, 10000)
     RandAddScale(-500, 500)
 
+
 @State
 def rgef_drains():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(224, 224, 224)
     CallCustomizableParticle('rgef_draina', -1)
+
 
 @State
 def rgef_drain():
@@ -126,11 +132,13 @@ def rgef_drain():
     ParticleColorFromPalette(224, 224, 224)
     CallCustomizableParticle('rgef_drainb', -1)
 
+
 @State
 def ThrowMazzle():
     sprite('null', 120)
     CreateParticle('rgef_muzzle00', -1)
     CreateParticle('rgef_muzzle00', -1)
+
 
 @State
 def rgef431_Start():
@@ -147,6 +155,7 @@ def rgef431_Start():
     ParticleLayer(2)
     ParticleColor(4294901760, 4294901760, 16711680)
     CallCustomizableParticle('rgef_bloodkineback', -1)
+
 
 @State
 def rgef203atk():
@@ -238,6 +247,7 @@ def rgef203atk():
     CreateParticle('rgef02', 3)
     sprite('vrrgef203atk_10', 3)
     CreateParticle('rgef02', 0)
+
 
 @State
 def rgef203atkD():
@@ -336,6 +346,7 @@ def rgef203atkD():
     sprite('vrrgef203atk_10', 3)
     CreateParticle('rgef02', 0)
 
+
 @State
 def rgef213atk():
 
@@ -385,6 +396,7 @@ def rgef213atk():
     sprite('vrrgef213atk_05', 2)
     CreateParticle('rgef03', 0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef213atkD():
@@ -440,6 +452,7 @@ def rgef213atkD():
     sprite('vrrgef213atk_05', 2)
     CreateParticle('rgef03', 0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef233atk():
@@ -511,6 +524,7 @@ def rgef233atk():
     CreateParticle('rgef03', 1)
     CreateParticle('rgef03', 2)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef233atkD():
@@ -593,6 +607,7 @@ def rgef233atkD():
     CreateParticle('rgef03', 2)
     ConstantAlphaModifier(-10)
 
+
 @State
 def rgef253atk():
 
@@ -635,6 +650,7 @@ def rgef253atk():
     CreateParticle('rgef03', 3)
     CreateParticle('rgef03', 4)
 
+
 @State
 def rgef253atkD():
 
@@ -676,6 +692,7 @@ def rgef253atkD():
     CreateParticle('rgef03', 2)
     CreateParticle('rgef03', 3)
     CreateParticle('rgef03', 4)
+
 
 @State
 def rgef400loop():
@@ -745,6 +762,7 @@ def rgef400loop():
     gotoLabel(0)
     sprite('null', 20)
 
+
 @State
 def rgef400end():
 
@@ -778,6 +796,7 @@ def rgef400end():
     sprite('vrrgef400atk_08', 4)
     sprite('null', 20)
 
+
 @State
 def rgef400nokori():
 
@@ -802,6 +821,7 @@ def rgef400nokori():
     sprite('vrrgef400b_09', 3)
     sprite('null', 9)
     ConstantAlphaModifier(-6)
+
 
 @State
 def rgef401atk():
@@ -910,6 +930,7 @@ def rgef401atk():
     CreateParticle('rgef02', 1)
     CreateParticle('rgef02', 2)
 
+
 @State
 def rgef402atk():
 
@@ -964,6 +985,7 @@ def rgef402atk():
     CreateObject('rgef_drains', 1)
     CreateObject('rgef_drains', 2)
 
+
 @State
 def rgef406atk():
 
@@ -986,6 +1008,7 @@ def rgef406atk():
     CreateParticle('rgef02', 2)
     sprite('vrrgef406atk_02', 3)
     sprite('vrrgef406atk_03', 3)
+
 
 @State
 def rgef406batk():
@@ -1042,6 +1065,7 @@ def rgef406batk():
     CreateParticle('rgef03', 1)
     CreateParticle('rgef03', 2)
     ConstantAlphaModifier(-20)
+
 
 @State
 def rgef406batkD():
@@ -1103,6 +1127,7 @@ def rgef406batkD():
     CreateParticle('rgef03', 0)
     ConstantAlphaModifier(-20)
 
+
 @State
 def rgef408nokori():
 
@@ -1125,6 +1150,7 @@ def rgef408nokori():
     sprite('vrrgef408b_04', 2)
     sprite('vrrgef408b_05', 2)
     sprite('vrrgef408b_06', 2)
+
 
 @State
 def rgef408Shot():
@@ -1150,10 +1176,10 @@ def rgef408Shot():
         AddX(250000)
         Size(1000)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
             NoAttackDuringAction(1)
             sendToLabel(0)
@@ -1183,7 +1209,7 @@ def rgef408Shot():
     sprite('vrrgef408_shot01', 1)
     XImpulseAcceleration(60)
     label(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrrgef408_shot02', 2)
     XImpulseAcceleration(60)
     sprite('vrrgef408_shot02', 2)
@@ -1199,6 +1225,7 @@ def rgef408Shot():
     sprite('vrrgef408_shot06', 3)
     Visibility(1)
     sprite('vrrgef408_shot07', 3)
+
 
 @State
 def rgef408ShotD():
@@ -1226,21 +1253,21 @@ def rgef408ShotD():
         AddX(250000)
         Size(1000)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(80)
             AddActionMark(1)
-            if (SLOT_2 == 3):
+            if SLOT_2 == 3:
                 XImpulseAcceleration(50)
                 AttackOff()
                 NoAttackDuringAction(1)
     Visibility(1)
     CreateObject('408_dog', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(175)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(175)
     sprite('vrrgef408_shot00', 1)
     sprite('vrrgef408_shot01', 1)
     AttackOff()
@@ -1283,6 +1310,7 @@ def rgef408ShotD():
     Visibility(1)
     sprite('vrrgef408_shot07', 3)
 
+
 @State
 def __408_dog():
 
@@ -1303,10 +1331,10 @@ def __408_dog():
         ChipPercentage(0)
         StarterRating(2)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
             NoAttackDuringAction(1)
             sendToLabel(0)
@@ -1361,7 +1389,7 @@ def __408_dog():
     sprite('vrrgef408_02', 1)
     XImpulseAcceleration(90)
     label(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrrgef408_03', 2)
     CreateParticle('rgef03', 0)
     CreateParticle('rgef03', 1)
@@ -1400,6 +1428,7 @@ def __408_dog():
     CreateObject('rgef_drains', 2)
     sprite('vrrgef408_08', 4)
 
+
 @State
 def __408_dogD():
 
@@ -1421,19 +1450,19 @@ def __408_dogD():
         ChipPercentage(0)
         StarterRating(2)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
         def upon_OPPONENT_HIT():
             if SLOT_51:
-                clearUponHandler(12)
+                clearUponHandler(OPPONENT_HIT)
                 Damage(300)
             SLOT_51 = 1
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(80)
             AddActionMark(1)
-            if (SLOT_2 == 3):
+            if SLOT_2 == 3:
                 XImpulseAcceleration(50)
                 AttackOff()
                 NoAttackDuringAction(1)
@@ -1508,7 +1537,7 @@ def __408_dogD():
     sprite('vrrgef408_02', 1)
     XImpulseAcceleration(90)
     label(0)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('vrrgef408_03', 2)
     WallCollisionDetection(0)
     CreateParticle('rgef03', 0)
@@ -1547,6 +1576,7 @@ def __408_dogD():
     CreateObject('rgef_drains', 1)
     CreateObject('rgef_drains', 2)
     sprite('vrrgef408_08', 4)
+
 
 @State
 def rgef412effpos():
@@ -1620,6 +1650,7 @@ def rgef412effpos():
     CreateObject('rgef_drains', 28)
     CreateObject('rgef_drains', 29)
 
+
 @State
 def rgef_414():
 
@@ -1633,6 +1664,7 @@ def rgef_414():
     sprite('vrrgef414_10', 3)
     sprite('vrrgef414_11', 3)
     sprite('vrrgef414_12', 3)
+
 
 @State
 def rgef_414_fall():
@@ -1649,6 +1681,7 @@ def rgef_414_fall():
     sprite('vrrgef414_02', 5)
     gotoLabel(0)
 
+
 @State
 def rgef432lock():
 
@@ -1662,7 +1695,8 @@ def rgef432lock():
     sprite('vrrgef432lock_03', 4)
     sprite('vrrgef432lock_04', 4)
     sprite('vrrgef432lock_05', 4)
-sprite('null', 1)
+    sprite('null', 1)
+
 
 @State
 def rgef432loop():
@@ -1727,6 +1761,7 @@ def rgef432loop():
     CommonSE('007_swing_knife_1')
     sprite('null', 2)
     CommonSE('007_swing_knife_1')
+
 
 @State
 def rgef432loop_SP():
@@ -1855,6 +1890,7 @@ def rgef432loop_SP():
     sprite('null', 2)
     CommonSE('007_swing_knife_1')
 
+
 @State
 def rgef440():
 
@@ -1891,6 +1927,7 @@ def rgef440():
     CreateParticle('rgef02', 9)
     CreateObject('rgef_drains', 9)
     sprite('vrrgef440_05', 3)
+
 
 @State
 def rgef440Ex():
@@ -1929,6 +1966,7 @@ def rgef440Ex():
     CreateObject('rgef_drains', 9)
     sprite('vrrgef440_05', 3)
 
+
 @State
 def rgef440StartEff():
 
@@ -1959,6 +1997,7 @@ def rgef440StartEff():
     CreateParticle('rgef02', 0)
     CreateObject('rgef_drains', 0)
 
+
 @State
 def rgef450():
 
@@ -1976,6 +2015,7 @@ def rgef450():
     sprite('vrrgef450atk_05', 5)
     sprite('vrrgef450atk_06', 5)
     ConstantAlphaModifier(-10)
+
 
 @State
 def rgef451atk():
@@ -2099,6 +2139,7 @@ def rgef451atk():
     CreateParticle('rgef02', 2)
     sprite('vrrgef451atk_10', 3)
     sprite('null', 12)
+
 
 @State
 def rgef451atkOD():
@@ -2283,6 +2324,7 @@ def rgef451atkOD():
     sprite('vrrgef451atk_10', 3)
     sprite('null', 12)
 
+
 @State
 def rgef610wingmake():
 
@@ -2299,6 +2341,7 @@ def rgef610wingmake():
     sprite('rgef610_05', 3)
     sprite('rgef610_06', 3)
     sprite('rgef610_06ex01', 3)
+
 
 @State
 def rgef610wingbreak():
@@ -2366,6 +2409,7 @@ def rgef610wingbreak():
     sprite('rgef610_16', 4)
     sprite('null', 30)
 
+
 @State
 def AstralMoveSword():
 
@@ -2376,6 +2420,7 @@ def AstralMoveSword():
     sprite('rg460_swd01', 4)
     sprite('rg460_swd02', 4)
     physicsYImpulse(2000)
+
 
 @State
 def ChangeToDeathscythe():
@@ -2418,6 +2463,7 @@ def ChangeToDeathscythe():
     sprite('rg460_kama07ex01', 2)
     sprite('rg460_kama07ex02', 2)
     loopRest()
+
 
 @State
 def nyPhantom():
@@ -2486,6 +2532,7 @@ def nyPhantom():
     sprite('ny600_12', 6)
     sprite('ny600_13', 6)
     sprite('ny600_14', 6)
+
 
 @State
 def rgef203atkD3rd():
@@ -2605,6 +2652,7 @@ def rgef203atkD3rd():
     sprite('vrrgef203atk_10', 4)
     CreateParticle('rgef02', 0)
 
+
 @State
 def EventEffectRGVsTB_Hakumen():
     sprite('ha041_03', 32767)
@@ -2613,6 +2661,7 @@ def EventEffectRGVsTB_Hakumen():
     Flip()
     AddX(-520000)
     loopRest()
+
 
 @State
 def NOISE():
@@ -2626,6 +2675,7 @@ def NOISE():
         SetPosYByScreenPer(50)
     sprite('null', 60)
     loopRest()
+
 
 @State
 def rgef414atk():
@@ -2726,6 +2776,7 @@ def rgef414atk():
     sprite('vrrgef203atk_10', 4)
     CreateParticle('rgef02', 0)
 
+
 @State
 def DS_Niku_Head():
 
@@ -2740,6 +2791,7 @@ def DS_Niku_Head():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Niku_Body():
@@ -2756,6 +2808,7 @@ def DS_Niku_Body():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Niku_Leg():
 
@@ -2770,6 +2823,7 @@ def DS_Niku_Leg():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Niku_Approach():
@@ -2786,6 +2840,7 @@ def DS_Niku_Approach():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Niku_Throw():
 
@@ -2800,6 +2855,7 @@ def DS_Niku_Throw():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Shot_Head():
@@ -2816,6 +2872,7 @@ def DS_Shot_Head():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Shot_Body():
 
@@ -2830,6 +2887,7 @@ def DS_Shot_Body():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Shot_Leg():
@@ -2846,6 +2904,7 @@ def DS_Shot_Leg():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def DS_Shot_Approach():
 
@@ -2860,6 +2919,7 @@ def DS_Shot_Approach():
         PaletteIndex(1)
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
+
 
 @State
 def DS_Shot_Throw():
@@ -2876,6 +2936,7 @@ def DS_Shot_Throw():
         TeleportToObject(22)
     sprite('vrrgef408_shot03', 60)
 
+
 @State
 def Eventrgef_drains():
     sprite('null', 200)
@@ -2883,6 +2944,7 @@ def Eventrgef_drains():
     CallPrivateEffect('rgef_draina')
     Size(2000)
     Visibility(1)
+
 
 @State
 def Eventrgef_drains2():
@@ -2899,6 +2961,7 @@ def Eventrgef_drains2():
     ParticleRotationAngle(90000)
     CallCustomizableParticle('rgef00', 2)
 
+
 @State
 def Eventrgef_drains3():
 
@@ -2911,6 +2974,7 @@ def Eventrgef_drains3():
     ParticleColorFromPalette(215, 215, 209)
     CallCustomizableParticle('rgef432break', 0)
 
+
 @State
 def HAKUMEN_NOUNAI():
 
@@ -2920,7 +2984,7 @@ def HAKUMEN_NOUNAI():
         XPositionRelativeFacing(-640000)
         AbsoluteY(0)
         Size(20000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_screen_black', 30)
     AlphaValue(0)
     ConstantAlphaModifier(4)
@@ -2934,6 +2998,7 @@ def HAKUMEN_NOUNAI():
     AlphaValue(0)
     ConstantAlphaModifier(0)
 
+
 @Subroutine
 def Zanzou_Color():
     BlendMode_Add()
@@ -2945,11 +3010,13 @@ def Zanzou_Color():
     PaletteColor1(128)
     PaletteColor4(1)
 
+
 @Subroutine
 def maef_color():
     PaletteIndex(1)
     ParticleColorFromPalette(128, 128, 128)
     ColorFromPaletteIndex(128)
+
 
 @Subroutine
 def maef_color2():
@@ -2957,17 +3024,20 @@ def maef_color2():
     ParticleColorFromPalette(64, 64, 64)
     ColorFromPaletteIndex(64)
 
+
 @Subroutine
 def maef_color3():
     PaletteIndex(1)
     ParticleColorFromPalette(1, 1, 1)
     ColorFromPaletteIndex(1)
 
+
 @Subroutine
 def __3d_color():
     PaletteIndex(2)
     ParticleColorFromPalette(1, 1, 1)
     ColorFromPaletteIndex(1)
+
 
 @State
 def maef_001_zanzou():
@@ -2978,6 +3048,7 @@ def maef_001_zanzou():
         IgnorePauses(3)
     sprite('vrmaef001_00', 20)
     callSubroutine('Zanzou_Color')
+
 
 @State
 def maef_001_zanzou2():
@@ -2992,6 +3063,7 @@ def maef_001_zanzou2():
     sprite('vrmaef001_10', 4)
     sprite('vrmaef001_11', 20)
     callSubroutine('Zanzou_Color')
+
 
 @State
 def maef_231():
@@ -3009,6 +3081,7 @@ def maef_231():
     sprite('keep', 3)
     sprite('keep', 3)
 
+
 @State
 def maef_231_3d():
 
@@ -3022,6 +3095,7 @@ def maef_231_3d():
         AddX(60000)
         Eff3DEffect('maef_231slash', '')
     sprite('null', 15)
+
 
 @State
 def maef_231_3d2():
@@ -3038,6 +3112,7 @@ def maef_231_3d2():
         AlphaValue(128)
     sprite('null', 15)
 
+
 @State
 def maef_202():
 
@@ -3052,6 +3127,7 @@ def maef_202():
     sprite('vrmaef202_03', 3)
     AddX(-23000)
 
+
 @State
 def maef_202_2():
 
@@ -3064,6 +3140,7 @@ def maef_202_2():
     AddX(-64000)
     sprite('vrmaef202_05', 12)
 
+
 @State
 def maef_232():
 
@@ -3074,6 +3151,7 @@ def maef_232():
         callSubroutine('Zanzou_Color')
     sprite('vrmaef232_04', 4)
     sprite('vrmaef232_05', 12)
+
 
 @State
 def maef_252():
@@ -3088,6 +3166,7 @@ def maef_252():
     sprite('vrmaef252_05', 3)
     sprite('vrmaef252_06', 3)
 
+
 @State
 def maef_311():
 
@@ -3097,6 +3176,7 @@ def maef_311():
         callSubroutine('Zanzou_Color')
     sprite('vrmaef311_08', 16)
 
+
 @State
 def maef_321():
 
@@ -3105,6 +3185,7 @@ def maef_321():
         E0EAEffectPosition(3)
         callSubroutine('Zanzou_Color')
     sprite('vrmaef321_09', 16)
+
 
 @State
 def maef_340():
@@ -3117,6 +3198,7 @@ def maef_340():
     sprite('vrmaef340_00', 3)
     sprite('vrmaef340_01', 3)
 
+
 @State
 def maef_500():
 
@@ -3128,10 +3210,12 @@ def maef_500():
     sprite('vrmaef500_03', 3)
     CreateObject('maef_500_Particle', 0)
 
+
 @State
 def maef_500_Particle():
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_500dust', -1)
+
 
 @State
 def maef_501_zanzou():
@@ -3146,6 +3230,7 @@ def maef_501_zanzou():
     sprite('vrmaef501_01', 16)
     callSubroutine('Zanzou_Color')
 
+
 @State
 def maef_502_zanzou():
 
@@ -3155,6 +3240,7 @@ def maef_502_zanzou():
         IgnorePauses(3)
         callSubroutine('Zanzou_Color')
     sprite('vrmaef502_00', 20)
+
 
 @State
 def maef_501_atk():
@@ -3180,7 +3266,7 @@ def maef_501_atk():
             HitLow(2)
         CollideWithWall(1)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
     sprite('vrmaef501atk', 3)
     StartMultihit()
     AddX(50000)
@@ -3197,7 +3283,7 @@ def maef_501_atk():
     XImpulseAcceleration(60)
     sprite('vrmaef501atk', 5)
     XImpulseAcceleration(60)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     AttackOff()
     sprite('vrmaef501atk', 10)
     XImpulseAcceleration(20)
@@ -3207,6 +3293,7 @@ def maef_501_atk():
     DeleteObject(4)
     EndMomentum(1)
     AttackOff()
+
 
 @State
 def maef_501():
@@ -3223,7 +3310,7 @@ def maef_501():
         def upon_32():
             ConstantAlphaModifier(-10)
             AlphaValue(128)
-            ObjectUpon(4, 32)
+            ObjectUpon(FALLING, 32)
     sprite('vrmaef_shot00', 2)
     CreateObject('maef_501_Shot', -1)
     RegisterObject(4, 1)
@@ -3235,6 +3322,7 @@ def maef_501():
     sprite('vrmaef_shot01', 2)
     sprite('vrmaef_shot02', 2)
     gotoLabel(0)
+
 
 @State
 def maef_501_Shot():
@@ -3248,6 +3336,7 @@ def maef_501_Shot():
             AlphaValue(128)
     sprite('null', 32767)
     CallPrivateEffect('maef_shot')
+
 
 @State
 def maef_501_Shot_aura():
@@ -3265,6 +3354,7 @@ def maef_501_Shot_aura():
     CallCustomizableParticle('maef_shot_dust', -1)
     gotoLabel(0)
 
+
 @State
 def maef_muzzle():
     sprite('null', 1)
@@ -3281,6 +3371,7 @@ def maef_muzzle():
     CallCustomizableParticle('maef_muzzle_dust', -1)
     CreateParticle('maef_muzzle_sub', -1)
 
+
 @State
 def maef_503():
 
@@ -3295,10 +3386,12 @@ def maef_503():
     CreateObject('maef_503_particle', 0)
     sprite('vrmaef503_02', 4)
 
+
 @State
 def maef_503_particle():
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_503dust', -1)
+
 
 @State
 def maef_503_wind():
@@ -3311,6 +3404,7 @@ def maef_503_wind():
     sprite('null', 20)
     sprite('null', 8)
     ConstantAlphaModifier(-32)
+
 
 @State
 def maef_520_slash():
@@ -3337,6 +3431,7 @@ def maef_520_slash():
     sprite('null', 10)
     E0EAEffectPosition(0)
 
+
 @State
 def maef_521_kick():
 
@@ -3354,6 +3449,7 @@ def maef_521_kick():
     Eff3DEffect('maef_521kick2.DIG', '')
     E0EAEffectPosition(0)
 
+
 @State
 def maef_522():
 
@@ -3361,7 +3457,7 @@ def maef_522():
         RemoveOnCallStateEnd(3)
         E0EAEffectPosition(3)
         AddX(100000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     CreateObject('maef_522_a', -1)
     CreateObject('maef_522_b', -1)
@@ -3372,6 +3468,7 @@ def maef_522():
     DespawnEAEffect('maef_522_c')
     DespawnEAEffect('maef_522_dust')
     SetScaleSpeed(-250)
+
 
 @State
 def maef_522_a():
@@ -3385,6 +3482,7 @@ def maef_522_a():
     callSubroutine('maef_color')
     CallPrivateEffect('maef_522a')
 
+
 @State
 def maef_522_b():
 
@@ -3395,6 +3493,7 @@ def maef_522_b():
         E0EAEffectScale(2)
     sprite('null', 32767)
     CallPrivateEffect('maef_522b')
+
 
 @State
 def maef_522_c():
@@ -3409,6 +3508,7 @@ def maef_522_c():
     CreateObject('maef_522_c2', -1)
     gotoLabel(0)
 
+
 @State
 def maef_522_c2():
 
@@ -3418,6 +3518,7 @@ def maef_522_c2():
     sprite('null', 30)
     callSubroutine('maef_color')
     CallPrivateEffect('maef_522c')
+
 
 @State
 def maef_522_dust():
@@ -3432,6 +3533,7 @@ def maef_522_dust():
     CallCustomizableParticle('maef_522dust', -1)
     gotoLabel(0)
 
+
 @State
 def maef_522_ribon():
 
@@ -3441,6 +3543,7 @@ def maef_522_ribon():
         IgnorePauses(3)
         callSubroutine('Zanzou_Color')
     sprite('vrmaef522_03', 16)
+
 
 @State
 def maef_530():
@@ -3456,11 +3559,13 @@ def maef_530():
     sprite('vrmaef530_01', 4)
     sprite('vrmaef530_02', 12)
 
+
 @State
 def maef_530_Particle():
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_530slash', -1)
     CallCustomizableParticle('maef_530slash_add', -1)
+
 
 @State
 def maef_531():
@@ -3476,12 +3581,14 @@ def maef_531():
     CreateObject('maef_531_smash', 0)
     sprite('vrmaef531_01', 20)
 
+
 @State
 def maef_531_smash():
     sprite('null', 1)
     AddX(-32000)
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_531smash', -1)
+
 
 @State
 def maef_533():
@@ -3506,6 +3613,7 @@ def maef_533():
     CreateObject('maef_533_slash6', -1)
     gotoLabel(0)
 
+
 @State
 def maef_533_slash():
 
@@ -3520,6 +3628,7 @@ def maef_533_slash():
     CreateObject('maef_533_slash_add', -1)
     CreateObject('maef_533_particle', -1)
 
+
 @State
 def maef_533_slash_add():
 
@@ -3532,6 +3641,7 @@ def maef_533_slash_add():
     sprite('null', 6)
     sprite('null', 3)
     AlphaValue(128)
+
 
 @State
 def maef_533_slash2():
@@ -3547,6 +3657,7 @@ def maef_533_slash2():
     CreateObject('maef_533_slash2_add', -1)
     CreateObject('maef_533_particle', -1)
 
+
 @State
 def maef_533_slash2_add():
 
@@ -3559,6 +3670,7 @@ def maef_533_slash2_add():
     sprite('null', 6)
     sprite('null', 3)
     AlphaValue(128)
+
 
 @State
 def maef_533_slash3():
@@ -3574,6 +3686,7 @@ def maef_533_slash3():
     CreateObject('maef_533_slash3_add', -1)
     CreateObject('maef_533_particle', -1)
 
+
 @State
 def maef_533_slash3_add():
 
@@ -3586,6 +3699,7 @@ def maef_533_slash3_add():
     sprite('null', 6)
     sprite('null', 3)
     AlphaValue(128)
+
 
 @State
 def maef_533_slash4():
@@ -3601,6 +3715,7 @@ def maef_533_slash4():
     CreateObject('maef_533_slash4_add', -1)
     CreateObject('maef_533_particle', -1)
 
+
 @State
 def maef_533_slash4_add():
 
@@ -3613,6 +3728,7 @@ def maef_533_slash4_add():
     sprite('null', 6)
     sprite('null', 3)
     AlphaValue(128)
+
 
 @State
 def maef_533_slash5():
@@ -3628,6 +3744,7 @@ def maef_533_slash5():
     CreateObject('maef_533_slash5_add', -1)
     CreateObject('maef_533_particle', -1)
 
+
 @State
 def maef_533_slash5_add():
 
@@ -3640,6 +3757,7 @@ def maef_533_slash5_add():
     sprite('null', 6)
     sprite('null', 3)
     AlphaValue(128)
+
 
 @State
 def maef_533_slash6():
@@ -3655,6 +3773,7 @@ def maef_533_slash6():
     CreateObject('maef_533_slash6_add', -1)
     CreateObject('maef_533_particle', -1)
 
+
 @State
 def maef_533_slash6_add():
 
@@ -3667,6 +3786,7 @@ def maef_533_slash6_add():
     sprite('null', 6)
     sprite('null', 3)
     AlphaValue(128)
+
 
 @State
 def maef_533_particle():
@@ -3683,6 +3803,7 @@ def maef_533_particle():
     CallPrivateEffect('maef_533slash')
     CreateObject('maef_533_particle_add', -1)
 
+
 @State
 def maef_533_particle_add():
 
@@ -3693,6 +3814,7 @@ def maef_533_particle_add():
         E0EAEffectRotation(2)
     sprite('null', 6)
     CallPrivateEffect('maef_533slash_add')
+
 
 @State
 def maef_540():
@@ -3710,10 +3832,12 @@ def maef_540():
     CreateObject('maef_540_Particle', 0)
     CreateObject('maef_540_Particle', 1)
 
+
 @State
 def maef_540_Particle():
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_540dust', -1)
+
 
 @State
 def ma203Shot():
@@ -3743,8 +3867,8 @@ def ma203Shot():
         UseSlashHitspark(1)
         ContinueState(300)
 
-        def upon_43():
-            if (SLOT_48 == 0):
+        def upon_VALUE_RECEIVED():
+            if SLOT_ReceivedValue == 0:
                 RotationAngle(0)
                 AirHitstunAnimation(9)
                 AirPushbackX(34000)
@@ -3753,7 +3877,7 @@ def ma203Shot():
                 CallCustomizableParticle('maef_D_mazzle', -1)
                 callSubroutine('maef_color2')
                 CallCustomizableParticle('maef_D_mazzle_ring', -1)
-            if (SLOT_48 == 1):
+            if SLOT_ReceivedValue == 1:
                 RotationAngle(15000)
                 AirHitstunAnimation(11)
                 AirPushbackX(10000)
@@ -3764,7 +3888,7 @@ def ma203Shot():
                 callSubroutine('maef_color2')
                 ParticleRotationAngle(15000)
                 CallCustomizableParticle('maef_D_mazzle_ring', -1)
-            if (SLOT_48 == 2):
+            if SLOT_ReceivedValue == 2:
                 RotationAngle(-15000)
                 AirHitstunAnimation(9)
                 AirPushbackX(34000)
@@ -3775,7 +3899,7 @@ def ma203Shot():
                 callSubroutine('maef_color2')
                 ParticleRotationAngle(-15000)
                 CallCustomizableParticle('maef_D_mazzle_ring', -1)
-            if (SLOT_48 == 3):
+            if SLOT_ReceivedValue == 3:
                 RotationAngle(20000)
                 GroundedHitstunAnimation(19)
                 AirHitstunAnimation(19)
@@ -3790,7 +3914,7 @@ def ma203Shot():
                 callSubroutine('maef_color2')
                 ParticleRotationAngle(20000)
                 CallCustomizableParticle('maef_D_mazzle_ring', -1)
-            if (SLOT_48 == 4):
+            if SLOT_ReceivedValue == 4:
                 RotationAngle(0)
                 GroundedHitstunAnimation(9)
                 AirHitstunAnimation(9)
@@ -3803,7 +3927,7 @@ def ma203Shot():
                 CallCustomizableParticle('maef_D_mazzle', -1)
                 callSubroutine('maef_color2')
                 CallCustomizableParticle('maef_D_mazzle_ring', -1)
-            if (SLOT_48 == 5):
+            if SLOT_ReceivedValue == 5:
                 RotationAngle(40000)
                 GroundedHitstunAnimation(9)
                 AirHitstunAnimation(9)
@@ -3824,7 +3948,7 @@ def ma203Shot():
             Damage(900)
             AttackP2(82)
             EnemyHitstopAddition(11, 11, 13)
-            if (not SLOT_57):
+            if not SLOT_57:
                 GroundedHitstunAnimation(17)
                 AirHitstunAnimation(17)
             Size(1500)
@@ -3836,8 +3960,8 @@ def ma203Shot():
             clearUponHandler(39)
             SLOT_53 = 1
 
-            def upon_OPPONENT_HIT_OR_BLOCK():
-                clearUponHandler(11)
+            def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+                clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
                 sendToLabel(3)
 
         def upon_40():
@@ -3850,25 +3974,25 @@ def ma203Shot():
             AttackDirection(0)
             sendToLabel(1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_23 < 60000):
-                PassbackAddActionMarkToFunction('NmlAtk5D', 33)
-                PassbackAddActionMarkToFunction('NmlAtkAIR5D', 33)
+        def upon_EVERY_FRAME():
+            if SLOT_YDistanceFromFloor < 60000:
+                TriggerUponForState('NmlAtk5D', 33)
+                TriggerUponForState('NmlAtkAIR5D', 33)
             if SLOT_56:
-                if (SLOT_23 < 180000):
-                    PassbackAddActionMarkToFunction('NmlAtk5D', 33)
-                    PassbackAddActionMarkToFunction('NmlAtkAIR5D', 33)
+                if SLOT_YDistanceFromFloor < 180000:
+                    TriggerUponForState('NmlAtk5D', 33)
+                    TriggerUponForState('NmlAtkAIR5D', 33)
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             AttackOff()
-            PassbackAddActionMarkToFunction('NmlAtk5D', 32)
-            PassbackAddActionMarkToFunction('NmlAtkAIR5D', 32)
+            TriggerUponForState('NmlAtk5D', 32)
+            TriggerUponForState('NmlAtkAIR5D', 32)
             CreateObject('ma203_Shot_hit', -1)
 
         def upon_56():
             CopyFromRightToLeft(23, 2, 58, 3, 2, 58)
-            if (not SLOT_58):
+            if not SLOT_58:
                 sendToLabel(580)
         HitsPerCall(1, 0, 0, 0, 1, 0, 1, 1)
 
@@ -3876,7 +4000,7 @@ def ma203Shot():
             clearUponHandler(39)
             clearUponHandler(40)
             sendToLabel(580)
-        sendToLabelUpon(32, 580)
+        uponSendToLabel(32, 580)
     sprite('ma203atk_dummy', 1)
     sprite('ma203atk_dummy', 1)
     if SLOT_7:
@@ -3920,19 +4044,20 @@ def ma203Shot():
     gotoLabel(1)
     label(580)
     sprite('ma203atk_dummy', 1)
-    clearUponHandler(43)
+    clearUponHandler(VALUE_RECEIVED)
     clearUponHandler(39)
     clearUponHandler(40)
-    clearUponHandler(3)
-    clearUponHandler(10)
-    clearUponHandler(11)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
     clearUponHandler(54)
     clearUponHandler(32)
     SLOT_7 = 0
-    PassbackAddActionMarkToFunction('NmlAtk5D', 33)
-    PassbackAddActionMarkToFunction('NmlAtkAIR5D', 33)
+    TriggerUponForState('NmlAtk5D', 33)
+    TriggerUponForState('NmlAtkAIR5D', 33)
     EndMomentum(1)
     AttackOff()
+
 
 @State
 def ma203_Shot_poly():
@@ -3956,6 +4081,7 @@ def ma203_Shot_poly():
     Unknown23052(40)
     Unknown23049(-1, 16777215)
 
+
 @State
 def ma203_Shot_poly_add():
 
@@ -3966,6 +4092,7 @@ def ma203_Shot_poly_add():
         E0EAEffectDirection(2)
     sprite('null', 32767)
     LinkParticle('maef_lance')
+
 
 @State
 def ma203_Shot_poly2():
@@ -3988,6 +4115,7 @@ def ma203_Shot_poly2():
     Unknown23052(60)
     Unknown23049(-1, -1)
 
+
 @State
 def ma203_Shot_particle():
 
@@ -4002,11 +4130,13 @@ def ma203_Shot_particle():
     CallCustomizableParticle('maef_lance_dust', -1)
     gotoLabel(0)
 
+
 @State
 def ma203_Shot_hit():
     sprite('null', 1)
     callSubroutine('maef_color3')
     CallCustomizableParticle('maef_D_hit', -1)
+
 
 @State
 def maef_D_turn():
@@ -4019,6 +4149,7 @@ def maef_D_turn():
     ParticleSize(1500)
     CallCustomizableParticle('maef_D_turn_ring', -1)
 
+
 @State
 def maef_D_hold():
 
@@ -4029,6 +4160,7 @@ def maef_D_hold():
         DespawnEAEffect('maef_D')
     sprite('null', 32767)
     CreateObject('maef_D', -1)
+
 
 @State
 def maef_203_up():
@@ -4042,6 +4174,7 @@ def maef_203_up():
     sprite('null', 32767)
     CreateObject('maef_D', -1)
 
+
 @State
 def maef_203_up2():
 
@@ -4053,6 +4186,7 @@ def maef_203_up2():
         DespawnEAEffect('maef_D')
     sprite('null', 32767)
     CreateObject('maef_D', -1)
+
 
 @State
 def maef_203_down():
@@ -4066,6 +4200,7 @@ def maef_203_down():
     sprite('null', 32767)
     CreateObject('maef_D', -1)
 
+
 @State
 def maef_203_down2():
 
@@ -4077,6 +4212,7 @@ def maef_203_down2():
         DespawnEAEffect('maef_D')
     sprite('null', 32767)
     CreateObject('maef_D', -1)
+
 
 @State
 def maef_AirD_hold():
@@ -4090,6 +4226,7 @@ def maef_AirD_hold():
     sprite('null', 32767)
     CreateObject('maef_D', -1)
 
+
 @State
 def maef_253_up():
 
@@ -4102,6 +4239,7 @@ def maef_253_up():
     sprite('null', 32767)
     CreateObject('maef_D', -1)
 
+
 @State
 def maef_253_up2():
 
@@ -4112,6 +4250,7 @@ def maef_253_up2():
         DespawnEAEffect('maef_D')
     sprite('null', 32767)
     CreateObject('maef_D', -1)
+
 
 @State
 def maef_253_down():
@@ -4125,6 +4264,7 @@ def maef_253_down():
     sprite('null', 32767)
     CreateObject('maef_D', -1)
 
+
 @State
 def maef_253_down2():
 
@@ -4136,6 +4276,7 @@ def maef_253_down2():
         DespawnEAEffect('maef_D')
     sprite('null', 32767)
     CreateObject('maef_D', -1)
+
 
 @State
 def maef_D():
@@ -4153,6 +4294,7 @@ def maef_D():
     CreateObject('maef_D_particle_e', -1)
     CreateObject('maef_D_particle_f', -1)
     CreateObject('maef_D_3d', -1)
+
 
 @State
 def maef_D_particle_a():
@@ -4172,6 +4314,7 @@ def maef_D_particle_a():
     callSubroutine('maef_color')
     CallPrivateEffect('maef_D_hold_a')
 
+
 @State
 def maef_D_particle_b():
 
@@ -4188,6 +4331,7 @@ def maef_D_particle_b():
             Size(2000)
     sprite('null', 32767)
     CallPrivateEffect('maef_D_hold_b')
+
 
 @State
 def maef_D_particle_c():
@@ -4207,6 +4351,7 @@ def maef_D_particle_c():
     callSubroutine('maef_color2')
     CallPrivateEffect('maef_D_hold_c')
 
+
 @State
 def maef_D_particle_d():
 
@@ -4220,6 +4365,7 @@ def maef_D_particle_d():
     callSubroutine('maef_color')
     CallPrivateEffect('maef_D_hold_d')
 
+
 @State
 def maef_D_particle_e():
 
@@ -4231,6 +4377,7 @@ def maef_D_particle_e():
         E0EAEffectRotation(2)
     sprite('null', 32767)
     CallPrivateEffect('maef_D_hold_e')
+
 
 @State
 def maef_D_particle_f():
@@ -4244,6 +4391,7 @@ def maef_D_particle_f():
     sprite('null', 32767)
     callSubroutine('maef_color3')
     CallPrivateEffect('maef_D_hold_f')
+
 
 @State
 def maef_D_3d():
@@ -4259,6 +4407,7 @@ def maef_D_3d():
         BlendMode_Add()
         Size(600)
     sprite('null', 32767)
+
 
 @State
 def maef_catch():
@@ -4288,6 +4437,7 @@ def maef_catch():
     sprite('vrmaef_catch', 60)
     E0EAEffectPosition(0)
 
+
 @State
 def maef_401():
 
@@ -4297,7 +4447,7 @@ def maef_401():
         IgnorePauses(2)
         BlendMode_Add()
         PaletteIndex(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrmaef401_00', 3)
     CreateObject('maef_401_aura', 0)
     CreateObject('maef_401_aura2', 0)
@@ -4317,6 +4467,7 @@ def maef_401():
     gotoLabel(0)
     label(1)
     loopRest()
+
 
 @State
 def maef_401C():
@@ -4328,7 +4479,7 @@ def maef_401C():
         BlendMode_Add()
         PaletteIndex(1)
         RotationAngle(-30000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrmaef401_00', 3)
     CreateObject('maef_401_aura', 0)
     CreateObject('maef_401_aura2', 0)
@@ -4348,6 +4499,7 @@ def maef_401C():
     gotoLabel(0)
     label(1)
     loopRest()
+
 
 @State
 def maef_403():
@@ -4359,7 +4511,7 @@ def maef_403():
         BlendMode_Add()
         PaletteIndex(1)
         RotationAngle(90000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrmaef401_00', 3)
     CreateObject('maef_401_aura', 0)
     CreateObject('maef_401_aura2', 0)
@@ -4381,6 +4533,7 @@ def maef_403():
     sprite('keep', 1)
     ConstantAlphaModifier(-128)
     loopRest()
+
 
 @State
 def maef_403B():
@@ -4392,7 +4545,7 @@ def maef_403B():
         BlendMode_Add()
         PaletteIndex(1)
         RotationAngle(60000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrmaef401_00', 3)
     CreateObject('maef_401_aura', 0)
     CreateObject('maef_401_aura2', 0)
@@ -4414,6 +4567,7 @@ def maef_403B():
     sprite('keep', 1)
     ConstantAlphaModifier(-128)
     loopRest()
+
 
 @State
 def maef_403C():
@@ -4425,7 +4579,7 @@ def maef_403C():
         BlendMode_Add()
         PaletteIndex(1)
         RotationAngle(30000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrmaef401_00', 3)
     CreateObject('maef_401_aura', 0)
     CreateObject('maef_401_aura2', 0)
@@ -4447,6 +4601,7 @@ def maef_403C():
     sprite('keep', 1)
     ConstantAlphaModifier(-128)
     loopRest()
+
 
 @State
 def maef_401_aura():
@@ -4459,6 +4614,7 @@ def maef_401_aura():
     sprite('null', 60)
     LinkParticle('maef_401aura')
 
+
 @State
 def maef_401_aura2():
 
@@ -4469,6 +4625,7 @@ def maef_401_aura2():
     sprite('null', 60)
     callSubroutine('maef_color2')
     CallPrivateEffect('maef_401aura2')
+
 
 @State
 def maef_401_aura3():
@@ -4481,6 +4638,7 @@ def maef_401_aura3():
     callSubroutine('maef_color')
     CallPrivateEffect('maef_401aura3')
 
+
 @State
 def maef_401_dust():
 
@@ -4489,6 +4647,7 @@ def maef_401_dust():
     sprite('null', 60)
     callSubroutine('maef_color2')
     CallPrivateEffect('maef_401dust')
+
 
 @State
 def maef_401_ring():
@@ -4499,6 +4658,7 @@ def maef_401_ring():
     callSubroutine('maef_color2')
     CallPrivateEffect('maef_401ring')
 
+
 @State
 def maef_401_ring2():
 
@@ -4507,6 +4667,7 @@ def maef_401_ring2():
     sprite('null', 60)
     callSubroutine('maef_color2')
     CallPrivateEffect('maef_401ring2')
+
 
 @State
 def maef_403_landing():
@@ -4522,6 +4683,7 @@ def maef_403_landing():
     ParticleSize(1500)
     CallCustomizableParticle('maef_403aura', -1)
 
+
 @State
 def maef_401_impact():
 
@@ -4531,6 +4693,7 @@ def maef_401_impact():
     LinkParticle('maef_401impact')
     sprite('null', 60)
     E0EAEffectPosition(0)
+
 
 @State
 def maef_401_impact_C():
@@ -4543,10 +4706,12 @@ def maef_401_impact_C():
     sprite('null', 60)
     E0EAEffectPosition(0)
 
+
 @State
 def maef_401_hit():
     sprite('null', 1)
     CreateParticle('maef_401hit', -1)
+
 
 @State
 def maef430_test():
@@ -4557,6 +4722,7 @@ def maef430_test():
     CreateObject('maef430_strike', -1)
     CreateObject('maef430_bg', -1)
 
+
 @State
 def maef430_hold():
 
@@ -4564,7 +4730,7 @@ def maef430_hold():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         IgnorePauses(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AddX(240000)
         AddY(-16000)
     sprite('null', 60)
@@ -4574,6 +4740,7 @@ def maef430_hold():
     sprite('null', 60)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-17)
+
 
 @State
 def maef430_hold_yari():
@@ -4587,6 +4754,7 @@ def maef430_hold_yari():
     callSubroutine('maef_color3')
     CallPrivateEffect('maef_430yari')
 
+
 @State
 def maef430_hold_yari_aura():
 
@@ -4597,6 +4765,7 @@ def maef430_hold_yari_aura():
     sprite('null', 60)
     callSubroutine('maef_color')
     CallPrivateEffect('maef_430yari_aura')
+
 
 @State
 def maef430_hold_yari_dust():
@@ -4610,6 +4779,7 @@ def maef430_hold_yari_dust():
     callSubroutine('maef_color3')
     CallPrivateEffect('maef_430yari_flower')
 
+
 @State
 def maef430_ex():
     sprite('null', 1)
@@ -4617,6 +4787,7 @@ def maef430_ex():
     CallCustomizableParticle('maef_430ex_dust', -1)
     callSubroutine('maef_color3')
     CallCustomizableParticle('maef_430ex_flower', -1)
+
 
 @State
 def maef430():
@@ -4629,6 +4800,7 @@ def maef430():
     CreateObject('maef430_bloom', -1)
     CreateObject('maef430_aura', -1)
     CreateObject('maef430_dust', -1)
+
 
 @State
 def maef430_aura():
@@ -4647,6 +4819,7 @@ def maef430_aura():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def maef430_bloom():
 
@@ -4663,11 +4836,13 @@ def maef430_bloom():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def maef430_dust():
     sprite('null', 1)
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_430bloom00', -1)
+
 
 @State
 def maef430_lance():
@@ -4683,6 +4858,7 @@ def maef430_lance():
     sprite('vrmaef430_10', 2)
     sprite('vrmaef430_11', 2)
 
+
 @State
 def maef430_strike():
 
@@ -4697,6 +4873,7 @@ def maef430_strike():
     CreateObject('maef430_strike_3d', -1)
     CreateObject('maef430_strike_bg', -1)
     CreateObject('maef430_flower', -1)
+
 
 @State
 def maef430_strike_aura():
@@ -4715,6 +4892,7 @@ def maef430_strike_aura():
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_430strike_dust', -1)
 
+
 @State
 def maef430_strike_anm():
 
@@ -4727,6 +4905,7 @@ def maef430_strike_anm():
     sprite('vrmaef430_51', 20)
     ConstantAlphaModifier(-12)
     SetScaleXPerFrame(20)
+
 
 @State
 def maef430_strike_3d():
@@ -4742,6 +4921,7 @@ def maef430_strike_3d():
     sprite('null', 25)
     ConstantAlphaModifier(-10)
 
+
 @State
 def maef430_strike_bg():
 
@@ -4756,6 +4936,7 @@ def maef430_strike_bg():
     SetScaleSpeed(10)
     ConstantAlphaModifier(-10)
 
+
 @State
 def maef430_bg():
 
@@ -4765,6 +4946,7 @@ def maef430_bg():
     sprite('null', 1)
     CreateParticle('maef_430smoke', -1)
     CreateObject('maef430_bg_aura', -1)
+
 
 @State
 def maef430_bg_aura():
@@ -4778,6 +4960,7 @@ def maef430_bg_aura():
     Size(1500)
     AlphaValue(175)
     ConstantAlphaModifier(-6)
+
 
 @State
 def maef430_flower():
@@ -4796,6 +4979,7 @@ def maef430_flower():
     sprite('vrmaef430_63', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def maef430_flower_dust():
 
@@ -4805,6 +4989,7 @@ def maef430_flower_dust():
     sprite('null', -1)
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_430flower_dust', -1)
+
 
 @State
 def maef430_flower_particle():
@@ -4817,6 +5002,7 @@ def maef430_flower_particle():
     callSubroutine('maef_color3')
     CallCustomizableParticle('maef_430flower', -1)
 
+
 @State
 def maef430_od():
     sprite('null', -1)
@@ -4824,6 +5010,7 @@ def maef430_od():
     AddX(64000)
     callSubroutine('maef_color3')
     CallCustomizableParticle('maef_430_od', -1)
+
 
 @State
 def maef431():
@@ -4857,6 +5044,7 @@ def maef431():
     CreateObject('maef431_hold_dust', 0)
     CreateObject('maef431_bloom', -1)
 
+
 @State
 def maef431_aura():
 
@@ -4868,6 +5056,7 @@ def maef431_aura():
         Rotation(-204000)
     sprite('null', 25)
     CallPrivateEffect('maef_431aura')
+
 
 @State
 def maef431_aura2():
@@ -4882,6 +5071,7 @@ def maef431_aura2():
     ParticleLayer(11)
     CallPrivateEffect('maef_431aura01')
 
+
 @State
 def maef431_aura_add():
 
@@ -4894,6 +5084,7 @@ def maef431_aura_add():
     sprite('null', 25)
     CallPrivateEffect('maef_431add')
 
+
 @State
 def maef431_aura_add2():
 
@@ -4905,6 +5096,7 @@ def maef431_aura_add2():
         callSubroutine('maef_color2')
     sprite('null', 25)
     CallPrivateEffect('maef_431add00')
+
 
 @State
 def maef431_aura_screw():
@@ -4921,6 +5113,7 @@ def maef431_aura_screw():
         Rotation(24000)
     sprite('null', 32767)
 
+
 @State
 def maef431_hold_dust():
 
@@ -4934,6 +5127,7 @@ def maef431_hold_dust():
     callSubroutine('maef_color3')
     CallCustomizableParticle('maef_431hold_flower', -1)
 
+
 @State
 def maef431_bloom():
 
@@ -4944,6 +5138,7 @@ def maef431_bloom():
         callSubroutine('maef_color')
     sprite('null', 25)
     CallPrivateEffect('maef_431bloom')
+
 
 @State
 def maef431_jump():
@@ -4975,6 +5170,7 @@ def maef431_jump():
     sprite('vrmaef431_12', 2)
     gotoLabel(0)
 
+
 @State
 def maef431_jump_od():
 
@@ -5005,6 +5201,7 @@ def maef431_jump_od():
     sprite('vrmaef431_12', 2)
     gotoLabel(0)
 
+
 @State
 def maef431_jump1():
 
@@ -5018,6 +5215,7 @@ def maef431_jump1():
     sprite('null', 32767)
     CallPrivateEffect('maef_431lance')
 
+
 @State
 def maef431_jump1add():
 
@@ -5029,6 +5227,7 @@ def maef431_jump1add():
         Size(800)
     sprite('null', 32767)
     CallPrivateEffect('maef_431lance_add')
+
 
 @State
 def maef431_jump2():
@@ -5043,6 +5242,7 @@ def maef431_jump2():
     sprite('null', 32767)
     CallPrivateEffect('maef_431lance')
 
+
 @State
 def maef431_jump2add():
 
@@ -5054,6 +5254,7 @@ def maef431_jump2add():
         Size(950)
     sprite('null', 32767)
     CallPrivateEffect('maef_431lance_add')
+
 
 @State
 def maef431_jump3():
@@ -5067,6 +5268,7 @@ def maef431_jump3():
     sprite('null', 32767)
     CallPrivateEffect('maef_431lance')
 
+
 @State
 def maef431_jump3add():
 
@@ -5077,6 +5279,7 @@ def maef431_jump3add():
         RotationAngle(180000)
     sprite('null', 32767)
     CallPrivateEffect('maef_431lance_add')
+
 
 @State
 def maef431_tornade():
@@ -5090,6 +5293,7 @@ def maef431_tornade():
     sprite('null', 1)
     CreateObject('maef431_tornade2', -1)
 
+
 @State
 def maef431_tornade2():
 
@@ -5098,6 +5302,7 @@ def maef431_tornade2():
         AddScale(84)
         SetScaleSpeed(7)
     sprite('vrmaef431_32', 10)
+
 
 @State
 def maef431_dust():
@@ -5111,6 +5316,7 @@ def maef431_dust():
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_431dust', -1)
     gotoLabel(0)
+
 
 @State
 def maef431_dust_od():
@@ -5126,6 +5332,7 @@ def maef431_dust_od():
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_431flower', -1)
     gotoLabel(0)
+
 
 @State
 def maef431_fall():
@@ -5147,6 +5354,7 @@ def maef431_fall():
     sprite('vrmaef431_20', 2)
     gotoLabel(0)
 
+
 @State
 def maef431_fall_od():
 
@@ -5167,6 +5375,7 @@ def maef431_fall_od():
     sprite('vrmaef431_20', 2)
     gotoLabel(0)
 
+
 @State
 def maef431_fall_lance():
 
@@ -5178,6 +5387,7 @@ def maef431_fall_lance():
     sprite('null', 32767)
     CallPrivateEffect('maef_431fall')
 
+
 @State
 def maef431_fall_lance_add():
 
@@ -5186,6 +5396,7 @@ def maef431_fall_lance_add():
         E0EAEffectPosition(2)
     sprite('null', 32767)
     CallPrivateEffect('maef_431fall_add')
+
 
 @State
 def maef431_fall_bloom():
@@ -5200,6 +5411,7 @@ def maef431_fall_bloom():
     sprite('null', 32767)
     CallPrivateEffect('maef_431fall_blm')
 
+
 @State
 def maef431_fall_ribon():
 
@@ -5211,6 +5423,7 @@ def maef431_fall_ribon():
         callSubroutine('maef_color2')
         AddY(18000)
     sprite('null', 32767)
+
 
 @State
 def maef431_fall_dust():
@@ -5225,6 +5438,7 @@ def maef431_fall_dust():
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_431fall_dust', -1)
     gotoLabel(0)
+
 
 @State
 def maef431_crash():
@@ -5245,6 +5459,7 @@ def maef431_crash():
     CreateObject('maef431_storm2', -1)
     CreateObject('maef431_rock', -1)
 
+
 @State
 def maef431_crash_od():
 
@@ -5264,6 +5479,7 @@ def maef431_crash_od():
     CreateObject('maef431_storm2', -1)
     CreateObject('maef431_rock', -1)
 
+
 @State
 def maef431_crash_particle():
     sprite('null', 1)
@@ -5271,6 +5487,7 @@ def maef431_crash_particle():
     CallCustomizableParticle('maef_431crash_blm', -1)
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_431crash_dust', -1)
+
 
 @State
 def maef431_crash_aura():
@@ -5285,6 +5502,7 @@ def maef431_crash_aura():
     sprite('vrmaef431_41', 6)
     sprite('vrmaef431_42', 6)
     sprite('vrmaef431_43', 6)
+
 
 @State
 def maef431_flower_3d():
@@ -5307,6 +5525,7 @@ def maef431_flower_3d():
     CreateObject('maef431_flower2', -1)
     sprite('null', 100)
 
+
 @State
 def maef431_flower():
 
@@ -5326,6 +5545,7 @@ def maef431_flower():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def maef431_flower_b():
 
@@ -5339,6 +5559,7 @@ def maef431_flower_b():
         E0EAEffectScale(2)
     sprite('null', 32)
     ConstantAlphaModifier(-8)
+
 
 @State
 def maef431_flower2():
@@ -5365,6 +5586,7 @@ def maef431_flower2():
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-8)
 
+
 @State
 def maef431_flower2b():
 
@@ -5379,6 +5601,7 @@ def maef431_flower2b():
     sprite('null', 16)
     ConstantAlphaModifier(-8)
     sprite('null', 16)
+
 
 @State
 def maef431_flower3():
@@ -5395,6 +5618,7 @@ def maef431_flower3():
     SetScaleSpeed(10)
     ConstantAlphaModifier(-10)
 
+
 @State
 def maef431_flower3b():
 
@@ -5409,6 +5633,7 @@ def maef431_flower3b():
     sprite('null', 60)
     SetScaleSpeed(10)
     ConstantAlphaModifier(-10)
+
 
 @State
 def maef431_flower4():
@@ -5431,6 +5656,7 @@ def maef431_flower4():
     sprite('null', 16)
     ConstantAlphaModifier(-8)
 
+
 @State
 def maef431_flower4b():
 
@@ -5445,6 +5671,7 @@ def maef431_flower4b():
         BlendMode_Add()
     sprite('null', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def maef431_storm():
@@ -5463,6 +5690,7 @@ def maef431_storm():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def maef431_storm_add():
 
@@ -5477,6 +5705,7 @@ def maef431_storm_add():
     sprite('null', 32)
     AlphaValue(128)
     ConstantAlphaModifier(-4)
+
 
 @State
 def maef431_storm2():
@@ -5494,6 +5723,7 @@ def maef431_storm2():
     sprite('null', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def maef431_storm2_add():
 
@@ -5509,11 +5739,13 @@ def maef431_storm2_add():
     AlphaValue(128)
     ConstantAlphaModifier(-8)
 
+
 @State
 def maef431_flower_particle():
     sprite('null', 1)
     callSubroutine('maef_color3')
     CallCustomizableParticle('maef_431crash_flower', -1)
+
 
 @State
 def maef431_crash_yari():
@@ -5528,6 +5760,7 @@ def maef431_crash_yari():
     CallPrivateEffect('maef_431crash')
     CreateObject('maef431_crash_yari_add', -1)
 
+
 @State
 def maef431_crash_yari_add():
 
@@ -5538,6 +5771,7 @@ def maef431_crash_yari_add():
     sprite('null', 20)
     AddX(17000)
     LinkParticle('maef_431crash_add')
+
 
 @State
 def maef431_crash_yari_od():
@@ -5553,6 +5787,7 @@ def maef431_crash_yari_od():
     CallPrivateEffect('maef_431crash')
     CreateObject('maef431_crash_yari_add_od', -1)
 
+
 @State
 def maef431_crash_yari_add_od():
 
@@ -5563,6 +5798,7 @@ def maef431_crash_yari_add_od():
         E0EAEffectScale(2)
     sprite('null', 20)
     LinkParticle('maef_431crash_add')
+
 
 @State
 def maef431_rock():
@@ -5582,6 +5818,7 @@ def maef431_rock():
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-6)
 
+
 @State
 def maef431_rock_bloom():
 
@@ -5597,6 +5834,7 @@ def maef431_rock_bloom():
     sprite('null', 40)
     E0EAEffectPosition(0)
 
+
 @State
 def AstralCamera():
 
@@ -5605,12 +5843,12 @@ def AstralCamera():
         CameraNoCeiling(1)
         CameraNoScreenCollision(1)
         CameraControlInfinity(1)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 4)
-        sendToLabelUpon(37, 5)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 4)
+        uponSendToLabel(37, 5)
     sprite('null', 32767)
     label(0)
     sprite('null', 32767)
@@ -5675,9 +5913,10 @@ def AstralCamera():
     AbsoluteY(0)
     CreateObject('maef_ah_killwhite', -1)
     FloorCollision(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('null', 32767)
     Unknown20010(0, 700, 0)
+
 
 @State
 def maef450():
@@ -5688,12 +5927,14 @@ def maef450():
     CreateObject('maef450_aura', -1)
     CreateObject('maef450_wind', -1)
 
+
 @State
 def maef450_circle():
     sprite('null', 1)
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_450circle', -1)
     CreateParticle('maef_450circle_add', -1)
+
 
 @State
 def maef450_lance():
@@ -5703,6 +5944,7 @@ def maef450_lance():
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_450lance', -1)
     CreateParticle('maef_450lance_add', -1)
+
 
 @State
 def maef450_aura():
@@ -5723,6 +5965,7 @@ def maef450_aura():
     SetScaleXPerFrame(0)
     sprite('null', 30)
     ConstantAlphaModifier(-8)
+
 
 @State
 def maef450_wind():
@@ -5746,6 +5989,7 @@ def maef450_wind():
     sprite('null', 30)
     ConstantAlphaModifier(-8)
 
+
 @State
 def maef450_slash():
     sprite('null', 1)
@@ -5754,6 +5998,7 @@ def maef450_slash():
     CreateObject('maef450_wind2', -1)
     CreateObject('maef450_dust', -1)
     CreateObject('maef450_smoke', -1)
+
 
 @State
 def maef450_zanzou():
@@ -5765,6 +6010,7 @@ def maef450_zanzou():
         callSubroutine('Zanzou_Color')
     sprite('vrmaef450_00', 3)
     sprite('vrmaef450_01', 16)
+
 
 @State
 def maef450_aura2():
@@ -5778,6 +6024,7 @@ def maef450_aura2():
         AddY(256000)
         SetScaleSpeed(15)
     sprite('null', 15)
+
 
 @State
 def maef450_wind2():
@@ -5794,17 +6041,20 @@ def maef450_wind2():
     SetScaleSpeed(25)
     ConstantAlphaModifier(-8)
 
+
 @State
 def maef450_dust():
     sprite('null', 1)
     callSubroutine('maef_color')
     CallCustomizableParticle('maef_450dust2', -1)
 
+
 @State
 def maef450_smoke():
     sprite('null', 1)
     AddX(90000)
     CallCustomizableParticle('maef_450smoke', -1)
+
 
 @State
 def maef450_upper():
@@ -5814,10 +6064,12 @@ def maef450_upper():
     CreateObject('maef450_particle', -1)
     CreateObject('maef450_aura3', -1)
 
+
 @State
 def maef450_zanzou2():
     sprite('vrmaef450_10', 20)
     callSubroutine('Zanzou_Color')
+
 
 @State
 def maef450_particle():
@@ -5825,6 +6077,7 @@ def maef450_particle():
     callSubroutine('maef_color')
     ParticleRotationAngle(40000)
     CallCustomizableParticle('maef_450upper', -1)
+
 
 @State
 def maef450_aura3():
@@ -5838,6 +6091,7 @@ def maef450_aura3():
     SetScaleXPerFrame(-33)
     ConstantAlphaModifier(-8)
 
+
 @State
 def maef450_charge():
     sprite('null', 32767)
@@ -5850,6 +6104,7 @@ def maef450_charge():
     CreateObject('maef450_charge_bloom', -1)
     CreateObject('maef450_charge_flower', -1)
 
+
 @State
 def maef450_charge_flower():
     sprite('null', 32767)
@@ -5857,6 +6112,7 @@ def maef450_charge_flower():
     ParticleSize(2)
     callSubroutine('maef_color2')
     CallPrivateEffect('maef_450charge_flower')
+
 
 @State
 def maef450_charge_lance():
@@ -5866,12 +6122,14 @@ def maef450_charge_lance():
     ParticleSize(2)
     CallPrivateEffect('maef_450charge')
 
+
 @State
 def maef450_charge_lance_add():
     sprite('null', 32767)
     RemoveOnCallStateEnd(2)
     ParticleSize(2)
     LinkParticle('maef_450charge_add')
+
 
 @State
 def maef450_charge_lance_sub():
@@ -5880,6 +6138,7 @@ def maef450_charge_lance_sub():
     AddY(200000)
     ParticleSize(2)
     LinkParticle('maef_450charge_sub')
+
 
 @State
 def maef450_charge_aura():
@@ -5894,6 +6153,7 @@ def maef450_charge_aura():
         SetScaleX(750)
         SetScaleY(1250)
     sprite('null', 32767)
+
 
 @State
 def maef450_charge_aura2():
@@ -5910,6 +6170,7 @@ def maef450_charge_aura2():
         SetScaleX(1500)
     sprite('null', 32767)
 
+
 @State
 def maef450_charge_bloom():
 
@@ -5922,6 +6183,7 @@ def maef450_charge_bloom():
         AddY(-25000)
         SetScaleX(1000)
     sprite('null', 32767)
+
 
 @State
 def maef450_throw():
@@ -5940,12 +6202,14 @@ def maef450_throw():
     sprite('null', 32767)
     CreateParticle('maef_450throw_yari2', -1)
 
+
 @State
 def maef_450_throw_flower():
     sprite('null', 1)
     AddY(60000)
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_450throw_flower', -1)
+
 
 @State
 def maef450_yari():
@@ -5979,6 +6243,7 @@ def maef450_yari():
     CreateObject('maef450_yari2', -1)
     sprite('null', 60)
 
+
 @State
 def maef450_yari2():
 
@@ -5991,6 +6256,7 @@ def maef450_yari2():
     Size(1100)
     SetScaleSpeed(-18)
 
+
 @State
 def maef450_yari2_add():
 
@@ -6000,6 +6266,7 @@ def maef450_yari2_add():
     CallPrivateEffect('maef_450kira')
     Size(775)
     SetScaleSpeed(-12)
+
 
 @State
 def maef450_yari_dust():
@@ -6020,6 +6287,7 @@ def maef450_yari_dust():
     sprite('null', 1)
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_450yari_dust', -1)
+
 
 @State
 def maef450_yari2_dust():
@@ -6063,6 +6331,7 @@ def maef450_yari2_dust():
     ParticleSize(90)
     CallCustomizableParticle('maef_450yari2_dust', -1)
 
+
 @State
 def maef450_yari_speed():
 
@@ -6077,6 +6346,7 @@ def maef450_yari_speed():
     sprite('null', 6)
     CreateParticle('maef_450yari_speed', -1)
 
+
 @State
 def maef450_yari2_speed():
 
@@ -6090,6 +6360,7 @@ def maef450_yari2_speed():
     sprite('null', 6)
     CreateParticle('maef_450yari_speed2', -1)
 
+
 @State
 def maef450_yari2_speed2():
 
@@ -6102,6 +6373,7 @@ def maef450_yari2_speed2():
     sprite('null', 60)
     ConstantAlphaModifier(-4)
 
+
 @State
 def maef450_bomb():
 
@@ -6113,6 +6385,7 @@ def maef450_bomb():
         AddY(-32000)
     sprite('null', 1)
     CreateParticle('maef_450bomb_ring', -1)
+
 
 @State
 def maef450_bomb2():
@@ -6142,6 +6415,7 @@ def maef450_bomb2():
     SetScaleSpeed(4)
     gotoLabel(0)
 
+
 @State
 def maef450_cloud():
 
@@ -6156,6 +6430,7 @@ def maef450_cloud():
         AddY(-150000)
         ContinueState(120)
     sprite('null', 32767)
+
 
 @State
 def maef450_cloud2():
@@ -6177,6 +6452,7 @@ def maef450_cloud2():
     ConstantAlphaModifier(0)
     AlphaValue(128)
 
+
 @State
 def maef_ah_Ryuhai():
 
@@ -6189,6 +6465,7 @@ def maef_ah_Ryuhai():
         Eff3DEffect('maef_450kirikae', '')
         SetScaleY(-1000)
     sprite('null', 20)
+
 
 @State
 def maef_ah_killwhite():
@@ -6207,6 +6484,7 @@ def maef_ah_killwhite():
     sprite('vr_white', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def ma450yari_dummy():
 
@@ -6215,6 +6493,7 @@ def ma450yari_dummy():
         XPositionRelativeFacing(0)
         AbsoluteY(0)
     sprite('ma450yari_dummy', 32767)
+
 
 @State
 def maef_440():
@@ -6226,6 +6505,7 @@ def maef_440():
         callSubroutine('Zanzou_Color')
     sprite('vrmaef312_00', 3)
     sprite('vrmaef312_01', 15)
+
 
 @State
 def maef_440_slash_3d():
@@ -6243,6 +6523,7 @@ def maef_440_slash_3d():
     SetScaleSpeed(50)
     ConstantAlphaModifier(-16)
 
+
 @State
 def maef_440_slash_3d_add():
 
@@ -6255,6 +6536,7 @@ def maef_440_slash_3d_add():
         BlendMode_Add()
     sprite('null', 15)
 
+
 @State
 def maef_440_slash1():
 
@@ -6263,6 +6545,7 @@ def maef_440_slash1():
         callSubroutine('Zanzou_Color')
     sprite('vrmaef440_00', 4)
     sprite('vrmaef440_01', 10)
+
 
 @State
 def maef_440_slash2():
@@ -6273,6 +6556,7 @@ def maef_440_slash2():
         callSubroutine('Zanzou_Color')
     sprite('vrmaef440_10', 4)
     sprite('vrmaef440_11', 10)
+
 
 @State
 def maef_440_slash3():
@@ -6285,6 +6569,7 @@ def maef_440_slash3():
     sprite('vrmaef440_21', 4)
     sprite('vrmaef440_22', 10)
 
+
 @State
 def maef_440_slash4():
 
@@ -6295,6 +6580,7 @@ def maef_440_slash4():
     sprite('vrmaef440_30', 4)
     sprite('vrmaef440_31', 4)
 
+
 @State
 def maef_440_slash5():
 
@@ -6303,6 +6589,7 @@ def maef_440_slash5():
         callSubroutine('Zanzou_Color')
     sprite('vrmaef440_40', 4)
     sprite('vrmaef440_41', 10)
+
 
 @State
 def maef_440_finish():
@@ -6315,6 +6602,7 @@ def maef_440_finish():
         AddX(-192000)
     sprite('vrmaef440_90', 20)
 
+
 @State
 def maef_440_finish2():
 
@@ -6324,6 +6612,7 @@ def maef_440_finish2():
         callSubroutine('Zanzou_Color')
         AddScaleX(250)
     sprite('vrmaef440_80', 20)
+
 
 @State
 def BurstDD_Camera():
@@ -6338,6 +6627,7 @@ def BurstDD_Camera():
         AddX(280000)
     sprite('null', 32767)
 
+
 @State
 def maef_311_shadow2():
 
@@ -6347,9 +6637,10 @@ def maef_311_shadow2():
     CreateParticle('maef_311shadow2', -1)
     sprite('null', 14)
     sprite('null', 1)
-    ApplyFunctionsToObjects(22)
-    ForceShadowOff(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ForceShadowOff(0)
+
 
 @State
 def maef_311_shadow2_b():
@@ -6360,9 +6651,10 @@ def maef_311_shadow2_b():
     CreateParticle('maef_311shadow2', -1)
     sprite('null', 14)
     sprite('null', 1)
-    ApplyFunctionsToObjects(22)
-    ForceShadowOff(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ForceShadowOff(0)
+
 
 @State
 def maef_601():
@@ -6384,11 +6676,13 @@ def maef_601():
     sprite('maef601_00', 2)
     CreateObject('maef_601_dust', -1)
 
+
 @State
 def maef_601_dust():
     sprite('null', 1)
     callSubroutine('maef_color2')
     CallCustomizableParticle('maef_601dust', -1)
+
 
 @State
 def maef_600():

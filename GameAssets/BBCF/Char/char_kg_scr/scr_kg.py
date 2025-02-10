@@ -1,7 +1,8 @@
 @Subroutine
 def PreInit():
     CharacterID('kg')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def InitializeStandByLand():
@@ -13,12 +14,13 @@ def InitializeStandByLand():
     def upon_17():
         clearUponHandler(17)
         sendToLabel(1)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_60 = 1
         SLOT_61 = 1
         SLOT_62 = 1
     WhiffCancel('UltimateStandByLand')
     WhiffCancel('UltimateStandByLandOD')
+
 
 @Subroutine
 def InitializeStandByStart():
@@ -26,6 +28,7 @@ def InitializeStandByStart():
     SLOT_60 = 1
     SLOT_61 = 1
     SLOT_62 = 1
+
 
 @Subroutine
 def InitializeStandByFlexChange():
@@ -41,11 +44,12 @@ def InitializeStandByFlexChange():
         WhiffCancel('Change_NmlAtk6D')
         WhiffCancel('Change_NmlAtkAIR6D')
 
+
 @Subroutine
 def InitializeStandByChange():
     AddActionMark(0)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         if SLOT_51:
             SpecialCancelOnHit(1)
             if SLOT_60:
@@ -59,6 +63,7 @@ def InitializeStandByChange():
                 SpecialCancel(1)
                 HitOrBlockCancel('StandByFDash')
                 HitOrBlockCancel('StandByBDash')
+
 
 @Subroutine
 def InitializeStandByChangeNoCheck():
@@ -75,11 +80,12 @@ def InitializeStandByChangeNoCheck():
             HitOrBlockCancel('StandByFDash')
             HitOrBlockCancel('StandByBDash')
 
+
 @Subroutine
 def InitializeStandByChangeAir():
     AddActionMark(0)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         if SLOT_51:
             SpecialCancelOnHit(1)
             if SLOT_60:
@@ -94,15 +100,16 @@ def InitializeStandByChangeAir():
                 HitOrBlockCancel('Change_NmlAtk6D')
                 HitOrBlockCancel('Change_NmlAtkAIR6D')
             if SLOT_55:
-                if (not SLOT_52):
+                if not SLOT_52:
                     SLOT_60 = 1
-                if (not SLOT_53):
+                if not SLOT_53:
                     SLOT_61 = 1
-                if (not SLOT_IsInOverdrive2):
+                if not SLOT_54:
                     SLOT_62 = 1
                 SpecialCancel(1)
                 HitOrBlockCancel('StandByFDash')
                 HitOrBlockCancel('StandByBDash')
+
 
 @Subroutine
 def InitializeStandByAir():
@@ -116,11 +123,11 @@ def InitializeStandByAir():
 
     def upon_17():
         clearUponHandler(17)
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
         sendToLabel(1)
     SetActionMark(0)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_94:
             SetActionMark(0)
             if CurrentStateCheck('Change_NmlAtkAIR5D'):
@@ -129,27 +136,27 @@ def InitializeStandByAir():
                 SetActionMark(1)
             if CurrentStateCheck('Change_NmlAtkAIR6D'):
                 SetActionMark(1)
-            if (SLOT_18 >= 8):
+            if SLOT_StateDuration >= 8:
                 SetActionMark(1)
         if SLOT_2:
-            if CheckInput(0x1):
+            if CheckInput(INPUT_HOLD_A):
                 clearUponHandler(17)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 SLOT_59 = 1
                 SLOT_51 = 1
-            if CheckInput(0xa):
+            if CheckInput(INPUT_HOLD_B):
                 clearUponHandler(17)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 SLOT_59 = 2
                 SLOT_51 = 1
-            if CheckInput(0x13):
+            if CheckInput(INPUT_HOLD_C):
                 clearUponHandler(17)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 SLOT_59 = 3
                 SLOT_51 = 1
             if SLOT_113:
                 clearUponHandler(17)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 Unknown61(0, 1, 0, 3, 0, 0, 0, 9999, 0, 9999, 0, 9999)
                 SLOT_59 = SLOT_0
                 SLOT_51 = 1
@@ -158,10 +165,12 @@ def InitializeStandByAir():
     WhiffCancel('UltimateStandByAir')
     WhiffCancel('UltimateStandByAirOD')
 
+
 @Subroutine
 def DeleteStandByEffect():
     AddActionMark(0)
     DeleteObject(5)
+
 
 @Subroutine
 def InitializeStandByChainAttack():
@@ -169,15 +178,16 @@ def InitializeStandByChainAttack():
     HitsparkSize(750)
     SLOT_4 = 1
     ForceFaceSprite()
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_55 = 1
+
 
 @Subroutine
 def InitializeCAttackChainAttack():
     UseSlashHitspark(1)
     Hitstop(15)
     AddActionMark(0)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         HitOrBlockCancel('NmlAtk5D')
         HitOrBlockCancel('NmlAtk2D')
         HitOrBlockCancel('NmlAtk6D')
@@ -187,6 +197,7 @@ def InitializeCAttackChainAttack():
         HitOrBlockCancel('NmlAtk5D')
         HitOrBlockCancel('NmlAtk2D')
         HitOrBlockCancel('NmlAtk6D')
+
 
 @Subroutine
 def DiveDirectionSet():
@@ -216,6 +227,7 @@ def DiveDirectionSet():
     if SLOT_113:
         physicsXImpulse(50000)
         sendToLabel(1)
+
 
 @Subroutine
 def MatchInit():
@@ -424,17 +436,17 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 250000, 0, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('StandByFDash', 0x2)
+    Move_Register('StandByFDash', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0xda)
+    Move_Input_(INPUT_66)
     Move_EndRegister()
-    Move_Register('StandByBDash', 0x2)
+    Move_Register('StandByBDash', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0xdb)
+    Move_Input_(INPUT_44)
     Move_EndRegister()
-    Move_Register('StandBy5DD', 0x2)
+    Move_Register('StandBy5DD', INPUT_SPECIALMOVE)
     CallSkillConditions('CheckUsed5D')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -442,94 +454,94 @@ def MatchInit():
     Move_Input_(INPUT_PRESS_D)
     MovePriority(10)
     Move_EndRegister()
-    Move_Register('StandBy5DA', 0x2)
+    Move_Register('StandBy5DA', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
+    Move_Input_(INPUT_HOLD_A)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy5DB', 0x2)
+    Move_Register('StandBy5DB', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0xa)
+    Move_Input_(INPUT_HOLD_B)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy5DC', 0x2)
+    Move_Register('StandBy5DC', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0x13)
+    Move_Input_(INPUT_HOLD_C)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy2DD', 0x2)
+    Move_Register('StandBy2DD', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(0x5f)
     Move_Input_(INPUT_PRESS_D)
     MovePriority(10)
     Move_EndRegister()
-    Move_Register('StandBy2DA', 0x2)
+    Move_Register('StandBy2DA', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
+    Move_Input_(INPUT_HOLD_A)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy2DB', 0x2)
+    Move_Register('StandBy2DB', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0xa)
+    Move_Input_(INPUT_HOLD_B)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy2DC', 0x2)
+    Move_Register('StandBy2DC', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0x13)
+    Move_Input_(INPUT_HOLD_C)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy6DD', 0x2)
+    Move_Register('StandBy6DD', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(0x5f)
     Move_Input_(INPUT_PRESS_D)
     MovePriority(10)
     Move_EndRegister()
-    Move_Register('StandBy6DA', 0x2)
+    Move_Register('StandBy6DA', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
+    Move_Input_(INPUT_HOLD_A)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy6DB', 0x2)
+    Move_Register('StandBy6DB', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0xa)
+    Move_Input_(INPUT_HOLD_B)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandBy6DC', 0x2)
+    Move_Register('StandBy6DC', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0x13)
+    Move_Input_(INPUT_HOLD_C)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('StandByAIR5DD', 0x2)
+    Move_Register('StandByAIR5DD', INPUT_SPECIALMOVE)
     CallSkillConditions('CheckUsed5D')
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(0x5f)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('StandByAIR2DD', 0x2)
+    Move_Register('StandByAIR2DD', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(0x5f)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('StandByAIR6DD', 0x2)
+    Move_Register('StandByAIR6DD', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(0x5f)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('StandBy5DA_CPU', 0x2)
+    Move_Register('StandBy5DA_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy5DA')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -540,7 +552,7 @@ def MatchInit():
     GuardStunPriority(2000)
     SkillEstimateRange(0, 650000, -200000, 300000, 10000, 50)
     Move_EndRegister()
-    Move_Register('StandBy5DB_CPU', 0x2)
+    Move_Register('StandBy5DB_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy5DB')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -551,7 +563,7 @@ def MatchInit():
     GuardStunPriority(5000)
     SkillEstimateRange(-100000, 200000, -200000, 300000, 20000, 0)
     Move_EndRegister()
-    Move_Register('StandBy5DC_CPU', 0x2)
+    Move_Register('StandBy5DC_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy5DC')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -561,7 +573,7 @@ def MatchInit():
     AirborneOpponentPriority(5000)
     SkillEstimateRange(0, 400000, 150000, 450000, 20000, 50)
     Move_EndRegister()
-    Move_Register('StandBy2DA_CPU', 0x2)
+    Move_Register('StandBy2DA_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy2DA')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -570,7 +582,7 @@ def MatchInit():
     MoveMid()
     SkillEstimateRange(0, 500000, -200000, 300000, 20000, 50)
     Move_EndRegister()
-    Move_Register('StandBy2DB_CPU', 0x2)
+    Move_Register('StandBy2DB_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy2DB')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -580,7 +592,7 @@ def MatchInit():
     DamageStunPriority(2500)
     SkillEstimateRange(250000, 1300000, -200000, 400000, 20000, 50)
     Move_EndRegister()
-    Move_Register('StandBy2DC_CPU', 0x2)
+    Move_Register('StandBy2DC_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy2DC')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -589,7 +601,7 @@ def MatchInit():
     AirborneOpponentPriority(4000)
     SkillEstimateRange(0, 400000, -200000, 450000, 10000, 50)
     Move_EndRegister()
-    Move_Register('StandBy6DA_CPU', 0x2)
+    Move_Register('StandBy6DA_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy6DA')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -598,7 +610,7 @@ def MatchInit():
     MoveCancellableFrames(100, 100)
     SkillEstimateRange(0, 850000, -200000, 300000, 10000, 50)
     Move_EndRegister()
-    Move_Register('StandBy6DB_CPU', 0x2)
+    Move_Register('StandBy6DB_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy6DB')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -607,7 +619,7 @@ def MatchInit():
     GuardStunPriority(1500)
     SkillEstimateRange(0, 850000, -200000, 300000, 10000, 50)
     Move_EndRegister()
-    Move_Register('StandBy6DC_CPU', 0x2)
+    Move_Register('StandBy6DC_CPU', INPUT_SPECIALMOVE)
     StateCall('StandBy6DC')
     FollowupOnly(1)
     Move_Condition(0x2000)
@@ -616,10 +628,10 @@ def MatchInit():
     DamageStunPriority(5000)
     SkillEstimateRange(0, 1200000, -200000, 600000, 10000, 50)
     Move_EndRegister()
-    Move_Register('ShotA', 0x2)
+    Move_Register('ShotA', INPUT_SPECIALMOVE)
     CallSkillConditions('CheckShotAvailable')
     Move_Condition(0x2000)
-    Move_Input_(0xfe)
+    Move_Input_(INPUT_4HOLDLONG6)
     Move_Input_(INPUT_PRESS_A)
     DamageStunPriority(1)
     GuardStunPriority(1500)
@@ -627,10 +639,10 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(200000, 800000, -100000, 200000, 200, 0)
     Move_EndRegister()
-    Move_Register('ShotB', 0x2)
+    Move_Register('ShotB', INPUT_SPECIALMOVE)
     CallSkillConditions('CheckShotAvailable')
     Move_Condition(0x2000)
-    Move_Input_(0xfe)
+    Move_Input_(INPUT_4HOLDLONG6)
     Move_Input_(INPUT_PRESS_B)
     OpponentAttackPriority(1)
     DamageStunPriority(1)
@@ -638,10 +650,10 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(400000, 800000, -100000, 200000, 10, 400)
     Move_EndRegister()
-    Move_Register('ShotC', 0x2)
+    Move_Register('ShotC', INPUT_SPECIALMOVE)
     CallSkillConditions('CheckShotAvailable')
     Move_Condition(0x2000)
-    Move_Input_(0xfe)
+    Move_Input_(INPUT_4HOLDLONG6)
     Move_Input_(INPUT_PRESS_C)
     Unknown15027(0)
     JumpAvoidPriority(10000)
@@ -649,9 +661,9 @@ def MatchInit():
     PlayerUsable(0)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('AntiAirB', 0x2)
+    Move_Register('AntiAirB', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0xff)
+    Move_Input_(INPUT_4HOLDLONG8)
     Move_Input_(INPUT_PRESS_B)
     AirborneOpponentPriority(4000)
     GuardStunPriority(1)
@@ -659,9 +671,9 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(-350000, 400000, 100000, 500000, 500, 5)
     Move_EndRegister()
-    Move_Register('AntiAirC', 0x2)
+    Move_Register('AntiAirC', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0xff)
+    Move_Input_(INPUT_4HOLDLONG8)
     Move_Input_(INPUT_PRESS_C)
     OpponentAttackPriority(3000)
     GuardStunPriority(1)
@@ -669,73 +681,73 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(-50000, 300000, -200000, 500000, 500, 5)
     Move_EndRegister()
-    Move_Register('AirAssault', 0x2)
+    Move_Register('AirAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
-    Move_Input_(0x103)
+    Move_Input_(INPUT_8HOLD2)
     Move_Input_(INPUT_PRESS_C)
     MoveMid()
     GuardStunPriority(3000)
     SkillEstimateRange(-50000, 400000, -400000, 200000, 500, 5)
     Move_EndRegister()
-    Move_Register('AirAssaultChain', 0x2)
+    Move_Register('AirAssaultChain', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2001)
-    Move_Input_(0x102)
+    Move_Input_(INPUT_82)
     Move_Input_(INPUT_PRESS_C)
     SkillEstimateRange(-50000, 400000, -250000, 250000, 3000, 5)
     Move_EndRegister()
-    Move_Register('UltimateShot', 0x606)
+    Move_Register('UltimateShot', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
-    Move_Input_(0x101)
+    Move_Input_(INPUT_4HOLD1236)
     Move_Input_(INPUT_PRESS_C)
     DamageStunPriority(2000)
     SkillEstimateRange(250000, 600000, -200000, 300000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateShotOD', 0x606)
+    Move_Register('UltimateShotOD', INPUT_DISTORTION)
     Move_Condition(0x3081)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
-    Move_Input_(0x101)
+    Move_Input_(INPUT_4HOLD1236)
     Move_Input_(INPUT_PRESS_C)
     DamageStunPriority(2000)
     SkillEstimateRange(250000, 600000, -200000, 300000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateStandByLand', 0x606)
+    Move_Register('UltimateStandByLand', INPUT_DISTORTION)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
-    Move_Input_(0xc2)
+    Move_Input_(INPUT_28)
     Move_Input_(INPUT_PRESS_D)
     DamageStunPriority(5000)
     SkillEstimateRange(0, 400000, -200000, 500000, 400, 0)
     Move_EndRegister()
-    Move_Register('UltimateStandByAir', 0x606)
+    Move_Register('UltimateStandByAir', INPUT_DISTORTION)
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
-    Move_Input_(0xc2)
+    Move_Input_(INPUT_28)
     Move_Input_(INPUT_PRESS_D)
     DamageStunPriority(5000)
     SkillEstimateRange(0, 400000, -400000, 300000, 400, 0)
     Move_EndRegister()
-    Move_Register('UltimateStandByLandOD', 0x606)
+    Move_Register('UltimateStandByLandOD', INPUT_DISTORTION)
     FollowupOnly(1)
     Move_Condition(0x3081)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
-    Move_Input_(0xc2)
+    Move_Input_(INPUT_28)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('UltimateStandByAirOD', 0x606)
+    Move_Register('UltimateStandByAirOD', INPUT_DISTORTION)
     FollowupOnly(1)
     Move_Condition(0x3081)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
-    Move_Input_(0xc2)
+    Move_Input_(INPUT_28)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('UltimateAntiAir', 0x606)
+    Move_Register('UltimateAntiAir', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Input_(INPUT_2HOLD8)
     Move_Input_(INPUT_PRESS_D)
@@ -747,7 +759,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(-50000, 500000, -100000, 500000, 500, 10)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x304a)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236236)
@@ -756,12 +768,12 @@ def MatchInit():
     OpponentAttackPriority(2000)
     SkillEstimateRange(0, 350000, -200000, 200000, 500, 0)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -769,7 +781,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 300000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -782,7 +794,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 300000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -1022,41 +1034,45 @@ def MatchInit():
     CommonVoicelines(73, 'kg402')
     CommonVoicelines(74, 'kg403')
 
+
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_21):
-        if (SLOT_121 >= 1):
-            if (not SLOT_66):
-                if (not SLOT_75):
+    if not SLOT_21:
+        if SLOT_121 >= 1:
+            if not SLOT_66:
+                if not SLOT_CurrentHealth:
                     if CurrentStateCheck('CmnActFDownLoop'):
                         SLOT_51 = 1
                     if CurrentStateCheck('CmnActBDownLoop'):
                         SLOT_51 = 1
                     if SLOT_51:
-                        if OppStateCheck('CmnActMatchWin'):
-                            if (not CheckObjectPresence(11)):
+                        if CurrentStateCheck('CmnActBDownLoop'):
+                            if not CheckObjectPresence(11):
                                 enterState('LoseAction')
                                 CreateObject('LoseKaguraGirl', -1)
                                 RegisterObject(11, 1)
-                                if (SLOT_121 == 1):
-                                    ObjectUpon(1, 32)
-                                if (SLOT_121 == 2):
-                                    ObjectUpon(1, 33)
-                                if (SLOT_121 == 3):
-                                    ObjectUpon(1, 34)
-                                if (SLOT_121 == 4):
-                                    ObjectUpon(1, 35)
+                                if SLOT_121 == 1:
+                                    ObjectUpon(STATE_END, 32)
+                                if SLOT_121 == 2:
+                                    ObjectUpon(STATE_END, 33)
+                                if SLOT_121 == 3:
+                                    ObjectUpon(STATE_END, 34)
+                                if SLOT_121 == 4:
+                                    ObjectUpon(STATE_END, 35)
+
 
 @Subroutine
 def OnFinalize():
     if SLOT_4:
         SLOT_4 = 0
 
+
 @Subroutine
 def CheckUsed5D():
     SLOT_47 = 0
-    if (not SLOT_60):
+    if not SLOT_60:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckShotAvailable():
@@ -1065,11 +1081,13 @@ def CheckShotAvailable():
     else:
         SLOT_47 = 1
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
+
 
 @State
 def CmnActStand():
@@ -1083,12 +1101,10 @@ def CmnActStand():
     sprite('kg000_06', 7)
     sprite('kg000_07', 7)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     sprite('kg001_00', 6)
     SLOT_88 = 960
     Voiceline('kg000')
@@ -1110,6 +1126,7 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('kg003_00ex', 3)
@@ -1117,10 +1134,12 @@ def CmnActStandTurn():
     sprite('kg003_01', 3)
     sprite('kg003_00', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('kg010_00', 4)
     sprite('kg010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -1136,25 +1155,29 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('kg013_00ex', 3)
     sprite('kg013_01', 3)
     sprite('kg013_00', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('kg010_01', 4)
     sprite('kg010_00', 4)
 
+
 @State
 def CmnActJumpPre():
     sprite('kg023_00', 2)
     sprite('kg023_01', 2)
-    if SLOT_15:
+    if SLOT_IsMovingForward:
         RandomVoiceline('kg003', 75, '', 100, '', 100, '', 100)
     else:
         RandomVoiceline('kg002', 75, '', 100, '', 100, '', 100)
+
 
 @State
 def CmnActJumpUpper():
@@ -1165,11 +1188,13 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpUpperEnd():
     sprite('kg020_02', 3)
     sprite('kg020_03', 3)
     sprite('kg020_04', 3)
+
 
 @State
 def CmnActJumpDown():
@@ -1181,6 +1206,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpLanding():
     sprite('kg024_00', 3)
@@ -1189,16 +1215,19 @@ def CmnActJumpLanding():
     sprite('kg024_03', 3)
     sprite('kg024_04', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('kg024_00', 2)
     sprite('kg024_01', 2)
     sprite('kg024_02', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('kg024_03', 3)
     sprite('kg024_04', 3)
+
 
 @State
 def CmnActFWalk():
@@ -1220,6 +1249,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalk():
     sprite('kg031_00', 7)
@@ -1240,6 +1270,7 @@ def CmnActBWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDash():
     sprite('kg032_00', 2)
@@ -1258,12 +1289,14 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDashStop():
     sprite('kg032_10', 3)
     sprite('kg032_11', 3)
     sprite('kg032_12', 3)
     sprite('kg032_13', 3)
+
 
 @State
 def CmnActBDash():
@@ -1297,9 +1330,11 @@ def CmnActBDash():
     sprite('kg033_08', 3)
     physicsXImpulse(0)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1311,6 +1346,7 @@ def CmnActAirFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBDash():
     sprite('kg036_00', 3)
@@ -1321,11 +1357,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('kg050_00', 1)
     sprite('kg050_01', 1)
     sprite('kg050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1333,6 +1371,7 @@ def CmnActHitStandLv2():
     sprite('kg050_02', 1)
     sprite('kg050_01', 2)
     sprite('kg050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1342,6 +1381,7 @@ def CmnActHitStandLv3():
     sprite('kg050_01', 2)
     sprite('kg050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('kg050_03', 1)
@@ -1350,6 +1390,7 @@ def CmnActHitStandLv4():
     sprite('kg050_02', 2)
     sprite('kg050_01', 2)
     sprite('kg050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1361,11 +1402,13 @@ def CmnActHitStandLv5():
     sprite('kg050_01', 2)
     sprite('kg050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('kg052_00', 1)
     sprite('kg052_01', 1)
     sprite('kg052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1373,6 +1416,7 @@ def CmnActHitStandLowLv2():
     sprite('kg052_02', 1)
     sprite('kg052_01', 2)
     sprite('kg052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1382,6 +1426,7 @@ def CmnActHitStandLowLv3():
     sprite('kg052_01', 2)
     sprite('kg052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('kg052_03', 1)
@@ -1390,6 +1435,7 @@ def CmnActHitStandLowLv4():
     sprite('kg052_02', 2)
     sprite('kg052_01', 2)
     sprite('kg052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1401,11 +1447,13 @@ def CmnActHitStandLowLv5():
     sprite('kg052_01', 2)
     sprite('kg052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('kg054_00', 1)
     sprite('kg054_01', 1)
     sprite('kg054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1413,6 +1461,7 @@ def CmnActHitCrouchLv2():
     sprite('kg054_02', 1)
     sprite('kg054_01', 2)
     sprite('kg054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1422,6 +1471,7 @@ def CmnActHitCrouchLv3():
     sprite('kg054_01', 2)
     sprite('kg054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('kg054_03', 1)
@@ -1430,6 +1480,7 @@ def CmnActHitCrouchLv4():
     sprite('kg054_02', 2)
     sprite('kg054_01', 2)
     sprite('kg054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1441,6 +1492,7 @@ def CmnActHitCrouchLv5():
     sprite('kg054_01', 2)
     sprite('kg054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('kg060_00', 4)
@@ -1450,9 +1502,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('kg060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1463,10 +1517,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('kg060_07', 2)
     sprite('kg060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1476,9 +1532,11 @@ def CmnActBDownBound():
     sprite('kg060_12', 3)
     sprite('kg060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('kg060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1493,13 +1551,16 @@ def CmnActBDown2Stand():
     sprite('kg061_08', 3)
     sprite('kg061_09', 3)
 
+
 @State
 def CmnActFDownUpper():
     sprite('kg063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('kg063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1509,10 +1570,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('kg063_04', 3)
     sprite('kg063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1522,9 +1585,11 @@ def CmnActFDownBound():
     sprite('kg063_09', 3)
     sprite('kg063_10', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('kg063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1540,6 +1605,7 @@ def CmnActFDown2Stand():
     sprite('kg064_09', 2)
     sprite('kg064_10', 2)
 
+
 @State
 def CmnActVDownUpper():
     sprite('kg062_00', 3)
@@ -1549,10 +1615,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('kg062_03', 3)
     sprite('kg062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1564,15 +1632,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('kg062_09', 2)
     sprite('kg062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('kg062_09', 2)
     sprite('kg062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1585,6 +1656,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1595,6 +1667,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1603,14 +1676,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('kg071_06', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('kg073_00', 3)
     sprite('kg073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1621,12 +1697,14 @@ def CmnActWallBoundDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerLoop():
     sprite('kg070_00', 3)
     sprite('kg070_01', 3)
     sprite('kg070_02', 4)
     sprite('kg070_03', 4)
+
 
 @State
 def CmnActStaggerDown():
@@ -1637,6 +1715,7 @@ def CmnActStaggerDown():
     sprite('kg070_08', 4)
     sprite('kg070_09', 4)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('kg070_10', 2)
@@ -1644,11 +1723,13 @@ def CmnActUkemiStagger():
     sprite('kg070_12', 2)
     sprite('kg070_13', 2)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('kg113_00', 3)
     sprite('kg113_01', 3)
     sprite('kg113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -1656,11 +1737,13 @@ def CmnActUkemiAirB():
     sprite('kg113_01', 3)
     sprite('kg113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('kg113_00', 3)
     sprite('kg113_01', 3)
     sprite('kg113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1675,6 +1758,7 @@ def CmnActUkemiLandF():
     sprite('kg110_09', 3)
     sprite('kg110_10', 3)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('kg111_00', 3)
@@ -1686,6 +1770,7 @@ def CmnActUkemiLandB():
     sprite('kg111_07', 200)
     sprite('kg111_08', 3)
     sprite('kg111_09', 3)
+
 
 @State
 def CmnActUkemiLandN():
@@ -1700,6 +1785,7 @@ def CmnActUkemiLandN():
     sprite('kg112_08', 2)
     sprite('kg112_09', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('kg024_00', 3)
@@ -1708,10 +1794,12 @@ def CmnActUkemiLandNLanding():
     sprite('kg024_03', 3)
     sprite('kg024_04', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('kg040_00', 3)
     sprite('kg040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1721,10 +1809,12 @@ def CmnActMidGuardLoop():
     sprite('kg040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('kg040_01', 3)
     sprite('kg040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1735,15 +1825,18 @@ def CmnActMidHeavyGuardLoop():
     sprite('kg040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('kg040_01', 3)
     sprite('kg040_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('kg041_00', 3)
     sprite('kg041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -1753,10 +1846,12 @@ def CmnActHighGuardLoop():
     sprite('kg041_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('kg041_01', 3)
     sprite('kg041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -1767,15 +1862,18 @@ def CmnActHighHeavyGuardLoop():
     sprite('kg041_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('kg041_01', 3)
     sprite('kg041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('kg043_00', 3)
     sprite('kg043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1785,10 +1883,12 @@ def CmnActCrouchGuardLoop():
     sprite('kg043_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('kg043_01', 3)
     sprite('kg043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1799,15 +1899,18 @@ def CmnActCrouchHeavyGuardLoop():
     sprite('kg043_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('kg043_01', 3)
     sprite('kg043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('kg045_00', 3)
     sprite('kg045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1817,10 +1920,12 @@ def CmnActAirGuardLoop():
     sprite('kg045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('kg045_01', 3)
     sprite('kg045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -1831,10 +1936,12 @@ def CmnActAirHeavyGuardLoop():
     sprite('kg045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('kg045_01', 3)
     sprite('kg045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1845,6 +1952,7 @@ def CmnActGuardBreakStand():
     sprite('kg090_03', 6)
     sprite('kg090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('kg091_00', 2)
@@ -1853,6 +1961,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('kg091_03', 6)
     sprite('kg091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1863,17 +1972,20 @@ def CmnActGuardBreakAir():
     sprite('kg092_03', 6)
     sprite('kg092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('kg025_00ex', 4)
     sprite('kg025_01', 4)
     sprite('kg025_00', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('kg040_02', 1)
     sprite('kg040_01', 3)
     sprite('kg040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1887,11 +1999,13 @@ def CmnActLockReject():
     sprite('kg312_07', 3)
     sprite('kg312_08', 3)
 
+
 @State
 def CmnActAirLockWait():
     sprite('kg045_02', 1)
     sprite('kg045_01', 3)
     sprite('kg045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1904,6 +2018,7 @@ def CmnActAirLockReject():
     sprite('kg322_06', 3)
     sprite('kg322_07', 3)
     sprite('kg322_08', 3)
+
 
 @State
 def CmnActLandSpin():
@@ -1921,11 +2036,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('kg071_10', 6)
     sprite('kg071_11', 5)
     sprite('kg071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1941,6 +2058,7 @@ def CmnActVertSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideAir():
     label(0)
@@ -1955,6 +2073,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('kg077_02', 4)
@@ -1964,10 +2083,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('kg077_05', 5)
     sprite('kg077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1976,10 +2097,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('kg060_11', 4)
     sprite('kg060_13', 5)
+
 
 @State
 def CmnActBurstBegin():
@@ -1992,6 +2115,7 @@ def CmnActBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstLoop():
     sprite('kg331_05', 2)
@@ -2002,12 +2126,14 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('kg331_09', 1)
     sprite('kg331_10', 1)
     sprite('kg331_11', 2)
     sprite('kg331_12', 2)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -2020,6 +2146,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('kg331_18', 2)
@@ -2029,6 +2156,7 @@ def CmnActAirBurstLoop():
     sprite('kg331_08', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -2041,6 +2169,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('kg333_00', 3)
@@ -2050,6 +2179,7 @@ def CmnActOverDriveBegin():
     sprite('kg333_03', 32767)
     CreateObject('EMB_KG_OD', -1)
     loopRest()
+
 
 @State
 def CmnActOverDriveLoop():
@@ -2066,10 +2196,12 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('kg333_08', 6)
     sprite('kg333_09', 6)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -2080,6 +2212,7 @@ def CmnActAirOverDriveBegin():
     sprite('kg333_13', 32767)
     CreateObject('EMB_KG', -1)
     loopRest()
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -2096,10 +2229,12 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('kg333_15', 6)
     sprite('kg333_16', 6)
+
 
 @State
 def NmlAtk5A():
@@ -2143,6 +2278,7 @@ def NmlAtk5A():
     sprite('kg200_01', 2)
     sprite('kg200_00', 2)
 
+
 @State
 def NmlAtk5B():
 
@@ -2180,6 +2316,7 @@ def NmlAtk5B():
     sprite('kg201_05', 4)
     sprite('kg201_06', 2)
     sprite('kg201_07', 2)
+
 
 @State
 def NmlAtk5C():
@@ -2229,6 +2366,7 @@ def NmlAtk5C():
     sprite('kg202_15', 3)
     sprite('kg202_16', 3)
 
+
 @State
 def NmlAtk5D():
 
@@ -2277,6 +2415,7 @@ def NmlAtk5D():
     Recovery()
     sprite('kg203_00', 6)
 
+
 @State
 def Change_NmlAtk5D():
 
@@ -2311,6 +2450,7 @@ def Change_NmlAtk5D():
     WhiffCancelEnable(0)
     Recovery()
     sprite('kg203_00', 6)
+
 
 @State
 def NmlAtk2A():
@@ -2352,6 +2492,7 @@ def NmlAtk2A():
     sprite('kg230_01', 3)
     sprite('kg230_00', 2)
 
+
 @State
 def NmlAtk2B():
 
@@ -2383,6 +2524,7 @@ def NmlAtk2B():
     sprite('kg231_07', 3)
     sprite('kg231_08', 3)
 
+
 @State
 def NmlAtk2C():
 
@@ -2404,7 +2546,7 @@ def NmlAtk2C():
         StayAfterMovement(1, 0)
         SetActionMark(0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SetActionMark(1)
     sprite('kg232_00', 3)
     sprite('kg232_01', 3)
@@ -2431,6 +2573,7 @@ def NmlAtk2C():
     DisallowGoto('NmlAtk5C')
     sprite('kg232_13', 4)
     sprite('kg232_14', 4)
+
 
 @State
 def NmlAtk3C():
@@ -2477,6 +2620,7 @@ def NmlAtk3C():
     sprite('kg235_11', 3)
     sprite('kg235_12', 3)
     sprite('kg235_13', 3)
+
 
 @State
 def NmlAtk2D():
@@ -2526,6 +2670,7 @@ def NmlAtk2D():
     Recovery()
     sprite('kg233_00', 6)
 
+
 @State
 def Change_NmlAtk2D():
 
@@ -2562,6 +2707,7 @@ def Change_NmlAtk2D():
     WhiffCancelEnable(0)
     Recovery()
     sprite('kg233_00', 6)
+
 
 @State
 def NmlAtk6A():
@@ -2607,6 +2753,7 @@ def NmlAtk6A():
     sprite('kg210_12', 2)
     sprite('kg210_13', 2)
 
+
 @State
 def NmlAtk6B():
 
@@ -2640,6 +2787,7 @@ def NmlAtk6B():
     sprite('kg211_09', 3)
     sprite('kg211_10', 3)
     sprite('kg211_11', 3)
+
 
 @State
 def NmlAtk6C():
@@ -2697,6 +2845,7 @@ def NmlAtk6C():
     sprite('kg212_15', 5)
     AltKnockdownEffects(100, 1, 1)
 
+
 @State
 def NmlAtk6D():
 
@@ -2745,6 +2894,7 @@ def NmlAtk6D():
     Recovery()
     sprite('kg213_00', 6)
 
+
 @State
 def Change_NmlAtk6D():
 
@@ -2782,6 +2932,7 @@ def Change_NmlAtk6D():
     Recovery()
     sprite('kg213_00', 6)
 
+
 @State
 def NmlAtkAIR5A():
 
@@ -2809,6 +2960,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('kg250_01', 3)
     sprite('kg250_00', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2840,6 +2992,7 @@ def NmlAtkAIR5B():
     sprite('kg251_07', 3)
     sprite('kg251_08', 3)
     sprite('kg251_09', 3)
+
 
 @State
 def NmlAtkAIR5C():
@@ -2879,6 +3032,7 @@ def NmlAtkAIR5C():
     sprite('kg252_11', 3)
     sprite('kg252_12', 3)
     sprite('kg252_13', 3)
+
 
 @State
 def NmlAtkAIR5D():
@@ -2923,6 +3077,7 @@ def NmlAtkAIR5D():
     sprite('keep', 3)
     enterState('AIR5DDive')
 
+
 @State
 def Change_NmlAtkAIR5D():
 
@@ -2964,6 +3119,7 @@ def Change_NmlAtkAIR5D():
     sprite('keep', 3)
     enterState('AIR5DDive')
 
+
 @State
 def StandByAIR5DD():
 
@@ -2982,6 +3138,7 @@ def StandByAIR5DD():
     sprite('kg253_01', 6)
     sprite('kg253_00', 6)
 
+
 @State
 def AIR5DDive():
 
@@ -2989,13 +3146,13 @@ def AIR5DDive():
         AttackDefaults_AirSpecial()
         callSubroutine('DeleteStandByEffect')
         PreventBlocking(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 3)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 3)
         EnableCollision(0)
 
         def upon_STATE_END():
             SLOT_59 = 0
-            if SLOT_110:
+            if SLOT_OverdriveTimer:
                 SLOT_61 = 1
                 SLOT_62 = 1
     sprite('kg409_00', 2)
@@ -3026,12 +3183,13 @@ def AIR5DDive():
     sprite('kg409_16', 2)
     sprite('kg409_17', 2)
     sprite('kg203_02', 1)
-    if (SLOT_59 == 1):
+    if SLOT_59 == 1:
         enterState('StandBy5DA')
-    if (SLOT_59 == 2):
+    if SLOT_59 == 2:
         enterState('StandBy5DB')
-    if (SLOT_59 == 3):
+    if SLOT_59 == 3:
         enterState('StandBy5DC')
+
 
 @State
 def NmlAtkAIR2D():
@@ -3076,6 +3234,7 @@ def NmlAtkAIR2D():
     sprite('keep', 3)
     enterState('AIR2DDive')
 
+
 @State
 def Change_NmlAtkAIR2D():
 
@@ -3117,6 +3276,7 @@ def Change_NmlAtkAIR2D():
     sprite('keep', 3)
     enterState('AIR2DDive')
 
+
 @State
 def StandByAIR2DD():
 
@@ -3135,6 +3295,7 @@ def StandByAIR2DD():
     sprite('kg254_01', 6)
     sprite('kg254_00', 6)
 
+
 @State
 def AIR2DDive():
 
@@ -3142,13 +3303,13 @@ def AIR2DDive():
         AttackDefaults_AirSpecial()
         callSubroutine('DeleteStandByEffect')
         PreventBlocking(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 3)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 3)
         EnableCollision(0)
 
         def upon_STATE_END():
             SLOT_59 = 0
-            if SLOT_110:
+            if SLOT_OverdriveTimer:
                 SLOT_60 = 1
                 SLOT_62 = 1
     sprite('kg409_02', 2)
@@ -3179,12 +3340,13 @@ def AIR2DDive():
     sprite('kg409_19', 2)
     sprite('kg409_20', 2)
     sprite('kg233_02', 1)
-    if (SLOT_59 == 1):
+    if SLOT_59 == 1:
         enterState('StandBy2DA')
-    if (SLOT_59 == 2):
+    if SLOT_59 == 2:
         enterState('StandBy2DB')
-    if (SLOT_59 == 3):
+    if SLOT_59 == 3:
         enterState('StandBy2DC')
+
 
 @State
 def NmlAtkAIR6D():
@@ -3229,6 +3391,7 @@ def NmlAtkAIR6D():
     sprite('keep', 3)
     enterState('AIR6DDive')
 
+
 @State
 def Change_NmlAtkAIR6D():
 
@@ -3270,6 +3433,7 @@ def Change_NmlAtkAIR6D():
     sprite('keep', 3)
     enterState('AIR6DDive')
 
+
 @State
 def StandByAIR6DD():
 
@@ -3288,6 +3452,7 @@ def StandByAIR6DD():
     sprite('kg255_01', 6)
     sprite('kg255_00', 6)
 
+
 @State
 def AIR6DDive():
 
@@ -3295,13 +3460,13 @@ def AIR6DDive():
         AttackDefaults_AirSpecial()
         callSubroutine('DeleteStandByEffect')
         PreventBlocking(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 3)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 3)
         EnableCollision(0)
 
         def upon_STATE_END():
             SLOT_59 = 0
-            if SLOT_110:
+            if SLOT_OverdriveTimer:
                 SLOT_60 = 1
                 SLOT_61 = 1
     sprite('kg409_04', 2)
@@ -3332,12 +3497,13 @@ def AIR6DDive():
     sprite('kg409_22', 2)
     sprite('kg409_23', 2)
     sprite('kg213_02', 1)
-    if (SLOT_59 == 1):
+    if SLOT_59 == 1:
         enterState('StandBy6DA')
-    if (SLOT_59 == 2):
+    if SLOT_59 == 2:
         enterState('StandBy6DB')
-    if (SLOT_59 == 3):
+    if SLOT_59 == 3:
         enterState('StandBy6DC')
+
 
 @State
 def NmlAtkExcite():
@@ -3366,6 +3532,7 @@ def NmlAtkExcite():
     sprite('kg300_08', 8)
     sprite('kg300_09', 8)
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -3387,6 +3554,7 @@ def NmlAtkDeadAngle():
     sprite('kg211_10', 4)
     sprite('kg211_11', 4)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -3405,11 +3573,11 @@ def NmlAtkGuardCrush():
         HitBackReturnIgnore(1)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3417,8 +3585,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -3435,7 +3603,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('kg340_00', 3)
     sprite('kg340_00', 1)
@@ -3454,7 +3622,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('kg340_03', 3)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('kg340_04', 3)
     sprite('kg340_05', 2)
     sprite('kg340_06', 1)
@@ -3472,6 +3640,7 @@ def NmlAtkGuardCrush():
     sprite('kg340_13', 4)
     sprite('kg340_14', 4)
 
+
 @State
 def NmlAtkThrow():
 
@@ -3488,6 +3657,7 @@ def NmlAtkThrow():
     sprite('kg310_05', 7)
     sprite('kg310_06', 5)
     sprite('kg310_07', 5)
+
 
 @State
 def ThrowExe():
@@ -3554,6 +3724,7 @@ def ThrowExe():
     sprite('kg311_13', 5)
     sprite('kg311_14', 5)
 
+
 @State
 def NmlAtkBackThrow():
 
@@ -3570,6 +3741,7 @@ def NmlAtkBackThrow():
     sprite('kg310_05', 7)
     sprite('kg310_06', 5)
     sprite('kg310_07', 5)
+
 
 @State
 def BackThrowExe():
@@ -3644,6 +3816,7 @@ def BackThrowExe():
     sprite('kg311_13', 5)
     sprite('kg311_14', 5)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -3660,6 +3833,7 @@ def NmlAtkAirThrow():
     SmartVoiceline('kg155')
     sprite('kg320_05', 10)
     sprite('kg320_06', 7)
+
 
 @State
 def AirThrowExe():
@@ -3681,8 +3855,8 @@ def AirThrowExe():
         physicsYImpulse(0)
         setGravity(0)
         SetZLine(0, 50)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
     sprite('kg320_02', 3)
     StartMultihit()
     OppThrowAnimation(9, 0)
@@ -3738,6 +3912,7 @@ def AirThrowExe():
     sprite('kg321_12', 4)
     sprite('kg321_13', 4)
     sprite('kg321_14', 4)
+
 
 @State
 def StandBy5DA():
@@ -3811,6 +3986,7 @@ def StandBy5DA():
     sprite('kg400_14', 3)
     sprite('kg400_15', 3)
 
+
 @State
 def StandBy5DB():
 
@@ -3832,6 +4008,7 @@ def StandBy5DB():
     sprite('kg401_00', 6)
     sprite('kg203_01', 6)
     sprite('kg203_00', 6)
+
 
 @State
 def StandBy5DBExe():
@@ -3922,6 +4099,7 @@ def StandBy5DBExe():
     sprite('kg400_13', 4)
     sprite('kg400_14', 4)
     sprite('kg400_15', 4)
+
 
 @State
 def StandBy5DC():
@@ -4016,6 +4194,7 @@ def StandBy5DC():
     sprite('kg402_17', 6)
     sprite('kg402_18', 6)
 
+
 @State
 def StandBy5DD():
 
@@ -4027,6 +4206,7 @@ def StandBy5DD():
     sprite('keep', 5)
     sprite('kg203_01', 8)
     sprite('kg203_00', 8)
+
 
 @State
 def StandBy2DA():
@@ -4056,16 +4236,16 @@ def StandBy2DA():
         StayAfterMovement(1, 0)
         MoveAttributes(1, 0, 0, 0, 0)
 
-        def upon_4():
-            clearUponHandler(4)
+        def upon_FALLING():
+            clearUponHandler(FALLING)
             setGravity(5000)
             sendToLabel(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
         SLOT_51 = 1
         SLOT_53 = 1
         callSubroutine('InitializeStandByChangeAir')
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             if SLOT_63:
                 SLOT_63 = 0
 
@@ -4121,6 +4301,7 @@ def StandBy2DA():
     sprite('kg406_16', 5)
     sprite('kg406_17', 5)
 
+
 @State
 def StandBy2DB():
 
@@ -4145,12 +4326,12 @@ def StandBy2DB():
         AttackOff()
         callSubroutine('InitializeStandByChange')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_19 < 400000):
+                if SLOT_19 < 400000:
                     XImpulseAcceleration(75)
                     SetActionMark(0)
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
     sprite('kg407_00', 2)
     physicsXImpulse(12000)
     JumpEffects(1, 0)
@@ -4203,6 +4384,7 @@ def StandBy2DB():
     sprite('kg407_17', 2)
     sprite('kg407_18', 2)
     sprite('kg407_19', 2)
+
 
 @State
 def StandBy2DC():
@@ -4282,6 +4464,7 @@ def StandBy2DC():
     sprite('kg408_17', 5)
     sprite('kg408_18', 2)
 
+
 @State
 def StandBy2DD():
 
@@ -4294,6 +4477,7 @@ def StandBy2DD():
     sprite('keep', 5)
     sprite('kg233_01', 8)
     sprite('kg233_00', 8)
+
 
 @State
 def StandBy6DA():
@@ -4320,9 +4504,9 @@ def StandBy6DA():
         StayAfterMovement(1, 0)
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_19 < 400000):
+                if SLOT_19 < 400000:
                     sendToLabel(0)
         callSubroutine('InitializeStandByChange')
         SLOT_51 = 1
@@ -4343,7 +4527,7 @@ def StandBy6DA():
     sprite('kg403_01', 2)
     DashEffects(100, 1, 1)
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('kg403_02', 4)
     XImpulseAcceleration(15)
     SetXCollisionFromOrigin(180)
@@ -4367,6 +4551,7 @@ def StandBy6DA():
     sprite('kg403_14', 4)
     sprite('kg403_15', 4)
     sprite('kg403_16', 4)
+
 
 @State
 def StandBy6DB():
@@ -4392,13 +4577,13 @@ def StandBy6DB():
         CHHardKnockdown(1)
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_19 < 400000):
+                if SLOT_19 < 400000:
                     sendToLabel(0)
         SLOT_63 = 0
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             SLOT_63 = 1
 
         def upon_STATE_END():
@@ -4429,7 +4614,7 @@ def StandBy6DB():
     sprite('kg403_01', 2)
     DashEffects(100, 1, 1)
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('kg403_02', 4)
     XImpulseAcceleration(15)
     sprite('kg403_03', 2)
@@ -4477,6 +4662,7 @@ def StandBy6DB():
     sprite('kg404_10', 3)
     sprite('kg404_11', 3)
 
+
 @State
 def StandBy6DC():
 
@@ -4506,9 +4692,9 @@ def StandBy6DC():
         CHWallbounceReboundTime(30)
         SLOT_58 = 0
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_58:
-                if (SLOT_19 < 400000):
+                if SLOT_19 < 400000:
                     sendToLabel(0)
         if SLOT_55:
             AirUntechableTime(32)
@@ -4538,11 +4724,11 @@ def StandBy6DC():
     sprite('kg405_04', 2)
     sprite('kg405_05', 2)
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('kg405_06', 2)
     JumpEffects(1, 0)
     DashEffects(100, 1, 1)
-    PassbackAddActionMarkToFunction('405Slash', 32)
+    TriggerUponForState('405Slash', 32)
     XImpulseAcceleration(250)
     PrivateSE('kgse_12')
     sprite('kg405_07', 2)
@@ -4561,6 +4747,7 @@ def StandBy6DC():
     sprite('kg405_13', 5)
     sprite('kg405_14', 5)
 
+
 @State
 def StandBy6DD():
 
@@ -4572,6 +4759,7 @@ def StandBy6DD():
     sprite('keep', 5)
     sprite('kg213_01', 8)
     sprite('kg213_00', 8)
+
 
 @State
 def StandByFDash():
@@ -4598,6 +4786,7 @@ def StandByFDash():
     XImpulseAcceleration(50)
     sprite('kg032_13', 3)
     XImpulseAcceleration(0)
+
 
 @State
 def StandByBDash():
@@ -4630,6 +4819,7 @@ def StandByBDash():
     sprite('kg033_08', 2)
     physicsXImpulse(0)
 
+
 @State
 def ShotA():
 
@@ -4642,7 +4832,7 @@ def ShotA():
         CrouchWhiff(1)
         ForceFaceSprite()
     sprite('kg410_08', 2)
-    PassbackAddActionMarkToFunction('ChargeTameAura', 32)
+    TriggerUponForState('ChargeTameAura', 32)
     CreateObject('ChargeTameFinFast', -1)
     CommonSE('015_blaze_1')
     CommonSE('015_blaze_1')
@@ -4660,6 +4850,7 @@ def ShotA():
     Recovery()
     sprite('kg410_17', 4)
     sprite('kg410_18', 4)
+
 
 @State
 def ShotB():
@@ -4692,7 +4883,7 @@ def ShotB():
     gotoLabel(0)
     label(1)
     sprite('kg410_06', 2)
-    PassbackAddActionMarkToFunction('ChargeTameAura', 32)
+    TriggerUponForState('ChargeTameAura', 32)
     CreateObject('ChargeTameFin', -1)
     clearUponHandler(17)
     sprite('kg410_07', 4)
@@ -4713,6 +4904,7 @@ def ShotB():
     Recovery()
     sprite('kg410_17', 3)
     sprite('kg410_18', 3)
+
 
 @State
 def ShotC():
@@ -4744,7 +4936,7 @@ def ShotC():
     gotoLabel(0)
     label(1)
     sprite('kg410_06', 2)
-    PassbackAddActionMarkToFunction('ChargeTameAura', 32)
+    TriggerUponForState('ChargeTameAura', 32)
     CreateObject('ChargeTameFin', -1)
     clearUponHandler(17)
     sprite('kg410_07', 4)
@@ -4765,6 +4957,7 @@ def ShotC():
     Recovery()
     sprite('kg410_17', 3)
     sprite('kg410_18', 3)
+
 
 @State
 def AntiAirB():
@@ -4811,10 +5004,10 @@ def AntiAirB():
         setInvincible(1)
         SpecificInvincibility(1, 0, 0, 0, 0)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            SLOT_51 = (SLOT_51 + 1)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            SLOT_51 = SLOT_51 + 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
                 HitAirUnblockable(0)
         BeginBuffer('AirAssaultChain')
@@ -4833,7 +5026,7 @@ def AntiAirB():
     physicsYImpulse(45000)
     setGravity(2100)
     PrivateSE('kgse_12')
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     RefreshMultihit()
     YSpeed(-20000)
     sprite('kg411_04', 2)
@@ -4863,6 +5056,7 @@ def AntiAirB():
     sprite('kg024_02', 3)
     sprite('kg024_03', 2)
     sprite('kg024_04', 2)
+
 
 @State
 def AntiAirC():
@@ -4921,7 +5115,7 @@ def AntiAirC():
     physicsXImpulse(4000)
     setGravity(1800)
     PrivateSE('kgse_12')
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('kg411_04', 2)
     CreateObject('efkg_411Sub00', -1)
     StartMultihit()
@@ -4973,6 +5167,7 @@ def AntiAirC():
     sprite('kg024_03', 4)
     sprite('kg024_04', 4)
 
+
 @State
 def AirAssault():
 
@@ -5023,6 +5218,7 @@ def AirAssault():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def AirAssaultChain():
 
@@ -5069,6 +5265,7 @@ def AirAssaultChain():
     sprite('kg020_08', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def UltimateShot():
@@ -5120,6 +5317,7 @@ def UltimateShot():
     sprite('kg430_18', 4)
     sprite('kg430_19', 4)
     sprite('kg430_20', 5)
+
 
 @State
 def UltimateShotOD():
@@ -5181,6 +5379,7 @@ def UltimateShotOD():
     sprite('kg430_20', 5)
     ExitState()
 
+
 @State
 def UltimateShotODAddAttack():
 
@@ -5238,6 +5437,7 @@ def UltimateShotODAddAttack():
     sprite('kg400_14', 8)
     sprite('kg400_15', 8)
 
+
 @State
 def UltimateStandByLand():
 
@@ -5268,8 +5468,9 @@ def UltimateStandByLand():
     sprite('kg431_08', 3)
     sprite('kg431_09', 3)
     sprite('kg431_10', 3)
-    PassbackAddActionMarkToFunction('ImpactAuraMato', 32)
+    TriggerUponForState('ImpactAuraMato', 32)
     enterState('UltimateStandByExe')
+
 
 @State
 def UltimateStandByAir():
@@ -5300,12 +5501,12 @@ def UltimateStandByAir():
     sprite('kg431_23', 3)
     sprite('kg431_24', 3)
     sprite('kg431_25', 3)
-    PassbackAddActionMarkToFunction('ImpactAuraMatoAir', 32)
+    TriggerUponForState('ImpactAuraMatoAir', 32)
     physicsXImpulse(3000)
     physicsYImpulse(20000)
     setGravity(3000)
     sprite('kg431_26', 3)
-    PassbackAddActionMarkToFunction('ImpactAuraMatoAir', 33)
+    TriggerUponForState('ImpactAuraMatoAir', 33)
     sprite('kg431_27', 3)
     sprite('kg431_28', 3)
     label(0)
@@ -5313,6 +5514,7 @@ def UltimateStandByAir():
     sprite('kg431_27', 3)
     sprite('kg431_28', 3)
     gotoLabel(0)
+
 
 @State
 def UltimateStandByExe():
@@ -5338,11 +5540,11 @@ def UltimateStandByExe():
         SLOT_4 = 1
     sprite('kg431_11', 2)
     CreateObject('406Rock', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    AddX(-350000)
-    AddScale(300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        AddX(-350000)
+        AddScale(300)
     sprite('kg431_12', 2)
     PrivateSE('kgse_01')
     sprite('kg431_13', 3)
@@ -5363,6 +5565,7 @@ def UltimateStandByExe():
     sprite('kg400_13', 6)
     sprite('kg400_14', 6)
     sprite('kg400_15', 6)
+
 
 @State
 def UltimateStandByAddAttack():
@@ -5393,11 +5596,11 @@ def UltimateStandByAddAttack():
         SetZLine(0, 50)
         EnableRapidCancel(0)
         SLOT_4 = 1
-        if (SLOT_19 >= 500000):
-            ApplyFunctionsToObjects(22)
-            TeleportToObject(22)
-            AddX(-500000)
-            ApplyFunctionsToSelf()
+        if SLOT_19 >= 500000:
+
+            def RunOnObject_22():
+                TeleportToObject(22)
+                AddX(-500000)
     sprite('kg431_14', 3)
     Voiceline('kg256')
     CreateObject('UltimateImpactHibasira', -1)
@@ -5410,7 +5613,7 @@ def UltimateStandByAddAttack():
     PrivateSE('kgse_08')
     CommonSE('016_explode_2')
     RefreshMultihit()
-    PassbackAddActionMarkToFunction('UltimateImpactHibasira', 32)
+    TriggerUponForState('UltimateImpactHibasira', 32)
     EnableCollision(1)
     sprite('kg431_14', 3)
     setInvincible(0)
@@ -5436,6 +5639,7 @@ def UltimateStandByAddAttack():
     sprite('kg400_13', 6)
     sprite('kg400_14', 6)
     sprite('kg400_15', 6)
+
 
 @State
 def UltimateStandByLandOD():
@@ -5469,6 +5673,7 @@ def UltimateStandByLandOD():
     sprite('kg431_10', 3)
     enterState('UltimateStandByODExe')
 
+
 @State
 def UltimateStandByAirOD():
 
@@ -5498,12 +5703,12 @@ def UltimateStandByAirOD():
     sprite('kg431_23', 3)
     sprite('kg431_24', 3)
     sprite('kg431_25', 3)
-    PassbackAddActionMarkToFunction('ImpactAuraMatoAir', 32)
+    TriggerUponForState('ImpactAuraMatoAir', 32)
     physicsXImpulse(3000)
     physicsYImpulse(20000)
     setGravity(3000)
     sprite('kg431_26', 3)
-    PassbackAddActionMarkToFunction('ImpactAuraMatoAir', 33)
+    TriggerUponForState('ImpactAuraMatoAir', 33)
     sprite('kg431_27', 3)
     sprite('kg431_28', 3)
     label(0)
@@ -5511,6 +5716,7 @@ def UltimateStandByAirOD():
     sprite('kg431_27', 3)
     sprite('kg431_28', 3)
     gotoLabel(0)
+
 
 @State
 def UltimateStandByODExe():
@@ -5555,6 +5761,7 @@ def UltimateStandByODExe():
     sprite('kg400_14', 6)
     sprite('kg400_15', 6)
 
+
 @State
 def UltimateStandByODAddAttack():
 
@@ -5586,11 +5793,11 @@ def UltimateStandByODAddAttack():
         SetZLine(0, 50)
         EnableRapidCancel(0)
         SLOT_4 = 1
-        if (SLOT_19 >= 500000):
-            ApplyFunctionsToObjects(22)
-            TeleportToObject(22)
-            AddX(-500000)
-            ApplyFunctionsToSelf()
+        if SLOT_19 >= 500000:
+
+            def RunOnObject_22():
+                TeleportToObject(22)
+                AddX(-500000)
     sprite('kg431_14', 3)
     Voiceline('kg256')
     CreateObject('UltimateImpactHibasira', -1)
@@ -5659,7 +5866,7 @@ def UltimateStandByODAddAttack():
     AirPushbackX(1500)
     AirPushbackY(50000)
     HardKnockdown(10)
-    PassbackAddActionMarkToFunction('UltimateImpactHibasira', 32)
+    TriggerUponForState('UltimateImpactHibasira', 32)
     EnableCollision(1)
     sprite('kg431_14', 3)
     setInvincible(0)
@@ -5683,6 +5890,7 @@ def UltimateStandByODAddAttack():
     sprite('kg400_14', 6)
     sprite('kg400_15', 6)
 
+
 @State
 def UltimateAntiAir():
 
@@ -5698,7 +5906,7 @@ def UltimateAntiAir():
         AirUntechableTime(50)
         Blockstun(35)
         DamageEffect(2, 'efkg_slash')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         HitAirUnblockable(3)
         MoveAttributes(0, 1, 0, 0, 0)
         AttackDirection(0)
@@ -5741,8 +5949,8 @@ def UltimateAntiAir():
     sprite('kg024_00', 2)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 3)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 3)
     sprite('kg024_01', 2)
     sprite('kg024_02', 2)
     sprite('kg024_03', 2)
@@ -5781,8 +5989,8 @@ def UltimateAntiAir():
     sprite('kg024_00', 2)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 5)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 5)
     sprite('kg024_01', 2)
     sprite('kg024_02', 2)
     sprite('kg024_03', 2)
@@ -5835,6 +6043,7 @@ def UltimateAntiAir():
     sprite('kg024_02', 3)
     sprite('kg024_03', 3)
     sprite('kg024_04', 3)
+
 
 @State
 def AstralHeat():
@@ -5893,6 +6102,7 @@ def AstralHeat():
     sprite('kg450_31', 7)
     sprite('kg450_32', 7)
 
+
 @State
 def AstralHeatExe():
 
@@ -5936,16 +6146,16 @@ def AstralHeatExe():
     sprite('kg450_20', 6)
     sprite('kg450_21', 6)
     sprite('null', 60)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    AbsoluteY(40000000)
-    setGravity(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(1)
+        AbsoluteY(40000000)
+        setGravity(0)
     Visibility(1)
     CreateObject('AstBG00', -1)
     CreateObject('AstCutin00', -1)
-    PassbackAddActionMarkToFunction('AstKousokuEff', 32)
-    PassbackAddActionMarkToFunction('AstKousokuEff2', 32)
+    TriggerUponForState('AstKousokuEff', 32)
+    TriggerUponForState('AstKousokuEff2', 32)
     CameraControlEnable(0)
     CreateObject('AstCamera00', -1)
     sprite('null', 40)
@@ -6027,11 +6237,12 @@ def AstralHeatExe():
     sprite('kg400_14', 6)
     sprite('kg400_15', 6)
 
+
 @State
 def LoseAction():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         EnterStateIfEventID(8, 'CmnActFDownLoop')
         NoDamageAction(1)
 
@@ -6054,15 +6265,16 @@ def LoseAction():
     sprite('kg063_08', 3)
     sprite('kg063_09', 3)
     sprite('kg063_10', 3)
-    if (SLOT_121 == 1):
+    if SLOT_121 == 1:
         ObjectUpon25(1, 'gs008')
-    if (SLOT_121 == 2):
+    if SLOT_121 == 2:
         ObjectUpon25(1, 'gs002')
-    if (SLOT_121 == 3):
+    if SLOT_121 == 3:
         ObjectUpon25(1, 'gs005')
-    if (SLOT_121 == 4):
+    if SLOT_121 == 4:
         ObjectUpon25(1, 'gs011')
     loopRest()
+
 
 @State
 def RlAstralDamage():
@@ -6071,7 +6283,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('kg054')
     sprite('kg900_00', 32767)
     EnableCollision(0)
@@ -6085,6 +6297,7 @@ def RlAstralDamage():
     AbsoluteY(0)
     EndMomentum(1)
     loopRest()
+
 
 @State
 def AmAstralDamage():
@@ -6105,11 +6318,12 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         GroundedHitstunAnimation(9)
         AirPushbackY(20000)
         Blockstun(26)
@@ -6128,16 +6342,16 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_4():
-            clearUponHandler(4)
+        def upon_FALLING():
+            clearUponHandler(FALLING)
             setGravity(5000)
             sendToLabel(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -6180,11 +6394,12 @@ def BurstDD():
     sprite('kg406_16ex01', 3)
     sprite('kg406_17ex01', 2)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         GroundedHitstunAnimation(9)
         AirPushbackY(20000)
         Blockstun(26)
@@ -6203,16 +6418,16 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_4():
-            clearUponHandler(4)
+        def upon_FALLING():
+            clearUponHandler(FALLING)
             setGravity(5000)
             sendToLabel(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -6258,11 +6473,12 @@ def BurstDD_Easy():
     sprite('kg406_16ex01', 3)
     sprite('kg406_17ex01', 2)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(4)
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
@@ -6322,7 +6538,7 @@ def BurstDDAdd():
     RefreshMultihit()
     sprite('kg406_08ex01', 5)
     XImpulseAcceleration(80)
-    PassbackAddActionMarkToFunction('efkg_440Slash', 32)
+    TriggerUponForState('efkg_440Slash', 32)
     sprite('kg440_04', 5)
     XImpulseAcceleration(80)
     sprite('kg402_09ex01', 6)
@@ -6351,7 +6567,7 @@ def BurstDDAdd():
     UseFireHitspark(1)
     ShutUp(0)
     GroundBounceReset()
-    sendToLabelUpon(2, 202)
+    uponSendToLabel(LANDING, 202)
     SetXCollisionFromOrigin(150)
     sendToLabel(201)
     label(100)
@@ -6391,7 +6607,7 @@ def BurstDDAdd():
     sprite('kg440_02', 2)
     RefreshMultihit()
     sprite('kg406_08ex01', 5)
-    PassbackAddActionMarkToFunction('efkg_440Slash', 32)
+    TriggerUponForState('efkg_440Slash', 32)
     XImpulseAcceleration(80)
     sprite('kg440_04', 5)
     XImpulseAcceleration(80)
@@ -6422,7 +6638,7 @@ def BurstDDAdd():
     UseFireHitspark(1)
     ShutUp(0)
     GroundBounceReset()
-    sendToLabelUpon(2, 202)
+    uponSendToLabel(LANDING, 202)
     SetXCollisionFromOrigin(150)
     sprite('kg440_05', 2)
     Hitstop(4)
@@ -6441,7 +6657,7 @@ def BurstDDAdd():
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
     sendToLabel(201)
-    PassbackAddActionMarkToFunction('efkg_440BlackFireEx', 32)
+    TriggerUponForState('efkg_440BlackFireEx', 32)
     label(201)
     sprite('kg440_06', 2)
     sprite('kg440_07', 2)
@@ -6458,166 +6674,614 @@ def BurstDDAdd():
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('kg309', 13665, 13411, 13665, 13411, 13665, 13411, 14433, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg313', 13665, 13411, 13665, 13411, 13665, 13411, 12641, 25395, 24886, 25398, 24884, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg316', 13921, 13411, 13921, 13411, 24888, 25398, 24884, 25398, 24884, 25398, 24884, 25398, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg318', 13921, 13411, 13921, 13411, 13921, 13411, 12641, 25392, 13877, 13665, 13667, 13665, 13667, 13665, 13667, 13665, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg329', 13665, 13667, 13665, 13667, 13665, 13155, 13665, 13667, 13665, 13155, 24882, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 13361, 13921, 13923, 13921, 13923, 13921, 13923, 14177, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg055', 13921, 13667, 13921, 13411, 13665, 13667, 13665, 12899, 24888, 25398, 24885, 25398, 24886, 12339, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg400', 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg404', 14177, 14179, 14177, 14179, 14177, 12899, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg406', 14433, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12339, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg407', 13411, 14177, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25398, 24884, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg408', 14433, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg411', 14177, 13667, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg412', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg413', 14435, 24888, 25399, 12849, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg414', 13921, 13923, 13921, 13411, 24888, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25397, 24885, 25398, 24886, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg415', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12849, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg416', 12643, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg417', 12643, 24881, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('kg052', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg309', 13665, 13411, 13665, 13411, 13665, 13411, 14433, 
+        12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg313', 13665, 13411, 13665, 13411, 13665, 13411, 12641, 
+        25395, 24886, 25398, 24884, 25398, 24886, 25398, 24886, 25398, 
+        24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg316', 13921, 13411, 13921, 13411, 24888, 25398, 24884, 
+        25398, 24884, 25398, 24884, 25398, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg318', 13921, 13411, 13921, 13411, 13921, 13411, 12641, 
+        25392, 13877, 13665, 13667, 13665, 13667, 13665, 13667, 13665, 
+        13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0)
+    Unknown18011('kg329', 13665, 13667, 13665, 13667, 13665, 13155, 13665, 
+        13667, 13665, 13155, 24882, 25397, 24885, 25397, 24885, 25397, 
+        24885, 25397, 13361, 13921, 13923, 13921, 13923, 13921, 13923, 
+        14177, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg055', 13921, 13667, 13921, 13411, 13665, 13667, 13665, 
+        12899, 24888, 25398, 24885, 25398, 24886, 12339, 13923, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg400', 14177, 13155, 24880, 25399, 24887, 25399, 24887, 
+        25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg404', 14177, 14179, 14177, 14179, 14177, 12899, 24880, 
+        25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg406', 14433, 13155, 24880, 25399, 24887, 25399, 24887, 
+        25399, 24887, 25399, 24887, 25399, 24887, 25399, 12339, 14177, 
+        14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0)
+    Unknown18011('kg407', 13411, 14177, 13411, 24885, 25399, 24887, 25399, 
+        24887, 25399, 24887, 25399, 24887, 25398, 24884, 25398, 24886, 
+        25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0)
+    Unknown18011('kg408', 14433, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+        12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
+    Unknown18011('kg411', 14177, 13667, 24885, 25399, 24887, 25399, 24887, 
+        25399, 24887, 25399, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg412', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg413', 14435, 24888, 25399, 12849, 13921, 13923, 13921, 
+        13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg414', 13921, 13923, 13921, 13411, 24888, 25399, 24887, 
+        25399, 24887, 25399, 24887, 25399, 24887, 25397, 24885, 25398, 
+        24886, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
+    Unknown18011('kg415', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 
+        24887, 25399, 24887, 25399, 24887, 25399, 24887, 12849, 14435, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg416', 12643, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0)
+    Unknown18011('kg417', 12643, 24881, 25400, 24888, 25400, 24888, 25400, 
+        56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('kg052', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 
+        13923, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('kg000', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg405', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg406', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg407', 14177, 14179, 14177, 14179, 14433, 14435, 12641, 25397, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg408', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg411', 12643, 24882, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 14131, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg412', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 12899, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg413', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg414', 13921, 13923, 14177, 14179, 14689, 12643, 24888, 25399, 24887, 25397, 24885, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg415', 13921, 13923, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg416', 12643, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg417', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg052', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('kg156', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('kg000', 14177, 14179, 14177, 14179, 14177, 14179, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg400', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+            14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg401', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg404', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+            14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg405', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14433, 14435, 14433, 14435, 14433, 
+            14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg406', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('kg407', 14177, 14179, 14177, 14179, 14433, 14435, 
+            12641, 25397, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg408', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 
+            25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg411', 12643, 24882, 25399, 24887, 25399, 24887, 
+            25399, 24887, 25399, 14131, 14177, 14179, 14177, 14179, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('kg412', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 12899, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg413', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('kg414', 13921, 13923, 14177, 14179, 14689, 12643, 
+            24888, 25399, 24887, 25397, 24885, 25399, 24887, 25399, 55, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0)
+        Unknown18011('kg415', 13921, 13923, 13921, 13923, 13921, 13923, 
+            14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0)
+        Unknown18011('kg416', 12643, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg417', 14177, 14179, 14177, 14179, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 
+            25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg052', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('kg156', 14177, 14179, 14177, 14179, 13921, 13923, 
+            13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('bn'):
-            Unknown18011('kg000', 14433, 14435, 14433, 14433, 14435, 14433, 12643, 24880, 25399, 24887, 25399, 24887, 25399, 12339, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg400', 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg401', 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg000', 14433, 14435, 14433, 14433, 14435, 14433,
+                12643, 24880, 25399, 24887, 25399, 24887, 25399, 12339, 
+                14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg400', 12641, 25392, 12337, 12641, 25392, 12337,
+                12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('kg401', 12641, 25392, 12337, 12641, 25392, 12337,
+                12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('hb'):
-            Unknown18011('kg000', 12641, 25392, 12342, 14433, 14433, 14435, 14433, 14435, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg400', 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg401', 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg000', 12641, 25392, 12342, 14433, 14433, 14435,
+                14433, 14435, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg400', 12641, 25392, 12337, 12641, 25392, 12337,
+                12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('kg401', 12641, 25392, 12337, 12641, 25392, 12337,
+                12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('jn'):
-            Unknown18011('kg502', 14177, 14691, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg503', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg502', 14177, 14691, 24880, 25398, 24886, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg503', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 24880, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('kg502', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 12897, 25392, 12339, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12897, 25392, 24885, 13362, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg503', 12643, 24884, 25400, 12341, 13921, 13923, 13921, 13923, 12641, 25392, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25397, 24885, 25397, 13361, 13665, 13667, 14177, 14179, 14177, 13667, 12897, 25392, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg502', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 13921, 13923, 12897, 25392, 12339, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    12897, 25392, 24885, 13362, 13667, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg503', 12643, 24884, 25400, 12341, 13921, 
+                    13923, 13921, 13923, 12641, 25392, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25397, 24885, 25397, 13361,
+                    13665, 13667, 14177, 14179, 14177, 13667, 12897, 25392,
+                    53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('no'):
-            Unknown18011('kg504', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg505', 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg504', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 12641, 25394, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg505', 14177, 13923, 24880, 25399, 24887, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('kg504', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg505', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg504', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 12340,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg505', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
         if CharacterIDCheck('rc'):
             if SLOT_140:
-                Unknown18011('kg506', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg507', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg506', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 13667, 24880,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg507', 14177, 14179, 14177, 13411, 24880, 
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
         if CharacterIDCheck('tk'):
-            Unknown18011('kg508', 12643, 12336, 13921, 14435, 14433, 14435, 14433, 13923, 24884, 25398, 24886, 12849, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg509', 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg508', 12643, 12336, 13921, 14435, 14433, 14435,
+                14433, 13923, 24884, 25398, 24886, 12849, 25392, 54, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg509', 13921, 13923, 13921, 13923, 13921, 13411,
+                24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('lc'):
-            Unknown18011('kg512', 13921, 13923, 13921, 13923, 13921, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg513', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14689, 14691, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg512', 13921, 13923, 13921, 13923, 13921, 14435,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg513', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14689, 14691, 14177, 14179, 14177, 14179, 
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('bn'):
             if SLOT_138:
-                Unknown18011('kg516', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg517', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14689, 14691, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg516', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg517', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14689, 14691, 14177, 14179, 14177,
+                    14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('kg516', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg517', 14433, 14435, 12897, 25392, 24886, 25398, 24886, 25398, 24886, 25399, 24887, 25399, 24887, 12338, 14179, 12641, 25397, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg516', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 13921, 13667, 24885, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg517', 14433, 14435, 12897, 25392, 24886, 
+                    25398, 24886, 25398, 24886, 25399, 24887, 25399, 24887,
+                    12338, 14179, 12641, 25397, 24887, 25399, 24887, 25399,
+                    24887, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_140:
-                    Unknown18011('kg516', 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('kg517', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25401, 24889, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('kg516', 13921, 13923, 24880, 25398, 24886,
+                        25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                        24886, 25398, 24886, 25398, 24886, 25398, 24886, 
+                        25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('kg517', 14177, 14179, 14177, 14179, 14177,
+                        14179, 14177, 13411, 24880, 25401, 24889, 25399, 
+                        24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                        25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ny'):
-            Unknown18011('kg522', 13921, 25392, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12339, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg523', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24884, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg522', 13921, 25392, 24887, 25399, 24887, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                12339, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 
+                25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg523', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13923, 24884, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('tb'):
-            Unknown18011('kg524', 14177, 14179, 14177, 14179, 14177, 14691, 24882, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg525', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg524', 14177, 14179, 14177, 14179, 14177, 14691,
+                24882, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg525', 14177, 14179, 14177, 14179, 14177, 14179,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 99, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('hz'):
-            Unknown18011('kg526', 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg527', 12641, 25392, 24887, 25399, 12337, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg526', 14177, 13923, 24880, 25399, 24887, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg527', 12641, 25392, 24887, 25399, 12337, 14177,
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mk'):
-            Unknown18011('kg530', 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg531', 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg530', 14177, 14179, 14177, 14179, 14177, 13411,
+                24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg531', 14177, 13411, 24880, 25399, 24887, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('pt'):
-            Unknown18011('kg534', 12643, 12338, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg535', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13409, 13667, 13409, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg534', 12643, 12338, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('kg535', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13409, 13667, 13409, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('iz'):
-            Unknown18011('kg542', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886, 25398, 12344, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 12340, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg543', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13665, 13667, 13665, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg542', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13667, 24880, 25398, 
+                24886, 25398, 12344, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13667, 24880, 25398, 24886, 25398, 24886, 
+                25398, 24886, 25398, 12340, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg543', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13923, 13665, 13667, 
+                13665, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('am'):
-            Unknown18011('kg540', 14177, 14435, 24880, 25398, 24886, 25398, 24886, 12338, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg541', 14177, 14179, 14177, 14179, 12641, 25394, 13618, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg540', 14177, 14435, 24880, 25398, 24886, 25398,
+                24886, 12338, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg541', 14177, 14179, 14177, 14179, 12641, 25394,
+                13618, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('bl'):
-            Unknown18011('kg542', 12641, 25394, 12342, 12641, 25392, 24886, 12337, 13923, 24880, 25398, 24886, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg543', 12641, 25397, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12339, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg542', 12641, 25394, 12342, 12641, 25392, 24886,
+                12337, 13923, 24880, 25398, 24886, 25399, 24887, 25399, 
+                12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg543', 12641, 25397, 24887, 25399, 24887, 25399,
+                24887, 25399, 24887, 25399, 12339, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('az'):
-            Unknown18011('kg544', 13923, 24880, 25401, 24889, 25401, 24889, 25401, 24889, 25401, 24889, 25401, 24889, 25401, 57, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg545', 14689, 13155, 24880, 25401, 24885, 25401, 24885, 25401, 24885, 25401, 24885, 25401, 24885, 25401, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg544', 13923, 24880, 25401, 24889, 25401, 24889,
+                25401, 24889, 25401, 24889, 25401, 24889, 25401, 57, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg545', 14689, 13155, 24880, 25401, 24885, 25401,
+                24885, 25401, 24885, 25401, 24885, 25401, 24885, 25401, 53,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kk'):
-            Unknown18011('kg548', 14177, 13667, 14177, 13667, 14177, 13667, 14177, 13411, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg549', 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg548', 14177, 13667, 14177, 13667, 14177, 13667,
+                14177, 13411, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('kg549', 14689, 13667, 14689, 13667, 14689, 13667,
+                14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 
+                14689, 13667, 14689, 13667, 14689, 13667, 14689, 13667, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('kg548', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg549', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg548', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
+                Unknown18011('kg549', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 13667, 24880,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ce'):
-            Unknown18011('kg553', 13153, 25392, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 14385, 14435, 24880, 25398, 24886, 25398, 24886, 12849, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg554', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg553', 13153, 25392, 24886, 25398, 24886, 25398,
+                24886, 25398, 24886, 14385, 14435, 24880, 25398, 24886, 
+                25398, 24886, 12849, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg554', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('kg553', 12643, 12337, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg554', 14177, 14179, 14177, 12899, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12849, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg553', 12643, 12337, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg554', 14177, 14179, 14177, 12899, 24885, 
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 12849, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rm'):
-            Unknown18011('kg554', 14177, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 13876, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13409, 25392, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg555', 14177, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg554', 14177, 13923, 24880, 25398, 24886, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 13876, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 13409, 25392, 24886, 
+                25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 
+                25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('kg555', 14177, 13923, 13921, 13923, 13921, 13923,
+                13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('hb'):
-            Unknown18011('kg556_1', 13921, 13923, 13921, 13923, 13921, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg556_2', 13409, 12643, 24882, 25400, 12340, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 12340, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg557', 13409, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 12340, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg556_1', 13921, 13923, 13921, 13923, 13921, 99, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg556_2', 13409, 12643, 24882, 25400, 12340, 
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 
+                24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                12340, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg557', 13409, 13923, 13921, 13923, 24880, 25398,
+                24886, 25398, 24886, 25398, 12340, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('kg558', 14689, 14691, 14689, 14691, 14689, 13923, 24880, 25401, 24889, 25401, 24889, 25401, 24889, 25401, 12343, 14689, 14691, 14689, 14691, 14689, 14691, 14689, 14691, 14689, 14691, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg559', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg558', 14689, 14691, 14689, 14691, 14689, 13923,
+                24880, 25401, 24889, 25401, 24889, 25401, 24889, 25401, 
+                12343, 14689, 14691, 14689, 14691, 14689, 14691, 14689, 
+                14691, 14689, 14691, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('kg559', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 
+                24885, 25398, 24886, 25398, 24886, 25398, 24886, 12337, 
+                13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
         if CharacterIDCheck('mi'):
             if SLOT_138:
                 pass
             else:
-                Unknown18011('kg562', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('kg563', 14433, 14435, 14433, 14435, 14433, 13923, 12897, 25392, 12342, 14689, 13923, 14689, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg562', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13667, 24885, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('kg563', 14433, 14435, 14433, 14435, 14433, 
+                    13923, 12897, 25392, 12342, 14689, 13923, 14689, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    12641, 25397, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_140:
-                    Unknown18011('kg562', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 14179, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 13622, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('kg563', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('kg562', 13921, 13923, 13921, 13923, 13921,
+                        13923, 13921, 13923, 13921, 13923, 13921, 14179, 
+                        24885, 25399, 24887, 25399, 24887, 25399, 24887, 
+                        25399, 24887, 25399, 13622, 14177, 14179, 14177, 
+                        14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('kg563', 14177, 14179, 14177, 14179, 14177,
+                        14179, 14177, 13411, 24880, 25399, 24887, 25399, 
+                        24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                        25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('es'):
-            Unknown18011('kg566', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg567', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg566', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg567', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 
+                24887, 25399, 24887, 25399, 24887, 12337, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ma'):
-            Unknown18011('kg568', 12641, 25400, 12342, 14177, 14179, 14177, 14179, 12641, 25396, 13620, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('kg569', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg568', 12641, 25400, 12342, 14177, 14179, 14177,
+                14179, 12641, 25396, 13620, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('kg569', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 
+                24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     SLOT_121 = 0
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('jn'):
         SyncEntry()
         if SLOT_140:
             gotoLabel(2110)
         else:
             gotoLabel(110)
-    if Unknown63('no'):
+    if CharacterIDCheck('jn'):
         SyncEntry()
         if SLOT_140:
             gotoLabel(2120)
@@ -6701,20 +7365,18 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(440)
     label(482)
-    if (not CharacterIDCheck('ca')):
-        random_(2, 0, 33)
-        if SLOT_0:
-            _gotolabel(10)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(20)
+    if not CharacterIDCheck('ca'):
+        if random_(2, 0, 33):
+            conditionalSendToLabel(10)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(20)
     label(0)
     sprite('kg600_00', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
     label(1)
     sprite('kg600_00', 32767)
-    sendToLabelUpon(57, 2)
+    uponSendToLabel(57, 2)
     loopRest()
     gotoLabel(1)
     label(2)
@@ -6729,7 +7391,7 @@ def CmnActEntry():
     sprite('kg600_02', 8)
     sprite('kg600_01', 8)
     if SLOT_97:
-        _gotolabel(3)
+        conditionalSendToLabel(3)
     sprite('kg600_04', 6)
     sprite('kg600_05', 6)
     sprite('kg600_06', 6)
@@ -6737,7 +7399,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -6773,7 +7435,7 @@ def CmnActEntry():
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(11)
+        conditionalSendToLabel(11)
     sprite('null', 20)
     Voiceline('kg416')
     sprite('kg603_00', 2)
@@ -6889,11 +7551,11 @@ def CmnActEntry():
     AbsoluteY(200000)
     physicsYImpulse(22000)
     setGravity(1500)
-    sendToLabelUpon(2, 13)
-    ApplyFunctionsToObjects(4)
-    RotationAngle(10000)
-    AddRotationPerFrame(1000)
-    ApplyFunctionsToSelf()
+    uponSendToLabel(LANDING, 13)
+
+    def RunOnObject_4():
+        RotationAngle(10000)
+        AddRotationPerFrame(1000)
     sprite('kg112_02', 1)
     sprite('kg112_02', 1)
     sprite('kg112_02', 1)
@@ -6910,7 +7572,7 @@ def CmnActEntry():
     gotoLabel(12)
     label(13)
     sprite('kg409_13', 4)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 1)
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
@@ -6940,23 +7602,23 @@ def CmnActEntry():
     label(20)
     Unknown61(0, 1, 0, 4, 0, 0, 0, 9999, 0, 9999, 0, 9999)
     SLOT_121 = SLOT_0
-    if (SLOT_121 == 1):
+    if SLOT_121 == 1:
         gotoLabel(30)
-    if (SLOT_121 == 2):
+    if SLOT_121 == 2:
         gotoLabel(40)
-    if (SLOT_121 == 3):
+    if SLOT_121 == 3:
         gotoLabel(50)
-    if (SLOT_121 == 4):
+    if SLOT_121 == 4:
         gotoLabel(60)
     label(30)
     sprite('kg601_00a', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    ObjectUpon(4, 41)
+    ObjectUpon(FALLING, 41)
     label(31)
     sprite('kg601_00a', 1)
     if SLOT_17:
-        _gotolabel(31)
+        conditionalSendToLabel(31)
     sprite('kg601_00a', 8)
     sprite('kg601_01a', 8)
     Voiceline('kg414')
@@ -6964,7 +7626,7 @@ def CmnActEntry():
     label(32)
     sprite('kg601_01a', 8)
     if SLOT_97:
-        _gotolabel(32)
+        conditionalSendToLabel(32)
     sprite('kg601_02a', 8)
     sprite('kg601_03a', 8)
     CreateObject('kgef_enter2', 0)
@@ -6972,7 +7634,7 @@ def CmnActEntry():
     sprite('kg601_05a', 8)
     sprite('keep', 1)
     CreateObject('EntryKaguraGirl', 0)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CommonSE('004_swing_grap_1_0')
     SubVoice(1, 'gs006')
     sendToLabel(29)
@@ -6980,11 +7642,11 @@ def CmnActEntry():
     sprite('kg601_00b', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    ObjectUpon(4, 41)
+    ObjectUpon(FALLING, 41)
     label(41)
     sprite('kg601_00b', 1)
     if SLOT_17:
-        _gotolabel(41)
+        conditionalSendToLabel(41)
     sprite('kg601_00b', 8)
     sprite('kg601_01b', 8)
     Voiceline('kg414')
@@ -6992,7 +7654,7 @@ def CmnActEntry():
     label(42)
     sprite('kg601_01b', 8)
     if SLOT_97:
-        _gotolabel(42)
+        conditionalSendToLabel(42)
     sprite('kg601_02b', 8)
     sprite('kg601_03b', 8)
     CreateObject('kgef_enter2', 0)
@@ -7000,7 +7662,7 @@ def CmnActEntry():
     sprite('kg601_05b', 8)
     sprite('keep', 1)
     CreateObject('EntryKaguraGirl', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     CommonSE('004_swing_grap_1_0')
     SubVoice(1, 'gs000')
     sendToLabel(29)
@@ -7008,11 +7670,11 @@ def CmnActEntry():
     sprite('kg601_00c', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    ObjectUpon(4, 41)
+    ObjectUpon(FALLING, 41)
     label(51)
     sprite('kg601_00c', 1)
     if SLOT_17:
-        _gotolabel(51)
+        conditionalSendToLabel(51)
     sprite('kg601_00c', 8)
     sprite('kg601_01c', 8)
     Voiceline('kg414')
@@ -7020,7 +7682,7 @@ def CmnActEntry():
     label(52)
     sprite('kg601_01c', 8)
     if SLOT_97:
-        _gotolabel(52)
+        conditionalSendToLabel(52)
     sprite('kg601_02c', 8)
     sprite('kg601_03c', 8)
     CreateObject('kgef_enter2', 0)
@@ -7028,7 +7690,7 @@ def CmnActEntry():
     sprite('kg601_05c', 8)
     sprite('keep', 1)
     CreateObject('EntryKaguraGirl', 0)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     CommonSE('004_swing_grap_1_0')
     SubVoice(1, 'gs003')
     sendToLabel(29)
@@ -7036,11 +7698,11 @@ def CmnActEntry():
     sprite('kg601_00d', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    ObjectUpon(4, 41)
+    ObjectUpon(FALLING, 41)
     label(61)
     sprite('kg601_00d', 1)
     if SLOT_17:
-        _gotolabel(61)
+        conditionalSendToLabel(61)
     sprite('kg601_00d', 8)
     sprite('kg601_01d', 8)
     Voiceline('kg414')
@@ -7048,7 +7710,7 @@ def CmnActEntry():
     label(62)
     sprite('kg601_01d', 8)
     if SLOT_97:
-        _gotolabel(62)
+        conditionalSendToLabel(62)
     sprite('kg601_02d', 8)
     sprite('kg601_03d', 8)
     CreateObject('kgef_enter2', 0)
@@ -7056,7 +7718,7 @@ def CmnActEntry():
     sprite('kg601_05d', 8)
     sprite('keep', 1)
     CreateObject('EntryKaguraGirl', 0)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     CommonSE('004_swing_grap_1_0')
     SubVoice(1, 'gs009')
     sendToLabel(29)
@@ -7067,7 +7729,7 @@ def CmnActEntry():
     sprite('kg601_09', 8)
     sprite('kg601_10', 8)
     sprite('kg600_09', 9)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('kg600_10', 9)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_11', 8)
@@ -7094,13 +7756,13 @@ def CmnActEntry():
     sprite('kg300_04', 10)
     loopRest()
     if SLOT_17:
-        _gotolabel(110)
+        conditionalSendToLabel(110)
     sprite('kg300_04', 1)
     Voiceline('kg502')
     label(111)
     sprite('kg300_04', 6)
     if SLOT_97:
-        _gotolabel(111)
+        conditionalSendToLabel(111)
     sprite('kg300_04', 30)
     sprite('kg300_05', 6)
     sprite('kg300_06', 6)
@@ -7122,7 +7784,7 @@ def CmnActEntry():
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(2111)
+        conditionalSendToLabel(2111)
     sprite('null', 10)
     ObjectUpon(22, 32)
     AttackDefaults_StandingSpecial()
@@ -7144,7 +7806,7 @@ def CmnActEntry():
     sprite('kg405_06', 2)
     JumpEffects(1, 0)
     DashEffects(100, 1, 1)
-    PassbackAddActionMarkToFunction('405Slash', 32)
+    TriggerUponForState('405Slash', 32)
     XImpulseAcceleration(250)
     PrivateSE('kgse_12')
     sprite('kg405_07', 2)
@@ -7171,7 +7833,8 @@ def CmnActEntry():
     sprite('kg000_06', 7)
     sprite('kg000_07', 7)
     loopRest()
-    GotoIf0(2112, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(2112)
     sprite('kg000_00', 7)
     sprite('kg000_01', 7)
     Voiceline('kg502')
@@ -7194,7 +7857,7 @@ def CmnActEntry():
     sprite('kg000_07', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(2113)
+        conditionalSendToLabel(2113)
     loopRest()
     ExitState()
     label(120)
@@ -7205,12 +7868,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(121)
+        conditionalSendToLabel(121)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForNO', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -7224,7 +7887,7 @@ def CmnActEntry():
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(122)
+        conditionalSendToLabel(122)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
     sprite('kg602_05', 6)
@@ -7233,11 +7896,11 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
     sprite('kg600_09', 6)
@@ -7268,15 +7931,15 @@ def CmnActEntry():
     sprite('null', 2)
     loopRest()
     if SLOT_17:
-        _gotolabel(2121)
+        conditionalSendToLabel(2121)
     sprite('null', 2)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 720000):
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 720000:
             ObjectUpon(22, 32)
-        if (SLOT_29 < 520000):
-            clearUponHandler(3)
-            sendToLabelUpon(32, 2124)
+        if SLOT_29 < 520000:
+            clearUponHandler(EVERY_FRAME)
+            uponSendToLabel(32, 2124)
             XPositionRelativeFacing(-260000)
             EndMomentum(1)
             sendToLabel(2123)
@@ -7321,7 +7984,7 @@ def CmnActEntry():
     sprite('kg600_00', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    sendToLabelUpon(57, 2131)
+    uponSendToLabel(57, 2131)
     sprite('kg600_00', 32767)
     loopRest()
     label(2131)
@@ -7341,7 +8004,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -7374,12 +8037,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(141)
+        conditionalSendToLabel(141)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForTK', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -7393,12 +8056,12 @@ def CmnActEntry():
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(142)
+        conditionalSendToLabel(142)
     sprite('kg602_02', 6)
     ObjectUpon(22, 32)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
     sprite('kg602_05', 6)
@@ -7407,7 +8070,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -7439,12 +8102,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(161)
+        conditionalSendToLabel(161)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForLC', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -7458,7 +8121,7 @@ def CmnActEntry():
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(122)
+        conditionalSendToLabel(122)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
     sprite('kg602_05', 6)
@@ -7467,12 +8130,12 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     ObjectUpon(22, 32)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
     sprite('kg600_09', 6)
@@ -7507,7 +8170,8 @@ def CmnActEntry():
     sprite('kg602_07', 6)
     sprite('kg602_08', 6)
     loopRest()
-    GotoIf0(181, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(181)
     sprite('kg602_06', 6)
     Voiceline('kg516')
     sprite('kg602_07', 6)
@@ -7523,7 +8187,7 @@ def CmnActEntry():
     sprite('kg602_08', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(182)
+        conditionalSendToLabel(182)
     label(183)
     sprite('kg602_09', 6)
     sprite('kg602_10', 6)
@@ -7533,7 +8197,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -7579,7 +8243,8 @@ def CmnActEntry():
     sprite('kg602_07', 6)
     sprite('kg602_08', 6)
     loopRest()
-    GotoIf0(1181, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(1181)
     sprite('kg602_06', 6)
     sprite('kg602_07', 6)
     sprite('kg602_08', 6)
@@ -7591,7 +8256,7 @@ def CmnActEntry():
     sprite('kg602_08', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(1182)
+        conditionalSendToLabel(1182)
     label(1183)
     sprite('kg602_09', 6)
     sprite('kg602_10', 6)
@@ -7601,7 +8266,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -7636,7 +8301,7 @@ def CmnActEntry():
     sprite('kg600_00', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    sendToLabelUpon(32, 2181)
+    uponSendToLabel(32, 2181)
     sprite('kg600_00', 32767)
     loopRest()
     label(2181)
@@ -7649,7 +8314,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -7681,12 +8346,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(211)
+        conditionalSendToLabel(211)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForNU', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -7704,11 +8369,11 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
     sprite('kg600_09', 6)
@@ -7756,12 +8421,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(221)
+        conditionalSendToLabel(221)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForTB', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -7775,7 +8440,7 @@ def CmnActEntry():
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(222)
+        conditionalSendToLabel(222)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
     sprite('kg602_05', 6)
@@ -7784,12 +8449,12 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     ObjectUpon(22, 32)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
     sprite('kg600_09', 6)
@@ -7816,7 +8481,7 @@ def CmnActEntry():
     sprite('kg600_00', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    sendToLabelUpon(32, 232)
+    uponSendToLabel(32, 232)
     label(231)
     sprite('kg600_00', 6)
     loopRest()
@@ -7840,7 +8505,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -7874,12 +8539,12 @@ def CmnActEntry():
     sprite('kg000_07', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(250)
+        conditionalSendToLabel(250)
     sprite('kg000_00', 6)
     sprite('kg000_01', 6)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForMK', -1)
     RegisterObject(5, 1)
     sprite('kg000_02', 6)
@@ -7936,10 +8601,10 @@ def CmnActEntry():
     ObjectUpon(5, 35)
     sprite('kg000_02', 6)
     ObjectUpon(22, 32)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
-    sendToLabelUpon(33, 254)
+
+    def RunOnObject_22():
+        EndSprite(0)
+    uponSendToLabel(33, 254)
     label(253)
     sprite('kg000_03', 6)
     sprite('kg000_04', 6)
@@ -7972,9 +8637,9 @@ def CmnActEntry():
     sprite('kg010_00', 4)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(256)
     sprite('kg030_00', 7)
@@ -8008,7 +8673,7 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(271)
+        conditionalSendToLabel(271)
     sprite('kg602_00', 20)
     sprite('kg602_00', 1)
     sprite('kg602_00', 50)
@@ -8028,8 +8693,8 @@ def CmnActEntry():
     sprite('kg602_02ex1', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(272)
-    sendToLabelUpon(32, 273)
+        conditionalSendToLabel(272)
+    uponSendToLabel(32, 273)
     sprite('kg602_02ex1', 60)
     sprite('kg602_02ex1', 600)
     ObjectUpon(22, 33)
@@ -8042,7 +8707,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -8074,12 +8739,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(291)
+        conditionalSendToLabel(291)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForIZ', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -8090,16 +8755,16 @@ def CmnActEntry():
     ObjectUpon(5, 35)
     Voiceline('kg542')
     sprite('kg602_02', 60)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     label(292)
     sprite('kg602_02ex1', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(292)
+        conditionalSendToLabel(292)
     sprite('kg602_02ex1', 600)
-    sendToLabelUpon(32, 293)
+    uponSendToLabel(32, 293)
     ObjectUpon(22, 32)
     label(293)
     sprite('kg602_03', 6)
@@ -8110,7 +8775,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -8142,13 +8807,13 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(301)
+        conditionalSendToLabel(301)
     sprite('kg602_00', 20)
     sprite('kg602_00', 1)
     sprite('kg602_00', 50)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForAM', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 50)
@@ -8163,7 +8828,7 @@ def CmnActEntry():
     sprite('kg602_02ex1', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(302)
+        conditionalSendToLabel(302)
     sprite('kg602_02ex1', 6)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
@@ -8173,12 +8838,12 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     ObjectUpon(22, 32)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
     sprite('kg600_09', 6)
@@ -8209,12 +8874,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(311)
+        conditionalSendToLabel(311)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForBL', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -8229,13 +8894,13 @@ def CmnActEntry():
     sprite('kg602_02ex1', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(312)
+        conditionalSendToLabel(312)
     sprite('kg602_02ex1', 40)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg602_02ex1', 600)
-    sendToLabelUpon(32, 313)
+    uponSendToLabel(32, 313)
     ObjectUpon(22, 32)
     label(313)
     sprite('kg602_03', 6)
@@ -8246,7 +8911,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -8284,7 +8949,7 @@ def CmnActEntry():
     sprite('kg000_07', 7)
     loopRest()
     if SLOT_17:
-        _gotolabel(321)
+        conditionalSendToLabel(321)
     sprite('kg000_00', 7)
     sprite('kg000_01', 7)
     sprite('kg000_02', 7)
@@ -8302,7 +8967,7 @@ def CmnActEntry():
     CreateObject('efkg_411', -1)
     JumpEffects(2, 100)
     sprite('kg411_04', 3)
-    sendToLabelUpon(2, 323)
+    uponSendToLabel(LANDING, 323)
     StartMultihit()
     physicsXImpulse(4000)
     setGravity(1800)
@@ -8361,7 +9026,7 @@ def CmnActEntry():
     sprite('kg000_07', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(324)
+        conditionalSendToLabel(324)
     sprite('kg000_00', 7)
     sprite('kg000_01', 7)
     sprite('kg000_02', 7)
@@ -8384,20 +9049,20 @@ def CmnActEntry():
     sprite('kg000_07', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(325)
+        conditionalSendToLabel(325)
     loopRest()
     ExitState()
     label(340)
     sprite('kg300_04', 10)
     loopRest()
     if SLOT_17:
-        _gotolabel(340)
+        conditionalSendToLabel(340)
     sprite('kg300_04', 1)
     Voiceline('kg548')
     label(341)
     sprite('kg300_04', 6)
     if SLOT_97:
-        _gotolabel(341)
+        conditionalSendToLabel(341)
     sprite('kg300_04', 30)
     sprite('kg300_05', 6)
     sprite('kg300_06', 6)
@@ -8411,7 +9076,7 @@ def CmnActEntry():
     sprite('kg600_00', 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
-    sendToLabelUpon(57, 2341)
+    uponSendToLabel(57, 2341)
     sprite('kg600_00', 32767)
     loopRest()
     label(2341)
@@ -8425,7 +9090,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -8458,13 +9123,13 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(361)
+        conditionalSendToLabel(361)
     sprite('kg602_00', 20)
     sprite('kg602_00', 1)
     sprite('kg602_00', 50)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForCE', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 50)
@@ -8475,15 +9140,15 @@ def CmnActEntry():
     ObjectUpon(5, 35)
     Voiceline('kg553')
     DemoTimer(320)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
-    sendToLabelUpon(32, 363)
+
+    def RunOnObject_22():
+        EndSprite(0)
+    uponSendToLabel(32, 363)
     label(362)
     sprite('kg602_02ex1', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(362)
+        conditionalSendToLabel(362)
     sprite('kg602_02ex1', 40)
     sprite('kg602_02ex1', 600)
     ObjectUpon(22, 32)
@@ -8496,7 +9161,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -8528,7 +9193,7 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2361)
+        conditionalSendToLabel(2361)
     sprite('kg602_00', 20)
     sprite('kg602_00', 7)
     sprite('kg602_01', 7)
@@ -8545,7 +9210,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -8574,16 +9239,16 @@ def CmnActEntry():
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
     label(371)
-    sendToLabelUpon(32, 375)
+    uponSendToLabel(32, 375)
     sprite('kg602_00', 6)
     loopRest()
     gotoLabel(371)
     label(375)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForRM', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -8594,20 +9259,20 @@ def CmnActEntry():
     ObjectUpon(5, 35)
     Voiceline('kg554')
     DemoTimer(320)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     label(372)
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(372)
-    sendToLabelUpon(33, 373)
+        conditionalSendToLabel(372)
+    uponSendToLabel(33, 373)
     sprite('kg602_02', 600)
     ObjectUpon(22, 32)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     label(373)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
@@ -8617,7 +9282,7 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -8650,7 +9315,7 @@ def CmnActEntry():
     label(381)
     sprite('null', 1)
     if SLOT_17:
-        _gotolabel(381)
+        conditionalSendToLabel(381)
     sprite('null', 30)
     sprite('kg030_00', 7)
     physicsXImpulse(4000)
@@ -8711,7 +9376,7 @@ def CmnActEntry():
     sprite('kg033_08', 3)
     physicsXImpulse(0)
     XPositionRelativeFacing(-260000)
-    sendToLabelUpon(41, 383)
+    uponSendToLabel(41, 383)
     label(382)
     sprite('kg000_00', 7)
     sprite('kg000_01', 7)
@@ -8761,7 +9426,7 @@ def CmnActEntry():
     sprite('kg000_07', 7)
     loopRest()
     if SLOT_97:
-        _gotolabel(384)
+        conditionalSendToLabel(384)
     sprite('keep', 3)
     ObjectUpon(22, 33)
     loopRest()
@@ -8774,12 +9439,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(391)
+        conditionalSendToLabel(391)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForPH', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -8793,7 +9458,7 @@ def CmnActEntry():
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(392)
+        conditionalSendToLabel(392)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
     sprite('kg602_05', 6)
@@ -8802,11 +9467,11 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     ObjectUpon(22, 32)
     CommonSE('008_swing_pole_2')
@@ -8832,7 +9497,7 @@ def CmnActEntry():
     ExitState()
     label(410)
     sprite('kg300_04', 32767)
-    sendToLabelUpon(32, 411)
+    uponSendToLabel(32, 411)
     loopRest()
     label(411)
     sprite('kg300_04', 1)
@@ -8840,7 +9505,7 @@ def CmnActEntry():
     label(412)
     sprite('kg300_04', 6)
     if SLOT_97:
-        _gotolabel(412)
+        conditionalSendToLabel(412)
     sprite('kg300_04', 30)
     sprite('kg300_05', 6)
     sprite('kg300_06', 6)
@@ -8854,20 +9519,20 @@ def CmnActEntry():
     XPositionRelativeFacing(-960000)
     ScreenCollision(0)
     EnableCollision(0)
-    sendToLabelUpon(57, 2411)
+    uponSendToLabel(57, 2411)
 
     def upon_32():
         Voiceline('kg562')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             AddActionMark(1)
-            if (SLOT_2 >= 200):
-                clearUponHandler(3)
+            if SLOT_2 >= 200:
+                clearUponHandler(EVERY_FRAME)
                 sendToLabel(2414)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 520000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 520000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             XPositionRelativeFacing(-260000)
             sendToLabel(2413)
@@ -8914,9 +9579,9 @@ def CmnActEntry():
     CommonSE('302_spsys_burst')
     E0EAEffect('GuardCrushWind', 65535)
     ScreenShake(1000, 50000)
-    ApplyFunctionsToObjects(1)
-    Size(1400)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1400)
     sprite('kg333_06', 6)
     sprite('kg333_07', 6)
     sprite('kg333_05', 6)
@@ -8935,12 +9600,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(431)
+        conditionalSendToLabel(431)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForES', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -8954,7 +9619,7 @@ def CmnActEntry():
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(432)
+        conditionalSendToLabel(432)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
     sprite('kg602_05', 6)
@@ -8963,11 +9628,11 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
     sprite('kg600_09', 6)
@@ -8999,12 +9664,12 @@ def CmnActEntry():
     sprite('kg602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(441)
+        conditionalSendToLabel(441)
     sprite('kg602_00', 20)
     sprite('kg602_00', 30)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     CreateObject('EntryMasterForMA', -1)
     RegisterObject(5, 1)
     sprite('kg602_01', 40)
@@ -9018,7 +9683,7 @@ def CmnActEntry():
     sprite('kg602_02', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(442)
+        conditionalSendToLabel(442)
     sprite('kg602_02', 15)
     sprite('kg602_03', 6)
     sprite('kg602_04', 6)
@@ -9028,11 +9693,11 @@ def CmnActEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
     sprite('kg600_09', 6)
@@ -9056,6 +9721,7 @@ def CmnActEntry():
     DemoTimer(30)
     loopRest()
     ExitState()
+
 
 @State
 def CmnActRoundWin():
@@ -9090,10 +9756,11 @@ def CmnActRoundWin():
     sprite('kg615_12', 32767)
     loopRest()
 
+
 @State
 def CmnActMatchWin():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('jn'):
         if SLOT_140:
             gotoLabel(2110)
@@ -9107,12 +9774,10 @@ def CmnActMatchWin():
     if CharacterIDCheck('rc'):
         if SLOT_140:
             gotoLabel(2130)
-    CharacterIDCheck('tk')
-    if SLOT_0:
-        _gotolabel(140)
-    CharacterIDCheck('lc')
-    if SLOT_0:
-        _gotolabel(160)
+    if CharacterIDCheck('tk'):
+        conditionalSendToLabel(140)
+    if CharacterIDCheck('lc'):
+        conditionalSendToLabel(160)
     if CharacterIDCheck('bn'):
         if SLOT_138:
             gotoLabel(180)
@@ -9120,33 +9785,24 @@ def CmnActMatchWin():
             gotoLabel(1180)
         else:
             gotoLabel(2180)
-    CharacterIDCheck('ny')
-    if SLOT_0:
-        _gotolabel(210)
-    CharacterIDCheck('tb')
-    if SLOT_0:
-        _gotolabel(220)
-    CharacterIDCheck('hz')
-    if SLOT_0:
-        _gotolabel(230)
-    CharacterIDCheck('mk')
-    if SLOT_0:
-        _gotolabel(250)
-    CharacterIDCheck('pt')
-    if SLOT_0:
-        _gotolabel(270)
-    CharacterIDCheck('iz')
-    if SLOT_0:
-        _gotolabel(290)
-    CharacterIDCheck('am')
-    if SLOT_0:
-        _gotolabel(300)
-    CharacterIDCheck('bl')
-    if SLOT_0:
-        _gotolabel(310)
-    CharacterIDCheck('az')
-    if SLOT_0:
-        _gotolabel(320)
+    if CharacterIDCheck('ny'):
+        conditionalSendToLabel(210)
+    if CharacterIDCheck('tb'):
+        conditionalSendToLabel(220)
+    if CharacterIDCheck('hz'):
+        conditionalSendToLabel(230)
+    if CharacterIDCheck('mk'):
+        conditionalSendToLabel(250)
+    if CharacterIDCheck('pt'):
+        conditionalSendToLabel(270)
+    if CharacterIDCheck('iz'):
+        conditionalSendToLabel(290)
+    if CharacterIDCheck('am'):
+        conditionalSendToLabel(300)
+    if CharacterIDCheck('bl'):
+        conditionalSendToLabel(310)
+    if CharacterIDCheck('az'):
+        conditionalSendToLabel(320)
     if CharacterIDCheck('kk'):
         if SLOT_140:
             gotoLabel(2340)
@@ -9157,36 +9813,28 @@ def CmnActMatchWin():
             gotoLabel(2360)
         else:
             gotoLabel(360)
-    CharacterIDCheck('rm')
-    if SLOT_0:
-        _gotolabel(370)
-    CharacterIDCheck('hb')
-    if SLOT_0:
-        _gotolabel(380)
-    CharacterIDCheck('ph')
-    if SLOT_0:
-        _gotolabel(390)
+    if CharacterIDCheck('rm'):
+        conditionalSendToLabel(370)
+    if CharacterIDCheck('hb'):
+        conditionalSendToLabel(380)
+    if CharacterIDCheck('ph'):
+        conditionalSendToLabel(390)
     if CharacterIDCheck('mi'):
         if SLOT_140:
             gotoLabel(2410)
         else:
             gotoLabel(1410)
-    CharacterIDCheck('es')
-    if SLOT_0:
-        _gotolabel(430)
-    CharacterIDCheck('ma')
-    if SLOT_0:
-        _gotolabel(440)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('es'):
+        conditionalSendToLabel(430)
+    if CharacterIDCheck('ma'):
+        conditionalSendToLabel(440)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
-    (SLOT_121 >= 1)
-    if SLOT_0:
-        _gotolabel(20)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(10)
+    if SLOT_121 >= 1:
+        conditionalSendToLabel(20)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(10)
     label(0)
     StayAfterMovement(1, 0)
     sprite('kg610_00', 6)
@@ -9251,20 +9899,20 @@ def CmnActMatchWin():
     sprite('kg611_05', 6)
     sprite('kg611_06', 6)
     sprite('keep', 1)
-    if (SLOT_121 == 1):
+    if SLOT_121 == 1:
         gotoLabel(30)
-    if (SLOT_121 == 2):
+    if SLOT_121 == 2:
         gotoLabel(40)
-    if (SLOT_121 == 3):
+    if SLOT_121 == 3:
         gotoLabel(50)
-    if (SLOT_121 == 4):
+    if SLOT_121 == 4:
         gotoLabel(60)
     label(30)
     sprite('kg611_06', 15)
     CreateObject('MatchWinKaguraGirl', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     sprite('kg611_07a', 6)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     CommonSE('024_getset_a')
     sprite('kg611_08a', 6)
     sprite('kg611_09a', 6)
@@ -9275,7 +9923,7 @@ def CmnActMatchWin():
     label(31)
     sprite('kg611_11ex00a', 5)
     if SLOT_97:
-        _gotolabel(31)
+        conditionalSendToLabel(31)
     sprite('kg611_11ex00a', 5)
     SubVoice(1, 'gs007')
     sprite('kg611_11ex01a', 5)
@@ -9286,9 +9934,9 @@ def CmnActMatchWin():
     label(40)
     sprite('kg611_06', 15)
     CreateObject('MatchWinKaguraGirl', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('kg611_07b', 6)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     CommonSE('024_getset_a')
     sprite('kg611_08b', 6)
     sprite('kg611_09b', 6)
@@ -9299,7 +9947,7 @@ def CmnActMatchWin():
     label(41)
     sprite('kg611_11ex00b', 5)
     if SLOT_97:
-        _gotolabel(41)
+        conditionalSendToLabel(41)
     sprite('kg611_11ex00b', 5)
     SubVoice(1, 'gs001')
     sprite('kg611_11ex01b', 5)
@@ -9310,9 +9958,9 @@ def CmnActMatchWin():
     label(50)
     sprite('kg611_06', 15)
     CreateObject('MatchWinKaguraGirl', -1)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     sprite('kg611_07c', 6)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     CommonSE('024_getset_a')
     sprite('kg611_08c', 6)
     sprite('kg611_09c', 6)
@@ -9323,7 +9971,7 @@ def CmnActMatchWin():
     label(51)
     sprite('kg611_11ex00c', 5)
     if SLOT_97:
-        _gotolabel(51)
+        conditionalSendToLabel(51)
     sprite('kg611_11ex00c', 5)
     SubVoice(1, 'gs004')
     sprite('kg611_11ex01c', 5)
@@ -9334,9 +9982,9 @@ def CmnActMatchWin():
     label(60)
     sprite('kg611_06', 15)
     CreateObject('MatchWinKaguraGirl', -1)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     sprite('kg611_07d', 6)
-    ObjectUpon(1, 41)
+    ObjectUpon(STATE_END, 41)
     CommonSE('024_getset_a')
     sprite('kg611_08d', 6)
     sprite('kg611_09d', 6)
@@ -9347,7 +9995,7 @@ def CmnActMatchWin():
     label(61)
     sprite('kg611_11ex00d', 5)
     if SLOT_97:
-        _gotolabel(61)
+        conditionalSendToLabel(61)
     sprite('kg611_11ex00d', 5)
     SubVoice(1, 'gs010')
     sprite('kg611_11ex01d', 5)
@@ -9445,10 +10093,10 @@ def CmnActMatchWin():
     ScreenCollision(0)
     CreateObject('MatchWinSword', -1)
     RegisterObject(4, 1)
-    ApplyFunctionsToObjects(4)
-    AddX(56000)
-    SetZVal(500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        AddX(56000)
+        SetZVal(500)
     sprite('kg602_04', 6)
     sprite('kg602_03', 6)
     sprite('kg602_01', 32767)
@@ -10118,6 +10766,7 @@ def CmnActMatchWin():
     sprite('kg610_15', 5)
     gotoLabel(667)
 
+
 @State
 def CmnActLose():
     sprite('kg620_00', 5)
@@ -10138,6 +10787,7 @@ def CmnActLose():
     sprite('kg620_12', 32767)
     DemoTimer(90)
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -10156,17 +10806,20 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefWin():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefLose():
@@ -10181,11 +10834,13 @@ def EventDefLose():
     sprite('kg010_09', 6)
     gotoLabel(0)
 
+
 @State
 def EventCrouchToStand():
     sprite('kg010_00', 4)
     sprite('kg010_01', 4)
     enterState('CmnActStand')
+
 
 @State
 def EventDefWin2():
@@ -10197,6 +10852,7 @@ def EventDefWin2():
     sprite('kg610_15', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventKGBladeDown():
@@ -10212,6 +10868,7 @@ def EventKGBladeDown():
     sprite('kg610_07', 32767)
     loopRest()
 
+
 @State
 def EventDefChouhatsu():
     sprite('kg300_00', 7)
@@ -10220,6 +10877,7 @@ def EventDefChouhatsu():
     sprite('kg300_03', 7)
     sprite('kg300_04', 32767)
     loopRest()
+
 
 @State
 def EventDefChouhatsuEnd():
@@ -10232,6 +10890,7 @@ def EventDefChouhatsuEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventKGWalkEntryWait():
     sprite('null', 1)
@@ -10242,14 +10901,15 @@ def EventKGWalkEntryWait():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def EventKGWalkEntry():
     ScreenCollision(0)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('kg030_00', 7)
@@ -10275,11 +10935,13 @@ def EventKGWalkEntry():
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
 
+
 @State
 def EventKGGirlsEntryWait():
     sprite('kg602_02', 32767)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
+
 
 @State
 def EventKGGirlsEntryWait2():
@@ -10287,6 +10949,7 @@ def EventKGGirlsEntryWait2():
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
     sprite('kg602_00', 32767)
+
 
 @State
 def EventKGGirlsEntry():
@@ -10302,7 +10965,7 @@ def EventKGGirlsEntry():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -10326,6 +10989,7 @@ def EventKGGirlsEntry():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventBDashOut():
     sprite('kg033_00', 4)
@@ -10348,6 +11012,7 @@ def EventBDashOut():
     sprite('kg033_07', 5)
     sprite('kg033_08', 5)
 
+
 @State
 def EventTGVSKG():
 
@@ -10355,12 +11020,14 @@ def EventTGVSKG():
         XPositionRelativeFacing(-300000)
     enterState('EventDefLose')
 
+
 @State
 def EventKGVsCE():
 
     def upon_IMMEDIATE():
         XPositionRelativeFacing(-160000)
     enterState('EventDefLose')
+
 
 @State
 def EventActionKamae():
@@ -10375,6 +11042,7 @@ def EventActionKamae():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventActionKamaeEnd():
     sprite('kg203_03', 6)
@@ -10383,6 +11051,7 @@ def EventActionKamaeEnd():
     sprite('kg203_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefChouhatsu2():
@@ -10411,11 +11080,12 @@ def EventDefChouhatsu2():
     sprite('kg300_04', 32767)
     loopRest()
 
+
 @State
 def EventReverseWait():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
     label(0)
     sprite('kg000_00', 7)
     sprite('kg000_01', 7)
@@ -10444,6 +11114,7 @@ def EventReverseWait():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def EventKamaeWait():
 
@@ -10458,12 +11129,14 @@ def EventKamaeWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventCreateHB():
     sprite('keep', 2)
     CreateObject('EventHB', 0)
     loopRest()
     enterState('EventKamaeWait')
+
 
 @State
 def EventHBKamaeEnd():
@@ -10473,6 +11146,7 @@ def EventHBKamaeEnd():
     sprite('kg203_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefReverseWait():
@@ -10492,10 +11166,12 @@ def EventDefReverseWait():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def EventDefChouhatsuWait():
     sprite('kg300_04', 32767)
     loopRest()
+
 
 @State
 def EventActionVsCELoop():
@@ -10511,6 +11187,7 @@ def EventActionVsCELoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventActionVsCELoopEnd():
     sprite('kg410_16', 6)
@@ -10518,6 +11195,7 @@ def EventActionVsCELoopEnd():
     sprite('kg410_18', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventKGBladeDownToLoop():
@@ -10533,10 +11211,11 @@ def EventKGBladeDownToLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_kkvskg_00():
     sprite('kg600_00', 32767)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
     label(1)
@@ -10548,7 +11227,7 @@ def Act2Event_kkvskg_00():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -10571,9 +11250,11 @@ def Act2Event_kkvskg_00():
     sprite('kg600_18', 6)
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Down():
     sprite('kg060_14', 32767)
+
 
 @State
 def Act2Event_Recover():
@@ -10588,6 +11269,7 @@ def Act2Event_Recover():
     sprite('kg061_08', 6)
     sprite('kg061_09', 6)
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Reaciton():
@@ -10610,6 +11292,7 @@ def Act2Event_Reaciton():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_NoDisp():
 
@@ -10621,6 +11304,7 @@ def Act2Event_NoDisp():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def Act2Event_Chouhatsu():
     sprite('kg300_00', 7)
@@ -10629,6 +11313,7 @@ def Act2Event_Chouhatsu():
     sprite('kg300_03', 7)
     sprite('kg300_04', 32767)
     loopRest()
+
 
 @State
 def Act2Event_ChouhatsuEnd():
@@ -10640,6 +11325,7 @@ def Act2Event_ChouhatsuEnd():
     sprite('kg300_09', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Win():
@@ -10655,6 +11341,7 @@ def Act2Event_Win():
     sprite('kg610_07', 32767)
     loopRest()
 
+
 @State
 def Act2Event_WalkIn():
 
@@ -10662,15 +11349,15 @@ def Act2Event_WalkIn():
         XPositionRelativeFacing(-960000)
         ScreenCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-260000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-260000)
                 EndMomentum(1)
                 sendToLabel(0)
@@ -10695,6 +11382,7 @@ def Act2Event_WalkIn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_kgvsmk_00():
 
@@ -10702,19 +11390,19 @@ def Act2Event_kgvsmk_00():
         XPositionRelativeFacing(-960000)
         ScreenCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-260000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-260000)
                 EndMomentum(1)
                 sendToLabel(0)
-        sendToLabelUpon(32, 2)
+        uponSendToLabel(32, 2)
     label(9)
     sprite('kg030_02', 7)
     physicsXImpulse(5500)
@@ -10760,12 +11448,14 @@ def Act2Event_kgvsmk_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_kgvsmk_01():
     sprite('null', 1)
     EndMomentum(1)
     ScreenShake(20000, 50000)
     CommonSE('100_hit_grap_2')
+
 
 @State
 def Act2Event_kgvsmk_02():
@@ -10776,12 +11466,13 @@ def Act2Event_kgvsmk_02():
     loopRest()
     enterState('Act2Event_Chouhatsu')
 
+
 @State
 def Act2Event_kgvsmk_03():
 
     def upon_IMMEDIATE():
         ScreenCollision(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('keep', 2)
     sprite('kg300_05', 7)
     sprite('kg300_06', 7)
@@ -10816,6 +11507,7 @@ def Act2Event_kgvsmk_03():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def Act2Event_kgvsmk_04():
     sprite('null', 1)
@@ -10823,12 +11515,14 @@ def Act2Event_kgvsmk_04():
     ScreenShake(40000, 80000)
     CommonSE('100_hit_grap_3')
 
+
 @State
 def Act2Event_WaitingEntry_01():
     sprite('kg600_00', 32767)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
     loopRest()
+
 
 @State
 def Act2Event_WaitingEntry_02():
@@ -10839,6 +11533,7 @@ def Act2Event_WaitingEntry_02():
     sprite('kg600_02', 8)
     sprite('kg600_03', 32767)
     loopRest()
+
 
 @State
 def Act2Event_WaitingEntryEnd():
@@ -10851,7 +11546,7 @@ def Act2Event_WaitingEntryEnd():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -10875,6 +11570,7 @@ def Act2Event_WaitingEntryEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Walk():
     sprite('kg030_00', 7)
@@ -10896,6 +11592,7 @@ def Act2Event_Walk():
     loopRest()
     EndMomentum(1)
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Back():
@@ -10920,6 +11617,7 @@ def Act2Event_Back():
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
 
+
 @State
 def Act2EventChouhatsu():
     sprite('kg300_00', 7)
@@ -10928,6 +11626,7 @@ def Act2EventChouhatsu():
     sprite('kg300_03', 7)
     sprite('kg300_04', 32767)
     loopRest()
+
 
 @State
 def Act2EventChouhatsuEnd():
@@ -10940,6 +11639,7 @@ def Act2EventChouhatsuEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_OverDrive():
     sprite('kg333_00', 6)
@@ -10947,6 +11647,7 @@ def Act2Event_OverDrive():
     sprite('kg333_02', 6)
     sprite('kg333_03', 32767)
     loopRest()
+
 
 @State
 def Act2Event_Kamae():
@@ -10961,6 +11662,7 @@ def Act2Event_Kamae():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_KamaeEnd():
     sprite('kg203_03', 6)
@@ -10969,6 +11671,7 @@ def Act2Event_KamaeEnd():
     sprite('kg203_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_OverDriveActivate():
@@ -10984,6 +11687,7 @@ def Act2Event_OverDriveActivate():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_OverDriveEnd():
     sprite('keep', 2)
@@ -10992,12 +11696,14 @@ def Act2Event_OverDriveEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Posing():
     sprite('kg070_13', 6)
     sprite('kg070_12', 6)
     sprite('kg070_11', 32767)
     loopRest()
+
 
 @State
 def Act2Event_PosingEnd():
@@ -11006,11 +11712,13 @@ def Act2Event_PosingEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Yoroke():
     sprite('kg070_02', 15)
     sprite('kg070_03', 32767)
     loopRest()
+
 
 @State
 def Act2Event_YorokeToDown():
@@ -11025,6 +11733,7 @@ def Act2Event_YorokeToDown():
     CommonSE('209_down_normal_0')
     sprite('kg063_10', 32767)
 
+
 @State
 def Act2Event_YorokeEnd():
     sprite('kg070_10', 5)
@@ -11033,6 +11742,7 @@ def Act2Event_YorokeEnd():
     sprite('kg070_13', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_kgvsaz_00():
@@ -11049,6 +11759,7 @@ def Act2Event_kgvsaz_00():
     sprite('kg070_02', 4)
     sprite('kg070_03', 32767)
     loopRest()
+
 
 @State
 def Act2Event_kgvsaz_01():
@@ -11070,12 +11781,14 @@ def Act2Event_kgvsaz_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Crouch2Stand():
     sprite('kg010_01', 4)
     sprite('kg010_00', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_YureMotion():
@@ -11088,6 +11801,7 @@ def Act2Event_YureMotion():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_rgvskg_00():
     sprite('kg600_00', 2)
@@ -11095,6 +11809,7 @@ def Act3Event_rgvskg_00():
     RegisterObject(4, 1)
     sprite('kg600_00', 32767)
     loopRest()
+
 
 @State
 def Act3Event_rgvskg_01():
@@ -11105,6 +11820,7 @@ def Act3Event_rgvskg_01():
     sprite('kg600_02', 6)
     sprite('kg600_03', 32767)
     loopRest()
+
 
 @State
 def Act3Event_rgvskg_02():
@@ -11117,7 +11833,7 @@ def Act3Event_rgvskg_02():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -11141,12 +11857,14 @@ def Act3Event_rgvskg_02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_rgvskg_03():
     sprite('kg001_00', 7)
     sprite('kg001_01', 7)
     sprite('kg001_02', 32767)
     loopRest()
+
 
 @State
 def Act3Event_rgvskg_04():
@@ -11155,6 +11873,7 @@ def Act3Event_rgvskg_04():
     sprite('kg001_00', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_rgvskg_05():
@@ -11174,6 +11893,7 @@ def Act3Event_rgvskg_05():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_rgvskg_06():
     sprite('kg050_00', 5)
@@ -11181,6 +11901,7 @@ def Act3Event_rgvskg_06():
     sprite('kg050_00', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_jnvskg_00():
@@ -11200,6 +11921,7 @@ def Act3Event_jnvskg_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_mkvskg_00():
 
@@ -11207,6 +11929,7 @@ def Act3Event_mkvskg_00():
         CreateObject('EntrySword', -1)
         RegisterObject(4, 1)
     sprite('kg602_00', 32767)
+
 
 @State
 def Act3Event_mkvskg_01():
@@ -11217,6 +11940,7 @@ def Act3Event_mkvskg_01():
     sprite('kg602_00', 6)
     sprite('kg602_01', 6)
     sprite('kg602_02ex1', 32767)
+
 
 @State
 def Act3Event_mkvskg_02():
@@ -11232,7 +11956,7 @@ def Act3Event_mkvskg_02():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('008_swing_pole_2')
@@ -11255,6 +11979,7 @@ def Act3Event_mkvskg_02():
     sprite('kg600_18', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_mkvskg_03():
@@ -11272,6 +11997,7 @@ def Act3Event_mkvskg_03():
     sprite('kg070_03', 32767)
     loopRest()
 
+
 @State
 def Act3Event_mkvskg_04():
     sprite('kg070_10', 5)
@@ -11281,10 +12007,11 @@ def Act3Event_mkvskg_04():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_mivskg_00():
     sprite('kg600_00', 32767)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
     label(1)
@@ -11296,7 +12023,7 @@ def Act3Event_mivskg_00():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -11320,11 +12047,12 @@ def Act3Event_mivskg_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_kgvsrg_00():
     sprite('kg600_00', 32767)
     AddX(80000)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     CreateObject('EntrySword', -1)
     RegisterObject(4, 1)
     label(1)
@@ -11336,7 +12064,7 @@ def Act3Event_kgvsrg_00():
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CommonSE('004_swing_grap_1_2')
     sprite('kg600_08', 6)
     CommonSE('004_swing_grap_1_2')
@@ -11359,6 +12087,7 @@ def Act3Event_kgvsrg_00():
     sprite('kg600_18', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_kgvsrg_01():
@@ -11379,6 +12108,7 @@ def Act3Event_kgvsrg_01():
     XPositionRelativeFacing(-260000)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_kgvsrg_02():
@@ -11411,6 +12141,7 @@ def Act3Event_kgvsrg_02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_kgvshb_00():
 
@@ -11433,6 +12164,7 @@ def Act3Event_kgvshb_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_Turn():
     sprite('kg003_00ex', 3)
@@ -11450,6 +12182,7 @@ def Act3Event_Turn():
     sprite('kg000_07', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_DashOut():
@@ -11492,6 +12225,7 @@ def Act3Event_DashOut():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def Act3Event_kgvsmu_00():
 
@@ -11505,17 +12239,18 @@ def Act3Event_kgvsmu_00():
     sprite('kg233_02', 5)
     gotoLabel(0)
 
+
 @State
 def Act3Event_kgvsmu_01():
 
     def upon_IMMEDIATE():
         StayAfterMovement(1, 0)
 
-        def upon_4():
-            clearUponHandler(4)
+        def upon_FALLING():
+            clearUponHandler(FALLING)
             setGravity(5000)
             sendToLabel(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
     sprite('kg233_02', 3)
     sprite('kg406_00', 3)
     physicsXImpulse(10000)
@@ -11573,6 +12308,7 @@ def Act3Event_kgvsmu_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_Kamae2():
     sprite('kg213_00', 4)
@@ -11585,12 +12321,14 @@ def Act3Event_Kamae2():
     sprite('kg213_06', 5)
     gotoLabel(0)
 
+
 @State
 def Act3Event_Kamae2End():
     sprite('kg213_01', 6)
     sprite('kg213_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_OverDrive():
@@ -11599,6 +12337,7 @@ def Act3Event_OverDrive():
     sprite('kg333_02', 5)
     sprite('kg333_03', 32767)
 
+
 @State
 def Act3Event_OverDriveEnd():
     sprite('kg333_04', 3)
@@ -11606,9 +12345,9 @@ def Act3Event_OverDriveEnd():
     CommonSE('302_spsys_burst')
     E0EAEffect('GuardCrushWind', 65535)
     ScreenShake(3000, 50000)
-    ApplyFunctionsToObjects(1)
-    Size(1400)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1400)
     sprite('kg333_06', 6)
     sprite('kg333_07', 6)
     sprite('kg333_05', 6)

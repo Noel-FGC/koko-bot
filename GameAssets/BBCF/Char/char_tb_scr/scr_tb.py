@@ -1,26 +1,30 @@
 @Subroutine
 def PreInit():
     CharacterID('tb')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def OnActionBegin():
     pass
+
 
 @Subroutine
 def IsStockReady():
     SLOT_47 = 0
     if SLOT_59:
         SLOT_47 = 1
-    elif (SLOT_31 >= 10000):
+    elif SLOT_31 >= 10000:
         SLOT_47 = 1
+
 
 @Subroutine
 def IsPowerUpReady():
     SLOT_47 = 0
     if random_(1, 2, 59):
-        if (SLOT_31 >= 10000):
+        if SLOT_31 >= 10000:
             SLOT_47 = 1
+
 
 @Subroutine
 def GetStockCount():
@@ -30,72 +34,75 @@ def GetStockCount():
     else:
         op(3, 2, 31, 0, 10000)
 
+
 @Subroutine
 def D_INITIALIZE():
-    if (not SLOT_59):
-        SLOT_31 = (SLOT_31 + (-10000))
+    if not SLOT_59:
+        SLOT_31 = SLOT_31 + -10000
     if SLOT_59:
-        if (not CurrentStateCheck('UltimateMode')):
+        if not CurrentStateCheck('UltimateMode'):
             DamageMultiplier(110)
 
-    def upon_FRAME_STEP():
-        if SLOT_110:
-            if (not SLOT_59):
-                SLOT_31 = (SLOT_31 + (-75))
-    if (not SLOT_59):
+    def upon_EVERY_FRAME():
+        if SLOT_OverdriveTimer:
+            if not SLOT_59:
+                SLOT_31 = SLOT_31 + -75
+    if not SLOT_59:
         SLOT_56 = 1
+
 
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_81):
+    if not SLOT_81:
         TrainingModeSLOT('TRI_TsubakisPowerUp', 2, 67)
         if SLOT_67:
             callSubroutine('ExModeBegin')
             SLOT_59 = SLOT_67
             SLOT_31 = 999999
-        if (not SLOT_59):
+        if not SLOT_59:
             TrainingModeSLOT('TRI_TsubakisInstall', 2, 67)
             if SLOT_67:
-                if SLOT_90:
+                if SLOT_InNeutral:
                     op(2, 2, 67, 0, 10000)
                     SLOT_67 = SLOT_0
-                    if (SLOT_31 < SLOT_67):
+                    if SLOT_31 < SLOT_67:
                         SLOT_31 = SLOT_67
         if SLOT_66:
             SLOT_59 = 0
             SLOT_31 = 0
         if SLOT_59:
-            if (not CurrentStateCheck('UltimateMode')):
-                if SLOT_110:
-                    SLOT_31 = (SLOT_31 + (-50))
+            if not CurrentStateCheck('UltimateMode'):
+                if SLOT_OverdriveTimer:
+                    SLOT_31 = SLOT_31 + -50
                 else:
-                    SLOT_31 = (SLOT_31 + (-100))
-            if (not SLOT_31):
+                    SLOT_31 = SLOT_31 + -100
+            if not SLOT_31:
                 ResourceGauge(0, 1, 2, 5, 50000, 0, -16744320, -12240)
                 ResourceBarFlashIfFull(0, 0)
                 SLOT_59 = 0
-        elif SLOT_110:
-            if (not CurrentStateCheck('UltimateMode')):
-                SLOT_31 = (SLOT_31 + 166)
+        elif SLOT_OverdriveTimer:
+            if not CurrentStateCheck('UltimateMode'):
+                SLOT_31 = SLOT_31 + 166
         callSubroutine('GetStockCount')
         SLOT_67 = SLOT_0
-        if (SLOT_67 >= 0):
+        if SLOT_67 >= 0:
             ResourceBarIcon(0, 14)
-        if (SLOT_67 >= 1):
+        if SLOT_67 >= 1:
             ResourceBarIcon(0, 9)
-        if (SLOT_67 >= 2):
+        if SLOT_67 >= 2:
             ResourceBarIcon(0, 10)
-        if (SLOT_67 >= 3):
+        if SLOT_67 >= 3:
             ResourceBarIcon(0, 11)
-        if (SLOT_67 >= 4):
+        if SLOT_67 >= 4:
             ResourceBarIcon(0, 12)
-        if (SLOT_67 >= 5):
+        if SLOT_67 >= 5:
             ResourceBarIcon(0, 13)
         if CurrentStateCheck('RlAstralDamage'):
             EnableAfterimage(0)
             AfterimageType(0)
             SLOT_59 = 0
             SLOT_31 = 0
+
 
 @Subroutine
 def MatchInit():
@@ -194,7 +201,7 @@ def MatchInit():
     Move_Register('NmlAtk5D', 0x1)
     Move_Condition(0x2000)
     Move_Input_(0x4d)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_D)
     TempPriorityMultiplierInterval(0, 0, 1000, 1000, 1)
     GuardStunPriority(10)
     DamageStunPriority(10)
@@ -205,13 +212,13 @@ def MatchInit():
     Move_Register('5D_EASY', 0x1)
     StateCall('NmlAtk5D')
     FollowupOnly(1)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_D)
     CPUUsable(0)
     Move_EndRegister()
     Move_Register('NmlAtk2D', 0x1)
     Move_Condition(0x2000)
     Move_Input_(0x45)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_D)
     OpponentAttackPriority(1)
     DamageStunPriority(1)
     GuardStunPriority(10000)
@@ -221,11 +228,11 @@ def MatchInit():
     Move_Register('2D_EASY', 0x1)
     StateCall('NmlAtk2D')
     FollowupOnly(1)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_D)
     CPUUsable(0)
     Move_EndRegister()
     Move_Register('NmlAtkAIR5D', 0x1)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x2001)
     MoveMaxChainRepeat(1)
     Move_Condition(0x3037)
@@ -241,7 +248,7 @@ def MatchInit():
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(0x6b)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_D)
     MoveMaxChainRepeat(1)
     Move_Condition(0x3037)
     Move_Condition(0x3008)
@@ -339,7 +346,7 @@ def MatchInit():
     Move_EndRegister()
     Move_Register('NmlAtk3C_2', 0x1)
     FollowupOnly(1)
-    Move_Input_(0x13)
+    Move_Input_(INPUT_HOLD_C)
     Move_EndRegister()
     Move_Register('NmlAtkAIR5A', INPUT_J5A)
     DamageStunPriority(1)
@@ -386,7 +393,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(100000, 250000, 0, 200000, 1000, 1)
     Move_EndRegister()
-    Move_Register('LandTackleA', 0x2)
+    Move_Register('LandTackleA', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -394,7 +401,7 @@ def MatchInit():
     DamageStunPriority(500)
     SkillEstimateRange(250000, 550000, -200000, 100000, 200, 10)
     Move_EndRegister()
-    Move_Register('LandTackleB', 0x2)
+    Move_Register('LandTackleB', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -402,7 +409,7 @@ def MatchInit():
     DamageStunPriority(2500)
     SkillEstimateRange(350000, 600000, -200000, 100000, 200, 10)
     Move_EndRegister()
-    Move_Register('LandTackleC', 0x2)
+    Move_Register('LandTackleC', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
@@ -410,7 +417,7 @@ def MatchInit():
     DamageStunPriority(500)
     SkillEstimateRange(350000, 750000, -200000, 100000, 200, 10)
     Move_EndRegister()
-    Move_Register('LandTackleEx', 0x2)
+    Move_Register('LandTackleEx', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
@@ -419,7 +426,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 600, 0, 1000)
     SkillEstimateRange(0, 650000, -200000, 100000, 200, 10)
     Move_EndRegister()
-    Move_Register('SwordFuriage', 0x2)
+    Move_Register('SwordFuriage', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
@@ -428,14 +435,14 @@ def MatchInit():
     MoveCancellableFrames(100, 100)
     SkillEstimateRange(150000, 450000, -200000, 250000, 1000, 10)
     Move_EndRegister()
-    Move_Register('SwordFuriage_Hasei', 0x2)
+    Move_Register('SwordFuriage_Hasei', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
     FollowupOnly(1)
     SkillEstimateRange(0, 350000, -200000, 200000, 1000, 10)
     Move_EndRegister()
-    Move_Register('SwordFuriageEx', 0x2)
+    Move_Register('SwordFuriageEx', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
@@ -446,7 +453,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 400, 0, 1000)
     SkillEstimateRange(150000, 500000, -200000, 250000, 1000, 10)
     Move_EndRegister()
-    Move_Register('SwordFuriageEx_Hasei', 0x2)
+    Move_Register('SwordFuriageEx_Hasei', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
@@ -455,9 +462,9 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 200, 0, 1000)
     SkillEstimateRange(0, 350000, -200000, 200000, 5000, 10)
     Move_EndRegister()
-    Move_Register('Shot', 0x2)
+    Move_Register('Shot', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0xb0)
+    Move_Input_(INPUT_421)
     Move_Input_(INPUT_PRESS_A)
     Move_Condition(0x3009)
     OpponentAttackPriority(1)
@@ -466,10 +473,10 @@ def MatchInit():
     JumpAvoidPriority(100000)
     SkillEstimateRange(350000, 650000, -200000, 700000, 100, 750)
     Move_EndRegister()
-    Move_Register('ShotEx', 0x2)
+    Move_Register('ShotEx', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
-    Move_Input_(0xb0)
+    Move_Input_(INPUT_421)
     Move_Input_(INPUT_PRESS_D)
     Move_Condition(0x3009)
     Move_Input_(0x59)
@@ -479,7 +486,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(350000, 650000, -200000, 700000, 100, 900)
     Move_EndRegister()
-    Move_Register('SwordFuriageEx_Easy', 0x2)
+    Move_Register('SwordFuriageEx_Easy', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_63214)
@@ -487,7 +494,7 @@ def MatchInit():
     StateCall('SwordFuriageEx')
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('AntiAir', 0x2)
+    Move_Register('AntiAir', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_C)
@@ -498,7 +505,7 @@ def MatchInit():
     MoveCancellableFrames(20, 22)
     SkillEstimateRange(0, 320000, -200000, 300000, 250, 10)
     Move_EndRegister()
-    Move_Register('AntiAirEx', 0x2)
+    Move_Register('AntiAirEx', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_623)
@@ -510,14 +517,14 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 200, 0, 1000)
     SkillEstimateRange(0, 350000, -200000, 300000, 500, 0)
     Move_EndRegister()
-    Move_Register('LandTackleC_Easy', 0x2)
+    Move_Register('LandTackleC_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_41236)
     Move_Input_(INPUT_PRESS_C)
     StateCall('LandTackleC')
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('LandTackleEx_Easy', 0x2)
+    Move_Register('LandTackleEx_Easy', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_41236)
@@ -525,7 +532,7 @@ def MatchInit():
     StateCall('LandTackleEx')
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('WingAttack', 0x2)
+    Move_Register('WingAttack', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -533,7 +540,7 @@ def MatchInit():
     AirborneOpponentPriority(2000)
     SkillEstimateRange(-50000, 300000, 50000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('WingAttack_Hasei', 0x2)
+    Move_Register('WingAttack_Hasei', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
@@ -541,7 +548,7 @@ def MatchInit():
     FollowupOnly(1)
     SkillEstimateRange(-50000, 300000, -200000, 200000, 1000, 10)
     Move_EndRegister()
-    Move_Register('WingAttackEx', 0x2)
+    Move_Register('WingAttackEx', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
@@ -551,7 +558,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 400, 0, 1000)
     SkillEstimateRange(-50000, 300000, 50000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('WingAttackEx_Hasei', 0x2)
+    Move_Register('WingAttackEx_Hasei', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
@@ -561,35 +568,35 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 400, 0, 1000)
     SkillEstimateRange(-50000, 300000, -200000, 200000, 5000, 10)
     Move_EndRegister()
-    Move_Register('AirTackleA', 0x2)
+    Move_Register('AirTackleA', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_A)
     DamageStunPriority(1)
     SkillEstimateRange(-50000, 300000, -600000, -100000, 250, 10)
     Move_EndRegister()
-    Move_Register('AirTackleB', 0x2)
+    Move_Register('AirTackleB', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
     DamageStunPriority(1)
     SkillEstimateRange(150000, 450000, -600000, -100000, 250, 10)
     Move_EndRegister()
-    Move_Register('AirTackleC', 0x2)
+    Move_Register('AirTackleC', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
     DamageStunPriority(1)
     SkillEstimateRange(150000, 450000, -600000, -100000, 250, 10)
     Move_EndRegister()
-    Move_Register('AirTackle_Hasei', 0x2)
+    Move_Register('AirTackle_Hasei', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
     CallSkillConditions('EnableAirTackle')
     FollowupOnly(1)
     SkillEstimateRange(-100000, 400000, -300000, 200000, 1000, 1000)
     Move_EndRegister()
-    Move_Register('AirTackleEx', 0x2)
+    Move_Register('AirTackleEx', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
@@ -597,7 +604,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 200, 0, 1000)
     SkillEstimateRange(150000, 450000, -600000, -100000, 250, 10)
     Move_EndRegister()
-    Move_Register('AirTackleEx_Hasei', 0x2)
+    Move_Register('AirTackleEx_Hasei', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
@@ -606,7 +613,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 0, 200, 0, 1000)
     SkillEstimateRange(150000, 450000, -600000, -100000, 5000, 10)
     Move_EndRegister()
-    Move_Register('IGUpThrow', 0x2)
+    Move_Register('IGUpThrow', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_63214)
     Move_Input_(INPUT_PRESS_C)
@@ -616,7 +623,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 200000, -200000, 200000, 2000, 1)
     Move_EndRegister()
-    Move_Register('MidAssault', 0x2)
+    Move_Register('MidAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_22)
     Move_Input_(INPUT_PRESS_B)
@@ -624,14 +631,14 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 200000, 1000, 1)
     Move_EndRegister()
-    Move_Register('MidAssault_Hasei', 0x2)
+    Move_Register('MidAssault_Hasei', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_22)
     Move_Input_(INPUT_PRESS_B)
     FollowupOnly(1)
     SkillEstimateRange(-150000, 350000, -200000, 450000, 1000, 1)
     Move_EndRegister()
-    Move_Register('MidAssaultEx', 0x2)
+    Move_Register('MidAssaultEx', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_22)
@@ -640,7 +647,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 300000, 1000, 1)
     Move_EndRegister()
-    Move_Register('MidAssaultEx_Hasei', 0x2)
+    Move_Register('MidAssaultEx_Hasei', INPUT_SPECIALMOVE)
     CallSkillConditions('IsStockReady')
     Move_Condition(0x2000)
     Move_Input_(INPUT_22)
@@ -648,7 +655,7 @@ def MatchInit():
     FollowupOnly(1)
     SkillEstimateRange(0, 350000, -200000, 450000, 1000, 1)
     Move_EndRegister()
-    Move_Register('UltimateLock_C', 0x606)
+    Move_Register('UltimateLock_C', INPUT_DISTORTION)
     Move_Input_(INPUT_236236)
     Move_Input_(INPUT_PRESS_C)
     Move_Condition(0x2000)
@@ -657,7 +664,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(0, 150000, -200000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('UltimateLock_C_OD', 0x606)
+    Move_Register('UltimateLock_C_OD', INPUT_DISTORTION)
     Move_Input_(INPUT_236236)
     Move_Input_(INPUT_PRESS_C)
     Move_Condition(0x2000)
@@ -667,7 +674,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 10, 1000)
     SkillEstimateRange(0, 150000, -200000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('UltimateLock_D', 0x606)
+    Move_Register('UltimateLock_D', INPUT_DISTORTION)
     Move_Input_(INPUT_236236)
     Move_Input_(INPUT_PRESS_D)
     Move_Condition(0x2000)
@@ -675,7 +682,7 @@ def MatchInit():
     DamageStunPriority(10000)
     SkillEstimateRange(0, 150000, -200000, 200000, 500, 1)
     Move_EndRegister()
-    Move_Register('UltimateLock_D_OD', 0x606)
+    Move_Register('UltimateLock_D_OD', INPUT_DISTORTION)
     Move_Input_(INPUT_236236)
     Move_Input_(INPUT_PRESS_D)
     Move_Condition(0x2000)
@@ -684,14 +691,14 @@ def MatchInit():
     DamageStunPriority(10000)
     SkillEstimateRange(0, 150000, -200000, 200000, 500, 1)
     Move_EndRegister()
-    Move_Register('UltimateMode', 0x606)
+    Move_Register('UltimateMode', INPUT_DISTORTION)
     CallSkillConditions('IsPowerUpReady')
     Move_Input_(INPUT_214214)
     Move_Input_(INPUT_PRESS_D)
     Move_Condition(0x2002)
     SkillEstimateRange(0, 150000, -200000, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('UltimateShot', 0x606)
+    Move_Register('UltimateShot', INPUT_DISTORTION)
     Move_Input_(INPUT_632146)
     Move_Input_(INPUT_PRESS_B)
     Move_Condition(0x2000)
@@ -701,7 +708,7 @@ def MatchInit():
     OpponentAttackPriority(1)
     JumpAvoidPriority(10000)
     SkillEstimateRange(1000000, 2000000, -100000, 200000, 500, 0)
-    Move_Register('UltimateShot_OD', 0x606)
+    Move_Register('UltimateShot_OD', INPUT_DISTORTION)
     Move_Input_(INPUT_632146)
     Move_Input_(INPUT_PRESS_B)
     Move_Condition(0x2000)
@@ -713,19 +720,19 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(1000000, 2000000, -100000, 200000, 500, 0)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x2000)
     Move_Condition(0x304a)
     OldSpecialInput(4)
     Move_Input_(INPUT_632146)
     Move_Input_(INPUT_PRESS_C)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -733,7 +740,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 550000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -746,7 +753,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 550000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -1012,34 +1019,39 @@ def MatchInit():
     CommonVoicelines(73, 'tb402')
     CommonVoicelines(74, 'tb403')
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def EnableAirTackle():
     SLOT_47 = 0
-    if CheckInput(0x4):
+    if CheckInput(INPUT_PRESS_A):
         SLOT_47 = 1
-    elif CheckInput(0xd):
+    elif CheckInput(INPUT_PRESS_B):
         SLOT_47 = 1
-    elif CheckInput(0x16):
+    elif CheckInput(INPUT_PRESS_C):
         SLOT_47 = 1
     elif CheckInput(0x31):
         SLOT_47 = 1
     if SLOT_113:
         SLOT_47 = 1
 
+
 @Subroutine
 def OnLanding():
     SLOT_4 = 0
 
+
 @Subroutine
 def OnDamage():
-    if SLOT_37:
+    if SLOT_IsGrounded:
         SLOT_4 = 0
+
 
 @State
 def CmnActStand():
@@ -1053,12 +1065,10 @@ def CmnActStand():
     sprite('tb000_06', 7)
     sprite('tb000_07', 7)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     sprite('tb001_00', 6)
     SLOT_88 = 960
     SmartVoiceline('tb000')
@@ -1076,6 +1086,7 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('tb003_00', 3)
@@ -1083,10 +1094,12 @@ def CmnActStandTurn():
     sprite('tb003_01', 3)
     sprite('tb003_02', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('tb010_00', 4)
     sprite('tb010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -1103,28 +1116,32 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('tb013_00', 3)
     sprite('tb013_01', 3)
     sprite('tb013_02', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('tb010_01', 4)
     sprite('tb010_00', 4)
+
 
 @State
 def CmnActJumpPre():
     sprite('tb023_00', 2)
     sprite('tb023_01', 2)
 
+
 @State
 def CmnActJumpUpper():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('tb020_00', 3)
     sprite('tb020_01', 3)
     SmartVoiceline('tb002')
@@ -1152,10 +1169,12 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(22)
 
+
 @State
 def CmnActJumpUpperEnd():
     sprite('tb020_02', 3)
     sprite('tb020_03', 3)
+
 
 @State
 def CmnActJumpDown():
@@ -1166,6 +1185,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpLanding():
     sprite('tb024_00', 3)
@@ -1174,22 +1194,26 @@ def CmnActJumpLanding():
     sprite('tb024_03', 3)
     sprite('tb024_04', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('tb024_00', 2)
     sprite('tb024_01', 4)
     sprite('tb024_02', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('tb024_03', 3)
     sprite('tb024_04', 3)
+
 
 @State
 def CmnActAirTurn():
     sprite('tb025_00', 4)
     sprite('tb025_01', 4)
     sprite('tb025_02', 4)
+
 
 @State
 def CmnActFWalk():
@@ -1212,10 +1236,12 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFWalkEnd():
     sprite('tb030_01', 4)
     sprite('tb030_00', 4)
+
 
 @State
 def CmnActBWalk():
@@ -1238,10 +1264,12 @@ def CmnActBWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalkEnd():
     sprite('tb031_01', 4)
     sprite('tb031_00', 4)
+
 
 @State
 def CmnActFDash():
@@ -1260,10 +1288,12 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDashStop():
     sprite('tb032_09', 6)
     sprite('tb032_10', 4)
+
 
 @State
 def CmnActBDash():
@@ -1273,7 +1303,7 @@ def CmnActBDash():
         EnterStateIfEventID(8, '_NEUTRAL')
         setInvincible(1)
         EndMomentum(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
     sprite('tb033_00', 1)
@@ -1299,9 +1329,11 @@ def CmnActBDash():
     LandingEffects(100, 1, 1)
     sprite('tb033_05', 3)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1314,6 +1346,7 @@ def CmnActAirFDash():
     sprite('tb035_00', 3)
     loopRest()
 
+
 @State
 def CmnActAirBDash():
     sprite('tb036_00', 3)
@@ -1324,11 +1357,13 @@ def CmnActAirBDash():
     sprite('tb036_00', 3)
     loopRest()
 
+
 @State
 def CmnActHitStandLv1():
     sprite('tb050_00', 1)
     sprite('tb050_01', 1)
     sprite('tb050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1336,6 +1371,7 @@ def CmnActHitStandLv2():
     sprite('tb050_02', 1)
     sprite('tb050_01', 2)
     sprite('tb050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1345,6 +1381,7 @@ def CmnActHitStandLv3():
     sprite('tb050_01', 2)
     sprite('tb050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('tb050_03', 1)
@@ -1353,6 +1390,7 @@ def CmnActHitStandLv4():
     sprite('tb050_02', 2)
     sprite('tb050_01', 2)
     sprite('tb050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1364,11 +1402,13 @@ def CmnActHitStandLv5():
     sprite('tb050_01', 2)
     sprite('tb050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('tb052_00', 1)
     sprite('tb052_01', 1)
     sprite('tb052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1376,6 +1416,7 @@ def CmnActHitStandLowLv2():
     sprite('tb052_02', 1)
     sprite('tb052_01', 2)
     sprite('tb052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1385,6 +1426,7 @@ def CmnActHitStandLowLv3():
     sprite('tb052_01', 2)
     sprite('tb052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('tb052_03', 1)
@@ -1393,6 +1435,7 @@ def CmnActHitStandLowLv4():
     sprite('tb052_02', 2)
     sprite('tb052_01', 2)
     sprite('tb052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1404,11 +1447,13 @@ def CmnActHitStandLowLv5():
     sprite('tb052_01', 2)
     sprite('tb052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('tb054_00', 1)
     sprite('tb054_01', 1)
     sprite('tb054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1416,6 +1461,7 @@ def CmnActHitCrouchLv2():
     sprite('tb054_02', 1)
     sprite('tb054_01', 2)
     sprite('tb054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1425,6 +1471,7 @@ def CmnActHitCrouchLv3():
     sprite('tb054_01', 2)
     sprite('tb054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('tb054_03', 1)
@@ -1433,6 +1480,7 @@ def CmnActHitCrouchLv4():
     sprite('tb054_02', 2)
     sprite('tb054_01', 2)
     sprite('tb054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1444,6 +1492,7 @@ def CmnActHitCrouchLv5():
     sprite('tb054_01', 2)
     sprite('tb054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('tb060_00', 4)
@@ -1453,9 +1502,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('tb060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1466,10 +1517,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('tb060_07', 2)
     sprite('tb060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1479,9 +1532,11 @@ def CmnActBDownBound():
     sprite('tb060_12', 3)
     sprite('tb060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('tb060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1496,13 +1551,16 @@ def CmnActBDown2Stand():
     sprite('tb061_08', 2)
     sprite('tb061_09', 2)
 
+
 @State
 def CmnActFDownUpper():
     sprite('tb063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('tb063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1512,10 +1570,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('tb063_04', 3)
     sprite('tb063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1525,9 +1585,11 @@ def CmnActFDownBound():
     sprite('tb063_09', 3)
     sprite('tb063_10', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('tb063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1542,6 +1604,7 @@ def CmnActFDown2Stand():
     sprite('tb064_08', 2)
     sprite('tb064_09', 2)
 
+
 @State
 def CmnActVDownUpper():
     sprite('tb062_00', 3)
@@ -1551,10 +1614,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('tb062_03', 3)
     sprite('tb062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1566,15 +1631,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('tb062_09', 2)
     sprite('tb062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('tb062_09', 2)
     sprite('tb062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1587,6 +1655,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1597,6 +1666,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1605,14 +1675,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('tb071_04', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('tb073_00', 3)
     sprite('tb073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1622,6 +1695,7 @@ def CmnActWallBoundDown():
     sprite('tb073_04', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerLoop():
@@ -1637,6 +1711,7 @@ def CmnActStaggerLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerDown():
     sprite('tb070_04', 4)
@@ -1646,6 +1721,7 @@ def CmnActStaggerDown():
     sprite('tb070_08', 4)
     sprite('tb070_09', 4)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('tb070_10', 1)
@@ -1653,11 +1729,13 @@ def CmnActUkemiStagger():
     sprite('tb070_12', 3)
     sprite('tb070_13', 3)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('tb113_00', 3)
     sprite('tb113_01', 3)
     sprite('tb113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -1665,11 +1743,13 @@ def CmnActUkemiAirB():
     sprite('tb113_01', 3)
     sprite('tb113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('tb113_00', 3)
     sprite('tb113_01', 3)
     sprite('tb113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1684,6 +1764,7 @@ def CmnActUkemiLandF():
     sprite('tb110_08', 3)
     sprite('tb110_09', 3)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('tb111_00', 3)
@@ -1697,6 +1778,7 @@ def CmnActUkemiLandB():
     sprite('tb111_08', 3)
     sprite('tb111_09', 3)
 
+
 @State
 def CmnActUkemiLandN():
     sprite('tb112_00', 1)
@@ -1709,6 +1791,7 @@ def CmnActUkemiLandN():
     sprite('tb112_07', 2)
     sprite('tb112_08', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('tb024_00', 3)
@@ -1717,10 +1800,12 @@ def CmnActUkemiLandNLanding():
     sprite('tb024_03', 3)
     sprite('tb024_04', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('tb040_00', 3)
     sprite('tb040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1730,10 +1815,12 @@ def CmnActMidGuardLoop():
     sprite('tb040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('tb040_01', 3)
     sprite('tb040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1743,39 +1830,47 @@ def CmnActMidHeavyGuardLoop():
     sprite('tb040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('tb040_01', 3)
     sprite('tb040_00', 3)
+
 
 @State
 def CmnActHighGuardPre():
     sprite('tb041_00', 3)
     sprite('tb041_01', 3)
 
+
 @State
 def CmnActHighGuardLoop():
     sprite('tb041_02', 3)
+
 
 @State
 def CmnActHighGuardEnd():
     sprite('tb041_01', 3)
     sprite('tb041_00', 3)
 
+
 @State
 def CmnActHighHeavyGuardLoop():
     sprite('tb041_03', 3)
     sprite('tb041_02', 3)
+
 
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('tb041_01', 3)
     sprite('tb041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('tb043_00', 3)
     sprite('tb043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1785,10 +1880,12 @@ def CmnActCrouchGuardLoop():
     sprite('tb043_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('tb043_01', 3)
     sprite('tb043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1798,15 +1895,18 @@ def CmnActCrouchHeavyGuardLoop():
     sprite('tb043_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('tb043_01', 3)
     sprite('tb043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('tb045_00', 3)
     sprite('tb045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1816,20 +1916,24 @@ def CmnActAirGuardLoop():
     sprite('tb045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('tb045_01', 3)
     sprite('tb045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
     sprite('tb045_03', 3)
     sprite('tb045_02', 3)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('tb045_01', 3)
     sprite('tb045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1840,6 +1944,7 @@ def CmnActGuardBreakStand():
     sprite('tb090_03', 6)
     sprite('tb090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('tb091_00', 2)
@@ -1848,6 +1953,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('tb091_03', 6)
     sprite('tb091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1858,11 +1964,13 @@ def CmnActGuardBreakAir():
     sprite('tb092_03', 6)
     sprite('tb092_04', 6)
 
+
 @State
 def CmnActLockWait():
     sprite('tb040_02', 1)
     sprite('tb040_01', 3)
     sprite('tb040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1876,11 +1984,13 @@ def CmnActLockReject():
     sprite('tb312_08', 1)
     sprite('tb312_09', 1)
 
+
 @State
 def CmnActAirLockWait():
     sprite('tb045_00', 1)
     sprite('tb045_01', 3)
     sprite('tb045_02', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1894,6 +2004,7 @@ def CmnActAirLockReject():
     sprite('tb322_07', 1)
     sprite('tb322_08', 1)
     sprite('tb322_09', 1)
+
 
 @State
 def CmnActLandSpin():
@@ -1911,11 +2022,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('tb071_10', 6)
     sprite('tb071_11', 5)
     sprite('tb071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1931,6 +2044,7 @@ def CmnActVertSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideAir():
     label(0)
@@ -1945,6 +2059,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('tb077_02', 4)
@@ -1954,10 +2069,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('tb077_05', 5)
     sprite('tb077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1967,11 +2084,13 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('tb060_11', 3)
     sprite('tb060_12', 3)
     sprite('tb060_13', 3)
+
 
 @State
 def CmnActBurstBegin():
@@ -1982,6 +2101,7 @@ def CmnActBurstBegin():
     sprite('tb331_03', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActBurstLoop():
@@ -1994,10 +2114,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('tb331_09', 3)
     sprite('tb331_10', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -2008,6 +2130,7 @@ def CmnActAirBurstBegin():
     sprite('tb331_03', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstLoop():
@@ -2020,6 +2143,7 @@ def CmnActAirBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstEnd():
     sprite('tb332_02', 3)
@@ -2029,6 +2153,7 @@ def CmnActAirBurstEnd():
     sprite('tb020_06', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActOverDriveBegin():
@@ -2041,6 +2166,7 @@ def CmnActOverDriveBegin():
     CharacterFlash(16639, 20, 1)
     sprite('tb431_05', 32767)
     CreateObject('EMB_TB_OD', -1)
+
 
 @State
 def CmnActOverDriveLoop():
@@ -2055,12 +2181,14 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('tb431_12', 3)
     sprite('tb431_13', 3)
     sprite('tb431_14', 3)
     sprite('tb431_15', 3)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -2073,6 +2201,7 @@ def CmnActAirOverDriveBegin():
     CharacterFlash(16639, 20, 1)
     sprite('tb431_05', 32767)
     CreateObject('EMB_TB_OD', -1)
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -2087,12 +2216,14 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('tb431_08', 3)
     sprite('tb431_09', 3)
     sprite('tb431_10', 3)
     sprite('tb431_12', 3)
+
 
 @State
 def NmlAtk5A():
@@ -2136,6 +2267,7 @@ def NmlAtk5A():
     Unknown2063()
     sprite('tb200_04', 4)
     sprite('tb200_05', 4)
+
 
 @State
 def NmlAtk5B():
@@ -2191,6 +2323,7 @@ def NmlAtk5B():
     sprite('tb201_06', 4)
     sprite('tb201_07', 3)
 
+
 @State
 def NmlAtk5B_2():
 
@@ -2237,6 +2370,7 @@ def NmlAtk5B_2():
     sprite('tb201_19', 2)
     sprite('tb201_20', 2)
 
+
 @State
 def NmlAtk5C():
 
@@ -2275,6 +2409,7 @@ def NmlAtk5C():
     sprite('tb202_11', 3)
     CreateObject('TBEF_ArmSummon', 0)
     sprite('tb202_12', 3)
+
 
 @State
 def NmlAtk5C_2():
@@ -2318,6 +2453,7 @@ def NmlAtk5C_2():
     sprite('tb202_28', 3)
     sprite('tb202_29', 3)
 
+
 @State
 def NmlAtk2A():
 
@@ -2358,6 +2494,7 @@ def NmlAtk2A():
     Unknown2063()
     sprite('tb230_04', 4)
     sprite('tb230_05', 4)
+
 
 @State
 def NmlAtk2B():
@@ -2411,6 +2548,7 @@ def NmlAtk2B():
     sprite('tb231_08', 1)
     WhiffCancelEnable(0)
     sprite('tb231_09', 3)
+
 
 @State
 def NmlAtk2B_2():
@@ -2471,6 +2609,7 @@ def NmlAtk2B_2():
     sprite('tb231_20', 3)
     sprite('tb231_21', 3)
 
+
 @State
 def NmlAtk2C():
 
@@ -2523,6 +2662,7 @@ def NmlAtk2C():
     sprite('tb232_10', 3)
     sprite('tb232_11', 3)
 
+
 @State
 def NmlAtk2C_2():
 
@@ -2572,6 +2712,7 @@ def NmlAtk2C_2():
     sprite('tb232_24', 4)
     sprite('tb232_25', 4)
     sprite('tb232_26', 3)
+
 
 @State
 def NmlAtk3C():
@@ -2663,6 +2804,7 @@ def NmlAtk3C():
     sprite('tb240_19', 2)
     sprite('tb240_20', 3)
 
+
 @State
 def NmlAtk3C_2():
 
@@ -2682,8 +2824,8 @@ def NmlAtk3C_2():
         FatalCounter(1)
         PopSpeedX()
         SpecialCancel(0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 99)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 99)
     sprite('tb240_21', 2)
     setInvincible(1)
     SpecificInvincibility(1, 0, 0, 0, 0)
@@ -2756,6 +2898,7 @@ def NmlAtk3C_2():
     sprite('tb240_38', 2)
     sprite('tb240_39', 2)
 
+
 @Subroutine
 def Func_CheckPreAction():
     if PreviousStateCheck('SwordFuriage'):
@@ -2779,6 +2922,7 @@ def Func_CheckPreAction():
     if PreviousStateCheck('AirTackle_Hasei'):
         SLOT_53 = 1
 
+
 @State
 def NmlAtk5D():
 
@@ -2786,16 +2930,16 @@ def NmlAtk5D():
         AttackDefaults_StandingNormal()
         PreventBlocking(1)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_59):
-                SLOT_31 = (SLOT_31 + SLOT_2)
+        def upon_EVERY_FRAME():
+            if not SLOT_59:
+                SLOT_31 = SLOT_31 + SLOT_2
             SLOT_52 = SLOT_31
         SLOT_51 = SLOT_31
         Unknown14067(1)
 
         def upon_STATE_END():
             EndSE()
-        SLOT_57 = SLOT_110
+        SLOT_57 = SLOT_OverdriveTimer
         callSubroutine('Func_CheckPreAction')
     sprite('tb203_00', 3)
     SpriteIfNot0(2, 2, 57)
@@ -2818,7 +2962,7 @@ def NmlAtk5D():
     CreateObject('Install', -1)
     CreateObject('InstallMagicCircle', -1)
     sprite('tb203_03', 1)
-    sendToLabelUpon(26, 1)
+    uponSendToLabel(RELEASE_D, 1)
     sprite('tb203_03', 2)
     SetActionMark(250)
     sprite('tb203_04', 3)
@@ -2836,15 +2980,16 @@ def NmlAtk5D():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     DeleteObject(4)
     SetActionMark(0)
     sprite('tb203_07', 4)
     EndSE()
-    SLOT_51 = (SLOT_51 + 10000)
-    if (SLOT_51 <= SLOT_52):
+    SLOT_51 = SLOT_51 + 10000
+    if SLOT_51 <= SLOT_52:
         Voiceline('tb107')
     sprite('tb203_08', 4)
+
 
 @State
 def NmlAtk2D():
@@ -2853,16 +2998,16 @@ def NmlAtk2D():
         AttackDefaults_CrouchingNormal()
         PreventBlocking(1)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_59):
-                SLOT_31 = (SLOT_31 + SLOT_2)
+        def upon_EVERY_FRAME():
+            if not SLOT_59:
+                SLOT_31 = SLOT_31 + SLOT_2
             SLOT_52 = SLOT_31
         SLOT_51 = SLOT_31
         Unknown14067(1)
 
         def upon_STATE_END():
             EndSE()
-        SLOT_57 = SLOT_110
+        SLOT_57 = SLOT_OverdriveTimer
         callSubroutine('Func_CheckPreAction')
     sprite('tb233_00', 3)
     SpriteIfNot0(2, 2, 57)
@@ -2885,7 +3030,7 @@ def NmlAtk2D():
     CreateObject('Install', -1)
     CreateObject('InstallMagicCircle', -1)
     sprite('tb233_03', 1)
-    sendToLabelUpon(26, 1)
+    uponSendToLabel(RELEASE_D, 1)
     sprite('tb233_03', 2)
     SetActionMark(250)
     sprite('tb233_04', 3)
@@ -2903,15 +3048,16 @@ def NmlAtk2D():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     DeleteObject(4)
     SetActionMark(0)
     sprite('tb233_07', 4)
     EndSE()
-    SLOT_51 = (SLOT_51 + 10000)
-    if (SLOT_51 <= SLOT_52):
+    SLOT_51 = SLOT_51 + 10000
+    if SLOT_51 <= SLOT_52:
         Voiceline('tb107')
     sprite('tb233_08', 4)
+
 
 @State
 def NmlAtkAIR5A():
@@ -2940,6 +3086,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('tb250_05', 3)
     sprite('tb250_06', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2974,6 +3121,7 @@ def NmlAtkAIR5B():
     DisallowGoto('NmlAtkAir5B_2')
     sprite('tb251_11', 2)
 
+
 @State
 def NmlAtkAir5B_2():
 
@@ -3004,6 +3152,7 @@ def NmlAtkAir5B_2():
     sprite('tb251_22', 3)
     sprite('tb251_23', 3)
 
+
 @State
 def NmlAtkAIR5C():
 
@@ -3029,7 +3178,7 @@ def NmlAtkAIR5C():
     sprite('tb252_04', 2)
     CommonSE('006_swing_blade_1')
     sprite('tb252_05', 4)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     BeginBuffer('NmlAtkAir5C_2')
     sprite('tb252_06', 2)
     BufferedOrPressedGoto('NmlAtkAir5C_2')
@@ -3048,6 +3197,7 @@ def NmlAtkAIR5C():
     sprite('tb252_13', 2)
     sprite('tb252_14', 2)
     sprite('tb252_15', 2)
+
 
 @State
 def NmlAtkAir5C_2():
@@ -3094,6 +3244,7 @@ def NmlAtkAir5C_2():
     sprite('tb252_30', 2)
     sprite('tb252_31', 2)
 
+
 @State
 def NmlAtkAIR5D():
 
@@ -3101,19 +3252,19 @@ def NmlAtkAIR5D():
         AttackDefaults_AirNormal()
         PreventBlocking(1)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_59):
-                SLOT_31 = (SLOT_31 + SLOT_2)
+        def upon_EVERY_FRAME():
+            if not SLOT_59:
+                SLOT_31 = SLOT_31 + SLOT_2
             SLOT_52 = SLOT_31
         SLOT_4 = 1
         SLOT_51 = SLOT_31
-        clearUponHandler(2)
-        sendToLabelUpon(2, 99)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 99)
 
         def upon_STATE_END():
             EndSE()
         PushSpeedX()
-        SLOT_57 = SLOT_110
+        SLOT_57 = SLOT_OverdriveTimer
         callSubroutine('Func_CheckPreAction')
     sprite('tb253_00', 3)
     sprite('tb253_01', 3)
@@ -3136,15 +3287,15 @@ def NmlAtkAIR5D():
     sprite('tb253_02', 1)
     CreateObject('MagicBookLoop', -1)
     RegisterObject(4, 1)
-    ApplyFunctionsToObjects(1)
-    AddY(32000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(32000)
     CreateObject('Install', -1)
     CreateObject('InstallMagicCircle', -1)
-    ApplyFunctionsToObjects(1)
-    RenderLayer(2)
-    ApplyFunctionsToSelf()
-    sendToLabelUpon(26, 2)
+
+    def RunOnObject_1():
+        RenderLayer(2)
+    uponSendToLabel(RELEASE_D, 2)
     XImpulseAcceleration(40)
     sprite('tb253_02', 2)
     SetActionMark(250)
@@ -3169,13 +3320,13 @@ def NmlAtkAIR5D():
     else:
         SLOT_51 = 1
         PrivateSE('tbse_00_2')
-    if (SLOT_23 >= 500000):
+    if SLOT_YDistanceFromFloor >= 500000:
         SetActionMark(50)
-    if (SLOT_23 < 500000):
+    if SLOT_YDistanceFromFloor < 500000:
         SetActionMark(200)
-    if (SLOT_23 < 400000):
+    if SLOT_YDistanceFromFloor < 400000:
         SetActionMark(250)
-    if (SLOT_23 < 200000):
+    if SLOT_YDistanceFromFloor < 200000:
         SetActionMark(350)
     sprite('tb253_03', 2)
     sprite('tb253_04', 2)
@@ -3185,14 +3336,14 @@ def NmlAtkAIR5D():
     gotoLabel(0)
     label(2)
     EndSE()
-    clearUponHandler(26)
-    clearUponHandler(3)
+    clearUponHandler(RELEASE_D)
+    clearUponHandler(EVERY_FRAME)
     DeleteObject(4)
     setGravity(500)
     sprite('tb253_07', 3)
     XImpulseAcceleration(60)
-    SLOT_51 = (SLOT_51 + 10000)
-    if (SLOT_51 <= SLOT_52):
+    SLOT_51 = SLOT_51 + 10000
+    if SLOT_51 <= SLOT_52:
         Voiceline('tb107')
     SetActionMark(0)
     SpriteIfNot0(2, 2, 57)
@@ -3202,18 +3353,19 @@ def NmlAtkAIR5D():
     ExitState()
     label(99)
     EndSE()
-    clearUponHandler(26)
-    clearUponHandler(3)
+    clearUponHandler(RELEASE_D)
+    clearUponHandler(EVERY_FRAME)
     DeleteObject(4)
     XImpulseAcceleration(0)
     sprite('tb253_08add01', 3)
-    if (SLOT_18 >= 40):
+    if SLOT_StateDuration >= 40:
         Voiceline('tb107')
     SetActionMark(0)
     sprite('tb024_01', 3)
     sprite('tb024_02', 3)
     sprite('tb024_03', 3)
     sprite('tb024_04', 3)
+
 
 @State
 def NmlAtk6A():
@@ -3265,6 +3417,7 @@ def NmlAtk6A():
     sprite('tb210_15', 3)
     sprite('tb210_16', 3)
 
+
 @State
 def NmlAtk6B():
 
@@ -3313,6 +3466,7 @@ def NmlAtk6B():
     sprite('tb211_17', 2)
     sprite('tb211_18', 2)
     sprite('tb211_19', 2)
+
 
 @State
 def NmlAtk6B_2():
@@ -3366,6 +3520,7 @@ def NmlAtk6B_2():
     sprite('tb211_30', 2)
     sprite('tb211_31', 2)
     sprite('tb211_32', 2)
+
 
 @State
 def NmlAtk6C():
@@ -3442,6 +3597,7 @@ def NmlAtk6C():
     CreateObject('TBEF_ArmSummon', 0)
     sprite('tb212_22', 2)
 
+
 @State
 def NmlAtk6C_2():
 
@@ -3517,7 +3673,7 @@ def NmlAtk6C_2():
     sprite('tb212_31', 1)
     RefreshMultihit()
     sprite('tb212_32', 5)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     Recovery()
     Unknown2063()
     sprite('tb212_33', 5)
@@ -3527,6 +3683,7 @@ def NmlAtk6C_2():
     CreateObject('TBEF_ArmSummon', 0)
     sprite('tb212_40', 5)
     sprite('tb212_41', 5)
+
 
 @State
 def NmlAtkExcite():
@@ -3560,6 +3717,7 @@ def NmlAtkExcite():
     sprite('tb300_07', 6)
     sprite('tb300_08', 6)
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -3590,6 +3748,7 @@ def NmlAtkDeadAngle():
     sprite('tb402_18', 4)
     sprite('tb402_19', 4)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -3611,11 +3770,11 @@ def NmlAtkGuardCrush():
         StayAfterMovement(1, 0)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3623,8 +3782,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -3641,7 +3800,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('tb408_00', 2)
     sprite('tb408_01', 1)
@@ -3660,7 +3819,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('keep', 3)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tb408_06', 4)
     CommonSE('006_swing_blade_2')
     PrivateSE('tbse_06')
@@ -3684,6 +3843,7 @@ def NmlAtkGuardCrush():
     XImpulseAcceleration(0)
     sprite('tb408_13', 3)
 
+
 @State
 def NmlAtkThrow():
 
@@ -3701,6 +3861,7 @@ def NmlAtkThrow():
     sprite('tb310_05', 5)
     sprite('tb310_06', 4)
     sprite('tb310_07', 4)
+
 
 @State
 def ThrowExe():
@@ -3722,7 +3883,7 @@ def ThrowExe():
         StarterRating(2)
 
         def upon_STATE_END():
-            ObjectUpon(4, 33)
+            ObjectUpon(FALLING, 33)
     sprite('tb310_02', 3)
     OppThrowAnimation(8, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
@@ -3744,7 +3905,7 @@ def ThrowExe():
     CreateObject('EffectAura', 1)
     CreateObject('EffectAura', 2)
     sprite('tb311_05', 6)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateObject('EffectAura', 0)
     CreateObject('EffectAura', 1)
     CreateObject('EffectAura', 2)
@@ -3761,6 +3922,7 @@ def ThrowExe():
     sprite('tb311_09', 6)
     sprite('tb311_10', 3)
     sprite('tb311_11', 3)
+
 
 @State
 def NmlAtkBackThrow():
@@ -3779,6 +3941,7 @@ def NmlAtkBackThrow():
     sprite('tb310_05', 5)
     sprite('tb310_06', 4)
     sprite('tb310_07', 4)
+
 
 @State
 def BackThrowExe():
@@ -3801,7 +3964,7 @@ def BackThrowExe():
         StarterRating(2)
 
         def upon_STATE_END():
-            ObjectUpon(4, 33)
+            ObjectUpon(FALLING, 33)
     sprite('tb310_02', 3)
     OppThrowAnimation(8, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
@@ -3835,7 +3998,7 @@ def BackThrowExe():
     CreateObject('EffectAura', 1)
     CreateObject('EffectAura', 2)
     sprite('tb313_07', 3)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateObject('EffectAura', 0)
     CreateObject('EffectAura', 1)
     CreateObject('EffectAura', 2)
@@ -3854,6 +4017,7 @@ def BackThrowExe():
     sprite('tb313_12', 3)
     sprite('tb313_13', 3)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -3871,6 +4035,7 @@ def NmlAtkAirThrow():
     sprite('tb320_05', 5)
     sprite('tb320_06', 4)
     sprite('tb320_07', 4)
+
 
 @State
 def AirThrowExe():
@@ -3898,7 +4063,7 @@ def AirThrowExe():
         ForcedLandingRecovery(0, 0)
 
         def upon_STATE_END():
-            ObjectUpon(4, 33)
+            ObjectUpon(FALLING, 33)
     sprite('tb321_00', 3)
     OppThrowAnimation(0, 0)
     OppThrowPosition(0, 1, 1, 0, 0)
@@ -3922,7 +4087,7 @@ def AirThrowExe():
     sprite('tb321_05', 4)
     OppThrowAnimation(0, 0)
     OppThrowPosition(0, 1, 1, 0, 0)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('tb321_06', 3)
     sprite('tb321_07', 3)
     sprite('tb321_08', 3)
@@ -3933,6 +4098,7 @@ def AirThrowExe():
     sprite('tb321_12', 2)
     sprite('tb321_13', 2)
     sprite('tb321_14', 2)
+
 
 @State
 def LandTackleA():
@@ -4000,7 +4166,7 @@ def LandTackleA():
     sprite('tb400_10', 2)
     DisallowGoto('SwordFuriageEx_Hasei')
     DisallowGoto('MidAssaultEx_Hasei')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     XImpulseAcceleration(50)
     sprite('tb400_11', 2)
     XImpulseAcceleration(40)
@@ -4013,6 +4179,7 @@ def LandTackleA():
     AddX(-50000)
     sprite('tb400_16', 2)
     sprite('tb400_17', 2)
+
 
 @State
 def LandTackleB():
@@ -4028,8 +4195,8 @@ def LandTackleB():
         AirPushbackY(12000)
         PushbackX(19800)
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             XImpulseAcceleration(60)
         HitCancel('SwordFuriage_Hasei')
         HitCancel('SwordFuriageEx_Hasei')
@@ -4088,7 +4255,7 @@ def LandTackleB():
     sprite('tb400_10', 2)
     DisallowGoto('SwordFuriageEx_Hasei')
     DisallowGoto('MidAssaultEx_Hasei')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     XImpulseAcceleration(50)
     sprite('tb400_11', 2)
     XImpulseAcceleration(40)
@@ -4101,6 +4268,7 @@ def LandTackleB():
     AddX(-50000)
     sprite('tb400_16', 2)
     sprite('tb400_17', 2)
+
 
 @State
 def LandTackleC():
@@ -4120,7 +4288,7 @@ def LandTackleC():
         PushbackX(-6000)
         HitBackReturnIgnore(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ObjectUpon(6, 32)
             physicsXImpulse(30000)
             SetXCollisionFromOrigin(40)
@@ -4178,7 +4346,7 @@ def LandTackleC():
     sprite('tb400_10', 2)
     DisallowGoto('SwordFuriageEx_Hasei')
     DisallowGoto('MidAssaultEx_Hasei')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     XImpulseAcceleration(50)
     sprite('tb400_11', 2)
     XImpulseAcceleration(40)
@@ -4224,6 +4392,7 @@ def LandTackleC():
     sprite('tb000_00', 1)
     Flip()
 
+
 @State
 def LandTackleEx():
 
@@ -4241,8 +4410,8 @@ def LandTackleEx():
         AttackDirection(0)
         callSubroutine('D_INITIALIZE')
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             clearUponHandler(33)
             DisallowGoto('SwordFuriageEx_Hasei')
             DisallowGoto('MidAssaultEx_Hasei')
@@ -4295,13 +4464,13 @@ def LandTackleEx():
         EnemyHitstopAddition(5, 5, 13)
         HitsparkSize(500)
         if SLOT_59:
-            if (not CurrentStateCheck('UltimateMode')):
+            if not CurrentStateCheck('UltimateMode'):
                 DamageMultiplier(110)
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
         GuardpointHitstop(0, 0)
-        PassbackAddActionMarkToFunction('LandShotEx', 33)
+        TriggerUponForState('LandShotEx', 33)
         CreateObject('EffectAuraAssaltLandExOpt', 0)
         CreateObject('AssaultLand1stEx_ShotEx', 0)
     AddX(85000)
@@ -4348,8 +4517,8 @@ def LandTackleEx():
     ChainCancel(1)
     label(0)
     SLOT_52 = 0
-    PassbackAddActionMarkToFunction('EffectAuraAssaltLandExOpt', 32)
-    PassbackAddActionMarkToFunction('AssaultLand1stEx_ShotEx', 32)
+    TriggerUponForState('EffectAuraAssaltLandExOpt', 32)
+    TriggerUponForState('AssaultLand1stEx_ShotEx', 32)
     sprite('tb400_09', 2)
     setInvincible(0)
     clearUponHandler(33)
@@ -4362,7 +4531,7 @@ def LandTackleEx():
     sprite('tb400_10', 2)
     DisallowGoto('SwordFuriageEx_Hasei')
     DisallowGoto('MidAssaultEx_Hasei')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     XImpulseAcceleration(50)
     sprite('tb400_11', 2)
     XImpulseAcceleration(40)
@@ -4375,6 +4544,7 @@ def LandTackleEx():
     AddX(-50000)
     sprite('tb400_16', 2)
     sprite('tb400_17', 2)
+
 
 @State
 def SwordFuriage():
@@ -4453,6 +4623,7 @@ def SwordFuriage():
     sprite('tb401_20', 1)
     BufferedOrPressedGoto('5D_EASY')
 
+
 @State
 def SwordFuriage_Hasei():
 
@@ -4470,9 +4641,9 @@ def SwordFuriage_Hasei():
         UseSlashHitspark(1)
         StarterRating(2)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                if (SLOT_19 < 200000):
+                if SLOT_19 < 200000:
                     sendToLabel(0)
         EndMomentum(1)
         HitCancel('MidAssault_Hasei')
@@ -4509,7 +4680,7 @@ def SwordFuriage_Hasei():
     sprite('tb401_06', 1)
     loopRest()
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tb401_07', 1)
     Voiceline('tb201')
     sprite('tb401_08', 1)
@@ -4537,6 +4708,7 @@ def SwordFuriage_Hasei():
     sprite('tb401_20', 3)
     sprite('tb401_20', 1)
     BufferedOrPressedGoto('5D_EASY')
+
 
 @State
 def SwordFuriageEx():
@@ -4568,10 +4740,10 @@ def SwordFuriageEx():
     PrivateSE('tbse_03')
     CreateObject('TBEF_ArmChange', 0)
     CreateObject('AssaultExAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(48000)
-    AddY(240000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(48000)
+        AddY(240000)
     sprite('tb401_03', 2)
     CreateObject('EffectAura', 0)
     CreateObject('EffectAura', 1)
@@ -4641,6 +4813,7 @@ def SwordFuriageEx():
     sprite('tb401_19', 3)
     sprite('tb401_20', 2)
 
+
 @State
 def SwordFuriageEx_Hasei():
 
@@ -4660,20 +4833,20 @@ def SwordFuriageEx_Hasei():
         ForceFaceSprite()
         callSubroutine('D_INITIALIZE')
         EndMomentum(1)
-        if (not SLOT_94):
+        if not SLOT_94:
             HitCancel('MidAssault_Hasei')
             HitOrBlockCancel('MidAssaultEx_Hasei')
-        SLOT_52 = SLOT_110
-        clearUponHandler(3)
+        SLOT_52 = SLOT_OverdriveTimer
+        clearUponHandler(EVERY_FRAME)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                if (SLOT_19 < 300000):
+                if SLOT_19 < 300000:
                     sendToLabel(0)
             if SLOT_52:
-                if SLOT_110:
-                    if (not SLOT_59):
-                        SLOT_31 = (SLOT_31 + (-75))
+                if SLOT_OverdriveTimer:
+                    if not SLOT_59:
+                        SLOT_31 = SLOT_31 + -75
     sprite('tb401_00', 3)
     CharacterFlash(16750300, 4, 2)
     sprite('tb401_01', 1)
@@ -4682,10 +4855,10 @@ def SwordFuriageEx_Hasei():
     PrivateSE('tbse_03')
     CreateObject('TBEF_ArmChange', 0)
     CreateObject('AssaultExAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(48000)
-    AddY(240000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(48000)
+        AddY(240000)
     sprite('tb401_03', 1)
     CreateObject('EffectAura', 0)
     CreateObject('EffectAura', 1)
@@ -4723,7 +4896,7 @@ def SwordFuriageEx_Hasei():
     CreateObject('EffectAura', 3)
     loopRest()
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tb401_07', 1)
     Voiceline('tb201')
     sprite('tb401_08', 1)
@@ -4745,7 +4918,7 @@ def SwordFuriageEx_Hasei():
     CreateObject('EffectAura', 6)
     CreateObject('EffectAura', 7)
     sprite('tb401_11', 2)
-    if (not SLOT_94):
+    if not SLOT_94:
         WhiffCancelEnable(1)
         WhiffCancel('MidAssaultEx_Hasei')
     Recovery()
@@ -4761,6 +4934,7 @@ def SwordFuriageEx_Hasei():
     sprite('tb401_18', 2)
     sprite('tb401_19', 3)
     sprite('tb401_20', 2)
+
 
 @State
 def Furimawashi():
@@ -4799,9 +4973,9 @@ def Furimawashi():
     sprite('tb402_03', 2)
     sprite('tb402_04', 2)
     sprite('tb402_05', 2)
-    if (not SLOT_94):
+    if not SLOT_94:
 
-        def upon_B_RELEASED():
+        def upon_RELEASE_B():
             sendToLabel(0)
     elif PreviousStateCheck('NmlAtk5B'):
         sendToLabel(0)
@@ -4817,11 +4991,11 @@ def Furimawashi():
     Hitstop(20)
     EnemyHitstopAddition(6, 6, 8)
     CHHardKnockdown(1)
-    Comment('Furimawashi_Tame')
+    GotoState('Furimawashi_Tame')
     loopRest()
     label(0)
-    clearUponHandler(24)
-    ObjectUpon(4, 32)
+    clearUponHandler(RELEASE_B)
+    ObjectUpon(FALLING, 32)
     sprite('tb402_07', 1)
     CommonSE('010_swing_sword_2')
     CreateObject('AssaultLand3rdBladeEff', -1)
@@ -4842,6 +5016,7 @@ def Furimawashi():
     sprite('tb402_17', 2)
     sprite('tb402_18', 2)
     sprite('tb402_19', 2)
+
 
 @State
 def Furimawashi_Hasei():
@@ -4876,9 +5051,9 @@ def Furimawashi_Hasei():
     sprite('tb402_03', 2)
     sprite('tb402_04', 2)
     sprite('tb402_05', 2)
-    if (not SLOT_94):
+    if not SLOT_94:
 
-        def upon_B_RELEASED():
+        def upon_RELEASE_B():
             sendToLabel(0)
     elif PreviousStateCheck('NmlAtk5B'):
         sendToLabel(0)
@@ -4888,11 +5063,11 @@ def Furimawashi_Hasei():
     Hitstop(20)
     EnemyHitstopAddition(6, 6, 8)
     Floorslide(10)
-    Comment('Furimawashi_Hasei_Tame')
+    GotoState('Furimawashi_Hasei_Tame')
     loopRest()
     label(0)
-    clearUponHandler(24)
-    ObjectUpon(4, 32)
+    clearUponHandler(RELEASE_B)
+    ObjectUpon(FALLING, 32)
     sprite('tb402_07', 1)
     CommonSE('010_swing_sword_2')
     CreateObject('AssaultLand3rdBladeEff', -1)
@@ -4913,6 +5088,7 @@ def Furimawashi_Hasei():
     sprite('tb402_17', 3)
     sprite('tb402_18', 3)
     sprite('tb402_19', 3)
+
 
 @State
 def FurimawashiEx():
@@ -4949,15 +5125,15 @@ def FurimawashiEx():
     CharacterFlash(16750300, 4, 2)
     CreateObject('TBEF_ArmChange', 0)
     CreateObject('AssaultExAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-32000)
-    AddY(240000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-32000)
+        AddY(240000)
     CreateObject('AssaultHoldOpt', -1)
     RegisterObject(4, 1)
-    ApplyFunctionsToObjects(4)
-    AddX(-32000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        AddX(-32000)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageInterval(1)
@@ -4967,13 +5143,13 @@ def FurimawashiEx():
     sprite('tb402_03', 2)
     sprite('tb402_04', 2)
     CreateObject('AssaultLand3rdExEff', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-32000)
-    ApplyFunctionsToSelf()
-    sprite('tb402_05', 2)
-    if (not SLOT_94):
 
-        def upon_D_RELEASED():
+    def RunOnObject_1():
+        AddX(-32000)
+    sprite('tb402_05', 2)
+    if not SLOT_94:
+
+        def upon_RELEASE_D():
             sendToLabel(0)
     elif PreviousStateCheck('NmlAtk5B'):
         sendToLabel(0)
@@ -4992,15 +5168,15 @@ def FurimawashiEx():
     SLOT_51 = 1
     FatalCounter(1)
     if SLOT_59:
-        if (not CurrentStateCheck('UltimateMode')):
+        if not CurrentStateCheck('UltimateMode'):
             DamageMultiplier(110)
             GuardCrush(100, 1)
             SetActionMark(481)
-    Comment('FurimawashiEx_Tame')
+    GotoState('FurimawashiEx_Tame')
     loopRest()
     label(0)
-    clearUponHandler(26)
-    ObjectUpon(4, 32)
+    clearUponHandler(RELEASE_D)
+    ObjectUpon(FALLING, 32)
     sprite('tb402_07', 1)
     CommonSE('010_swing_sword_2')
     CreateObject('AssaultLand3rdBladeEff', -1)
@@ -5034,6 +5210,7 @@ def FurimawashiEx():
     sprite('tb402_18', 1)
     sprite('tb402_19', 1)
 
+
 @State
 def FurimawashiEx_Hasei():
 
@@ -5064,15 +5241,15 @@ def FurimawashiEx_Hasei():
     CharacterFlash(16750300, 4, 2)
     CreateObject('TBEF_ArmChange', 0)
     CreateObject('AssaultExAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-32000)
-    AddY(240000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-32000)
+        AddY(240000)
     CreateObject('AssaultHoldOpt', -1)
     RegisterObject(4, 1)
-    ApplyFunctionsToObjects(4)
-    AddX(-32000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        AddX(-32000)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageInterval(1)
@@ -5082,16 +5259,14 @@ def FurimawashiEx_Hasei():
     sprite('tb402_03', 2)
     sprite('tb402_04', 2)
     CreateObject('AssaultLand3rdExEff', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-32000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-32000)
     sprite('tb402_05', 2)
-    if (not SLOT_94):
-        sendToLabelUpon(26, 0)
-    else:
-        PreviousStateCheck('NmlAtk5B')
-        if SLOT_0:
-            _gotolabel(0)
+    if not SLOT_94:
+        uponSendToLabel(RELEASE_D, 0)
+    elif PreviousStateCheck('NmlAtk5B'):
+        conditionalSendToLabel(0)
     sprite('tb402_06', 13)
     sprite('tb402_06', 1)
     AttackLevel_(5)
@@ -5106,15 +5281,15 @@ def FurimawashiEx_Hasei():
     SLOT_51 = 1
     FatalCounter(1)
     if SLOT_59:
-        if (not CurrentStateCheck('UltimateMode')):
+        if not CurrentStateCheck('UltimateMode'):
             DamageMultiplier(110)
             GuardCrush(100, 1)
             SetActionMark(481)
-    Comment('FurimawashiEx_Hasei_Tame')
+    GotoState('FurimawashiEx_Hasei_Tame')
     loopRest()
     label(0)
-    clearUponHandler(26)
-    ObjectUpon(4, 32)
+    clearUponHandler(RELEASE_D)
+    ObjectUpon(FALLING, 32)
     sprite('tb402_07', 1)
     CommonSE('010_swing_sword_2')
     CreateObject('AssaultLand3rdBladeEff', -1)
@@ -5149,13 +5324,14 @@ def FurimawashiEx_Hasei():
     sprite('tb402_18', 2)
     sprite('tb402_19', 2)
 
+
 @State
 def AntiAir():
 
     def upon_IMMEDIATE():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         AttackDefaults_StandingSpecial()
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         HitCancel('WingAttack_Hasei')
         HitCancel('WingAttackEx_Hasei')
         HitCancel('AirTackle_Hasei')
@@ -5210,13 +5386,14 @@ def AntiAir():
     sprite('tb024_03', 3)
     sprite('tb024_04', 3)
 
+
 @State
 def AntiAirEx():
 
     def upon_IMMEDIATE():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         AttackDefaults_StandingSpecial()
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         HitCancel('WingAttack_Hasei')
         HitCancel('AirTackle_Hasei')
         callSubroutine('D_INITIALIZE')
@@ -5271,6 +5448,7 @@ def AntiAirEx():
     sprite('tb024_02', 5)
     sprite('tb024_03', 5)
     sprite('tb024_04', 5)
+
 
 @State
 def WingAttack():
@@ -5373,6 +5551,7 @@ def WingAttack():
     WhiffCancelEnable(1)
     WhiffCancel('AIR5D_EASY')
 
+
 @State
 def WingAttack_Hasei():
 
@@ -5469,6 +5648,7 @@ def WingAttack_Hasei():
     sprite('tb020_06', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def WingAttackEx():
@@ -5567,6 +5747,7 @@ def WingAttackEx():
     sprite('tb020_06', 3)
     sprite('tb020_05', 3)
 
+
 @State
 def WingAttackEx_Hasei():
 
@@ -5644,7 +5825,7 @@ def WingAttackEx_Hasei():
     sprite('tb404_08', 2)
     CreateObject('AssaultAir1stEx_Shot', 0)
     RegisterObject(11, 1)
-    ObjectUpon(11, 32)
+    ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 32)
     physicsXImpulse(-8000)
     physicsYImpulse(14000)
     sprite('tb404_09', 2)
@@ -5673,6 +5854,7 @@ def WingAttackEx_Hasei():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def AirTackleA():
 
@@ -5692,7 +5874,7 @@ def AirTackleA():
         EnableEmergencyTechAirHit(1)
         UseSlashHitspark(1)
         StarterRating(2)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
 
         def upon_OPPONENT_HIT():
@@ -5705,9 +5887,9 @@ def AirTackleA():
     setGravity(300)
     CreateObject('AssaultAir1st_auraB', 0)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('EffectAuraAssaltAir', 0)
     RegisterObject(4, 1)
     EnableAfterimage(1)
@@ -5723,7 +5905,7 @@ def AirTackleA():
     CommonSE('019_cloth_c')
     Voiceline('tb205')
     loopRest()
-    sendToLabelUpon(2, 99)
+    uponSendToLabel(LANDING, 99)
     EndMomentum(1)
     physicsXImpulse(10000)
     physicsYImpulse(-30000)
@@ -5739,7 +5921,7 @@ def AirTackleA():
     label(99)
     sprite('tb405_06', 2)
     EnableCollision(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateObject('WingDust', 0)
     CreateObject('WeaponDelDust', 0)
     CreateObject('WeaponDelDust', 1)
@@ -5771,6 +5953,7 @@ def AirTackleA():
     sprite('tb405_15', 1)
     BufferedOrPressedGoto('5D_EASY')
 
+
 @State
 def AirTackleB():
 
@@ -5790,7 +5973,7 @@ def AirTackleB():
         EnableEmergencyTechAirHit(1)
         UseSlashHitspark(1)
         StarterRating(2)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
 
         def upon_OPPONENT_HIT():
@@ -5805,9 +5988,9 @@ def AirTackleB():
     setGravity(300)
     CreateObject('AssaultAir1st_auraB', 0)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('EffectAuraAssaltAir', 0)
     RegisterObject(4, 1)
     EnableAfterimage(1)
@@ -5824,7 +6007,7 @@ def AirTackleB():
     CommonSE('019_cloth_c')
     Voiceline('tb205')
     loopRest()
-    sendToLabelUpon(2, 99)
+    uponSendToLabel(LANDING, 99)
     EndMomentum(1)
     physicsXImpulse(30000)
     physicsYImpulse(-30000)
@@ -5840,7 +6023,7 @@ def AirTackleB():
     label(99)
     sprite('tb405_06', 2)
     EnableCollision(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateObject('WingDust', 0)
     CreateObject('WeaponDelDust', 0)
     CreateObject('WeaponDelDust', 1)
@@ -5872,6 +6055,7 @@ def AirTackleB():
     sprite('tb405_15', 1)
     BufferedOrPressedGoto('5D_EASY')
 
+
 @State
 def AirTackleC():
 
@@ -5894,7 +6078,7 @@ def AirTackleC():
         Wallbounce(1)
         NonCornerWallbounce(1)
         WallbounceReboundTime(0)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
 
         def upon_OPPONENT_HIT():
@@ -5907,9 +6091,9 @@ def AirTackleC():
     setGravity(300)
     CreateObject('AssaultAir1st_auraB', 0)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('EffectAuraAssaltAir', 0)
     RegisterObject(4, 1)
     EnableAfterimage(1)
@@ -5929,7 +6113,7 @@ def AirTackleC():
     CommonSE('019_cloth_c')
     Voiceline('tb205')
     loopRest()
-    sendToLabelUpon(2, 99)
+    uponSendToLabel(LANDING, 99)
     EndMomentum(1)
     physicsXImpulse(36000)
     physicsYImpulse(-24000)
@@ -5947,7 +6131,7 @@ def AirTackleC():
     label(99)
     sprite('tb405_06', 3)
     EnableCollision(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateObject('WingDust', 0)
     CreateObject('WeaponDelDust', 0)
     CreateObject('WeaponDelDust', 1)
@@ -5979,6 +6163,7 @@ def AirTackleC():
     sprite('tb405_15', 1)
     BufferedOrPressedGoto('5D_EASY')
 
+
 @State
 def AirTackle_Hasei():
 
@@ -5998,7 +6183,7 @@ def AirTackle_Hasei():
         UseSlashHitspark(1)
         ForceFaceSprite()
         StarterRating(2)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
 
         def upon_OPPONENT_HIT():
@@ -6011,9 +6196,9 @@ def AirTackle_Hasei():
     setGravity(300)
     CreateObject('AssaultAir1st_auraB', 0)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('EffectAuraAssaltAir', 0)
     RegisterObject(4, 1)
     EnableAfterimage(1)
@@ -6029,7 +6214,7 @@ def AirTackle_Hasei():
     CommonSE('019_cloth_c')
     Voiceline('tb205')
     loopRest()
-    sendToLabelUpon(2, 99)
+    uponSendToLabel(LANDING, 99)
     EndMomentum(1)
     physicsXImpulse(20000)
     physicsYImpulse(-40000)
@@ -6045,7 +6230,7 @@ def AirTackle_Hasei():
     label(99)
     sprite('tb405_06', 3)
     EnableCollision(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     CreateObject('WingDust', 0)
     CreateObject('WeaponDelDust', 0)
     CreateObject('WeaponDelDust', 1)
@@ -6076,6 +6261,7 @@ def AirTackle_Hasei():
     sprite('tb405_15', 1)
     BufferedOrPressedGoto('5D_EASY')
 
+
 @State
 def AirTackleEx():
 
@@ -6094,11 +6280,11 @@ def AirTackleEx():
         Hitstop(8)
         UseSlashHitspark(1)
         callSubroutine('D_INITIALIZE')
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             clearUponHandler(33)
             if SLOT_52:
                 sendToLabel(99)
@@ -6106,16 +6292,16 @@ def AirTackleEx():
                 YAccel(5)
             else:
                 XImpulseAcceleration(85)
-        SLOT_51 = SLOT_110
-        clearUponHandler(3)
+        SLOT_51 = SLOT_OverdriveTimer
+        clearUponHandler(EVERY_FRAME)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_52:
-                ObjectUpon(11, 32)
+                ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 32)
             if SLOT_51:
-                if SLOT_110:
-                    if (not SLOT_59):
-                        SLOT_31 = (SLOT_31 + (-75))
+                if SLOT_OverdriveTimer:
+                    if not SLOT_59:
+                        SLOT_31 = SLOT_31 + -75
         if SLOT_137:
             DamageMultiplier(80)
     sprite('tb405_00', 4)
@@ -6126,9 +6312,9 @@ def AirTackleEx():
     physicsYImpulse(13000)
     setGravity(300)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(2000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(2000)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageCount(10)
@@ -6144,7 +6330,7 @@ def AirTackleEx():
     CommonSE('019_cloth_c')
     Voiceline('tb205')
     loopRest()
-    sendToLabelUpon(2, 9)
+    uponSendToLabel(LANDING, 9)
 
     def upon_33():
         SLOT_52 = 1
@@ -6155,13 +6341,13 @@ def AirTackleEx():
         Hitstop(3)
         EnemyHitstopAddition(8, 8, 13)
         if SLOT_59:
-            if (not CurrentStateCheck('UltimateMode')):
+            if not CurrentStateCheck('UltimateMode'):
                 DamageMultiplier(110)
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
         GuardpointHitstop(0, 0)
-        PassbackAddActionMarkToFunction('AssaultAir1stEx_Shot', 33)
+        TriggerUponForState('AssaultAir1stEx_Shot', 33)
         CreateObject('EffectAuraAssaltAirExOpt', 0)
         CreateObject('AssaultAir1stEx_ShotEx', 0)
     EndMomentum(1)
@@ -6199,9 +6385,9 @@ def AirTackleEx():
     sprite('tb405_06', 2)
     SLOT_52 = 0
     setInvincible(0)
-    PassbackAddActionMarkToFunction('EffectAuraAssaltAirEx', 32)
-    PassbackAddActionMarkToFunction('EffectAuraAssaltAirExOpt', 32)
-    PassbackAddActionMarkToFunction('AssaultAir1stEx_ShotEx', 32)
+    TriggerUponForState('EffectAuraAssaltAirEx', 32)
+    TriggerUponForState('EffectAuraAssaltAirExOpt', 32)
+    TriggerUponForState('AssaultAir1stEx_ShotEx', 32)
     CreateObject('WingDust', 0)
     CreateObject('WeaponDelDust', 0)
     CreateObject('WeaponDelDust', 1)
@@ -6231,6 +6417,7 @@ def AirTackleEx():
     sprite('tb405_14', 1)
     sprite('tb405_15', 1)
 
+
 @State
 def AirTackleEx_Hasei():
 
@@ -6250,26 +6437,26 @@ def AirTackleEx_Hasei():
         UseSlashHitspark(1)
         ForceFaceSprite()
         callSubroutine('D_INITIALIZE')
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             clearUponHandler(33)
             if SLOT_52:
                 sendToLabel(99)
                 XImpulseAcceleration(5)
                 YAccel(5)
-        SLOT_51 = SLOT_110
-        clearUponHandler(3)
+        SLOT_51 = SLOT_OverdriveTimer
+        clearUponHandler(EVERY_FRAME)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_52:
-                ObjectUpon(11, 32)
+                ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 32)
             if SLOT_51:
-                if SLOT_110:
-                    if (not SLOT_59):
-                        SLOT_31 = (SLOT_31 + (-75))
+                if SLOT_OverdriveTimer:
+                    if not SLOT_59:
+                        SLOT_31 = SLOT_31 + -75
     sprite('tb405_00', 4)
     PrivateSE('tbse_03')
     CreateObject('AssaultExAura', 0)
@@ -6278,9 +6465,9 @@ def AirTackleEx_Hasei():
     physicsYImpulse(5000)
     setGravity(300)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(2000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(2000)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageCount(10)
@@ -6294,7 +6481,7 @@ def AirTackleEx_Hasei():
     CommonSE('019_cloth_c')
     Voiceline('tb205')
     loopRest()
-    sendToLabelUpon(2, 9)
+    uponSendToLabel(LANDING, 9)
 
     def upon_33():
         SLOT_52 = 1
@@ -6307,13 +6494,13 @@ def AirTackleEx_Hasei():
         AirUntechableTime(60)
         SetYCollisionFromOrigin(250)
         if SLOT_59:
-            if (not CurrentStateCheck('UltimateMode')):
+            if not CurrentStateCheck('UltimateMode'):
                 DamageMultiplier(110)
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
         GuardpointHitstop(0, 0)
-        PassbackAddActionMarkToFunction('AssaultAir1stEx_Shot', 33)
+        TriggerUponForState('AssaultAir1stEx_Shot', 33)
         CreateObject('EffectAuraAssaltAirExOpt', 0)
         CreateObject('AssaultAir1stEx_ShotEx', 0)
     EndMomentum(1)
@@ -6354,9 +6541,9 @@ def AirTackleEx_Hasei():
     sprite('tb405_06', 2)
     SLOT_52 = 0
     setInvincible(0)
-    PassbackAddActionMarkToFunction('EffectAuraAssaltAirEx', 32)
-    PassbackAddActionMarkToFunction('EffectAuraAssaltAirExOpt', 32)
-    PassbackAddActionMarkToFunction('AssaultAir1stEx_ShotEx', 32)
+    TriggerUponForState('EffectAuraAssaltAirEx', 32)
+    TriggerUponForState('EffectAuraAssaltAirExOpt', 32)
+    TriggerUponForState('AssaultAir1stEx_ShotEx', 32)
     CreateObject('WingDust', 0)
     CreateObject('WeaponDelDust', 0)
     CreateObject('WeaponDelDust', 1)
@@ -6386,6 +6573,7 @@ def AirTackleEx_Hasei():
     sprite('tb405_14', 3)
     sprite('tb405_15', 3)
 
+
 @State
 def UltimateLock_C():
 
@@ -6401,7 +6589,7 @@ def UltimateLock_C():
             sendToLabel(3)
         setInvincible(1)
         SLOT_6 = 0
-        SLOT_63 = (-1)
+        SLOT_63 = -1
         Unknown2064(0)
 
         def upon_41():
@@ -6437,11 +6625,11 @@ def UltimateLock_C():
     Voiceline('tb250')
     CreateObject('UltimateLock_First', 0)
     RegisterObject(4, 1)
-    ObjectUpon(7, 32)
-    ApplyFunctionsToObjects(8)
-    SetScaleSpeed(400)
-    ConstantAlphaModifier(-10)
-    ApplyFunctionsToSelf()
+    ObjectUpon(CORNERED, 32)
+
+    def RunOnObject_8():
+        SetScaleSpeed(400)
+        ConstantAlphaModifier(-10)
     physicsYImpulse(0)
     sprite('tb430_03', 3)
     setInvincible(0)
@@ -6452,7 +6640,7 @@ def UltimateLock_C():
     Unknown23090(4)
     loopRest()
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_05', 3)
     sprite('tb430_06', 3)
     sprite('tb430_07', 3)
@@ -6466,17 +6654,17 @@ def UltimateLock_C():
     EnableRapidCancel(0)
     EnableCollision(0)
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_12', 4)
     CreateObject('ULBookC', 0)
     RegisterObject(5, 1)
-    if (SLOT_25 < 420000):
+    if SLOT_XDistanceFromFowardCorner < 420000:
         CreateObject('ULMCircleC', 0)
         RegisterObject(6, 1)
         AddInertia(-90000)
         EnableAfterimage(1)
         AfterimageInterval(3)
-    elif (SLOT_26 < 400000):
+    elif SLOT_XDistanceFromBackCorner < 400000:
         CreateObject('ULMCircleB', 0)
         RegisterObject(6, 1)
         EnableAfterimage(1)
@@ -6542,9 +6730,9 @@ def UltimateLock_C():
     sprite('tb430_29ex01', 2)
     sprite('tb430_30ex01', 1)
     sprite('tb430_30ex01', 1)
-    SLOT_51 = (SLOT_51 + (-1))
+    SLOT_51 = SLOT_51 + -1
     if SLOT_51:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     label(3)
     sprite('tb430_31', 3)
     Unknown23090(4)
@@ -6560,6 +6748,7 @@ def UltimateLock_C():
     ObjectUpon(5, 33)
     sprite('tb430_34', 6)
     sprite('tb430_35', 6)
+
 
 @State
 def UltimateLock_C_OD():
@@ -6580,7 +6769,7 @@ def UltimateLock_C_OD():
             sendToLabel(3)
         setInvincible(1)
         SLOT_6 = 1
-        SLOT_63 = (-1)
+        SLOT_63 = -1
         Unknown2064(0)
 
         def upon_41():
@@ -6616,11 +6805,11 @@ def UltimateLock_C_OD():
     Voiceline('tb250')
     CreateObject('UltimateLock_First', 0)
     RegisterObject(4, 1)
-    ObjectUpon(7, 32)
-    ApplyFunctionsToObjects(8)
-    SetScaleSpeed(400)
-    ConstantAlphaModifier(-10)
-    ApplyFunctionsToSelf()
+    ObjectUpon(CORNERED, 32)
+
+    def RunOnObject_8():
+        SetScaleSpeed(400)
+        ConstantAlphaModifier(-10)
     physicsYImpulse(0)
     sprite('tb430_03', 3)
     setInvincible(0)
@@ -6631,7 +6820,7 @@ def UltimateLock_C_OD():
     Unknown23090(4)
     loopRest()
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_05', 3)
     sprite('tb430_06', 3)
     sprite('tb430_07', 3)
@@ -6643,24 +6832,24 @@ def UltimateLock_C_OD():
     ExitState()
     label(1)
 
-    def upon_FRAME_STEP():
-        if SLOT_110:
-            if (not SLOT_59):
-                SLOT_31 = (SLOT_31 + (-75))
+    def upon_EVERY_FRAME():
+        if SLOT_OverdriveTimer:
+            if not SLOT_59:
+                SLOT_31 = SLOT_31 + -75
     EnableRapidCancel(0)
     EnableCollision(0)
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_12', 4)
     CreateObject('ULBookC', 0)
     RegisterObject(5, 1)
-    if (SLOT_25 < 420000):
+    if SLOT_XDistanceFromFowardCorner < 420000:
         CreateObject('ULMCircleC', 0)
         RegisterObject(6, 1)
         AddInertia(-90000)
         EnableAfterimage(1)
         AfterimageInterval(3)
-    elif (SLOT_26 < 400000):
+    elif SLOT_XDistanceFromBackCorner < 400000:
         CreateObject('ULMCircleB', 0)
         RegisterObject(6, 1)
         EnableAfterimage(1)
@@ -6726,9 +6915,9 @@ def UltimateLock_C_OD():
     sprite('tb430_29ex01', 2)
     sprite('tb430_30ex01', 1)
     sprite('tb430_30ex01', 1)
-    SLOT_51 = (SLOT_51 + (-1))
+    SLOT_51 = SLOT_51 + -1
     if SLOT_51:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     label(3)
     label(100)
     sprite('tb430_31Ex', 2)
@@ -6821,6 +7010,7 @@ def UltimateLock_C_OD():
     Flip()
     loopRest()
 
+
 @State
 def UltimateLock_D():
 
@@ -6835,9 +7025,9 @@ def UltimateLock_D():
         def upon_34():
             sendToLabel(4)
         SLOT_6 = 0
-        SLOT_63 = (-1)
+        SLOT_63 = -1
         if SLOT_59:
-            if (not CurrentStateCheck('UltimateMode')):
+            if not CurrentStateCheck('UltimateMode'):
                 DamageMultiplier(110)
         Unknown2064(0)
 
@@ -6851,9 +7041,9 @@ def UltimateLock_D():
     setInvincible(1)
     callSubroutine('GetStockCount')
     SLOT_63 = SLOT_0
-    if (not SLOT_59):
+    if not SLOT_59:
         SLOT_31 = 0
-    if (not SLOT_59):
+    if not SLOT_59:
         SLOT_56 = SLOT_63
     E0EAEffect('aura', 65535)
     CreateObject('EMB', -1)
@@ -6881,11 +7071,11 @@ def UltimateLock_D():
     Voiceline('tb250')
     CreateObject('UltimateLock_First', 0)
     RegisterObject(4, 1)
-    ObjectUpon(7, 32)
-    ApplyFunctionsToObjects(8)
-    SetScaleSpeed(400)
-    ConstantAlphaModifier(-10)
-    ApplyFunctionsToSelf()
+    ObjectUpon(CORNERED, 32)
+
+    def RunOnObject_8():
+        SetScaleSpeed(400)
+        ConstantAlphaModifier(-10)
     physicsYImpulse(0)
     sprite('tb430_03', 3)
     setInvincible(0)
@@ -6896,7 +7086,7 @@ def UltimateLock_D():
     Unknown23090(4)
     loopRest()
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_05', 3)
     sprite('tb430_06', 3)
     sprite('tb430_07', 3)
@@ -6911,29 +7101,29 @@ def UltimateLock_D():
     EnableRapidCancel(0)
     EnableCollision(0)
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_12', 4)
     CreateObject('ULBook', 0)
     RegisterObject(5, 1)
-    if (SLOT_25 < 420000):
+    if SLOT_XDistanceFromFowardCorner < 420000:
         CreateObject('ULMCircleC', 0)
         RegisterObject(6, 1)
-        ApplyFunctionsToObjects(5)
-        AddInertia(-58000)
-        AddAcceleration(900)
-        Unknown1082(32)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_5():
+            AddInertia(-58000)
+            AddAcceleration(900)
+            Unknown1082(32)
         AddInertia(-90000)
         EnableAfterimage(1)
         AfterimageInterval(3)
-    elif (SLOT_26 < 400000):
+    elif SLOT_XDistanceFromBackCorner < 400000:
         CreateObject('ULMCircleB', 0)
         RegisterObject(6, 1)
-        ApplyFunctionsToObjects(5)
-        AddInertia(120000)
-        AddAcceleration(-5000)
-        Unknown1082(16)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_5():
+            AddInertia(120000)
+            AddAcceleration(-5000)
+            Unknown1082(16)
         EnableAfterimage(1)
         AfterimageInterval(3)
     else:
@@ -6970,17 +7160,17 @@ def UltimateLock_D():
     sprite('tb430_28', 2)
     IgnoreScreenfreeze(0)
     CreateObject('ULChangeEff', 0)
-    if (SLOT_63 == 0):
+    if SLOT_63 == 0:
         CreateObject('UltimateLock_SeedLv0', -1)
-    if (SLOT_63 == 1):
+    if SLOT_63 == 1:
         CreateObject('UltimateLock_SeedLv1', -1)
-    if (SLOT_63 == 2):
+    if SLOT_63 == 2:
         CreateObject('UltimateLock_SeedLv2', -1)
-    if (SLOT_63 == 3):
+    if SLOT_63 == 3:
         CreateObject('UltimateLock_SeedLv3', -1)
-    if (SLOT_63 == 4):
+    if SLOT_63 == 4:
         CreateObject('UltimateLock_SeedLv4', -1)
-    if (SLOT_63 == 5):
+    if SLOT_63 == 5:
         CreateObject('UltimateLock_SeedLv5', -1)
     label(2)
     sprite('tb430_29', 2)
@@ -7018,9 +7208,9 @@ def UltimateLock_D():
     sprite('tb430_29ex01', 2)
     sprite('tb430_30ex01', 1)
     sprite('tb430_30ex01', 1)
-    SLOT_51 = (SLOT_51 + (-1))
+    SLOT_51 = SLOT_51 + -1
     if SLOT_51:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     label(4)
     sprite('tb430_31', 7)
     Unknown23090(4)
@@ -7036,6 +7226,7 @@ def UltimateLock_D():
     sprite('tb430_33', 6)
     sprite('tb430_34', 3)
     sprite('tb430_35', 3)
+
 
 @State
 def UltimateLock_D_OD():
@@ -7055,12 +7246,12 @@ def UltimateLock_D_OD():
         def upon_34():
             sendToLabel(4)
         SLOT_6 = 1
-        SLOT_63 = (-1)
+        SLOT_63 = -1
 
-        def upon_FRAME_STEP():
-            if SLOT_110:
-                if (not SLOT_59):
-                    SLOT_31 = (SLOT_31 + (-75))
+        def upon_EVERY_FRAME():
+            if SLOT_OverdriveTimer:
+                if not SLOT_59:
+                    SLOT_31 = SLOT_31 + -75
         Unknown2064(0)
 
         def upon_41():
@@ -7073,9 +7264,9 @@ def UltimateLock_D_OD():
     setInvincible(1)
     callSubroutine('GetStockCount')
     SLOT_63 = SLOT_0
-    if (not SLOT_59):
+    if not SLOT_59:
         SLOT_31 = 0
-    if (not SLOT_59):
+    if not SLOT_59:
         SLOT_56 = SLOT_63
     E0EAEffect('aura', 65535)
     CreateObject('EMB', -1)
@@ -7103,11 +7294,11 @@ def UltimateLock_D_OD():
     Voiceline('tb250')
     CreateObject('UltimateLock_First', 0)
     RegisterObject(4, 1)
-    ObjectUpon(7, 32)
-    ApplyFunctionsToObjects(8)
-    SetScaleSpeed(400)
-    ConstantAlphaModifier(-10)
-    ApplyFunctionsToSelf()
+    ObjectUpon(CORNERED, 32)
+
+    def RunOnObject_8():
+        SetScaleSpeed(400)
+        ConstantAlphaModifier(-10)
     physicsYImpulse(0)
     sprite('tb430_03', 3)
     setInvincible(0)
@@ -7118,7 +7309,7 @@ def UltimateLock_D_OD():
     Unknown23090(4)
     loopRest()
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_05', 3)
     sprite('tb430_06', 3)
     sprite('tb430_07', 3)
@@ -7133,29 +7324,29 @@ def UltimateLock_D_OD():
     EnableRapidCancel(0)
     EnableCollision(0)
     sprite('keep', 1)
-    ObjectUpon(7, 33)
+    ObjectUpon(CORNERED, 33)
     sprite('tb430_12', 4)
     CreateObject('ULBook', 0)
     RegisterObject(5, 1)
-    if (SLOT_25 < 420000):
+    if SLOT_XDistanceFromFowardCorner < 420000:
         CreateObject('ULMCircleC', 0)
         RegisterObject(6, 1)
-        ApplyFunctionsToObjects(5)
-        AddInertia(-58000)
-        AddAcceleration(900)
-        Unknown1082(32)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_5():
+            AddInertia(-58000)
+            AddAcceleration(900)
+            Unknown1082(32)
         AddInertia(-90000)
         EnableAfterimage(1)
         AfterimageInterval(3)
-    elif (SLOT_26 < 400000):
+    elif SLOT_XDistanceFromBackCorner < 400000:
         CreateObject('ULMCircleB', 0)
         RegisterObject(6, 1)
-        ApplyFunctionsToObjects(5)
-        AddInertia(120000)
-        AddAcceleration(-5000)
-        Unknown1082(16)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_5():
+            AddInertia(120000)
+            AddAcceleration(-5000)
+            Unknown1082(16)
         EnableAfterimage(1)
         AfterimageInterval(3)
     else:
@@ -7192,17 +7383,17 @@ def UltimateLock_D_OD():
     sprite('tb430_28', 2)
     IgnoreScreenfreeze(0)
     CreateObject('ULChangeEff', 0)
-    if (SLOT_63 == 0):
+    if SLOT_63 == 0:
         CreateObject('UltimateLock_SeedLv0', -1)
-    if (SLOT_63 == 1):
+    if SLOT_63 == 1:
         CreateObject('UltimateLock_SeedLv1', -1)
-    if (SLOT_63 == 2):
+    if SLOT_63 == 2:
         CreateObject('UltimateLock_SeedLv2', -1)
-    if (SLOT_63 == 3):
+    if SLOT_63 == 3:
         CreateObject('UltimateLock_SeedLv3', -1)
-    if (SLOT_63 == 4):
+    if SLOT_63 == 4:
         CreateObject('UltimateLock_SeedLv4', -1)
-    if (SLOT_63 == 5):
+    if SLOT_63 == 5:
         CreateObject('UltimateLock_SeedLv5', -1)
     label(2)
     sprite('tb430_29', 2)
@@ -7240,9 +7431,9 @@ def UltimateLock_D_OD():
     sprite('tb430_29ex01', 2)
     sprite('tb430_30ex01', 1)
     sprite('tb430_30ex01', 1)
-    SLOT_51 = (SLOT_51 + (-1))
+    SLOT_51 = SLOT_51 + -1
     if SLOT_51:
-        _gotolabel(9)
+        conditionalSendToLabel(9)
     label(4)
     sprite('tb430_31', 3)
     Unknown23090(4)
@@ -7312,35 +7503,35 @@ def UltimateLock_D_OD():
     def upon_OPPONENT_HIT():
         XImpulseAcceleration(80)
         EnableCollision(1)
-    if (SLOT_6 == 10):
+    if SLOT_6 == 10:
         Damage(500)
         Hitstop(5)
         AttackDirection(0)
         SLOT_53 = 1
-    if (SLOT_6 == 11):
+    if SLOT_6 == 11:
         Damage(750)
         Hitstop(5)
         AttackDirection(0)
         SLOT_53 = 1
-    if (SLOT_6 == 12):
+    if SLOT_6 == 12:
         Damage(570)
         Hitstop(3)
         AttackDirection(0)
         SLOT_53 = 2
-    if (SLOT_6 == 13):
+    if SLOT_6 == 13:
         Damage(710)
         Hitstop(3)
         SLOT_53 = 2
-    if (SLOT_6 == 14):
+    if SLOT_6 == 14:
         Damage(710)
         Hitstop(2)
         SLOT_53 = 3
-    if (SLOT_6 == 15):
+    if SLOT_6 == 15:
         Damage(960)
         Hitstop(2)
         SLOT_53 = 3
     if SLOT_59:
-        if (not CurrentStateCheck('UltimateMode')):
+        if not CurrentStateCheck('UltimateMode'):
             DamageMultiplier(110)
     label(101)
     sprite('tb400_06ex2', 2)
@@ -7353,18 +7544,18 @@ def UltimateLock_D_OD():
     SpriteIfNot0(3, 2, 52)
     CreateObject('UltimateLock_TackleEf', 0)
     PrivateSE('tbse_13')
-    if (not SLOT_52):
+    if not SLOT_52:
         RefreshMultihit()
     sprite('tb400_08ex2', 1)
     SpriteIfNot0(2, 2, 52)
     CreateObject('UltimateLock_TackleEf', 0)
     PrivateSE('tbse_13')
-    if (not SLOT_52):
+    if not SLOT_52:
         RefreshMultihit()
     sprite('tb400_08ex2', 1)
-    SLOT_53 = (SLOT_53 + (-1))
+    SLOT_53 = SLOT_53 + -1
     if SLOT_53:
-        _gotolabel(101)
+        conditionalSendToLabel(101)
     loopRest()
     sprite('tb400_09', 3)
     CommonSE('019_cloth_a')
@@ -7374,7 +7565,7 @@ def UltimateLock_D_OD():
     sprite('tb400_11', 3)
     XImpulseAcceleration(50)
     sprite('tb311_01', 4)
-    PassbackAddActionMarkToFunction('UltimateLock_TackleEf', 32)
+    TriggerUponForState('UltimateLock_TackleEf', 32)
     CreateObject('AssaultLand2nd_mcircle', -1)
     sprite('tb311_02', 4)
     sprite('tb311_03', 4)
@@ -7400,7 +7591,7 @@ def UltimateLock_D_OD():
     AirPushbackY(15000)
     EnemyHitstopAddition(0, 0, 0)
     UseSlashHitspark(1)
-    Comment('UltimateLock_D_OD_Finish')
+    GotoState('UltimateLock_D_OD_Finish')
     physicsXImpulse(-8000)
     CreateObject('EffectAura', 0)
     CreateObject('EffectAura', 1)
@@ -7425,6 +7616,7 @@ def UltimateLock_D_OD():
     sprite('tb311_11', 4)
     EndMomentum(1)
 
+
 @Subroutine
 def ExModeBegin():
     callSubroutine('GetStockCount')
@@ -7433,6 +7625,7 @@ def ExModeBegin():
     ResourceGauge(0, 1, 2, 1, 50000, 0, -32560, -32560)
     ResourceBarFlashIfFull(0, 1)
     SLOT_31 = SLOT_0
+
 
 @State
 def UltimateMode():
@@ -7451,9 +7644,9 @@ def UltimateMode():
     sprite('tb431_03', 2)
     sprite('tb431_04', 4)
     setInvincible(1)
-    if SLOT_36:
+    if SLOT_IsAirborne:
         DistortionSettings(125, -1, 0)
-    if SLOT_37:
+    if SLOT_IsGrounded:
         DistortionSettings(131, -1, 0)
     HeatChange(-5000)
     E0EAEffect('aura', 65535)
@@ -7480,7 +7673,7 @@ def UltimateMode():
     Voiceline('tb252')
     loopRest()
     RunLoopUpon(17, 80)
-    sendToLabelUpon(17, 1)
+    uponSendToLabel(17, 1)
     physicsYImpulse(1000)
     setGravity(20)
     CreateObject('TBEF_AngelRing', -1)
@@ -7492,7 +7685,7 @@ def UltimateMode():
     loopRest()
     gotoLabel(0)
     label(1)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     PerGravity(50)
     setInvincible(0)
     sprite('tb431_08', 2)
@@ -7521,9 +7714,9 @@ def UltimateMode():
     sprite('tb431_08', 2)
     sprite('tb431_09', 2)
     sprite('tb431_11', 3)
-    if (SLOT_23 < 30000):
+    if SLOT_YDistanceFromFloor < 30000:
         GravityDefault()
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     ObjectUpon(5, 32)
     ObjectUpon(6, 32)
     ObjectUpon(9, 32)
@@ -7535,8 +7728,8 @@ def UltimateMode():
     BeginBuffer('AirTackleEx')
     BeginBuffer('ShotEx')
     BeginBuffer('MidAssaultEx')
-    ObjectUpon(4, 33)
-    if (SLOT_23 >= 30000):
+    ObjectUpon(FALLING, 33)
+    if SLOT_YDistanceFromFloor >= 30000:
         gotoLabel(10)
     sprite('tb431_13', 3)
     sprite('tb431_14', 3)
@@ -7559,6 +7752,7 @@ def UltimateMode():
     WhiffBlockCancel(1)
     WhiffNormalCancel(1)
     WhiffSpecialCancel(1)
+
 
 @State
 def AstralHeat():
@@ -7621,7 +7815,7 @@ def AstralHeat():
     sprite('tb450_09', 3)
     sprite('tb450_10', 3)
     sprite('tb450_11', 3)
-    PassbackAddActionMarkToFunction('AHCharge_DateField', 32)
+    TriggerUponForState('AHCharge_DateField', 32)
     sprite('tb450_12', 4)
     sprite('tb450_13', 9)
     CharacterFlash(16777215, 5, 1)
@@ -7635,11 +7829,11 @@ def AstralHeat():
     sprite('tb450_14', 4)
     StopCharacterFlash1(-8355712)
     CharacterFlash(-16777216, 5, 1)
-    PassbackAddActionMarkToFunction('AHCharge_TextField', 32)
+    TriggerUponForState('AHCharge_TextField', 32)
     sprite('tb450_15', 5)
     PrivateSE('tbse_09')
     sprite('tb450_16', 12)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     EnableAfterimage(1)
     AfterimageBlendMode(2)
     AfterimageInterval(2)
@@ -7650,7 +7844,7 @@ def AstralHeat():
     AfterimageSize_2(1500)
     sprite('tb450_17', 5)
     sprite('tb450_18', 8)
-    PassbackAddActionMarkToFunction('AH_changeBG', 32)
+    TriggerUponForState('AH_changeBG', 32)
     sprite('tb450_19', 3)
     sprite('tb450_20', 3)
     CreateObject('AH_mcirclebook', 0)
@@ -7670,7 +7864,7 @@ def AstralHeat():
     StartMultihit()
     setInvincible(0)
     sprite('tb450_55', 5)
-    PassbackAddActionMarkToFunction('AH_BG', 32)
+    TriggerUponForState('AH_BG', 32)
     CreateObject('TBEF_ArmSummon', 0)
     CreateObject('WingDust', 0)
     CreateObject('WingDust', 1)
@@ -7689,6 +7883,7 @@ def AstralHeat():
     EnableAfterimage(0)
     sprite('tb032_10', 3)
     loopRest()
+
 
 @State
 def AstralHeatExe():
@@ -7709,12 +7904,12 @@ def AstralHeatExe():
     CommonSE('022_magiccircle_b')
     sprite('tb450_23', 10)
     StartMultihit()
-    PassbackAddActionMarkToFunction('AH_BG', 32)
+    TriggerUponForState('AH_BG', 32)
     sprite('tb450_23', 21)
     StartMultihit()
     CreateObject('AstWhite', -1)
-    PassbackAddActionMarkToFunction('AHLock_MagicCircle', 32)
-    PassbackAddActionMarkToFunction('AH_locklight', 32)
+    TriggerUponForState('AHLock_MagicCircle', 32)
+    TriggerUponForState('AH_locklight', 32)
     CameraFast(1)
     CameraNoCeiling(1)
     CameraNoScreenCollision(1)
@@ -7743,22 +7938,22 @@ def AstralHeatExe():
     Voiceline('tb294')
     CreateObject('AstWhitefinish', -1)
     sprite('null', 1)
-    PassbackAddActionMarkToFunction('AH_finishBG', 32)
-    PassbackAddActionMarkToFunction('AH_Megami', 32)
-    PassbackAddActionMarkToFunction('AH_FinishRedlight', 32)
-    PassbackAddActionMarkToFunction('AH_megami_aura', 32)
+    TriggerUponForState('AH_finishBG', 32)
+    TriggerUponForState('AH_Megami', 32)
+    TriggerUponForState('AH_FinishRedlight', 32)
+    TriggerUponForState('AH_megami_aura', 32)
     loopRest()
     SetBackground(2)
     sprite('null', 25)
     XPositionRelativeFacing(0)
     AbsoluteY(2000000)
     setGravity(0)
-    ApplyFunctionsToObjects(22)
-    FaceRight()
-    XPositionRelativeFacing(0)
-    AbsoluteY(2000000)
-    setGravity(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        FaceRight()
+        XPositionRelativeFacing(0)
+        AbsoluteY(2000000)
+        setGravity(0)
     sprite('null', 30)
     CreateObject('AH_finish', -1)
     AttackLevel_(4)
@@ -7788,8 +7983,8 @@ def AstralHeatExe():
     physicsYImpulse(-2000)
     setGravity(90)
     loopRest()
-    clearUponHandler(2)
-    sendToLabelUpon(2, 99)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 99)
     sprite('tb450_42', 6)
     CreateObject('AH_wing', 103)
     sprite('tb450_43', 6)
@@ -7811,7 +8006,7 @@ def AstralHeatExe():
     CameraControlInfinity(0)
     sprite('tb450_45', 6)
     PrivateSE('tbse_03')
-    PassbackAddActionMarkToFunction('AH_wing', 32)
+    TriggerUponForState('AH_wing', 32)
     sprite('tb450_46', 6)
     sprite('tb450_47', 6)
     sprite('tb450_48', 9)
@@ -7819,9 +8014,9 @@ def AstralHeatExe():
     ParticleSize(1500)
     CallCustomizableParticle('tbef_lockdd', 0)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(2000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(2000)
     sprite('tb450_49', 6)
     sprite('tb450_50', 6)
     sprite('tb450_51', 6)
@@ -7830,13 +8025,14 @@ def AstralHeatExe():
     sprite('tb450_54', 32767)
     Voiceline('tb408')
 
+
 @State
 def UltimateShot():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingDD()
         AttackOff()
-        sendToLabelUpon(17, 1)
+        uponSendToLabel(17, 1)
         EnableRapidCancel(0)
     sprite('tb432_00', 3)
     SmartVoiceline('tb253')
@@ -7880,13 +8076,14 @@ def UltimateShot():
     sprite('tb432_17', 5)
     loopRest()
 
+
 @State
 def UltimateShot_OD():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingDD()
         AttackOff()
-        sendToLabelUpon(17, 1)
+        uponSendToLabel(17, 1)
         EnableRapidCancel(0)
         AttackType(4)
     sprite('tb432_00', 3)
@@ -7931,6 +8128,7 @@ def UltimateShot_OD():
     sprite('tb432_17', 5)
     loopRest()
 
+
 @State
 def Shot():
 
@@ -7968,6 +8166,7 @@ def Shot():
     sprite('tb406_12', 4)
     LandingEffects(0, 1, 1)
     sprite('tb406_13', 3)
+
 
 @State
 def ShotEx():
@@ -8018,6 +8217,7 @@ def ShotEx():
     LandingEffects(0, 1, 1)
     sprite('tb406_13', 3)
 
+
 @State
 def IGUpThrow():
 
@@ -8038,6 +8238,7 @@ def IGUpThrow():
     sprite('tb407_29', 8)
     sprite('tb407_30', 5)
     sprite('tb407_31', 5)
+
 
 @State
 def IGUpThrowExe():
@@ -8060,12 +8261,12 @@ def IGUpThrowExe():
         StarterRating(0)
         SetZLine(1, 50)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_59):
-                SLOT_31 = (SLOT_31 + SLOT_2)
+        def upon_EVERY_FRAME():
+            if not SLOT_59:
+                SLOT_31 = SLOT_31 + SLOT_2
 
         def upon_STATE_END():
-            ObjectUpon(4, 33)
+            ObjectUpon(FALLING, 33)
     sprite('tb407_02', 3)
     OppThrowAnimation(8, 0)
     OppThrowPosition(0, 4, 4, 0, 0)
@@ -8114,7 +8315,7 @@ def IGUpThrowExe():
     sprite('tb407_15', 3)
     sprite('tb407_16', 3)
     sprite('tb407_17', 1)
-    PassbackAddActionMarkToFunction('407bookloop', 32)
+    TriggerUponForState('407bookloop', 32)
     RefreshMultihit()
     sprite('tb407_17', 1)
     RefreshMultihit()
@@ -8124,7 +8325,7 @@ def IGUpThrowExe():
     RefreshMultihit()
     sprite('tb407_19', 1)
     RefreshMultihit()
-    PassbackAddActionMarkToFunction('407kokusokuray', 32)
+    TriggerUponForState('407kokusokuray', 32)
     sprite('tb407_19', 1)
     RefreshMultihit()
     AirUntechableTime(50)
@@ -8156,6 +8357,7 @@ def IGUpThrowExe():
     CreateObject('TBEF_ArmSummon', 0)
     sprite('tb212_22', 2)
 
+
 @State
 def MidAssault():
 
@@ -8175,7 +8377,7 @@ def MidAssault():
         HitOverhead(2)
         PushbackX(12000)
         StarterRating(2)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
 
         def upon_OPPONENT_HIT():
             BeginBuffer('5D_EASY')
@@ -8215,7 +8417,7 @@ def MidAssault():
     label(9)
     sprite('tb409_11', 2)
     setInvincible(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     PushCollisionHeightLow(-1)
     sprite('tb024_01', 2)
@@ -8224,6 +8426,7 @@ def MidAssault():
     sprite('tb024_04', 1)
     sprite('tb024_04', 1)
     BufferedOrPressedGoto('5D_EASY')
+
 
 @State
 def MidAssault_Hasei():
@@ -8245,7 +8448,7 @@ def MidAssault_Hasei():
         StarterRating(2)
         ForceFaceSprite()
         EndMomentum(1)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
 
         def upon_OPPONENT_HIT():
             BeginBuffer('5D_EASY')
@@ -8257,9 +8460,9 @@ def MidAssault_Hasei():
     PrivateSE('tbse_04')
     setInvincible(1)
     SpecificInvincibility(0, 0, 1, 0, 0)
-    SLOT_12 = (SLOT_12 + SLOT_19)
+    SLOT_XVelocity = SLOT_XVelocity + SLOT_19
     XImpulseAcceleration(5)
-    if (SLOT_12 >= 20000):
+    if SLOT_XVelocity >= 20000:
         physicsXImpulse(20000)
     physicsYImpulse(23000)
     setGravity(2000)
@@ -8285,7 +8488,7 @@ def MidAssault_Hasei():
     label(9)
     sprite('tb409_11', 2)
     setInvincible(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('tb024_01', 3)
     sprite('tb024_02', 3)
@@ -8293,6 +8496,7 @@ def MidAssault_Hasei():
     sprite('tb024_04', 1)
     sprite('tb024_04', 1)
     BufferedOrPressedGoto('5D_EASY')
+
 
 @State
 def MidAssaultEx():
@@ -8315,7 +8519,7 @@ def MidAssaultEx():
         PushbackX(12000)
         StarterRating(2)
         ForceFaceSprite()
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
     sprite('tb409_00', 2)
     CharacterFlash(16750300, 8, 2)
     sprite('tb409_01', 2)
@@ -8354,12 +8558,13 @@ def MidAssaultEx():
     label(9)
     sprite('tb409_11', 2)
     setInvincible(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('tb024_01', 2)
     sprite('tb024_02', 2)
     sprite('tb024_03', 2)
     sprite('tb024_04', 2)
+
 
 @State
 def MidAssaultEx_Hasei():
@@ -8383,7 +8588,7 @@ def MidAssaultEx_Hasei():
         StarterRating(2)
         ForceFaceSprite()
         EndMomentum(1)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
     sprite('tb409_00', 2)
     CharacterFlash(16750300, 8, 2)
     sprite('tb409_01', 2)
@@ -8393,9 +8598,9 @@ def MidAssaultEx_Hasei():
     setInvincible(1)
     SpecificInvincibility(0, 0, 1, 0, 1)
     sprite('tb409_03', 3)
-    SLOT_12 = (SLOT_12 + SLOT_19)
+    SLOT_XVelocity = SLOT_XVelocity + SLOT_19
     XImpulseAcceleration(5)
-    if (SLOT_12 >= 20000):
+    if SLOT_XVelocity >= 20000:
         physicsXImpulse(20000)
     physicsYImpulse(23000)
     setGravity(2000)
@@ -8422,12 +8627,13 @@ def MidAssaultEx_Hasei():
     label(9)
     sprite('tb409_11', 2)
     setInvincible(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('tb024_01', 2)
     sprite('tb024_02', 2)
     sprite('tb024_03', 1)
     sprite('tb024_04', 1)
+
 
 @State
 def RlAstralDamage():
@@ -8436,7 +8642,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('tb054')
     sprite('tb900_00', 32767)
     EnableCollision(0)
@@ -8454,6 +8660,7 @@ def RlAstralDamage():
     ParticleLayer(5)
     CallCustomizableParticle('tbef_RlAsthane', 0)
     loopRest()
+
 
 @State
 def AmAstralDamage():
@@ -8474,11 +8681,12 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(240)
@@ -8499,10 +8707,10 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -8524,11 +8732,12 @@ def BurstDD():
     sprite('tb311_10ex01', 6)
     sprite('tb311_11ex01', 4)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(240)
@@ -8549,10 +8758,10 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -8576,18 +8785,19 @@ def BurstDD_Easy():
     sprite('tb311_10ex01', 6)
     sprite('tb311_11ex01', 4)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(4)
         Damage(2000)
         AirHitstunAnimation(13)
         GroundedHitstunAnimation(13)
         AirPushbackX(60000)
         MinimumDamage(10)
-        if (SLOT_25 < 300000):
+        if SLOT_XDistanceFromFowardCorner < 300000:
             SetXCollisionFromOrigin(600)
         StayAfterMovement(1, 0)
         SetBackground(1)
@@ -8646,7 +8856,7 @@ def BurstDDAdd():
     sprite('tb440_04', 3)
     CreateObject('BurstDD_BeamMato2', -1)
     sprite('tb440_05', 3)
-    PassbackAddActionMarkToFunction('BurstDD_Yumi', 32)
+    TriggerUponForState('BurstDD_Yumi', 32)
     sprite('tb440_06', 3)
     CreateObject('BurstDD_Test', 0)
     SetActionMark(6)
@@ -8659,7 +8869,7 @@ def BurstDDAdd():
     if SLOT_2:
         gotoLabel(0)
     sprite('tb440_07', 3)
-    PassbackAddActionMarkToFunction('BurstDD_Test', 32)
+    TriggerUponForState('BurstDD_Test', 32)
     loopRest()
     gotoLabel(9)
     label(100)
@@ -8716,10 +8926,10 @@ def BurstDDAdd():
     sprite('tb440_04', 3)
     CreateObject('BurstDD_BeamMato2EX', -1)
     sprite('tb440_05', 3)
-    PassbackAddActionMarkToFunction('BurstDD_Yumi', 32)
+    TriggerUponForState('BurstDD_Yumi', 32)
     sprite('tb440_06', 3)
     CreateObject('BurstDD_Test', 0)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     SetActionMark(10)
     label(101)
     sprite('tb440_07', 3)
@@ -8730,13 +8940,13 @@ def BurstDDAdd():
     if SLOT_2:
         gotoLabel(101)
     sprite('tb440_07', 3)
-    PassbackAddActionMarkToFunction('BurstDD_Test', 32)
+    TriggerUponForState('BurstDD_Test', 32)
     loopRest()
     gotoLabel(9)
     label(9)
     sprite('tb440_08', 3)
-    PassbackAddActionMarkToFunction('BurstDD_BeamMato2', 32)
-    PassbackAddActionMarkToFunction('BurstDD_BeamMato2EX', 32)
+    TriggerUponForState('BurstDD_BeamMato2', 32)
+    TriggerUponForState('BurstDD_BeamMato2EX', 32)
     sprite('tb440_09', 3)
     sprite('tb440_07', 3)
     sprite('tb440_08', 3)
@@ -8755,125 +8965,435 @@ def BurstDDAdd():
     sprite('tb601_21ex01', 6)
     sprite('tb601_22ex01', 6)
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb055', 13921, 13667, 13921, 13411, 24888, 25399, 24887, 25399, 24887, 25399, 24885, 25399, 24885, 12339, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb400', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb401', 12899, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb404', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb405', 14433, 13923, 14433, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb406', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 13921, 12643, 24880, 25398, 12337, 13921, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb407', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 13921, 12643, 24880, 25398, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb408', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 13921, 12643, 24880, 25398, 12337, 13921, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb412', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb413', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb414', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13411, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb415', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb416', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13411, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('tb417', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13409, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb055', 13921, 13667, 13921, 13411, 24888, 25399, 24887, 
+        25399, 24887, 25399, 24885, 25399, 24885, 12339, 14179, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb400', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb401', 12899, 13921, 13923, 13921, 13923, 13921, 13923, 
+        12641, 25392, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb404', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13667, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb405', 14433, 13923, 14433, 13923, 13921, 13923, 13921, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb406', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 
+        13921, 12643, 24880, 25398, 12337, 13921, 12643, 48, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb407', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 
+        13921, 12643, 24880, 25398, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb408', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 
+        13921, 12643, 24880, 25398, 12337, 13921, 12643, 48, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb412', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb413', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb414', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 
+        13923, 13921, 13411, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb415', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb416', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 
+        13923, 13921, 13923, 13921, 13411, 25392, 12337, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('tb417', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 13409, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb401', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 14177, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb404', 13921, 13923, 13921, 13923, 13665, 13667, 13665, 13667, 13665, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb405', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb406', 14177, 14179, 14177, 14179, 14177, 13923, 13921, 13923, 13921, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb407', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 13921, 12643, 24880, 25398, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb408', 13921, 13923, 13921, 12643, 24880, 12849, 13923, 13921, 12643, 24880, 25398, 12337, 13921, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb412', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb413', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb414', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb415', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb416', 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13411, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('tb417', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13409, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb400', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 13923, 13921, 13923, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('tb401', 14177, 14179, 14177, 14179, 14177, 14179, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 14177, 
+            13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb404', 13921, 13923, 13921, 13923, 13665, 13667, 
+            13665, 13667, 13665, 13667, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb405', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb406', 14177, 14179, 14177, 14179, 14177, 13923, 
+            13921, 13923, 13921, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb407', 13921, 13923, 13921, 12643, 24880, 12849, 
+            13923, 13921, 12643, 24880, 25398, 12337, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('tb408', 13921, 13923, 13921, 12643, 24880, 12849, 
+            13923, 13921, 12643, 24880, 25398, 12337, 13921, 12643, 48, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0)
+        Unknown18011('tb412', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb413', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('tb414', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 25392, 
+            12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb415', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('tb416', 14177, 14179, 14177, 14179, 14177, 14179, 
+            13921, 13923, 13921, 13923, 13921, 13411, 25392, 12337, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('tb417', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13409, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('jn'):
-            Unknown18011('tb000', 14433, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb400', 14433, 14179, 14177, 14179, 14177, 13411, 24880, 25400, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb401', 14433, 14179, 14177, 14179, 14177, 14179, 14433, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb000', 14433, 14179, 14177, 14179, 14177, 14179,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb400', 14433, 14179, 14177, 14179, 14177, 13411,
+                24880, 25400, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tb401', 14433, 14179, 14177, 14179, 14177, 14179,
+                14433, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('no'):
-            Unknown18011('tb000', 14433, 14179, 14177, 12899, 24880, 25400, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb400', 14433, 14179, 14177, 14179, 14177, 14179, 14433, 14179, 14177, 14179, 14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb401', 14433, 14179, 14177, 14179, 14177, 14179, 14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb000', 14433, 14179, 14177, 12899, 24880, 25400,
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb400', 14433, 14179, 14177, 14179, 14177, 14179,
+                14433, 14179, 14177, 14179, 14433, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tb401', 14433, 14179, 14177, 14179, 14177, 14179,
+                14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb400', 13921, 13923, 13921, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb401', 14177, 14179, 14177, 14179, 14177, 13155, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 12899, 24880, 25398, 24886, 25398, 54, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb400', 13921, 13923, 13921, 13155, 24880, 
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb401', 14177, 14179, 14177, 14179, 14177, 
+                    13155, 24885, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mk'):
-            Unknown18011('tb000', 14433, 14179, 14177, 13155, 24880, 25400, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb400', 14433, 14179, 14177, 14179, 14177, 14179, 14433, 14179, 14177, 14179, 14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb401', 14433, 14179, 14177, 14179, 14177, 14179, 14433, 14179, 14177, 14179, 14433, 12899, 24880, 25400, 24887, 25400, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb000', 14433, 14179, 14177, 13155, 24880, 25400,
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb400', 14433, 14179, 14177, 14179, 14177, 14179,
+                14433, 14179, 14177, 14179, 14433, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('tb401', 14433, 14179, 14177, 14179, 14177, 14179,
+                14433, 14179, 14177, 14179, 14433, 12899, 24880, 25400, 
+                24887, 25400, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tb400', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb401', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13155, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb400', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13155, 24880, 25399, 24887, 25399, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb401', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13155, 24885, 25398, 24886, 25398,
+                    24886, 25398, 24886, 25399, 24887, 25399, 55, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0)
         if CharacterIDCheck('mu'):
             if SLOT_140:
-                Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb400', 13921, 13923, 13921, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb401', 14177, 14179, 14177, 14179, 14177, 13155, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb000', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 12899, 24880, 25398, 24886, 25398, 54, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb400', 13921, 13923, 13921, 13155, 24880, 
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb401', 14177, 14179, 14177, 14179, 14177, 
+                    13155, 24885, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ma'):
-            Unknown18011('tb000', 13921, 13923, 13921, 12643, 24886, 25398, 24884, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb401', 14177, 13155, 24885, 25399, 24887, 25399, 24887, 25399, 13617, 13921, 13411, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb000', 13921, 13923, 13921, 12643, 24886, 25398,
+                24884, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb400', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb401', 14177, 13155, 24885, 25399, 24887, 25399,
+                24887, 25399, 13617, 13921, 13411, 13921, 13923, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('jn'):
-            Unknown18011('tb502', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb503', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb502', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb503', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 
+                24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tb502', 12641, 25392, 24885, 25399, 24887, 25399, 13365, 14177, 14179, 13665, 13667, 13665, 13667, 13665, 13667, 14177, 14179, 12641, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb503', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 12339, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb502', 12641, 25392, 24885, 25399, 24887, 
+                    25399, 13365, 14177, 14179, 13665, 13667, 13665, 13667,
+                    13665, 13667, 14177, 14179, 12641, 25392, 55, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0)
+                Unknown18011('tb503', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886,
+                    25398, 12339, 13921, 13923, 13921, 13923, 13921, 13923,
+                    13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('no'):
-            Unknown18011('tb504', 13921, 13411, 13921, 13923, 13921, 13923, 13921, 13667, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 13620, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb505', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb504', 13921, 13411, 13921, 13923, 13921, 13923,
+                13921, 13667, 24885, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 13620, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb505', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tb504', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25400, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb505', 14433, 14179, 14177, 14179, 14177, 14179, 14433, 13411, 24880, 25399, 24887, 25400, 24887, 25400, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb504', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 13411, 24880, 25399, 24887, 25400, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
+                Unknown18011('tb505', 14433, 14179, 14177, 14179, 14177, 
+                    14179, 14433, 13411, 24880, 25399, 24887, 25400, 24887,
+                    25400, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ha'):
             if SLOT_138:
-                Unknown18011('tb520', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb521', 14177, 14179, 14177, 14179, 14177, 14179, 24880, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb520', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb521', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 24880, 25397, 24885, 25397, 24885, 25397, 24885,
+                    25397, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('tb520', 13921, 13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb521', 12641, 25396, 24887, 25399, 24887, 25399, 24887, 25399, 12339, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25394, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb520', 13921, 13923, 13921, 13923, 13921, 
+                    13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb521', 12641, 25396, 24887, 25399, 24887, 
+                    25399, 24887, 25399, 12339, 13921, 13923, 13921, 13923,
+                    13921, 13923, 12641, 25394, 54, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('hz'):
-            Unknown18011('tb526', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb527', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb526', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('tb527', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tb526', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 12340, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb527', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb526', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 12340, 13921, 13923, 13921, 13923,
+                    13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb527', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mk'):
-            Unknown18011('tb530', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 24880, 25399, 24887, 25399, 13620, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb531', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb530', 14433, 14435, 14433, 14435, 14433, 14435,
+                14433, 13923, 24880, 25399, 24887, 25399, 13620, 14177, 
+                13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 
+                25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0)
+            Unknown18011('tb531', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+                13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tb530', 13921, 13923, 13921, 13923, 13921, 13923, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 13619, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb531', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb530', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 24885, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 13619, 14177, 14179, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb531', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 13921, 13923, 13921, 13155, 24880,
+                    25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kg'):
-            Unknown18011('tb546', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 14179, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb547', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 24885, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb546', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 14179, 24880, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb547', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 24885, 25397, 24885, 25397, 24885, 25397, 
+                24885, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 
+                24885, 25397, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
         if CharacterIDCheck('hb'):
-            Unknown18011('tb556', 13921, 13411, 13921, 13411, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb557', 13921, 13923, 13921, 12899, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 12345, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb556', 13921, 13411, 13921, 13411, 13921, 13923,
+                13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb557', 13921, 13923, 13921, 12899, 24880, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                12345, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('tb556', 13921, 13411, 13921, 13411, 13921, 13923, 13921, 13667, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb557', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb556', 13921, 13411, 13921, 13411, 13921, 
+                    13923, 13921, 13667, 24885, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb557', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mu'):
             if SLOT_140:
-                Unknown18011('tb528', 13921, 13667, 13921, 13667, 13921, 13411, 24885, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('tb529', 13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb528', 13921, 13667, 13921, 13667, 13921, 
+                    13411, 24885, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('tb529', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
         if CharacterIDCheck('ma'):
-            Unknown18011('tb568', 13921, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 14388, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('tb569', 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb568', 13921, 13155, 24880, 25399, 24887, 25399,
+                24887, 25399, 14388, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+                13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('tb569', 14177, 14179, 14177, 14179, 14177, 13923,
+                24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('jn'):
         if SLOT_140:
             gotoLabel(2110)
         else:
             gotoLabel(110)
-    if Unknown63('no'):
+    if CharacterIDCheck('jn'):
         SyncEntry()
         if SLOT_140:
             gotoLabel(2120)
@@ -8913,12 +9433,10 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(430)
     label(482)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(1)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(2)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(1)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(2)
     label(0)
     sprite('tb600_00', 6)
     sprite('tb600_01', 6)
@@ -8926,7 +9444,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('tb600_00', 6)
     Voiceline('tb414')
     sprite('tb600_01', 6)
@@ -8975,7 +9493,7 @@ def CmnActEntry():
     sprite('tb601_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('tb601_00', 120)
     Voiceline('tb412')
     sprite('tb601_01', 6)
@@ -8993,9 +9511,9 @@ def CmnActEntry():
     sprite('tb601_11', 6)
     CharacterFlash(13145800, 6, 2)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('TBEF_ArmChange', 0)
     CommonSE('022_magiccircle_a')
     sprite('tb601_12', 6)
@@ -9022,7 +9540,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2)
+        conditionalSendToLabel(2)
     sprite('tb600_00', 6)
     Voiceline('tb416')
     sprite('tb600_01', 6)
@@ -9067,7 +9585,7 @@ def CmnActEntry():
     sprite('tb601_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(110)
+        conditionalSendToLabel(110)
     sprite('tb601_00', 6)
     sprite('tb601_01', 6)
     sprite('tb601_02', 6)
@@ -9083,9 +9601,9 @@ def CmnActEntry():
     sprite('tb601_11', 6)
     CharacterFlash(13145800, 6, 2)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('TBEF_ArmChange', 0)
     CommonSE('022_magiccircle_a')
     sprite('tb601_12', 6)
@@ -9142,7 +9660,8 @@ def CmnActEntry():
     sprite('tb600_02', 6)
     sprite('tb600_03', 6)
     loopRest()
-    GotoIf0(2111, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(2111)
     label(2112)
     sprite('tb600_00', 6)
     sprite('tb600_01', 6)
@@ -9182,8 +9701,8 @@ def CmnActEntry():
     sprite('tb000_07', 7)
     loopRest()
     if SLOT_17:
-        _gotolabel(120)
-    sendToLabelUpon(32, 122)
+        conditionalSendToLabel(120)
+    uponSendToLabel(32, 122)
     label(121)
     sprite('tb000_00', 7)
     sprite('tb000_01', 7)
@@ -9209,7 +9728,7 @@ def CmnActEntry():
     sprite('tb300_05', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(123)
+        conditionalSendToLabel(123)
     sprite('tb300_06', 6)
     sprite('tb300_07', 6)
     sprite('tb300_08', 6)
@@ -9218,7 +9737,7 @@ def CmnActEntry():
     ExitState()
     label(2120)
     sprite('keep', 2)
-    sendToLabelUpon(32, 2122)
+    uponSendToLabel(32, 2122)
     label(2121)
     sprite('tb000_00', 7)
     sprite('tb000_01', 7)
@@ -9254,7 +9773,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(200)
+        conditionalSendToLabel(200)
     sprite('tb600_00', 6)
     Voiceline('tb520')
     sprite('tb600_01', 6)
@@ -9311,7 +9830,8 @@ def CmnActEntry():
     sprite('tb600_02', 6)
     sprite('tb600_03', 6)
     loopRest()
-    GotoIf0(1201, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(1201)
     sprite('keep', 1)
     SetActionMark(5)
     label(1202)
@@ -9322,7 +9842,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(1202)
+        conditionalSendToLabel(1202)
     sprite('tb600_04', 6)
     sprite('tb600_05', 6)
     sprite('tb600_06', 6)
@@ -9347,7 +9867,7 @@ def CmnActEntry():
     sprite('tb000_06', 7)
     sprite('tb000_07', 7)
     if SLOT_17:
-        _gotolabel(230)
+        conditionalSendToLabel(230)
     sprite('tb300_00', 6)
     Voiceline('tb526')
     sprite('tb300_01', 6)
@@ -9401,7 +9921,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2230)
+        conditionalSendToLabel(2230)
     sprite('tb600_00', 6)
     sprite('tb600_01', 6)
     sprite('tb600_02', 6)
@@ -9416,7 +9936,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(2231)
+        conditionalSendToLabel(2231)
     sprite('tb600_04', 6)
     sprite('tb600_05', 6)
     sprite('tb600_06', 6)
@@ -9443,7 +9963,7 @@ def CmnActEntry():
     sprite('tb000_07', 7)
     loopRest()
     if SLOT_17:
-        _gotolabel(2240)
+        conditionalSendToLabel(2240)
     sprite('tb300_00', 6)
     Voiceline('tb528')
     sprite('tb300_01', 6)
@@ -9456,7 +9976,7 @@ def CmnActEntry():
     sprite('tb300_05', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(2241)
+        conditionalSendToLabel(2241)
     sprite('tb300_06', 6)
     sprite('tb300_07', 6)
     sprite('tb300_08', 6)
@@ -9468,7 +9988,7 @@ def CmnActEntry():
     sprite('tb601_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(250)
+        conditionalSendToLabel(250)
     sprite('tb601_00', 120)
     Voiceline('tb530')
     sprite('tb601_01', 6)
@@ -9485,9 +10005,9 @@ def CmnActEntry():
     sprite('tb601_11', 6)
     CharacterFlash(13145800, 6, 2)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('TBEF_ArmChange', 0)
     CommonSE('022_magiccircle_a')
     sprite('tb601_12', 6)
@@ -9523,9 +10043,9 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2250)
+        conditionalSendToLabel(2250)
     sprite('tb600_00', 6)
-    sendToLabelUpon(32, 2252)
+    uponSendToLabel(32, 2252)
     sprite('tb600_01', 6)
     sprite('tb600_02', 6)
     sprite('tb600_03', 6)
@@ -9567,7 +10087,7 @@ def CmnActEntry():
     sprite('tb300_05', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(2253)
+        conditionalSendToLabel(2253)
     sprite('tb300_06', 7)
     sprite('tb300_07', 7)
     sprite('tb300_08', 7)
@@ -9576,7 +10096,7 @@ def CmnActEntry():
     ExitState()
     label(330)
     sprite('null', 1)
-    sendToLabelUpon(32, 332)
+    uponSendToLabel(32, 332)
     label(331)
     sprite('tb000_00', 7)
     sprite('tb000_01', 7)
@@ -9635,14 +10155,14 @@ def CmnActEntry():
     EnableCollision(0)
     loopRest()
     if SLOT_17:
-        _gotolabel(380)
+        conditionalSendToLabel(380)
     sprite('tb030_00', 4)
     sprite('tb030_01', 4)
     physicsXImpulse(5500)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 310000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 310000:
+            clearUponHandler(EVERY_FRAME)
             ObjectUpon(22, 32)
             XPositionRelativeFacing(-50000)
             EndMomentum(1)
@@ -9663,7 +10183,7 @@ def CmnActEntry():
     label(382)
     sprite('tb033_00', 1)
     sprite('tb033_01', 2)
-    sendToLabelUpon(2, 384)
+    uponSendToLabel(LANDING, 384)
     physicsXImpulse(-18000)
     physicsYImpulse(8800)
     setGravity(1550)
@@ -9699,7 +10219,7 @@ def CmnActEntry():
     sprite('tb300_05', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(385)
+        conditionalSendToLabel(385)
     sprite('tb300_06', 6)
     sprite('tb300_07', 6)
     sprite('tb300_08', 6)
@@ -9712,7 +10232,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2380)
+        conditionalSendToLabel(2380)
     sprite('tb600_00', 6)
     sprite('tb600_01', 6)
     sprite('tb600_02', 6)
@@ -9727,7 +10247,7 @@ def CmnActEntry():
     sprite('tb600_03', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(2381)
+        conditionalSendToLabel(2381)
     sprite('tb600_04', 6)
     sprite('tb600_05', 6)
     sprite('tb600_06', 6)
@@ -9749,16 +10269,16 @@ def CmnActEntry():
     ScreenCollision(0)
     EnableCollision(0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 620000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 620000:
+            clearUponHandler(EVERY_FRAME)
             sendToLabel(433)
     loopRest()
     label(431)
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(431)
+        conditionalSendToLabel(431)
     sprite('null', 10)
     sprite('tb032_00', 2)
     physicsXImpulse(24000)
@@ -9799,7 +10319,7 @@ def CmnActEntry():
     sprite('tb300_05', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(434)
+        conditionalSendToLabel(434)
     sprite('tb300_06', 6)
     sprite('tb300_07', 6)
     sprite('tb300_08', 6)
@@ -9815,6 +10335,7 @@ def CmnActEntry():
     DemoTimer(60)
     loopRest()
     ExitState()
+
 
 @State
 def CmnActRoundWin():
@@ -9837,10 +10358,11 @@ def CmnActRoundWin():
     sprite('tb615_06', 32767)
     loopRest()
 
+
 @State
 def CmnActMatchWin():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('jn'):
         if SLOT_140:
             gotoLabel(2110)
@@ -9863,37 +10385,33 @@ def CmnActMatchWin():
             gotoLabel(230)
     if CharacterIDCheck('mu'):
         if SLOT_140:
-            _gotolabel(2240)
+            conditionalSendToLabel(2240)
     if CharacterIDCheck('mk'):
         if SLOT_140:
             gotoLabel(2250)
         else:
             gotoLabel(250)
-    CharacterIDCheck('kg')
-    if SLOT_0:
-        _gotolabel(330)
+    if CharacterIDCheck('kg'):
+        conditionalSendToLabel(330)
     if CharacterIDCheck('hb'):
         if SLOT_140:
             gotoLabel(2380)
         else:
             gotoLabel(380)
-    CharacterIDCheck('ma')
-    if SLOT_0:
-        _gotolabel(430)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('ma'):
+        conditionalSendToLabel(430)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(1)
     CameraControlEnable(1)
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 180000):
+            if SLOT_29 < 180000:
                 SetActionMark(0)
                 sendToLabel(5)
     sprite('tb030_00', 4)
@@ -9946,7 +10464,7 @@ def CmnActMatchWin():
     sprite('tb611_03', 6)
     sprite('tb611_04', 6)
     if SLOT_97:
-        _gotolabel(6)
+        conditionalSendToLabel(6)
     sprite('tb611_04', 1)
     CommonSE('209_down_normal_0')
     sprite('tb611_05', 6)
@@ -9960,9 +10478,9 @@ def CmnActMatchWin():
     ParticleSize(1500)
     CallCustomizableParticle('tbef_lockdd', 0)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(2000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(2000)
     sprite('tb611_10', 6)
     sprite('tb611_11', 6)
     sprite('tb611_12', 6)
@@ -9974,9 +10492,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 180000):
+            if SLOT_29 < 180000:
                 SetActionMark(0)
                 sendToLabel(112)
     sprite('tb030_00', 4)
@@ -10016,11 +10534,11 @@ def CmnActMatchWin():
     loopRest()
     label(2110)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 180000):
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 180000:
             sendToLabel(2112)
             EndMomentum(1)
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
     sprite('tb030_00', 4)
     CameraControlEnable(1)
     physicsXImpulse(5000)
@@ -10062,9 +10580,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 180000):
+            if SLOT_29 < 180000:
                 SetActionMark(0)
                 sendToLabel(122)
     sprite('tb030_00', 4)
@@ -10106,9 +10624,9 @@ def CmnActMatchWin():
     CameraControlEnable(1)
     physicsXImpulse(5000)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 180000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 180000:
+            clearUponHandler(EVERY_FRAME)
             sendToLabel(2122)
             EndMomentum(1)
     sprite('tb030_00', 4)
@@ -10166,9 +10684,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 180000):
+            if SLOT_29 < 180000:
                 SetActionMark(0)
                 sendToLabel(1202)
     sprite('tb030_00', 4)
@@ -10223,9 +10741,9 @@ def CmnActMatchWin():
     sprite('keep', 1)
     CameraControlEnable(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 240000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 240000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2232)
     sprite('tb030_00', 4)
@@ -10260,9 +10778,9 @@ def CmnActMatchWin():
     sprite('keep', 1)
     CameraControlEnable(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 240000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 240000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2242)
     sprite('tb030_00', 4)
@@ -10298,9 +10816,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 180000):
+            if SLOT_29 < 180000:
                 SetActionMark(0)
                 sendToLabel(252)
     sprite('tb030_00', 4)
@@ -10342,9 +10860,9 @@ def CmnActMatchWin():
     sprite('keep', 1)
     CameraControlEnable(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 240000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 240000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2252)
     sprite('tb030_00', 4)
@@ -10411,9 +10929,9 @@ def CmnActMatchWin():
     sprite('keep', 1)
     CameraControlEnable(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 240000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 240000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2382)
     sprite('tb030_00', 4)
@@ -10455,9 +10973,9 @@ def CmnActMatchWin():
     sprite('keep', 1)
     CameraControlEnable(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 240000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 240000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(432)
     sprite('tb030_00', 4)
@@ -10515,6 +11033,7 @@ def CmnActMatchWin():
     sprite('tb615_06', 32767)
     loopRest()
 
+
 @State
 def CmnActLose():
     sprite('tb620_00', 6)
@@ -10530,6 +11049,7 @@ def CmnActLose():
     sprite('tb620_08', 32767)
     DemoTimer(90)
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -10544,11 +11064,13 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefWin():
@@ -10556,9 +11078,11 @@ def EventDefWin():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefLose():
     sprite('tb620_08', 32767)
+
 
 @State
 def EventDefChouhatsu():
@@ -10575,6 +11099,7 @@ def EventDefChouhatsu():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefChouhatsuEnd():
     sprite('tb300_03', 6)
@@ -10586,11 +11111,13 @@ def EventDefChouhatsuEnd():
     sprite('tb000_00', 1)
     enterState('CmnActStand')
 
+
 @State
 def EventEntryWalkWait():
     sprite('null', 32767)
     AddX(-700000)
     ScreenCollision(0)
+
 
 @State
 def EventEntryWalk():
@@ -10636,6 +11163,7 @@ def EventEntryWalk():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventStandTurn():
     sprite('tb003_00', 3)
@@ -10645,10 +11173,12 @@ def EventStandTurn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventMaskedEntryWait():
     sprite('tb601_00', 32767)
     loopRest()
+
 
 @State
 def EventMaskedHalfTakeOff():
@@ -10665,6 +11195,7 @@ def EventMaskedHalfTakeOff():
     loopRest()
     enterState('EventHalfHoodWait')
 
+
 @State
 def EventHalfHoodReturnMasked():
     sprite('tb601_09', 6)
@@ -10679,6 +11210,7 @@ def EventHalfHoodReturnMasked():
     sprite('tb601_01', 6)
     loopRest()
     enterState('EventMaskedEntryWait')
+
 
 @State
 def EventMaskedTakeOff():
@@ -10696,9 +11228,9 @@ def EventMaskedTakeOff():
     sprite('tb601_11', 6)
     CharacterFlash(13145800, 6, 2)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('TBEF_ArmChange', 0)
     CommonSE('022_magiccircle_a')
     sprite('tb601_12', 6)
@@ -10718,10 +11250,12 @@ def EventMaskedTakeOff():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventHalfHoodWait():
     sprite('tb601_10', 32767)
     loopRest()
+
 
 @State
 def EventHalfHoodOpen():
@@ -10729,9 +11263,9 @@ def EventHalfHoodOpen():
     sprite('tb601_11', 6)
     CharacterFlash(13145800, 6, 2)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('TBEF_ArmChange', 0)
     CommonSE('022_magiccircle_a')
     sprite('tb601_12', 6)
@@ -10760,6 +11294,7 @@ def EventHalfHoodOpen():
     sprite('tb000_07', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventExcite():
@@ -10790,6 +11325,7 @@ def EventExcite():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventExciteLoop():
     sprite('tb300_00', 6)
@@ -10802,6 +11338,7 @@ def EventExciteLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventExciteLoopEnd():
     sprite('tb300_06', 9)
@@ -10809,6 +11346,7 @@ def EventExciteLoopEnd():
     sprite('tb300_08', 9)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventReaction():
@@ -10826,6 +11364,7 @@ def EventReaction():
     sprite('tb001_10', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventVSMK1():
@@ -10849,6 +11388,7 @@ def EventVSMK1():
     sprite('tb000_07', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventVSMK2():
@@ -10876,6 +11416,7 @@ def EventVSMK2():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventVSJN1():
     sprite('tb070_00', 5)
@@ -10886,6 +11427,7 @@ def EventVSJN1():
     sprite('tb070_03', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventVSJN2():
@@ -10898,11 +11440,13 @@ def EventVSJN2():
     sprite('tb000_00', 1)
     enterState('CmnActStand')
 
+
 @State
 def EventRGVsTB_ApplyXOffset():
     sprite('keep', 32767)
     AddX(-200000)
     loopRest()
+
 
 @State
 def EventTBWin01():
@@ -10910,9 +11454,11 @@ def EventTBWin01():
     XPositionRelativeFacing(-50000)
     SetZLine(1, 10)
 
+
 @State
 def EventCAvsTBLoser00():
     sprite('tb070_03', 32767)
+
 
 @State
 def EventCAvsTBLoser01():
@@ -10926,7 +11472,7 @@ def EventCAvsTBLoser01():
         SetCommonActionMark(1)
         EnterStateIfEventID(8, '_NEUTRAL')
         ScreenCollision(0)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
     sprite('tb033_00', 4)
@@ -10949,10 +11495,12 @@ def EventCAvsTBLoser01():
     sprite('tb033_05', 32767)
     loopRest()
 
+
 @State
 def EventFullFace():
     sprite('tb601_00', 32767)
     loopRest()
+
 
 @State
 def EventFullFaceOpen():
@@ -10969,9 +11517,9 @@ def EventFullFaceOpen():
     sprite('tb601_11', 6)
     CharacterFlash(13145800, 6, 2)
     CreateObject('TBEF_ArmChange', 0)
-    ApplyFunctionsToObjects(1)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1500)
     CreateObject('TBEF_ArmChange', 0)
     CommonSE('022_magiccircle_a')
     sprite('tb601_12', 6)
@@ -11001,10 +11549,12 @@ def EventFullFaceOpen():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventHetari():
     sprite('tb620_08', 32767)
     loopRest()
+
 
 @State
 def EventTBvsNOEntry():
@@ -11015,6 +11565,7 @@ def EventTBvsNOEntry():
     ScreenCollision(0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventAssaultLandEx():
@@ -11065,7 +11616,7 @@ def EventAssaultLandEx():
     sprite('tb400_10', 3)
     BufferedOrPressedGoto('AssaultLand2ndEx')
     BufferedOrPressedGoto('AssaultLand3rdEx')
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     XImpulseAcceleration(50)
     sprite('tb400_11', 3)
     XImpulseAcceleration(40)
@@ -11080,11 +11631,13 @@ def EventAssaultLandEx():
     loopRest()
     enterState('EventStandTurn')
 
+
 @State
 def EventTBvsNOGameSet():
     sprite('tb610_12', 32767)
     XPositionRelativeFacing(-200000)
     SetZLine(1, 10)
+
 
 @State
 def EventHazamaEntry():
@@ -11093,6 +11646,7 @@ def EventHazamaEntry():
     CreateObject('EventHazamaWalk', -1)
     RegisterObject(10, 1)
     enterState('EventTBvsNOGameSet')
+
 
 @State
 def EventStandGo():
@@ -11106,6 +11660,7 @@ def EventStandGo():
     sprite('tb610_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventHighGuard():
@@ -11121,6 +11676,7 @@ def EventHighGuard():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventMemai():
     sprite('tb611_10', 6)
@@ -11128,6 +11684,7 @@ def EventMemai():
     sprite('tb611_12', 6)
     sprite('tb611_13', 32767)
     loopRest()
+
 
 @State
 def EventYorokeTaore():
@@ -11148,10 +11705,12 @@ def EventYorokeTaore():
     Unknown1005()
     enterState('EventTaore')
 
+
 @State
 def EventTaore():
     sprite('tb063_11', 32767)
     loopRest()
+
 
 @State
 def EventOkiagari():
@@ -11167,1212 +11726,1284 @@ def EventOkiagari():
     sprite('tb064_09', 4)
     loopRest()
 
-    @State
-    def CmnActStand():
-        pass
 
-    @State
-    def EventOkiagariTired():
-        sprite('tb064_00', 8)
-        sprite('tb064_01', 8)
-        sprite('tb064_02', 7)
-        sprite('tb064_03', 7)
-        sprite('tb064_04', 7)
-        sprite('tb064_05', 7)
-        sprite('tb070_10', 32767)
-        loopRest()
+@State
+def CmnActStand():
+    pass
 
-    @State
-    def EventDistressed():
-        sprite('tb064_05', 4)
-        sprite('tb064_04', 4)
-        sprite('tb054_00', 8)
-        sprite('tb054_01', 5)
-        sprite('tb054_02', 5)
-        sprite('tb054_03', 5)
-        sprite('tb054_04', 32767)
-        loopRest()
 
-    @State
-    def EventStandD():
-        sprite('tb203_00', 6)
-        sprite('tb203_01', 6)
-        label(0)
-        sprite('tb203_02', 6)
-        sprite('tb203_03', 6)
-        sprite('tb203_04', 6)
-        sprite('tb203_05', 6)
-        sprite('tb203_06', 6)
-        loopRest()
-        gotoLabel(0)
+@State
+def EventOkiagariTired():
+    sprite('tb064_00', 8)
+    sprite('tb064_01', 8)
+    sprite('tb064_02', 7)
+    sprite('tb064_03', 7)
+    sprite('tb064_04', 7)
+    sprite('tb064_05', 7)
+    sprite('tb070_10', 32767)
+    loopRest()
 
-    @State
-    def EventStandDEnd():
-        sprite('tb203_01', 6)
-        sprite('tb203_00', 6)
-        enterState('CmnActStand')
 
-    @State
-    def EventNoDisp():
-        sprite('null', 32767)
-        Visibility(1)
-        loopRest()
+@State
+def EventDistressed():
+    sprite('tb064_05', 4)
+    sprite('tb064_04', 4)
+    sprite('tb054_00', 8)
+    sprite('tb054_01', 5)
+    sprite('tb054_02', 5)
+    sprite('tb054_03', 5)
+    sprite('tb054_04', 32767)
+    loopRest()
 
-    @State
-    def EventTBWalkIn():
-        ScreenCollision(0)
-        XPositionRelativeFacing(-900000)
-        SetActionMark(1)
 
-        def upon_FRAME_STEP():
-            if SLOT_2:
-                if (SLOT_19 < 520000):
-                    SetActionMark(0)
-                    sendToLabel(1)
-        sprite('tb030_00', 7)
-        physicsXImpulse(4650)
-        sprite('tb030_01', 7)
-        label(0)
-        sprite('tb030_02', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_03', 7)
-        sprite('tb030_04', 7)
-        sprite('tb030_05', 7)
-        sprite('tb030_06', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_07', 7)
-        sprite('tb030_08', 7)
-        sprite('tb030_09', 7)
-        loopRest()
-        gotoLabel(0)
-        label(1)
-        physicsXImpulse(0)
-        XPositionRelativeFacing(-260000)
-        enterState('CmnActStand')
+@State
+def EventStandD():
+    sprite('tb203_00', 6)
+    sprite('tb203_01', 6)
+    label(0)
+    sprite('tb203_02', 6)
+    sprite('tb203_03', 6)
+    sprite('tb203_04', 6)
+    sprite('tb203_05', 6)
+    sprite('tb203_06', 6)
+    loopRest()
+    gotoLabel(0)
 
-    @State
-    def EventBDash():
-        sendToLabelUpon(32, 1)
-        label(0)
-        sprite('tb000_00', 7)
-        sprite('tb000_01', 7)
-        sprite('tb000_02', 7)
-        sprite('tb000_03', 7)
-        sprite('tb000_04', 7)
-        sprite('tb000_05', 7)
-        sprite('tb000_06', 7)
-        sprite('tb000_07', 7)
-        loopRest()
-        gotoLabel(0)
-        label(1)
-        sendToLabelUpon(2, 3)
-        sprite('tb033_00', 1)
-        setInvincible(1)
-        sprite('tb033_01', 2)
-        physicsXImpulse(-20000)
-        physicsYImpulse(8800)
-        setGravity(1550)
-        JumpSoundEffects()
-        sprite('tb033_02', 2)
-        sprite('tb033_02', 1)
-        setInvincible(0)
-        sprite('tb033_03', 3)
-        loopRest()
-        label(2)
-        sprite('tb033_02', 3)
-        sprite('tb033_03', 3)
-        loopRest()
-        gotoLabel(2)
-        label(3)
-        sprite('tb033_04', 3)
-        physicsXImpulse(0)
-        LandingEffects(100, 1, 1)
-        sprite('tb033_05', 3)
-        enterState('CmnActStand')
 
-    @State
-    def Event6C():
+@State
+def EventStandDEnd():
+    sprite('tb203_01', 6)
+    sprite('tb203_00', 6)
+    enterState('CmnActStand')
 
-        def upon_IMMEDIATE():
-            AttackDefaults_StandingNormal()
-            AttackLevel_(5)
-        sendToLabelUpon(32, 1)
-        sprite('tb212_00', 2)
-        setInvincible(1)
-        physicsXImpulse(48000)
-        CommonSE('019_cloth_c')
-        sprite('tb212_01', 3)
-        physicsXImpulse(28000)
-        sprite('tb212_02', 3)
-        PrivateSE('tbse_04')
-        physicsXImpulse(20000)
-        CreateObject('TBEF_ArmChange', 0)
-        sprite('tb212_03', 3)
-        physicsXImpulse(12000)
-        sprite('tb212_04', 3)
-        physicsXImpulse(8000)
-        sprite('tb212_05', 2)
-        physicsXImpulse(6000)
-        sprite('tb212_06', 3)
-        physicsXImpulse(2000)
-        sprite('tb212_07', 3)
-        CommonSE('006_swing_blade_2')
-        sprite('tb212_08', 1)
-        physicsXImpulse(0)
-        RefreshMultihit()
-        sprite('tb212_08', 1)
-        RefreshMultihit()
-        sprite('tb212_08', 1)
-        RefreshMultihit()
-        sprite('tb212_09', 1)
-        RefreshMultihit()
-        sprite('tb212_09', 1)
-        RefreshMultihit()
-        sprite('tb212_09', 1)
-        RefreshMultihit()
-        sprite('tb212_10', 1)
-        sprite('tb212_11', 3)
-        sprite('tb212_12', 3)
-        sprite('tb212_13', 1)
-        sprite('tb212_13', 2)
-        sprite('tb212_14', 2)
-        sprite('tb212_14ex01', 2)
-        sprite('tb212_14ex02', 2)
-        sprite('tb212_15', 3)
-        sprite('tb212_16', 3)
-        sprite('tb212_17', 3)
-        sprite('tb212_18', 3)
-        sprite('tb212_19', 3)
-        sprite('tb212_20', 3)
-        sprite('tb212_21', 2)
-        CreateObject('TBEF_ArmSummon', 0)
-        sprite('tb212_22', 2)
-        XPositionRelativeFacing(-260000)
-        enterState('CmnActStand')
 
-    @State
-    def EventBGBlack():
+@State
+def EventNoDisp():
+    sprite('null', 32767)
+    Visibility(1)
+    loopRest()
 
-        def upon_IMMEDIATE():
-            sendToLabelUpon(32, 1)
-        sprite('keep', 2)
-        CreateObject('Fade1', 0)
-        ApplyFunctionsToObjects(1)
+
+@State
+def EventTBWalkIn():
+    ScreenCollision(0)
+    XPositionRelativeFacing(-900000)
+    SetActionMark(1)
+
+    def upon_EVERY_FRAME():
+        if SLOT_2:
+            if SLOT_19 < 520000:
+                SetActionMark(0)
+                sendToLabel(1)
+    sprite('tb030_00', 7)
+    physicsXImpulse(4650)
+    sprite('tb030_01', 7)
+    label(0)
+    sprite('tb030_02', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_03', 7)
+    sprite('tb030_04', 7)
+    sprite('tb030_05', 7)
+    sprite('tb030_06', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_07', 7)
+    sprite('tb030_08', 7)
+    sprite('tb030_09', 7)
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    physicsXImpulse(0)
+    XPositionRelativeFacing(-260000)
+    enterState('CmnActStand')
+
+
+@State
+def EventBDash():
+    uponSendToLabel(32, 1)
+    label(0)
+    sprite('tb000_00', 7)
+    sprite('tb000_01', 7)
+    sprite('tb000_02', 7)
+    sprite('tb000_03', 7)
+    sprite('tb000_04', 7)
+    sprite('tb000_05', 7)
+    sprite('tb000_06', 7)
+    sprite('tb000_07', 7)
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    uponSendToLabel(LANDING, 3)
+    sprite('tb033_00', 1)
+    setInvincible(1)
+    sprite('tb033_01', 2)
+    physicsXImpulse(-20000)
+    physicsYImpulse(8800)
+    setGravity(1550)
+    JumpSoundEffects()
+    sprite('tb033_02', 2)
+    sprite('tb033_02', 1)
+    setInvincible(0)
+    sprite('tb033_03', 3)
+    loopRest()
+    label(2)
+    sprite('tb033_02', 3)
+    sprite('tb033_03', 3)
+    loopRest()
+    gotoLabel(2)
+    label(3)
+    sprite('tb033_04', 3)
+    physicsXImpulse(0)
+    LandingEffects(100, 1, 1)
+    sprite('tb033_05', 3)
+    enterState('CmnActStand')
+
+
+@State
+def Event6C():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(5)
+    uponSendToLabel(32, 1)
+    sprite('tb212_00', 2)
+    setInvincible(1)
+    physicsXImpulse(48000)
+    CommonSE('019_cloth_c')
+    sprite('tb212_01', 3)
+    physicsXImpulse(28000)
+    sprite('tb212_02', 3)
+    PrivateSE('tbse_04')
+    physicsXImpulse(20000)
+    CreateObject('TBEF_ArmChange', 0)
+    sprite('tb212_03', 3)
+    physicsXImpulse(12000)
+    sprite('tb212_04', 3)
+    physicsXImpulse(8000)
+    sprite('tb212_05', 2)
+    physicsXImpulse(6000)
+    sprite('tb212_06', 3)
+    physicsXImpulse(2000)
+    sprite('tb212_07', 3)
+    CommonSE('006_swing_blade_2')
+    sprite('tb212_08', 1)
+    physicsXImpulse(0)
+    RefreshMultihit()
+    sprite('tb212_08', 1)
+    RefreshMultihit()
+    sprite('tb212_08', 1)
+    RefreshMultihit()
+    sprite('tb212_09', 1)
+    RefreshMultihit()
+    sprite('tb212_09', 1)
+    RefreshMultihit()
+    sprite('tb212_09', 1)
+    RefreshMultihit()
+    sprite('tb212_10', 1)
+    sprite('tb212_11', 3)
+    sprite('tb212_12', 3)
+    sprite('tb212_13', 1)
+    sprite('tb212_13', 2)
+    sprite('tb212_14', 2)
+    sprite('tb212_14ex01', 2)
+    sprite('tb212_14ex02', 2)
+    sprite('tb212_15', 3)
+    sprite('tb212_16', 3)
+    sprite('tb212_17', 3)
+    sprite('tb212_18', 3)
+    sprite('tb212_19', 3)
+    sprite('tb212_20', 3)
+    sprite('tb212_21', 2)
+    CreateObject('TBEF_ArmSummon', 0)
+    sprite('tb212_22', 2)
+    XPositionRelativeFacing(-260000)
+    enterState('CmnActStand')
+
+
+@State
+def EventBGBlack():
+
+    def upon_IMMEDIATE():
+        uponSendToLabel(32, 1)
+    sprite('keep', 2)
+    CreateObject('Fade1', 0)
+
+    def RunOnObject_1():
         RegisterObject(4, 1)
         SetZVal(-2000)
-        ApplyFunctionsToSelf()
-        loopRest()
-        enterState('CmnActStand')
+    loopRest()
+    enterState('CmnActStand')
 
-    @State
-    def EventBGBlackEnd():
-        sprite('keep', 2)
-        PassbackAddActionMarkToFunction('Fade1', 32)
-        enterState('CmnActStand')
 
-    @State
-    def EventJNCreate():
+@State
+def EventBGBlackEnd():
+    sprite('keep', 2)
+    TriggerUponForState('Fade1', 32)
+    enterState('CmnActStand')
 
-        def upon_IMMEDIATE():
-            sendToLabelUpon(32, 1)
-        sprite('keep', 32767)
-        CreateObject('EventJNYoroke', 0)
-        enterState('CmnActStand')
 
-    @State
-    def EventJNCreateToStand():
-        sprite('keep', 2)
-        PassbackAddActionMarkToFunction('EventJNYoroke', 32)
-        enterState('CmnActStand')
+@State
+def EventJNCreate():
 
-    @State
-    def EventJNCreateToDashOut():
-        sprite('keep', 2)
-        PassbackAddActionMarkToFunction('EventJNYoroke', 33)
-        enterState('CmnActStand')
+    def upon_IMMEDIATE():
+        uponSendToLabel(32, 1)
+    sprite('keep', 32767)
+    CreateObject('EventJNYoroke', 0)
+    enterState('CmnActStand')
 
-    @State
-    def EventVSKGLoopONSignal01():
-        sprite('tb432_09', 6)
-        PassbackAddActionMarkToFunction('EventJNYoroke', 32)
-        label(0)
-        sprite('tb432_07', 6)
-        sprite('tb432_08', 6)
-        sprite('tb432_09', 6)
-        loopRest()
-        gotoLabel(0)
 
-    @State
-    def EventVSKGLoopONSignal02():
-        sprite('tb432_09', 6)
-        PassbackAddActionMarkToFunction('EventJNYoroke', 33)
-        label(0)
-        sprite('tb432_07', 6)
-        sprite('tb432_08', 6)
-        sprite('tb432_09', 6)
-        loopRest()
-        gotoLabel(0)
+@State
+def EventJNCreateToStand():
+    sprite('keep', 2)
+    TriggerUponForState('EventJNYoroke', 32)
+    enterState('CmnActStand')
 
-    @State
-    def EventVSKG():
-        sprite('tb432_00', 3)
-        sprite('tb432_01', 3)
-        sprite('tb432_05', 4)
-        sprite('tb432_06', 4)
-        label(0)
-        sprite('tb432_07', 6)
-        sprite('tb432_08', 6)
-        sprite('tb432_09', 6)
-        loopRest()
-        gotoLabel(0)
 
-    @State
-    def EventVSKGEnd():
-        sprite('tb432_17', 6)
-        loopRest()
-        enterState('CmnActStand')
+@State
+def EventJNCreateToDashOut():
+    sprite('keep', 2)
+    TriggerUponForState('EventJNYoroke', 33)
+    enterState('CmnActStand')
 
-    @State
-    def Act2Event_NoDisp():
 
-        def upon_IMMEDIATE():
-            Visibility(1)
+@State
+def EventVSKGLoopONSignal01():
+    sprite('tb432_09', 6)
+    TriggerUponForState('EventJNYoroke', 32)
+    label(0)
+    sprite('tb432_07', 6)
+    sprite('tb432_08', 6)
+    sprite('tb432_09', 6)
+    loopRest()
+    gotoLabel(0)
 
-            def upon_STATE_END():
-                Visibility(0)
-        sprite('null', 32767)
-        loopRest()
 
-    @State
-    def Act2EventStandD():
-        sprite('tb203_00', 6)
-        sprite('tb203_01', 6)
-        label(0)
-        sprite('tb203_02', 6)
-        sprite('tb203_03', 6)
-        sprite('tb203_04', 6)
-        sprite('tb203_05', 6)
-        sprite('tb203_06', 6)
-        loopRest()
-        gotoLabel(0)
+@State
+def EventVSKGLoopONSignal02():
+    sprite('tb432_09', 6)
+    TriggerUponForState('EventJNYoroke', 33)
+    label(0)
+    sprite('tb432_07', 6)
+    sprite('tb432_08', 6)
+    sprite('tb432_09', 6)
+    loopRest()
+    gotoLabel(0)
 
-    @State
-    def Act2EventStandDEnd():
-        sprite('tb203_01', 6)
-        sprite('tb203_00', 6)
-        enterState('CmnActStand')
 
-    @State
-    def Act2Event_Chouhatsu():
-        sprite('tb300_00', 8)
-        sprite('tb300_01', 8)
-        sprite('tb300_02', 8)
-        sprite('tb300_03', 8)
-        sprite('tb300_04', 8)
-        sprite('tb300_05', 8)
-        label(0)
-        sprite('tb300_03', 8)
-        sprite('tb300_04', 8)
-        sprite('tb300_05', 8)
-        loopRest()
-        gotoLabel(0)
+@State
+def EventVSKG():
+    sprite('tb432_00', 3)
+    sprite('tb432_01', 3)
+    sprite('tb432_05', 4)
+    sprite('tb432_06', 4)
+    label(0)
+    sprite('tb432_07', 6)
+    sprite('tb432_08', 6)
+    sprite('tb432_09', 6)
+    loopRest()
+    gotoLabel(0)
 
-    @State
-    def Act2Event_ChouhatsuEnd():
-        sprite('keep', 1)
-        sprite('tb300_03', 6)
-        sprite('tb300_04', 6)
-        sprite('tb300_05', 6)
-        sprite('tb300_06', 6)
-        sprite('tb300_07', 6)
-        sprite('tb300_08', 6)
-        sprite('tb000_00', 1)
-        enterState('CmnActStand')
 
-    @State
-    def Act2Event_EntryLoop():
-        label(0)
-        sprite('tb600_00', 6)
-        sprite('tb600_01', 6)
-        sprite('tb600_02', 6)
-        sprite('tb600_03', 6)
-        loopRest()
-        gotoLabel(0)
+@State
+def EventVSKGEnd():
+    sprite('tb432_17', 6)
+    loopRest()
+    enterState('CmnActStand')
 
-    @State
-    def Act2Event_EntryEnd():
-        sprite('tb600_05', 6)
-        sprite('tb600_06', 6)
-        sprite('tb600_07', 6)
-        sprite('tb600_08', 6)
-        sprite('tb600_09', 6)
-        sprite('tb600_10', 6)
-        sprite('tb600_11', 6)
-        sprite('tb600_12', 6)
-        sprite('tb600_13', 6)
-        sprite('tb600_14', 6)
-        loopRest()
-        enterState('CmnActStand')
 
-    @State
-    def Act2Event_Sad():
-        sprite('tb602_04', 32767)
+@State
+def Act2Event_NoDisp():
 
-    @State
-    def Act2EventShakebvshz_00():
+    def upon_IMMEDIATE():
+        Visibility(1)
 
-        def upon_FRAME_STEP():
-            AddActionMark(1)
-            if (SLOT_2 >= 8):
-                ScreenShake(3000, 2000)
-                AddActionMark(-8)
-                CommonSE('019_quake_0')
-        label(0)
-        sprite('tb000_00', 7)
-        sprite('tb000_01', 7)
-        sprite('tb000_02', 7)
-        sprite('tb000_03', 7)
-        sprite('tb000_04', 7)
-        sprite('tb000_05', 7)
-        sprite('tb000_06', 7)
-        sprite('tb000_07', 7)
-        loopRest()
-        gotoLabel(0)
+        def upon_STATE_END():
+            Visibility(0)
+    sprite('null', 32767)
+    loopRest()
 
-    @State
-    def Act2Event_Reaction():
-        sprite('tb001_00', 6)
-        sprite('tb001_01', 6)
-        CommonSE('019_cloth_a')
-        sprite('tb001_02', 6)
-        sprite('tb001_03', 6)
-        sprite('tb001_04', 6)
-        sprite('tb001_05', 6)
-        sprite('tb001_06', 6)
-        sprite('tb001_07', 6)
-        sprite('tb001_08', 6)
-        sprite('tb001_09', 6)
-        sprite('tb001_10', 6)
-        loopRest()
-        enterState('CmnActStand')
 
-    @State
-    def Act2Event_TimeUp():
-        sprite('tb620_00', 6)
-        sprite('tb620_01', 6)
-        sprite('tb620_02', 4)
-        sprite('tb620_03', 6)
-        sprite('tb620_04', 6)
-        sprite('tb620_05', 5)
-        LandingEffects(100, 1, 1)
-        sprite('tb620_06', 5)
-        sprite('tb620_07', 5)
-        sprite('tb620_08', 32767)
-        loopRest()
+@State
+def Act2EventStandD():
+    sprite('tb203_00', 6)
+    sprite('tb203_01', 6)
+    label(0)
+    sprite('tb203_02', 6)
+    sprite('tb203_03', 6)
+    sprite('tb203_04', 6)
+    sprite('tb203_05', 6)
+    sprite('tb203_06', 6)
+    loopRest()
+    gotoLabel(0)
 
-    @State
-    def Act2Event_WalkIn():
 
-        def upon_IMMEDIATE():
-            ScreenCollision(0)
-            XPositionRelativeFacing(-720000)
+@State
+def Act2EventStandDEnd():
+    sprite('tb203_01', 6)
+    sprite('tb203_00', 6)
+    enterState('CmnActStand')
 
-            def upon_FRAME_STEP():
-                if SLOT_38:
-                    if (SLOT_22 < 260000):
-                        clearUponHandler(3)
-                        XPositionRelativeFacing(-260000)
-                        EndMomentum(1)
-                        sendToLabel(0)
-                elif (SLOT_22 > (-260000)):
-                    clearUponHandler(3)
+
+@State
+def Act2Event_Chouhatsu():
+    sprite('tb300_00', 8)
+    sprite('tb300_01', 8)
+    sprite('tb300_02', 8)
+    sprite('tb300_03', 8)
+    sprite('tb300_04', 8)
+    sprite('tb300_05', 8)
+    label(0)
+    sprite('tb300_03', 8)
+    sprite('tb300_04', 8)
+    sprite('tb300_05', 8)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act2Event_ChouhatsuEnd():
+    sprite('keep', 1)
+    sprite('tb300_03', 6)
+    sprite('tb300_04', 6)
+    sprite('tb300_05', 6)
+    sprite('tb300_06', 6)
+    sprite('tb300_07', 6)
+    sprite('tb300_08', 6)
+    sprite('tb000_00', 1)
+    enterState('CmnActStand')
+
+
+@State
+def Act2Event_EntryLoop():
+    label(0)
+    sprite('tb600_00', 6)
+    sprite('tb600_01', 6)
+    sprite('tb600_02', 6)
+    sprite('tb600_03', 6)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act2Event_EntryEnd():
+    sprite('tb600_05', 6)
+    sprite('tb600_06', 6)
+    sprite('tb600_07', 6)
+    sprite('tb600_08', 6)
+    sprite('tb600_09', 6)
+    sprite('tb600_10', 6)
+    sprite('tb600_11', 6)
+    sprite('tb600_12', 6)
+    sprite('tb600_13', 6)
+    sprite('tb600_14', 6)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act2Event_Sad():
+    sprite('tb602_04', 32767)
+
+
+@State
+def Act2EventShakebvshz_00():
+
+    def upon_EVERY_FRAME():
+        AddActionMark(1)
+        if SLOT_2 >= 8:
+            ScreenShake(3000, 2000)
+            AddActionMark(-8)
+            CommonSE('019_quake_0')
+    label(0)
+    sprite('tb000_00', 7)
+    sprite('tb000_01', 7)
+    sprite('tb000_02', 7)
+    sprite('tb000_03', 7)
+    sprite('tb000_04', 7)
+    sprite('tb000_05', 7)
+    sprite('tb000_06', 7)
+    sprite('tb000_07', 7)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act2Event_Reaction():
+    sprite('tb001_00', 6)
+    sprite('tb001_01', 6)
+    CommonSE('019_cloth_a')
+    sprite('tb001_02', 6)
+    sprite('tb001_03', 6)
+    sprite('tb001_04', 6)
+    sprite('tb001_05', 6)
+    sprite('tb001_06', 6)
+    sprite('tb001_07', 6)
+    sprite('tb001_08', 6)
+    sprite('tb001_09', 6)
+    sprite('tb001_10', 6)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act2Event_TimeUp():
+    sprite('tb620_00', 6)
+    sprite('tb620_01', 6)
+    sprite('tb620_02', 4)
+    sprite('tb620_03', 6)
+    sprite('tb620_04', 6)
+    sprite('tb620_05', 5)
+    LandingEffects(100, 1, 1)
+    sprite('tb620_06', 5)
+    sprite('tb620_07', 5)
+    sprite('tb620_08', 32767)
+    loopRest()
+
+
+@State
+def Act2Event_WalkIn():
+
+    def upon_IMMEDIATE():
+        ScreenCollision(0)
+        XPositionRelativeFacing(-720000)
+
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-        sprite('tb030_00', 7)
-        physicsXImpulse(4650)
-        sprite('tb030_01', 7)
-        label(9)
-        sprite('tb030_02', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_03', 7)
-        sprite('tb030_04', 7)
-        sprite('tb030_05', 7)
-        sprite('tb030_06', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_07', 7)
-        sprite('tb030_08', 7)
-        sprite('tb030_09', 7)
-        loopRest()
-        gotoLabel(9)
-        label(0)
-        sprite('keep', 1)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act2Event_RunIn():
-
-        def upon_IMMEDIATE():
-            XPositionRelativeFacing(-900000)
-            ScreenCollision(0)
-
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 360000):
-                    sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-360000)):
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
+                XPositionRelativeFacing(-260000)
+                EndMomentum(1)
                 sendToLabel(0)
-                clearUponHandler(3)
-        sprite('tb032_00', 2)
-        physicsXImpulse(24000)
-        label(9)
-        sprite('tb032_01', 2)
-        sprite('tb032_02', 4)
-        sprite('tb032_03', 4)
-        DashEffects(100, 1, 1)
-        sprite('tb032_04', 4)
-        sprite('tb032_05', 4)
-        sprite('tb032_06', 4)
-        DashEffects(100, 1, 1)
-        sprite('tb032_07', 4)
-        sprite('tb032_08', 4)
-        loopRest()
-        gotoLabel(9)
-        label(0)
-        sprite('tb032_09', 6)
-        physicsXImpulse(0)
-        SetInertia(10000)
-        sprite('tb032_10', 6)
-        loopRest()
-        EndMomentum(1)
-        XPositionRelativeFacing(-260000)
-        enterState('CmnActStand')
+    sprite('tb030_00', 7)
+    physicsXImpulse(4650)
+    sprite('tb030_01', 7)
+    label(9)
+    sprite('tb030_02', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_03', 7)
+    sprite('tb030_04', 7)
+    sprite('tb030_05', 7)
+    sprite('tb030_06', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_07', 7)
+    sprite('tb030_08', 7)
+    sprite('tb030_09', 7)
+    loopRest()
+    gotoLabel(9)
+    label(0)
+    sprite('keep', 1)
+    loopRest()
+    enterState('CmnActStand')
 
-    @State
-    def Act2Event_hbvstb_00():
 
-        def upon_IMMEDIATE():
-            XPositionRelativeFacing(-900000)
-            ScreenCollision(0)
+@State
+def Act2Event_RunIn():
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 360000):
-                    sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-360000)):
+    def upon_IMMEDIATE():
+        XPositionRelativeFacing(-900000)
+        ScreenCollision(0)
+
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_XDistanceFromCenterOfStage < 360000:
                 sendToLabel(0)
-                clearUponHandler(3)
-        sprite('tb032_00', 2)
-        physicsXImpulse(24000)
-        label(9)
-        sprite('tb032_01', 2)
-        sprite('tb032_02', 4)
-        sprite('tb032_03', 4)
-        DashEffects(100, 1, 1)
-        sprite('tb032_04', 4)
-        sprite('tb032_05', 4)
-        sprite('tb032_06', 4)
-        DashEffects(100, 1, 1)
-        sprite('tb032_07', 4)
-        sprite('tb032_08', 4)
-        loopRest()
-        gotoLabel(9)
-        label(0)
-        sprite('tb032_09', 6)
-        physicsXImpulse(0)
-        SetInertia(10000)
-        sprite('tb032_10', 6)
-        loopRest()
-        EndMomentum(1)
-        XPositionRelativeFacing(-260000)
-        enterState('CmnActStand')
+                clearUponHandler(EVERY_FRAME)
+        elif SLOT_XDistanceFromCenterOfStage > -360000:
+            sendToLabel(0)
+            clearUponHandler(EVERY_FRAME)
+    sprite('tb032_00', 2)
+    physicsXImpulse(24000)
+    label(9)
+    sprite('tb032_01', 2)
+    sprite('tb032_02', 4)
+    sprite('tb032_03', 4)
+    DashEffects(100, 1, 1)
+    sprite('tb032_04', 4)
+    sprite('tb032_05', 4)
+    sprite('tb032_06', 4)
+    DashEffects(100, 1, 1)
+    sprite('tb032_07', 4)
+    sprite('tb032_08', 4)
+    loopRest()
+    gotoLabel(9)
+    label(0)
+    sprite('tb032_09', 6)
+    physicsXImpulse(0)
+    SetInertia(10000)
+    sprite('tb032_10', 6)
+    loopRest()
+    EndMomentum(1)
+    XPositionRelativeFacing(-260000)
+    enterState('CmnActStand')
 
-    @State
-    def Act2Event_hbvstb_01():
-        sprite('tb070_03', 32767)
-        loopRest()
 
-    @State
-    def Act2Event_hbvstb_02():
-        sprite('tb070_03', 20)
-        sprite('tb070_10', 6)
-        sprite('tb070_11', 6)
-        sprite('tb070_12', 6)
-        sprite('tb070_13', 6)
-        loopRest()
-        enterState('CmnActStand')
+@State
+def Act2Event_hbvstb_00():
 
-    @State
-    def Act2EventWalkEntryWait_tbvshz():
-        sprite('null', 1)
+    def upon_IMMEDIATE():
+        XPositionRelativeFacing(-900000)
+        ScreenCollision(0)
+
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_XDistanceFromCenterOfStage < 360000:
+                sendToLabel(0)
+                clearUponHandler(EVERY_FRAME)
+        elif SLOT_XDistanceFromCenterOfStage > -360000:
+            sendToLabel(0)
+            clearUponHandler(EVERY_FRAME)
+    sprite('tb032_00', 2)
+    physicsXImpulse(24000)
+    label(9)
+    sprite('tb032_01', 2)
+    sprite('tb032_02', 4)
+    sprite('tb032_03', 4)
+    DashEffects(100, 1, 1)
+    sprite('tb032_04', 4)
+    sprite('tb032_05', 4)
+    sprite('tb032_06', 4)
+    DashEffects(100, 1, 1)
+    sprite('tb032_07', 4)
+    sprite('tb032_08', 4)
+    loopRest()
+    gotoLabel(9)
+    label(0)
+    sprite('tb032_09', 6)
+    physicsXImpulse(0)
+    SetInertia(10000)
+    sprite('tb032_10', 6)
+    loopRest()
+    EndMomentum(1)
+    XPositionRelativeFacing(-260000)
+    enterState('CmnActStand')
+
+
+@State
+def Act2Event_hbvstb_01():
+    sprite('tb070_03', 32767)
+    loopRest()
+
+
+@State
+def Act2Event_hbvstb_02():
+    sprite('tb070_03', 20)
+    sprite('tb070_10', 6)
+    sprite('tb070_11', 6)
+    sprite('tb070_12', 6)
+    sprite('tb070_13', 6)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act2EventWalkEntryWait_tbvshz():
+    sprite('null', 1)
+    ScreenCollision(0)
+    EnableCollision(0)
+    sprite('null', 1)
+    XPositionRelativeFacing(-2200000)
+    sprite('null', 32767)
+    loopRest()
+
+
+@State
+def Act2EventWalkEntry_tbvshz01():
+
+    def upon_32():
+        CameraControlEnable(0)
+    CameraControlEnable(1)
+    ScreenCollision(0)
+    SetActionMark(1)
+
+    def upon_EVERY_FRAME():
+        if SLOT_2:
+            if SLOT_19 < 1610000:
+                SetActionMark(0)
+                sendToLabel(1)
+    sprite('tb030_00', 7)
+    physicsXImpulse(4800)
+    sprite('tb030_01', 4)
+    label(0)
+    sprite('tb030_02', 7)
+    sprite('tb030_03', 7)
+    sprite('tb030_04', 7)
+    sprite('tb030_05', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_06', 7)
+    sprite('tb030_07', 7)
+    sprite('tb030_08', 7)
+    sprite('tb030_09', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    sprite('tb030_01', 4)
+    EndMomentum(1)
+    sprite('tb030_00', 4)
+    loopRest()
+    label(2)
+    sprite('tb000_00', 7)
+    sprite('tb000_01', 7)
+    sprite('tb000_02', 7)
+    sprite('tb000_03', 7)
+    sprite('tb000_04', 7)
+    sprite('tb000_05', 7)
+    sprite('tb000_06', 7)
+    sprite('tb000_07', 7)
+    loopRest()
+    gotoLabel(2)
+
+
+@State
+def Act2EventEntryWalk_tbvshz02():
+    sprite('tb030_00', 4)
+    ScreenCollision(0)
+    physicsXImpulse(4000)
+    sprite('tb030_01', 4)
+    sprite('tb030_02', 7)
+    sprite('tb030_03', 7)
+    sprite('tb030_04', 7)
+    sprite('tb030_05', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_06', 7)
+    sprite('tb030_07', 7)
+    sprite('tb030_08', 7)
+    sprite('tb030_09', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_02', 7)
+    sprite('tb030_03', 7)
+    sprite('tb030_04', 7)
+    sprite('tb030_05', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_06', 7)
+    sprite('tb030_07', 7)
+    sprite('tb030_08', 7)
+    sprite('tb030_09', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_02', 7)
+    sprite('tb030_03', 7)
+    sprite('tb030_04', 7)
+    sprite('tb030_05', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_06', 7)
+    sprite('tb030_07', 7)
+    sprite('tb030_08', 7)
+    XImpulseAcceleration(90)
+    sprite('tb030_09', 7)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('tb030_01', 4)
+    sprite('tb030_00', 4)
+    EndMomentum(1)
+    XPositionRelativeFacing(-260000)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act2EventEntryWalkWait_tbvshz():
+    sprite('null', 32767)
+    XPositionRelativeFacing(-960000)
+    ScreenCollision(0)
+
+
+@State
+def Act2Event_hbvstb_03():
+    sprite('tb032_00', 3)
+    physicsXImpulse(12000)
+    sprite('tb032_01', 3)
+    sprite('tb032_02', 6)
+    sprite('tb032_03', 6)
+    sprite('tb620_00', 6)
+    physicsXImpulse(0)
+    SetInertia(3000)
+    sprite('tb620_01', 6)
+    sprite('tb620_02', 4)
+    sprite('tb620_03', 6)
+    sprite('tb620_04', 6)
+    sprite('tb620_05', 5)
+    EndMomentum(1)
+    LandingEffects(100, 1, 1)
+    sprite('tb620_06', 5)
+    sprite('tb620_07', 5)
+    sprite('tb620_08', 32767)
+
+
+@State
+def Act2Event_blvstb_00():
+
+    def upon_IMMEDIATE():
+        XPositionRelativeFacing(-200000)
+    sprite('tb070_03', 32767)
+    loopRest()
+
+
+@State
+def Act2Event_blvstb_01():
+
+    def upon_IMMEDIATE():
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+    sprite('tb070_02', 6)
+    sprite('tb070_03', 6)
+    sprite('tb070_10', 6)
+    sprite('tb070_11', 6)
+    sprite('tb070_12', 6)
+    sprite('tb070_13', 6)
+    label(9)
+    sprite('tb000_00', 7)
+    sprite('tb000_01', 7)
+    sprite('tb000_02', 7)
+    sprite('tb000_03', 7)
+    sprite('tb000_04', 7)
+    sprite('tb000_05', 7)
+    sprite('tb000_06', 7)
+    sprite('tb000_07', 7)
+    loopRest()
+    gotoLabel(9)
+    label(0)
+    sprite('tb070_00', 3)
+    sprite('tb062_01', 32767)
+    FloorCollision(0)
+    AddX(80000)
+    AddY(-50000)
+    loopRest()
+    label(1)
+    sprite('tb620_04', 7)
+    AddX(-50000)
+    AbsoluteY(0)
+    FloorCollision(1)
+    sprite('tb620_05', 7)
+    LandingEffects(100, 1, 1)
+    sprite('tb620_06', 7)
+    sprite('tb620_07', 7)
+    sprite('tb620_08', 32767)
+    loopRest()
+
+
+@State
+def EventExciteLoop_tbvsbn():
+    label(0)
+    sprite('tb300_03', 6)
+    sprite('tb300_04', 6)
+    sprite('tb300_05', 6)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act2EventWinNabiki_Loop():
+    sprite('tb615_00', 4)
+    CommonSE('008_swing_pole_0')
+    sprite('tb615_01', 4)
+    CommonSE('008_swing_pole_0')
+    sprite('tb615_02', 4)
+    CommonSE('008_swing_pole_0')
+    sprite('tb615_03', 3)
+    CommonSE('008_swing_pole_0')
+    sprite('tb615_03', 1)
+    sprite('tb615_04', 5)
+    sprite('tb615_05', 5)
+    sprite('tb615_06', 32767)
+
+
+@State
+def Act2EventWinNabiki_End():
+    sprite('tb615_05', 6)
+    sprite('tb615_04', 6)
+    sprite('tb615_03', 4)
+    sprite('tb615_02', 4)
+    sprite('tb615_01', 4)
+    sprite('tb615_00', 4)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act2Event_tbvsmi_00():
+    sprite('tb611_00', 6)
+    sprite('tb611_01', 6)
+    sprite('tb611_09', 6)
+    sprite('tb611_10', 6)
+    sprite('tb611_11', 6)
+    sprite('tb611_12', 6)
+    sprite('tb611_13', 32767)
+    loopRest()
+
+
+@State
+def Act2Event_tbvsmi_01():
+    sprite('keep', 32767)
+    CreateObject('Act2Event_Fade', -1)
+    CommonSE('022_magiccircle_c')
+    ConstantAlphaModifier(-4)
+
+    def RunOnObject_22():
+        ConstantAlphaModifier(-4)
+    loopRest()
+
+
+@State
+def Act2Event_tbvsmi_00toStand():
+    sprite('tb611_12', 6)
+    sprite('tb611_11', 6)
+    sprite('tb611_10', 6)
+    sprite('tb611_09', 6)
+    sprite('tb611_01', 6)
+    sprite('tb611_00', 6)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act2Event_havstb_00():
+    sprite('tb432_00', 7)
+    sprite('tb432_01', 7)
+    label(0)
+    sprite('tb432_02', 7)
+    PrivateSE('tbse_00_0')
+    sprite('tb432_03', 7)
+    sprite('tb432_04', 7)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act2Event_havstb_01():
+    sprite('tb432_05', 7)
+    sprite('tb432_06', 7)
+    label(0)
+    sprite('tb432_07', 6)
+    PrivateSE('tbse_00_0')
+    sprite('tb432_08', 6)
+    sprite('tb432_09', 6)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act2Event_havstb_02():
+    sprite('tb432_17', 6)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act2Event_havstb_03():
+    sprite('tb611_12', 6)
+    sprite('tb611_11', 6)
+    sprite('tb620_03', 6)
+    sprite('tb620_04', 6)
+    sprite('tb620_05', 5)
+    LandingEffects(100, 1, 1)
+    sprite('tb620_06', 5)
+    sprite('tb620_07', 5)
+    sprite('tb620_08', 32767)
+    loopRest()
+
+
+@State
+def Act2Event_havstb_04():
+    sprite('tb620_08', 32767)
+    CreateObject('Act2Event_Yure', -1)
+    loopRest()
+
+
+@State
+def Act2EventTKvsTB():
+
+    def upon_IMMEDIATE():
+        uponSendToLabel(32, 1)
+        EnableCollision(0)
+    label(0)
+    sprite('tb000_00', 7)
+    sprite('tb000_01', 7)
+    sprite('tb000_02', 7)
+    sprite('tb000_03', 7)
+    sprite('tb000_04', 7)
+    sprite('tb000_05', 7)
+    sprite('tb000_06', 7)
+    sprite('tb000_07', 7)
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    sprite('tb312_01', 3)
+    sprite('tb312_02', 3)
+    sprite('tb312_03', 20)
+    CreateObject('Act2Event_NagenukeEff', -1)
+    CommonSE('107_throw_comeout')
+    sprite('tb312_04', 3)
+    sprite('tb312_05', 3)
+    sprite('tb312_06', 3)
+    sprite('tb312_07', 3)
+    sprite('tb312_08', 2)
+    sprite('tb312_09', 2)
+    XPositionRelativeFacing(-260000)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_rgvstb_00():
+    sprite('tb202_00', 3)
+    sprite('tb202_01', 4)
+    sprite('tb202_02', 5)
+    sprite('tb202_03', 4)
+    sprite('tb202_04', 3)
+    CommonSE('007_swing_knife_0')
+    sprite('tb202_05', 3)
+    sprite('tb202_06', 5)
+    sprite('tb202_07', 5)
+    sprite('tb202_08', 5)
+    sprite('tb202_08', 4)
+    sprite('tb202_09', 4)
+    sprite('tb202_10', 4)
+    sprite('tb202_11', 4)
+    sprite('tb202_12', 4)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_rgvstb_01():
+    sprite('tb611_00', 6)
+    sprite('tb611_01', 6)
+    label(0)
+    sprite('tb611_02', 6)
+    sprite('tb611_03', 6)
+    sprite('tb611_04', 6)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act3Event_rgvstb_02():
+    sprite('keep', 2)
+    sprite('tb611_01', 7)
+    sprite('tb611_00', 7)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_rgvstb_03():
+
+    def upon_IMMEDIATE():
+        XPositionRelativeFacing(-160000)
+    sprite('tb000_00', 7)
+    sprite('tb070_00', 17)
+    ParticleRandomRotation()
+    CallCustomizableParticle('ef_hitmz', 103)
+    CommonSE('101_hit_slash_1')
+    ScreenShake(1000, 20000)
+    sprite('tb070_00', 4)
+    AddInertia(-11000)
+    sprite('tb070_01', 4)
+    sprite('tb070_02', 4)
+    sprite('tb070_03', 32767)
+    loopRest()
+
+
+@State
+def Act3Event_rgvstb_04():
+
+    def upon_IMMEDIATE():
+        StayAfterMovement(1, 0)
+    sprite('tb070_04', 5)
+    sprite('tb070_05', 5)
+    sprite('tb070_06', 5)
+    sprite('tb070_07', 5)
+    sprite('tb070_08', 5)
+    sprite('tb070_09', 5)
+    sprite('tb063_11', 32767)
+    LandingEffects(100, 1, 0)
+    CommonSE('209_down_normal_0')
+    AddX(140000)
+    loopRest()
+
+
+@State
+def Act3Event_jnvstb_00():
+    sprite('tb001_00', 6)
+    sprite('tb001_01', 6)
+    CommonSE('019_cloth_a')
+    sprite('tb001_02', 6)
+    sprite('tb001_03', 6)
+    sprite('tb001_04', 6)
+    sprite('tb001_05', 6)
+    sprite('tb001_06', 6)
+    sprite('tb001_07', 6)
+    sprite('tb001_08', 6)
+    sprite('tb001_09', 6)
+    sprite('tb001_10', 6)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_tbvsca_00():
+    label(6)
+    sprite('tb611_02', 6)
+    sprite('tb611_03', 6)
+    sprite('tb611_04', 6)
+    loopRest()
+    gotoLabel(6)
+
+
+@State
+def Act3Event_tbvshb_00():
+    sprite('tb032_00', 2)
+    physicsXImpulse(24000)
+    sprite('tb032_01', 2)
+    sprite('tb032_02', 4)
+    sprite('tb032_03', 4)
+    DashEffects(100, 1, 1)
+    loopRest()
+    sprite('tb032_09', 6)
+    physicsXImpulse(0)
+    SetInertia(10000)
+    sprite('tb032_10', 6)
+    EndMomentum(1)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_tbvshb_01():
+    sprite('tb312_01', 3)
+    sprite('tb312_02', 3)
+    sprite('tb312_03', 20)
+    CreateObject('Act2Event_NagenukeEff', -1)
+    CommonSE('107_throw_comeout')
+    ObjectUpon(22, 32)
+    sprite('tb312_04', 3)
+    sprite('tb312_05', 3)
+    sprite('tb312_06', 3)
+    sprite('tb312_07', 3)
+    sprite('tb312_08', 2)
+    sprite('tb312_09', 2)
+    XPositionRelativeFacing(-260000)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_tbvshb_02_Loop():
+    sprite('tb407_00', 3)
+    CommonSE('019_cloth_a')
+    sprite('tb407_25', 5)
+    sprite('tb407_26', 5)
+    sprite('tb407_27', 5)
+    sprite('tb407_28', 5)
+    sprite('tb407_29', 32767)
+
+
+@State
+def Act3Event_tbvshb_02_LoopEnd():
+    sprite('tb407_30', 5)
+    sprite('tb407_31', 5)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_tbvshz_00_Loop():
+
+    def upon_IMMEDIATE():
+        pass
+    sprite('tb406_00', 2)
+    sprite('tb406_01', 2)
+    LandingEffects(0, 1, 1)
+    CreateObject('EffectAura', 0)
+    PrivateSE('tbse_03')
+    sprite('tb406_02', 2)
+    sprite('tb406_03', 2)
+    sprite('tb406_04', 2)
+    sprite('tb406_05', 2)
+    sprite('tb406_06', 2)
+    label(0)
+    sprite('tb406_07', 5)
+    sprite('tb406_08', 5)
+    sprite('tb406_09', 5)
+    loopRest()
+    gotoLabel(0)
+
+
+@State
+def Act3Event_tbvshz_00_LoopEnd():
+    sprite('tb406_10', 3)
+    sprite('tb406_11', 3)
+    sprite('tb406_12', 3)
+    GravityDefault()
+    LandingEffects(0, 1, 1)
+    sprite('tb406_13', 3)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_tbvshz_00():
+
+    def upon_IMMEDIATE():
+        NoAttackDuringAction(1)
+    sprite('tb212_08', 1)
+    physicsXImpulse(0)
+    sprite('tb212_08', 1)
+    sprite('tb212_08', 1)
+    sprite('tb212_09', 1)
+    sprite('tb212_09', 1)
+    sprite('tb212_09', 1)
+    sprite('tb212_10', 1)
+    sprite('tb212_11', 3)
+    sprite('tb212_12', 3)
+    sprite('tb212_13', 1)
+    sprite('tb212_13', 2)
+    sprite('tb212_14', 2)
+    sprite('tb212_14ex01', 2)
+    sprite('tb212_14ex02', 2)
+    sprite('tb212_15', 3)
+    sprite('tb212_16', 3)
+    sprite('tb212_17', 3)
+    sprite('tb212_18', 3)
+    sprite('tb212_19', 3)
+    sprite('tb212_20', 3)
+    sprite('tb212_21', 2)
+    CreateObject('TBEF_ArmSummon', 0)
+    sprite('tb212_22', 2)
+    loopRest()
+    enterState('CmnActStand')
+
+
+@State
+def Act3Event_tbvshz_01():
+
+    def upon_IMMEDIATE():
         ScreenCollision(0)
         EnableCollision(0)
-        sprite('null', 1)
-        XPositionRelativeFacing(-2200000)
-        sprite('null', 32767)
-        loopRest()
+    sprite('tb032_00', 2)
+    physicsXImpulse(-24000)
+    Flip()
+    SetActionMark(5)
+    label(9)
+    sprite('tb032_01', 2)
+    AddActionMark(-1)
+    sprite('tb032_02', 4)
+    sprite('tb032_03', 4)
+    DashEffects(100, 1, 1)
+    sprite('tb032_04', 4)
+    sprite('tb032_05', 4)
+    sprite('tb032_06', 4)
+    DashEffects(100, 1, 1)
+    sprite('tb032_07', 4)
+    sprite('tb032_08', 4)
+    loopRest()
+    if SLOT_2:
+        conditionalSendToLabel(9)
+    label(0)
+    sprite('null', 32767)
+    EndMomentum(1)
+    Visibility(1)
 
-    @State
-    def Act2EventWalkEntry_tbvshz01():
 
-        def upon_32():
-            CameraControlEnable(0)
-        CameraControlEnable(1)
-        ScreenCollision(0)
-        SetActionMark(1)
+@State
+def Act3Event_tbvsjn_00():
+    sprite('null', 32767)
+    Visibility(1)
+    CreateObject('EventNoYoroke', 0)
+    loopRest()
 
-        def upon_FRAME_STEP():
-            if SLOT_2:
-                if (SLOT_19 < 1610000):
-                    SetActionMark(0)
-                    sendToLabel(1)
-        sprite('tb030_00', 7)
-        physicsXImpulse(4800)
-        sprite('tb030_01', 4)
-        label(0)
-        sprite('tb030_02', 7)
-        sprite('tb030_03', 7)
-        sprite('tb030_04', 7)
-        sprite('tb030_05', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_06', 7)
-        sprite('tb030_07', 7)
-        sprite('tb030_08', 7)
-        sprite('tb030_09', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        loopRest()
-        gotoLabel(0)
-        label(1)
-        sprite('tb030_01', 4)
-        EndMomentum(1)
-        sprite('tb030_00', 4)
-        loopRest()
-        label(2)
-        sprite('tb000_00', 7)
-        sprite('tb000_01', 7)
-        sprite('tb000_02', 7)
-        sprite('tb000_03', 7)
-        sprite('tb000_04', 7)
-        sprite('tb000_05', 7)
-        sprite('tb000_06', 7)
-        sprite('tb000_07', 7)
-        loopRest()
-        gotoLabel(2)
 
-    @State
-    def Act2EventEntryWalk_tbvshz02():
-        sprite('tb030_00', 4)
-        ScreenCollision(0)
-        physicsXImpulse(4000)
-        sprite('tb030_01', 4)
-        sprite('tb030_02', 7)
-        sprite('tb030_03', 7)
-        sprite('tb030_04', 7)
-        sprite('tb030_05', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_06', 7)
-        sprite('tb030_07', 7)
-        sprite('tb030_08', 7)
-        sprite('tb030_09', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_02', 7)
-        sprite('tb030_03', 7)
-        sprite('tb030_04', 7)
-        sprite('tb030_05', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_06', 7)
-        sprite('tb030_07', 7)
-        sprite('tb030_08', 7)
-        sprite('tb030_09', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_02', 7)
-        sprite('tb030_03', 7)
-        sprite('tb030_04', 7)
-        sprite('tb030_05', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_06', 7)
-        sprite('tb030_07', 7)
-        sprite('tb030_08', 7)
-        XImpulseAcceleration(90)
-        sprite('tb030_09', 7)
-        SFX_FOOTSTEP_(100, 1, 1)
-        sprite('tb030_01', 4)
-        sprite('tb030_00', 4)
-        EndMomentum(1)
-        XPositionRelativeFacing(-260000)
-        loopRest()
-        enterState('CmnActStand')
+@State
+def Act3Event_tbvsjn_01():
+    sprite('keep', 1)
+    TriggerUponForState('EventNoYoroke', 33)
+    loopRest()
+    enterState('CmnActStand')
 
-    @State
-    def Act2EventEntryWalkWait_tbvshz():
-        sprite('null', 32767)
-        XPositionRelativeFacing(-960000)
-        ScreenCollision(0)
 
-    @State
-    def Act2Event_hbvstb_03():
-        sprite('tb032_00', 3)
-        physicsXImpulse(12000)
-        sprite('tb032_01', 3)
-        sprite('tb032_02', 6)
-        sprite('tb032_03', 6)
-        sprite('tb620_00', 6)
-        physicsXImpulse(0)
-        SetInertia(3000)
-        sprite('tb620_01', 6)
-        sprite('tb620_02', 4)
-        sprite('tb620_03', 6)
-        sprite('tb620_04', 6)
-        sprite('tb620_05', 5)
-        EndMomentum(1)
-        LandingEffects(100, 1, 1)
-        sprite('tb620_06', 5)
-        sprite('tb620_07', 5)
-        sprite('tb620_08', 32767)
+@State
+def Act3Event_tbvsjn_02():
 
-    @State
-    def Act2Event_blvstb_00():
+    def upon_IMMEDIATE():
+        NoAttackDuringAction(1)
+    sprite('tb611_00', 6)
+    TriggerUponForState('EventNoYoroke', 33)
+    sprite('tb611_01', 6)
+    label(6)
+    sprite('tb611_02', 6)
+    sprite('tb611_03', 6)
+    sprite('tb611_04', 6)
+    loopRest()
+    gotoLabel(6)
 
-        def upon_IMMEDIATE():
-            XPositionRelativeFacing(-200000)
-        sprite('tb070_03', 32767)
-        loopRest()
 
-    @State
-    def Act2Event_blvstb_01():
-
-        def upon_IMMEDIATE():
-            sendToLabelUpon(32, 0)
-            sendToLabelUpon(33, 1)
-        sprite('tb070_02', 6)
-        sprite('tb070_03', 6)
-        sprite('tb070_10', 6)
-        sprite('tb070_11', 6)
-        sprite('tb070_12', 6)
-        sprite('tb070_13', 6)
-        label(9)
-        sprite('tb000_00', 7)
-        sprite('tb000_01', 7)
-        sprite('tb000_02', 7)
-        sprite('tb000_03', 7)
-        sprite('tb000_04', 7)
-        sprite('tb000_05', 7)
-        sprite('tb000_06', 7)
-        sprite('tb000_07', 7)
-        loopRest()
-        gotoLabel(9)
-        label(0)
-        sprite('tb070_00', 3)
-        sprite('tb062_01', 32767)
-        FloorCollision(0)
-        AddX(80000)
-        AddY(-50000)
-        loopRest()
-        label(1)
-        sprite('tb620_04', 7)
-        AddX(-50000)
-        AbsoluteY(0)
-        FloorCollision(1)
-        sprite('tb620_05', 7)
-        LandingEffects(100, 1, 1)
-        sprite('tb620_06', 7)
-        sprite('tb620_07', 7)
-        sprite('tb620_08', 32767)
-        loopRest()
-
-    @State
-    def EventExciteLoop_tbvsbn():
-        label(0)
-        sprite('tb300_03', 6)
-        sprite('tb300_04', 6)
-        sprite('tb300_05', 6)
-        loopRest()
-        gotoLabel(0)
-
-    @State
-    def Act2EventWinNabiki_Loop():
-        sprite('tb615_00', 4)
-        CommonSE('008_swing_pole_0')
-        sprite('tb615_01', 4)
-        CommonSE('008_swing_pole_0')
-        sprite('tb615_02', 4)
-        CommonSE('008_swing_pole_0')
-        sprite('tb615_03', 3)
-        CommonSE('008_swing_pole_0')
-        sprite('tb615_03', 1)
-        sprite('tb615_04', 5)
-        sprite('tb615_05', 5)
-        sprite('tb615_06', 32767)
-
-    @State
-    def Act2EventWinNabiki_End():
-        sprite('tb615_05', 6)
-        sprite('tb615_04', 6)
-        sprite('tb615_03', 4)
-        sprite('tb615_02', 4)
-        sprite('tb615_01', 4)
-        sprite('tb615_00', 4)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act2Event_tbvsmi_00():
-        sprite('tb611_00', 6)
-        sprite('tb611_01', 6)
-        sprite('tb611_09', 6)
-        sprite('tb611_10', 6)
-        sprite('tb611_11', 6)
-        sprite('tb611_12', 6)
-        sprite('tb611_13', 32767)
-        loopRest()
-
-    @State
-    def Act2Event_tbvsmi_01():
-        sprite('keep', 32767)
-        CreateObject('Act2Event_Fade', -1)
-        CommonSE('022_magiccircle_c')
-        ConstantAlphaModifier(-4)
-        ApplyFunctionsToObjects(22)
-        ConstantAlphaModifier(-4)
-        ApplyFunctionsToSelf()
-        loopRest()
-
-    @State
-    def Act2Event_tbvsmi_00toStand():
-        sprite('tb611_12', 6)
-        sprite('tb611_11', 6)
-        sprite('tb611_10', 6)
-        sprite('tb611_09', 6)
-        sprite('tb611_01', 6)
-        sprite('tb611_00', 6)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act2Event_havstb_00():
-        sprite('tb432_00', 7)
-        sprite('tb432_01', 7)
-        label(0)
-        sprite('tb432_02', 7)
-        PrivateSE('tbse_00_0')
-        sprite('tb432_03', 7)
-        sprite('tb432_04', 7)
-        loopRest()
-        gotoLabel(0)
-
-    @State
-    def Act2Event_havstb_01():
-        sprite('tb432_05', 7)
-        sprite('tb432_06', 7)
-        label(0)
-        sprite('tb432_07', 6)
-        PrivateSE('tbse_00_0')
-        sprite('tb432_08', 6)
-        sprite('tb432_09', 6)
-        loopRest()
-        gotoLabel(0)
-
-    @State
-    def Act2Event_havstb_02():
-        sprite('tb432_17', 6)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act2Event_havstb_03():
-        sprite('tb611_12', 6)
-        sprite('tb611_11', 6)
-        sprite('tb620_03', 6)
-        sprite('tb620_04', 6)
-        sprite('tb620_05', 5)
-        LandingEffects(100, 1, 1)
-        sprite('tb620_06', 5)
-        sprite('tb620_07', 5)
-        sprite('tb620_08', 32767)
-        loopRest()
-
-    @State
-    def Act2Event_havstb_04():
-        sprite('tb620_08', 32767)
-        CreateObject('Act2Event_Yure', -1)
-        loopRest()
-
-    @State
-    def Act2EventTKvsTB():
-
-        def upon_IMMEDIATE():
-            sendToLabelUpon(32, 1)
-            EnableCollision(0)
-        label(0)
-        sprite('tb000_00', 7)
-        sprite('tb000_01', 7)
-        sprite('tb000_02', 7)
-        sprite('tb000_03', 7)
-        sprite('tb000_04', 7)
-        sprite('tb000_05', 7)
-        sprite('tb000_06', 7)
-        sprite('tb000_07', 7)
-        loopRest()
-        gotoLabel(0)
-        label(1)
-        sprite('tb312_01', 3)
-        sprite('tb312_02', 3)
-        sprite('tb312_03', 20)
-        CreateObject('Act2Event_NagenukeEff', -1)
-        CommonSE('107_throw_comeout')
-        sprite('tb312_04', 3)
-        sprite('tb312_05', 3)
-        sprite('tb312_06', 3)
-        sprite('tb312_07', 3)
-        sprite('tb312_08', 2)
-        sprite('tb312_09', 2)
-        XPositionRelativeFacing(-260000)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_rgvstb_00():
-        sprite('tb202_00', 3)
-        sprite('tb202_01', 4)
-        sprite('tb202_02', 5)
-        sprite('tb202_03', 4)
-        sprite('tb202_04', 3)
-        CommonSE('007_swing_knife_0')
-        sprite('tb202_05', 3)
-        sprite('tb202_06', 5)
-        sprite('tb202_07', 5)
-        sprite('tb202_08', 5)
-        sprite('tb202_08', 4)
-        sprite('tb202_09', 4)
-        sprite('tb202_10', 4)
-        sprite('tb202_11', 4)
-        sprite('tb202_12', 4)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_rgvstb_01():
-        sprite('tb611_00', 6)
-        sprite('tb611_01', 6)
-        label(0)
-        sprite('tb611_02', 6)
-        sprite('tb611_03', 6)
-        sprite('tb611_04', 6)
-        loopRest()
-        gotoLabel(0)
-
-    @State
-    def Act3Event_rgvstb_02():
-        sprite('keep', 2)
-        sprite('tb611_01', 7)
-        sprite('tb611_00', 7)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_rgvstb_03():
-
-        def upon_IMMEDIATE():
-            XPositionRelativeFacing(-160000)
-        sprite('tb000_00', 7)
-        sprite('tb070_00', 17)
-        ParticleRandomRotation()
-        CallCustomizableParticle('ef_hitmz', 103)
-        CommonSE('101_hit_slash_1')
-        ScreenShake(1000, 20000)
-        sprite('tb070_00', 4)
-        AddInertia(-11000)
-        sprite('tb070_01', 4)
-        sprite('tb070_02', 4)
-        sprite('tb070_03', 32767)
-        loopRest()
-
-    @State
-    def Act3Event_rgvstb_04():
-
-        def upon_IMMEDIATE():
-            StayAfterMovement(1, 0)
-        sprite('tb070_04', 5)
-        sprite('tb070_05', 5)
-        sprite('tb070_06', 5)
-        sprite('tb070_07', 5)
-        sprite('tb070_08', 5)
-        sprite('tb070_09', 5)
-        sprite('tb063_11', 32767)
-        LandingEffects(100, 1, 0)
-        CommonSE('209_down_normal_0')
-        AddX(140000)
-        loopRest()
-
-    @State
-    def Act3Event_jnvstb_00():
-        sprite('tb001_00', 6)
-        sprite('tb001_01', 6)
-        CommonSE('019_cloth_a')
-        sprite('tb001_02', 6)
-        sprite('tb001_03', 6)
-        sprite('tb001_04', 6)
-        sprite('tb001_05', 6)
-        sprite('tb001_06', 6)
-        sprite('tb001_07', 6)
-        sprite('tb001_08', 6)
-        sprite('tb001_09', 6)
-        sprite('tb001_10', 6)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_tbvsca_00():
-        label(6)
-        sprite('tb611_02', 6)
-        sprite('tb611_03', 6)
-        sprite('tb611_04', 6)
-        loopRest()
-        gotoLabel(6)
-
-    @State
-    def Act3Event_tbvshb_00():
-        sprite('tb032_00', 2)
-        physicsXImpulse(24000)
-        sprite('tb032_01', 2)
-        sprite('tb032_02', 4)
-        sprite('tb032_03', 4)
-        DashEffects(100, 1, 1)
-        loopRest()
-        sprite('tb032_09', 6)
-        physicsXImpulse(0)
-        SetInertia(10000)
-        sprite('tb032_10', 6)
-        EndMomentum(1)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_tbvshb_01():
-        sprite('tb312_01', 3)
-        sprite('tb312_02', 3)
-        sprite('tb312_03', 20)
-        CreateObject('Act2Event_NagenukeEff', -1)
-        CommonSE('107_throw_comeout')
-        ObjectUpon(22, 32)
-        sprite('tb312_04', 3)
-        sprite('tb312_05', 3)
-        sprite('tb312_06', 3)
-        sprite('tb312_07', 3)
-        sprite('tb312_08', 2)
-        sprite('tb312_09', 2)
-        XPositionRelativeFacing(-260000)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_tbvshb_02_Loop():
-        sprite('tb407_00', 3)
-        CommonSE('019_cloth_a')
-        sprite('tb407_25', 5)
-        sprite('tb407_26', 5)
-        sprite('tb407_27', 5)
-        sprite('tb407_28', 5)
-        sprite('tb407_29', 32767)
-
-    @State
-    def Act3Event_tbvshb_02_LoopEnd():
-        sprite('tb407_30', 5)
-        sprite('tb407_31', 5)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_tbvshz_00_Loop():
-
-        def upon_IMMEDIATE():
-            pass
-        sprite('tb406_00', 2)
-        sprite('tb406_01', 2)
-        LandingEffects(0, 1, 1)
-        CreateObject('EffectAura', 0)
-        PrivateSE('tbse_03')
-        sprite('tb406_02', 2)
-        sprite('tb406_03', 2)
-        sprite('tb406_04', 2)
-        sprite('tb406_05', 2)
-        sprite('tb406_06', 2)
-        label(0)
-        sprite('tb406_07', 5)
-        sprite('tb406_08', 5)
-        sprite('tb406_09', 5)
-        loopRest()
-        gotoLabel(0)
-
-    @State
-    def Act3Event_tbvshz_00_LoopEnd():
-        sprite('tb406_10', 3)
-        sprite('tb406_11', 3)
-        sprite('tb406_12', 3)
-        GravityDefault()
-        LandingEffects(0, 1, 1)
-        sprite('tb406_13', 3)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_tbvshz_00():
-
-        def upon_IMMEDIATE():
-            NoAttackDuringAction(1)
-        sprite('tb212_08', 1)
-        physicsXImpulse(0)
-        sprite('tb212_08', 1)
-        sprite('tb212_08', 1)
-        sprite('tb212_09', 1)
-        sprite('tb212_09', 1)
-        sprite('tb212_09', 1)
-        sprite('tb212_10', 1)
-        sprite('tb212_11', 3)
-        sprite('tb212_12', 3)
-        sprite('tb212_13', 1)
-        sprite('tb212_13', 2)
-        sprite('tb212_14', 2)
-        sprite('tb212_14ex01', 2)
-        sprite('tb212_14ex02', 2)
-        sprite('tb212_15', 3)
-        sprite('tb212_16', 3)
-        sprite('tb212_17', 3)
-        sprite('tb212_18', 3)
-        sprite('tb212_19', 3)
-        sprite('tb212_20', 3)
-        sprite('tb212_21', 2)
-        CreateObject('TBEF_ArmSummon', 0)
-        sprite('tb212_22', 2)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_tbvshz_01():
-
-        def upon_IMMEDIATE():
-            ScreenCollision(0)
-            EnableCollision(0)
-        sprite('tb032_00', 2)
-        physicsXImpulse(-24000)
-        Flip()
-        SetActionMark(5)
-        label(9)
-        sprite('tb032_01', 2)
-        AddActionMark(-1)
-        sprite('tb032_02', 4)
-        sprite('tb032_03', 4)
-        DashEffects(100, 1, 1)
-        sprite('tb032_04', 4)
-        sprite('tb032_05', 4)
-        sprite('tb032_06', 4)
-        DashEffects(100, 1, 1)
-        sprite('tb032_07', 4)
-        sprite('tb032_08', 4)
-        loopRest()
-        if SLOT_2:
-            _gotolabel(9)
-        label(0)
-        sprite('null', 32767)
-        EndMomentum(1)
-        Visibility(1)
-
-    @State
-    def Act3Event_tbvsjn_00():
-        sprite('null', 32767)
-        Visibility(1)
-        CreateObject('EventNoYoroke', 0)
-        loopRest()
-
-    @State
-    def Act3Event_tbvsjn_01():
-        sprite('keep', 1)
-        PassbackAddActionMarkToFunction('EventNoYoroke', 33)
-        loopRest()
-        enterState('CmnActStand')
-
-    @State
-    def Act3Event_tbvsjn_02():
-
-        def upon_IMMEDIATE():
-            NoAttackDuringAction(1)
-        sprite('tb611_00', 6)
-        PassbackAddActionMarkToFunction('EventNoYoroke', 33)
-        sprite('tb611_01', 6)
-        label(6)
-        sprite('tb611_02', 6)
-        sprite('tb611_03', 6)
-        sprite('tb611_04', 6)
-        loopRest()
-        gotoLabel(6)
-
-    @State
-    def Act3Event_tbvsjn_03():
-        sprite('tb431_00', 1)
-        PushSpeedX()
-        PushSpeedY()
-        PushGravity()
-        EndMomentum(1)
-        sprite('tb431_01', 1)
-        CreateObject('TBEF_ArmChange', 0)
-        sprite('tb431_02', 2)
-        sprite('tb431_03', 2)
-        sprite('tb431_04', 4)
-        sprite('tb431_05', 6)
-        CharacterFlash(16750280, 30, 2)
-        sprite('tb431_06', 3)
-        PrivateSE('tbse_02')
-        PrivateSE('tbse_00_0')
-        PrivateSE('tbse_05')
-        CreateObject('yugami_ring', 0)
-        CreateObject('UCMagicBookLoop', 0)
-        RegisterObject(4, 1)
-        CreateObject('UltimateInstall', -1)
-        RegisterObject(5, 1)
-        CreateObject('UltimateInstallMagicCircle', -1)
-        RegisterObject(6, 1)
-        sprite('tb431_07', 2)
-        RunLoopUpon(17, 100)
-        sendToLabelUpon(17, 1)
-        physicsYImpulse(1000)
-        setGravity(20)
-        CreateObject('TBEF_AngelRing', -1)
-        RegisterObject(9, 1)
-        ScreenShake(10000, 50000)
-        label(0)
-        sprite('tb431_08', 2)
-        sprite('tb431_09', 2)
-        sprite('tb431_10', 2)
-        loopRest()
-        gotoLabel(0)
-        label(1)
-        PerGravity(120)
-        sprite('tb431_08', 2)
-        sprite('tb431_09', 2)
-        PrivateSE('tbse_05')
-        sprite('tb431_10', 2)
-        sprite('tb431_08', 2)
-        PerGravity(50)
-        loopRest()
-        sprite('tb431_09', 2)
-        sprite('tb431_10', 2)
-        sprite('tb431_11', 3)
-        GravityDefault()
-        ObjectUpon(4, 32)
-        ObjectUpon(5, 32)
-        ObjectUpon(6, 32)
-        ObjectUpon(9, 32)
-        sprite('tb431_12', 3)
-        ObjectUpon(4, 33)
-        sprite('tb431_13', 3)
-        sprite('tb431_14', 3)
-        sprite('tb431_15', 3)
-        CreateObject('TBEF_ArmSummon', 0)
-        loopRest()
-        label(99)
-        sprite('keep', 1)
-        loopRest()
-        enterState('CmnActStand')
+@State
+def Act3Event_tbvsjn_03():
+    sprite('tb431_00', 1)
+    PushSpeedX()
+    PushSpeedY()
+    PushGravity()
+    EndMomentum(1)
+    sprite('tb431_01', 1)
+    CreateObject('TBEF_ArmChange', 0)
+    sprite('tb431_02', 2)
+    sprite('tb431_03', 2)
+    sprite('tb431_04', 4)
+    sprite('tb431_05', 6)
+    CharacterFlash(16750280, 30, 2)
+    sprite('tb431_06', 3)
+    PrivateSE('tbse_02')
+    PrivateSE('tbse_00_0')
+    PrivateSE('tbse_05')
+    CreateObject('yugami_ring', 0)
+    CreateObject('UCMagicBookLoop', 0)
+    RegisterObject(4, 1)
+    CreateObject('UltimateInstall', -1)
+    RegisterObject(5, 1)
+    CreateObject('UltimateInstallMagicCircle', -1)
+    RegisterObject(6, 1)
+    sprite('tb431_07', 2)
+    RunLoopUpon(17, 100)
+    uponSendToLabel(17, 1)
+    physicsYImpulse(1000)
+    setGravity(20)
+    CreateObject('TBEF_AngelRing', -1)
+    RegisterObject(9, 1)
+    ScreenShake(10000, 50000)
+    label(0)
+    sprite('tb431_08', 2)
+    sprite('tb431_09', 2)
+    sprite('tb431_10', 2)
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    PerGravity(120)
+    sprite('tb431_08', 2)
+    sprite('tb431_09', 2)
+    PrivateSE('tbse_05')
+    sprite('tb431_10', 2)
+    sprite('tb431_08', 2)
+    PerGravity(50)
+    loopRest()
+    sprite('tb431_09', 2)
+    sprite('tb431_10', 2)
+    sprite('tb431_11', 3)
+    GravityDefault()
+    ObjectUpon(FALLING, 32)
+    ObjectUpon(5, 32)
+    ObjectUpon(6, 32)
+    ObjectUpon(9, 32)
+    sprite('tb431_12', 3)
+    ObjectUpon(FALLING, 33)
+    sprite('tb431_13', 3)
+    sprite('tb431_14', 3)
+    sprite('tb431_15', 3)
+    CreateObject('TBEF_ArmSummon', 0)
+    loopRest()
+    label(99)
+    sprite('keep', 1)
+    loopRest()
+    enterState('CmnActStand')

@@ -19,6 +19,7 @@ def EMB_MU():
     ColorTransition(4286625023, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_MU_OD():
 
@@ -40,6 +41,7 @@ def EMB_MU_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_MU_AH():
 
@@ -60,17 +62,20 @@ def EMB_MU_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 20)
 
+
 @Subroutine
 def DriveBitReset():
     SetScaleSpeed(0)
     AddRotationPerFrame(0)
     SLOT_61 = 0
 
+
 @Subroutine
 def DriveBitAllDisable():
     SLOT_59 = 0
     SLOT_63 = 0
     SLOT_64 = 1
+
 
 @State
 def DriveBit():
@@ -82,7 +87,7 @@ def DriveBit():
         SLOT_64 = 0
         SLOT_65 = 1
         SLOT_53 = 1
-        SLOT_58 = SLOT_110
+        SLOT_58 = SLOT_OverdriveTimer
         FloorCollision(1)
 
         def upon_58():
@@ -216,21 +221,24 @@ def DriveBit():
             YAccel(5)
             sendToLabel(201)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_57):
+        def upon_EVERY_FRAME():
+            if not SLOT_57:
                 XImpulseAcceleration(88)
                 YAccel(88)
-                if (SLOT_23 <= 50000):
-                    if (not (SLOT_13 == 0)):
+                if SLOT_YDistanceFromFloor <= 50000:
+                    if not SLOT_YVelocity == 0:
                         YAccel(0)
             if SLOT_53:
-                CallPrivateFunction('DriveBitAngleHoming', 0, 20000, 0, 0, 0, 0, 0, 0)
+                CallPrivateFunction('DriveBitAngleHoming', 0, 20000, 0, 0, 
+                    0, 0, 0, 0)
             elif SLOT_58:
-                CallPrivateFunction('DriveBitAngleHoming', 0, 12000, 0, 0, 0, 0, 0, 0)
+                CallPrivateFunction('DriveBitAngleHoming', 0, 12000, 0, 0, 
+                    0, 0, 0, 0)
             else:
-                CallPrivateFunction('DriveBitAngleHoming', 0, 4000, 0, 0, 0, 0, 0, 0)
+                CallPrivateFunction('DriveBitAngleHoming', 0, 4000, 0, 0, 0,
+                    0, 0, 0)
             if SLOT_42:
-                if (not SLOT_58):
+                if not SLOT_58:
                     SLOT_63 = 0
 
         def upon_55():
@@ -241,7 +249,7 @@ def DriveBit():
 
         def upon_LANDING():
             if SLOT_57:
-                clearUponHandler(2)
+                clearUponHandler(LANDING)
                 EndMomentum(1)
                 sendToLabel(580)
 
@@ -275,14 +283,15 @@ def DriveBit():
     CreateObject('Eff_DriveBitChange', 100)
     loopRest()
     label(9)
-    if (not SLOT_62):
+    if not SLOT_62:
         sendToLabel(1)
     sprite('null', 30)
     SLOT_61 = 1
     loopRest()
     gotoLabel(2)
     label(1)
-    GotoIf0(0, 2, 63)
+    if not SLOT_63:
+        notConditionalSendToLabel(0)
     sprite('null', 1)
     ObjectUpon(5, 32)
     CreateObject('DriveShotStartPointEffect', -1)
@@ -305,7 +314,8 @@ def DriveBit():
     loopRest()
     gotoLabel(0)
     label(2)
-    GotoIf0(0, 2, 63)
+    if not SLOT_63:
+        notConditionalSendToLabel(0)
     sprite('null', 1)
     ObjectUpon(5, 32)
     sprite('null', 4)
@@ -320,7 +330,7 @@ def DriveBit():
         PrivateSE('muse_02')
         CreateObject('DriveBitPowerShot', 100)
     sprite('null', 1)
-    ObjectUpon(7, 32)
+    ObjectUpon(CORNERED, 32)
     ObjectUpon(8, 32)
     loopRest()
     gotoLabel(0)
@@ -332,7 +342,7 @@ def DriveBit():
     sprite('null', 10)
     CreateParticle('muef_bitattackmc', 0)
     sprite('null', 1)
-    if (not SLOT_51):
+    if not SLOT_51:
         PrivateSE('muse_13')
         CreateObject('DriveBitBomb', -1)
     loopRest()
@@ -467,6 +477,7 @@ def DriveBit():
     sprite('null', 1)
     SetScaleSpeed(0)
 
+
 @State
 def DriveBitNumber():
 
@@ -507,7 +518,7 @@ def DriveBitNumber():
     loopRest()
     label(1)
     sprite('vr_muef_bitno2', 5)
-    PassbackAddActionMarkToFunction('Bitno', 32)
+    TriggerUponForState('Bitno', 32)
     CreateObject('Bitno', -1)
     Size(1250)
     SetScaleSpeed(-50)
@@ -516,7 +527,7 @@ def DriveBitNumber():
     loopRest()
     label(2)
     sprite('vr_muef_bitno3', 5)
-    PassbackAddActionMarkToFunction('Bitno', 32)
+    TriggerUponForState('Bitno', 32)
     CreateObject('Bitno', -1)
     Size(1250)
     SetScaleSpeed(-50)
@@ -525,7 +536,7 @@ def DriveBitNumber():
     loopRest()
     label(3)
     sprite('vr_muef_bitno4', 5)
-    PassbackAddActionMarkToFunction('Bitno', 32)
+    TriggerUponForState('Bitno', 32)
     CreateObject('Bitno', -1)
     Size(1250)
     SetScaleSpeed(-50)
@@ -536,6 +547,7 @@ def DriveBitNumber():
     sprite('keep', 5)
     ConstantAlphaModifier(-50)
     loopRest()
+
 
 @State
 def DriveBitShot():
@@ -557,13 +569,13 @@ def DriveBitShot():
         CopyFromRightToLeft(23, 2, 1, 2, 2, 1)
         XSpeed2(60000, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 Unknown4055(0)
                 CallCustomizableParticle('muef_driveshot', 112)
                 ParticleColorFromPalette(241, 240, 241)
         HitsPerCall(1, 0, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
         def upon_LANDING():
             Unknown23090(23)
@@ -578,6 +590,7 @@ def DriveBitShot():
     sprite('null', 1)
     physicsXImpulse(0)
     physicsYImpulse(0)
+
 
 @State
 def DriveBitPowerShot():
@@ -601,7 +614,7 @@ def DriveBitPowerShot():
         def upon_31():
             CallPrivateFunction('DriveLaserDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 ParticleSize(1000)
                 CallCustomizableParticle('muef_5DLaserLight', 103)
@@ -610,7 +623,7 @@ def DriveBitPowerShot():
                 CreateParticle('muef_reflectionshotlightB', 112)
                 CreateParticle('muef_reflectionshotlightB', 100)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
         def upon_LANDING():
             Unknown23090(23)
@@ -622,7 +635,7 @@ def DriveBitPowerShot():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 1, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('PowerShotHitEffect', 103)
     sprite('null', 1)
     sprite('vr_bit00_00atk', 40)
@@ -641,6 +654,7 @@ def DriveBitPowerShot():
     CreateObject('PowerShotHitEffect', -1)
     physicsXImpulse(0)
     physicsYImpulse(0)
+
 
 @State
 def DriveBitBomb():
@@ -670,17 +684,17 @@ def DriveBitBomb():
     CallCustomizableParticle('muef_bitattack', -1)
     CallPrivateEffect('muef_bitattack')
     Size(1500)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         AddScale(300)
     sprite('vr_bit02_00', 3)
     if SLOT_5:
         RefreshMultihit()
     sprite('vr_bit02_00', 3)
-    if (SLOT_5 >= 2):
+    if SLOT_5 >= 2:
         RefreshMultihit()
     PerScale(115)
     sprite('vr_bit02_00', 5)
-    if (SLOT_5 >= 2):
+    if SLOT_5 >= 2:
         RefreshMultihit()
     PerScale(115)
     label(9)
@@ -694,6 +708,7 @@ def DriveBitBomb():
     StartMultihit()
     sprite('vr_bit02_00', 1)
     StartMultihit()
+
 
 @State
 def ReflectionShot_Hontai():
@@ -717,7 +732,7 @@ def ReflectionShot_Hontai():
         CallPrivateFunction('ReflectionShotInit', 0, 0, 0, 0, 0, 0, 0, 0)
         CallPrivateFunction('DriveLaserExInit', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('ReflectionShotIdling', 0, 0, 0, 0, 0, 0, 0, 0)
 
         def upon_48():
@@ -726,7 +741,7 @@ def ReflectionShot_Hontai():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
 
         def upon_LANDING():
@@ -750,6 +765,7 @@ def ReflectionShot_Hontai():
     physicsXImpulse(0)
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def ReflectionShot():
@@ -773,7 +789,7 @@ def ReflectionShot():
         CallPrivateFunction('ReflectionShotInit', 0, 0, 0, 0, 0, 0, 0, 0)
         CallPrivateFunction('DriveLaserExInit', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('ReflectionShotIdling', 0, 0, 0, 0, 0, 0, 0, 0)
 
         def upon_48():
@@ -782,7 +798,7 @@ def ReflectionShot():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
 
         def upon_LANDING():
@@ -807,6 +823,7 @@ def ReflectionShot():
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
 
+
 @State
 def DriveShotStartPointEffect():
 
@@ -815,15 +832,18 @@ def DriveShotStartPointEffect():
     sprite('null', 60)
     CreateParticle('muef_driveshotA', -1)
 
+
 @State
 def PowerShotStartPointEffect():
     sprite('null', 30)
     LinkParticle('muef_Powershot')
 
+
 @State
 def PowerShotHitEffect():
     sprite('null', 21)
     CallCustomizableParticle('muef_Powershothit', 103)
+
 
 @State
 def ReflectionShotPowerChargeEffect():
@@ -831,11 +851,12 @@ def ReflectionShotPowerChargeEffect():
     def upon_IMMEDIATE():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 42)
     LinkParticle('muef_401charge')
     label(0)
     sprite('null', 12)
+
 
 @State
 def DD_ReflectionShotPowerChargeEff():
@@ -845,6 +866,7 @@ def DD_ReflectionShotPowerChargeEff():
         RemoveOnCallStateEnd(2)
     sprite('null', 70)
     CreateParticle('muef_431charge', -1)
+
 
 @State
 def ReflectionShotBitPowerChargeEff():
@@ -868,10 +890,12 @@ def ReflectionShotBitPowerChargeEff():
     ConstantAlphaModifier(-30)
     SetScaleSpeed(-30)
 
+
 @State
 def ReflectionShotHitEffect():
     sprite('null', 21)
     CreateParticle('muef_401reflectionhit', -1)
+
 
 @State
 def UltimateReflectionShot():
@@ -897,7 +921,7 @@ def UltimateReflectionShot():
         StarterRating(2)
         AttackOff()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('ReflectionShotIdling', 0, 1, 0, 0, 0, 0, 0, 0)
 
         def upon_48():
@@ -906,10 +930,10 @@ def UltimateReflectionShot():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
         HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
         def upon_LANDING():
             Unknown23090(23)
@@ -931,6 +955,7 @@ def UltimateReflectionShot():
     physicsXImpulse(0)
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def UltimateReflectionShotOD():
@@ -957,8 +982,9 @@ def UltimateReflectionShotOD():
         StarterRating(2)
         AttackOff()
 
-        def upon_FRAME_STEP():
-            CallPrivateFunction('ReflectionShotODIdling', 0, 1, 0, 0, 0, 0, 0, 0)
+        def upon_EVERY_FRAME():
+            CallPrivateFunction('ReflectionShotODIdling', 0, 1, 0, 0, 0, 0,
+                0, 0)
 
         def upon_48():
             CallPrivateFunction('DriveLaserExIdling', 0, 0, 0, 0, 0, 0, 0, 0)
@@ -966,10 +992,10 @@ def UltimateReflectionShotOD():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
         HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
         def upon_LANDING():
             Unknown23090(23)
@@ -993,6 +1019,7 @@ def UltimateReflectionShotOD():
     physicsXImpulse(0)
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def UltimateReflectionShot2nd():
@@ -1018,7 +1045,7 @@ def UltimateReflectionShot2nd():
         StarterRating(2)
         AttackOff()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('ReflectionShotIdling', 0, 2, 0, 0, 0, 0, 0, 0)
 
         def upon_48():
@@ -1027,10 +1054,10 @@ def UltimateReflectionShot2nd():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
         HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
         def upon_LANDING():
             Unknown23090(23)
@@ -1052,6 +1079,7 @@ def UltimateReflectionShot2nd():
     physicsXImpulse(0)
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def UltimateReflectionShot2ndOD():
@@ -1078,8 +1106,9 @@ def UltimateReflectionShot2ndOD():
         AttackType(4)
         AttackOff()
 
-        def upon_FRAME_STEP():
-            CallPrivateFunction('ReflectionShotODIdling', 0, 2, 0, 0, 0, 0, 0, 0)
+        def upon_EVERY_FRAME():
+            CallPrivateFunction('ReflectionShotODIdling', 0, 2, 0, 0, 0, 0,
+                0, 0)
 
         def upon_48():
             CallPrivateFunction('DriveLaserExIdling', 0, 0, 0, 0, 0, 0, 0, 0)
@@ -1087,10 +1116,10 @@ def UltimateReflectionShot2ndOD():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
         HitsPerCall(1, 0, 0, 0, 0, 0, 0, 0)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
 
         def upon_LANDING():
             Unknown23090(23)
@@ -1114,6 +1143,7 @@ def UltimateReflectionShot2ndOD():
     physicsXImpulse(0)
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def LaserTest():
@@ -1140,7 +1170,7 @@ def LaserTest():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('LaserHit', 103)
             EndMomentum(0)
             sendToLabel(0)
@@ -1160,6 +1190,7 @@ def LaserTest():
     label(0)
     sprite('vr_bit00_00atk', 20)
 
+
 @State
 def LaserTestRemain():
     sprite('null', 1)
@@ -1171,6 +1202,7 @@ def LaserTestRemain():
     CallCustomizableParticle('rcef_birdfire', 103)
     ParticleSize(2000)
     CallCustomizableParticle('rcef_birdfire', 103)
+
 
 @State
 def LaserHit():
@@ -1192,6 +1224,7 @@ def LaserHit():
     sprite('null', 1)
     ParticleSize(1000)
     CallCustomizableParticle('noef_AH_flash01', 103)
+
 
 @State
 def Funnel6B():
@@ -1225,6 +1258,7 @@ def Funnel6B():
     sprite('mu211_f22', 3)
     sprite('mu211_f23', 3)
 
+
 @State
 def Funnel3C():
 
@@ -1253,6 +1287,7 @@ def Funnel3C():
     sprite('mu234_f17', 3)
     sprite('mu234_f18', 3)
 
+
 @State
 def SwrodSwing_eff():
 
@@ -1277,6 +1312,7 @@ def SwrodSwing_eff():
     sprite('vrmuef404_11', 3)
     sprite('vrmuef404_12', 3)
 
+
 @State
 def SwrodSwing_eff10():
 
@@ -1298,6 +1334,7 @@ def SwrodSwing_eff10():
     sprite('vrmuef404_11', 3)
     sprite('vrmuef404_12', 3)
 
+
 @State
 def SwrodSwing_eff11():
 
@@ -1318,6 +1355,7 @@ def SwrodSwing_eff11():
     sprite('vrmuef404_10', 4)
     sprite('vrmuef404_11', 3)
     sprite('vrmuef404_12', 3)
+
 
 @State
 def SwrodSwing_eff2():
@@ -1341,6 +1379,7 @@ def SwrodSwing_eff2():
     sprite('vrmuef404_10', 3)
     sprite('vrmuef404_11', 3)
     sprite('vrmuef404_12', 3)
+
 
 @State
 def SwrodSwing_eff_light():
@@ -1370,6 +1409,7 @@ def SwrodSwing_eff_light():
     sprite('vrmuef404_11_', 3)
     sprite('vrmuef404_12_', 3)
 
+
 @State
 def SwrodSwing_eff_light_Matome():
 
@@ -1379,8 +1419,8 @@ def SwrodSwing_eff_light_Matome():
         RemoveOnCallStateEnd(3)
         CancelIfPlayerHit(3)
         IgnorePauses(3)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(41, 9)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(41, 9)
     label(0)
     sprite('null', 1)
     CreateObject('SwrodSwing_eff_light11', -1)
@@ -1420,6 +1460,7 @@ def SwrodSwing_eff_light_Matome():
     label(9)
     sprite('null', 1)
 
+
 @State
 def SwrodSwing_eff_light11():
 
@@ -1438,6 +1479,7 @@ def SwrodSwing_eff_light11():
     CreateObject('SwrodSwing_eff_plazma11', 2)
     CreateObject('SwrodSwing_eff_plazma11', 3)
     CreateObject('SwrodSwing_eff_plazma11', 4)
+
 
 @State
 def SwrodSwing_eff_light12():
@@ -1458,6 +1500,7 @@ def SwrodSwing_eff_light12():
     CreateObject('SwrodSwing_eff_plazma12', 3)
     CreateObject('SwrodSwing_eff_plazma12', 4)
 
+
 @State
 def SwrodSwing_eff_light13():
 
@@ -1476,6 +1519,7 @@ def SwrodSwing_eff_light13():
     CreateObject('SwrodSwing_eff_plazma13', 2)
     CreateObject('SwrodSwing_eff_plazma13', 3)
     CreateObject('SwrodSwing_eff_plazma13', 4)
+
 
 @State
 def SwrodSwing_eff_light14():
@@ -1496,6 +1540,7 @@ def SwrodSwing_eff_light14():
     CreateObject('SwrodSwing_eff_plazma14', 3)
     CreateObject('SwrodSwing_eff_plazma14', 4)
 
+
 @State
 def SwrodSwing_eff_light15():
 
@@ -1509,6 +1554,7 @@ def SwrodSwing_eff_light15():
         BlendMode_Add()
     sprite('vrmuef404_06_', 1)
     ConstantAlphaModifier(320)
+
 
 @State
 def SwrodSwing_eff_light20():
@@ -1529,6 +1575,7 @@ def SwrodSwing_eff_light20():
     sprite('vrmuef404_11_', 3)
     sprite('vrmuef404_12_', 3)
 
+
 @State
 def SwrodSwing_eff_light21():
 
@@ -1547,6 +1594,7 @@ def SwrodSwing_eff_light21():
     sprite('vrmuef404_10_', 4)
     sprite('vrmuef404_11_', 3)
     sprite('vrmuef404_12_', 3)
+
 
 @State
 def SwrodSwing_eff_light2():
@@ -1576,6 +1624,7 @@ def SwrodSwing_eff_light2():
     sprite('vrmuef404_11_', 3)
     sprite('vrmuef404_12_', 3)
 
+
 @State
 def SwrodSwing_eff_tinkle():
 
@@ -1584,6 +1633,7 @@ def SwrodSwing_eff_tinkle():
     sprite('null', 25)
     LinkParticle('muef_404_tinkle')
 
+
 @State
 def SwrodSwing_eff_tinkle2():
 
@@ -1591,6 +1641,7 @@ def SwrodSwing_eff_tinkle2():
         RemoveOnCallStateEnd(3)
     sprite('null', 20)
     LinkParticle('muef_404_tinkle2')
+
 
 @State
 def SwrodSwing_eff_plazma():
@@ -1661,6 +1712,7 @@ def SwrodSwing_eff_plazma():
     sprite('vrmuef404_thd03', 1)
     sprite('null', 3)
 
+
 @State
 def SwrodSwing_eff_plazma_NoLink():
 
@@ -1725,6 +1777,7 @@ def SwrodSwing_eff_plazma_NoLink():
     sprite('vrmuef404_thd03', 1)
     sprite('null', 3)
 
+
 @State
 def SwrodSwing_eff_plazma11():
 
@@ -1745,6 +1798,7 @@ def SwrodSwing_eff_plazma11():
     DeviationY(-3200, 3200)
     CreateObject('SwrodSwing_eff_tinkle', -1)
 
+
 @State
 def SwrodSwing_eff_plazma12():
 
@@ -1763,6 +1817,7 @@ def SwrodSwing_eff_plazma12():
     ConstantAlphaModifier(-10)
     DeviationX(-3200, 3200)
     DeviationY(-3200, 3200)
+
 
 @State
 def SwrodSwing_eff_plazma13():
@@ -1783,6 +1838,7 @@ def SwrodSwing_eff_plazma13():
     DeviationX(-3200, 3200)
     DeviationY(-3200, 3200)
 
+
 @State
 def SwrodSwing_eff_plazma14():
 
@@ -1802,6 +1858,7 @@ def SwrodSwing_eff_plazma14():
     DeviationX(-3200, 3200)
     DeviationY(-3200, 3200)
 
+
 @State
 def AN_NmlAtkAIR2Cadd():
 
@@ -1818,6 +1875,7 @@ def AN_NmlAtkAIR2Cadd():
     sprite('mu253_f07add01', 2)
     sprite('mu253_f08add01', 2)
     sprite('mu253_f09add01', 4)
+
 
 @State
 def AN_NmlAtk6Cadd():
@@ -1866,6 +1924,7 @@ def AN_NmlAtk6Cadd():
     sprite('mu212_f18add01', 4)
     AlphaValue(223)
 
+
 @State
 def AN_NmlAtk6C_eff_in():
 
@@ -1884,6 +1943,7 @@ def AN_NmlAtk6C_eff_in():
     EndObject()
     CreateObject('AN_NmlAtk6C_eff_in_end', -1)
 
+
 @State
 def AN_NmlAtk6C_eff_in_end():
 
@@ -1898,6 +1958,7 @@ def AN_NmlAtk6C_eff_in_end():
         SetPositionZ(1000)
     sprite('null', 8)
     CallPrivateEffect('muef_212_in_end')
+
 
 @State
 def AN_NmlAtk6C_eff_in_color():
@@ -1919,6 +1980,7 @@ def AN_NmlAtk6C_eff_in_color():
     EndObject()
     CreateObject('AN_NmlAtk6C_eff_in_color_end', -1)
 
+
 @State
 def AN_NmlAtk6C_eff_in_color_end():
 
@@ -1935,6 +1997,7 @@ def AN_NmlAtk6C_eff_in_color_end():
     PaletteIndex(0)
     ParticleColorFromPalette(240, 240, 240)
     CallPrivateEffect('muef_212_in_end_color')
+
 
 @State
 def AN_NmlAtk6C_eff_out():
@@ -1953,6 +2016,7 @@ def AN_NmlAtk6C_eff_out():
     EndObject()
     CreateObject('AN_NmlAtk6C_eff_out_end', -1)
 
+
 @State
 def AN_NmlAtk6C_eff_out_end():
 
@@ -1966,6 +2030,7 @@ def AN_NmlAtk6C_eff_out_end():
         AbsoluteY(224000)
     sprite('null', 15)
     CallPrivateEffect('muef_212_out_end')
+
 
 @State
 def AN_NmlAtk6C_eff_out_color():
@@ -1986,6 +2051,7 @@ def AN_NmlAtk6C_eff_out_color():
     EndObject()
     CreateObject('AN_NmlAtk6C_eff_out_color_end', -1)
 
+
 @State
 def AN_NmlAtk6C_eff_out_color_end():
 
@@ -2001,6 +2067,7 @@ def AN_NmlAtk6C_eff_out_color_end():
     PaletteIndex(0)
     ParticleColorFromPalette(240, 240, 240)
     CallPrivateEffect('muef_212_out_end_color')
+
 
 @State
 def AN_NmlAtk6C_eff_out_light():
@@ -2018,6 +2085,7 @@ def AN_NmlAtk6C_eff_out_light():
     ParticleColorFromPalette(240, 240, 240)
     CallPrivateEffect('muef_212_out_swordlight')
     CommonSE('006_swing_blade_2')
+
 
 @State
 def DirectShot_eff():
@@ -2040,15 +2108,15 @@ def DirectShot_eff():
         def upon_STATE_END():
             SLOT_4 = 0
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
-            if (SLOT_2 == 3):
+            if SLOT_2 == 3:
                 sendToLabel(9)
                 NoAttackDuringAction(1)
                 AttackOff()
                 EndAttack()
-                clearUponHandler(3)
-        sendToLabelUpon(32, 1)
+                clearUponHandler(EVERY_FRAME)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 1)
     CommonSE('014_electric_sl')
@@ -2064,14 +2132,14 @@ def DirectShot_eff():
     CommonSE('014_electric_m')
     CreateObject('muef_402_attack', -1)
 
-    def upon_FRAME_STEP():
-        SLOT_51 = (SLOT_51 + 1)
-        SLOT_52 = (SLOT_52 + 1)
-        if (SLOT_51 == 4):
+    def upon_EVERY_FRAME():
+        SLOT_51 = SLOT_51 + 1
+        SLOT_52 = SLOT_52 + 1
+        if SLOT_51 == 4:
             SLOT_51 = 0
             CommonSE('014_electric_m')
             RefreshMultihit()
-        if (SLOT_52 == 2):
+        if SLOT_52 == 2:
             SLOT_52 = 0
             CreateObject('muef_402_attack', -1)
     sprite('vrdmy', 5)
@@ -2095,6 +2163,7 @@ def DirectShot_eff():
     sprite('null', 16)
     CreateParticle('muef_402_end', -1)
 
+
 @State
 def DirectShotAir_eff():
 
@@ -2115,17 +2184,17 @@ def DirectShotAir_eff():
         def upon_STATE_END():
             SLOT_4 = 0
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
-            if (SLOT_2 == 3):
+            if SLOT_2 == 3:
                 sendToLabel(9)
                 NoAttackDuringAction(1)
                 AttackOff()
                 EndAttack()
-                clearUponHandler(3)
-                clearUponHandler(2)
-        sendToLabelUpon(2, 9)
-        sendToLabelUpon(32, 1)
+                clearUponHandler(EVERY_FRAME)
+                clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
+        uponSendToLabel(32, 1)
     label(0)
     RemoveOnCallStateEnd(3)
     sprite('null', 1)
@@ -2146,13 +2215,13 @@ def DirectShotAir_eff():
     CommonSE('014_electric_m')
     CreateObject('muef_402_attack', -1)
 
-    def upon_FRAME_STEP():
-        SLOT_51 = (SLOT_51 + 1)
-        SLOT_52 = (SLOT_52 + 1)
-        if (SLOT_51 == 4):
+    def upon_EVERY_FRAME():
+        SLOT_51 = SLOT_51 + 1
+        SLOT_52 = SLOT_52 + 1
+        if SLOT_51 == 4:
             SLOT_51 = 0
             CommonSE('014_electric_m')
-        if (SLOT_52 == 2):
+        if SLOT_52 == 2:
             SLOT_52 = 0
             CreateObject('muef_402_attack', -1)
             RefreshMultihit()
@@ -2165,8 +2234,9 @@ def DirectShotAir_eff():
     gotoLabel(2)
     label(9)
     sprite('null', 46)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     CreateParticle('muef_402_end', -1)
+
 
 @State
 def muef_402_attack():
@@ -2177,6 +2247,7 @@ def muef_402_attack():
         CancelIfPlayerHit(3)
     sprite('null', 10)
     LinkParticle('muef_402_attack')
+
 
 @State
 def GuardCrash():
@@ -2193,6 +2264,7 @@ def GuardCrash():
     EndObject()
     CreateObject('GuardCrash_end', -1)
 
+
 @State
 def GuardCrash_end():
 
@@ -2204,6 +2276,7 @@ def GuardCrash_end():
         SetPositionZ(1000)
     sprite('null', 8)
     CallPrivateEffect('muef_407_end')
+
 
 @State
 def GuardCrash_color():
@@ -2222,6 +2295,7 @@ def GuardCrash_color():
     EndObject()
     CreateObject('GuardCrash_end_color', -1)
 
+
 @State
 def GuardCrash_end_color():
 
@@ -2236,6 +2310,7 @@ def GuardCrash_end_color():
     ParticleColorFromPalette(240, 240, 240)
     CallPrivateEffect('muef_407_end_color')
 
+
 @State
 def GuardCrash_sword():
 
@@ -2248,6 +2323,7 @@ def GuardCrash_sword():
     PaletteIndex(0)
     ParticleColorFromPalette(240, 240, 240)
     CallPrivateEffect('muef_407_swordlight')
+
 
 @State
 def UltimateAssaultdmy():
@@ -2274,6 +2350,7 @@ def UltimateAssaultdmy():
     sprite('vrdmy_ultimateassault', 1)
     StartMultihit()
     sprite('vrdmy_ultimateassault', 3)
+
 
 @State
 def UltimateAssaultdmy_OD():
@@ -2304,6 +2381,7 @@ def UltimateAssaultdmy_OD():
     StartMultihit()
     sprite('vrdmy_ultimateassault', 3)
 
+
 @State
 def airBZanzo():
 
@@ -2325,6 +2403,7 @@ def airBZanzo():
     sprite('vr_muef251_f01', 6)
     ConstantAlphaModifier(-50)
 
+
 @State
 def BitCreate():
 
@@ -2344,7 +2423,7 @@ def BitCreate():
     def upon_33():
         sendToLabel(1)
         SLOT_51 = 1
-        ObjectUpon(4, 33)
+        ObjectUpon(FALLING, 33)
     sprite('null', 55)
     CreateObject('Eff_DriveBitCreate', 100)
     RegisterObject(4, 1)
@@ -2359,11 +2438,12 @@ def BitCreate():
     sprite('vr_bit00_01', 150)
     Visibility(1)
     AlphaValue(255)
-    if (not SLOT_51):
+    if not SLOT_51:
         CreateObject('PowerShotStartPointEffect', 0)
     label(3)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def Eff_DriveBitCreate():
@@ -2373,7 +2453,7 @@ def Eff_DriveBitCreate():
         E0EAEffectPosition(2)
         LinkParticle('muef_newbitcreate_05')
         BlendMode_Normal()
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
     sprite('null', 10)
     Size(750)
     AlphaValue(0)
@@ -2388,6 +2468,7 @@ def Eff_DriveBitCreate():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def Eff_DriveBitChange():
 
@@ -2399,6 +2480,7 @@ def Eff_DriveBitChange():
     sprite('null', 60)
     ParticleColorFromPalette(240, 241, 242)
     CallCustomizableParticle('muef_bitchangeB', 100)
+
 
 @State
 def BitCore():
@@ -2420,6 +2502,7 @@ def BitCore():
     label(203)
     sprite('null', 1)
     loopRest()
+
 
 @State
 def BitCoreTaiki():
@@ -2445,6 +2528,7 @@ def BitCoreTaiki():
     sprite('null', 1)
     loopRest()
 
+
 @State
 def BitShot():
 
@@ -2468,6 +2552,7 @@ def BitShot():
     AlphaValue(0)
     loopRest()
 
+
 @State
 def BitPowerShot():
 
@@ -2488,6 +2573,7 @@ def BitPowerShot():
     sprite('null', 1)
     AlphaValue(0)
     loopRest()
+
 
 @State
 def BitWait():
@@ -2516,6 +2602,7 @@ def BitWait():
     AlphaValue(0)
     loopRest()
 
+
 @State
 def Bitno():
 
@@ -2533,6 +2620,7 @@ def Bitno():
     AlphaValue(0)
     loopRest()
 
+
 @State
 def Eff_ReflectionYugamiRing():
 
@@ -2548,10 +2636,11 @@ def Eff_ReflectionYugamiRing():
     SetScaleSpeed(100)
     Unknown3059(-3200)
 
+
 @State
 def Eff_KowareYugami():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -2563,6 +2652,7 @@ def Eff_KowareYugami():
     sprite('vr_yugami00', 10)
     SetScaleXPerFrame(-120)
 
+
 @State
 def Bit_attackShot():
     sprite('null', 2)
@@ -2573,6 +2663,7 @@ def Bit_attackShot():
     ParticleColorFromPalette(240, 241, 240)
     CallCustomizableParticle('muef_bitattackshot02', 2)
     CreateObject('Bit_attackShotYugamiRing', 0)
+
 
 @State
 def Bit_attackShotYugamiRing():
@@ -2590,6 +2681,7 @@ def Bit_attackShotYugamiRing():
     SetScaleSpeed(75)
     Unknown3059(-3200)
 
+
 @State
 def Eff_Drivemc():
 
@@ -2600,6 +2692,7 @@ def Eff_Drivemc():
     ParticleColorFromPalette(242, 241, 240)
     CallCustomizableParticle('muef_drivemc', -1)
 
+
 @State
 def Eff_Driveairmc():
 
@@ -2609,6 +2702,7 @@ def Eff_Driveairmc():
     CreateParticle('muef_driveairmcA', -1)
     ParticleColorFromPalette(242, 241, 240)
     CallCustomizableParticle('muef_driveairmc', -1)
+
 
 @State
 def Eff_Driveairmc10():
@@ -2621,6 +2715,7 @@ def Eff_Driveairmc10():
     ParticleColorFromPalette(242, 241, 240)
     CallCustomizableParticle('muef_driveairmc', -1)
 
+
 @State
 def Eff_mu431mc():
 
@@ -2630,6 +2725,7 @@ def Eff_mu431mc():
     CreateParticle('muef_431mcB', -1)
     ParticleColorFromPalette(242, 241, 240)
     CallCustomizableParticle('muef_431mcA', -1)
+
 
 @State
 def NY_SlowHand():
@@ -2641,6 +2737,7 @@ def NY_SlowHand():
     CallCustomizableParticle('nyef_slowhandcircle00', -1)
     ParticleColorFromPalette(225, 225, 226)
 
+
 @State
 def Eff_FunnelBarrier():
 
@@ -2650,7 +2747,7 @@ def Eff_FunnelBarrier():
         ParticleLayer(1)
         BlendMode_Add()
         AlphaValue(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_mu403ef', 10)
     PrivateSE('muse_08')
     Size(500)
@@ -2664,6 +2761,7 @@ def Eff_FunnelBarrier():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(-50)
 
+
 @State
 def Eff_FunnelBarrierLight():
 
@@ -2675,7 +2773,7 @@ def Eff_FunnelBarrierLight():
         RemoveOnCallStateEnd(3)
         BlendMode_Add()
         AlphaValue(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     Size(1000)
     SetScaleSpeed(20)
@@ -2687,10 +2785,11 @@ def Eff_FunnelBarrierLight():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(-50)
 
+
 @State
 def DistortionLockFirst():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         RemoveOnCallStateEnd(3)
     sprite('vr_mu430_lock00', 1)
     CreateParticle('muef_locksword', 0)
@@ -2713,6 +2812,7 @@ def DistortionLockFirst():
     sprite('vr_mu430_lock10', 2)
     CreateParticle('muef_locksword_del', 0)
 
+
 @State
 def UltimateLockPaticle():
 
@@ -2726,6 +2826,7 @@ def UltimateLockPaticle():
         def upon_32():
             ConstantAlphaModifier(-40)
     sprite('null', 32767)
+
 
 @State
 def UltimateAtkFunnelA():
@@ -2757,6 +2858,7 @@ def UltimateAtkFunnelA():
     label(99)
     sprite('null', 10)
 
+
 @State
 def UltimateAtkFunnelB():
 
@@ -2786,6 +2888,7 @@ def UltimateAtkFunnelB():
     sprite('null', 32767)
     label(99)
     sprite('null', 10)
+
 
 @State
 def UltimateAtkFunnelC():
@@ -2817,6 +2920,7 @@ def UltimateAtkFunnelC():
     label(99)
     sprite('null', 10)
 
+
 @State
 def UltimateAtkFunnelD():
 
@@ -2846,6 +2950,7 @@ def UltimateAtkFunnelD():
     sprite('null', 32767)
     label(99)
     sprite('null', 10)
+
 
 @State
 def UltimateAtkFunnelE():
@@ -2877,6 +2982,7 @@ def UltimateAtkFunnelE():
     label(99)
     sprite('null', 10)
 
+
 @State
 def UltimateAtkFunnelF():
 
@@ -2906,6 +3012,7 @@ def UltimateAtkFunnelF():
     sprite('null', 32767)
     label(99)
     sprite('null', 10)
+
 
 @State
 def UltimateAtkFunnelG():
@@ -2937,6 +3044,7 @@ def UltimateAtkFunnelG():
     label(99)
     sprite('null', 10)
 
+
 @State
 def UltimateAtkFunnelH():
 
@@ -2967,6 +3075,7 @@ def UltimateAtkFunnelH():
     label(99)
     sprite('null', 10)
 
+
 @State
 def Eff_ASTFunnel01():
 
@@ -2987,6 +3096,7 @@ def Eff_ASTFunnel01():
     StopCharacterFlash2()
     StopCharacterFlash1(0)
 
+
 @State
 def Eff_ASTSignalmc():
 
@@ -2995,7 +3105,7 @@ def Eff_ASTSignalmc():
         CallPrivateEffect('muef_ASTattackmc')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(44, 99)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
     sprite('null', 90)
     SetScaleSpeed(10)
     ConstantAlphaModifier(-4)
@@ -3007,15 +3117,17 @@ def Eff_ASTSignalmc():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def ASTLockObj():
 
     def upon_IMMEDIATE():
-        if (SLOT_19 > 650000):
+        if SLOT_19 > 650000:
             CopyFromRightToLeft(23, 2, 83, 22, 2, 83)
     sprite('null', 30)
     CreateObject('ASTLockObjTop', -1)
     CreateObject('ASTLockObjBottom', -1)
+
 
 @State
 def ASTLockObjTop():
@@ -3026,8 +3138,8 @@ def ASTLockObjTop():
         BlendMode_Add()
         AlphaValue(128)
         ContinueState(120)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(17, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(17, 99)
     sprite('null', 10)
     RunLoopUpon(17, 90)
     Size(600)
@@ -3047,6 +3159,7 @@ def ASTLockObjTop():
     sprite('null', 5)
     SetScaleSpeed(120)
 
+
 @State
 def ASTLockObjBottom():
 
@@ -3056,8 +3169,8 @@ def ASTLockObjBottom():
         BlendMode_Add()
         AlphaValue(128)
         ContinueState(120)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(17, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(17, 99)
     sprite('null', 10)
     RunLoopUpon(17, 90)
     Size(600)
@@ -3076,6 +3189,7 @@ def ASTLockObjBottom():
     SetScaleSpeed(100)
     sprite('null', 5)
     SetScaleSpeed(120)
+
 
 @State
 def Eff_ASTFunnel():
@@ -3103,6 +3217,7 @@ def Eff_ASTFunnel():
     E0EAEffectPosition(22)
     EnableAfterimage(0)
 
+
 @State
 def Eff_ASTFunnelBarrier():
 
@@ -3125,6 +3240,7 @@ def Eff_ASTFunnelBarrier():
     sprite('vr_mu450ef', 32767)
     E0EAEffectPosition(22)
 
+
 @State
 def Eff_ASTFunnelBarrierLight():
 
@@ -3145,6 +3261,7 @@ def Eff_ASTFunnelBarrierLight():
     sprite('null', 32767)
     E0EAEffectPosition(22)
 
+
 @State
 def Eff_ASTbg():
 
@@ -3153,7 +3270,7 @@ def Eff_ASTbg():
         RemoveOnCallStateEnd(3)
         RenderLayer(2)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 16)
     SetScaleY(1200)
     SetScaleX(0)
@@ -3171,6 +3288,7 @@ def Eff_ASTbg():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def Eff_ASTmudammy():
     sprite('mu450_22', 6)
@@ -3183,6 +3301,7 @@ def Eff_ASTmudammy():
     sprite('mu450_22ex1', 6)
     sprite('mu450_22ex2', 6)
 
+
 @State
 def Eff_ASTChangemc():
 
@@ -3193,6 +3312,7 @@ def Eff_ASTChangemc():
     CreateParticle('muef_ASTmcA', -1)
     ParticleColorFromPalette(242, 241, 240)
     CallCustomizableParticle('muef_ASTmc', -1)
+
 
 @State
 def MU_ASTanime():
@@ -3277,7 +3397,8 @@ def MU_ASTanime():
     sprite('mu451_26', 4)
     sprite('mu451_27', 4)
     sprite('mu451_28', 4)
-    PassbackAddActionMarkToFunction('AstralHeat', 32)
+    TriggerUponForState('AstralHeat', 32)
+
 
 @State
 def MU_ASTanime_f():
@@ -3300,6 +3421,7 @@ def MU_ASTanime_f():
     sprite('mu451_f19', 4)
     sprite('mu451_f20', 4)
 
+
 @State
 def Eff_ASTanimebg():
 
@@ -3308,7 +3430,7 @@ def Eff_ASTanimebg():
         RemoveOnCallStateEnd(3)
         RenderLayer(2)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 36)
     SetScaleXPerFrame(-5)
     sprite('null', 28)
@@ -3317,6 +3439,7 @@ def Eff_ASTanimebg():
     label(0)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def Eff_ASTswordmc():
@@ -3337,6 +3460,7 @@ def Eff_ASTswordmc():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def Eff_ASTswordeff():
 
@@ -3351,6 +3475,7 @@ def Eff_ASTswordeff():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def Eff_ASTsword():
 
@@ -3360,6 +3485,7 @@ def Eff_ASTsword():
         AddX(-240000)
     sprite('null', 75)
 
+
 @State
 def Eff_ASTslash():
 
@@ -3368,6 +3494,7 @@ def Eff_ASTslash():
         FaceLeft()
     sprite('null', 150)
     AddY(-6000)
+
 
 @State
 def FinishWhite():
@@ -3386,6 +3513,7 @@ def FinishWhite():
     AlphaValue(255)
     sprite('vr_white', 30)
     ConstantAlphaModifier(-10)
+
 
 @State
 def EntryRachel():
@@ -3408,7 +3536,7 @@ def EntryRachel():
     sprite('vr_mu600_07', 6)
     sprite('vr_mu600_08', 6)
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('vr_mu600_00', 6)
     sprite('vr_mu600_01', 6)
     sprite('vr_mu600_02', 6)
@@ -3431,6 +3559,7 @@ def EntryRachel():
     sprite('vr_mu600_00', 6)
     ConstantAlphaModifier(0)
 
+
 @State
 def Eff_Entrymc():
 
@@ -3441,6 +3570,7 @@ def Eff_Entrymc():
     CreateParticle('muef_Entrymc', -1)
     ParticleColorFromPalette(242, 241, 240)
     CallCustomizableParticle('muef_Entrymc00', -1)
+
 
 @State
 def WinSword():
@@ -3457,6 +3587,7 @@ def WinSword():
     StopCharacterFlash2()
     StopCharacterFlash1(0)
 
+
 @State
 def RLAstSmoke():
 
@@ -3469,6 +3600,7 @@ def RLAstSmoke():
     ConstantAlphaModifier(3)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
+
 
 @State
 def muef406_blade():
@@ -3490,6 +3622,7 @@ def muef406_blade():
     PaletteIndex(0)
     BlendMode_Normal()
 
+
 @State
 def muef406_blade_light():
 
@@ -3508,6 +3641,7 @@ def muef406_blade_light():
     sprite('vrmuef406_05_', 3)
     sprite('null', 3)
 
+
 @State
 def GuardCrushFunnel():
 
@@ -3520,6 +3654,7 @@ def GuardCrushFunnel():
     sprite('mu407_f04', 3)
     sprite('mu407_f05', 2)
     sprite('mu407_f06', 2)
+
 
 @State
 def AST_Sword():
@@ -3546,6 +3681,7 @@ def AST_Sword():
     EndMomentum(1)
     ConstantAlphaModifier(-25)
 
+
 @State
 def AHsumonsordMatome():
 
@@ -3558,62 +3694,63 @@ def AHsumonsordMatome():
     sprite('null', 20)
     CreateObject('AHfannelray00', -1)
     CreateObject('AHfannelray', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(300000)
     sprite('null', 1)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
     sprite('null', 1)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    AddY(-150000)
-    Rotation(45000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
+        AddY(-150000)
+        Rotation(45000)
     sprite('null', 1)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    AddY(150000)
-    Rotation(-45000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
+        AddY(150000)
+        Rotation(-45000)
     sprite('null', 1)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    Rotation(90000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        Rotation(90000)
     sprite('null', 1)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-150000)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-150000)
+        Flip()
     sprite('null', 1)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-150000)
-    AddY(-150000)
-    Rotation(45000)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-150000)
+        AddY(-150000)
+        Rotation(45000)
+        Flip()
     sprite('null', 1)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-150000)
-    AddY(150000)
-    Rotation(-45000)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-150000)
+        AddY(150000)
+        Rotation(-45000)
+        Flip()
     sprite('null', 120)
     CreateObject('AHsumonsord00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(150000)
-    Rotation(-90000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(150000)
+        Rotation(-90000)
+
 
 @State
 def AHsumonsord00():
@@ -3630,6 +3767,7 @@ def AHsumonsord00():
     sprite('null', 15)
     ConstantAlphaModifier(17)
     sprite('null', 105)
+
 
 @State
 def AHfannelray():
@@ -3660,6 +3798,7 @@ def AHfannelray():
     ConstantAlphaModifier(-9)
     EndMomentum(1)
 
+
 @State
 def AHfannelray00():
 
@@ -3670,6 +3809,7 @@ def AHfannelray00():
     sprite('null', 32767)
     LinkParticle('muef_AHsumonray_add')
     EndMomentum(1)
+
 
 @State
 def AHskyray():
@@ -3684,6 +3824,7 @@ def AHskyray():
     sprite('null', 50)
     ConstantAlphaModifier(-5)
 
+
 @State
 def AHsumonsord01Matome():
 
@@ -3695,11 +3836,11 @@ def AHsumonsord01Matome():
         IgnoreScreenfreeze(1)
     sprite('null', 20)
     CreateObject('AHsumonsord01', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    SetScaleZ(200)
-    AddX(700000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        SetScaleZ(200)
+        AddX(700000)
     ScreenShake(10000, 10000)
     CommonSE('015_blaze_0')
     CommonSE('016_explode_2')
@@ -3707,9 +3848,9 @@ def AHsumonsord01Matome():
     PrivateSE('muse_12')
     sprite('null', 15)
     CreateObject('AHsumonsord01', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleZ(400)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleZ(400)
     ScreenShake(10000, 10000)
     CommonSE('015_blaze_0')
     CommonSE('016_explode_2')
@@ -3717,10 +3858,10 @@ def AHsumonsord01Matome():
     PrivateSE('muse_12')
     sprite('null', 15)
     CreateObject('AHsumonsord01', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    SetScaleZ(600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        SetScaleZ(600)
     ScreenShake(20000, 20000)
     CommonSE('015_blaze_0')
     CommonSE('016_explode_2')
@@ -3730,10 +3871,10 @@ def AHsumonsord01Matome():
     AddCombo(1)
     sprite('null', 15)
     CreateObject('AHsumonsord01', -1)
-    ApplyFunctionsToObjects(1)
-    SetScaleZ(700)
-    AddX(700000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        SetScaleZ(700)
+        AddX(700000)
     ScreenShake(20000, 20000)
     CommonSE('015_blaze_0')
     CommonSE('016_explode_2')
@@ -3761,6 +3902,7 @@ def AHsumonsord01Matome():
     sprite('null', 200)
     LinkParticle('muef_AHwhiteout_00')
 
+
 @State
 def AHsumonsord01():
 
@@ -3776,6 +3918,7 @@ def AHsumonsord01():
     LinkParticle('muef_AHsordhit_00')
     ScreenShake(20000, 20000)
     AddCombo(1)
+
 
 @State
 def AHsumonsord02():
@@ -3793,6 +3936,7 @@ def AHsumonsord02():
     ScreenShake(40000, 40000)
     AddCombo(1)
 
+
 @State
 def AHbom():
 
@@ -3807,6 +3951,7 @@ def AHbom():
     ConstantAlphaModifier(26)
     sprite('null', 59)
 
+
 @State
 def AHfinishBG():
 
@@ -3815,6 +3960,7 @@ def AHfinishBG():
         BlendMode_Normal()
         FaceRight()
     sprite('null', 32767)
+
 
 @State
 def SummonNoel():
@@ -3832,6 +3978,7 @@ def SummonNoel():
     sprite('no000_07', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def BurstDDAtk():
@@ -3938,7 +4085,7 @@ def BurstDDAtk():
     CommonSE('016_explode_2')
     sprite('null', 30)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('BurstDDEff', 32)
+    TriggerUponForState('BurstDDEff', 32)
     CameraPosition(1000)
     sprite('null', 10)
     CameraControlEnable(0)
@@ -3993,13 +4140,14 @@ def BurstDDAtk():
     CommonSE('016_explode_2')
     sprite('null', 30)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('BurstDDEffEX', 32)
+    TriggerUponForState('BurstDDEffEX', 32)
     CameraPosition(1000)
     sprite('null', 10)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
     sprite('null', 10)
     ExitState()
+
 
 @State
 def BurstDDEffEX():
@@ -4008,14 +4156,14 @@ def BurstDDEffEX():
         BlendMode_Normal()
         Eff3DEffect('muef_440hasira00', '')
         SetScaleY(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         RemoveOnCallStateEnd(2)
     sprite('null', 2)
     CreateObject('BurstDDEffroot', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(500)
-    AddY(-75000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(500)
+        AddY(-75000)
     SetScaleSpeedY(100)
     SetScaleXPerFrame(-20)
     SetScaleSpeedZ(-20)
@@ -4033,32 +4181,33 @@ def BurstDDEffEX():
     SetScaleXPerFrame(0)
     SetScaleSpeedZ(0)
     CreateObject('BurstDDEff_Circle', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(200)
     CreateObject('BurstDDEff_minicrossMatoEX', -1)
     CreateObject('BurstDDEffsub', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(600000)
-    AddScale(200)
-    Rotation(-5000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(600000)
+        AddScale(200)
+        Rotation(-5000)
     CreateObject('BurstDDEffsub', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(600000)
-    AddScale(200)
-    Rotation(-5000)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(600000)
+        AddScale(200)
+        Rotation(-5000)
+        Flip()
     label(0)
     sprite('null', 10)
     ParticleLayer(4)
     CallCustomizableParticle('muef_440_whiteout', -1)
-    PassbackAddActionMarkToFunction('BurstDDEffsub', 32)
-    PassbackAddActionMarkToFunction('BurstDDEff_minicrossMatoEX', 32)
+    TriggerUponForState('BurstDDEffsub', 32)
+    TriggerUponForState('BurstDDEff_minicrossMatoEX', 32)
     SetScaleSpeedY(50)
     SetScaleXPerFrame(-50)
     SetScaleSpeedZ(-50)
+
 
 @State
 def BurstDDEff():
@@ -4067,7 +4216,7 @@ def BurstDDEff():
         BlendMode_Normal()
         Eff3DEffect('muef_440hasira00', '')
         SetScaleY(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         RemoveOnCallStateEnd(2)
     sprite('null', 2)
     CreateObject('BurstDDEffroot', -1)
@@ -4090,23 +4239,24 @@ def BurstDDEff():
     CreateObject('BurstDDEff_Circle', -1)
     CreateObject('BurstDDEff_minicrossMato', -1)
     CreateObject('BurstDDEffsub', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(600000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(600000)
     CreateObject('BurstDDEffsub', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(600000)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(600000)
+        Flip()
     label(0)
     sprite('null', 10)
     ParticleLayer(4)
     CallCustomizableParticle('muef_440_whiteout', -1)
-    PassbackAddActionMarkToFunction('BurstDDEffsub', 32)
-    PassbackAddActionMarkToFunction('BurstDDEff_minicrossMato', 32)
+    TriggerUponForState('BurstDDEffsub', 32)
+    TriggerUponForState('BurstDDEff_minicrossMato', 32)
     SetScaleSpeedY(50)
     SetScaleXPerFrame(-50)
     SetScaleSpeedZ(-50)
+
 
 @State
 def BurstDDEffsub():
@@ -4119,7 +4269,7 @@ def BurstDDEffsub():
         SetScaleY(0)
         RotationAngle(90000)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 5)
     SetScaleSpeedY(35)
     SetScaleXPerFrame(-12)
@@ -4141,6 +4291,7 @@ def BurstDDEffsub():
     SetScaleXPerFrame(-15)
     SetScaleSpeedZ(-15)
 
+
 @State
 def BurstDDEffroot():
 
@@ -4150,107 +4301,109 @@ def BurstDDEffroot():
         RemoveOnCallStateEnd(2)
     sprite('null', 32767)
 
+
 @State
 def BurstDDEff_minicrossMatoEX():
 
     def upon_IMMEDIATE():
         BlendMode_Normal()
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(100000)
-    AddY(100000)
-    Rotation(10000)
-    Size(1100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(100000)
+        AddY(100000)
+        Rotation(10000)
+        Size(1100)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(-230000)
-    AddY(100000)
-    Rotation(-10000)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-230000)
+        AddY(100000)
+        Rotation(-10000)
+        Size(1500)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(275000)
-    AddY(100000)
-    Rotation(25000)
-    Size(1900)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(275000)
+        AddY(100000)
+        Rotation(25000)
+        Size(1900)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(-275000)
-    AddY(100000)
-    Rotation(-25000)
-    Size(1100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-275000)
+        AddY(100000)
+        Rotation(-25000)
+        Size(1100)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(350000)
-    AddY(100000)
-    Rotation(30000)
-    Size(1300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(350000)
+        AddY(100000)
+        Rotation(30000)
+        Size(1300)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(450000)
-    AddY(-200000)
-    Rotation(30000)
-    Size(4000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(450000)
+        AddY(-200000)
+        Rotation(30000)
+        Size(4000)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(-500000)
-    AddY(-200000)
-    Rotation(-30000)
-    Size(4000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-500000)
+        AddY(-200000)
+        Rotation(-30000)
+        Size(4000)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(550000)
-    AddY(-400000)
-    Rotation(30000)
-    Size(2500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(550000)
+        AddY(-400000)
+        Rotation(30000)
+        Size(2500)
     sprite('null', 4)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(-600000)
-    AddY(-400000)
-    Rotation(-30000)
-    Size(2500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-600000)
+        AddY(-400000)
+        Rotation(-30000)
+        Size(2500)
     sprite('null', 32767)
     CreateObject('BurstDDEff_minicross', -1)
     ScreenShake(10000, 10000)
-    ApplyFunctionsToObjects(1)
-    AddX(-400000)
-    AddY(100000)
-    Rotation(-30000)
-    Size(1800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-400000)
+        AddY(100000)
+        Rotation(-30000)
+        Size(1800)
     label(1)
     sprite('null', 40)
-    PassbackAddActionMarkToFunction('BurstDDEff_minicross', 32)
+    TriggerUponForState('BurstDDEff_minicross', 32)
     loopRest()
+
 
 @State
 def BurstDDEff_minicrossMato():
@@ -4258,59 +4411,60 @@ def BurstDDEff_minicrossMato():
     def upon_IMMEDIATE():
         BlendMode_Normal()
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 3)
     CreateObject('BurstDDEff_minicross', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(100000)
-    AddY(100000)
-    Rotation(10000)
-    Size(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(100000)
+        AddY(100000)
+        Rotation(10000)
+        Size(800)
     sprite('null', 3)
     CreateObject('BurstDDEff_minicross', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    AddY(100000)
-    Rotation(-10000)
-    Size(1200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-80000)
+        AddY(100000)
+        Rotation(-10000)
+        Size(1200)
     sprite('null', 3)
     CreateObject('BurstDDEff_minicross', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(125000)
-    AddY(100000)
-    Rotation(25000)
-    Size(1600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(125000)
+        AddY(100000)
+        Rotation(25000)
+        Size(1600)
     sprite('null', 3)
     CreateObject('BurstDDEff_minicross', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-125000)
-    AddY(100000)
-    Rotation(-25000)
-    Size(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-125000)
+        AddY(100000)
+        Rotation(-25000)
+        Size(800)
     sprite('null', 3)
     CreateObject('BurstDDEff_minicross', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(200000)
-    AddY(100000)
-    Rotation(30000)
-    Size(1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(200000)
+        AddY(100000)
+        Rotation(30000)
+        Size(1000)
     sprite('null', 32767)
     CreateObject('BurstDDEff_minicross', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-200000)
-    AddY(100000)
-    Rotation(-30000)
-    Size(1500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-200000)
+        AddY(100000)
+        Rotation(-30000)
+        Size(1500)
     label(1)
     sprite('null', 40)
-    PassbackAddActionMarkToFunction('BurstDDEff_minicross', 32)
+    TriggerUponForState('BurstDDEff_minicross', 32)
     loopRest()
+
 
 @State
 def BurstDDEff_minicross():
@@ -4318,7 +4472,7 @@ def BurstDDEff_minicross():
     def upon_IMMEDIATE():
         BlendMode_Normal()
         LinkParticle('muef_440_sub')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         RemoveOnCallStateEnd(2)
     sprite('null', 15)
     SetScaleY(0)
@@ -4329,6 +4483,7 @@ def BurstDDEff_minicross():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
     loopRest()
+
 
 @State
 def BurstDDEff_Circle():
@@ -4342,6 +4497,7 @@ def BurstDDEff_Circle():
     sprite('null', 45)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(45)
+
 
 @State
 def AssaultAtk():
@@ -4372,26 +4528,26 @@ def AssaultAtk():
         StarterRating(2)
         AttackDirection(3)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             AttackOff()
-            ObjectUpon(2, 40)
+            ObjectUpon(LANDING, 40)
 
         def upon_55():
             clearUponHandler(55)
             AttackOff()
             sendToLabel(1)
 
-        def upon_44():
-            clearUponHandler(44)
+        def upon_PLAYER_DAMAGED():
+            clearUponHandler(PLAYER_DAMAGED)
             AttackOff()
-            ObjectUpon(2, 40)
+            ObjectUpon(LANDING, 40)
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
-            if (SLOT_23 <= 50000):
+        def upon_EVERY_FRAME():
+            if SLOT_YDistanceFromFloor <= 50000:
                 if SLOT_2:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     AttackOff()
                     sendToLabel(1)
     sprite('null', 30)
@@ -4402,6 +4558,7 @@ def AssaultAtk():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(60)
+
 
 @State
 def AssaultAtkOD():
@@ -4427,10 +4584,10 @@ def AssaultAtkOD():
         StarterRating(2)
         AttackDirection(3)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            clearUponHandler(11)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
             AttackOff()
-            ObjectUpon(2, 40)
+            ObjectUpon(LANDING, 40)
             sendToLabel(100)
 
         def upon_55():
@@ -4438,16 +4595,16 @@ def AssaultAtkOD():
             AttackOff()
             sendToLabel(1)
 
-        def upon_44():
-            clearUponHandler(44)
+        def upon_PLAYER_DAMAGED():
+            clearUponHandler(PLAYER_DAMAGED)
             AttackOff()
-            ObjectUpon(2, 40)
+            ObjectUpon(LANDING, 40)
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
-            if (SLOT_23 <= 50000):
+        def upon_EVERY_FRAME():
+            if SLOT_YDistanceFromFloor <= 50000:
                 if SLOT_2:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     AttackOff()
                     sendToLabel(1)
     sprite('null', 30)
@@ -4466,6 +4623,7 @@ def AssaultAtkOD():
     ConstantAlphaModifier(-26)
     SetScaleSpeed(60)
     ExitState()
+
 
 @State
 def AssaultAtkBomb():
@@ -4511,6 +4669,7 @@ def AssaultAtkBomb():
     sprite('vr_bit02_00', 3)
     sprite('vr_bit02_00', 1)
 
+
 @State
 def ReflectionShotOD_Hontai():
 
@@ -4533,8 +4692,9 @@ def ReflectionShotOD_Hontai():
         CallPrivateFunction('ReflectionShotInit', 0, 0, 0, 0, 0, 0, 0, 0)
         CallPrivateFunction('DriveLaserExInit', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
-            CallPrivateFunction('ReflectionShotODIdling', 0, 0, 0, 0, 0, 0, 0, 0)
+        def upon_EVERY_FRAME():
+            CallPrivateFunction('ReflectionShotODIdling', 0, 0, 0, 0, 0, 0,
+                0, 0)
 
         def upon_48():
             CallPrivateFunction('DriveLaserExIdling', 0, 0, 0, 0, 0, 0, 0, 0)
@@ -4542,7 +4702,7 @@ def ReflectionShotOD_Hontai():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
 
         def upon_LANDING():
@@ -4573,6 +4733,7 @@ def ReflectionShotOD_Hontai():
     physicsXImpulse(0)
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
+
 
 @State
 def ReflectionShotOD():
@@ -4596,8 +4757,9 @@ def ReflectionShotOD():
         CallPrivateFunction('ReflectionShotInit', 0, 0, 0, 0, 0, 0, 0, 0)
         CallPrivateFunction('DriveLaserExInit', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
-            CallPrivateFunction('ReflectionShotODIdling', 0, 0, 0, 0, 0, 0, 0, 0)
+        def upon_EVERY_FRAME():
+            CallPrivateFunction('ReflectionShotODIdling', 0, 0, 0, 0, 0, 0,
+                0, 0)
 
         def upon_48():
             CallPrivateFunction('DriveLaserExIdling', 0, 0, 0, 0, 0, 0, 0, 0)
@@ -4605,7 +4767,7 @@ def ReflectionShotOD():
         def upon_31():
             CallPrivateFunction('DriveLaserExDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateObject('ReflectionShotHitEffect', 103)
 
         def upon_LANDING():
@@ -4637,6 +4799,7 @@ def ReflectionShotOD():
     physicsYImpulse(0)
     ConstantAlphaModifier(-10)
 
+
 @State
 def Act2Event_Image():
 
@@ -4646,7 +4809,7 @@ def Act2Event_Image():
         XPositionRelativeFacing(-640000)
         AbsoluteY(0)
         Size(20000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_screen_black', 30)
     AlphaValue(0)
     ConstantAlphaModifier(4)
@@ -4660,6 +4823,7 @@ def Act2Event_Image():
     AlphaValue(0)
     ConstantAlphaModifier(0)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -4668,6 +4832,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_Fade():
@@ -4687,6 +4852,7 @@ def Act3Event_Fade():
     ConstantAlphaModifier(0)
     AlphaValue(255)
 
+
 @State
 def Eventoffset_Sosai():
 
@@ -4699,30 +4865,32 @@ def Eventoffset_Sosai():
     CommonSE('108_attack_offset')
     ScreenShake(30000, 30000)
 
+
 @State
 def Act3Event_Camera_muvstg():
 
     def upon_IMMEDIATE():
         CameraControlEnable(1)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 <= 0):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage <= 0:
                     XPositionRelativeFacing(0)
                     EndMomentum(1)
                     CameraControlEnable(0)
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 >= 0):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage >= 0:
                 XPositionRelativeFacing(0)
                 EndMomentum(1)
                 CameraControlEnable(0)
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('null', 600)
     AddInertia(20000)
     label(0)
     sprite('null', 5)
+
 
 @State
 def Act3Event_SwrodSwing_eff10():
@@ -4744,6 +4912,7 @@ def Act3Event_SwrodSwing_eff10():
     sprite('vrmuef404_10', 4)
     sprite('vrmuef404_11', 3)
     sprite('vrmuef404_12', 3)
+
 
 @State
 def Act3Event_SwrodSwing_eff_light2():

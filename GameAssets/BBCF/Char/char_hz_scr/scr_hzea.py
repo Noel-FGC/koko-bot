@@ -26,6 +26,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_OD():
 
@@ -53,6 +54,7 @@ def EMB_OD():
     sprite('null', 10)
     ColorTransition(4278223103, 10)
     sprite('null', 20)
+
 
 @State
 def EMB_AST():
@@ -82,48 +84,50 @@ def EMB_AST():
     ColorTransition(4294901760, 10)
     sprite('null', 20)
 
+
 @State
 def HZEF_GuardLoop():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(3)
         AddX(-16000)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 20)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(32000)
-    AddY(-97500)
-    physicsYImpulse(20000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(32000)
+        AddY(-97500)
+        physicsYImpulse(20000)
+        Unknown1082(4)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(16000)
-    AddY(110000)
-    physicsYImpulse(-40000)
-    SetScaleX(-1000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(16000)
+        AddY(110000)
+        physicsYImpulse(-40000)
+        SetScaleX(-1000)
+        Unknown1082(4)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-16000)
-    AddY(-100000)
-    physicsYImpulse(40000)
-    SetScaleX(-1000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-16000)
+        AddY(-100000)
+        physicsYImpulse(40000)
+        SetScaleX(-1000)
+        Unknown1082(4)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    AddY(95000)
-    physicsYImpulse(-15000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-40000)
+        AddY(95000)
+        physicsYImpulse(-15000)
+        Unknown1082(4)
     loopRest()
     ExitState()
     label(99)
-    PassbackAddActionMarkToFunction('HZEF_GuardLoopParts', 32)
+    TriggerUponForState('HZEF_GuardLoopParts', 32)
+
 
 @State
 def HZEF_GuardLoopParts():
@@ -131,7 +135,7 @@ def HZEF_GuardLoopParts():
     def upon_IMMEDIATE():
         SetZVal(-100)
         BlendMode_Normal()
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('vrhzef_guard00', 4)
     AlphaValue(100)
     sprite('vrhzef_guard00', 2)
@@ -146,40 +150,42 @@ def HZEF_GuardLoopParts():
     label(99)
     EndObject()
 
+
 @State
 def HZEF_HeavyGuardLoop():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(3)
         IgnorePauses(3)
-        PassbackAddActionMarkToFunction('HZEF_GuardLoop', 32)
+        TriggerUponForState('HZEF_GuardLoop', 32)
     sprite('null', 20)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(48000)
-    AddY(32000)
-    physicsYImpulse(10000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(48000)
+        AddY(32000)
+        physicsYImpulse(10000)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(16000)
-    AddY(-16000)
-    physicsYImpulse(-15000)
-    SetScaleX(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(16000)
+        AddY(-16000)
+        physicsYImpulse(-15000)
+        SetScaleX(-1000)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-16000)
-    AddY(16000)
-    physicsYImpulse(15000)
-    SetScaleX(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-16000)
+        AddY(16000)
+        physicsYImpulse(15000)
+        SetScaleX(-1000)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-48000)
-    AddY(-32000)
-    physicsYImpulse(-10000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-48000)
+        AddY(-32000)
+        physicsYImpulse(-10000)
+
 
 @State
 def HZEF_HeavyGuardLoopObj():
@@ -194,6 +200,7 @@ def HZEF_HeavyGuardLoopObj():
     sprite('vrhzef_guard00', 10)
     AlphaValue(150)
     ConstantAlphaModifier(-15)
+
 
 @State
 def HZEF_BBStart():
@@ -217,6 +224,7 @@ def HZEF_BBStart():
     ParticleColor(4194369280, 2516647680, 65280)
     CallCustomizableParticle('rgef_bloodkineback', -1)
 
+
 @State
 def ModelMagicCircle1():
 
@@ -227,6 +235,7 @@ def ModelMagicCircle1():
         ColorForTransition(4278255360)
         IgnoreScreenfreeze(1)
     sprite('null', 74)
+
 
 @State
 def UltimateKusari():
@@ -259,9 +268,10 @@ def UltimateKusari():
         def upon_31():
             CallPrivateFunction('KusariDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                CallPrivateFunction('KusariAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0)
+                CallPrivateFunction('KusariAngleByChain', 0, 0, 0, 0, 0, 0,
+                    0, 0)
                 Unknown4055(0)
         CallPrivateFunction('KusariKansetsu', 0, 7, 0, 0, 0, 0, 0, 0)
         EnableAfterimage(0)
@@ -272,8 +282,9 @@ def UltimateKusari():
         Unknown3054(57, 80)
         Unknown3054(58, 40)
         BlendMode_Normal()
-        sendToLabelUpon(12, 0)
-        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 70, 0, 0, 0, 0, 0, 0)
+        uponSendToLabel(OPPONENT_HIT, 0)
+        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 70, 0, 0, 0, 0, 0, 0
+            )
     sprite('vr_chain_tip03DD', 1)
     PrivateSE('hzse_02')
     SetZVal(-500)
@@ -294,8 +305,8 @@ def UltimateKusari():
     label(0)
     AddX(120000)
     sprite('vr_chain_tip04', 3)
-    PassbackAddActionMarkToFunction('EffUltimateChainAura', 32)
-    ObjectUpon(3, 33)
+    TriggerUponForState('EffUltimateChainAura', 32)
+    ObjectUpon(EVERY_FRAME, 33)
     EndMomentum(1)
     Unknown23143(0, 0, 0)
     Unknown23144(3, 0, 111, 0, 0, 0, 0, 0, 75, 0, 4)
@@ -305,6 +316,7 @@ def UltimateKusari():
     sprite('vr_chain_tip04', 30)
     ConstantAlphaModifier(-30)
     BlendMode_Normal()
+
 
 @State
 def EffUltimateChainAura():
@@ -322,6 +334,7 @@ def EffUltimateChainAura():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EffUltimateChainAuraObj():
 
@@ -332,6 +345,7 @@ def EffUltimateChainAuraObj():
         ParticleLayer(2)
         CallCustomizableParticle('hzef_exheadmoveopt', -1)
     sprite('null', 30)
+
 
 @State
 def KusariAntiAir():
@@ -355,7 +369,7 @@ def KusariAntiAir():
         def upon_48():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
                 RotationSomething(-180000)
             if SLOT_2:
@@ -364,7 +378,7 @@ def KusariAntiAir():
                 CallCustomizableParticle('hzef_antiairchain', -1)
                 ParticleLayer(5)
                 CallCustomizableParticle('hzef_exheadmoveopt', -1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_chain_tip03aa', 1)
     RenderLayer(1)
     Unknown23143(60000, 60000, 70)
@@ -378,9 +392,9 @@ def KusariAntiAir():
     CallPrivateFunction('KusariParam', 0, 6, 0, 7771, 0, 0, 0, 0)
     CallPrivateFunction('KusariFirstPosition', 0, 0, 0, 0, 0, 0, 0, 0)
     CreateObject('ExPortalSp', -1)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(-40000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(-40000)
     RotationAngle(-30000)
     sprite('vr_chain_tip03aa', 12)
     SetActionMark(1)
@@ -389,7 +403,7 @@ def KusariAntiAir():
     SetActionMark(0)
     SLOT_51 = 1
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('ExPortalSp', 32)
+    TriggerUponForState('ExPortalSp', 32)
     Unknown23143(-60000, -45000, 40)
     AddRotationPerFrame(-2000)
     BlendMode_Normal()
@@ -411,7 +425,7 @@ def KusariAntiAir():
     label(0)
     sprite('vr_chain_tip04ex01', 6)
     SetActionMark(0)
-    PassbackAddActionMarkToFunction('ExPortalSp', 32)
+    TriggerUponForState('ExPortalSp', 32)
     Unknown23143(-10000, -5000, 20)
     sprite('vr_chain_tip04ex01', 6)
     SLOT_51 = 1
@@ -423,6 +437,7 @@ def KusariAntiAir():
     sprite('vr_chain_tip04ex01', 30)
     Unknown23143(0, 0, 0)
     Unknown23144(3, 0, 109, 0, 0, 0, 0, 0, 80, 0, 3)
+
 
 @State
 def ExBodyAuraAntiAir():
@@ -442,6 +457,7 @@ def ExBodyAuraAntiAir():
     SetScaleSpeed(100)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AntiAirWindSmoke():
 
@@ -449,9 +465,9 @@ def AntiAirWindSmoke():
         Eff3DEffect('hzef_windsmoke.DIG', 'hzef_windsmoke_motion_000.mmot')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
         AddY(120000)
         AlphaValue(160)
     sprite('null', 32767)
@@ -460,17 +476,18 @@ def AntiAirWindSmoke():
     label(0)
     sprite('null', 32767)
     SetScaleSpeed(10)
-    PassbackAddActionMarkToFunction('AntiAirWindSmokeOpt', 32)
+    TriggerUponForState('AntiAirWindSmokeOpt', 32)
     loopRest()
     loopRest()
     label(99)
-    PassbackAddActionMarkToFunction('AntiAirWindSmokeOpt', 33)
+    TriggerUponForState('AntiAirWindSmokeOpt', 33)
     sprite('null', 10)
     SetScaleXPerFrame(100)
     SetScaleSpeedY(-20)
     SetScaleSpeedZ(100)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
+
 
 @State
 def AntiAirWindSmokeOpt():
@@ -479,9 +496,9 @@ def AntiAirWindSmokeOpt():
         Eff3DEffect('hzef_windsmoke.DIG', 'hzef_windsmoke_motion_000.mmot')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
         RotationAngle(-180000)
         Size(1250)
         AddScaleY(-500)
@@ -500,6 +517,7 @@ def AntiAirWindSmokeOpt():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def BasicDriveWindSmoke():
 
@@ -508,11 +526,12 @@ def BasicDriveWindSmoke():
         RemoveOnCallStateEnd(2)
         E0EAEffectRotation(2)
         IgnorePauses(2)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 1)
     Unknown4055(0)
     ParticleLayer(5)
     CallCustomizableParticle('hzef_exheadmove', -1)
+
 
 @State
 def Kusari():
@@ -534,30 +553,31 @@ def Kusari():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
         SLOT_54 = 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                CallPrivateFunction('KusariAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0)
-            if SLOT_IsInOverdrive2:
+                CallPrivateFunction('KusariAngleByChain', 0, 0, 0, 0, 0, 0,
+                    0, 0)
+            if SLOT_54:
                 RotationSomething(0)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 54)
-            if (not SLOT_52):
-                if (not SLOT_53):
+            if not SLOT_52:
+                if not SLOT_53:
                     DeleteObject(23)
             if SLOT_56:
                 CreateObject('BasicDriveWindSmoke', -1)
                 ParticleLayer(2)
                 CallCustomizableParticle('hzef_exheadmoveopt', -1)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
 
         def upon_LANDING():
-            clearUponHandler(2)
-            ObjectUpon(3, 39)
+            clearUponHandler(LANDING)
+            ObjectUpon(EVERY_FRAME, 39)
 
         def upon_55():
-            if (SLOT_18 > 3):
+            if SLOT_StateDuration > 3:
                 clearUponHandler(55)
-                ObjectUpon(3, 39)
+                ObjectUpon(EVERY_FRAME, 39)
 
         def upon_38():
             clearUponHandler(38)
@@ -573,36 +593,36 @@ def Kusari():
             Unknown23143(0, 0, 0)
             sendToLabel(1)
 
-        def upon_43():
-            if (SLOT_48 == 0):
+        def upon_VALUE_RECEIVED():
+            if SLOT_ReceivedValue == 0:
                 SetActionMark(0)
                 Unknown23143(10000, 0, 70)
                 RotationSomething(0)
                 CreateObject('ExPortal', -1)
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 109
-            if (SLOT_48 == 1):
+            if SLOT_ReceivedValue == 1:
                 SetActionMark(1)
                 Unknown23143(9000, 5000, 70)
                 RotationSomething(0)
                 CreateObject('ExPortal', -1)
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 109
-            if (SLOT_48 == 2):
+            if SLOT_ReceivedValue == 2:
                 SetActionMark(2)
                 Unknown23143(5000, 9000, 70)
                 RotationSomething(0)
                 CreateObject('ExPortal', -1)
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 109
-            if (SLOT_48 == 3):
+            if SLOT_ReceivedValue == 3:
                 SetActionMark(3)
                 Unknown23143(0, 10000, 70)
                 RotationSomething(0)
                 CreateObject('ExPortal', -1)
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 109
-            if (SLOT_48 == 4):
+            if SLOT_ReceivedValue == 4:
                 SetActionMark(4)
                 Unknown23143(10000, 0, 70)
                 RotationSomething(0)
@@ -610,7 +630,7 @@ def Kusari():
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 0
                 CallPrivateFunction('KusariMochite', 0, 0, 0, 0, 0, 0, 0, 0)
-            if (SLOT_48 == 5):
+            if SLOT_ReceivedValue == 5:
                 SetActionMark(5)
                 Unknown23143(9000, 5000, 70)
                 RotationSomething(0)
@@ -618,7 +638,7 @@ def Kusari():
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 1
                 CallPrivateFunction('KusariMochite', 0, 1, 0, 0, 0, 0, 0, 0)
-            if (SLOT_48 == 6):
+            if SLOT_ReceivedValue == 6:
                 SetActionMark(6)
                 Unknown23143(9000, -5000, 70)
                 RotationSomething(0)
@@ -626,7 +646,7 @@ def Kusari():
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 2
                 CallPrivateFunction('KusariMochite', 0, 2, 0, 0, 0, 0, 0, 0)
-            if (SLOT_48 == 7):
+            if SLOT_ReceivedValue == 7:
                 SetActionMark(7)
                 Unknown23143(5000, -9000, 70)
                 RotationSomething(0)
@@ -634,7 +654,7 @@ def Kusari():
                 CopyFromRightToLeft(1, 2, 1, 23, 2, 1)
                 SLOT_57 = 3
                 CallPrivateFunction('KusariMochite', 0, 3, 0, 0, 0, 0, 0, 0)
-            if (SLOT_48 == 8):
+            if SLOT_ReceivedValue == 8:
                 SetActionMark(8)
                 Unknown23143(0, -10000, 70)
                 RotationSomething(0)
@@ -666,23 +686,23 @@ def Kusari():
     EnableAfterimage(1)
     AfterimageColor_1(200, 255, 255, 255)
     AfterimageColor_2(0, 255, 255, 255)
-    if (SLOT_2 == 0):
+    if SLOT_2 == 0:
         Unknown23143(60000, 0, 70)
-    if (SLOT_2 == 1):
+    if SLOT_2 == 1:
         Unknown23143(54000, 30000, 70)
-    if (SLOT_2 == 2):
+    if SLOT_2 == 2:
         Unknown23143(30000, 54000, 70)
-    if (SLOT_2 == 3):
+    if SLOT_2 == 3:
         Unknown23143(0, 60000, 70)
-    if (SLOT_2 == 4):
+    if SLOT_2 == 4:
         Unknown23143(60000, 0, 70)
-    if (SLOT_2 == 5):
+    if SLOT_2 == 5:
         Unknown23143(54000, 30000, 70)
-    if (SLOT_2 == 6):
+    if SLOT_2 == 6:
         Unknown23143(54000, -30000, 70)
-    if (SLOT_2 == 7):
+    if SLOT_2 == 7:
         Unknown23143(30000, -54000, 70)
-    if (SLOT_2 == 8):
+    if SLOT_2 == 8:
         Unknown23143(0, -60000, 70)
     SLOT_56 = 1
     loopRest()
@@ -698,7 +718,7 @@ def Kusari():
     Unknown23143(0, 0, 0)
     Unknown23144(3, 2, 57, 0, 0, 0, 0, 0, 80, 0, 3)
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('ExPortal', 32)
+    TriggerUponForState('ExPortal', 32)
     CreateObject('ExHeadStop', -1)
     sprite('vr_chain_tip04', 14)
     ConstantAlphaModifier(-25)
@@ -720,6 +740,7 @@ def Kusari():
     loopRest()
     ExitState()
 
+
 @State
 def ExPortal():
 
@@ -730,7 +751,7 @@ def ExPortal():
         IgnorePauses(3)
         E0EAEffectPosition(3)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
         ContinueState(180)
     sprite('vrexdmy', 1)
     sprite('vrexdmy', 32767)
@@ -741,11 +762,12 @@ def ExPortal():
     label(99)
     sprite('null', 20)
     clearUponHandler(32)
-    PassbackAddActionMarkToFunction('ExPortalParts', 32)
-    PassbackAddActionMarkToFunction('ExPortalPartsOpt', 32)
+    TriggerUponForState('ExPortalParts', 32)
+    TriggerUponForState('ExPortalPartsOpt', 32)
     BlendMode_Normal()
     AlphaValue(200)
     SetScaleSpeed(-50)
+
 
 @State
 def ExPortalParts():
@@ -761,7 +783,7 @@ def ExPortalParts():
         AddX(8000)
         BlendMode_Add()
         AlphaValue(255)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
         ContinueState(180)
     sprite('null', 10)
     ConstantAlphaModifier(-10)
@@ -776,6 +798,7 @@ def ExPortalParts():
     AlphaValue(50)
     ConstantAlphaModifier(-5)
     SetScaleSpeed(100)
+
 
 @State
 def ExPortalPartsOpt():
@@ -792,7 +815,7 @@ def ExPortalPartsOpt():
         AddX(8000)
         BlendMode_Add()
         AlphaValue(255)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
         ContinueState(180)
     sprite('null', 10)
     Size(0)
@@ -806,6 +829,7 @@ def ExPortalPartsOpt():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
 
+
 @State
 def ExPortalSp():
 
@@ -817,7 +841,7 @@ def ExPortalSp():
         E0EAEffectPosition(3)
         CancelIfPlayerHit(3)
         Size(2000)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('vrexdmy', 1)
     sprite('vrexdmy', 32767)
     CreateObject('ExPortalPartsSp', -1)
@@ -830,9 +854,10 @@ def ExPortalSp():
     label(99)
     sprite('null', 20)
     clearUponHandler(32)
-    PassbackAddActionMarkToFunction('ExPortalPartsSp', 32)
-    PassbackAddActionMarkToFunction('ExPortalPartsOptSp', 32)
+    TriggerUponForState('ExPortalPartsSp', 32)
+    TriggerUponForState('ExPortalPartsOptSp', 32)
     SetScaleSpeed(-200)
+
 
 @State
 def ExPortalPartsSp():
@@ -849,7 +874,7 @@ def ExPortalPartsSp():
         AddX(8000)
         BlendMode_Add()
         AlphaValue(255)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 10)
     ConstantAlphaModifier(-10)
     Size(0)
@@ -863,6 +888,7 @@ def ExPortalPartsSp():
     AlphaValue(50)
     ConstantAlphaModifier(-5)
     SetScaleSpeed(100)
+
 
 @State
 def ExPortalPartsOptSp():
@@ -879,7 +905,7 @@ def ExPortalPartsOptSp():
         AddX(8000)
         BlendMode_Add()
         AlphaValue(255)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 10)
     Size(0)
     SetScaleSpeed(60)
@@ -892,6 +918,7 @@ def ExPortalPartsOptSp():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
 
+
 @State
 def ExHeadMove():
 
@@ -900,7 +927,7 @@ def ExHeadMove():
         RemoveOnCallStateEnd(2)
         E0EAEffectRotation(2)
         IgnorePauses(2)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     label(0)
     sprite('null', 1)
     Unknown4055(0)
@@ -912,6 +939,7 @@ def ExHeadMove():
     label(99)
     sprite('null', 1)
     clearUponHandler(32)
+
 
 @State
 def ExHeadStop():
@@ -927,6 +955,7 @@ def ExHeadStop():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(0)
 
+
 @State
 def ExHeadLock():
 
@@ -940,6 +969,7 @@ def ExHeadLock():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
     SetScaleSpeed(0)
+
 
 @State
 def yugami_ring():
@@ -955,6 +985,7 @@ def yugami_ring():
     sprite('vr_yugami', 10)
     SetScaleSpeed(100)
     Unknown3059(-3200)
+
 
 @State
 def MoveTest():
@@ -992,6 +1023,7 @@ def MoveTest():
     sprite('vr_chain_tip03', 14)
     Unknown23143(60000, -100000, 6)
 
+
 @State
 def KusariTest():
 
@@ -1002,7 +1034,7 @@ def KusariTest():
             CallPrivateFunction('KusariDraw', 0, 0, 0, 0, 0, 0, 0, 0)
         CallPrivateFunction('KusariKansetsu', 0, 7, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
             if CheckInput(0x93):
                 YSpeed(800)
@@ -1012,7 +1044,7 @@ def KusariTest():
                 XSpeed(-800)
             if CheckInput(0x79):
                 XSpeed(800)
-            if CheckInput(0xa):
+            if CheckInput(INPUT_HOLD_B):
                 physicsXImpulse(0)
                 physicsYImpulse(0)
             XImpulseAcceleration(99)
@@ -1103,6 +1135,7 @@ def KusariTest():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def ExBodyAura():
 
@@ -1115,8 +1148,8 @@ def ExBodyAura():
         ColorForTransition(3355473940)
         AddX(20000)
         AddY(200000)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(44, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
         ContinueState(160)
     sprite('vref_env', 10)
     SetScaleSpeed(600)
@@ -1125,11 +1158,12 @@ def ExBodyAura():
     label(99)
     sprite('vref_env', 14)
     clearUponHandler(32)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     RemoveOnCallStateEnd(0)
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def EffKnifeSignal():
@@ -1143,6 +1177,7 @@ def EffKnifeSignal():
     CreateParticle('hzef_knifesignalopt', -1)
     Size(900)
     RandAddRotation(-90000, 90000)
+
 
 @State
 def Eff5CZanzo():
@@ -1167,6 +1202,7 @@ def Eff5CZanzo():
     sprite('vrhzef202_01', 12)
     AddAlpha(-100)
 
+
 @State
 def Eff5CZanzo2nd():
 
@@ -1187,6 +1223,7 @@ def Eff5CZanzo2nd():
     sprite('vrhzef202_03', 12)
     AddAlpha(-100)
 
+
 @State
 def ShotKnife():
     sprite('null', 2)
@@ -1198,6 +1235,7 @@ def ShotKnife():
     CreateObject('ShotKnifeObj', -1)
     DeviationX(-16000, -32000)
 
+
 @State
 def ShotKnifeObj():
 
@@ -1207,7 +1245,7 @@ def ShotKnifeObj():
         EnableAfterimage(1)
         physicsXImpulse(35000)
         physicsYImpulse(-40000)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     sprite('vr_6cknife00', 4)
     sprite('vr_6cknife00', 32767)
     label(1)
@@ -1216,6 +1254,7 @@ def ShotKnifeObj():
     AbsoluteY(0)
     sprite('vr_6cknife01', 15)
     ConstantAlphaModifier(-15)
+
 
 @State
 def Eff2CZanzo():
@@ -1238,6 +1277,7 @@ def Eff2CZanzo():
     sprite('vrhzef232_01', 16)
     AddAlpha(-100)
 
+
 @State
 def Eff3CZanzo():
 
@@ -1258,6 +1298,7 @@ def Eff3CZanzo():
     sprite('vrhzef240_00', 2)
     sprite('vrhzef240_01', 8)
     AddAlpha(-100)
+
 
 @State
 def Eff8CZanzo():
@@ -1281,6 +1322,7 @@ def Eff8CZanzo():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def Eff8CZanzo_2():
 
@@ -1302,6 +1344,7 @@ def Eff8CZanzo_2():
     sprite('vrhzef252_03', 6)
     AddAlpha(-100)
     E0EAEffectPosition(0)
+
 
 @State
 def Eff8CZanzo_3():
@@ -1325,6 +1368,7 @@ def Eff8CZanzo_3():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def Eff8CZanzo_4():
 
@@ -1346,6 +1390,7 @@ def Eff8CZanzo_4():
     sprite('vrhzef252_07', 6)
     AddAlpha(-100)
     E0EAEffectPosition(0)
+
 
 @State
 def Eff8CZanzo_5():
@@ -1369,6 +1414,7 @@ def Eff8CZanzo_5():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def EffAir2CZanzo():
 
@@ -1391,6 +1437,7 @@ def EffAir2CZanzo():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def HZEF_Aura():
 
@@ -1403,6 +1450,7 @@ def HZEF_Aura():
     sprite('null', 17)
     ConstantAlphaModifier(-15)
 
+
 @State
 def HZEF_AuraDelete():
 
@@ -1414,6 +1462,7 @@ def HZEF_AuraDelete():
         Size(600)
         ContinueState(1)
     sprite('null', 1)
+
 
 @State
 def EffUltimateAssaultBunshinA():
@@ -1428,6 +1477,7 @@ def EffUltimateAssaultBunshinA():
     physicsXImpulse(32000)
     ConstantAlphaModifier(-10)
 
+
 @State
 def EffUltimateAssaultBunshinB():
 
@@ -1441,6 +1491,7 @@ def EffUltimateAssaultBunshinB():
     physicsXImpulse(-32000)
     ConstantAlphaModifier(-10)
 
+
 @State
 def EffKamae():
 
@@ -1448,8 +1499,8 @@ def EffKamae():
         RemoveOnCallStateEnd(3)
         E0EAEffectPosition(3)
         LinkParticle('hzef_kamaeaura')
-        sendToLabelUpon(56, 99)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(56, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 32767)
     loopRest()
     label(99)
@@ -1459,6 +1510,7 @@ def EffKamae():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
 
+
 @State
 def EffKamaeLand():
 
@@ -1467,8 +1519,8 @@ def EffKamaeLand():
         E0EAEffectPosition(3)
         ParticleLayer(5)
         CallPrivateEffect('hzef_landaura')
-        sendToLabelUpon(56, 99)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(56, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 10)
     SetScaleSpeed(50)
     sprite('null', 32767)
@@ -1480,6 +1532,7 @@ def EffKamaeLand():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
+
 
 @State
 def EffLandAura():
@@ -1493,6 +1546,7 @@ def EffLandAura():
     ConstantAlphaModifier(-10)
     Size(1500)
     SetScaleSpeed(200)
+
 
 @State
 def EffAirAura():
@@ -1509,12 +1563,14 @@ def EffAirAura():
     Size(1500)
     SetScaleSpeed(200)
 
+
 @State
 def EffCommandThrowAura():
 
     def upon_IMMEDIATE():
         LinkParticle('hzef_spaura')
     sprite('null', 60)
+
 
 @State
 def EffCommandThrowWind():
@@ -1526,6 +1582,7 @@ def EffCommandThrowWind():
         RandAddScale(-200, 250)
         AlphaValue(150)
     sprite('null', 30)
+
 
 @State
 def EffSamaso():
@@ -1614,6 +1671,7 @@ def EffSamaso():
     CreateObject('HZEF_AuraDelete', 3)
     CreateObject('HZEF_AuraDelete', 4)
     CreateObject('HZEF_AuraDelete', 5)
+
 
 @State
 def EffChudan():
@@ -1707,6 +1765,7 @@ def EffChudan():
     CreateObject('HZEF_AuraDelete', 6)
     CreateObject('HZEF_AuraDelete', 7)
 
+
 @State
 def EffGedan():
 
@@ -1791,6 +1850,7 @@ def EffGedan():
     CreateObject('HZEF_AuraDelete', 3)
     CreateObject('HZEF_AuraDelete', 4)
 
+
 @State
 def EffUchiOtoshi():
 
@@ -1874,6 +1934,7 @@ def EffUchiOtoshi():
     CreateObject('HZEF_AuraDelete', 3)
     CreateObject('HZEF_AuraDelete', 4)
     CreateObject('HZEF_AuraDelete', 5)
+
 
 @State
 def EffSpKensei():
@@ -1997,6 +2058,7 @@ def EffSpKensei():
     CreateObject('HZEF_AuraDelete', 5)
     sprite('vrhzef407_06', 4)
 
+
 @State
 def Eff410():
 
@@ -2076,6 +2138,7 @@ def Eff410():
     CreateObject('HZEF_AuraDelete', 2)
     CreateObject('HZEF_AuraDelete', 3)
 
+
 @State
 def hzef432_bind():
 
@@ -2113,6 +2176,7 @@ def hzef432_bind():
     SetScaleSpeed(80)
     ConstantAlphaModifier(-26)
 
+
 @State
 def hzef432_bindaura():
 
@@ -2120,8 +2184,8 @@ def hzef432_bindaura():
         E0EAEffectPosition(22)
         LinkParticle('hzef_432bindaura')
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(56, 99)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(56, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 32767)
     loopRest()
     label(99)
@@ -2130,6 +2194,7 @@ def hzef432_bindaura():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
+
 
 @State
 def UltimateThrowCamera():
@@ -2143,6 +2208,7 @@ def UltimateThrowCamera():
     sprite('null', 32767)
     AddX(100000)
 
+
 @State
 def EffUltimateLockSignal():
 
@@ -2151,7 +2217,7 @@ def EffUltimateLockSignal():
         CallPrivateEffect('hzef_ultimatelocksignal')
         IgnorePauses(3)
         ContinueState(200)
-        if (SLOT_19 > 650000):
+        if SLOT_19 > 650000:
             CopyFromRightToLeft(23, 2, 83, 22, 2, 83)
         else:
             AddX(650000)
@@ -2167,6 +2233,7 @@ def EffUltimateLockSignal():
     SetScaleSpeed(100)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
+
 
 @State
 def EffUltimateMagicOpt():
@@ -2187,6 +2254,7 @@ def EffUltimateMagicOpt():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
 
+
 @State
 def UltimateLockMagic():
 
@@ -2199,9 +2267,9 @@ def UltimateLockMagic():
         AlphaValue(0)
         ContinueState(60)
         AbsoluteY(300000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
     sprite('null', 12)
     Size(200)
     SetScaleSpeed(40)
@@ -2219,9 +2287,9 @@ def UltimateLockMagic():
     label(0)
     sprite('null', 32767)
     SetScaleSpeed(5)
-    PassbackAddActionMarkToFunction('UltimateLockMagicA', 32)
-    PassbackAddActionMarkToFunction('UltimateLockMagicB', 32)
-    PassbackAddActionMarkToFunction('UltimateLockMagicC', 32)
+    TriggerUponForState('UltimateLockMagicA', 32)
+    TriggerUponForState('UltimateLockMagicB', 32)
+    TriggerUponForState('UltimateLockMagicC', 32)
     loopRest()
     label(99)
     sprite('null', 10)
@@ -2230,6 +2298,7 @@ def UltimateLockMagic():
     SetScaleSpeed(500)
     AlphaValue(255)
     ConstantAlphaModifier(-25)
+
 
 @State
 def UltimateLockMagicA():
@@ -2243,8 +2312,8 @@ def UltimateLockMagicA():
         AlphaValue(0)
         Size(0)
         AddY(80000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(56, 0)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(56, 0)
     sprite('null', 12)
     Size(300)
     SetScaleSpeed(50)
@@ -2261,6 +2330,7 @@ def UltimateLockMagicA():
     sprite('null', 5)
     EndMomentum(1)
 
+
 @State
 def UltimateLockMagicB():
 
@@ -2274,8 +2344,8 @@ def UltimateLockMagicB():
         Size(0)
         AddX(80000)
         AddY(-60000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(56, 0)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(56, 0)
     sprite('null', 12)
     Size(300)
     SetScaleSpeed(50)
@@ -2293,6 +2363,7 @@ def UltimateLockMagicB():
     sprite('null', 20)
     EndMomentum(1)
 
+
 @State
 def UltimateLockMagicC():
 
@@ -2306,8 +2377,8 @@ def UltimateLockMagicC():
         Size(0)
         AddX(-80000)
         AddY(-60000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(56, 0)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(56, 0)
     sprite('null', 12)
     Size(300)
     SetScaleSpeed(50)
@@ -2325,6 +2396,7 @@ def UltimateLockMagicC():
     sprite('null', 20)
     EndMomentum(1)
 
+
 @State
 def EffUltimateLockPtc():
 
@@ -2335,11 +2407,12 @@ def EffUltimateLockPtc():
     sprite('null', 60)
     Size(1500)
 
+
 @State
 def UltimateLockObj():
 
     def upon_IMMEDIATE():
-        if (SLOT_19 > 650000):
+        if SLOT_19 > 650000:
             CopyFromRightToLeft(23, 2, 83, 22, 2, 83)
         else:
             AddX(650000)
@@ -2350,6 +2423,7 @@ def UltimateLockObj():
     CreateObject('UltimateMagicCircle', -1)
     PrivateSE('hzse_07')
 
+
 @State
 def UltimateLockObjCenter():
 
@@ -2358,8 +2432,8 @@ def UltimateLockObjCenter():
         IgnoreScreenfreeze(1)
         BlendMode_Add()
         ContinueState(120)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(17, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(17, 99)
     sprite('null', 10)
     RunLoopUpon(17, 90)
     Size(900)
@@ -2376,6 +2450,7 @@ def UltimateLockObjCenter():
     ConstantAlphaModifier(-10)
     physicsYImpulse(20000)
 
+
 @State
 def UltimateLockObjTop():
 
@@ -2384,8 +2459,8 @@ def UltimateLockObjTop():
         IgnoreScreenfreeze(1)
         BlendMode_Add()
         ContinueState(120)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(17, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(17, 99)
     sprite('null', 10)
     RunLoopUpon(17, 90)
     Size(600)
@@ -2402,6 +2477,7 @@ def UltimateLockObjTop():
     ConstantAlphaModifier(-10)
     physicsYImpulse(32000)
 
+
 @State
 def UltimateLockObjBottom():
 
@@ -2410,8 +2486,8 @@ def UltimateLockObjBottom():
         IgnoreScreenfreeze(1)
         BlendMode_Add()
         ContinueState(120)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(17, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(17, 99)
     sprite('null', 10)
     RunLoopUpon(17, 90)
     Size(600)
@@ -2427,6 +2503,7 @@ def UltimateLockObjBottom():
     AlphaValue(200)
     ConstantAlphaModifier(-10)
     physicsYImpulse(5000)
+
 
 @State
 def UltimateMagicCircle():
@@ -2448,15 +2525,16 @@ def UltimateMagicCircle():
         StarterRating(2)
 
         def upon_OPPONENT_HIT():
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
 
-        def upon_FRAME_STEP():
-            if Unknown2065(23):
-                clearUponHandler(3)
-                ObjectUpon(3, 41)
+        def upon_EVERY_FRAME():
+            if SLOT_19 > 650000:
+                clearUponHandler(EVERY_FRAME)
+                ObjectUpon(EVERY_FRAME, 41)
         Visibility(1)
     sprite('vr_magiccircle00', 2)
     CreateParticle('hzef_ultimatelock', -1)
+
 
 @State
 def EffDDZanzoA():
@@ -2481,6 +2559,7 @@ def EffDDZanzoA():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def EffDDZanzoB():
 
@@ -2503,6 +2582,7 @@ def EffDDZanzoB():
     sprite('vrhzef431_01', 10)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
+
 
 @State
 def EffDDZanzoC():
@@ -2527,6 +2607,7 @@ def EffDDZanzoC():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def EffDDZanzoD():
 
@@ -2550,6 +2631,7 @@ def EffDDZanzoD():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def DDLockAura():
 
@@ -2561,8 +2643,8 @@ def DDLockAura():
         Size(0)
         ColorForTransition(4026583140)
         AbsoluteY(300000)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(56, 99)
     sprite('vref_env', 10)
     SetScaleSpeed(600)
     sprite('vref_env', 32767)
@@ -2578,12 +2660,13 @@ def DDLockAura():
     label(99)
     sprite('vref_env', 20)
     clearUponHandler(32)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     RemoveOnCallStateEnd(0)
     E0EAEffectPosition(0)
     Unknown23131()
     SetScaleSpeed(100)
     ConstantAlphaModifier(-10)
+
 
 @State
 def DDBodyAura():
@@ -2597,9 +2680,9 @@ def DDBodyAura():
         ColorForTransition(4278215830)
         AddX(20000)
         AbsoluteY(100000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
     sprite('vref_env', 10)
     SetScaleSpeed(1000)
     sprite('vref_env', 32767)
@@ -2615,12 +2698,13 @@ def DDBodyAura():
     label(99)
     sprite('vref_env', 60)
     clearUponHandler(32)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     RemoveOnCallStateEnd(0)
     E0EAEffectPosition(0)
     ColorTransition(25800, 60)
     SetScaleSpeed(100)
     ConstantAlphaModifier(-5)
+
 
 @State
 def HZEF_DDBackAura():
@@ -2631,14 +2715,15 @@ def HZEF_DDBackAura():
         CallPrivateEffect('hzef_ultimateaura')
         BlendMode_Add()
         Size(1500)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(56, 99)
     sprite('null', 32767)
     CreateObject('HZEF_DDBackAuraFront', -1)
     label(99)
     sprite('null', 20)
     AlphaValue(200)
     ConstantAlphaModifier(-10)
+
 
 @State
 def HZEF_DDBackAuraFront():
@@ -2650,13 +2735,14 @@ def HZEF_DDBackAuraFront():
         BlendMode_Add()
         Size(3000)
         AddY(12000)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(56, 99)
     sprite('null', 32767)
     label(99)
     sprite('null', 20)
     AlphaValue(200)
     ConstantAlphaModifier(-10)
+
 
 @State
 def EffUltimateSnakeEye():
@@ -2667,6 +2753,7 @@ def EffUltimateSnakeEye():
         IgnoreScreenfreeze(1)
         BlendMode_Add()
     sprite('null', 3)
+
 
 @State
 def EffDDSnakeFang():
@@ -2698,7 +2785,7 @@ def EffDDSnakeFang():
     CreateParticle('hzef_snakeeye', 5)
     sprite('vrhzef431atk_00', 10)
     sprite('vrhzef431atk_01', 3)
-    PassbackAddActionMarkToFunction('HZEF_DDBackAuraFront', 32)
+    TriggerUponForState('HZEF_DDBackAuraFront', 32)
     CharacterFlash2(-16764396, 3)
     CreateObject('EffUltimateSnakeEye', 0)
     CreateObject('EffUltimateSnakeEye', 1)
@@ -2708,7 +2795,7 @@ def EffDDSnakeFang():
     CreateObject('EffUltimateSnakeEye', 5)
     sprite('vrhzef431atk_02', 3)
     CharacterFlash2(-16777216, 11)
-    PassbackAddActionMarkToFunction('EffUltimateSnakeEye', 32)
+    TriggerUponForState('EffUltimateSnakeEye', 32)
     sprite('vrhzef431atk_03', 4)
     sprite('vrhzef431atk_04', 4)
     sprite('vrhzef431atk_05', 8)
@@ -2716,6 +2803,7 @@ def EffDDSnakeFang():
     ConstantAlphaModifier(-20)
     physicsXImpulse(5000)
     physicsYImpulse(-2000)
+
 
 @State
 def EffDDSnakeFangOD():
@@ -2747,7 +2835,7 @@ def EffDDSnakeFangOD():
     CreateParticle('hzef_snakeeye', 5)
     sprite('vrhzef431atk_00', 10)
     sprite('vrhzef431atk_01', 3)
-    PassbackAddActionMarkToFunction('HZEF_DDBackAuraFront', 32)
+    TriggerUponForState('HZEF_DDBackAuraFront', 32)
     CharacterFlash2(-16764396, 3)
     CreateObject('EffUltimateSnakeEye', 0)
     CreateObject('EffUltimateSnakeEye', 1)
@@ -2757,7 +2845,7 @@ def EffDDSnakeFangOD():
     CreateObject('EffUltimateSnakeEye', 5)
     sprite('vrhzef431atk_02', 3)
     CharacterFlash2(-16777216, 11)
-    PassbackAddActionMarkToFunction('EffUltimateSnakeEye', 32)
+    TriggerUponForState('EffUltimateSnakeEye', 32)
     sprite('vrhzef431atk_03', 4)
     sprite('vrhzef431atk_04', 4)
     sprite('vrhzef431atk_05', 8)
@@ -2766,6 +2854,7 @@ def EffDDSnakeFangOD():
     physicsXImpulse(5000)
     physicsYImpulse(-2000)
 
+
 @State
 def UltimateWindSmoke():
 
@@ -2773,9 +2862,9 @@ def UltimateWindSmoke():
         Eff3DEffect('hzef_windsmoke.DIG', 'hzef_windsmoke_motion_000.mmot')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
         AddY(120000)
         AlphaValue(160)
     sprite('null', 32767)
@@ -2784,17 +2873,18 @@ def UltimateWindSmoke():
     label(0)
     sprite('null', 32767)
     SetScaleSpeed(10)
-    PassbackAddActionMarkToFunction('UltimateWindSmokeOpt', 32)
+    TriggerUponForState('UltimateWindSmokeOpt', 32)
     loopRest()
     loopRest()
     label(99)
-    PassbackAddActionMarkToFunction('UltimateWindSmokeOpt', 33)
+    TriggerUponForState('UltimateWindSmokeOpt', 33)
     sprite('null', 10)
     SetScaleXPerFrame(100)
     SetScaleSpeedY(-20)
     SetScaleSpeedZ(100)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
+
 
 @State
 def UltimateWindSmokeOpt():
@@ -2803,9 +2893,9 @@ def UltimateWindSmokeOpt():
         Eff3DEffect('hzef_windsmoke.DIG', 'hzef_windsmoke_motion_000.mmot')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
         RotationAngle(-180000)
         Size(1250)
         AddScaleY(-500)
@@ -2823,6 +2913,7 @@ def UltimateWindSmokeOpt():
     SetScaleSpeedZ(100)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
+
 
 @State
 def HZEF_UltimateAssault():
@@ -2842,6 +2933,7 @@ def HZEF_UltimateAssault():
             ConstantAlphaModifier(-30)
     sprite('null', 110)
 
+
 @State
 def HZEF_UltimateAssaultOD():
 
@@ -2858,6 +2950,7 @@ def HZEF_UltimateAssaultOD():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def HZEF_DrainField():
 
@@ -2868,16 +2961,16 @@ def HZEF_DrainField():
         BlendMode_Add()
         TurnAround()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('BossHazamaDrainField', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_44():
-            clearUponHandler(44)
+        def upon_PLAYER_DAMAGED():
+            clearUponHandler(PLAYER_DAMAGED)
             clearUponHandler(32)
             sendToLabel(2)
 
         def upon_32():
-            clearUponHandler(44)
+            clearUponHandler(PLAYER_DAMAGED)
             clearUponHandler(32)
             sendToLabel(2)
         EffectPosition(3, 103)
@@ -2917,6 +3010,7 @@ def HZEF_DrainField():
     SetScaleSpeed(80)
     ConstantAlphaModifier(-26)
 
+
 @State
 def HZEF_DrainLoop():
 
@@ -2928,6 +3022,7 @@ def HZEF_DrainLoop():
         IgnoreScreenfreeze(1)
     sprite('null', 120)
 
+
 @State
 def HZEF_DrainEnemy():
 
@@ -2938,6 +3033,7 @@ def HZEF_DrainEnemy():
         Unknown23144(22, 0, 103, 0, 0, 0, 0, 0, 50, 0, 20)
         IgnoreScreenfreeze(1)
     sprite('null', 120)
+
 
 @State
 def hzef432():
@@ -2974,6 +3070,7 @@ def hzef432():
     AlphaValue(226)
     sprite('vrhzef432_06', 3)
 
+
 @State
 def HZEF_ASTBACK():
 
@@ -2984,8 +3081,8 @@ def HZEF_ASTBACK():
         IgnorePauses(3)
         IgnoreScreenfreeze(1)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(44, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
     sprite('null', 90)
     label(0)
     sprite('null', 30)
@@ -2997,6 +3094,7 @@ def HZEF_ASTBACK():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def HZEF_ASTMagicCircle():
 
@@ -3006,7 +3104,7 @@ def HZEF_ASTMagicCircle():
         CallPrivateEffect('hzef_aststartcircle')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(44, 99)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
     sprite('null', 120)
     SetScaleSpeed(10)
     ConstantAlphaModifier(-2)
@@ -3017,6 +3115,7 @@ def HZEF_ASTMagicCircle():
     sprite('null', 10)
     AlphaValue(100)
     ConstantAlphaModifier(-10)
+
 
 @State
 def HZEF_ASTSIGNAL():
@@ -3029,6 +3128,7 @@ def HZEF_ASTSIGNAL():
         AddY(280000)
     sprite('null', 70)
     CommonSE('022_magiccircle_c')
+
 
 @State
 def KusariAstral():
@@ -3063,7 +3163,7 @@ def KusariAstral():
         def upon_48():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             pass
 
         def upon_32():
@@ -3137,10 +3237,10 @@ def KusariAstral():
             RotationSomething(0)
             RenderLayer(11)
             CallPrivateFunction('KusariRenderStage', 0, 12, 0, 13, 0, 0, 0, 0)
-        sendToLabelUpon(40, 0)
+        uponSendToLabel(40, 0)
 
         def upon_OPPONENT_HIT():
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
             HUDVisibillity(1)
             CreateObject('AST_Lock', 101)
 
@@ -3180,6 +3280,7 @@ def KusariAstral():
     clearUponHandler(40)
     ConstantAlphaModifier(-20)
 
+
 @State
 def AST_Lock():
 
@@ -3200,6 +3301,7 @@ def AST_Lock():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(-10)
 
+
 @State
 def AST_Enshutsu():
 
@@ -3208,17 +3310,17 @@ def AST_Enshutsu():
     sprite('null', 120)
     CreateObject('AST_Circle', -1)
     CreateObject('AST_Snake', -1)
-    ApplyFunctionsToObjects(1)
-    DeviationX(256000, 420000)
-    RandSpeedX(100, 500)
-    DeviationY(0, 32000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        DeviationX(256000, 420000)
+        RandSpeedX(100, 500)
+        DeviationY(0, 32000)
     CreateObject('AST_Snake', -1)
-    ApplyFunctionsToObjects(1)
-    DeviationX(-256000, -420000)
-    RandSpeedX(-100, -500)
-    DeviationY(0, 32000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        DeviationX(-256000, -420000)
+        RandSpeedX(-100, -500)
+        DeviationY(0, 32000)
     sprite('null', 150)
     CreateObject('AST_Unite', -1)
     sprite('null', 170)
@@ -3228,6 +3330,7 @@ def AST_Enshutsu():
     CreateObject('AST_Breath', -1)
     sprite('null', 60)
     CreateObject('HZAST_RedOut', -1)
+
 
 @State
 def AST_Circle():
@@ -3241,6 +3344,7 @@ def AST_Circle():
     sprite('null', 150)
     SetScaleSpeed(4)
 
+
 @State
 def AST_Snake():
 
@@ -3250,6 +3354,7 @@ def AST_Snake():
         Eff3DEffect('hz_ah_A_snake.DIG', 'hz_ah_A_snake_mot_000.mmot')
         Visibility(1)
     sprite('null', 150)
+
 
 @State
 def AST_Unite():
@@ -3271,6 +3376,7 @@ def AST_Unite():
     sprite('null', 50)
     ConstantAlphaModifier(-5)
 
+
 @State
 def AST_Body():
 
@@ -3283,6 +3389,7 @@ def AST_Body():
         BlendMode_Normal()
         Visibility(1)
     sprite('null', 220)
+
 
 @State
 def AST_Breath():
@@ -3298,6 +3405,7 @@ def AST_Breath():
         Size(500)
     sprite('null', 200)
 
+
 @State
 def AST_Head():
 
@@ -3310,6 +3418,7 @@ def AST_Head():
         BlendMode_Normal()
         Visibility(1)
     sprite('null', 220)
+
 
 @State
 def HZAST_RedOut():
@@ -3327,6 +3436,7 @@ def HZAST_RedOut():
     ConstantAlphaModifier(40)
     sprite('vr_white', 20)
     ConstantAlphaModifier(-15)
+
 
 @State
 def HZAST_BlackOut():
@@ -3346,17 +3456,19 @@ def HZAST_BlackOut():
     sprite('vr_white', 20)
     ConstantAlphaModifier(-15)
 
+
 @State
 def NoelEntry():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(56, 1)
         PaletteIndex(7)
         XPositionRelativeFacing(-50000)
     sprite('no602_00', 32767)
     label(1)
     sprite('no602_00', 200)
     loopRest()
+
 
 @State
 def NoelWarp():
@@ -3400,34 +3512,36 @@ def NoelWarp():
     sprite('no602_00', 6)
     XPositionRelativeFacing(-500000)
 
+
 @State
 def NoelTimeUpLose():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(56, 1)
         PaletteIndex(7)
         XPositionRelativeFacing(0)
     sprite('no620_08', 32767)
     loopRest()
     label(1)
     clearUponHandler(56)
-    sendToLabelUpon(56, 2)
+    uponSendToLabel(56, 2)
     sprite('no620_08', 32767)
     loopRest()
     label(2)
     clearUponHandler(56)
-    sendToLabelUpon(56, 3)
+    uponSendToLabel(56, 3)
     sprite('no620_08', 32767)
     loopRest()
     label(3)
     sprite('no620_08', 20)
     loopRest()
 
+
 @State
 def NoelDownUpperSet():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(56, 1)
+        uponSendToLabel(56, 1)
         PaletteIndex(7)
         XPositionRelativeFacing(-130000)
         AbsoluteY(100000)
@@ -3437,6 +3551,7 @@ def NoelDownUpperSet():
     label(1)
     sprite('no062_00', 1)
     loopRest()
+
 
 @State
 def NoelDownUpperGo():
@@ -3485,6 +3600,7 @@ def NoelDownUpperGo():
     physicsYImpulse(14000)
     EndYPhysicsImpulse()
 
+
 @State
 def RLAstLockmc():
 
@@ -3499,6 +3615,7 @@ def RLAstLockmc():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def RLAstLockAura():
 
@@ -3511,6 +3628,7 @@ def RLAstLockAura():
     ConstantAlphaModifier(2)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
+
 
 @State
 def KusariBurstDD():
@@ -3534,7 +3652,7 @@ def KusariBurstDD():
         def upon_48():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
                 RotationSomething(-180000)
             if SLOT_2:
@@ -3543,7 +3661,7 @@ def KusariBurstDD():
                 CallCustomizableParticle('hzef_antiairchain', -1)
                 ParticleLayer(5)
                 CallCustomizableParticle('hzef_exheadmoveopt', -1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_chain_tip03aa', 1)
     RenderLayer(1)
     Unknown23143(40000, 80000, 70)
@@ -3557,9 +3675,9 @@ def KusariBurstDD():
     CallPrivateFunction('KusariParam', 0, 6, 0, 7771, 0, 0, 0, 0)
     CallPrivateFunction('KusariFirstPosition', 0, 0, 0, 0, 0, 0, 0, 0)
     CreateObject('ExPortalSp', -1)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(-40000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(-40000)
     RotationAngle(-30000)
     sprite('vr_chain_tip03aa', 9)
     SetActionMark(1)
@@ -3567,7 +3685,7 @@ def KusariBurstDD():
     label(0)
     sprite('vr_chain_tip04ex01', 6)
     SetActionMark(0)
-    PassbackAddActionMarkToFunction('ExPortalSp', 32)
+    TriggerUponForState('ExPortalSp', 32)
     Unknown23143(-10000, -50000, 50)
     sprite('vr_chain_tip04ex01', 4)
     SLOT_51 = 1
@@ -3579,6 +3697,7 @@ def KusariBurstDD():
     sprite('vr_chain_tip04ex01', 10)
     Unknown23143(0, 0, 0)
     Unknown23144(3, 0, 109, 0, 0, 0, 0, 0, 80, 0, 3)
+
 
 @State
 def Eff440Zanzo():
@@ -3601,6 +3720,7 @@ def Eff440Zanzo():
     E0EAEffectPosition(0)
     AddAlpha(-100)
 
+
 @State
 def Eff440Zanzo_b():
 
@@ -3611,6 +3731,7 @@ def Eff440Zanzo_b():
         AddX(100000)
     sprite('null', 1)
     sprite('vrhzef440_10', 5)
+
 
 @State
 def Eff440Zanzo_b2():
@@ -3631,6 +3752,7 @@ def Eff440Zanzo_b2():
     sprite('vrhzef440_11', 2)
     sprite('vrhzef440_12', 16)
     AddAlpha(-100)
+
 
 @State
 def Eff440snake():
@@ -3657,6 +3779,7 @@ def Eff440snake():
     CreateParticle('hzef_432backaura_01', 0)
     sprite('vrhzef440_35', 4)
     sprite('vrhzef440_36', 4)
+
 
 @State
 def Eff411():
@@ -3719,6 +3842,7 @@ def Eff411():
     CreateObject('HZEF_AuraDelete', 0)
     CreateObject('HZEF_AuraDelete', 1)
 
+
 @State
 def Eff412Zanzo():
 
@@ -3741,6 +3865,7 @@ def Eff412Zanzo():
     sprite('vrhzef412_01', 8)
     AddAlpha(-127)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -3749,6 +3874,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_Ragna():
@@ -3760,9 +3886,9 @@ def Act3Event_Ragna():
         EnableCollision(0)
         ScreenCollision(0)
         Flip()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(LANDING, 2)
     sprite('rg620_05', 32767)
     label(0)
     sprite('rg620_05', 5)
@@ -3804,6 +3930,7 @@ def Act3Event_Ragna():
     sprite('null', 10)
     EndMomentum(1)
     Visibility(1)
+
 
 @State
 def Act3Event_EffGedan():
@@ -3888,6 +4015,7 @@ def Act3Event_EffGedan():
     CreateObject('HZEF_AuraDelete', 2)
     CreateObject('HZEF_AuraDelete', 3)
     CreateObject('HZEF_AuraDelete', 4)
+
 
 @State
 def Eventoffset_Sosai_ntvshz():

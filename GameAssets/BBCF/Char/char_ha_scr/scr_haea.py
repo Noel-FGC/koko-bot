@@ -19,6 +19,7 @@ def EMB_HA():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_HA_OD():
 
@@ -40,6 +41,7 @@ def EMB_HA_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_HA_AH():
 
@@ -60,11 +62,12 @@ def EMB_HA_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def EventRCStand():
 
-    def upon_43():
-        if (SLOT_48 == 10):
+    def upon_VALUE_RECEIVED():
+        if SLOT_ReceivedValue == 10:
             enterState('EventRCWarpOut')
     PaletteIndex(7)
     label(0)
@@ -78,6 +81,7 @@ def EventRCStand():
     sprite('rc000_07', 7)
     sprite('rc000_08', 7)
     gotoLabel(0)
+
 
 @State
 def EventRCWarpIn():
@@ -105,6 +109,7 @@ def EventRCWarpIn():
     CreateParticle('haef_event_lose_end', 0)
     enterState('EventRCStand')
 
+
 @State
 def EventRCWarpOut():
     BlendMode_Normal()
@@ -130,6 +135,7 @@ def EventRCWarpOut():
     CreateParticle('haef_event_lose_end', 103)
     sprite('rc000_08', 32767)
 
+
 @State
 def ha_D():
 
@@ -142,6 +148,7 @@ def ha_D():
     CallPrivateEffect('haef_D')
     sprite('null', 21)
     E0EAEffectPosition(0)
+
 
 @State
 def ha_D_usui():
@@ -158,6 +165,7 @@ def ha_D_usui():
     sprite('null', 51)
     E0EAEffectPosition(0)
 
+
 @State
 def ha_D_no_link_pos():
 
@@ -173,6 +181,7 @@ def ha_D_no_link_pos():
     ConstantAlphaModifier(-20)
     E0EAEffectPosition(0)
 
+
 @State
 def ha_5D():
 
@@ -180,7 +189,7 @@ def ha_5D():
         PaletteIndex(1)
         CancelIfPlayerHit(3)
         E0EAEffectPosition(3)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
         def upon_33():
             E0EAEffectPosition(0)
@@ -190,6 +199,7 @@ def ha_5D():
     label(0)
     sprite('null', 10)
     AddToAlphaModifier(-20)
+
 
 @State
 def ha_2D():
@@ -207,6 +217,7 @@ def ha_2D():
     sprite('null', 20)
     AddToAlphaModifier(-15)
 
+
 @State
 def ha_6D():
 
@@ -214,7 +225,7 @@ def ha_6D():
         PaletteIndex(1)
         CancelIfPlayerHit(3)
         E0EAEffectPosition(3)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
         def upon_33():
             E0EAEffectPosition(0)
@@ -225,6 +236,7 @@ def ha_6D():
     sprite('null', 7)
     AlphaValue(140)
     ConstantAlphaModifier(-20)
+
 
 @State
 def ha_202():
@@ -244,6 +256,7 @@ def ha_202():
         PaletteColor4(1)
         AlphaValue(245)
     sprite('vrhaef202_00', 120)
+
 
 @State
 def ha_232():
@@ -271,6 +284,7 @@ def ha_232():
     sprite('vrhaef232_00', 14)
     AlphaValue(120)
 
+
 @State
 def ha_212():
 
@@ -297,6 +311,7 @@ def ha_212():
     sprite('vrhaef212_01', 14)
     AlphaValue(120)
 
+
 @State
 def ha_234():
 
@@ -316,6 +331,7 @@ def ha_234():
         AlphaValue(245)
     sprite('vrhaef234_00', 3)
     sprite('vrhaef234_01', 16)
+
 
 @State
 def ha_252():
@@ -339,6 +355,7 @@ def ha_252():
     sprite('vrhaef252_02', 2)
     sprite('vrhaef252_03', 3)
     sprite('vrhaef252_04', 16)
+
 
 @State
 def ha_214():
@@ -365,6 +382,7 @@ def ha_214():
     RemoveOnCallStateEnd(0)
     sprite('vrhaef214_00', 16)
     AlphaValue(120)
+
 
 @State
 def ha_260():
@@ -393,6 +411,7 @@ def ha_260():
     E0EAEffectPosition(0)
     RemoveOnCallStateEnd(0)
 
+
 @State
 def ha_406():
 
@@ -419,6 +438,7 @@ def ha_406():
     sprite('vrhaef406_01', 16)
     AlphaValue(120)
 
+
 @State
 def ha_power_circle():
 
@@ -435,6 +455,7 @@ def ha_power_circle():
     sprite('vrhaef_power_circle', 25)
     SetScaleSpeed(4)
     ConstantAlphaModifier(-10)
+
 
 @State
 def ha_power_light():
@@ -453,6 +474,7 @@ def ha_power_light():
     SetScaleSpeed(8)
     ConstantAlphaModifier(-10)
 
+
 @State
 def ha_power_bluelight():
 
@@ -469,6 +491,7 @@ def ha_power_bluelight():
     sprite('vrhaef_power_bluelight', 25)
     SetScaleSpeed(5)
     ConstantAlphaModifier(-10)
+
 
 @State
 def ha_power_1():
@@ -489,6 +512,7 @@ def ha_power_1():
     sprite('vrhaef_power_1', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ha_power_2():
 
@@ -508,6 +532,7 @@ def ha_power_2():
     sprite('vrhaef_power_2', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ha_power_3():
 
@@ -526,6 +551,7 @@ def ha_power_3():
     ConstantAlphaModifier(0)
     sprite('vrhaef_power_3', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def GuardCrash():
@@ -547,6 +573,7 @@ def GuardCrash():
     sprite('vrhaef408_00', 2)
     sprite('vrhaef408_01', 120)
 
+
 @State
 def ha_402a():
 
@@ -565,6 +592,7 @@ def ha_402a():
         AlphaValue(245)
     sprite('vrhaef402_00', 16)
     AddX(-96000)
+
 
 @State
 def ha_402b():
@@ -585,6 +613,7 @@ def ha_402b():
     sprite('vrhaef402_10', 16)
     AddX(-128000)
 
+
 @State
 def ha_409():
 
@@ -601,6 +630,7 @@ def ha_409():
     sprite('null', 20)
     AddToAlphaModifier(-15)
 
+
 @State
 def ha_409_dash():
 
@@ -611,6 +641,7 @@ def ha_409_dash():
     sprite('null', 5)
     CreateParticle('haef_409dash', -1)
     gotoLabel(0)
+
 
 @State
 def ha_404():
@@ -631,6 +662,7 @@ def ha_404():
         AlphaValue(245)
     sprite('vrhaef404_00', 3)
     sprite('vrhaef404_01', 16)
+
 
 @State
 def haef410_kick():
@@ -654,6 +686,7 @@ def haef410_kick():
     CallCustomizableParticle('haef_kick_drop', 1)
     CreateObject('haef410_kick_blm', -1)
 
+
 @State
 def haef410_kick_blm():
 
@@ -664,6 +697,7 @@ def haef410_kick_blm():
     sprite('vrhaef410_01', 12)
     sprite('vrhaef410_01', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def haef410_kick2():
@@ -687,6 +721,7 @@ def haef410_kick2():
     CallCustomizableParticle('haef_kick_drop', 1)
     CreateObject('haef410_kick2_blm', -1)
 
+
 @State
 def haef410_kick2_blm():
 
@@ -699,6 +734,7 @@ def haef410_kick2_blm():
     sprite('vrhaef410_11', 1)
     sprite('vrhaef410_11', 15)
     ConstantAlphaModifier(-17)
+
 
 @State
 def ha_kick():
@@ -719,6 +755,7 @@ def ha_kick():
     sprite('vrhaef401_00', 16)
     CreateParticle('haef_kick_splash', 0)
 
+
 @State
 def ha_kick_b():
 
@@ -730,6 +767,7 @@ def ha_kick_b():
         AddY(50000)
     sprite('vrhaef401_01', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def ha_kick2():
@@ -749,6 +787,7 @@ def ha_kick2():
         AddY(50000)
     sprite('vrhaef401_10', 18)
 
+
 @State
 def ha_kick2b():
 
@@ -760,6 +799,7 @@ def ha_kick2b():
         AddY(50000)
     sprite('vrhaef401_11', 20)
     ConstantAlphaModifier(-13)
+
 
 @State
 def ha_kick3():
@@ -779,6 +819,7 @@ def ha_kick3():
         AddY(50000)
     sprite('vrhaef401_20', 16)
 
+
 @State
 def ha_kick3b():
 
@@ -790,6 +831,7 @@ def ha_kick3b():
         AddY(50000)
     sprite('vrhaef401_21', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def ha_kick4():
@@ -810,6 +852,7 @@ def ha_kick4():
     sprite('vrhaef401_30', 16)
     CreateParticle('haef_kick_splash', 0)
 
+
 @State
 def ha_kick4b():
 
@@ -821,6 +864,7 @@ def ha_kick4b():
         AddY(50000)
     sprite('vrhaef401_31', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def ha_FastEnma():
@@ -846,6 +890,7 @@ def ha_FastEnma():
     sprite('vrhaef403_10', 5)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ha_FastEnmab():
 
@@ -857,6 +902,7 @@ def ha_FastEnmab():
     sprite('vrhaef403_01', 3)
     sprite('vrhaef403_11', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ha_air_kick():
@@ -876,6 +922,7 @@ def ha_air_kick():
     sprite('vrhaef405_00', 16)
     CreateParticle('haef_kick_splash', 0)
 
+
 @State
 def ha_air_kick_b():
 
@@ -886,6 +933,7 @@ def ha_air_kick_b():
         AddY(150000)
     sprite('vrhaef405_01', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def ha_407():
@@ -912,7 +960,7 @@ def ha_407():
         HardKnockdown(1)
         CHHardKnockdown(-1)
         EnableEmergencyTechAirHit(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HeatCooldown(0)
         SameMoveProration(1)
         IgnorePauses(3)
@@ -935,6 +983,7 @@ def ha_407():
     sprite('vrhaef407_00', 12)
     StartMultihit()
 
+
 @State
 def ha_407_b():
 
@@ -946,6 +995,7 @@ def ha_407_b():
         AddY(-100000)
     sprite('vrhaef407_01', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def ha_407_hasei():
@@ -969,7 +1019,7 @@ def ha_407_hasei():
         BouncePercentage(55)
         FatalCounter(1)
         AutoHitStopSending(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             HeatCooldown(0)
         if SLOT_80:
             AirUntechableTime(60)
@@ -977,7 +1027,7 @@ def ha_407_hasei():
             BouncePercentage(55)
 
             def upon_OPPONENT_HIT():
-                SLOT_4 = (SLOT_4 + 1)
+                SLOT_4 = SLOT_4 + 1
         IgnorePauses(3)
         CancelIfPlayerHit(3)
         TurnParticleColorable1(1)
@@ -996,6 +1046,7 @@ def ha_407_hasei():
     sprite('vrhaef407_00', 12)
     StartMultihit()
 
+
 @State
 def ha_407_b_hasei():
 
@@ -1007,6 +1058,7 @@ def ha_407_b_hasei():
         AddY(-100000)
     sprite('vrhaef407_01', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def ShotDelete():
@@ -1021,15 +1073,15 @@ def ShotDelete():
         LinkParticle('haef_shotkiller')
         SetActionMark(90)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             AddActionMark(-1)
-            if (SLOT_2 < 0):
+            if SLOT_2 < 0:
                 Unknown23090(23)
 
         def upon_GUARDPOINT_ACTIVATION():
             SetActionMark(90)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             Unknown23090(23)
 
         def upon_53():
@@ -1082,6 +1134,7 @@ def ShotDelete():
     SetScaleSpeed(-100)
     CallCustomizableParticle('haef_shotkiller_del', -1)
 
+
 @State
 def ShotDeleteMoji():
 
@@ -1093,6 +1146,7 @@ def ShotDeleteMoji():
         FaceLeft()
     sprite('null', 32767)
     AddRotationPerFrame(1000)
+
 
 @State
 def ShotDeleteMagicCircle():
@@ -1107,6 +1161,7 @@ def ShotDeleteMagicCircle():
     sprite('null', 32767)
     AddRotationPerFrame(500)
 
+
 @State
 def ShotDeleteColorCircle():
 
@@ -1120,6 +1175,7 @@ def ShotDeleteColorCircle():
     sprite('vrhaef_shotkiller', 32767)
     AddRotationPerFrame(1000)
 
+
 @State
 def ha_DD_1_aura():
 
@@ -1128,6 +1184,7 @@ def ha_DD_1_aura():
     sprite('null', 1)
     ParticleFacing(0)
     CallCustomizableParticle('haef_DD_1', 0)
+
 
 @State
 def ha_DD_1_shot():
@@ -1158,6 +1215,7 @@ def ha_DD_1_shot():
     CreateObject('ha_DD_1_shot_b', -1)
     sprite('vrhaef430_dummy', 90)
 
+
 @State
 def ha_DD_1_shot_a():
 
@@ -1171,6 +1229,7 @@ def ha_DD_1_shot_a():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def ha_DD_1_shot_b():
 
@@ -1183,6 +1242,7 @@ def ha_DD_1_shot_b():
     CreateParticle('haef_DD_1_shot_b', -1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ha_DD_1_shotSP():
@@ -1233,6 +1293,7 @@ def ha_DD_1_shotSP():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def ha_DD_2_ex():
 
@@ -1246,6 +1307,7 @@ def ha_DD_2_ex():
     CreateObject('ha_DD_2_ex_usui', -1)
     sprite('null', 60)
 
+
 @State
 def ha_DD_2_ex_usui():
 
@@ -1258,6 +1320,7 @@ def ha_DD_2_ex_usui():
     AlphaValue(150)
     ConstantAlphaModifier(-5)
 
+
 @State
 def ha_AH():
 
@@ -1266,6 +1329,7 @@ def ha_AH():
         RemoveOnCallStateEnd(3)
     sprite('null', 1)
     CreateParticle('haef_AH', -1)
+
 
 @State
 def ha_AH_fude():
@@ -1312,6 +1376,7 @@ def ha_AH_fude():
     sprite('null', 8)
     CreateObject('ha_451_black03', -1)
 
+
 @State
 def haef_AH_RedBG():
 
@@ -1320,6 +1385,7 @@ def haef_AH_RedBG():
         RemoveOnCallStateEnd(2)
         LinkParticle('haef_AH_slash')
     sprite('null', 450)
+
 
 @State
 def ha_451_fude00():
@@ -1350,6 +1416,7 @@ def ha_451_fude00():
     CommonSE('101_hit_slash_3')
     ScreenShake(0, 5000)
 
+
 @State
 def ha_451_fude01():
 
@@ -1373,6 +1440,7 @@ def ha_451_fude01():
     ScreenShake(0, 5000)
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
+
 
 @State
 def ha_451_fude02():
@@ -1398,6 +1466,7 @@ def ha_451_fude02():
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
 
+
 @State
 def ha_451_fude03():
 
@@ -1421,6 +1490,7 @@ def ha_451_fude03():
     ScreenShake(0, 5000)
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
+
 
 @State
 def ha_451_fude04():
@@ -1446,6 +1516,7 @@ def ha_451_fude04():
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
 
+
 @State
 def ha_451_fude05():
 
@@ -1469,6 +1540,7 @@ def ha_451_fude05():
     ScreenShake(0, 5000)
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
+
 
 @State
 def ha_451_fude06():
@@ -1494,6 +1566,7 @@ def ha_451_fude06():
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
 
+
 @State
 def ha_451_fude07():
 
@@ -1517,6 +1590,7 @@ def ha_451_fude07():
     ScreenShake(0, 5000)
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
+
 
 @State
 def ha_451_fude08():
@@ -1542,6 +1616,7 @@ def ha_451_fude08():
     sprite('vrhaef451_fude', 125)
     ConstantAlphaModifier(-2)
 
+
 @State
 def ha_451_black00():
 
@@ -1562,6 +1637,7 @@ def ha_451_black00():
     CommonSE('015_blaze_1')
     CommonSE('101_hit_slash_3')
     ScreenShake(0, 5000)
+
 
 @State
 def ha_451_black01():
@@ -1584,6 +1660,7 @@ def ha_451_black01():
     CommonSE('101_hit_slash_3')
     ScreenShake(0, 5000)
 
+
 @State
 def ha_451_black02():
 
@@ -1605,6 +1682,7 @@ def ha_451_black02():
     CommonSE('101_hit_slash_3')
     ScreenShake(0, 5000)
 
+
 @State
 def ha_451_black03():
 
@@ -1623,6 +1701,7 @@ def ha_451_black03():
     CommonSE('020_blood_1')
     CommonSE('015_blaze_1')
     CommonSE('101_hit_slash_3')
+
 
 @State
 def ha_451_finish():
@@ -1645,9 +1724,9 @@ def ha_451_finish():
         HitAirUnblockable(4)
         E0EAEffectPosition(3)
         PaletteIndex(1)
-        sendToLabelUpon(12, 0)
+        uponSendToLabel(OPPONENT_HIT, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateParticle('haef_AH_2_hit', 101)
     sprite('vrhaef451_dummy', 3)
     AbsoluteY(288000)
@@ -1658,6 +1737,7 @@ def ha_451_finish():
     loopRest()
     label(0)
     sprite('null', 1)
+
 
 @State
 def HaAstBG_Start():
@@ -1676,6 +1756,7 @@ def HaAstBG_Start():
         SetScaleY(2200)
     sprite('vr_white', 32767)
 
+
 @State
 def HaAstBG_Finish():
 
@@ -1693,10 +1774,11 @@ def HaAstBG_Finish():
         SetScaleY(2200)
     sprite('vr_white', 32767)
 
+
 @State
 def EventEffectHAVsRG_TB():
     XPositionRelativeFacing(-460000)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     PaletteIndex(6)
     label(0)
     sprite('tb070_03', 1)
@@ -1717,7 +1799,7 @@ def EventEffectHAVsRG_TB():
     sprite('tb033_02', 1)
     sprite('tb033_03', 3)
     loopRest()
-    sendToLabelUpon(2, 3)
+    uponSendToLabel(LANDING, 3)
     label(2)
     sprite('tb033_02', 3)
     sprite('tb033_03', 3)
@@ -1729,6 +1811,7 @@ def EventEffectHAVsRG_TB():
     sprite('tb033_05', 2)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def NOISE():
@@ -1742,6 +1825,7 @@ def NOISE():
         SetPosYByScreenPer(50)
     sprite('null', 80)
     loopRest()
+
 
 @State
 def SummonTrinity():
@@ -1770,6 +1854,7 @@ def SummonTrinity():
     loopRest()
     gotoLabel(0)
 
+
 @Subroutine
 def ShotDelete_dmy():
     CancelIfPlayerHit(2)
@@ -1783,17 +1868,18 @@ def ShotDelete_dmy():
     PretendNoGuardPointIfFail(1)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
-        if (not SLOT_30):
+    def upon_EVERY_FRAME():
+        if not SLOT_IsInHitstun:
 
             def upon_GUARDPOINT_ACTIVATION():
                 if SLOT_2:
-                    ObjectUpon(3, 32)
+                    ObjectUpon(EVERY_FRAME, 32)
                     HeatChange(1250)
                     AddActionMark(-1)
-                    PassbackAddActionMarkToFunction('ShotDelete', 39)
+                    TriggerUponForState('ShotDelete', 39)
                     CreateObject('ShotDelete', 102)
                     PrivateSE('hase_23')
+
 
 @State
 def ha202_col_dmy():
@@ -1803,6 +1889,7 @@ def ha202_col_dmy():
     sprite('ha202_col_dmy_00', 1)
     sprite('ha202_col_dmy_01', 2)
 
+
 @State
 def ha212_col_dmy():
 
@@ -1810,6 +1897,7 @@ def ha212_col_dmy():
         callSubroutine('ShotDelete_dmy')
     sprite('ha212_col_dmy_00', 2)
     sprite('ha212_col_dmy_01', 3)
+
 
 @State
 def ha232_col_dmy():
@@ -1820,6 +1908,7 @@ def ha232_col_dmy():
     sprite('ha232_col_dmy_03', 3)
     sprite('ha232_col_dmy_04', 3)
 
+
 @State
 def ha234_col_dmy():
 
@@ -1828,6 +1917,7 @@ def ha234_col_dmy():
     sprite('ha234_col_dmy_00', 1)
     sprite('ha234_col_dmy_01', 3)
     sprite('ha234_col_dmy_02', 4)
+
 
 @State
 def ha214_col_dmy():
@@ -1838,6 +1928,7 @@ def ha214_col_dmy():
     sprite('ha214_col_dmy_01', 1)
     sprite('ha214_col_dmy_02', 1)
 
+
 @State
 def ha252_col_dmy():
 
@@ -1846,6 +1937,7 @@ def ha252_col_dmy():
     sprite('ha252_col_dmy_00', 2)
     sprite('ha252_col_dmy_01', 3)
     sprite('ha252_col_dmy_02', 1)
+
 
 @State
 def ha260_col_dmy():
@@ -1857,6 +1949,7 @@ def ha260_col_dmy():
     sprite('ha260_col_dmy_02', 4)
     sprite('ha260_col_dmy_03', 4)
 
+
 @State
 def ha406_col_dmy():
 
@@ -1865,6 +1958,7 @@ def ha406_col_dmy():
     sprite('ha406_col_dmy_00', 2)
     sprite('ha406_col_dmy_01', 2)
     sprite('ha406_col_dmy_02', 6)
+
 
 @State
 def ha402_col_dmy():
@@ -1875,12 +1969,14 @@ def ha402_col_dmy():
     sprite('null', 14)
     sprite('ha402_col_dmy_01', 3)
 
+
 @State
 def ha404_col_dmy():
 
     def upon_IMMEDIATE():
         callSubroutine('ShotDelete_dmy')
     sprite('ha404_col_dmy_00', 3)
+
 
 @State
 def ha430_col_dmy():
@@ -1889,12 +1985,14 @@ def ha430_col_dmy():
         callSubroutine('ShotDelete_dmy')
     sprite('ha430_col_dmy_00', 4)
 
+
 @State
 def ha430_col_dmy_OD():
 
     def upon_IMMEDIATE():
         callSubroutine('ShotDelete_dmy')
     sprite('ha430_col_dmy_00', 4)
+
 
 @State
 def BurstDD_Camera_Super():
@@ -1903,6 +2001,7 @@ def BurstDD_Camera_Super():
         CameraControlEnable(1)
         AbsoluteY(0)
     sprite('null', 10)
+
 
 @State
 def BurstDD_Camera_Normal():
@@ -1913,11 +2012,13 @@ def BurstDD_Camera_Normal():
         TeleportToObject(22)
     sprite('null', 300)
 
+
 @State
 def Act3Event_havsno_01():
     sprite('null', 32767)
     XPositionRelativeFacing(360000)
     CameraControlEnable(1)
+
 
 @State
 def Act3Event_ObjCol():
@@ -1930,12 +2031,13 @@ def Act3Event_ObjCol():
             sendToLabel(1)
     label(0)
     sprite('null', 1)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     CopyFromRightToLeft(2, 2, 52, 23, 2, 52)
     loopRest()
     gotoLabel(0)
     label(1)
     sprite('null', 1)
+
 
 @State
 def Act3Event_ha_DD_1_shot():

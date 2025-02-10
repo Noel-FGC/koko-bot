@@ -1,7 +1,8 @@
 @Subroutine
 def PreInit():
     CharacterID('iz')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def MatchInit():
@@ -22,7 +23,7 @@ def MatchInit():
     FootstepType(2)
     FootstepSE(0)
     CreateDecalOn(1)
-    if SLOT_IsUnlimitedCharacter:
+    if SLOT_116:
         Health(14000)
         WalkFSpeed(7200)
         WalkBSpeed(4800)
@@ -179,7 +180,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(100000, 250000, 0, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('Shot_A', 0x2)
+    Move_Register('Shot_A', INPUT_SPECIALMOVE)
     Move_Condition(0x300b)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
@@ -191,7 +192,7 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(700000, 1000000, -100000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('Shot_D', 0x2)
+    Move_Register('Shot_D', INPUT_SPECIALMOVE)
     Move_Condition(0x300b)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
@@ -203,7 +204,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(300000, 800000, -200000, 100000, 250, 0)
     Move_EndRegister()
-    Move_Register('AirShot_A', 0x2)
+    Move_Register('AirShot_A', INPUT_SPECIALMOVE)
     Move_Condition(0x300b)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
@@ -212,7 +213,7 @@ def MatchInit():
     OpponentAttackPriority(2000)
     SkillEstimateRange(200000, 600000, -1000000, -200000, 250, 0)
     Move_EndRegister()
-    Move_Register('AirShot_D', 0x2)
+    Move_Register('AirShot_D', INPUT_SPECIALMOVE)
     Move_Condition(0x300b)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
@@ -224,14 +225,14 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(200000, 600000, -1000000, -200000, 500, 0)
     Move_EndRegister()
-    Move_Register('Iai_Slash', 0x2)
+    Move_Register('Iai_Slash', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
     GuardStunPriority(1200)
     SkillEstimateRange(0, 550000, -200000, 200000, 500, 0)
     Move_EndRegister()
-    Move_Register('Iai_Slash_Gedan', 0x2)
+    Move_Register('Iai_Slash_Gedan', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -240,14 +241,14 @@ def MatchInit():
     GuardStunPriority(1200)
     SkillEstimateRange(100000, 400000, -200000, 150000, 500, 0)
     Move_EndRegister()
-    Move_Register('Iai_AntiAirA', 0x2)
+    Move_Register('Iai_AntiAirA', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_B)
     AirborneOpponentPriority(3000)
     SkillEstimateRange(100000, 500000, -130000, 500000, 350, 0)
     Move_EndRegister()
-    Move_Register('Iai_Slash_Gedan_Easy', 0x2)
+    Move_Register('Iai_Slash_Gedan_Easy', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(INPUT_41236)
@@ -255,7 +256,7 @@ def MatchInit():
     StateCall('Iai_Slash_Gedan')
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('Iai_AntiAirB', 0x2)
+    Move_Register('Iai_AntiAirB', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_C)
@@ -264,25 +265,25 @@ def MatchInit():
     AirborneOpponentPriority(2000)
     SkillEstimateRange(-200000, 200000, -100000, 600000, 250, 0)
     Move_EndRegister()
-    Move_Register('Iai_SlashAirB', 0x2)
+    Move_Register('Iai_SlashAirB', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
     SkillEstimateRange(0, 650000, -150000, 200000, 150, 0)
     Move_EndRegister()
-    Move_Register('Iai_SlashAirC', 0x2)
+    Move_Register('Iai_SlashAirC', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
     SkillEstimateRange(0, 650000, -300000, -100000, 150, 0)
     Move_EndRegister()
-    Move_Register('Iai_SlashAirA', 0x2)
+    Move_Register('Iai_SlashAirA', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_B)
     SkillEstimateRange(0, 650000, 200000, 500000, 150, 0)
     Move_EndRegister()
-    Move_Register('Iai_SlashAirC_Easy', 0x2)
+    Move_Register('Iai_SlashAirC_Easy', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2001)
     Move_Input_(INPUT_41236)
@@ -290,7 +291,7 @@ def MatchInit():
     StateCall('Iai_SlashAirC')
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('Iai_Slash_Next', 0x2)
+    Move_Register('Iai_Slash_Next', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
     FollowupOnly(1)
@@ -300,7 +301,7 @@ def MatchInit():
     DamageStunPriority(5000)
     SkillEstimateRange(250000, 1000000, -200000, 30000, 1500, 0)
     Move_EndRegister()
-    Move_Register('Iai_Slash_NextAir', 0x2)
+    Move_Register('Iai_Slash_NextAir', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
     FollowupOnly(1)
@@ -311,7 +312,7 @@ def MatchInit():
     PlayerUsable(0)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('Iai_AntiAir_Next', 0x2)
+    Move_Register('Iai_AntiAir_Next', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
     FollowupOnly(1)
@@ -319,7 +320,7 @@ def MatchInit():
     MovePriority(1500)
     DamageStunPriority(10000)
     Move_EndRegister()
-    Move_Register('AirAssault', 0x2)
+    Move_Register('AirAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
@@ -329,7 +330,7 @@ def MatchInit():
     PlayerUsable(0)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('Warp_A', 0x2)
+    Move_Register('Warp_A', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_A)
@@ -337,7 +338,7 @@ def MatchInit():
     GuardStunPriority(1000)
     SkillEstimateRange(0, 400000, -200000, 200000, 500, 50)
     Move_EndRegister()
-    Move_Register('Warp_B', 0x2)
+    Move_Register('Warp_B', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
@@ -347,7 +348,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 250, 1000, 0, 4000)
     SkillEstimateRange(0, 500000, -200000, 500000, 250, 50)
     Move_EndRegister()
-    Move_Register('Warp_C', 0x2)
+    Move_Register('Warp_C', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
@@ -356,7 +357,7 @@ def MatchInit():
     GuardStunPriority(4000)
     SkillEstimateRange(0, 500000, -500000, 500000, 250, 50)
     Move_EndRegister()
-    Move_Register('Warp_D_Land', 0x2)
+    Move_Register('Warp_D_Land', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
     Move_Condition(0x2000)
@@ -366,7 +367,7 @@ def MatchInit():
     GuardStunPriority(2000)
     SkillEstimateRange(0, 400000, -200000, 600000, 0, 200)
     Move_EndRegister()
-    Move_Register('Warp_D_Air', 0x2)
+    Move_Register('Warp_D_Air', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
     Move_Condition(0x2001)
@@ -376,7 +377,7 @@ def MatchInit():
     GuardStunPriority(2000)
     SkillEstimateRange(0, 400000, -300000, 100000, 0, 100)
     Move_EndRegister()
-    Move_Register('Warp_D_LandHitOnly', 0x2)
+    Move_Register('Warp_D_LandHitOnly', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
     Move_Condition(0x2000)
@@ -386,7 +387,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 250, 1000, 0, 2500)
     SkillEstimateRange(-200000, 600000, -200000, 800000, 1000, 0)
     Move_EndRegister()
-    Move_Register('Warp_D_AirHitOnly', 0x2)
+    Move_Register('Warp_D_AirHitOnly', INPUT_SPECIALMOVE)
     Move_Condition(0x3000)
     CallSkillConditions('CheckExGageVal1')
     Move_Condition(0x2001)
@@ -396,7 +397,7 @@ def MatchInit():
     TempPriorityMultiplierInterval(0, 500, 1000, 0, 1500)
     SkillEstimateRange(-200000, 600000, -300000, 800000, 1000, 0)
     Move_EndRegister()
-    Move_Register('UltimateAssault', 0x606)
+    Move_Register('UltimateAssault', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -406,7 +407,7 @@ def MatchInit():
     GuardStunPriority(0)
     SkillEstimateRange(50000, 700000, 50000, 500000, 250, 0)
     Move_EndRegister()
-    Move_Register('UltimateAssault_OD', 0x606)
+    Move_Register('UltimateAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -417,7 +418,7 @@ def MatchInit():
     GuardStunPriority(0)
     SkillEstimateRange(50000, 700000, 50000, 500000, 250, 0)
     Move_EndRegister()
-    Move_Register('SummonFunnel', 0x606)
+    Move_Register('SummonFunnel', INPUT_DISTORTION)
     Move_Condition(0x3000)
     Move_Condition(0x2002)
     Move_Condition(0x2000)
@@ -425,7 +426,7 @@ def MatchInit():
     Move_Input_(INPUT_PRESS_D)
     MovePriority(500)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x2000)
     Move_Condition(0x304a)
     Move_Input_(INPUT_632146)
@@ -435,12 +436,12 @@ def MatchInit():
     DamageStunPriority(2500)
     SkillEstimateRange(150000, 700000, -150000, 550000, 250, 0)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -448,7 +449,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 600000, -200000, 150000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -461,7 +462,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 600000, -200000, 150000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -717,50 +718,53 @@ def MatchInit():
     CreateObject('Twindrive0', -1)
     CreateObject('Twindrive1', -1)
 
+
 @Subroutine
 def MatchInit2():
     TrainingModeSLOT('TRI_IzayoiActiveMode', 2, 67)
     if SLOT_67:
-        if (not SLOT_4):
+        if not SLOT_4:
             SLOT_4 = 1
+
 
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_81):
+    if not SLOT_81:
         TrainingModeSLOT('TRI_IzayoiInstall', 2, 67)
         if SLOT_67:
-            if SLOT_90:
-                if (SLOT_31 < SLOT_67):
+            if SLOT_InNeutral:
+                if SLOT_31 < SLOT_67:
                     SLOT_31 = SLOT_67
-        if (SLOT_60 > 0):
-            SLOT_60 = (SLOT_60 + (-1))
+        if SLOT_60 > 0:
+            SLOT_60 = SLOT_60 + -1
         if SLOT_32:
             if SLOT_21:
-                if (SLOT_32 > 0):
-                    if SLOT_110:
-                        SLOT_32 = (SLOT_32 + (-1))
+                if SLOT_32 > 0:
+                    if SLOT_OverdriveTimer:
+                        SLOT_32 = SLOT_32 + -1
                     else:
-                        SLOT_32 = (SLOT_32 + (-2))
+                        SLOT_32 = SLOT_32 + -2
                 TrainingModeSLOT('TRI_IzayoiSupportBit', 2, 67)
                 if SLOT_67:
                     SLOT_32 = 720
         if SLOT_21:
-            if SLOT_IsUnlimitedCharacter:
-                SLOT_78 = 110
+            if SLOT_116:
+                SLOT_DamageMultiplier = 110
                 HeatChange(3)
-    if (not SLOT_21):
+    if not SLOT_21:
         SLOT_32 = 0
-    if SLOT_110:
-        if (not SLOT_81):
+    if SLOT_OverdriveTimer:
+        if not SLOT_81:
             if SLOT_4:
-                SLOT_61 = (SLOT_61 + 2)
+                SLOT_61 = SLOT_61 + 2
             else:
-                SLOT_61 = (SLOT_61 + 3)
-        if (SLOT_61 >= 120):
-            SLOT_31 = (SLOT_31 + 1)
+                SLOT_61 = SLOT_61 + 3
+        if SLOT_61 >= 120:
+            SLOT_31 = SLOT_31 + 1
             SLOT_61 = 0
-        if (not SLOT_110):
+        if not SLOT_OverdriveTimer:
             SLOT_61 = 0
+
 
 @Subroutine
 def OnActionBeginPre():
@@ -802,51 +806,59 @@ def OnActionBeginPre():
         Gravity(1850)
         GroundDashCount(1)
 
+
 @Subroutine
 def CheckExGageVal1():
     SLOT_47 = 0
-    if (SLOT_31 >= 1):
+    if SLOT_31 >= 1:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckExGageVal2():
     SLOT_47 = 0
-    if (SLOT_31 >= 2):
+    if SLOT_31 >= 2:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckExGageVal3():
     SLOT_47 = 0
-    if (SLOT_31 >= 3):
+    if SLOT_31 >= 3:
         SLOT_47 = 1
+
 
 @Subroutine
 def CheckExGageVal4():
     SLOT_47 = 0
-    if (SLOT_31 >= 4):
+    if SLOT_31 >= 4:
         SLOT_47 = 1
+
 
 @Subroutine
 def AdditionalExGage():
-    if (not SLOT_4):
+    if not SLOT_4:
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            SLOT_31 = (SLOT_31 + 1)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            SLOT_31 = SLOT_31 + 1
 
         def upon_OPPONENT_HIT():
-            SLOT_31 = (SLOT_31 + 1)
+            SLOT_31 = SLOT_31 + 1
+
 
 @Subroutine
 def MyStatusSave():
     SLOT_6 = SLOT_4
 
+
 @Subroutine
 def CheckShieidBitAvailable():
     if SLOT_21:
-        if (SLOT_60 == 0):
-            ObjectUpon(4, 35)
+        if SLOT_60 == 0:
+            ObjectUpon(FALLING, 35)
             ObjectUpon(5, 35)
             SLOT_60 = 60
+
 
 @Subroutine
 def Func_BurstDD_Easy():
@@ -854,9 +866,11 @@ def Func_BurstDD_Easy():
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def OnPreDraw():
     CallPrivateFunction('IzLightSaberSwitch', 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActStand():
@@ -872,12 +886,10 @@ def CmnActStand():
     sprite('iz000_08', 7)
     sprite('iz000_09', 7)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     if random_(2, 0, 40):
         gotoLabel(30)
     if random_(2, 0, 30):
@@ -933,6 +945,7 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('iz003_00', 3)
@@ -940,10 +953,12 @@ def CmnActStandTurn():
     sprite('iz003_01', 3)
     sprite('iz003_02', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('iz010_00', 4)
     sprite('iz010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -958,28 +973,32 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('iz013_00', 3)
     sprite('iz013_01', 3)
     sprite('iz013_02', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('iz010_01', 4)
     sprite('iz010_00', 4)
+
 
 @State
 def CmnActJumpPre():
     sprite('iz023_00', 2)
     sprite('iz023_01', 2)
 
+
 @State
 def CmnActJumpUpper():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('iz020_00', 3)
     sprite('iz020_01', 3)
     SmartVoiceline('iz002')
@@ -1007,11 +1026,13 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(22)
 
+
 @State
 def CmnActJumpUpperEnd():
     sprite('iz020_02', 3)
     sprite('iz020_03', 3)
     sprite('iz020_04', 3)
+
 
 @State
 def CmnActJumpDown():
@@ -1023,6 +1044,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpLanding():
     sprite('iz024_00', 3)
@@ -1031,16 +1053,19 @@ def CmnActJumpLanding():
     sprite('iz024_03', 3)
     sprite('iz024_04', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('iz024_00', 2)
     sprite('iz024_01', 2)
     sprite('iz024_02', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('iz024_03', 3)
     sprite('iz024_04', 3)
+
 
 @State
 def CmnActFWalk():
@@ -1059,6 +1084,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalk():
     sprite('iz031_00', 7)
@@ -1075,6 +1101,7 @@ def CmnActBWalk():
     SFX_FOOTSTEP_(100, 1, 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActFDash():
@@ -1097,6 +1124,7 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDashStop():
     sprite('iz032_09', 3)
@@ -1105,6 +1133,7 @@ def CmnActFDashStop():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActBDash():
 
@@ -1112,7 +1141,7 @@ def CmnActBDash():
         SetCommonActionMark(1)
         EnterStateIfEventID(8, '_NEUTRAL')
         EndMomentum(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
         InvincibilityDuration(5)
@@ -1140,9 +1169,11 @@ def CmnActBDash():
     sprite('iz033_05', 3)
     ExitState()
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1158,6 +1189,7 @@ def CmnActAirFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBDash():
 
@@ -1172,11 +1204,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('iz050_00', 1)
     sprite('iz050_01', 1)
     sprite('iz050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1184,6 +1218,7 @@ def CmnActHitStandLv2():
     sprite('iz050_02', 1)
     sprite('iz050_01', 2)
     sprite('iz050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1193,6 +1228,7 @@ def CmnActHitStandLv3():
     sprite('iz050_01', 2)
     sprite('iz050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('iz050_03', 1)
@@ -1201,6 +1237,7 @@ def CmnActHitStandLv4():
     sprite('iz050_02', 2)
     sprite('iz050_01', 2)
     sprite('iz050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1212,11 +1249,13 @@ def CmnActHitStandLv5():
     sprite('iz050_01', 2)
     sprite('iz050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('iz052_00', 1)
     sprite('iz052_01', 1)
     sprite('iz052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1224,6 +1263,7 @@ def CmnActHitStandLowLv2():
     sprite('iz052_02', 1)
     sprite('iz052_01', 2)
     sprite('iz052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1233,6 +1273,7 @@ def CmnActHitStandLowLv3():
     sprite('iz052_01', 2)
     sprite('iz052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('iz052_03', 1)
@@ -1241,6 +1282,7 @@ def CmnActHitStandLowLv4():
     sprite('iz052_02', 2)
     sprite('iz052_01', 2)
     sprite('iz052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1252,11 +1294,13 @@ def CmnActHitStandLowLv5():
     sprite('iz052_01', 2)
     sprite('iz052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('iz054_00', 1)
     sprite('iz054_01', 1)
     sprite('iz054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1264,6 +1308,7 @@ def CmnActHitCrouchLv2():
     sprite('iz054_02', 1)
     sprite('iz054_01', 2)
     sprite('iz054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1273,6 +1318,7 @@ def CmnActHitCrouchLv3():
     sprite('iz054_01', 2)
     sprite('iz054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('iz054_03', 1)
@@ -1281,6 +1327,7 @@ def CmnActHitCrouchLv4():
     sprite('iz054_02', 2)
     sprite('iz054_01', 2)
     sprite('iz054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1292,6 +1339,7 @@ def CmnActHitCrouchLv5():
     sprite('iz054_01', 2)
     sprite('iz054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('iz060_00', 4)
@@ -1301,9 +1349,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('iz060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1314,10 +1364,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('iz060_07', 2)
     sprite('iz060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1327,9 +1379,11 @@ def CmnActBDownBound():
     sprite('iz060_12', 3)
     sprite('iz060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('iz060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1345,13 +1399,16 @@ def CmnActBDown2Stand():
     sprite('iz061_09', 2)
     sprite('iz061_10', 2)
 
+
 @State
 def CmnActFDownUpper():
     sprite('iz063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('iz063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1361,10 +1418,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('iz063_04', 3)
     sprite('iz063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1374,9 +1433,11 @@ def CmnActFDownBound():
     sprite('iz063_09', 3)
     sprite('iz063_10', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('iz063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1391,6 +1452,7 @@ def CmnActFDown2Stand():
     sprite('iz064_08', 2)
     sprite('iz064_09', 2)
 
+
 @State
 def CmnActVDownUpper():
     sprite('iz062_00', 3)
@@ -1400,10 +1462,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('iz062_03', 3)
     sprite('iz062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1415,15 +1479,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('iz062_09', 2)
     sprite('iz062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('iz062_09', 2)
     sprite('iz062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1436,6 +1503,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1446,6 +1514,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1454,14 +1523,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('iz071_04', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('iz073_00', 3)
     sprite('iz073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1471,6 +1543,7 @@ def CmnActWallBoundDown():
     sprite('iz073_04', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerLoop():
@@ -1485,6 +1558,7 @@ def CmnActStaggerLoop():
     sprite('iz070_03', 7)
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerDown():
     sprite('iz070_04', 2)
@@ -1494,6 +1568,7 @@ def CmnActStaggerDown():
     sprite('iz070_08', 5)
     sprite('iz070_09', 4)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('iz070_10', 2)
@@ -1501,11 +1576,13 @@ def CmnActUkemiStagger():
     sprite('iz070_12', 2)
     sprite('iz070_13', 2)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('iz113_00', 3)
     sprite('iz113_01', 3)
     sprite('iz113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -1513,11 +1590,13 @@ def CmnActUkemiAirB():
     sprite('iz113_01', 3)
     sprite('iz113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('iz113_00', 3)
     sprite('iz113_01', 3)
     sprite('iz113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1532,6 +1611,7 @@ def CmnActUkemiLandF():
     sprite('iz110_09', 3)
     sprite('iz110_10', 3)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('iz111_00', 3)
@@ -1543,6 +1623,7 @@ def CmnActUkemiLandB():
     sprite('iz111_07', 200)
     sprite('iz111_08', 3)
     sprite('iz111_09', 3)
+
 
 @State
 def CmnActUkemiLandN():
@@ -1557,6 +1638,7 @@ def CmnActUkemiLandN():
     sprite('iz112_08', 2)
     sprite('iz112_09', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('iz024_00', 3)
@@ -1565,10 +1647,12 @@ def CmnActUkemiLandNLanding():
     sprite('iz024_03', 3)
     sprite('iz024_04', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('iz040_00', 3)
     sprite('iz040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1579,10 +1663,12 @@ def CmnActMidGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('iz040_01', 3)
     sprite('iz040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1594,15 +1680,18 @@ def CmnActMidHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('iz040_01', 3)
     sprite('iz040_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('iz041_00', 3)
     sprite('iz041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -1613,10 +1702,12 @@ def CmnActHighGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('iz041_01', 3)
     sprite('iz041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -1628,15 +1719,18 @@ def CmnActHighHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('iz041_01', 3)
     sprite('iz041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('iz043_00', 3)
     sprite('iz043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1647,10 +1741,12 @@ def CmnActCrouchGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('iz043_01', 3)
     sprite('iz043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1662,15 +1758,18 @@ def CmnActCrouchHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('iz043_01', 3)
     sprite('iz043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('iz045_00', 3)
     sprite('iz045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1681,10 +1780,12 @@ def CmnActAirGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('iz045_01', 3)
     sprite('iz045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -1696,10 +1797,12 @@ def CmnActAirHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('iz045_01', 3)
     sprite('iz045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1710,6 +1813,7 @@ def CmnActGuardBreakStand():
     sprite('iz090_03', 6)
     sprite('iz090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('iz091_00', 2)
@@ -1718,6 +1822,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('iz091_03', 6)
     sprite('iz091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1728,17 +1833,20 @@ def CmnActGuardBreakAir():
     sprite('iz092_03', 6)
     sprite('iz092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('iz025_00', 4)
     sprite('iz025_01', 4)
     sprite('iz025_02', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('iz040_02', 1)
     sprite('iz040_01', 3)
     sprite('iz040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1751,11 +1859,13 @@ def CmnActLockReject():
     sprite('iz312_06', 3)
     sprite('iz312_07', 3)
 
+
 @State
 def CmnActAirLockWait():
     sprite('iz045_02', 1)
     sprite('iz045_01', 3)
     sprite('iz045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1767,6 +1877,7 @@ def CmnActAirLockReject():
     sprite('iz322_05', 3)
     sprite('iz322_06', 3)
     sprite('iz322_07', 3)
+
 
 @State
 def CmnActLandSpin():
@@ -1784,11 +1895,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('iz071_10', 6)
     sprite('iz071_11', 5)
     sprite('iz071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1804,6 +1917,7 @@ def CmnActVertSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideAir():
     label(0)
@@ -1818,6 +1932,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('iz077_02', 4)
@@ -1827,10 +1942,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('iz077_05', 5)
     sprite('iz077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1839,10 +1956,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('iz060_11', 4)
     sprite('iz060_13', 5)
+
 
 @State
 def CmnActBurstBegin():
@@ -1855,6 +1974,7 @@ def CmnActBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstLoop():
     sprite('iz331_05', 2)
@@ -1865,10 +1985,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('iz331_09', 3)
     sprite('iz331_10', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -1881,6 +2003,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('iz331_05', 2)
@@ -1891,6 +2014,7 @@ def CmnActAirBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstEnd():
     sprite('iz331_13', 3)
@@ -1900,6 +2024,7 @@ def CmnActAirBurstEnd():
     sprite('iz020_08', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActOverDriveBegin():
@@ -1916,6 +2041,7 @@ def CmnActOverDriveBegin():
     CreateObject('EMB_IZ_OD', -1)
     loopRest()
 
+
 @State
 def CmnActOverDriveLoop():
     sprite('iz333_04', 3)
@@ -1931,6 +2057,7 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('iz333_08', 3)
@@ -1938,6 +2065,7 @@ def CmnActOverDriveEnd():
     sprite('iz333_09', 3)
     sprite('iz333_10', 3)
     sprite('iz333_11', 3)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -1954,6 +2082,7 @@ def CmnActAirOverDriveBegin():
     CreateObject('EMB_IZ_OD', -1)
     loopRest()
 
+
 @State
 def CmnActAirOverDriveLoop():
     sprite('iz333_16', 3)
@@ -1969,6 +2098,7 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('iz333_08', 3)
@@ -1976,6 +2106,7 @@ def CmnActAirOverDriveEnd():
     sprite('iz333_09', 3)
     sprite('iz333_17', 3)
     sprite('iz333_18', 3)
+
 
 @State
 def NmlAtk5A():
@@ -2028,6 +2159,7 @@ def NmlAtk5A():
     sprite('iz200_01', 2)
     sprite('iz200_00', 2)
 
+
 @State
 def NmlAtk5B():
 
@@ -2072,6 +2204,7 @@ def NmlAtk5B():
     sprite('iz201_11', 3)
     sprite('iz201_12', 4)
 
+
 @State
 def NmlAtk5C():
 
@@ -2113,6 +2246,7 @@ def NmlAtk5C():
     sprite('iz202_11', 3)
     sprite('iz202_12', 3)
 
+
 @State
 def Kakusei_NmlAtk5C():
 
@@ -2153,6 +2287,7 @@ def Kakusei_NmlAtk5C():
     sprite('iz203_07', 2)
     sprite('iz203_08', 2)
 
+
 @State
 def NmlAtk5D():
 
@@ -2186,6 +2321,7 @@ def NmlAtk5D():
     sprite('iz204_05', 2)
     sprite('iz204_06', 1)
 
+
 @State
 def Kakusei_NmlAtk5D():
 
@@ -2206,6 +2342,7 @@ def Kakusei_NmlAtk5D():
     sprite('iz204_05', 3)
     sprite('iz204_06', 2)
     loopRest()
+
 
 @State
 def NmlAtk2D():
@@ -2238,6 +2375,7 @@ def NmlAtk2D():
     sprite('iz234_06', 1)
     loopRest()
 
+
 @State
 def Kakusei_NmlAtk2D():
 
@@ -2256,6 +2394,7 @@ def Kakusei_NmlAtk2D():
     CreateParticle('izef_dellight', 1)
     sprite('iz234_05', 3)
     sprite('iz234_06', 3)
+
 
 @State
 def NmlAtkAIR5D():
@@ -2298,6 +2437,7 @@ def NmlAtkAIR5D():
     sprite('iz254_06', 1)
     loopRest()
 
+
 @State
 def Kakusei_NmlAtkAIR5D():
 
@@ -2326,6 +2466,7 @@ def Kakusei_NmlAtkAIR5D():
     XImpulseAcceleration(75)
     sprite('iz254_06', 3)
     loopRest()
+
 
 @State
 def NmlAtk2A():
@@ -2373,6 +2514,7 @@ def NmlAtk2A():
     sprite('iz230_05', 3)
     sprite('iz230_06', 2)
 
+
 @State
 def NmlAtk2B():
 
@@ -2412,6 +2554,7 @@ def NmlAtk2B():
     sprite('iz231_09', 3)
     sprite('iz231_10', 3)
 
+
 @State
 def NmlAtk2C():
 
@@ -2447,6 +2590,7 @@ def NmlAtk2C():
     sprite('iz232_08', 3)
     sprite('iz232_09', 3)
     sprite('iz232_10', 3)
+
 
 @State
 def Kakusei_NmlAtk2C():
@@ -2501,6 +2645,7 @@ def Kakusei_NmlAtk2C():
     sprite('iz233_13', 3)
     sprite('iz233_14', 2)
 
+
 @State
 def NmlAtk3C():
 
@@ -2553,6 +2698,7 @@ def NmlAtk3C():
     sprite('iz235_12', 3)
     XImpulseAcceleration(0)
 
+
 @State
 def Kakusei_NmlAtk3C():
 
@@ -2592,8 +2738,8 @@ def Kakusei_NmlAtk3C():
     callSubroutine('CheckShieidBitAvailable')
     Recovery()
     Unknown2063()
-    PassbackAddActionMarkToFunction('Kakusei3CAura', 32)
-    PassbackAddActionMarkToFunction('Kakusei3CAuraFire', 32)
+    TriggerUponForState('Kakusei3CAura', 32)
+    TriggerUponForState('Kakusei3CAuraFire', 32)
     XImpulseAcceleration(60)
     sprite('iz236_07', 3)
     XImpulseAcceleration(40)
@@ -2604,6 +2750,7 @@ def Kakusei_NmlAtk3C():
     sprite('iz236_11', 2)
     sprite('iz236_12', 2)
     sprite('iz236_13', 2)
+
 
 @State
 def NmlAtkAIR5A():
@@ -2635,6 +2782,7 @@ def NmlAtkAIR5A():
     sprite('iz250_02', 3)
     sprite('iz250_01', 3)
 
+
 @State
 def NmlAtkAIR5B():
 
@@ -2664,6 +2812,7 @@ def NmlAtkAIR5B():
     Unknown2063()
     sprite('iz255_06', 6)
     sprite('iz255_07', 6)
+
 
 @State
 def NmlAtkAIR5C():
@@ -2698,6 +2847,7 @@ def NmlAtkAIR5C():
     sprite('iz252_09', 3)
     sprite('iz252_10', 3)
     sprite('iz252_11', 3)
+
 
 @State
 def Kakusei_NmlAtkAIR5C():
@@ -2736,6 +2886,7 @@ def Kakusei_NmlAtkAIR5C():
     sprite('iz253_11', 3)
     sprite('iz253_12', 3)
     sprite('iz253_13', 3)
+
 
 @State
 def NmlAtk6A():
@@ -2780,6 +2931,7 @@ def NmlAtk6A():
     sprite('iz210_10', 3)
     sprite('iz210_11', 3)
 
+
 @State
 def NmlAtk6B():
 
@@ -2805,8 +2957,8 @@ def NmlAtk6B():
         HitAirUnblockable(0)
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
-            if (not CheckInput(0xa)):
+        def upon_EVERY_FRAME():
+            if not CheckInput(INPUT_HOLD_B):
                 SetActionMark(0)
     sprite('iz211_00', 3)
     sprite('iz211_01', 4)
@@ -2824,7 +2976,7 @@ def NmlAtk6B():
     sprite('iz211_06', 2)
     sprite('iz211_07', 2)
     if SLOT_2:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('iz211_08', 2)
     CommonSE('006_swing_blade_2')
     sprite('iz211_09', 3)
@@ -2833,7 +2985,7 @@ def NmlAtk6B():
     sprite('iz211_10', 32767)
     callSubroutine('CheckShieidBitAvailable')
     Recovery()
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     label(0)
     sprite('iz211_11', 3)
     XImpulseAcceleration(25)
@@ -2852,7 +3004,7 @@ def NmlAtk6B():
     sprite('iz211_17', 3)
     PerGravity(200)
     sprite('iz211_18', 32767)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(LANDING, 2)
     label(2)
     sprite('iz211_19', 2)
     XImpulseAcceleration(25)
@@ -2863,6 +3015,7 @@ def NmlAtk6B():
     sprite('iz211_21', 1)
     sprite('iz211_22', 1)
     sprite('iz211_23', 1)
+
 
 @State
 def NmlAtk6C():
@@ -2906,6 +3059,7 @@ def NmlAtk6C():
     sprite('iz212_15', 3)
     sprite('iz212_16', 3)
     sprite('iz212_17', 3)
+
 
 @State
 def Kakusei_NmlAtk6C():
@@ -2962,6 +3116,7 @@ def Kakusei_NmlAtk6C():
     sprite('iz213_16', 1)
     sprite('iz213_17', 1)
 
+
 @State
 def NmlAtkExcite():
 
@@ -2997,6 +3152,7 @@ def NmlAtkExcite():
     sprite('iz300_11', 3)
     sprite('iz300_12', 3)
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -3030,6 +3186,7 @@ def NmlAtkDeadAngle():
     sprite('iz213_16', 3)
     sprite('iz213_17', 3)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -3052,11 +3209,11 @@ def NmlAtkGuardCrush():
         StarterRating(2)
         callSubroutine('MyStatusSave')
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3064,8 +3221,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -3082,7 +3239,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('iz210_00', 3)
     sprite('iz210_01', 1)
@@ -3100,7 +3257,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('keep', 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('iz412_01', 3)
     sprite('iz210_02', 3)
     sprite('iz210_03', 2)
@@ -3119,6 +3276,7 @@ def NmlAtkGuardCrush():
     sprite('iz412_09', 2)
     sprite('iz412_10', 2)
 
+
 @State
 def NmlAtkThrow():
 
@@ -3135,6 +3293,7 @@ def NmlAtkThrow():
     sprite('iz310_05', 4)
     sprite('iz310_06', 4)
     sprite('iz310_07', 4)
+
 
 @State
 def ThrowExe():
@@ -3174,7 +3333,7 @@ def ThrowExe():
     sprite('iz311_04', 6)
     XImpulseAcceleration(0)
     sprite('iz311_05', 3)
-    PassbackAddActionMarkToFunction('ThrowFunnel', 33)
+    TriggerUponForState('ThrowFunnel', 33)
     EnableCollision(1)
     XSpeed(48000)
     SetXCollisionFromOrigin(250)
@@ -3199,7 +3358,7 @@ def ThrowExe():
     AttackP1(100)
     OppThrowAnimation(10, 0)
     OppThrowPosition(0, 1, 1, 0, 0)
-    PassbackAddActionMarkToFunction('ThrowLock_MagicCircle', 32)
+    TriggerUponForState('ThrowLock_MagicCircle', 32)
     sprite('iz311_06', 13)
     SpecialCancel(1)
     sprite('iz311_07', 4)
@@ -3208,6 +3367,7 @@ def ThrowExe():
     sprite('iz311_10', 4)
     sprite('iz311_11', 4)
     SFX_FOOTSTEP_(100, 1, 1)
+
 
 @State
 def NmlAtkBackThrow():
@@ -3225,6 +3385,7 @@ def NmlAtkBackThrow():
     sprite('iz310_05', 4)
     sprite('iz310_06', 4)
     sprite('iz310_07', 4)
+
 
 @State
 def BackThrowExe():
@@ -3279,7 +3440,7 @@ def BackThrowExe():
     XImpulseAcceleration(0)
     ForceFaceSprite()
     sprite('iz311_05', 3)
-    PassbackAddActionMarkToFunction('ThrowFunnel', 33)
+    TriggerUponForState('ThrowFunnel', 33)
     EnableCollision(1)
     ForceFaceSprite()
     XSpeed(48000)
@@ -3303,7 +3464,7 @@ def BackThrowExe():
     YImpulseBeforeWallbounce(800)
     AirUntechableTime(60)
     AttackP1(100)
-    PassbackAddActionMarkToFunction('ThrowLock_MagicCircle', 32)
+    TriggerUponForState('ThrowLock_MagicCircle', 32)
     sprite('iz311_06', 13)
     SpecialCancel(1)
     sprite('iz311_07', 4)
@@ -3312,6 +3473,7 @@ def BackThrowExe():
     sprite('iz311_10', 4)
     sprite('iz311_11', 4)
     SFX_FOOTSTEP_(100, 1, 1)
+
 
 @State
 def NmlAtkAirThrow():
@@ -3330,6 +3492,7 @@ def NmlAtkAirThrow():
     SmartVoiceline('iz155')
     sprite('iz320_06', 4)
     sprite('iz320_07', 4)
+
 
 @State
 def AirThrowExe():
@@ -3353,8 +3516,8 @@ def AirThrowExe():
         setGravity(0)
         WhiffCrouchBlockCancel(1)
         IgnoreTurn(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         SetZLine(0, 50)
         ForcedLandingRecovery(0, 0)
     sprite('iz320_02', 3)
@@ -3412,7 +3575,7 @@ def AirThrowExe():
     RangeCheck(220000)
     DistanceCheck(-1, -1, 280000, -180000)
     ThrowTechWindow(-1)
-    PassbackAddActionMarkToFunction('AirThrowLock_MagicCircle', 32)
+    TriggerUponForState('AirThrowLock_MagicCircle', 32)
     CreateObject('AirThrowAura1', 1)
     CreateObject('AirThrowAuraFire', 2)
     physicsXImpulse(32000)
@@ -3428,6 +3591,7 @@ def AirThrowExe():
     OppThrowPosition(0, 1, 1, 0, 0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def AirThrowExe2():
@@ -3455,8 +3619,8 @@ def AirThrowExe2():
         WhiffCrouchBlockCancel(1)
         IgnoreTurn(1)
         StarterRating(2)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         SetZLine(0, 50)
     sprite('iz321_11', 3)
     RangeCheck(220000)
@@ -3486,8 +3650,8 @@ def AirThrowExe2():
     OppThrowAnimation(13, 0)
     OppThrowPosition(0, 1, 1, 0, 0)
     ScreenShake(0, 30000)
-    PassbackAddActionMarkToFunction('AirThrowAura2', 32)
-    PassbackAddActionMarkToFunction('AirThrowAuraFire', 32)
+    TriggerUponForState('AirThrowAura2', 32)
+    TriggerUponForState('AirThrowAuraFire', 32)
     sprite('iz321_15', 2)
     RefreshMultihit()
     Damage(1500)
@@ -3511,28 +3675,29 @@ def AirThrowExe2():
     loopRest()
     gotoLabel(110)
 
+
 @State
 def SpDashF_Land():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNoAttack()
 
-        def upon_FRAME_STEP():
-            if (SLOT_12 > 29200):
-                SLOT_12 = 29200
+        def upon_EVERY_FRAME():
+            if SLOT_XVelocity > 29200:
+                SLOT_XVelocity = 29200
             if SLOT_2:
                 WhiffNormalCancel(1)
                 WhiffSpecialCancel(1)
-                if (not CheckInput(0x79)):
+                if not CheckInput(0x79):
                     sendToLabel(1)
                 if CheckInput(0x9f):
-                    if (not (SLOT_13 >= 20000)):
+                    if not SLOT_YVelocity >= 20000:
                         YSpeed(500)
                 if CheckInput(0x51):
                     YSpeed(-500)
 
         def upon_STATE_END():
-            if (not SLOT_30):
+            if not SLOT_IsInHitstun:
                 XImpulseAcceleration(60)
                 YAccel(50)
                 EndYPhysicsImpulse()
@@ -3566,10 +3731,11 @@ def SpDashF_Land():
     sprite('iz350_02', 2)
     label(1)
     sprite('iz350_06', 4)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     SetAcceleration(0)
-    PassbackAddActionMarkToFunction('HoverDashAura', 32)
+    TriggerUponForState('HoverDashAura', 32)
     CreateParticle('izef_Drivelight', 0)
+
 
 @State
 def SpDashF_Air():
@@ -3577,24 +3743,24 @@ def SpDashF_Air():
     def upon_IMMEDIATE():
         AttackDefaults_AirNoAttack()
 
-        def upon_FRAME_STEP():
-            if (SLOT_12 > 29200):
-                SLOT_12 = 29200
+        def upon_EVERY_FRAME():
+            if SLOT_XVelocity > 29200:
+                SLOT_XVelocity = 29200
             if SLOT_2:
                 WhiffNormalCancel(1)
                 WhiffSpecialCancel(1)
                 WhiffFAirDashCancel(1)
                 WhiffBAirDashCancel(1)
-                if (not CheckInput(0x79)):
+                if not CheckInput(0x79):
                     sendToLabel(1)
                 if CheckInput(0x9f):
-                    if (not (SLOT_13 >= 3000)):
+                    if not SLOT_YVelocity >= 3000:
                         YSpeed(500)
                 if CheckInput(0x51):
                     YSpeed(-500)
 
         def upon_STATE_END():
-            if (not SLOT_30):
+            if not SLOT_IsInHitstun:
                 XImpulseAcceleration(60)
                 YAccel(50)
                 EndYPhysicsImpulse()
@@ -3632,10 +3798,11 @@ def SpDashF_Air():
     sprite('iz350_05', 2)
     label(1)
     sprite('iz350_06', 4)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     SetAcceleration(0)
-    PassbackAddActionMarkToFunction('HoverDashAura', 32)
+    TriggerUponForState('HoverDashAura', 32)
     CreateParticle('izef_Drivelight', 0)
+
 
 @State
 def SpDashB_Land():
@@ -3643,15 +3810,15 @@ def SpDashB_Land():
     def upon_IMMEDIATE():
         AttackDefaults_AirNoAttack()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 WhiffNormalCancel(1)
                 WhiffSpecialCancel(1)
-                if (not CheckInput(0x5f)):
+                if not CheckInput(0x5f):
                     sendToLabel(1)
 
         def upon_STATE_END():
-            if (not SLOT_30):
+            if not SLOT_IsInHitstun:
                 XImpulseAcceleration(30)
                 YAccel(50)
                 EndYPhysicsImpulse()
@@ -3684,11 +3851,12 @@ def SpDashB_Land():
     sprite('iz351_05', 2)
     label(1)
     sprite('keep', 1)
-    clearUponHandler(3)
-    PassbackAddActionMarkToFunction('BackHoverDashAura', 32)
-    PassbackAddActionMarkToFunction('BackHoverDashFire', 32)
-    PassbackAddActionMarkToFunction('BackHoverDashAura_oku', 32)
+    clearUponHandler(EVERY_FRAME)
+    TriggerUponForState('BackHoverDashAura', 32)
+    TriggerUponForState('BackHoverDashFire', 32)
+    TriggerUponForState('BackHoverDashAura_oku', 32)
     sprite('iz351_06', 4)
+
 
 @State
 def SpDashB_Air():
@@ -3696,17 +3864,17 @@ def SpDashB_Air():
     def upon_IMMEDIATE():
         AttackDefaults_AirNoAttack()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 WhiffNormalCancel(1)
                 WhiffSpecialCancel(1)
                 WhiffFAirDashCancel(1)
                 WhiffBAirDashCancel(1)
-                if (not CheckInput(0x5f)):
+                if not CheckInput(0x5f):
                     sendToLabel(1)
 
         def upon_STATE_END():
-            if (not SLOT_30):
+            if not SLOT_IsInHitstun:
                 XImpulseAcceleration(30)
                 YAccel(50)
                 EndYPhysicsImpulse()
@@ -3738,11 +3906,12 @@ def SpDashB_Air():
     sprite('iz351_05', 2)
     label(1)
     sprite('keep', 1)
-    clearUponHandler(3)
-    PassbackAddActionMarkToFunction('BackHoverDashAura', 32)
-    PassbackAddActionMarkToFunction('BackHoverDashFire', 32)
-    PassbackAddActionMarkToFunction('BackHoverDashAura_oku', 32)
+    clearUponHandler(EVERY_FRAME)
+    TriggerUponForState('BackHoverDashAura', 32)
+    TriggerUponForState('BackHoverDashFire', 32)
+    TriggerUponForState('BackHoverDashAura_oku', 32)
     sprite('iz351_06', 4)
+
 
 @State
 def Shot_A():
@@ -3768,7 +3937,7 @@ def Shot_A():
     sprite('iz400_06', 3)
     WhiffCancelEnable(1)
     sprite('iz400_07', 32767)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     loopRest()
     label(0)
     sprite('iz400_08', 3)
@@ -3784,22 +3953,23 @@ def Shot_A():
     sprite('iz400_13', 2)
     sprite('iz400_14', 2)
 
+
 @State
 def Shot_D():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         callSubroutine('MyStatusSave')
         WhiffCancel('Warp_D_Land')
         WhiffCancel('Warp_D_Air')
         SetActionMark(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
     sprite('iz400_00', 3)
     Voiceline('iz201')
     sprite('iz400_01ex00', 3)
-    if (not SLOT_2):
+    if not SLOT_2:
         CreateObject('shotD_Matome', -1)
     else:
         CreateObject('shotD_MatomeOD', -1)
@@ -3818,7 +3988,7 @@ def Shot_D():
     sprite('iz400_06ex00', 3)
     sprite('iz400_07ex00', 3)
     sprite('iz400_08ex00', 32767)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     loopRest()
     label(0)
     sprite('iz400_09ex00', 2)
@@ -3834,6 +4004,7 @@ def Shot_D():
     Recovery()
     sprite('iz400_13', 2)
     sprite('iz400_14', 2)
+
 
 @State
 def AirShot_A():
@@ -3868,16 +4039,17 @@ def AirShot_A():
     sprite('iz401_11', 3)
     sprite('iz401_12', 3)
 
+
 @State
 def AirShot_D():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirSpecial()
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         callSubroutine('MyStatusSave')
         WhiffCancel('Warp_D_Air')
         SetActionMark(0)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SetActionMark(1)
     sprite('iz401_00', 1)
     Voiceline('iz201')
@@ -3887,7 +4059,7 @@ def AirShot_D():
     setGravity(0)
     sprite('iz401_00', 3)
     sprite('iz401_01ex00', 4)
-    if (not SLOT_2):
+    if not SLOT_2:
         CreateObject('AirshotD_Matome', -1)
     else:
         CreateObject('AirshotD_MatomeOD', -1)
@@ -3911,12 +4083,14 @@ def AirShot_D():
     sprite('iz401_11', 4)
     sprite('iz401_12', 4)
 
+
 @Subroutine
 def Iai_CancelInit():
     HitOrBlockCancel('Warp_A')
     HitOrBlockCancel('Warp_B')
     HitOrBlockCancel('Warp_C')
     HitCancel('Warp_D_LandHitOnly')
+
 
 @State
 def Iai_Slash():
@@ -3945,25 +4119,25 @@ def Iai_Slash():
         ChainCancel(1)
         callSubroutine('AdditionalExGage')
         callSubroutine('MyStatusSave')
-        if (not SLOT_94):
+        if not SLOT_94:
             WhiffCancel('Iai_Slash_Next')
-            if SLOT_110:
+            if SLOT_OverdriveTimer:
                 WhiffCancel('Warp_D_Land')
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if CheckInput(0x17):
                 SLOT_51 = 1
             if SLOT_94:
                 SLOT_51 = 1
             if SLOT_51:
                 if SLOT_2:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
             if SLOT_2:
-                if CheckInput(0x1):
-                    if (not SLOT_94):
-                        clearUponHandler(3)
+                if CheckInput(INPUT_HOLD_A):
+                    if not SLOT_94:
+                        clearUponHandler(EVERY_FRAME)
                         Unknown23170('KamaeStop')
                         sendToLabel(1)
 
@@ -3973,7 +4147,7 @@ def Iai_Slash():
     EnableAfterimage(1)
     sprite('iz402_01', 1)
     sprite('iz402_01', 1)
-    if (not SLOT_94):
+    if not SLOT_94:
         WhiffCancelEnable(1)
     sprite('iz402_02', 3)
     PrivateSE('izse_03_start')
@@ -4007,7 +4181,7 @@ def Iai_Slash():
     sprite('iz402_03', 4)
     sprite('iz402_04', 4)
     label(0)
-    clearUponHandler(25)
+    clearUponHandler(RELEASE_C)
     SetActionMark(0)
     Voiceline('iz203')
     sprite('iz402_05', 2)
@@ -4015,7 +4189,7 @@ def Iai_Slash():
     CommonSE('010_swing_sword_2')
     PrivateSE('izse_01')
     CreateObject('Iai_SlashZanzo00', -1)
-    PassbackAddActionMarkToFunction('Iaimcircle', 33)
+    TriggerUponForState('Iaimcircle', 33)
     DeleteObject(6)
     DeleteObject(7)
     WhiffCancelEnable(0)
@@ -4027,7 +4201,7 @@ def Iai_Slash():
     sprite('iz402_09', 4)
     sprite('iz402_10', 4)
     label(1)
-    clearUponHandler(25)
+    clearUponHandler(RELEASE_C)
     SetActionMark(0)
     EndSE()
     Recovery()
@@ -4036,6 +4210,7 @@ def Iai_Slash():
     sprite('iz402_11', 3)
     sprite('iz402_12', 3)
     sprite('iz402_13', 3)
+
 
 @State
 def Iai_Slash_Gedan():
@@ -4070,25 +4245,25 @@ def Iai_Slash_Gedan():
         ChainCancel(1)
         callSubroutine('AdditionalExGage')
         callSubroutine('MyStatusSave')
-        if (not SLOT_94):
+        if not SLOT_94:
             WhiffCancel('Iai_Slash_Next')
-            if SLOT_110:
+            if SLOT_OverdriveTimer:
                 WhiffCancel('Warp_D_Land')
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if CheckInput(0xe):
                 SLOT_51 = 1
             if SLOT_94:
                 SLOT_51 = 1
             if SLOT_51:
                 if SLOT_2:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
             if SLOT_2:
-                if CheckInput(0x1):
-                    if (not SLOT_94):
-                        clearUponHandler(3)
+                if CheckInput(INPUT_HOLD_A):
+                    if not SLOT_94:
+                        clearUponHandler(EVERY_FRAME)
                         Unknown23170('KamaeStop')
                         sendToLabel(1)
 
@@ -4097,7 +4272,7 @@ def Iai_Slash_Gedan():
     sprite('iz402_00', 3)
     EnableAfterimage(1)
     sprite('iz402_01', 3)
-    if (not SLOT_94):
+    if not SLOT_94:
         WhiffCancelEnable(1)
     sprite('iz402_02', 1)
     PrivateSE('izse_03_start')
@@ -4134,7 +4309,7 @@ def Iai_Slash_Gedan():
     sprite('iz402_03', 4)
     label(0)
     sprite('keep', 2)
-    clearUponHandler(24)
+    clearUponHandler(RELEASE_B)
     SetActionMark(0)
     Voiceline('iz202')
     sprite('iz402_05ex', 3)
@@ -4143,7 +4318,7 @@ def Iai_Slash_Gedan():
     CommonSE('010_swing_sword_2')
     sprite('iz402_06ex', 3)
     CreateObject('Iai_SlashZanzo_Gedan', -1)
-    PassbackAddActionMarkToFunction('Iaimcircle', 33)
+    TriggerUponForState('Iaimcircle', 33)
     DeleteObject(6)
     DeleteObject(7)
     WhiffCancelEnable(0)
@@ -4154,7 +4329,7 @@ def Iai_Slash_Gedan():
     sprite('iz402_09', 5)
     sprite('iz402_10', 5)
     label(1)
-    clearUponHandler(24)
+    clearUponHandler(RELEASE_B)
     SetActionMark(0)
     EndSE()
     Recovery()
@@ -4163,6 +4338,7 @@ def Iai_Slash_Gedan():
     sprite('iz402_11', 3)
     sprite('iz402_12', 3)
     sprite('iz402_13', 3)
+
 
 @State
 def Iai_Slash_Next():
@@ -4185,19 +4361,19 @@ def Iai_Slash_Next():
         StayAfterMovement(1, 0)
         HitAirUnblockable(3)
         FatalCounter(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_52 = 1
         if SLOT_52:
             SingleProration(1)
 
             def upon_OPPONENT_HIT():
-                clearUponHandler(12)
+                clearUponHandler(OPPONENT_HIT)
                 EnableCollision(0)
                 SetXCollisionFromOrigin(40)
                 sendToLabel(1)
         callSubroutine('Iai_CancelInit')
         HitCancel('Warp_D_Land')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Land')
         ChainCancel(1)
         EnableAfterimage(1)
@@ -4207,7 +4383,7 @@ def Iai_Slash_Next():
         AfterimageMask_2(0, 0, 200, 0)
         AfterimageSize_1(1010)
         AfterimageSize_2(1010)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
 
         def upon_STATE_END():
             AlphaValue(255)
@@ -4349,6 +4525,7 @@ def Iai_Slash_Next():
     sprite('iz403_10', 2)
     ExitState()
 
+
 @State
 def Iai_Slash_NextAir():
 
@@ -4370,14 +4547,14 @@ def Iai_Slash_NextAir():
         StayAfterMovement(1, 0)
         HitAirUnblockable(3)
         FatalCounter(1)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_52 = 1
         if SLOT_52:
             AirPushbackX(10000)
             YImpulseBeforeWallbounce(1600)
         callSubroutine('Iai_CancelInit')
         HitCancel('Warp_D_Land')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Land')
         ChainCancel(1)
         EnableAfterimage(1)
@@ -4387,17 +4564,17 @@ def Iai_Slash_NextAir():
         AfterimageMask_2(0, 0, 200, 0)
         AfterimageSize_1(1010)
         AfterimageSize_2(1010)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_29 < 200000):
-                    clearUponHandler(3)
+                if SLOT_29 < 200000:
+                    clearUponHandler(EVERY_FRAME)
                     SetActionMark(0)
                     sendToLabel(100)
-        if (SLOT_59 == 5):
+        if SLOT_59 == 5:
             sendToLabel(10)
-        if (SLOT_59 == 6):
+        if SLOT_59 == 6:
             sendToLabel(10)
 
         def upon_STATE_END():
@@ -4423,7 +4600,7 @@ def Iai_Slash_NextAir():
     AlphaValue(0)
     ConstantAlphaModifier(63)
     EndMomentum(1)
-    if (SLOT_59 == 5):
+    if SLOT_59 == 5:
         EndMomentum(1)
         AddX(400000)
     SLOT_59 = 0
@@ -4495,7 +4672,7 @@ def Iai_Slash_NextAir():
     sprite('iz403_00', 10)
     label(100)
     sprite('iz403_00', 4)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('iz403_00', 2)
     CreateObject('firespark', -1)
     AlphaValue(255)
@@ -4588,6 +4765,7 @@ def Iai_Slash_NextAir():
     sprite('iz403_10', 2)
     ExitState()
 
+
 @State
 def Iai_AntiAirA():
 
@@ -4618,25 +4796,25 @@ def Iai_AntiAirA():
         callSubroutine('Iai_CancelInit')
         HitCancel('Iai_AntiAir_Next')
         HitCancel('Warp_D_Land')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Land')
-        if (not SLOT_94):
+        if not SLOT_94:
             WhiffCancel('Iai_Slash_Next')
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if CheckInput(0xe):
                 SLOT_51 = 1
             if SLOT_94:
                 SLOT_51 = 1
             if SLOT_51:
                 if SLOT_2:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
             if SLOT_2:
-                if CheckInput(0x1):
-                    if (not SLOT_94):
-                        clearUponHandler(3)
+                if CheckInput(INPUT_HOLD_A):
+                    if not SLOT_94:
+                        clearUponHandler(EVERY_FRAME)
                         Unknown23170('KamaeStop')
                         sendToLabel(1)
         ChainCancel(1)
@@ -4681,7 +4859,7 @@ def Iai_AntiAirA():
     sprite('iz402_03', 4)
     sprite('iz402_04', 4)
     label(0)
-    clearUponHandler(24)
+    clearUponHandler(RELEASE_B)
     SetActionMark(0)
     Voiceline('iz202')
     sprite('iz404_00', 1)
@@ -4691,7 +4869,7 @@ def Iai_AntiAirA():
     EndSE()
     PrivateSE('izse_01')
     CreateObject('Iai_SlashZanzo_AntiAirA', -1)
-    PassbackAddActionMarkToFunction('Iaimcircle', 33)
+    TriggerUponForState('Iaimcircle', 33)
     CommonSE('010_swing_sword_2')
     DeleteObject(6)
     DeleteObject(7)
@@ -4712,7 +4890,7 @@ def Iai_AntiAirA():
     sprite('iz404_09', 4)
     ExitState()
     label(1)
-    clearUponHandler(24)
+    clearUponHandler(RELEASE_B)
     SetActionMark(0)
     EndSE()
     Recovery()
@@ -4721,6 +4899,7 @@ def Iai_AntiAirA():
     WhiffCancelEnable(0)
     sprite('iz402_12', 4)
     sprite('iz402_13', 4)
+
 
 @State
 def Iai_AntiAirB():
@@ -4754,24 +4933,24 @@ def Iai_AntiAirB():
         callSubroutine('MyStatusSave')
         HitCancel('Iai_AntiAir_Next')
         HitCancel('Warp_D_Land')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Land')
         setInvincible(1)
         SetActionMark(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if CheckInput(0x17):
                 SLOT_51 = 1
             if SLOT_94:
                 SLOT_51 = 1
             if SLOT_51:
                 if SLOT_2:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
             if SLOT_2:
-                if CheckInput(0x1):
-                    if (not SLOT_94):
-                        clearUponHandler(3)
+                if CheckInput(INPUT_HOLD_A):
+                    if not SLOT_94:
+                        clearUponHandler(EVERY_FRAME)
                         Unknown23170('KamaeStop')
                         sendToLabel(1)
         ChainCancel(1)
@@ -4818,7 +4997,7 @@ def Iai_AntiAirB():
     sprite('iz405_02', 4)
     sprite('iz405_03', 4)
     label(0)
-    clearUponHandler(25)
+    clearUponHandler(RELEASE_C)
     SetActionMark(0)
     sprite('iz405_04', 3)
     Voiceline('iz205')
@@ -4826,7 +5005,7 @@ def Iai_AntiAirB():
     PrivateSE('izse_01')
     sprite('iz405_05', 3)
     CreateObject('Iai_SlashZanzo_AntiAirB', -1)
-    PassbackAddActionMarkToFunction('Iaimcircle', 33)
+    TriggerUponForState('Iaimcircle', 33)
     CommonSE('010_swing_sword_2')
     DeleteObject(6)
     DeleteObject(7)
@@ -4845,7 +5024,7 @@ def Iai_AntiAirB():
     sprite('iz405_14', 4)
     ExitState()
     label(1)
-    clearUponHandler(25)
+    clearUponHandler(RELEASE_C)
     SetActionMark(0)
     EndSE()
     sprite('iz405_03', 4)
@@ -4853,6 +5032,7 @@ def Iai_AntiAirB():
     sprite('iz405_02', 4)
     sprite('iz405_01', 8)
     sprite('iz405_00', 8)
+
 
 @State
 def Iai_SlashAirA():
@@ -4883,7 +5063,7 @@ def Iai_SlashAirA():
         callSubroutine('Iai_CancelInit')
         HitCancel('Iai_AntiAir_Next')
         HitCancel('Warp_D_Air')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Air')
         callSubroutine('AdditionalExGage')
     sprite('iz413_00', 2)
@@ -4916,6 +5096,7 @@ def Iai_SlashAirA():
     sprite('iz020_08', 3)
     gotoLabel(0)
 
+
 @State
 def Iai_SlashAirB():
 
@@ -4946,7 +5127,7 @@ def Iai_SlashAirB():
         callSubroutine('Iai_CancelInit')
         HitCancel('Iai_AntiAir_Next')
         HitCancel('Warp_D_Air')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Air')
         callSubroutine('AdditionalExGage')
     sprite('iz413_00', 2)
@@ -4981,6 +5162,7 @@ def Iai_SlashAirB():
     sprite('iz020_08', 3)
     gotoLabel(0)
 
+
 @State
 def Iai_SlashAirC():
 
@@ -5011,7 +5193,7 @@ def Iai_SlashAirC():
         callSubroutine('Iai_CancelInit')
         HitCancel('Iai_AntiAir_Next')
         HitCancel('Warp_D_Air')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Air')
         callSubroutine('AdditionalExGage')
     sprite('iz413_00', 2)
@@ -5046,6 +5228,7 @@ def Iai_SlashAirC():
     sprite('iz020_08', 3)
     gotoLabel(0)
 
+
 @State
 def Iai_AntiAir_Next():
 
@@ -5064,34 +5247,34 @@ def Iai_AntiAir_Next():
         AirUntechableTime(100)
         EnemyHitstopAddition(0, 6, 6)
         Hitstop(2)
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_52 = 1
         if SLOT_52:
             Damage(850)
         StayAfterMovement(1, 0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
-        if (SLOT_59 == 1):
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
+        if SLOT_59 == 1:
             sendToLabel(2)
-        if (SLOT_59 == 2):
+        if SLOT_59 == 2:
             sendToLabel(3)
-        if (SLOT_59 == 3):
+        if SLOT_59 == 3:
             sendToLabel(4)
-        if (SLOT_59 == 4):
+        if SLOT_59 == 4:
             sendToLabel(10)
-        if (SLOT_59 == 5):
+        if SLOT_59 == 5:
             sendToLabel(10)
-        if (SLOT_59 == 6):
+        if SLOT_59 == 6:
             sendToLabel(10)
 
         def upon_STATE_END():
             AlphaValue(255)
             ConstantAlphaModifier(0)
         callSubroutine('Iai_CancelInit')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Land')
         NoAttackDuringAction(1)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         EndMomentum(1)
     sprite('keep', 1)
     Voiceline('iz207')
@@ -5140,30 +5323,30 @@ def Iai_AntiAir_Next():
     EnableCollision(0)
     ForceFaceSprite()
     TeleportToObject(22)
-    if (SLOT_59 == 1):
+    if SLOT_59 == 1:
         AddY(300000)
         AddX(200000)
         SLOT_59 = 0
-    if (SLOT_59 == 2):
+    if SLOT_59 == 2:
         AddY(160000)
         AddX(-60000)
         SLOT_59 = 0
-    if (SLOT_59 == 3):
+    if SLOT_59 == 3:
         EndMomentum(1)
         AddY(220000)
         AddX(250000)
         SLOT_59 = 0
-    if (SLOT_59 == 4):
+    if SLOT_59 == 4:
         EndMomentum(1)
         AddX(250000)
         AddY(240000)
         SLOT_59 = 0
-    if (SLOT_59 == 5):
+    if SLOT_59 == 5:
         EndMomentum(1)
         AddX(200000)
         AddY(120000)
         SLOT_59 = 0
-    if (SLOT_59 == 6):
+    if SLOT_59 == 6:
         EndMomentum(1)
         AddX(-50000)
         AddY(90000)
@@ -5238,9 +5421,9 @@ def Iai_AntiAir_Next():
     sprite('iz406_09', 5)
     EnableCollision(1)
     LandingEffects(100, 1, 1)
-    PassbackAddActionMarkToFunction('Iai_AntiAirNext_Zanzo', 32)
-    PassbackAddActionMarkToFunction('IaiAntiAirNextAuraL', 32)
-    PassbackAddActionMarkToFunction('IaiAntiAirNextAuraR', 32)
+    TriggerUponForState('Iai_AntiAirNext_Zanzo', 32)
+    TriggerUponForState('IaiAntiAirNextAuraL', 32)
+    TriggerUponForState('IaiAntiAirNextAuraR', 32)
     EndMomentum(1)
     sprite('iz406_10', 9)
     AlphaValue(255)
@@ -5249,6 +5432,7 @@ def Iai_AntiAir_Next():
     sprite('iz406_12', 5)
     sprite('iz406_13', 5)
     ExitState()
+
 
 @State
 def AirAssault():
@@ -5270,7 +5454,7 @@ def AirAssault():
             SLOT_59 = 3
         HitCancel('Iai_AntiAir_Next')
         HitCancel('Warp_D_AirHitOnly')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             WhiffCancel('Warp_D_Air')
         callSubroutine('AdditionalExGage')
     sprite('iz408_00', 3)
@@ -5309,6 +5493,7 @@ def AirAssault():
     sprite('iz020_08', 3)
     gotoLabel(0)
 
+
 @Subroutine
 def WarpFlexCancel():
     WhiffCancel('NmlAtkThrow')
@@ -5326,6 +5511,7 @@ def WarpFlexCancel():
     if op(15, 2, 51, 0, 3):
         WhiffCancel('Warp_C')
     WhiffCancel('Warp_D_Land')
+
 
 @State
 def Warp_A():
@@ -5387,6 +5573,7 @@ def Warp_A():
     sprite('iz409_08', 3)
     sprite('iz409_09', 3)
 
+
 @State
 def Warp_B():
 
@@ -5439,6 +5626,7 @@ def Warp_B():
     WhiffCancelEnable(1)
     sprite('iz409_08', 3)
     sprite('iz409_09', 3)
+
 
 @State
 def Warp_C():
@@ -5497,6 +5685,7 @@ def Warp_C():
     sprite('iz409_15', 3)
     sprite('iz409_16', 3)
 
+
 @State
 def Warp_D_Land():
 
@@ -5514,7 +5703,7 @@ def Warp_D_Land():
             ResetAirDashCount()
             EnableAfterimage(0)
             RenderLayer(0)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         callSubroutine('MyStatusSave')
     sprite('iz409_00', 1)
     SetXCollisionFromOrigin(50)
@@ -5539,7 +5728,7 @@ def Warp_D_Land():
     XImpulseAcceleration(800)
     sprite('iz410_02ex', 1)
     CopyFromRightToLeft(23, 2, 51, 22, 2, 23)
-    if (SLOT_51 <= 430000):
+    if SLOT_51 <= 430000:
         sendToLabel(0)
     else:
         sendToLabel(1)
@@ -5603,6 +5792,7 @@ def Warp_D_Land():
     sprite('iz410_07', 1)
     EndYPhysicsImpulse()
 
+
 @State
 def Warp_D_LandHitOnly():
 
@@ -5620,7 +5810,7 @@ def Warp_D_LandHitOnly():
             ResetAirDashCount()
             EnableAfterimage(0)
             RenderLayer(0)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         callSubroutine('MyStatusSave')
     sprite('iz409_00', 1)
     SetXCollisionFromOrigin(50)
@@ -5645,7 +5835,7 @@ def Warp_D_LandHitOnly():
     XImpulseAcceleration(800)
     sprite('iz410_02ex', 1)
     CopyFromRightToLeft(23, 2, 51, 22, 2, 23)
-    if (SLOT_51 <= 430000):
+    if SLOT_51 <= 430000:
         sendToLabel(0)
     else:
         sendToLabel(1)
@@ -5709,6 +5899,7 @@ def Warp_D_LandHitOnly():
     sprite('iz410_07', 1)
     EndYPhysicsImpulse()
 
+
 @State
 def Warp_D_Air():
 
@@ -5726,7 +5917,7 @@ def Warp_D_Air():
             ResetAirDashCount()
             EnableAfterimage(0)
             RenderLayer(0)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         callSubroutine('MyStatusSave')
     sprite('iz410_00', 4)
     SetXCollisionFromOrigin(50)
@@ -5753,7 +5944,7 @@ def Warp_D_Air():
     XImpulseAcceleration(800)
     sprite('iz410_02ex01', 1)
     CopyFromRightToLeft(23, 2, 51, 22, 2, 23)
-    if (SLOT_51 <= 430000):
+    if SLOT_51 <= 430000:
         sendToLabel(0)
     else:
         sendToLabel(1)
@@ -5817,6 +6008,7 @@ def Warp_D_Air():
     sprite('iz410_07', 1)
     EndYPhysicsImpulse()
 
+
 @State
 def Warp_D_AirHitOnly():
 
@@ -5834,7 +6026,7 @@ def Warp_D_AirHitOnly():
             ResetAirDashCount()
             EnableAfterimage(0)
             RenderLayer(0)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         callSubroutine('MyStatusSave')
     sprite('iz410_00', 4)
     SetXCollisionFromOrigin(50)
@@ -5860,7 +6052,7 @@ def Warp_D_AirHitOnly():
     XImpulseAcceleration(800)
     sprite('iz410_02', 1)
     CopyFromRightToLeft(23, 2, 51, 22, 2, 23)
-    if (SLOT_51 <= 430000):
+    if SLOT_51 <= 430000:
         sendToLabel(0)
     else:
         sendToLabel(1)
@@ -5924,6 +6116,7 @@ def Warp_D_AirHitOnly():
     sprite('iz410_07', 1)
     EndYPhysicsImpulse()
 
+
 @State
 def UltimateAssault():
 
@@ -5985,7 +6178,7 @@ def UltimateAssault():
     sprite('iz430_17', 5)
     sprite('iz430_18', 18)
     sprite('iz430_18', 1)
-    if (SLOT_4 == 1):
+    if SLOT_4 == 1:
         sendToLabel(1)
     else:
         sendToLabel(0)
@@ -6008,7 +6201,7 @@ def UltimateAssault():
     sprite('iz430_20', 3)
     sprite('iz430_21', 3)
     sprite('iz430_22', 3)
-    PassbackAddActionMarkToFunction('DD_3d_swordaura', 32)
+    TriggerUponForState('DD_3d_swordaura', 32)
     sprite('iz430_23', 3)
     sprite('iz430_24', 3)
     gotoLabel(2)
@@ -6023,7 +6216,7 @@ def UltimateAssault():
     CreateObject('UltimateAssaultAura', 0)
     CreateObject('UltimateAssaultAura_back', 1)
     sprite('iz430_20ex00', 2)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         WhiffCancelEnable(1)
     sprite('iz430_21ex00', 3)
     sprite('iz430_22ex00', 3)
@@ -6036,7 +6229,7 @@ def UltimateAssault():
     sprite('iz430_21ex00', 3)
     sprite('iz430_22ex00', 3)
     sprite('iz430_23ex00', 3)
-    PassbackAddActionMarkToFunction('DD_3d_swordaura', 32)
+    TriggerUponForState('DD_3d_swordaura', 32)
     sprite('iz430_24ex00', 3)
     gotoLabel(2)
     label(2)
@@ -6046,6 +6239,7 @@ def UltimateAssault():
     sprite('iz430_27', 5)
     sprite('iz430_28', 5)
     sprite('iz430_29', 5)
+
 
 @State
 def UltimateAssault_OD():
@@ -6134,7 +6328,7 @@ def UltimateAssault_OD():
     sprite('iz430_21ex00', 3)
     sprite('iz430_22ex00', 3)
     sprite('iz430_23ex00', 3)
-    PassbackAddActionMarkToFunction('DD_3d_swordaura', 32)
+    TriggerUponForState('DD_3d_swordaura', 32)
     sprite('iz430_24ex00', 3)
     gotoLabel(2)
     label(2)
@@ -6145,6 +6339,7 @@ def UltimateAssault_OD():
     sprite('iz430_28', 5)
     sprite('iz430_29', 5)
 
+
 @State
 def SummonFunnel():
 
@@ -6153,7 +6348,7 @@ def SummonFunnel():
         StayAfterMovement(1, 0)
         PreventBlocking(1)
         SLOT_32 = 0
-        ObjectUpon(4, 41)
+        ObjectUpon(FALLING, 41)
         ObjectUpon(5, 41)
     sprite('iz431_00', 3)
     sprite('iz431_01', 3)
@@ -6209,7 +6404,7 @@ def SummonFunnel():
     SLOT_32 = 720
     CreateObject('ShieildBit', 1)
     RegisterObject(4, 1)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     CreateObject('ShieildBit', 0)
     RegisterObject(5, 1)
     ObjectUpon(5, 34)
@@ -6222,6 +6417,7 @@ def SummonFunnel():
     sprite('iz431_26', 4)
     sprite('iz431_27', 4)
     sprite('iz431_28', 4)
+
 
 @State
 def AstralHeat():
@@ -6341,6 +6537,7 @@ def AstralHeat():
     sprite('iz450_24', 5)
     sprite('iz450_25', 5)
 
+
 @State
 def AstralHeatExe():
 
@@ -6371,12 +6568,12 @@ def AstralHeatExe():
     SetBackground(3)
     AbsoluteY(7800000)
     AlphaValue(0)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    AbsoluteY(6000000)
-    XPositionRelativeFacing(0)
-    setGravity(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(1)
+        AbsoluteY(6000000)
+        XPositionRelativeFacing(0)
+        setGravity(0)
     sprite('null', 45)
     CreateObject('AST_2ndAura', -1)
     sprite('null', 60)
@@ -6468,23 +6665,23 @@ def AstralHeatExe():
     sprite('null', 60)
     CreateObject('izef_ah_javelin2', -1)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('ASTbg', 32)
+    TriggerUponForState('ASTbg', 32)
     CreateObject('izef_ah_javelin3', -1)
     CreateParticle('izef_ahfinish_nigiyakasi', -1)
-    ApplyFunctionsToObjects(22)
-    Visibility(0)
-    RenderLayer(2)
-    Size(600)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(0)
+        RenderLayer(2)
+        Size(600)
+        AddY(100000)
     sprite('null', 15)
     ScreenShake(15000, 15000)
     CommonSE('025_cleanhit_slash')
     sprite('null', 90)
     CreateObject('AstralHeatKillObject', -1)
     ScreenShake(300000, 300000)
-    PassbackAddActionMarkToFunction('izef_ah_javelin00', 32)
-    PassbackAddActionMarkToFunction('izef_ah_javelin_backfire00', 32)
+    TriggerUponForState('izef_ah_javelin00', 32)
+    TriggerUponForState('izef_ah_javelin_backfire00', 32)
     sprite('iz450_44', 10)
     SetBackground(0)
     CameraControlEnable(1)
@@ -6496,9 +6693,9 @@ def AstralHeatExe():
     XPositionRelativeFacing(200000)
     AbsoluteY(0)
     CallCustomizableParticle('izef_ah_finishhane', -1)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(1)
     sprite('iz450_45', 7)
     sprite('iz450_46', 7)
     sprite('iz450_47', 7)
@@ -6519,6 +6716,7 @@ def AstralHeatExe():
     sprite('iz450_48', 7)
     gotoLabel(0)
 
+
 @State
 def RlAstralDamage():
 
@@ -6526,7 +6724,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('iz054')
     sprite('iz900_00', 32767)
     EnableCollision(0)
@@ -6540,6 +6738,7 @@ def RlAstralDamage():
     AbsoluteY(0)
     EndMomentum(1)
     loopRest()
+
 
 @State
 def AmAstralDamage():
@@ -6560,11 +6759,12 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(100)
@@ -6583,10 +6783,10 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -6616,11 +6816,12 @@ def BurstDD():
     AddX(-70000)
     sprite('iz311_12ex01', 5)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(100)
@@ -6639,10 +6840,10 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -6674,11 +6875,12 @@ def BurstDD_Easy():
     AddX(-70000)
     sprite('iz311_12ex01', 5)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(4)
         Damage(2000)
         AirHitstunAnimation(13)
@@ -6715,7 +6917,7 @@ def BurstDDAdd():
     Voiceline('iz281')
     CreateObject('BurstDDFunnel', -1)
     if SLOT_51:
-        ObjectUpon(1, 32)
+        ObjectUpon(STATE_END, 32)
     sprite('iz400_02ex01', 4)
     XImpulseAcceleration(0)
     sprite('iz400_03ex01', 4)
@@ -6763,7 +6965,7 @@ def BurstDDAdd():
     sprite('iz440_22', 3)
     sprite('iz440_23', 3)
     sprite('iz440_21', 3)
-    if (not SLOT_44):
+    if not SLOT_44:
         Voiceline('iz282')
     sprite('iz440_22', 3)
     sprite('iz440_23', 3)
@@ -6782,119 +6984,408 @@ def BurstDDAdd():
     sprite('iz440_29', 3)
     CreateObject('BurstDDRetrunEff', -1)
     sprite('iz440_30', 5)
-    PassbackAddActionMarkToFunction('BurstDDCamera', 33)
+    TriggerUponForState('BurstDDCamera', 33)
     sprite('iz440_31', 5)
     sprite('iz203_06ex01', 5)
     sprite('iz203_07ex01', 5)
     sprite('iz203_08ex01', 5)
     loopRest()
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz055', 13665, 13667, 13665, 13667, 13665, 13667, 13665, 13667, 13921, 13923, 13921, 13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz291', 14433, 13667, 13921, 13923, 13921, 13923, 13665, 13667, 14177, 13923, 14177, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz292', 14433, 13667, 13665, 13667, 13665, 13667, 13665, 13667, 13665, 13667, 13921, 13667, 13921, 13411, 13409, 13411, 14177, 13667, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz293', 14177, 13923, 14177, 13923, 13665, 13411, 14177, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz294', 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 12641, 25398, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz295', 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 12641, 25398, 24884, 25396, 25396, 24884, 13873, 13411, 13409, 13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz400', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz401', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz404', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz405', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz406', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 13923, 13921, 13923, 12641, 25394, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz407', 14433, 14435, 14433, 14435, 14433, 13411, 24885, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz408', 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz412', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz413', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz414', 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz415', 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('iz417', 14433, 13923, 14433, 13923, 14433, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz055', 13665, 13667, 13665, 13667, 13665, 13667, 13665, 
+        13667, 13921, 13923, 13921, 13923, 12897, 25392, 54, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz291', 14433, 13667, 13921, 13923, 13921, 13923, 13665, 
+        13667, 14177, 13923, 14177, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz292', 14433, 13667, 13665, 13667, 13665, 13667, 13665, 
+        13667, 13665, 13667, 13921, 13667, 13921, 13411, 13409, 13411, 
+        14177, 13667, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz293', 14177, 13923, 14177, 13923, 13665, 13411, 14177, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz294', 13409, 13411, 13409, 13411, 13409, 13411, 13409, 
+        13411, 12641, 25398, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz295', 13409, 13411, 13409, 13411, 13409, 13411, 13409, 
+        13411, 12641, 25398, 24884, 25396, 25396, 24884, 13873, 13411, 
+        13409, 13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
+    Unknown18011('iz400', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz401', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz404', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz405', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz406', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+        13923, 13921, 13923, 12641, 25394, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz407', 14433, 14435, 14433, 14435, 14433, 13411, 24885, 
+        25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz408', 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz412', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz413', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz414', 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz415', 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('iz417', 14433, 13923, 14433, 13923, 14433, 99, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz291', 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz292', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz293', 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 12641, 25398, 24884, 25396, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz294', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz295', 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 12641, 25398, 24884, 25396, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz400', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz401', 13921, 13923, 13921, 13923, 13921, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz405', 14177, 14179, 14177, 14179, 14177, 13923, 13921, 13923, 13921, 13923, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz406', 13409, 13667, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz407', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz408', 13921, 13923, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz412', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz413', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz414', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz415', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('iz417', 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz291', 13921, 13923, 13921, 13923, 13921, 13923, 
+            12641, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz292', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 12641, 25392, 56, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('iz293', 13409, 13411, 13409, 13411, 13409, 13411, 
+            13409, 13411, 12641, 25398, 24884, 25396, 52, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('iz294', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz295', 13409, 13411, 13409, 13411, 13409, 13411, 
+            13409, 13411, 12641, 25398, 24884, 25396, 52, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('iz400', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('iz401', 13921, 13923, 13921, 13923, 13921, 13923, 
+            14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz404', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz405', 14177, 14179, 14177, 14179, 14177, 13923, 
+            13921, 13923, 13921, 13923, 24886, 25398, 54, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('iz406', 13409, 13667, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 
+            25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz407', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz408', 13921, 13923, 13921, 13923, 13921, 13923, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
+        Unknown18011('iz412', 14433, 13923, 14433, 13923, 14433, 13923, 
+            14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz413', 14433, 13923, 14433, 13923, 14433, 13923, 
+            14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz414', 14433, 13923, 14433, 13923, 14433, 13923, 
+            14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz415', 14433, 13923, 14433, 13923, 14433, 13923, 
+            14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('iz417', 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('jn'):
-            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz400', 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz400', 14177, 14179, 14177, 14179, 14177, 13411,
+                24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
         if CharacterIDCheck('no'):
-            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz400', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('iz400', 14177, 14179, 14177, 13411, 24880, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 13155,
+                24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('iz400', 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz400', 14177, 14179, 14177, 14179, 14177, 
+                    13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ha'):
-            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz400', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 13155,
+                24880, 25399, 24887, 25399, 24887, 13617, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz400', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mk'):
-            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 13617, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz400', 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13155, 24880, 25399, 24887, 13617, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz400', 14177, 14179, 14177, 13667, 24880, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mu'):
             if SLOT_140:
-                Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('iz400', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz000', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 13155, 24880, 25399, 24887, 25399, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz400', 14177, 14179, 14177, 13411, 24880, 
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 
+                    13155, 24880, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ma'):
-            Unknown18011('iz000', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz400', 13921, 13923, 13921, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 13617, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz000', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz400', 13921, 13923, 13921, 13667, 24880, 25399,
+                24887, 25399, 24887, 25399, 13617, 14177, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz401', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rg'):
             if SLOT_138:
-                Unknown18011('iz500', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('iz501', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25398, 12342, 13921, 13923, 14433, 14179, 13921, 13923, 14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz500', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
+                Unknown18011('iz501', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880,
+                    25399, 24887, 25398, 12342, 13921, 13923, 14433, 14179,
+                    13921, 13923, 14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('iz500', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13155, 24886, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('iz501', 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 14177, 13923, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz500', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13155, 24886,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz501', 14433, 14435, 14433, 14435, 14433, 
+                    14435, 14177, 14179, 14177, 13923, 24885, 25398, 24886,
+                    25398, 24886, 25398, 24886, 12337, 13923, 13921, 13923,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0)
         if CharacterIDCheck('jn'):
-            Unknown18011('iz502', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz503', 14177, 14179, 14177, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz502', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz503', 14177, 14179, 14177, 13411, 24885, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('no'):
-            Unknown18011('iz504', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz505', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12340, 13921, 13923, 14433, 14179, 13921, 13923, 14433, 14179, 14433, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz504', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('iz505', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 12340, 13921, 13923, 14433, 
+                14179, 13921, 13923, 14433, 14179, 14433, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ha'):
-            Unknown18011('iz520', 14177, 14179, 14177, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz521', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 12342, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz520', 14177, 14179, 14177, 13411, 24885, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz521', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 
+                12342, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mk'):
-            Unknown18011('iz530', 14177, 14179, 14177, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz531', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz530', 14177, 14179, 14177, 13411, 24885, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz531', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 
+                24880, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 
+                14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
             if SLOT_140:
-                Unknown18011('iz530', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('iz531', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz530', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0)
+                Unknown18011('iz531', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921,
+                    13411, 24880, 25398, 24886, 25398, 24886, 25398, 25398,
+                    54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kg'):
-            Unknown18011('iz546', 14177, 13155, 14177, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz547', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz546', 14177, 13155, 14177, 13411, 24885, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz547', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 
+                24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mu'):
             if SLOT_140:
-                Unknown18011('iz528', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('iz529', 13921, 13923, 13921, 13923, 13921, 13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz528', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13411, 24880, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('iz529', 13921, 13923, 13921, 13923, 13921, 
+                    13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ma'):
-            Unknown18011('iz568', 14177, 14179, 14177, 13667, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 12339, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('iz569', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 24880, 25399, 24887, 25399, 24887, 25399, 14386, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz568', 14177, 14179, 14177, 13667, 24885, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 12339, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('iz569', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 24880, 25399, 24887, 25399, 
+                24887, 25399, 14386, 14177, 14179, 14177, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
-    if Unknown60('rg'):
+        conditionalSendToLabel(482)
+    if CharacterIDCheck('ma'):
         SyncEntry()
         if SLOT_138:
             gotoLabel(100)
@@ -6903,7 +7394,7 @@ def CmnActEntry():
     if CharacterIDCheck('jn'):
         SyncEntry()
         gotoLabel(110)
-    if Unknown63('no'):
+    if CharacterIDCheck('jn'):
         SyncEntry()
         gotoLabel(120)
     if CharacterIDCheck('ha'):
@@ -6926,18 +7417,16 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(430)
     label(482)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(10)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(20)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(10)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(20)
     label(0)
     sprite('iz600_00', 6)
     sprite('iz600_00', 60)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('iz600_00', 45)
     Voiceline('iz412')
     sprite('iz600_01', 5)
@@ -6973,7 +7462,7 @@ def CmnActEntry():
     sprite('iz601_00', 60)
     loopRest()
     if SLOT_17:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('iz601_00', 30)
     Voiceline('iz414')
     sprite('iz601_00', 6)
@@ -7020,7 +7509,7 @@ def CmnActEntry():
     sprite('iz602_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(20)
+        conditionalSendToLabel(20)
     sprite('iz602_01', 6)
     sprite('iz602_02', 6)
     sprite('iz602_03', 6)
@@ -7044,7 +7533,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(100)
-    sendToLabelUpon(32, 102)
+    uponSendToLabel(32, 102)
     label(101)
     sprite('iz602_00', 6)
     loopRest()
@@ -7087,7 +7576,7 @@ def CmnActEntry():
     sprite('iz602_00', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(1100)
+        conditionalSendToLabel(1100)
     sprite('iz602_00', 10)
     sprite('iz602_00', 30)
     Voiceline('iz500')
@@ -7123,7 +7612,7 @@ def CmnActEntry():
     label(110)
     sprite('iz600_00', 1)
     if SLOT_17:
-        _gotolabel(110)
+        conditionalSendToLabel(110)
     sprite('iz600_00', 30)
     sprite('iz600_00', 140)
     Voiceline('iz502')
@@ -7160,7 +7649,7 @@ def CmnActEntry():
     sprite('iz600_00', 60)
     loopRest()
     if SLOT_17:
-        _gotolabel(120)
+        conditionalSendToLabel(120)
     sprite('iz600_00', 45)
     Voiceline('iz504')
     DemoTimer(300)
@@ -7196,7 +7685,7 @@ def CmnActEntry():
     sprite('iz601_00', 60)
     loopRest()
     if SLOT_17:
-        _gotolabel(200)
+        conditionalSendToLabel(200)
     sprite('iz601_00', 200)
     Voiceline('iz520')
     sprite('iz601_00', 6)
@@ -7235,7 +7724,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(250)
-    sendToLabelUpon(32, 252)
+    uponSendToLabel(32, 252)
     label(251)
     sprite('iz602_00', 6)
     loopRest()
@@ -7279,13 +7768,13 @@ def CmnActEntry():
     sprite('iz601_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2250)
+        conditionalSendToLabel(2250)
     sprite('iz601_00', 20)
     sprite('iz601_00', 6)
     CreateObject('EntryFallSword', -1)
     CommonSE('011_spin_0')
     CommonSE('005_swing_grap_2_2')
-    sendToLabelUpon(32, 2252)
+    uponSendToLabel(32, 2252)
     sprite('iz601_01', 7)
     sprite('iz601_02', 7)
     sprite('iz601_03', 7)
@@ -7349,7 +7838,7 @@ def CmnActEntry():
     sprite('iz001_08', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(2253)
+        conditionalSendToLabel(2253)
     sprite('iz001_09', 6)
     sprite('iz001_10', 6)
     sprite('iz001_11', 6)
@@ -7360,13 +7849,13 @@ def CmnActEntry():
     sprite('iz601_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2240)
+        conditionalSendToLabel(2240)
     sprite('iz601_00', 20)
     sprite('iz601_00', 6)
     CreateObject('EntryFallSword', -1)
     CommonSE('011_spin_0')
     CommonSE('005_swing_grap_2_2')
-    sendToLabelUpon(32, 2242)
+    uponSendToLabel(32, 2242)
     sprite('iz601_01', 7)
     sprite('iz601_02', 7)
     sprite('iz601_03', 7)
@@ -7429,7 +7918,7 @@ def CmnActEntry():
     sprite('iz001_08', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(2243)
+        conditionalSendToLabel(2243)
     sprite('iz001_09', 6)
     sprite('iz001_10', 6)
     sprite('iz001_11', 6)
@@ -7437,7 +7926,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(330)
-    sendToLabelUpon(32, 332)
+    uponSendToLabel(32, 332)
     label(331)
     sprite('iz001_04', 6)
     sprite('iz001_05', 6)
@@ -7466,7 +7955,7 @@ def CmnActEntry():
     sprite('iz001_08', 6)
     loopRest()
     if SLOT_97:
-        _gotolabel(333)
+        conditionalSendToLabel(333)
     sprite('iz001_09', 6)
     ObjectUpon(22, 32)
     sprite('iz001_10', 6)
@@ -7478,7 +7967,7 @@ def CmnActEntry():
     sprite('iz600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(430)
+        conditionalSendToLabel(430)
     sprite('iz600_00', 20)
 
     def upon_32():
@@ -7520,7 +8009,8 @@ def CmnActEntry():
     sprite('iz001_07', 7)
     sprite('iz001_08', 7)
     loopRest()
-    GotoIf0(431, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(431)
     sprite('iz001_04', 7)
     sprite('iz001_05', 7)
     sprite('iz001_06', 7)
@@ -7533,6 +8023,7 @@ def CmnActEntry():
     DemoTimer(265)
     loopRest()
     ExitState()
+
 
 @State
 def CmnActRoundWin():
@@ -7551,53 +8042,46 @@ def CmnActRoundWin():
     sprite('iz615_07', 6)
     sprite('iz615_08', 32767)
 
+
 @State
 def CmnActMatchWin():
     if SLOT_61:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('rg'):
         if SLOT_138:
             gotoLabel(100)
         else:
             gotoLabel(1100)
-    CharacterIDCheck('jn')
-    if SLOT_0:
-        _gotolabel(110)
-    CharacterIDCheck('no')
-    if SLOT_0:
-        _gotolabel(120)
-    CharacterIDCheck('ha')
-    if SLOT_0:
-        _gotolabel(200)
+    if CharacterIDCheck('jn'):
+        conditionalSendToLabel(110)
+    if CharacterIDCheck('no'):
+        conditionalSendToLabel(120)
+    if CharacterIDCheck('ha'):
+        conditionalSendToLabel(200)
     if CharacterIDCheck('mu'):
         if SLOT_140:
-            _gotolabel(2240)
+            conditionalSendToLabel(2240)
     if CharacterIDCheck('mk'):
         if SLOT_140:
             gotoLabel(2250)
         else:
             gotoLabel(250)
-    CharacterIDCheck('kg')
-    if SLOT_0:
-        _gotolabel(330)
-    CharacterIDCheck('ma')
-    if SLOT_0:
-        _gotolabel(430)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('kg'):
+        conditionalSendToLabel(330)
+    if CharacterIDCheck('ma'):
+        conditionalSendToLabel(430)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(10)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(20)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(10)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(20)
     label(0)
     if SLOT_44:
-        _gotolabel(5)
+        conditionalSendToLabel(5)
     sprite('iz610_00', 7)
     sprite('iz610_00', 7)
     sprite('iz610_01', 7)
@@ -7930,6 +8414,7 @@ def CmnActMatchWin():
     loopRest()
     gotoLabel(667)
 
+
 @State
 def CmnActLose():
     sprite('iz620_00', 6)
@@ -7953,6 +8438,7 @@ def CmnActLose():
     sprite('iz620_08', 32767)
     DemoTimer(90)
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -7969,11 +8455,13 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefWin():
@@ -7981,9 +8469,11 @@ def EventDefWin():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefLose():
     sprite('iz063_11', 32767)
+
 
 @State
 def EventEntryStand():
@@ -7995,6 +8485,7 @@ def EventEntryStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventEntryStandToPrepare():
     sprite('iz601_04', 5)
@@ -8002,12 +8493,14 @@ def EventEntryStandToPrepare():
     sprite('iz601_06', 6)
     enterState('EventEntryStandToPrepare2')
 
+
 @State
 def EventEntryStand2():
     sprite('iz601_04', 6)
     sprite('iz601_05', 6)
     sprite('iz601_06', 32767)
     loopRest()
+
 
 @State
 def EventEntryStandToPrepare2():
@@ -8040,6 +8533,7 @@ def EventEntryStandToPrepare2():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventExcite():
     sprite('iz300_00', 4)
@@ -8058,6 +8552,7 @@ def EventExcite():
     sprite('iz300_12', 4)
     enterState('CmnActStand')
 
+
 @State
 def EventEntryVsRCWait():
     sprite('iz000_00', 7)
@@ -8074,12 +8569,14 @@ def EventEntryVsRCWait():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventJNWarp():
     sprite('keep', 1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventEntryVSJN():
@@ -8087,15 +8584,18 @@ def EventEntryVSJN():
     CreateObject('EventTBYoroke', 0)
     sprite('null', 32767)
 
+
 @State
 def EventEntryVSJN2():
     sprite('iz000_00', 7)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     enterState('CmnActStand')
+
 
 @State
 def EventEntryChangeIZWait():
     sprite('iz600_00', 32767)
+
 
 @State
 def EventEntryChangeIZ():
@@ -8126,6 +8626,7 @@ def EventEntryChangeIZ():
     sprite('iz600_15', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventNYvsIZDash():
@@ -8179,6 +8680,7 @@ def EventNYvsIZDash():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def EventIZWin():
     sprite('iz610_00', 7)
@@ -8194,6 +8696,7 @@ def EventIZWin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventIZWinEnd():
     sprite('iz610_03', 7)
@@ -8202,6 +8705,7 @@ def EventIZWinEnd():
     sprite('iz610_00', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventStandTurn():
@@ -8224,6 +8728,7 @@ def EventStandTurn():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDashScreenOut():
     SLOT_51 = 0
@@ -8233,8 +8738,8 @@ def EventDashScreenOut():
     EnableCollision(0)
     physicsXImpulse(30000)
 
-    def upon_FRAME_STEP():
-        if (SLOT_51 > 1):
+    def upon_EVERY_FRAME():
+        if SLOT_51 > 1:
             sendToLabel(1)
     label(0)
     sprite('iz032_01', 4)
@@ -8248,16 +8753,18 @@ def EventDashScreenOut():
     sprite('iz032_07', 4)
     sprite('iz032_08', 4)
     loopRest()
-    SLOT_51 = (SLOT_51 + 1)
+    SLOT_51 = SLOT_51 + 1
     gotoLabel(0)
     label(1)
     sprite('null', 32767)
+
 
 @State
 def EventNoDisp():
     sprite('null', 32767)
     Visibility(1)
     loopRest()
+
 
 @State
 def EventIZvsRGIai_Slash():
@@ -8285,7 +8792,7 @@ def EventIZvsRGIai_Slash():
     CommonSE('010_swing_sword_2')
     PrivateSE('izse_01')
     CreateObject('Iai_SlashZanzo00', -1)
-    PassbackAddActionMarkToFunction('Iaimcircle', 33)
+    TriggerUponForState('Iaimcircle', 33)
     DeleteObject(6)
     DeleteObject(7)
     WhiffCancelEnable(0)
@@ -8303,6 +8810,7 @@ def EventIZvsRGIai_Slash():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventExciteLoop():
     sprite('iz300_00', 4)
@@ -8313,6 +8821,7 @@ def EventExciteLoop():
     sprite('iz300_04', 10)
     sprite('iz300_05', 32767)
 
+
 @State
 def EventExciteLoopEnd():
     sprite('iz300_09', 8)
@@ -8322,9 +8831,11 @@ def EventExciteLoopEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventYorokeLose():
     sprite('iz070_03', 32767)
+
 
 @State
 def EventYorokeLoseDown():
@@ -8335,6 +8846,7 @@ def EventYorokeLoseDown():
     sprite('iz070_08', 6)
     sprite('iz070_09', 6)
     sprite('iz063_11', 32767)
+
 
 @State
 def Act2Event_Chouhatsu():
@@ -8355,6 +8867,7 @@ def Act2Event_Chouhatsu():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_RoundWin():
     sprite('iz615_00', 6)
@@ -8367,6 +8880,7 @@ def Act2Event_RoundWin():
     sprite('iz615_07', 6)
     PrivateSE('izse_01')
     sprite('iz615_08', 32767)
+
 
 @State
 def Act2Event_RoundWinEnd():
@@ -8381,6 +8895,7 @@ def Act2Event_RoundWinEnd():
     sprite('iz615_00', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Reaction_01():
@@ -8400,6 +8915,7 @@ def Act2Event_Reaction_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Reaction_01_Loop():
     sprite('iz001_00', 7)
@@ -8416,6 +8932,7 @@ def Act2Event_Reaction_01_Loop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_Reaction_01_End():
     sprite('iz001_09', 7)
@@ -8423,6 +8940,7 @@ def Act2Event_Reaction_01_End():
     sprite('iz001_11', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_izvsha_Yure():
@@ -8432,6 +8950,7 @@ def Act2Event_izvsha_Yure():
     sprite('iz001_11', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Reaction_02():
@@ -8451,6 +8970,7 @@ def Act2Event_Reaction_02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Reaction_03_1():
     sprite('iz002_11', 4)
@@ -8465,6 +8985,7 @@ def Act2Event_Reaction_03_1():
     sprite('iz002_19', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Reaction_03_2():
@@ -8495,6 +9016,7 @@ def Act2Event_Reaction_03_2():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Reaction_04():
     sprite('iz002_20', 7)
@@ -8510,6 +9032,7 @@ def Act2Event_Reaction_04():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_odoroku():
     sprite('iz033_00', 7)
@@ -8518,18 +9041,19 @@ def Act2Event_odoroku():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_RunningEntry():
     ScreenCollision(0)
     SetActionMark(1)
     XPositionRelativeFacing(-900000)
 
-    def upon_FRAME_STEP():
-        if SLOT_38:
-            if (SLOT_22 < 260000):
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_XDistanceFromCenterOfStage < 260000:
                 SetActionMark(0)
                 sendToLabel(1)
-        elif (SLOT_22 > (-260000)):
+        elif SLOT_XDistanceFromCenterOfStage > -260000:
             sendToLabel(1)
     sprite('iz032_01', 4)
     physicsXImpulse(20000)
@@ -8552,6 +9076,7 @@ def Act2Event_RunningEntry():
     physicsXImpulse(0)
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_izvsha_00():
@@ -8600,6 +9125,7 @@ def Act2Event_izvsha_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_izvshz_00():
     sprite('iz202_00', 3)
@@ -8619,6 +9145,7 @@ def Act2Event_izvshz_00():
     sprite('iz202_12', 3)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_izvshz_01():
@@ -8659,6 +9186,7 @@ def Act2Event_izvshz_01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_izvshz_02():
 
@@ -8686,12 +9214,13 @@ def Act2Event_izvshz_02():
     sprite('iz032_03', 4)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 2)
     EndMomentum(1)
     Visibility(1)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def Act3Event_mkvsiz_00():
@@ -8699,7 +9228,7 @@ def Act3Event_mkvsiz_00():
     def upon_IMMEDIATE():
         NoAttackDuringAction(1)
         StayAfterMovement(1, 0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
         def upon_STATE_END():
             EndSE()
@@ -8732,7 +9261,7 @@ def Act3Event_mkvsiz_00():
     CommonSE('010_swing_sword_2')
     PrivateSE('izse_01')
     CreateObject('Iai_SlashZanzo00', -1)
-    PassbackAddActionMarkToFunction('Iaimcircle', 33)
+    TriggerUponForState('Iaimcircle', 33)
     DeleteObject(6)
     DeleteObject(7)
     sprite('iz402_06', 15)
@@ -8745,6 +9274,7 @@ def Act3Event_mkvsiz_00():
     sprite('iz402_13', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_mkvsiz_01():
@@ -8761,6 +9291,7 @@ def Act3Event_mkvsiz_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_mkvsiz_02():
     sprite('iz431_00', 4)
@@ -8774,6 +9305,7 @@ def Act3Event_mkvsiz_02():
     sprite('iz431_08', 4)
     sprite('iz431_09', 4)
     sprite('iz431_10', 32767)
+
 
 @State
 def Act3Event_mkvsiz_03():
@@ -8810,6 +9342,7 @@ def Act3Event_mkvsiz_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_amvsiz_00():
 
@@ -8828,6 +9361,7 @@ def Act3Event_amvsiz_00():
     sprite('iz070_03', 32767)
     loopRest()
 
+
 @State
 def Act3Event_amvsiz_01():
     sprite('iz070_04', 6)
@@ -8841,6 +9375,7 @@ def Act3Event_amvsiz_01():
     KnockdownEffects(100, 1, 1)
     AddX(50000)
 
+
 @State
 def Act3Event_amvsiz_02():
     sprite('iz063_11', 40)
@@ -8850,6 +9385,7 @@ def Act3Event_amvsiz_02():
     AddX(900000)
     Visibility(1)
 
+
 @State
 def Act3Event_izvsno_00():
 
@@ -8858,14 +9394,14 @@ def Act3Event_izvsno_00():
         ScreenCollision(0)
         EnableCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 360000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 360000:
                     sendToLabel(1)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-360000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -360000:
                 sendToLabel(1)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('iz032_00', 2)
     physicsXImpulse(24000)
     sprite('iz032_01', 4)
@@ -8896,6 +9432,7 @@ def Act3Event_izvsno_00():
     EndMomentum(1)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_izvsno_01():
@@ -8933,6 +9470,7 @@ def Act3Event_izvsno_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_izvsno_02():
     sprite('iz032_00', 2)
@@ -8955,6 +9493,7 @@ def Act3Event_izvsno_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_izvsno_03():
     sprite('iz010_01', 4)
@@ -8962,10 +9501,12 @@ def Act3Event_izvsno_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_izvsha_00():
     sprite('iz602_00', 32767)
     loopRest()
+
 
 @State
 def Act3Event_izvsha_01():
@@ -8980,6 +9521,7 @@ def Act3Event_izvsha_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_esvsiz_00():
 
@@ -8988,14 +9530,14 @@ def Act3Event_esvsiz_00():
         ScreenCollision(0)
         EnableCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 360000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 360000:
                     sendToLabel(1)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-360000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -360000:
                 sendToLabel(1)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('iz032_00', 2)
     physicsXImpulse(24000)
     sprite('iz032_01', 4)
@@ -9026,6 +9568,7 @@ def Act3Event_esvsiz_00():
     EndMomentum(1)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsiz_01():
@@ -9178,9 +9721,10 @@ def Act3Event_esvsiz_01():
     AbsoluteY(0)
     loopRest()
 
+
 @State
 def Act3Event_esvsiz_02():
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     ScreenCollision(0)
     sprite('null', 1)
     sprite('iz409_03', 2)
@@ -9224,11 +9768,12 @@ def Act3Event_esvsiz_02():
     sprite('iz070_03', 32767)
     EndMomentum(1)
     CommonSE('213_bound_0')
-    if SLOT_38:
+    if SLOT_IsFacingRight:
         XPositionRelativeFacingAbsolute(1550000)
     else:
         XPositionRelativeFacingAbsolute(-1550000)
     loopRest()
+
 
 @State
 def Act3Event_esvsiz_03():
@@ -9260,6 +9805,7 @@ def Act3Event_esvsiz_03():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_esvsiz_04():
     sprite('iz615_00', 6)
@@ -9273,6 +9819,7 @@ def Act3Event_esvsiz_04():
     sprite('iz615_07', 6)
     PrivateSE('izse_01')
     sprite('iz615_08', 32767)
+
 
 @State
 def Act3Event_esvsiz_90():
@@ -9291,6 +9838,7 @@ def Act3Event_esvsiz_90():
     sprite('iz070_03', 32767)
     loopRest()
 
+
 @State
 def Act3Event_esvsiz_91():
     sprite('iz070_10', 4)
@@ -9299,6 +9847,7 @@ def Act3Event_esvsiz_91():
     sprite('iz070_13', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_esvsiz_92():

@@ -7,26 +7,29 @@ def CAtkHoldPowerUp():
     def upon_OPPONENT_HIT():
         ScreenShake(40000, 0)
 
+
 @Subroutine
 def CAtkHoldInput():
     SetActionMark(0)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if CheckInput(0x17):
             SLOT_52 = 1
         if SLOT_52:
             if SLOT_2:
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 sendToLabel(0)
+
 
 @Subroutine
 def DancingEdgeInit():
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         BeginBuffer('Assault_Front')
         sendToLabel(2)
     callSubroutine('DancingEdge_ATK')
     callSubroutine('AutoTriangleJump')
+
 
 @Subroutine
 def DancingEdge_ATK():
@@ -51,28 +54,31 @@ def DancingEdge_ATK():
     GuardCancel(0)
     ExternalForcesRate(100, 0)
 
+
 @Subroutine
 def AutoTriangleJump():
 
     def upon_55():
-        if (SLOT_25 <= SLOT_26):
-            if SLOT_36:
-                if (SLOT_23 >= 240000):
+        if SLOT_XDistanceFromFowardCorner <= SLOT_XDistanceFromBackCorner:
+            if SLOT_IsAirborne:
+                if SLOT_YDistanceFromFloor >= 240000:
                     if SLOT_51:
-                        if CheckInput(0x1c):
-                            if SLOT_38:
+                        if CheckInput(INPUT_HOLD_D):
+                            if SLOT_IsFacingRight:
                                 enterState('TriangleJumpLeft')
                             else:
                                 enterState('TriangleJumpRight')
 
+
 @Subroutine
 def BunshinAtkParam():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         Hitstop(5)
+
 
 @Subroutine
 def BunshinAttack():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         ChainCancel(1)
         SpecialCancel(1)
         HitOrBlockJumpCancel(1)
@@ -102,9 +108,10 @@ def BunshinAttack():
         HitOrBlockCancel('NmlAtkAirThrow')
     AddActionMark(0)
 
+
 @Subroutine
 def BunshinAttackSpecial():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         ChainCancel(1)
         SpecialCancel(1)
         HitOrBlockJumpCancel(1)
@@ -113,9 +120,10 @@ def BunshinAttackSpecial():
         HitOrBlockCancel('NmlAtkAirThrow')
     AddActionMark(0)
 
+
 @Subroutine
 def BunshinAttackFlex():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         WhiffCancelEnable(1)
         WhiffCancel('NmlAtk5A')
         WhiffCancel('NmlAtk2A')
@@ -144,10 +152,12 @@ def BunshinAttackFlex():
         WhiffCancel('NmlAtkAirThrow')
     AddActionMark(0)
 
+
 @Subroutine
 def PreInit():
     CharacterID('tk')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def MatchInit():
@@ -288,53 +298,53 @@ def MatchInit():
     Move_Condition(0x2006)
     SkillEstimateRange(0, 400000, 200000, 400000, 1000, 1)
     Move_EndRegister()
-    Move_Register('Mid_Jump', 0x2)
+    Move_Register('Mid_Jump', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_D)
     DamageStunPriority(2000)
     SkillEstimateRange(100000, 450000, -200000, 200000, 750, 50)
     Move_EndRegister()
-    Move_Register('Assault_JumpYoko', 0x2)
+    Move_Register('Assault_JumpYoko', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_C)
     GuardStunPriority(50000)
     SkillEstimateRange(-50000, 250000, -150000, 200000, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_JumpSita', 0x2)
+    Move_Register('Assault_JumpSita', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_C)
     GuardStunPriority(50000)
     SkillEstimateRange(-50000, 250000, -350000, 0, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_JumpUe', 0x2)
+    Move_Register('Assault_JumpUe', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_C)
     GuardStunPriority(50000)
     SkillEstimateRange(-50000, 250000, 50000, 400000, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_TurnYoko', 0x2)
+    Move_Register('Assault_TurnYoko', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_B)
     GuardStunPriority(50000)
     DamageStunPriority(50000)
     SkillEstimateRange(-50000, 250000, -150000, 200000, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_TurnYokoC', 0x2)
+    Move_Register('Assault_TurnYokoC', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_B)
     GuardStunPriority(50000)
     DamageStunPriority(50000)
     SkillEstimateRange(-50000, 250000, -150000, 200000, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_TurnSita', 0x2)
+    Move_Register('Assault_TurnSita', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_B)
     GuardStunPriority(50000)
     DamageStunPriority(50000)
     SkillEstimateRange(-50000, 250000, -350000, 0, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_TurnUe', 0x2)
+    Move_Register('Assault_TurnUe', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_B)
     AirborneOpponentPriority(1)
@@ -342,19 +352,19 @@ def MatchInit():
     DamageStunPriority(50000)
     SkillEstimateRange(-50000, 250000, 50000, 400000, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_StopYoko', 0x2)
+    Move_Register('Assault_StopYoko', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_A)
     GuardStunPriority(50000)
     SkillEstimateRange(-50000, 250000, -150000, 200000, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_StopSita', 0x2)
+    Move_Register('Assault_StopSita', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_A)
     GuardStunPriority(50000)
     SkillEstimateRange(-50000, 250000, -350000, 0, 200, 0)
     Move_EndRegister()
-    Move_Register('Assault_StopUe', 0x2)
+    Move_Register('Assault_StopUe', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(INPUT_PRESS_A)
     GuardStunPriority(50000)
@@ -383,7 +393,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(50000, 250000, -100000, 200000, 2000, 50)
     Move_EndRegister()
-    Move_Register('Shot_A', 0x2)
+    Move_Register('Shot_A', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_63214)
     Move_Input_(INPUT_PRESS_A)
@@ -393,7 +403,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(650000, 2000000, -100000, 500000, 750, 50)
     Move_EndRegister()
-    Move_Register('Shot_B', 0x2)
+    Move_Register('Shot_B', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_63214)
     Move_Input_(INPUT_PRESS_B)
@@ -404,7 +414,7 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(650000, 2000000, -100000, 200000, 750, 50)
     Move_EndRegister()
-    Move_Register('Shot_C', 0x2)
+    Move_Register('Shot_C', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_63214)
     Move_Input_(INPUT_PRESS_C)
@@ -414,7 +424,7 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(400000, 1000000, -100000, 200000, 1000, 1)
     Move_EndRegister()
-    Move_Register('TriangleJumpLeft', 0x2)
+    Move_Register('TriangleJumpLeft', INPUT_SPECIALMOVE)
     Move_Condition(0x3037)
     ForceSkillDirection(1)
     Move_Condition(0x3048)
@@ -422,12 +432,12 @@ def MatchInit():
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('TriangleJumpLeft_2nd', 0x2)
+    Move_Register('TriangleJumpLeft_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x3036)
     Move_Input_(0x79)
     FollowupOnly(1)
     Move_EndRegister()
-    Move_Register('TriangleJumpRight', 0x2)
+    Move_Register('TriangleJumpRight', INPUT_SPECIALMOVE)
     Move_Condition(0x3037)
     ForceSkillDirection(1)
     Move_Condition(0x3049)
@@ -435,15 +445,15 @@ def MatchInit():
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('TriangleJumpRight_2nd', 0x2)
+    Move_Register('TriangleJumpRight_2nd', INPUT_SPECIALMOVE)
     Move_Condition(0x3036)
     Move_Input_(0x79)
     FollowupOnly(1)
     Move_EndRegister()
-    Move_Register('Assault_Back', 0x2)
+    Move_Register('Assault_Back', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_EndRegister()
-    Move_Register('Assault_Front', 0x2)
+    Move_Register('Assault_Front', INPUT_SPECIALMOVE)
     AddChain(1)
     Move_Input_(0x79)
     FollowupOnly(1)
@@ -451,7 +461,7 @@ def MatchInit():
     DamageStunPriority(5000)
     SkillEstimateRange(-50000, 600000, -400000, 400000, 2000, 0)
     Move_EndRegister()
-    Move_Register('WallAssault_DBack', 0x2)
+    Move_Register('WallAssault_DBack', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_2HOLD8)
     Move_Input_(INPUT_PRESS_D)
@@ -459,7 +469,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(400000, 800000, -150000, 400000, 250, 10)
     Move_EndRegister()
-    Move_Register('WallAssault_DFront', 0x2)
+    Move_Register('WallAssault_DFront', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_2HOLD8)
     Move_Input_(0x79)
@@ -468,20 +478,20 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(400000, 800000, -150000, 400000, 250, 10)
     Move_EndRegister()
-    Move_Register('WallAssault_DA', 0x2)
+    Move_Register('WallAssault_DA', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_EndRegister()
-    Move_Register('WallAssault_DB', 0x2)
+    Move_Register('WallAssault_DB', INPUT_SPECIALMOVE)
     Move_Input_(0x45)
     FollowupOnly(1)
     Move_EndRegister()
-    Move_Register('WallAssault_DC', 0x2)
+    Move_Register('WallAssault_DC', INPUT_SPECIALMOVE)
     Move_Input_(0x5f)
     FollowupOnly(1)
     MoveComboPriority(10000)
     SkillEstimateRange(400000, 2000000, -400000, 400000, 1000, 50)
     Move_EndRegister()
-    Move_Register('Rush_B', 0x2)
+    Move_Register('Rush_B', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -491,14 +501,14 @@ def MatchInit():
     MoveCancellableFrames(59, 60)
     SkillEstimateRange(0, 500000, 50000, 300000, 1000, 10)
     Move_EndRegister()
-    Move_Register('LandChainSaw', 0x2)
+    Move_Register('LandChainSaw', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_22)
     Move_Input_(INPUT_PRESS_C)
     Unknown15027(3000)
     SkillEstimateRange(0, 200000, 0, 150000, 100, 0)
     Move_EndRegister()
-    Move_Register('Rush_C', 0x2)
+    Move_Register('Rush_C', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
@@ -507,13 +517,13 @@ def MatchInit():
     GuardStunPriority(2000)
     SkillEstimateRange(0, 430000, -300000, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('Rush_A', 0x2)
+    Move_Register('Rush_A', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
     SkillEstimateRange(0, 450000, -200000, 250000, 350, 50)
     Move_EndRegister()
-    Move_Register('Rush_Plus', 0x2)
+    Move_Register('Rush_Plus', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_B)
@@ -521,7 +531,7 @@ def MatchInit():
     DamageStunPriority(2500)
     SkillEstimateRange(0, 650000, -250000, 150000, 1000, 50)
     Move_EndRegister()
-    Move_Register('UltimateAssault', 0x606)
+    Move_Register('UltimateAssault', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -531,7 +541,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 1, 1000)
     SkillEstimateRange(0, 600000, -100000, 200000, 1000, 0)
     Move_EndRegister()
-    Move_Register('UltimateAssaultOD', 0x606)
+    Move_Register('UltimateAssaultOD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -542,7 +552,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 1, 1000)
     SkillEstimateRange(0, 600000, -100000, 200000, 1000, 0)
     Move_EndRegister()
-    Move_Register('UltimateCatch', 0x606)
+    Move_Register('UltimateCatch', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_214214)
@@ -550,7 +560,7 @@ def MatchInit():
     OpponentAttackPriority(2000)
     SkillEstimateRange(700000, 1200000, -200000, 400000, 1000, 0)
     Move_EndRegister()
-    Move_Register('UltimateCatchOD', 0x606)
+    Move_Register('UltimateCatchOD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_214214)
@@ -559,7 +569,7 @@ def MatchInit():
     OpponentAttackPriority(2000)
     SkillEstimateRange(700000, 1200000, -200000, 400000, 1000, 0)
     Move_EndRegister()
-    Move_Register('UltimateAirRush', 0x606)
+    Move_Register('UltimateAirRush', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -568,7 +578,7 @@ def MatchInit():
     MoveCPULevel(500, 1000, 1, 1000)
     SkillEstimateRange(0, 500000, -200000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('UltimateAirRushOD', 0x606)
+    Move_Register('UltimateAirRushOD', INPUT_DISTORTION)
     Move_Condition(0x2001)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -578,23 +588,23 @@ def MatchInit():
     MoveCPULevel(500, 1000, 1, 1000)
     SkillEstimateRange(0, 500000, -200000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('AstralHeat1', 0x607)
+    Move_Register('AstralHeat1', INPUT_ASTRAL)
     Move_Condition(0x2000)
     Move_Condition(0x304a)
-    Move_Input_(0xbf)
+    Move_Input_(INPUT_4HOLD1248)
     Move_Input_(INPUT_PRESS_D)
     Move_EndRegister()
-    Move_Register('AstralHeat2', 0x2)
+    Move_Register('AstralHeat2', INPUT_SPECIALMOVE)
     Move_Condition(0x3037)
     FollowupOnly(1)
     AddChain(1)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -602,7 +612,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 350000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -615,7 +625,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 350000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -811,20 +821,22 @@ def MatchInit():
     CommonVoicelines(73, 'tk402')
     CommonVoicelines(74, 'tk403')
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_81):
-        SLOT_78 = 100
-        if SLOT_110:
-            SLOT_78 = 100
-            if (not SLOT_66):
-                SLOT_78 = 70
+    if not SLOT_81:
+        SLOT_DamageMultiplier = 100
+        if SLOT_OverdriveTimer:
+            SLOT_DamageMultiplier = 100
+            if not SLOT_66:
+                SLOT_DamageMultiplier = 70
                 EnableAfterimage(1)
                 AfterimageInterval(16)
                 AfterimageCount(1)
@@ -832,22 +844,25 @@ def OnFrameStep():
                 AfterimageColor_2(200, 255, 255, 255)
                 AfterimageSize_1(1000)
                 AfterimageSize_2(1000)
-                if (SLOT_110 == 1):
+                if SLOT_OverdriveTimer == 1:
                     EnableAfterimage(0)
                     AfterimageType(0)
     if CurrentStateCheck('RlAstralDamage'):
         EnableAfterimage(0)
         AfterimageType(0)
 
+
 @Subroutine
 def OnActionBegin():
     AddActionMark(0)
 
+
 @Subroutine
 def OnAttackCollision():
-    if SLOT_110:
-        if (not SLOT_60):
+    if SLOT_OverdriveTimer:
+        if not SLOT_60:
             CreateObject('BunshinAtkObj', 101)
+
 
 @State
 def CmnActStand():
@@ -869,18 +884,14 @@ def CmnActStand():
     sprite('tk000_08', 7)
     sprite('tk000_09', 7)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 80)
-    if SLOT_0:
-        _gotolabel(0)
-    CharacterIDCheck('ar')
-    if SLOT_0:
-        _gotolabel(1)
-    CharacterIDCheck('bn')
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 80):
+        conditionalSendToLabel(0)
+    if CharacterIDCheck('ar'):
+        conditionalSendToLabel(1)
+    if CharacterIDCheck('bn'):
+        conditionalSendToLabel(1)
     sprite('tk001_00', 6)
     sprite('tk001_01', 6)
     sprite('tk001_02', 6)
@@ -921,16 +932,19 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('tk003_00', 3)
     sprite('tk003_01', 3)
     sprite('tk003_02', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('tk010_00', 4)
     sprite('tk010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -946,12 +960,10 @@ def CmnActCrouch():
     sprite('tk010_10', 6)
     sprite('tk010_11', 6)
     loopRest()
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(1)
     sprite('tk011_00', 8)
     sprite('tk011_01', 8)
     sprite('tk011_02', 8)
@@ -977,23 +989,26 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('tk013_00', 3)
     sprite('tk013_01', 3)
     sprite('tk013_02', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('tk010_01', 4)
     sprite('tk010_00', 4)
 
+
 @State
 def CmnActJumpPre():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('tk023_00', 2)
     sprite('tk023_01', 1)
     loopRest()
@@ -1006,12 +1021,13 @@ def CmnActJumpPre():
     label(2)
     sprite('tk022_00', 4)
 
+
 @State
 def CmnActJumpUpper():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     label(0)
     sprite('tk020_00', 4)
     sprite('tk020_01', 4)
@@ -1029,12 +1045,13 @@ def CmnActJumpUpper():
     sprite('tk022_04', 3)
     sprite('tk022_05', 32767)
 
+
 @State
 def CmnActJumpUpperEnd():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('tk020_02', 3)
     sprite('tk020_03', 3)
     sprite('tk020_04', 3)
@@ -1051,12 +1068,13 @@ def CmnActJumpUpperEnd():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActJumpDown():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('tk020_05', 3)
     sprite('tk020_06', 3)
     label(0)
@@ -1075,6 +1093,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def CmnActJumpLanding():
     sprite('tk024_00', 3)
@@ -1083,6 +1102,7 @@ def CmnActJumpLanding():
     sprite('tk024_03', 3)
     sprite('tk024_04', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('tk024_00', 3)
@@ -1090,9 +1110,11 @@ def CmnActLandingStiffLoop():
     sprite('tk024_02', 3)
     sprite('tk024_03', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('tk024_04', 3)
+
 
 @State
 def CmnActFWalk():
@@ -1116,9 +1138,11 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFWalkEnd():
     sprite('tk030_11', 3)
+
 
 @State
 def CmnActBWalk():
@@ -1142,9 +1166,11 @@ def CmnActBWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalkEnd():
     sprite('tk031_11', 3)
+
 
 @State
 def CmnActFDash():
@@ -1165,12 +1191,14 @@ def CmnActFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDashStop():
     sprite('tk032_11', 4)
     sprite('tk032_12', 8)
     sprite('tk032_13', 6)
     sprite('tk032_14', 4)
+
 
 @State
 def CmnActBDash():
@@ -1180,7 +1208,7 @@ def CmnActBDash():
         EnterStateIfEventID(8, '_NEUTRAL')
         setInvincible(1)
         EndMomentum(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
     sprite('tk033_00', 2)
@@ -1210,9 +1238,11 @@ def CmnActBDash():
     sprite('tk033_07', 2)
     sprite('tk033_08', 2)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1225,6 +1255,7 @@ def CmnActAirFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBDash():
     sprite('tk036_00', 3)
@@ -1236,11 +1267,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('tk050_00', 1)
     sprite('tk050_01', 1)
     sprite('tk050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1248,6 +1281,7 @@ def CmnActHitStandLv2():
     sprite('tk050_02', 1)
     sprite('tk050_01', 2)
     sprite('tk050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1257,6 +1291,7 @@ def CmnActHitStandLv3():
     sprite('tk050_01', 2)
     sprite('tk050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('tk050_03', 1)
@@ -1265,6 +1300,7 @@ def CmnActHitStandLv4():
     sprite('tk050_02', 2)
     sprite('tk050_01', 2)
     sprite('tk050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1276,11 +1312,13 @@ def CmnActHitStandLv5():
     sprite('tk050_01', 2)
     sprite('tk050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('tk052_00', 1)
     sprite('tk052_01', 1)
     sprite('tk052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1288,6 +1326,7 @@ def CmnActHitStandLowLv2():
     sprite('tk052_02', 1)
     sprite('tk052_01', 2)
     sprite('tk052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1297,6 +1336,7 @@ def CmnActHitStandLowLv3():
     sprite('tk052_01', 2)
     sprite('tk052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('tk052_03', 1)
@@ -1305,6 +1345,7 @@ def CmnActHitStandLowLv4():
     sprite('tk052_02', 2)
     sprite('tk052_01', 2)
     sprite('tk052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1316,11 +1357,13 @@ def CmnActHitStandLowLv5():
     sprite('tk052_01', 2)
     sprite('tk052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('tk054_00', 1)
     sprite('tk054_01', 1)
     sprite('tk054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1328,6 +1371,7 @@ def CmnActHitCrouchLv2():
     sprite('tk054_02', 1)
     sprite('tk054_01', 2)
     sprite('tk054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1337,6 +1381,7 @@ def CmnActHitCrouchLv3():
     sprite('tk054_01', 2)
     sprite('tk054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('tk054_03', 1)
@@ -1345,6 +1390,7 @@ def CmnActHitCrouchLv4():
     sprite('tk054_02', 2)
     sprite('tk054_01', 2)
     sprite('tk054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1356,6 +1402,7 @@ def CmnActHitCrouchLv5():
     sprite('tk054_01', 2)
     sprite('tk054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('tk060_00', 4)
@@ -1366,9 +1413,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('tk060_04', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1378,10 +1427,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('tk060_07', 2)
     sprite('tk060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1391,9 +1442,11 @@ def CmnActBDownBound():
     sprite('tk060_12', 3)
     sprite('tk060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('tk060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1412,9 +1465,11 @@ def CmnActBDown2Stand():
     sprite('tk061_11', 2)
     sprite('tk061_12', 2)
 
+
 @State
 def CmnActFDownUpper():
     sprite('tk063_00', 3)
+
 
 @State
 def CmnActFDownUpperEnd():
@@ -1425,6 +1480,7 @@ def CmnActFDownUpperEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownDown():
     sprite('tk063_04', 3)
@@ -1434,9 +1490,11 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('tk063_07', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1445,9 +1503,11 @@ def CmnActFDownBound():
     sprite('tk063_10', 3)
     sprite('tk063_11', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('tk063_12', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1463,6 +1523,7 @@ def CmnActFDown2Stand():
     sprite('tk064_09', 2)
     sprite('tk064_10', 2)
 
+
 @State
 def CmnActVDownUpper():
     sprite('tk062_00', 3)
@@ -1472,10 +1533,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('tk062_03', 3)
     sprite('tk062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1489,15 +1552,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('tk062_11', 2)
     sprite('tk062_12', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('tk062_11', 2)
     sprite('tk062_12', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1509,6 +1575,7 @@ def CmnActBlowoff():
     sprite('tk072_02', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActKirimomiUpper():
@@ -1522,6 +1589,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1530,14 +1598,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('tk071_04', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('tk073_00', 3)
     sprite('tk073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1546,6 +1617,7 @@ def CmnActWallBoundDown():
     sprite('tk073_03', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerLoop():
@@ -1556,6 +1628,7 @@ def CmnActStaggerLoop():
     sprite('tk070_03', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerDown():
@@ -1568,12 +1641,14 @@ def CmnActStaggerDown():
     sprite('tk070_10', 3)
     sprite('tk070_11', 3)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('tk070_12', 4)
     sprite('tk070_13', 3)
     sprite('tk070_14', 3)
     sprite('tk070_15', 3)
+
 
 @State
 def CmnActUkemiAirF():
@@ -1582,6 +1657,7 @@ def CmnActUkemiAirF():
     sprite('tk113_02', 3)
     sprite('tk113_03', 3)
 
+
 @State
 def CmnActUkemiAirB():
     sprite('tk113_00', 3)
@@ -1589,12 +1665,14 @@ def CmnActUkemiAirB():
     sprite('tk113_02', 3)
     sprite('tk113_03', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('tk113_00', 3)
     sprite('tk113_01', 3)
     sprite('tk113_02', 3)
     sprite('tk113_03', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1608,6 +1686,7 @@ def CmnActUkemiLandF():
     sprite('tk110_09', 200)
     sprite('tk110_10', 3)
     sprite('tk110_11', 3)
+
 
 @State
 def CmnActUkemiLandB():
@@ -1625,6 +1704,7 @@ def CmnActUkemiLandB():
     sprite('tk111_11', 200)
     sprite('tk111_12', 6)
 
+
 @State
 def CmnActUkemiLandN():
     sprite('tk112_00', 2)
@@ -1640,6 +1720,7 @@ def CmnActUkemiLandN():
     sprite('tk112_10', 2)
     sprite('tk112_11', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('tk024_00', 3)
@@ -1648,10 +1729,12 @@ def CmnActUkemiLandNLanding():
     sprite('tk024_03', 3)
     sprite('tk024_04', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('tk040_00', 3)
     sprite('tk040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1662,10 +1745,12 @@ def CmnActMidGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('tk040_01', 3)
     sprite('tk040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1678,15 +1763,18 @@ def CmnActMidHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('tk040_01', 3)
     sprite('tk040_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('tk041_00', 3)
     sprite('tk041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -1697,10 +1785,12 @@ def CmnActHighGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('tk041_01', 3)
     sprite('tk041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -1712,15 +1802,18 @@ def CmnActHighHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('tk041_01', 3)
     sprite('tk041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('tk043_00', 3)
     sprite('tk043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1731,10 +1824,12 @@ def CmnActCrouchGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('tk043_01', 3)
     sprite('tk043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1746,15 +1841,18 @@ def CmnActCrouchHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('tk043_01', 3)
     sprite('tk043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('tk045_00', 3)
     sprite('tk045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1765,10 +1863,12 @@ def CmnActAirGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('tk045_01', 3)
     sprite('tk045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -1780,10 +1880,12 @@ def CmnActAirHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('tk045_01', 3)
     sprite('tk045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1794,6 +1896,7 @@ def CmnActGuardBreakStand():
     sprite('tk090_03', 6)
     sprite('tk090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('tk091_00', 2)
@@ -1802,6 +1905,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('tk091_03', 6)
     sprite('tk091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1812,17 +1916,20 @@ def CmnActGuardBreakAir():
     sprite('tk092_03', 6)
     sprite('tk092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('tk025_00', 4)
     sprite('tk025_01', 4)
     sprite('tk025_02', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('tk040_02', 1)
     sprite('tk040_01', 3)
     sprite('tk040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1834,11 +1941,13 @@ def CmnActLockReject():
     sprite('tk312_05', 5)
     sprite('tk312_06', 5)
 
+
 @State
 def CmnActAirLockWait():
     sprite('tk045_02', 1)
     sprite('tk045_01', 3)
     sprite('tk045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1849,6 +1958,7 @@ def CmnActAirLockReject():
     sprite('tk322_04', 4)
     sprite('tk322_05', 4)
     sprite('tk322_06', 4)
+
 
 @State
 def CmnActLandSpin():
@@ -1863,11 +1973,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('tk071_07', 6)
     sprite('tk071_08', 5)
     sprite('tk071_09', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1878,6 +1990,7 @@ def CmnActVertSpin():
     sprite('tk071_06', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActSlideAir():
@@ -1893,6 +2006,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('tk077_02', 4)
@@ -1902,10 +2016,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('tk077_05', 5)
     sprite('tk077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1915,11 +2031,13 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('tk060_11', 3)
     sprite('tk060_12', 3)
     sprite('tk060_13', 3)
+
 
 @State
 def CmnActBurstBegin():
@@ -1931,6 +2049,7 @@ def CmnActBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstLoop():
     sprite('tk331_04', 3)
@@ -1941,10 +2060,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('tk331_08', 3)
     sprite('tk331_09', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -1956,6 +2077,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('tk332_04', 3)
@@ -1965,6 +2087,7 @@ def CmnActAirBurstLoop():
     sprite('tk332_07', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -1978,6 +2101,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('tk611_00', 6)
@@ -1985,6 +2109,7 @@ def CmnActOverDriveBegin():
     CharacterFlash(16639, 20, 1)
     sprite('tk611_00', 32767)
     CreateObject('EMB_TK_OD', -1)
+
 
 @State
 def CmnActOverDriveLoop():
@@ -2000,11 +2125,13 @@ def CmnActOverDriveLoop():
     sprite('tk611_05', 3)
     sprite('tk611_06', 32767)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('tk611_07', 4)
     sprite('tk611_08', 4)
     sprite('tk611_09', 4)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -2013,6 +2140,7 @@ def CmnActAirOverDriveBegin():
     CharacterFlash(16639, 20, 1)
     sprite('tk333_00', 32767)
     CreateObject('EMB_TK_OD', -1)
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -2028,11 +2156,13 @@ def CmnActAirOverDriveLoop():
     sprite('tk611_04', 3)
     sprite('tk611_05', 32767)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('tk611_07', 4)
     sprite('tk333_02', 4)
     sprite('tk333_03', 4)
+
 
 @State
 def NmlAtk5A():
@@ -2081,6 +2211,7 @@ def NmlAtk5A():
     sprite('tk200_05', 4)
     sprite('tk200_06', 4)
 
+
 @State
 def NmlAtk5B():
 
@@ -2123,6 +2254,7 @@ def NmlAtk5B():
     sprite('tk201_03', 4)
     sprite('tk201_04', 4)
     sprite('tk201_05', 3)
+
 
 @State
 def NmlAtk5C():
@@ -2173,6 +2305,7 @@ def NmlAtk5C():
     sprite('tk202_15', 1)
     sprite('tk202_16', 1)
 
+
 @State
 def NmlAtk2A():
 
@@ -2220,6 +2353,7 @@ def NmlAtk2A():
     Unknown2063()
     sprite('tk230_04', 4)
     sprite('tk230_05', 4)
+
 
 @State
 def NmlAtk2B():
@@ -2280,6 +2414,7 @@ def NmlAtk2B():
     EndMomentum(1)
     sprite('tk231_09', 6)
 
+
 @State
 def NmlAtk2C():
 
@@ -2333,6 +2468,7 @@ def NmlAtk2C():
     sprite('tk232_16', 2)
     sprite('tk232_17', 2)
 
+
 @State
 def NmlAtk3C():
 
@@ -2351,10 +2487,10 @@ def NmlAtk3C():
         HitLow(2)
         DamageEffect(2, 'tkef_slash')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_94:
                 SpecialCancel(0)
-                if (SLOT_18 >= 31):
+                if SLOT_StateDuration >= 31:
                     SpecialCancel(1)
     sprite('tk234_00', 3)
     callSubroutine('BunshinAtkParam')
@@ -2407,6 +2543,7 @@ def NmlAtk3C():
     sprite('tk234_18', 3)
     sprite('tk234_19', 3)
 
+
 @State
 def NmlAtkAIR5A():
 
@@ -2443,6 +2580,7 @@ def NmlAtkAIR5A():
     sprite('tk250_05', 3)
     sprite('tk250_06', 3)
 
+
 @State
 def NmlAtkAIR5B():
 
@@ -2476,6 +2614,7 @@ def NmlAtkAIR5B():
     sprite('tk254_07', 3)
     sprite('tk254_08', 3)
     sprite('tk254_09', 3)
+
 
 @State
 def NmlAtkAIR2B():
@@ -2519,6 +2658,7 @@ def NmlAtkAIR2B():
     sprite('tk251_11', 3)
     sprite('tk251_12', 3)
 
+
 @State
 def NmlAtkAIR5C():
 
@@ -2556,6 +2696,7 @@ def NmlAtkAIR5C():
     sprite('tk255_08', 4)
     sprite('tk255_09', 4)
 
+
 @State
 def NmlAtk6A():
 
@@ -2581,10 +2722,10 @@ def NmlAtk6A():
         ChainCancel(0)
         SpecialCancel(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_94:
                 SpecialCancel(0)
-                if (SLOT_18 >= 21):
+                if SLOT_StateDuration >= 21:
                     SpecialCancel(1)
     sprite('tk210_00', 2)
     sprite('tk210_01', 2)
@@ -2608,7 +2749,7 @@ def NmlAtk6A():
     CommonSE('003_swing_grap_0_0')
     RefreshMultihit()
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         ChainCancel(1)
         SpecialCancel(1)
         HitOrBlockJumpCancel(1)
@@ -2625,6 +2766,7 @@ def NmlAtk6A():
     sprite('tk210_12', 3)
     sprite('tk210_13', 3)
     sprite('tk210_14', 3)
+
 
 @State
 def NmlAtk6B():
@@ -2667,7 +2809,7 @@ def NmlAtk6B():
     physicsYImpulse(21000)
     physicsXImpulse(8000)
     setGravity(2400)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('tk211_05', 2)
     sprite('tk211_07', 2)
     sprite('tk211_06', 2)
@@ -2696,6 +2838,7 @@ def NmlAtk6B():
     physicsXImpulse(0)
     sprite('tk211_16', 5)
     sprite('tk211_17', 5)
+
 
 @State
 def NmlAtk6C():
@@ -2728,12 +2871,12 @@ def NmlAtk6C():
         HitOrBlockCancel('NmlAtk6D')
         HitOrBlockCancel('NmlAtk4D')
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if CheckInput(0x17):
                 SLOT_52 = 1
             if SLOT_52:
                 if SLOT_2:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     SetActionMark(0)
                     sendToLabel(0)
     sprite('tk212_00', 2)
@@ -2749,7 +2892,7 @@ def NmlAtk6C():
     sprite('tk212_04', 1)
     SetActionMark(1)
     if SLOT_94:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     loopRest()
     sprite('tk212_03', 3)
     CommonSE('007_swing_knife_0')
@@ -2779,9 +2922,9 @@ def NmlAtk6C():
     Hitstop(24)
     FatalCounter(1)
     XSpeed(15000)
-    Comment('NmlAtk6C_Hold')
+    GotoState('NmlAtk6C_Hold')
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tk212_05', 2)
     PreDashEffects(100, 1, 1)
     XSpeed(45000)
@@ -2815,6 +2958,7 @@ def NmlAtk6C():
     sprite('tk212_14', 4)
     sprite('tk212_15', 4)
 
+
 @State
 def NmlAtk5D():
 
@@ -2829,7 +2973,7 @@ def NmlAtk5D():
         CHAirPushbackY(27000)
         CHAirPushbackX(55000)
         CHWallbounce(1)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
     sprite('tk400_00', 6)
     sprite('tk400_01', 6)
     Voiceline('tk108')
@@ -2890,7 +3034,7 @@ def NmlAtk5D():
     BufferedOrPressedGoto('Assault_Front')
     enterState('Assault_Back')
     label(9)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk400_09', 3)
     SLOT_51 = 0
     LandingEffects(100, 1, 1)
@@ -2908,6 +3052,7 @@ def NmlAtk5D():
     physicsXImpulse(0)
     sprite('tk400_15', 3)
     sprite('tk400_16', 3)
+
 
 @State
 def NmlAtk2D():
@@ -2982,6 +3127,7 @@ def NmlAtk2D():
     sprite('tk401_07', 3)
     sprite('tk401_08', 3)
 
+
 @State
 def NmlAtk4D():
 
@@ -2996,9 +3142,9 @@ def NmlAtk4D():
         Stagger(44)
         Crumple(34)
         FatalCounter(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 if CheckInput(0x6c):
                     physicsXImpulse(20000)
@@ -3062,7 +3208,7 @@ def NmlAtk4D():
     BufferedOrPressedGoto('Assault_Front')
     enterState('Assault_Back')
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk402_16', 2)
     SLOT_51 = 0
     SetActionMark(0)
@@ -3079,6 +3225,7 @@ def NmlAtk4D():
     physicsXImpulse(0)
     sprite('tk402_19', 2)
 
+
 @State
 def NmlAtkAIR5D():
 
@@ -3090,7 +3237,7 @@ def NmlAtkAIR5D():
         CHAirPushbackX(50000)
         CHAirHitstunAnimation(12)
         WallbounceReboundTime(5)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
     sprite('tk400_01', 3)
     sprite('tk400_01', 1)
     Voiceline('tk108')
@@ -3122,7 +3269,7 @@ def NmlAtkAIR5D():
     BufferedOrPressedGoto('Assault_StopYoko')
     SLOT_51 = 1
     sprite('tk400_07', 1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     loopRest()
     sprite('tk400_08', 2)
     sprite('tk400_07', 2)
@@ -3171,7 +3318,7 @@ def NmlAtkAIR5D():
     BufferedOrPressedGoto('Assault_Front')
     enterState('Assault_Back')
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk400_12', 4)
     SLOT_51 = 1
     LandingEffects(100, 1, 1)
@@ -3186,6 +3333,7 @@ def NmlAtkAIR5D():
     sprite('tk400_15', 4)
     sprite('tk400_16', 4)
 
+
 @State
 def NmlAtkAIR2D():
 
@@ -3198,7 +3346,7 @@ def NmlAtkAIR2D():
         AirPushbackX(12000)
         AirPushbackY(-30000)
         Floorslide(10)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
     sprite('tk404_00', 3)
     sprite('tk404_01', 3)
     EndMomentum(1)
@@ -3230,7 +3378,7 @@ def NmlAtkAIR2D():
     BufferedOrPressedGoto('Assault_TurnSita')
     BufferedOrPressedGoto('Assault_StopSita')
     sprite('tk404_05', 1)
-    sendToLabelUpon(2, 9)
+    uponSendToLabel(LANDING, 9)
     loopRest()
     label(0)
     sprite('tk404_06', 2)
@@ -3253,7 +3401,7 @@ def NmlAtkAIR2D():
     BufferedOrPressedGoto('Assault_Front')
     enterState('Assault_Back')
     label(9)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk404_10', 3)
     SLOT_51 = 0
     LandingEffects(100, 1, 1)
@@ -3273,6 +3421,7 @@ def NmlAtkAIR2D():
     sprite('tk400_15', 3)
     sprite('tk400_16', 3)
 
+
 @State
 def NmlAtkAIR4D():
 
@@ -3286,8 +3435,8 @@ def NmlAtkAIR4D():
         BouncePercentage(50)
         PreventGroundedHit(1)
         AttackDirection(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
     sprite('tk404_00', 3)
     sprite('tk405_01', 2)
     Voiceline('tk112')
@@ -3311,7 +3460,7 @@ def NmlAtkAIR4D():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk405_03', 2)
     ForceFaceSprite()
     LandingEffects(100, 1, 1)
@@ -3323,6 +3472,7 @@ def NmlAtkAIR4D():
     sprite('tk405_08', 2)
     loopRest()
     enterState('AirAssault_C3rd')
+
 
 @State
 def AirAssault_C3rd():
@@ -3396,6 +3546,7 @@ def AirAssault_C3rd():
     sprite('tk401_07', 3)
     sprite('tk401_08', 3)
 
+
 @State
 def AirAssault_C2nd():
 
@@ -3409,12 +3560,12 @@ def AirAssault_C2nd():
             AirHitstunAnimation(10)
             GroundedHitstunAnimation(10)
             AirUntechableTime(40)
-            Comment('WallAssault_DC')
+            GotoState('WallAssault_DC')
         else:
             Damage(800)
             AirHitstunAnimation(13)
             CHStateIfCHStart(3)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
     sprite('tk400_02', 2)
     EndYPhysicsImpulse()
     JumpEffects(3, 100)
@@ -3473,7 +3624,7 @@ def AirAssault_C2nd():
     BufferedOrPressedGoto('Assault_Front')
     enterState('Assault_Back')
     label(9)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk400_09', 3)
     SLOT_51 = 0
     LandingEffects(100, 1, 1)
@@ -3492,6 +3643,7 @@ def AirAssault_C2nd():
     sprite('tk400_15', 3)
     sprite('tk400_16', 3)
 
+
 @State
 def NmlAtkAIR8D():
 
@@ -3503,7 +3655,7 @@ def NmlAtkAIR8D():
         AirHitstunAnimation(13)
         GroundedHitstunAnimation(13)
         PreventGroundedHit(1)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
     sprite('tk400_01', 3)
     sprite('tk400_02', 4)
     SmartVoiceline('tk109')
@@ -3567,6 +3719,7 @@ def NmlAtkAIR8D():
     sprite('tk401_07', 3)
     sprite('tk401_08', 3)
 
+
 @State
 def NmlAtkExcite():
 
@@ -3605,6 +3758,7 @@ def NmlAtkExcite():
     sprite('tk300_07', 5)
     sprite('tk300_08', 5)
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -3634,6 +3788,7 @@ def NmlAtkDeadAngle():
     sprite('tk232_16', 3)
     sprite('tk232_17', 3)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -3655,11 +3810,11 @@ def NmlAtkGuardCrush():
         DamageEffect(2, 'tkef_slash')
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3667,8 +3822,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -3685,7 +3840,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('tk418_00', 3)
     sprite('tk418_00', 1)
@@ -3709,7 +3864,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('keep', 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tk418_06', 4)
     sprite('tk418_07', 4)
     PrivateSE('tkse_00')
@@ -3729,6 +3884,7 @@ def NmlAtkGuardCrush():
     sprite('tk418_16', 3)
     sprite('tk418_17', 3)
 
+
 @State
 def NmlAtkThrow():
 
@@ -3746,6 +3902,7 @@ def NmlAtkThrow():
     sprite('tk310_06', 4)
     sprite('tk310_07', 4)
     sprite('tk310_08', 3)
+
 
 @State
 def ThrowExe():
@@ -3817,6 +3974,7 @@ def ThrowExe():
     sprite('tk022_06', 3)
     sprite('tk022_07', 3)
 
+
 @State
 def NmlAtkBackThrow():
 
@@ -3834,6 +3992,7 @@ def NmlAtkBackThrow():
     sprite('tk310_06', 4)
     sprite('tk310_07', 4)
     sprite('tk310_08', 3)
+
 
 @State
 def BackThrowExe():
@@ -3882,10 +4041,10 @@ def BackThrowExe():
     sprite('tk313_06', 32767)
     OppThrowAnimation(13, 0)
     OppThrowPosition(0, 0, 0, 0, 0)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     loopRest()
     label(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('tk313_07', 3)
     Voiceline('tk153')
@@ -3909,6 +4068,7 @@ def BackThrowExe():
     sprite('tk313_19', 20)
     sprite('tk313_20', 3)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -3926,6 +4086,7 @@ def NmlAtkAirThrow():
     sprite('tk320_05', 5)
     sprite('tk320_06', 5)
     sprite('tk320_07', 3)
+
 
 @State
 def AirThrowExe():
@@ -3956,8 +4117,8 @@ def AirThrowExe():
     physicsXImpulse(-10000)
     physicsYImpulse(50000)
     EndYPhysicsImpulse()
-    clearUponHandler(2)
-    sendToLabelUpon(2, 1)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 1)
     sprite('tk321_01', 3)
     OppThrowAnimation(1, 0)
     OppThrowPosition(0, 1, 1, 0, 0)
@@ -3987,7 +4148,7 @@ def AirThrowExe():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     sprite('tk321_09', 3)
     CommonSE('004_swing_grap_1_2')
@@ -4012,6 +4173,7 @@ def AirThrowExe():
     loopRest()
     gotoLabel(32)
 
+
 @State
 def WallAssault_DBack():
 
@@ -4031,8 +4193,8 @@ def WallAssault_DBack():
     EnableAfterimage(1)
     AfterimageBlendMode(0)
     sprite('tk406_04', 2)
-    sendToLabelUpon(7, 1)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(CORNERED, 1)
+    uponSendToLabel(LANDING, 2)
     sprite('tk406_05', 2)
     sprite('tk406_06', 2)
     sprite('tk406_07', 2)
@@ -4047,16 +4209,16 @@ def WallAssault_DBack():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(7)
-    clearUponHandler(2)
+    clearUponHandler(CORNERED)
+    clearUponHandler(LANDING)
     sprite('tk406_12', 2)
     WhiffCancelEnable(1)
     WhiffCancel('WallAssault_DB')
     WhiffCancel('WallAssault_DA')
     loopRest()
     label(2)
-    clearUponHandler(7)
-    clearUponHandler(2)
+    clearUponHandler(CORNERED)
+    clearUponHandler(LANDING)
     WhiffCancelEnable(0)
     EndMomentum(1)
     sprite('tk024_00', 2)
@@ -4065,6 +4227,7 @@ def WallAssault_DBack():
     sprite('tk024_02', 2)
     sprite('tk024_03', 2)
     sprite('tk024_04', 2)
+
 
 @State
 def WallAssault_DFront():
@@ -4087,8 +4250,8 @@ def WallAssault_DFront():
     EnableAfterimage(1)
     AfterimageBlendMode(0)
     sprite('tk406_04', 2)
-    sendToLabelUpon(7, 1)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(CORNERED, 1)
+    uponSendToLabel(LANDING, 2)
     sprite('tk406_05', 2)
     sprite('tk406_06', 2)
     sprite('tk406_07', 2)
@@ -4103,16 +4266,16 @@ def WallAssault_DFront():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(7)
-    clearUponHandler(2)
+    clearUponHandler(CORNERED)
+    clearUponHandler(LANDING)
     sprite('tk406_12', 2)
     WhiffCancelEnable(1)
     WhiffCancel('WallAssault_DB')
     WhiffCancel('WallAssault_DA')
     loopRest()
     label(2)
-    clearUponHandler(7)
-    clearUponHandler(2)
+    clearUponHandler(CORNERED)
+    clearUponHandler(LANDING)
     WhiffCancelEnable(0)
     EndMomentum(1)
     sprite('tk024_00', 2)
@@ -4121,6 +4284,7 @@ def WallAssault_DFront():
     sprite('tk024_02', 2)
     sprite('tk024_03', 2)
     sprite('tk024_04', 2)
+
 
 @State
 def WallAssault_DA():
@@ -4132,7 +4296,7 @@ def WallAssault_DA():
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirUntechableTime(40)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
     sprite('tk400_02', 1)
     callSubroutine('BunshinAtkParam')
     callSubroutine('BunshinAttackSpecial')
@@ -4179,7 +4343,7 @@ def WallAssault_DA():
     BufferedOrPressedGoto('Assault_Front')
     enterState('Assault_Back')
     label(9)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk400_09', 3)
     SLOT_51 = 0
     LandingEffects(100, 1, 1)
@@ -4198,6 +4362,7 @@ def WallAssault_DA():
     sprite('tk400_15', 3)
     sprite('tk400_16', 3)
 
+
 @State
 def WallAssault_DB():
 
@@ -4208,7 +4373,7 @@ def WallAssault_DB():
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirUntechableTime(40)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
     sprite('tk404_03', 1)
     callSubroutine('BunshinAtkParam')
     callSubroutine('BunshinAttackSpecial')
@@ -4252,7 +4417,7 @@ def WallAssault_DB():
     BufferedOrPressedGoto('Assault_Front')
     enterState('Assault_Back')
     label(9)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk404_10', 3)
     SLOT_51 = 0
     LandingEffects(100, 1, 1)
@@ -4272,13 +4437,14 @@ def WallAssault_DB():
     sprite('tk400_15', 3)
     sprite('tk400_16', 3)
 
+
 @State
 def WallAssault_DC():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         NoAttackDuringAction(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     sprite('tk405_00', 3)
     physicsXImpulse(0)
     physicsYImpulse(0)
@@ -4296,7 +4462,7 @@ def WallAssault_DC():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk405_03', 2)
     ForceFaceSprite()
     LandingEffects(100, 1, 1)
@@ -4308,6 +4474,7 @@ def WallAssault_DC():
     sprite('tk405_08', 2)
     loopRest()
     enterState('AirAssault_C2nd')
+
 
 @State
 def Assault_Front():
@@ -4338,6 +4505,7 @@ def Assault_Front():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Assault_Back():
 
@@ -4364,6 +4532,7 @@ def Assault_Back():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Assault_JumpYoko():
 
@@ -4388,6 +4557,7 @@ def Assault_JumpYoko():
     sprite('tk411_03', 2)
     sprite('tk411_06', 1)
     sprite('tk411_07', 1)
+
 
 @State
 def Assault_JumpSita():
@@ -4414,6 +4584,7 @@ def Assault_JumpSita():
     sprite('tk411_06', 1)
     sprite('tk411_07', 1)
 
+
 @State
 def Assault_JumpUe():
 
@@ -4439,13 +4610,14 @@ def Assault_JumpUe():
     sprite('tk411_06', 1)
     sprite('tk411_07', 1)
 
+
 @State
 def Assault_TurnYoko():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirSpecial()
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         PushSpeedX()
         PushSpeedY()
         IgnoreTurn(1)
@@ -4484,7 +4656,7 @@ def Assault_TurnYoko():
     sprite('tk410_10', 1)
     sprite('tk410_09', 1)
     loopRest()
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk410_16', 3)
     EnableCollision(1)
     XImpulseAcceleration(50)
@@ -4493,7 +4665,7 @@ def Assault_TurnYoko():
     Flip()
     ExitState()
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk410_11', 2)
     SLOT_51 = 0
     EnableCollision(1)
@@ -4506,13 +4678,14 @@ def Assault_TurnYoko():
     sprite('tk410_15', 1)
     Flip()
 
+
 @State
 def Assault_TurnYokoC():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirSpecial()
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         IgnoreTurn(1)
         EnableAfterimage(1)
         AfterimageBlendMode(0)
@@ -4543,7 +4716,7 @@ def Assault_TurnYokoC():
     XImpulseAcceleration(50)
     sprite('tk410_10', 1)
     loopRest()
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk410_16', 3)
     EnableCollision(1)
     XImpulseAcceleration(50)
@@ -4552,7 +4725,7 @@ def Assault_TurnYokoC():
     Flip()
     ExitState()
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk410_11', 2)
     SLOT_51 = 0
     LandingEffects(100, 1, 1)
@@ -4565,13 +4738,14 @@ def Assault_TurnYokoC():
     sprite('tk410_15', 1)
     Flip()
 
+
 @State
 def Assault_TurnSita():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirSpecial()
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         PushSpeedX()
         PushSpeedY()
         IgnoreTurn(1)
@@ -4607,7 +4781,7 @@ def Assault_TurnSita():
     sprite('tk410_41', 1)
     sprite('tk410_40', 1)
     loopRest()
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk410_43', 1)
     SLOT_51 = 0
     EnableCollision(1)
@@ -4615,7 +4789,7 @@ def Assault_TurnSita():
     sprite('tk410_44', 1)
     ExitState()
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk410_42', 3)
     SLOT_51 = 0
     LandingEffects(100, 1, 1)
@@ -4627,6 +4801,7 @@ def Assault_TurnSita():
     sprite('tk410_14', 3)
     sprite('tk410_15', 3)
     Flip()
+
 
 @State
 def Assault_TurnUe():
@@ -4678,13 +4853,14 @@ def Assault_TurnUe():
     Flip()
     SLOT_51 = 0
 
+
 @State
 def Assault_StopYoko():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         Unknown23170('DEStop')
     sprite('tk411_08', 3)
     Voiceline('tk200')
@@ -4713,13 +4889,14 @@ def Assault_StopYoko():
     sprite('tk409_06', 2)
     sprite('tk409_07', 2)
 
+
 @State
 def Assault_StopSita():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         Unknown23170('DEStop')
     sprite('tk411_11', 3)
     Voiceline('tk200')
@@ -4749,13 +4926,14 @@ def Assault_StopSita():
     sprite('tk409_06', 3)
     sprite('tk409_07', 2)
 
+
 @State
 def Assault_StopUe():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        clearUponHandler(2)
-        sendToLabelUpon(2, 1)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 1)
         Unknown23170('DEStop')
     sprite('tk411_00', 3)
     Voiceline('tk200')
@@ -4785,6 +4963,7 @@ def Assault_StopUe():
     sprite('tk409_06', 3)
     sprite('tk409_07', 2)
 
+
 @State
 def CWalk():
 
@@ -4792,9 +4971,9 @@ def CWalk():
         AttackDefaults_CrouchNoAttack()
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (not CheckInput(0x51)):
+                if not CheckInput(0x51):
                     SetActionMark(0)
                     sendToLabel(1)
         WhiffFWalkCancel(1)
@@ -4827,6 +5006,7 @@ def CWalk():
     label(1)
     sprite('tk350_11', 3)
 
+
 @State
 def TriangleJumpLeft():
 
@@ -4854,8 +5034,8 @@ def TriangleJumpLeft():
     setGravity(200)
     sprite('tk351_04', 2)
     BufferedOrPressedGoto('TriangleJumpLeft_2nd')
-    sendToLabelUpon(26, 5)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(RELEASE_D, 5)
+    uponSendToLabel(LANDING, 2)
     sprite('tk351_14', 2)
     label(1)
     sprite('tk351_15', 2)
@@ -4863,7 +5043,7 @@ def TriangleJumpLeft():
     loopRest()
     gotoLabel(1)
     label(2)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     DisallowGoto('TriangleJumpLeft_2nd')
     sprite('tk351_17', 2)
     EnableCollision(1)
@@ -4877,8 +5057,8 @@ def TriangleJumpLeft():
     loopRest()
     ExitState()
     label(5)
-    clearUponHandler(26)
-    clearUponHandler(2)
+    clearUponHandler(RELEASE_D)
+    clearUponHandler(LANDING)
     DisallowGoto('TriangleJumpLeft_2nd')
     sprite('tk351_10', 2)
     EnableCollision(1)
@@ -4887,6 +5067,7 @@ def TriangleJumpLeft():
     sprite('tk351_11', 2)
     sprite('tk351_12', 2)
     sprite('tk351_13', 2)
+
 
 @State
 def TriangleJumpLeft_2nd():
@@ -4916,6 +5097,7 @@ def TriangleJumpLeft_2nd():
     sprite('tk021_04', 2)
     sprite('tk021_05', 2)
 
+
 @State
 def TriangleJumpRight():
 
@@ -4943,8 +5125,8 @@ def TriangleJumpRight():
     setGravity(200)
     sprite('tk351_04', 2)
     BufferedOrPressedGoto('TriangleJumpRight_2nd')
-    sendToLabelUpon(26, 5)
-    sendToLabelUpon(2, 2)
+    uponSendToLabel(RELEASE_D, 5)
+    uponSendToLabel(LANDING, 2)
     sprite('tk351_14', 2)
     label(1)
     sprite('tk351_15', 2)
@@ -4952,7 +5134,7 @@ def TriangleJumpRight():
     loopRest()
     gotoLabel(1)
     label(2)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     DisallowGoto('TriangleJumpRight_2nd')
     sprite('tk351_17', 2)
     EnableCollision(1)
@@ -4967,8 +5149,8 @@ def TriangleJumpRight():
     loopRest()
     ExitState()
     label(5)
-    clearUponHandler(26)
-    clearUponHandler(2)
+    clearUponHandler(RELEASE_D)
+    clearUponHandler(LANDING)
     DisallowGoto('TriangleJumpRight_2nd')
     sprite('tk351_10', 2)
     EnableCollision(1)
@@ -4977,6 +5159,7 @@ def TriangleJumpRight():
     sprite('tk351_11', 2)
     sprite('tk351_12', 2)
     sprite('tk351_13', 2)
+
 
 @State
 def TriangleJumpRight_2nd():
@@ -5005,6 +5188,7 @@ def TriangleJumpRight_2nd():
     sprite('tk021_03', 2)
     sprite('tk021_04', 2)
     sprite('tk021_05', 2)
+
 
 @State
 def Shot_A():
@@ -5050,6 +5234,7 @@ def Shot_A():
     sprite('tk412_17', 3)
     sprite('tk412_18', 3)
 
+
 @State
 def Shot_B():
 
@@ -5091,6 +5276,7 @@ def Shot_B():
     sprite('tk412_17', 3)
     sprite('tk412_18', 3)
 
+
 @State
 def Shot_C():
 
@@ -5104,7 +5290,7 @@ def Shot_C():
     sprite('tk412_03', 2)
     CommonSE('007_swing_knife_0')
     loopRest()
-    sendToLabelUpon(25, 0)
+    uponSendToLabel(RELEASE_C, 0)
     sprite('tk412_02', 2)
     CommonSE('011_spin_2')
     sprite('tk412_03', 2)
@@ -5126,7 +5312,7 @@ def Shot_C():
     SetActionMark(1)
     loopRest()
     label(0)
-    clearUponHandler(25)
+    clearUponHandler(RELEASE_C)
     sprite('tk412_04', 3)
     sprite('tk412_05', 3)
     sprite('tk412_06', 3)
@@ -5140,7 +5326,7 @@ def Shot_C():
     sprite('tk412_11', 3)
     CreateObject('tk_shot_C', 0)
     if SLOT_2:
-        ObjectUpon(1, 32)
+        ObjectUpon(STATE_END, 32)
     sprite('tk412_12', 3)
     callSubroutine('BunshinAttackFlex')
     sprite('tk412_13', 3)
@@ -5150,6 +5336,7 @@ def Shot_C():
     sprite('tk412_17', 3)
     sprite('tk412_18', 3)
 
+
 @State
 def Mid_Jump():
 
@@ -5158,7 +5345,7 @@ def Mid_Jump():
         PreventBlocking(1)
         StayAfterMovement(1, 0)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ForceFaceSprite()
     sprite('tk415_00', 5)
     sprite('tk415_01', 5)
@@ -5178,7 +5365,7 @@ def Mid_Jump():
     sprite('tk415_06', 2)
     label(0)
     sprite('tk021_08', 3)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     WhiffAirJumpCancel(1)
     WhiffFAirDashCancel(1)
     WhiffBAirDashCancel(1)
@@ -5193,6 +5380,7 @@ def Mid_Jump():
     sprite('tk024_00', 3)
     EndMomentum(1)
     loopRest()
+
 
 @State
 def Rush_B():
@@ -5217,12 +5405,12 @@ def Rush_B():
                 if SLOT_94:
                     if CheckInput(0x2e):
                         SetActionMark(1)
-                    if CheckInput(0xa):
+                    if CheckInput(INPUT_HOLD_B):
                         SetActionMark(1)
-                elif CheckInput(0xa):
+                elif CheckInput(INPUT_HOLD_B):
                     SetActionMark(1)
-            if (SLOT_52 >= 5):
-                clearUponHandler(3)
+            if SLOT_52 >= 5:
+                clearUponHandler(EVERY_FRAME)
                 SLOT_51 = 0
                 SetActionMark(0)
                 Damage(1000)
@@ -5233,7 +5421,7 @@ def Rush_B():
                 AirUntechableTime(36)
                 Hitstop(20)
                 Wallstick(1)
-                Comment('Rush_BFinish')
+                GotoState('Rush_BFinish')
                 if SLOT_137:
                     DamageMultiplier(80)
 
@@ -5259,7 +5447,7 @@ def Rush_B():
     label(0)
     sprite('tk416_03', 2)
     RefreshMultihit()
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     SmartVoiceline('tk211')
     CreateObject('tkef416a', -1)
     CommonSE('004_swing_grap_1_1')
@@ -5268,11 +5456,12 @@ def Rush_B():
     sprite('tk416_04', 2)
     sprite('tk416_05', 2)
     sprite('tk416_05', 1)
-    GotoIf0(9, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(9)
     sprite('tk416_06', 2)
     AddActionMark(-1)
     RefreshMultihit()
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     SmartVoiceline('tk211')
     CreateObject('tkef416b', -1)
     CommonSE('004_swing_grap_1_1')
@@ -5281,7 +5470,8 @@ def Rush_B():
     sprite('tk416_07', 2)
     sprite('tk416_08', 2)
     sprite('tk416_08', 1)
-    GotoIf0(9, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(9)
     loopRest()
     AddActionMark(-1)
     gotoLabel(0)
@@ -5293,6 +5483,7 @@ def Rush_B():
     sprite('tk416_11', 3)
     sprite('tk416_12', 3)
     sprite('tk416_13', 3)
+
 
 @State
 def LandChainSaw():
@@ -5319,13 +5510,13 @@ def LandChainSaw():
         HitOrBlockCancel('WallAssault_DBack')
         HitOrBlockCancel('WallAssault_DFront')
         RunLoopUpon(17, 108)
-        sendToLabelUpon(17, 1)
+        uponSendToLabel(17, 1)
         SLOT_59 = 0
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_94:
                 ChainCancel(0)
-                if (SLOT_18 >= 20):
+                if SLOT_StateDuration >= 20:
                     ChainCancel(1)
     sprite('tk233_00', 2)
     callSubroutine('BunshinAtkParam')
@@ -5354,7 +5545,7 @@ def LandChainSaw():
 
     def upon_16():
         if SLOT_59:
-            if CheckInput(0x13):
+            if CheckInput(INPUT_HOLD_C):
                 SetActionMark(1)
     label(0)
     sprite('tk233_05', 2)
@@ -5370,8 +5561,8 @@ def LandChainSaw():
     sprite('tk233_05', 2)
     RefreshMultihit()
     PrivateSE('tkse_02')
-    SLOT_51 = (SLOT_51 + 1)
-    (SLOT_51 == 2)
+    SLOT_51 = SLOT_51 + 1
+    SLOT_51 == 2
     sprite('tk233_06', 2)
     RefreshMultihit()
     sprite('tk233_07', 2)
@@ -5392,6 +5583,7 @@ def LandChainSaw():
     sprite('tk233_14', 2)
     sprite('tk233_15', 2)
     sprite('tk233_16', 2)
+
 
 @State
 def Rush_C():
@@ -5418,17 +5610,17 @@ def Rush_C():
                 if SLOT_94:
                     if CheckInput(0x2e):
                         SetActionMark(1)
-                    if CheckInput(0x13):
+                    if CheckInput(INPUT_HOLD_C):
                         SetActionMark(1)
                     ChainCancel(0)
-                    if (SLOT_18 >= 36):
+                    if SLOT_StateDuration >= 36:
                         ChainCancel(1)
-                elif CheckInput(0x13):
+                elif CheckInput(INPUT_HOLD_C):
                     SetActionMark(1)
-            if (SLOT_52 >= 10):
+            if SLOT_52 >= 10:
                 SLOT_51 = 0
                 SetActionMark(0)
-            if SLOT_IsInOverdrive2:
+            if SLOT_54:
                 WhiffCancelEnable(1)
             else:
                 WhiffCancelEnable(0)
@@ -5447,7 +5639,7 @@ def Rush_C():
     PrivateSE('tkse_02')
     sprite('tk213_04', 1)
 
-    def upon_C_RELEASED():
+    def upon_RELEASE_C():
         SLOT_54 = 0
         sendToLabel(0)
     if SLOT_94:
@@ -5477,10 +5669,10 @@ def Rush_C():
     PushbackX(19800)
     HitOverhead(2)
     KnockdownEffects(100, 1, 1)
-    Comment('Rush_C_tame')
+    GotoState('Rush_C_tame')
     loopRest()
     label(0)
-    clearUponHandler(25)
+    clearUponHandler(RELEASE_C)
     sprite('tk213_07', 1)
     sprite('tk213_08', 1)
     sprite('tk213_09', 1)
@@ -5506,17 +5698,17 @@ def Rush_C():
     AirPushbackY(-24000)
     GroundBounce(1)
     BouncePercentage(60)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     LandingEffects(100, 1, 1)
     callSubroutine('BunshinAtkParam')
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         ChainCancel(1)
         SLOT_54 = 1
     loopRest()
     if SLOT_2:
-        _gotolabel(2)
+        conditionalSendToLabel(2)
     sprite('tk213_13', 3)
     StartMultihit()
     Recovery()
@@ -5531,7 +5723,7 @@ def Rush_C():
     ExitState()
     label(2)
     SLOT_54 = 1
-    Comment('Rush_C2nd')
+    GotoState('Rush_C2nd')
     sprite('tk213_14', 2)
     sprite('tk213_15', 2)
     sprite('tk213_16', 2)
@@ -5559,17 +5751,17 @@ def Rush_C():
     GroundBounce(0)
     if SLOT_53:
         AttackP2(82)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     callSubroutine('BunshinAtkParam')
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         SLOT_54 = 1
         ChainCancel(1)
         HitJumpCancel(1)
     loopRest()
     if SLOT_2:
-        _gotolabel(3)
+        conditionalSendToLabel(3)
     sprite('tk213_21', 2)
     StartMultihit()
     Recovery()
@@ -5587,7 +5779,7 @@ def Rush_C():
     ExitState()
     label(3)
     SLOT_54 = 1
-    Comment('Rush_C3rd')
+    GotoState('Rush_C3rd')
     sprite('tk213_21', 2)
     StartMultihit()
     sprite('tk213_22', 3)
@@ -5603,6 +5795,7 @@ def Rush_C():
     AddX(135000)
     HitJumpCancel(0)
     gotoLabel(1)
+
 
 @State
 def Rush_A():
@@ -5629,18 +5822,18 @@ def Rush_A():
                 if SLOT_94:
                     if CheckInput(0x2e):
                         SetActionMark(1)
-                    if CheckInput(0x1):
+                    if CheckInput(INPUT_HOLD_A):
                         SetActionMark(1)
                     ChainCancel(0)
-                    if (SLOT_18 >= 25):
+                    if SLOT_StateDuration >= 25:
                         ChainCancel(1)
-                elif CheckInput(0x1):
+                elif CheckInput(INPUT_HOLD_A):
                     SetActionMark(1)
-            if (SLOT_52 >= 10):
+            if SLOT_52 >= 10:
                 SLOT_51 = 0
                 SetActionMark(0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             ChainCancel(1)
         if SLOT_137:
             DamageMultiplier(80)
@@ -5669,7 +5862,7 @@ def Rush_A():
     PushbackX(12000)
     AirPushbackX(4000)
     AirPushbackY(14000)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     callSubroutine('BunshinAtkParam')
     sprite('tk203_07', 2)
     sprite('tk203_08', 2)
@@ -5702,7 +5895,7 @@ def Rush_A():
     PushbackX(8000)
     AirPushbackX(8000)
     AirPushbackY(7000)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     callSubroutine('BunshinAtkParam')
     sprite('tk203_14', 2)
     sprite('tk203_15', 2)
@@ -5723,6 +5916,7 @@ def Rush_A():
     sprite('tk203_17', 1)
     loopRest()
     gotoLabel(0)
+
 
 @Subroutine
 def SelectFood():
@@ -5801,6 +5995,7 @@ def SelectFood():
         CreateObject('RushPlusFood_JB', -1)
     RegisterObject(5, 1)
 
+
 @State
 def Rush_Plus():
 
@@ -5855,22 +6050,23 @@ def Rush_Plus():
     sprite('tk417_06', 3)
     Recovery()
     LandingEffects(100, 1, 1)
-    GotoIf0(0, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(0)
     sprite('tk417_07', 5)
     ExtendCollisionX(100)
     if SLOT_2:
-        ApplyFunctionsToObjects(5)
-        TeleportToObject(3)
-        AddX(270000)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_5():
+            TeleportToObject(3)
+            AddX(270000)
     sprite('tk417_08', 4)
     ObjectUpon(5, 32)
     ExtendCollisionX(50)
     sprite('tk417_08', 1)
     if SLOT_51:
-        _gotolabel(100)
+        conditionalSendToLabel(100)
     sprite('tk417_09', 3)
-    if (not SLOT_52):
+    if not SLOT_52:
         SmartVoiceline('tk216')
     sprite('tk417_10', 8)
     loopRest()
@@ -5878,7 +6074,7 @@ def Rush_Plus():
     label(100)
     sprite('tk417_09ex', 3)
     ScreenShake(10000, 10000)
-    if (not SLOT_52):
+    if not SLOT_52:
         SmartVoiceline('tk217')
     sprite('tk417_10ex', 8)
     loopRest()
@@ -5894,6 +6090,7 @@ def Rush_Plus():
     sprite('tk417_12', 3)
     sprite('tk417_13', 3)
     ExitState()
+
 
 @State
 def UltimateAssault():
@@ -6082,6 +6279,7 @@ def UltimateAssault():
     sprite('tk430_29', 4)
     sprite('tk430_30', 4)
 
+
 @State
 def UltimateAssaultOD():
 
@@ -6219,7 +6417,7 @@ def UltimateAssaultOD():
     DashEffects(100, 1, 0)
     PreDashEffects(100, 1, 1)
     JumpEffects(3, 100)
-    sendToLabelUpon(12, 0)
+    uponSendToLabel(OPPONENT_HIT, 0)
     OppPositionOnHit(1, 120000, 0)
     sprite('tk430_18', 2)
     DashEffects(100, 1, 0)
@@ -6234,7 +6432,7 @@ def UltimateAssaultOD():
     DefeatOpponentBehavior(1)
     Hitstop(1)
     OppPositionOnHit(0, 0, 0)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     if SLOT_137:
         DamageMultiplier(80)
     sprite('keep', 1)
@@ -6393,7 +6591,7 @@ def UltimateAssaultOD():
     sprite('tk430_20', 2)
     label(100)
     sprite('tk430_24', 2)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     XImpulseAcceleration(200)
     Voiceline('tk252')
     CommonSE('004_swing_grap_1_1')
@@ -6446,6 +6644,7 @@ def UltimateAssaultOD():
     sprite('tk430_29', 4)
     sprite('tk430_30', 4)
 
+
 @State
 def UltimateCatch():
 
@@ -6458,7 +6657,7 @@ def UltimateCatch():
         setInvincible(1)
         AttackP1(100)
         AttackP2(100)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
     sprite('tk431_00', 4)
     sprite('tk431_01', 27)
     Voiceline('tk253')
@@ -6507,6 +6706,7 @@ def UltimateCatch():
     Voiceline('tk257')
     sprite('tk431_50', 4)
     sprite('tk431_51', 4)
+
 
 @State
 def UltimateCatchExe():
@@ -6836,6 +7036,7 @@ def UltimateCatchExe():
     sprite('tk431_38', 4)
     sprite('tk431_39', 4)
 
+
 @State
 def UltimateCatchOD():
 
@@ -6849,7 +7050,7 @@ def UltimateCatchOD():
         AttackType(4)
         AttackP1(100)
         AttackP2(100)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
         SLOT_66 = 1
 
         def upon_STATE_END():
@@ -6902,6 +7103,7 @@ def UltimateCatchOD():
     Voiceline('tk257')
     sprite('tk431_50', 4)
     sprite('tk431_51', 4)
+
 
 @State
 def UltimateCatchODExe():
@@ -7235,6 +7437,7 @@ def UltimateCatchODExe():
     sprite('tk431_38', 4)
     sprite('tk431_39', 4)
 
+
 @State
 def UltimateAirRush():
 
@@ -7269,10 +7472,10 @@ def UltimateAirRush():
             EnableCollision(0)
             ScreenShake(80000, 0)
         SLOT_66 = 0
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_66 = 1
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             SLOT_66 = 0
         SLOT_60 = 1
 
@@ -7312,7 +7515,7 @@ def UltimateAirRush():
     CallCustomizableParticle('tkef_430dust', 2)
     sprite('tk430_07', 20)
     XImpulseAcceleration(0)
-    if (not SLOT_2):
+    if not SLOT_2:
         setInvincible(0)
     sprite('keep', 1)
     if SLOT_2:
@@ -7333,6 +7536,7 @@ def UltimateAirRush():
     sprite('tk020_07', 4)
     sprite('tk020_08', 4)
     gotoLabel(0)
+
 
 @State
 def UltimateAirRushExe():
@@ -7357,6 +7561,7 @@ def UltimateAirRushExe():
     label(1)
     sprite('keep', 1)
     enterState('UltimateAirRushFinish')
+
 
 @State
 def UltimateAirRushFinish():
@@ -7390,13 +7595,13 @@ def UltimateAirRushFinish():
         WallCollisionDetection(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             ScreenShake(50000, 50000)
             AddCombo(1)
             sendToLabel(1)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(3)
         SLOT_60 = 1
 
@@ -7426,7 +7631,7 @@ def UltimateAirRushFinish():
     ExitState()
     label(1)
     sprite('tk401_04', 2)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 32)
+    TriggerUponForState('UltimateAirRushTorakaka', 32)
     XImpulseAcceleration(10)
     YAccel(5)
     sprite('tk401_05', 2)
@@ -7476,12 +7681,12 @@ def UltimateAirRushFinish():
     RefreshMultihit()
     Hitstop(3)
     Floorslide(30)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 33)
+    TriggerUponForState('UltimateAirRushTorakaka', 33)
     CameraLookAtEnemy(0)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
     CameraNoCeiling(0)
-    Comment('Ultimate_AR_Finish')
+    GotoState('Ultimate_AR_Finish')
     sprite('tk432_14', 3)
     sprite('tk432_13', 3)
     sprite('tk432_14', 3)
@@ -7495,24 +7700,24 @@ def UltimateAirRushFinish():
     FloorslideReset()
     DefeatOpponentBehavior(0)
     sprite('tk022_00', 2)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 34)
+    TriggerUponForState('UltimateAirRushTorakaka', 34)
     physicsXImpulse(-5000)
     physicsYImpulse(25000)
     setGravity(1500)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         sendToLabel(4)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(5)
     sprite('tk022_01', 2)
     sprite('tk022_02', 2)
     sprite('tk022_03', 32767)
     label(4)
     sprite('tk022_04', 2)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 35)
+    TriggerUponForState('UltimateAirRushTorakaka', 35)
     sprite('tk022_05', 2)
     sprite('tk022_06', 2)
     sprite('tk022_07', 2)
@@ -7523,7 +7728,7 @@ def UltimateAirRushFinish():
     EnableCollision(1)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 36)
+    TriggerUponForState('UltimateAirRushTorakaka', 36)
     sprite('tk024_01', 3)
     sprite('tk024_02', 3)
     sprite('tk024_03', 3)
@@ -7541,6 +7746,7 @@ def UltimateAirRushFinish():
     sprite('tk300_06', 5)
     sprite('tk300_07', 5)
     sprite('tk300_08', 5)
+
 
 @State
 def UltimateAirRushOD():
@@ -7577,10 +7783,10 @@ def UltimateAirRushOD():
             EnableCollision(0)
             ScreenShake(80000, 0)
         SLOT_66 = 0
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SLOT_66 = 1
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             SLOT_66 = 0
         SLOT_60 = 1
         SLOT_66 = 1
@@ -7622,7 +7828,7 @@ def UltimateAirRushOD():
     CallCustomizableParticle('tkef_430dust', 2)
     sprite('tk430_07', 20)
     XImpulseAcceleration(0)
-    if (not SLOT_2):
+    if not SLOT_2:
         setInvincible(0)
     sprite('keep', 1)
     if SLOT_2:
@@ -7643,6 +7849,7 @@ def UltimateAirRushOD():
     sprite('tk020_07', 4)
     sprite('tk020_08', 4)
     gotoLabel(0)
+
 
 @State
 def UltimateAirRushODExe():
@@ -7671,6 +7878,7 @@ def UltimateAirRushODExe():
     label(1)
     sprite('keep', 1)
     enterState('UltimateAirRushODFinish')
+
 
 @State
 def UltimateAirRushODFinish():
@@ -7705,13 +7913,13 @@ def UltimateAirRushODFinish():
         WallCollisionDetection(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             ScreenShake(50000, 50000)
             AddCombo(1)
             sendToLabel(1)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(3)
         SLOT_60 = 1
         SLOT_66 = 1
@@ -7742,7 +7950,7 @@ def UltimateAirRushODFinish():
     ExitState()
     label(1)
     sprite('tk401_04', 2)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 32)
+    TriggerUponForState('UltimateAirRushTorakaka', 32)
     XImpulseAcceleration(10)
     YAccel(5)
     sprite('tk401_05', 2)
@@ -7792,12 +8000,12 @@ def UltimateAirRushODFinish():
     RefreshMultihit()
     Hitstop(3)
     Floorslide(30)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 33)
+    TriggerUponForState('UltimateAirRushTorakaka', 33)
     CameraLookAtEnemy(0)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
     CameraNoCeiling(0)
-    Comment('Ultimate_AR_ODFinish')
+    GotoState('Ultimate_AR_ODFinish')
     sprite('tk432_14', 3)
     sprite('tk432_13', 3)
     sprite('tk432_14', 3)
@@ -7838,24 +8046,24 @@ def UltimateAirRushODFinish():
     if SLOT_137:
         DamageMultiplier(80)
     sprite('tk022_00', 2)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 34)
+    TriggerUponForState('UltimateAirRushTorakaka', 34)
     physicsXImpulse(-5000)
     physicsYImpulse(25000)
     setGravity(1500)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         sendToLabel(4)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(5)
     sprite('tk022_01', 2)
     sprite('tk022_02', 2)
     sprite('tk022_03', 32767)
     label(4)
     sprite('tk022_04', 2)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 35)
+    TriggerUponForState('UltimateAirRushTorakaka', 35)
     sprite('tk022_05', 2)
     sprite('tk022_06', 2)
     sprite('tk022_07', 2)
@@ -7865,7 +8073,7 @@ def UltimateAirRushODFinish():
     sprite('tk024_00', 3)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
-    PassbackAddActionMarkToFunction('UltimateAirRushTorakaka', 36)
+    TriggerUponForState('UltimateAirRushTorakaka', 36)
     sprite('tk024_01', 3)
     sprite('tk024_02', 3)
     sprite('tk024_03', 3)
@@ -7884,11 +8092,12 @@ def UltimateAirRushODFinish():
     sprite('tk300_07', 5)
     sprite('tk300_08', 5)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(6)
         GroundedHitstunAnimation(6)
         Hitstun(100)
@@ -7904,10 +8113,10 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
         SLOT_60 = 1
         SLOT_66 = 1
@@ -7917,7 +8126,7 @@ def BurstDD():
             SLOT_66 = 0
             DepleteOD()
         SLOT_7 = 0
-        if (SLOT_26 <= 800000):
+        if SLOT_XDistanceFromBackCorner <= 800000:
             SLOT_7 = 1
     sprite('tk040_01ex01', 7)
     E0EAEffect('BurstDDeff', 103)
@@ -7937,11 +8146,12 @@ def BurstDD():
     sprite('tk312_05ex01', 10)
     sprite('tk312_06ex01', 7)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(6)
         GroundedHitstunAnimation(6)
         Hitstun(100)
@@ -7957,10 +8167,10 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
         SLOT_60 = 1
         SLOT_66 = 1
@@ -7970,7 +8180,7 @@ def BurstDD_Easy():
             SLOT_66 = 0
             DepleteOD()
         SLOT_7 = 0
-        if (SLOT_26 <= 800000):
+        if SLOT_XDistanceFromBackCorner <= 800000:
             SLOT_7 = 1
         if PreviousStateCheck('CmnActJumpPre'):
             enterState('BurstDD')
@@ -7992,11 +8202,12 @@ def BurstDD_Easy():
     sprite('tk312_05ex01', 10)
     sprite('tk312_06ex01', 7)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         SetBackground(1)
         SLOT_60 = 1
         SLOT_66 = 1
@@ -8031,6 +8242,7 @@ def BurstDDAdd():
     sprite('tk000_08', 7)
     sprite('tk000_09', 7)
     DespawnEAEffect('BurstDD_ChibiMatome')
+
 
 @State
 def BurstDDAdd2():
@@ -8085,8 +8297,8 @@ def BurstDDAdd2():
     sprite('tk001_09ex', 3)
     CreateObject('BurstDD_Bokosuka', -1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 150000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 150000:
             sendToLabel(3)
     label(2)
     sprite('tk001_08ex', 4)
@@ -8102,7 +8314,7 @@ def BurstDDAdd2():
     label(3)
     sprite('tk001_07ex', 4)
     clearUponHandler(17)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tk001_06ex', 4)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
@@ -8113,6 +8325,7 @@ def BurstDDAdd2():
     sprite('tk001_01ex', 8)
     sprite('tk001_00ex', 9)
     SetZVal(0)
+
 
 @State
 def BurstDDAdd2SP():
@@ -8206,6 +8419,7 @@ def BurstDDAdd2SP():
     sprite('tk090_03', 5)
     sprite('tk090_04', 5)
 
+
 @State
 def AstralHeat1():
 
@@ -8231,7 +8445,7 @@ def AstralHeat1():
     AfterimageBlendMode(0)
     EnableCollision(0)
     sprite('tk406_04', 2)
-    sendToLabelUpon(2, 20)
+    uponSendToLabel(LANDING, 20)
     sprite('tk406_05', 2)
     sprite('tk406_06', 2)
     sprite('tk406_07', 2)
@@ -8243,20 +8457,20 @@ def AstralHeat1():
     loopRest()
     label(0)
     sprite('tk406_10', 2)
-    sendToLabelUpon(7, 10)
+    uponSendToLabel(CORNERED, 10)
     sprite('tk406_11', 2)
     loopRest()
     gotoLabel(0)
     label(10)
-    clearUponHandler(7)
+    clearUponHandler(CORNERED)
     sprite('tk406_10', 1)
     WhiffCancelEnable(1)
     WhiffCancel('AstralHeat2')
     loopRest()
     gotoLabel(0)
     label(20)
-    clearUponHandler(7)
-    clearUponHandler(2)
+    clearUponHandler(CORNERED)
+    clearUponHandler(LANDING)
     WhiffCancelEnable(0)
     EndMomentum(1)
     sprite('tk024_00', 2)
@@ -8266,22 +8480,23 @@ def AstralHeat1():
     sprite('tk024_03', 2)
     sprite('tk024_04', 2)
 
+
 @State
 def AstralHeat2():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirAstral()
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         AttackLevel_(1)
         Damage(0)
         SetXCollisionFromOrigin(1)
         setInvincible(1)
         EndMomentum(1)
         DamageFromStateOnly('AST_TkAttackA')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(2)
         SLOT_60 = 1
         SLOT_66 = 1
@@ -8325,7 +8540,7 @@ def AstralHeat2():
     EnemyHitstopAddition(0, 0, 0)
     OppPositionOnHit(2, 0, 0)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         CreateParticle('ast_white', 101)
     label(100)
     sprite('tk450_01', 2)
@@ -8333,8 +8548,8 @@ def AstralHeat2():
     loopRest()
     gotoLabel(100)
     label(1)
-    clearUponHandler(2)
-    clearUponHandler(12)
+    clearUponHandler(LANDING)
+    clearUponHandler(OPPONENT_HIT)
     sprite('tk450_02', 3)
     DisableOppPushCollision(0)
     EnableCollision(1)
@@ -8377,8 +8592,8 @@ def AstralHeat2():
     loopRest()
     ExitState()
     label(2)
-    clearUponHandler(2)
-    clearUponHandler(12)
+    clearUponHandler(LANDING)
+    clearUponHandler(OPPONENT_HIT)
     sprite('tk450_07', 2)
     CreateObject('AstWhite', -1)
     CameraFast(1)
@@ -8485,8 +8700,8 @@ def AstralHeat2():
     CommonSE('002_highjump_1')
     EndYPhysicsImpulse()
     physicsYImpulse(90000)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 102)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 102)
     sprite('tk450_27', 3)
     sprite('tk450_28', 3)
     sprite('tk450_27', 3)
@@ -8547,7 +8762,7 @@ def AstralHeat2():
     sprite('tk020_08', 3)
     gotoLabel(101)
     label(102)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk024_00', 3)
     SLOT_61 = 1
     EndMomentum(1)
@@ -8558,6 +8773,7 @@ def AstralHeat2():
     sprite('tk024_03', 3)
     sprite('tk024_04', 3)
 
+
 @State
 def RlAstralDamage():
 
@@ -8565,7 +8781,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('tk054')
     sprite('tk900_00', 4)
     EnableCollision(0)
@@ -8591,6 +8807,7 @@ def RlAstralDamage():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def AmAstralDamage():
 
@@ -8610,11 +8827,12 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
-    if Unknown60('rg'):
+        conditionalSendToLabel(482)
+    if CharacterIDCheck('jb'):
         SyncEntry()
         if SLOT_140:
             gotoLabel(2100)
@@ -8634,14 +8852,13 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(440)
     label(482)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(1)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(1)
     label(0)
     sprite('null', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 30)
     CreateObject('tk600Face', -1)
     sprite('null', 50)
@@ -8676,10 +8893,9 @@ def CmnActEntry():
     sprite('tk601_00', 3)
     loopRest()
     if SLOT_17:
-        _gotolabel(1)
-    random_(2, 0, 97)
-    if SLOT_0:
-        _gotolabel(2)
+        conditionalSendToLabel(1)
+    if random_(2, 0, 97):
+        conditionalSendToLabel(2)
     sprite('tk601_00', 250)
     Voiceline('tk415')
     sprite('tk601_00', 200)
@@ -8730,12 +8946,12 @@ def CmnActEntry():
     EnableCollision(0)
     loopRest()
     if SLOT_17:
-        _gotolabel(2100)
+        conditionalSendToLabel(2100)
     sprite('null', 20)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 620000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 620000:
+            clearUponHandler(EVERY_FRAME)
             sendToLabel(2102)
             physicsXImpulse(0)
             SetInertia(12000)
@@ -8787,7 +9003,7 @@ def CmnActEntry():
     sprite('tk300_06', 5)
     loopRest()
     if SLOT_2:
-        _gotolabel(2103)
+        conditionalSendToLabel(2103)
     ExitState()
     label(160)
     sprite('null', 1)
@@ -8796,17 +9012,17 @@ def CmnActEntry():
     EnableCollision(0)
     loopRest()
     if SLOT_17:
-        _gotolabel(160)
+        conditionalSendToLabel(160)
     sprite('null', 30)
     sprite('tk032_00', 2)
     Voiceline('tk512')
     physicsXImpulse(18000)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 350000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 350000:
             physicsXImpulse(0)
             SetInertia(14000)
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
             sendToLabel(162)
     label(161)
     sprite('tk032_01', 5)
@@ -8892,7 +9108,7 @@ def CmnActEntry():
     sprite('tk000_07', 7)
     sprite('tk000_08', 7)
     sprite('tk000_09', 7)
-    sendToLabelUpon(32, 164)
+    uponSendToLabel(32, 164)
     label(163)
     sprite('tk000_00', 7)
     sprite('tk000_01', 7)
@@ -8908,7 +9124,7 @@ def CmnActEntry():
     gotoLabel(163)
     label(164)
     sprite('tk033_00', 2)
-    sendToLabelUpon(2, 166)
+    uponSendToLabel(LANDING, 166)
     physicsXImpulse(-22000)
     physicsYImpulse(7800)
     setGravity(1550)
@@ -8943,8 +9159,8 @@ def CmnActEntry():
     EnableCollision(0)
     loopRest()
     if SLOT_17:
-        _gotolabel(170)
-    sendToLabelUpon(32, 171)
+        conditionalSendToLabel(170)
+    uponSendToLabel(32, 171)
     sprite('null', 32767)
     loopRest()
     label(171)
@@ -8955,7 +9171,7 @@ def CmnActEntry():
     ForceFaceSprite()
     physicsYImpulse(20000)
     EndYPhysicsImpulse()
-    sendToLabelUpon(2, 173)
+    uponSendToLabel(LANDING, 173)
     JumpEffects(3, 100)
     sprite('tk400_02', 2)
     sprite('tk400_03', 2)
@@ -8981,7 +9197,7 @@ def CmnActEntry():
     loopRest()
     gotoLabel(172)
     label(173)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk400_09', 3)
     LandingEffects(100, 1, 1)
     EnableAfterimage(0)
@@ -9056,7 +9272,7 @@ def CmnActEntry():
     sprite('tk300_06', 5)
     loopRest()
     if SLOT_2:
-        _gotolabel(174)
+        conditionalSendToLabel(174)
     sprite('keep', 1)
     SetActionMark(3)
     label(175)
@@ -9071,7 +9287,7 @@ def CmnActEntry():
     sprite('tk300_06', 3)
     loopRest()
     if SLOT_2:
-        _gotolabel(175)
+        conditionalSendToLabel(175)
     sprite('keep', 1)
     SetActionMark(6)
     label(176)
@@ -9086,7 +9302,7 @@ def CmnActEntry():
     sprite('tk300_06', 2)
     loopRest()
     if SLOT_2:
-        _gotolabel(176)
+        conditionalSendToLabel(176)
     sprite('tk300_07', 5)
     ObjectUpon(22, 32)
     sprite('tk300_08', 5)
@@ -9097,7 +9313,7 @@ def CmnActEntry():
     sprite('null', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(180)
+        conditionalSendToLabel(180)
     sprite('null', 30)
     CreateObject('tk600Face', -1)
     sprite('null', 50)
@@ -9130,7 +9346,7 @@ def CmnActEntry():
     ExitState()
     label(330)
     sprite('null', 1)
-    sendToLabelUpon(32, 332)
+    uponSendToLabel(32, 332)
     label(331)
     sprite('tk000_00', 7)
     sprite('tk000_01', 7)
@@ -9177,7 +9393,7 @@ def CmnActEntry():
     sprite('tk300_06', 5)
     loopRest()
     if SLOT_17:
-        _gotolabel(440)
+        conditionalSendToLabel(440)
     sprite('keep', 1)
     Voiceline('tk570')
     SetActionMark(3)
@@ -9193,7 +9409,7 @@ def CmnActEntry():
     sprite('tk300_06', 5)
     loopRest()
     if SLOT_2:
-        _gotolabel(441)
+        conditionalSendToLabel(441)
     sprite('keep', 1)
     SetActionMark(8)
     label(442)
@@ -9208,12 +9424,13 @@ def CmnActEntry():
     sprite('tk300_06', 3)
     loopRest()
     if SLOT_2:
-        _gotolabel(442)
+        conditionalSendToLabel(442)
     sprite('tk300_07', 5)
     ObjectUpon(22, 32)
     sprite('tk300_08', 5)
     loopRest()
     ExitState()
+
 
 @State
 def CmnActRoundWin():
@@ -9247,33 +9464,28 @@ def CmnActRoundWin():
     loopRest()
     gotoLabel(10)
 
+
 @State
 def CmnActMatchWin():
     if SLOT_61:
-        _gotolabel(20)
+        conditionalSendToLabel(20)
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('rg'):
         if SLOT_140:
-            _gotolabel(2100)
-    CharacterIDCheck('lc')
-    if SLOT_0:
-        _gotolabel(160)
-    CharacterIDCheck('ar')
-    if SLOT_0:
-        _gotolabel(170)
-    CharacterIDCheck('bn')
-    if SLOT_0:
-        _gotolabel(180)
-    CharacterIDCheck('kg')
-    if SLOT_0:
-        _gotolabel(330)
-    CharacterIDCheck('jb')
-    if SLOT_0:
-        _gotolabel(440)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+            conditionalSendToLabel(2100)
+    if CharacterIDCheck('lc'):
+        conditionalSendToLabel(160)
+    if CharacterIDCheck('ar'):
+        conditionalSendToLabel(170)
+    if CharacterIDCheck('bn'):
+        conditionalSendToLabel(180)
+    if CharacterIDCheck('kg'):
+        conditionalSendToLabel(330)
+    if CharacterIDCheck('jb'):
+        conditionalSendToLabel(440)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
     if random_(2, 0, 70):
         gotoLabel(10)
@@ -9283,7 +9495,7 @@ def CmnActMatchWin():
     ScreenCollision(0)
     CameraControlEnable(1)
     loopRest()
-    if (not (SLOT_25 < SLOT_26)):
+    if not SLOT_XDistanceFromFowardCorner < SLOT_XDistanceFromBackCorner:
         Flip()
     sprite('tk001_00', 3)
     sprite('tk001_01', 3)
@@ -9305,10 +9517,10 @@ def CmnActMatchWin():
     physicsXImpulse(28000)
     CameraFast(1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_25 < 750000):
+    def upon_EVERY_FRAME():
+        if SLOT_XDistanceFromFowardCorner < 750000:
             sendToLabel(34)
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
     label(33)
     sprite('tk610_01', 3)
     DashEffects(100, 1, 1)
@@ -9335,11 +9547,11 @@ def CmnActMatchWin():
     setGravity(1400)
     sprite('tk402_09ex', 3)
     sprite('tk402_10ex', 3)
-    sendToLabelUpon(2, 4)
-    ObjectUpon(4, 32)
+    uponSendToLabel(LANDING, 4)
+    ObjectUpon(FALLING, 32)
     sprite('tk402_11ex', 3)
     label(3)
-    clearUponHandler(7)
+    clearUponHandler(CORNERED)
     sprite('tk610_07', 40)
     Voiceline('tk407')
     XPositionRelativeFacing(1650000)
@@ -9355,8 +9567,8 @@ def CmnActMatchWin():
     sprite('tk610_09', 32767)
     loopRest()
     label(4)
-    clearUponHandler(7)
-    clearUponHandler(2)
+    clearUponHandler(CORNERED)
+    clearUponHandler(LANDING)
     sprite('tk063_11ex', 4)
     CommonSE('209_down_normal_1')
     LandingEffects(100, 1, 1)
@@ -9443,7 +9655,7 @@ def CmnActMatchWin():
     sprite('tk612_05', 5)
     sprite('tk612_06', 30)
     sprite('tk612_07', 32767)
-    if (not CharacterIDCheck('jb')):
+    if not CharacterIDCheck('jb'):
         CreateObject('tkef450_jyubei_win', 0)
     DemoTimer(30)
     loopRest()
@@ -9701,6 +9913,7 @@ def CmnActMatchWin():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActLose():
     sprite('tk000_00', 6)
@@ -9723,6 +9936,7 @@ def CmnActLose():
     sprite('tk620_08', 32767)
     DemoTimer(50)
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -9739,11 +9953,13 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefWin():
@@ -9751,9 +9967,11 @@ def EventDefWin():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefLose():
     sprite('tk060_14', 32767)
+
 
 @State
 def EventDefLoseToStand():
@@ -9773,10 +9991,12 @@ def EventDefLoseToStand():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventNoDisp():
     sprite('keep', 32767)
     Visibility(1)
+
 
 @State
 def EventYorokeStart():
@@ -9786,6 +10006,7 @@ def EventYorokeStart():
     loopRest()
     enterState('EventYorokeLoop')
 
+
 @State
 def EventYorokeLoop():
     StayAfterMovement(1, 0)
@@ -9793,6 +10014,7 @@ def EventYorokeLoop():
     sprite('tk070_02', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventYorokeEnd():
@@ -9810,6 +10032,7 @@ def EventYorokeEnd():
     Unknown1005()
     loopRest()
 
+
 @State
 def EventExciteStart():
     sprite('tk300_00', 5)
@@ -9824,6 +10047,7 @@ def EventExciteStart():
     sprite('tk300_06', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventExciteTurbo2Start():
@@ -9840,6 +10064,7 @@ def EventExciteTurbo2Start():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventExciteTurbo3Start():
     sprite('tk300_00', 2)
@@ -9854,6 +10079,7 @@ def EventExciteTurbo3Start():
     sprite('tk300_06', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventExciteTurbo5Start():
@@ -9870,6 +10096,7 @@ def EventExciteTurbo5Start():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventExciteStop():
     sprite('tk300_07', 5)
@@ -9877,12 +10104,14 @@ def EventExciteStop():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventVSLC1():
     sprite('null', 1)
     ScreenCollision(0)
     EnableCollision(0)
     loopRest()
+
 
 @State
 def EventVSLC2():
@@ -9907,7 +10136,7 @@ def EventVSLC2():
     setGravity(200)
     PrivateSE('tkse_01')
     sprite('tk404_05', 2)
-    sendToLabelUpon(2, 82)
+    uponSendToLabel(LANDING, 82)
     AirDashEffects(1)
     loopRest()
     label(81)
@@ -9917,7 +10146,7 @@ def EventVSLC2():
     loopRest()
     gotoLabel(81)
     label(82)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk404_10', 3)
     LandingEffects(100, 1, 1)
     XImpulseAcceleration(40)
@@ -9955,9 +10184,11 @@ def EventVSLC2():
     sprite('tk033_08', 1)
     enterState('CmnActStand')
 
+
 @State
 def EventVSLC3():
     sprite('tk063_12', 32767)
+
 
 @State
 def EventVSLC4():
@@ -9975,11 +10206,13 @@ def EventVSLC4():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDashInEntryWait():
     sprite('null', 32767)
     XPositionRelativeFacing(-1600000)
     loopRest()
+
 
 @State
 def EventDashInEntry():
@@ -10006,6 +10239,7 @@ def EventDashInEntry():
     ScreenCollision(0)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDashLeave():
@@ -10049,6 +10283,7 @@ def EventDashLeave():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventEntryDancingEdge():
     sprite('tk400_01', 4)
@@ -10058,7 +10293,7 @@ def EventEntryDancingEdge():
     physicsXImpulse(0)
     physicsYImpulse(9000)
     setGravity(1600)
-    sendToLabelUpon(2, 72)
+    uponSendToLabel(LANDING, 72)
     Flip()
     Voiceline('tk206')
     sprite('tk400_02', 4)
@@ -10079,7 +10314,7 @@ def EventEntryDancingEdge():
     loopRest()
     gotoLabel(71)
     label(72)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk400_09', 3)
     XImpulseAcceleration(30)
     EnableAfterimage(0)
@@ -10102,6 +10337,7 @@ def EventEntryDancingEdge():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventARvsTKEntryCKCreate():
     sprite('keep', 32767)
@@ -10112,12 +10348,14 @@ def EventARvsTKEntryCKCreate():
     Visibility(1)
     loopRest()
 
+
 @State
 def EventARvsTKLose():
     sprite('tk070_03', 2)
     AddX(-160000)
     loopRest()
     enterState('EventYorokeLoop')
+
 
 @State
 def EventARvsTKLoseBNCreate():
@@ -10130,6 +10368,7 @@ def EventARvsTKLoseBNCreate():
     CreateObject('EventBN', -1)
     AddX(-350000)
     loopRest()
+
 
 @State
 def EventDance():
@@ -10147,13 +10386,14 @@ def EventDance():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventCAVsTK_WalkAndTobitsuki():
     ScreenCollision(0)
     XPositionRelativeFacing(-1350000)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 550000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 550000:
             sendToLabel(1)
     sprite('tk030_00', 3)
     sprite('tk030_01', 1)
@@ -10175,7 +10415,7 @@ def EventCAVsTK_WalkAndTobitsuki():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('tk000_00', 7)
     EndMomentum(1)
     sprite('tk000_01', 7)
@@ -10183,6 +10423,7 @@ def EventCAVsTK_WalkAndTobitsuki():
     sprite('tk000_03', 7)
     loopRest()
     enterState('EventCAVsTK_Tobitsuki')
+
 
 @State
 def EventCAVsTK_Tobitsuki():
@@ -10203,8 +10444,8 @@ def EventCAVsTK_Tobitsuki():
     sprite('tk431_08', 2)
     sprite('tk431_09', 2)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 80000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 80000:
             sendToLabel(1)
     label(0)
     sprite('tk431_10', 2)
@@ -10212,8 +10453,8 @@ def EventCAVsTK_Tobitsuki():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(3)
-    sendToLabelUpon(2, 3)
+    clearUponHandler(EVERY_FRAME)
+    uponSendToLabel(LANDING, 3)
     ObjectUpon(22, 32)
     label(2)
     sprite('tk431_10', 2)
@@ -10221,7 +10462,7 @@ def EventCAVsTK_Tobitsuki():
     loopRest()
     gotoLabel(2)
     label(3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     CommonSE('209_down_normal_1')
     CommonSE('005_swing_grap_2_0')
@@ -10239,6 +10480,7 @@ def EventCAVsTK_Tobitsuki():
     sprite('tk010_11', 6)
     loopRest()
     gotoLabel(4)
+
 
 @State
 def EventCAVsTK_Hanareru():
@@ -10259,7 +10501,7 @@ def EventCAVsTK_Hanareru():
     sprite('tk033_03', 1)
     sprite('tk033_03', 1)
     loopRest()
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     label(0)
     sprite('tk033_00', 2)
     sprite('tk033_01', 2)
@@ -10268,7 +10510,7 @@ def EventCAVsTK_Hanareru():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk033_04', 1)
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
@@ -10279,6 +10521,7 @@ def EventCAVsTK_Hanareru():
     sprite('tk033_08', 1)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventCAVsTK_TKLose():
@@ -10342,6 +10585,7 @@ def EventCAVsTK_TKLose():
     sprite('tk620_08', 32767)
     loopRest()
 
+
 @State
 def EventTKvsAREntry00():
     sprite('tk300_00', 5)
@@ -10356,6 +10600,7 @@ def EventTKvsAREntry00():
     sprite('tk300_06', 5)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventTKvsAREntry01():
@@ -10374,6 +10619,7 @@ def EventTKvsAREntry01():
     sprite('tk000_09', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventTKvsARWin00():
@@ -10428,6 +10674,7 @@ def EventTKvsARWin00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTKvsHAEntry00():
     sprite('tk300_00', 5)
@@ -10443,12 +10690,14 @@ def EventTKvsHAEntry00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTKvsHAEntry01():
     sprite('tk300_07', 5)
     sprite('tk300_08', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTKvsNYEntry00():
@@ -10465,6 +10714,7 @@ def EventTKvsNYEntry00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTKvsNYEntry01():
     label(0)
@@ -10479,12 +10729,14 @@ def EventTKvsNYEntry01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTKvsNYEntry02():
     sprite('tk300_07', 5)
     sprite('tk300_08', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTKvsNYWin00():
@@ -10498,6 +10750,7 @@ def EventTKvsNYWin00():
     sprite('tk071_06', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventNYvsTKEntry00():
@@ -10514,6 +10767,7 @@ def EventNYvsTKEntry00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventNYvsTKWin00():
 
@@ -10529,6 +10783,7 @@ def EventNYvsTKWin00():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
     AlphaValue(255)
+
 
 @State
 def EventPTvsTKStay():
@@ -10564,10 +10819,12 @@ def EventPTvsTKStay():
     sprite('tk000_09', 7)
     gotoLabel(0)
 
+
 @State
 def EventPTvsTKLose():
     XPositionRelativeFacing(-100000)
     sprite('tk620_08', 32767)
+
 
 @State
 def EventLookAround():
@@ -10609,6 +10866,7 @@ def EventLookAround():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventLookAround2():
     sprite('tk001_00', 1)
@@ -10649,15 +10907,18 @@ def EventLookAround2():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventWinTKVSBN1():
     sprite('tk313_19', 32767)
+
 
 @State
 def EventWinTKVSBN2():
     sprite('tk313_19', 6)
     sprite('tk313_20', 6)
     enterState('CmnActStand')
+
 
 @State
 def EventActionTKVSAR():
@@ -10674,17 +10935,20 @@ def EventActionTKVSAR():
     sprite('tk331_07', 3)
     gotoLabel(0)
 
+
 @State
 def EventActionTKVSAREnd():
     sprite('tk331_08', 3)
     sprite('tk331_09', 3)
     enterState('CmnActStand')
 
+
 @State
 def EventTKvsRGSummonAR():
     sprite('keep', 32767)
     Visibility(1)
     CreateObject('EventAR', -1)
+
 
 @State
 def EventTKvsRG01():
@@ -10711,6 +10975,7 @@ def EventTKvsRG01():
     sprite('tk611_09', 6)
     enterState('CmnActStand')
 
+
 @State
 def EventWalkNear():
     sprite('tk000_00', 7)
@@ -10726,9 +10991,9 @@ def EventWalkNear():
     ScreenCollision(0)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 200000):
+            if SLOT_19 < 200000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('tk030_00', 3)
@@ -10751,6 +11016,7 @@ def EventWalkNear():
     label(1)
     physicsXImpulse(0)
     enterState('CmnActStand')
+
 
 @State
 def EventRunOut():
@@ -10786,15 +11052,16 @@ def EventRunOut():
     DashEffects(100, 1, 1)
     sprite('tk032_00', 2)
 
+
 @State
 def EventNekoWalkEntry():
     ScreenCollision(0)
     SetActionMark(1)
     XPositionRelativeFacing(-900000)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('tk350_00', 3)
@@ -10832,6 +11099,7 @@ def EventNekoWalkEntry():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def EventCrouchToStand():
     sprite('tk350_11', 3)
@@ -10858,12 +11126,14 @@ def EventCrouchToStand():
     label(1)
     enterState('EventTKvsRG01')
 
+
 @State
 def EventCrouchToStand2():
     sprite('tk350_11', 3)
     sprite('tk010_01', 3)
     sprite('tk010_00', 3)
     enterState('CmnActStand')
+
 
 @State
 def EventVsHZDashInEntry():
@@ -10893,6 +11163,7 @@ def EventVsHZDashInEntry():
     loopRest()
     enterState('EventPTvsTKStay')
 
+
 @State
 def Act2Event_NoDisp():
 
@@ -10903,6 +11174,7 @@ def Act2Event_NoDisp():
             Visibility(0)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def Act2Event_blvstk_00():
@@ -10949,6 +11221,7 @@ def Act2Event_blvstk_00():
     sprite('tk431_20', 32767)
     loopRest()
 
+
 @State
 def Act2Event_blvstk_01():
 
@@ -10990,6 +11263,7 @@ def Act2Event_blvstk_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_blvstk_02():
     sprite('tk332_00', 2)
@@ -11008,12 +11282,13 @@ def Act2Event_blvstk_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_blvstk_03():
 
     def upon_IMMEDIATE():
         EndYPhysicsImpulse()
-        sendToLabelUpon(2, 0)
+        uponSendToLabel(LANDING, 0)
     sprite('tk332_08', 4)
     sprite('tk332_09', 4)
     sprite('tk020_05', 3)
@@ -11032,6 +11307,7 @@ def Act2Event_blvstk_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_blvstk_04():
     sprite('tk611_00', 4)
@@ -11049,12 +11325,14 @@ def Act2Event_blvstk_04():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_blvstk_05():
     sprite('keep', 2)
     sprite('tk611_09', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_blvstk_06():
@@ -11076,6 +11354,7 @@ def Act2Event_blvstk_06():
     sprite('tk001_08', 32767)
     CommonSE('007_swing_knife_0')
     loopRest()
+
 
 @State
 def Act2Event_blvstk_07():
@@ -11131,6 +11410,7 @@ def Act2Event_blvstk_07():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_Chouhatsu():
     sprite('tk300_00', 5)
@@ -11155,6 +11435,7 @@ def Act2Event_Chouhatsu():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_HighSpeedChouhatsu():
     sprite('tk300_00', 3)
@@ -11171,11 +11452,12 @@ def Act2Event_HighSpeedChouhatsu():
     sprite('tk300_06', 3)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('tk300_07', 5)
     sprite('tk300_08', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_DashIn():
@@ -11184,14 +11466,14 @@ def Act2Event_DashIn():
         XPositionRelativeFacing(-900000)
         ScreenCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 360000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 360000:
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-360000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -360000:
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('tk032_00', 5)
     physicsXImpulse(14000)
     label(9)
@@ -11222,6 +11504,7 @@ def Act2Event_DashIn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Syobon():
     sprite('tk620_00', 6)
@@ -11244,6 +11527,7 @@ def Act2Event_Syobon():
     sprite('tk620_08', 32767)
     loopRest()
 
+
 @State
 def Act2Event_SyobonEnd():
     sprite('keep', 2)
@@ -11262,6 +11546,7 @@ def Act2Event_SyobonEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_bnvstk_00():
     sprite('keep', 2)
@@ -11279,6 +11564,7 @@ def Act2Event_bnvstk_00():
     sprite('tk061_12', 3)
     loopRest()
     enterState('Act2Event_Chouhatsu')
+
 
 @State
 def Act2Event_bnvstk_01():
@@ -11321,6 +11607,7 @@ def Act2Event_bnvstk_01():
     sprite('tk620_08', 32767)
     loopRest()
 
+
 @State
 def Act2Event_bnvstk_02():
 
@@ -11346,6 +11633,7 @@ def Act2Event_bnvstk_02():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_bnvstk_03():
     sprite('keep', 1)
@@ -11358,7 +11646,7 @@ def Act2Event_bnvstk_03():
     sprite('tk071_06', 3)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     SetActionMark(5)
     label(1)
     sprite('tk071_03', 4)
@@ -11368,7 +11656,7 @@ def Act2Event_bnvstk_03():
     sprite('tk071_06', 4)
     loopRest()
     if SLOT_2:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     SetActionMark(5)
     label(2)
     sprite('tk071_03', 5)
@@ -11378,7 +11666,7 @@ def Act2Event_bnvstk_03():
     sprite('tk071_06', 5)
     loopRest()
     if SLOT_2:
-        _gotolabel(2)
+        conditionalSendToLabel(2)
     SetActionMark(3)
     label(3)
     sprite('tk071_03', 6)
@@ -11388,10 +11676,11 @@ def Act2Event_bnvstk_03():
     sprite('tk071_06', 6)
     loopRest()
     if SLOT_2:
-        _gotolabel(3)
+        conditionalSendToLabel(3)
     loopRest()
     SLOT_65 = 1
     enterState('Act2Event_bnvstk_04')
+
 
 @State
 def Act2Event_bnvstk_04():
@@ -11428,6 +11717,7 @@ def Act2Event_bnvstk_04():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def EventAct2TKVSAZ01():
 
@@ -11436,6 +11726,7 @@ def EventAct2TKVSAZ01():
         XPositionRelativeFacing(-3600000)
     sprite('null', 32767)
 
+
 @State
 def EventAct2TKVSAZ02():
 
@@ -11443,9 +11734,9 @@ def EventAct2TKVSAZ02():
         ScreenCollision(0)
         SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 380000):
+            if SLOT_19 < 380000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('tk000_00', 7)
@@ -11495,13 +11786,14 @@ def EventAct2TKVSAZ02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventAct2TKVSAZ03():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         ScreenCollision(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         RunLoopUpon(17, 40)
 
         def upon_17():
@@ -11560,7 +11852,7 @@ def EventAct2TKVSAZ03():
     sprite('tk022_05', 3)
     sprite('tk022_06', 3)
     sprite('tk022_07', 3)
-    sendToLabelUpon(2, 4)
+    uponSendToLabel(LANDING, 4)
     label(3)
     sprite('tk022_08', 3)
     sprite('tk022_09', 3)
@@ -11573,14 +11865,15 @@ def EventAct2TKVSAZ03():
     loopRest()
     enterState('EventVsHZDashInEntry')
 
+
 @State
 def EventAct2TKVSAZ04():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         ScreenCollision(0)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         RunLoopUpon(17, 5)
 
         def upon_17():
@@ -11686,7 +11979,7 @@ def EventAct2TKVSAZ04():
     XImpulseAcceleration(50)
     sprite('tk410_17', 2)
     Flip()
-    sendToLabelUpon(2, 5)
+    uponSendToLabel(LANDING, 5)
     label(4)
     sprite('tk022_08', 3)
     physicsXImpulse(-4252)
@@ -11696,7 +11989,7 @@ def EventAct2TKVSAZ04():
     loopRest()
     gotoLabel(4)
     label(5)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('tk010_01', 4)
     EndMomentum(1)
     sprite('tk010_00', 4)
@@ -11734,6 +12027,7 @@ def EventAct2TKVSAZ04():
     sprite('tk032_00', 32767)
     loopRest()
 
+
 @State
 def Act2Event_ChouhatsuWithShake():
     sprite('tk300_00', 5)
@@ -11759,6 +12053,7 @@ def Act2Event_ChouhatsuWithShake():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventAct2TKvsNT_EntryWait():
 
@@ -11769,6 +12064,7 @@ def EventAct2TKvsNT_EntryWait():
     XPositionRelativeFacing(-1500000)
     Visibility(1)
     loopRest()
+
 
 @State
 def EventAct2TKvsNT_EntryWait01():
@@ -11792,6 +12088,7 @@ def EventAct2TKvsNT_EntryWait01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventAct2TKvsNT01():
 
@@ -11810,6 +12107,7 @@ def EventAct2TKvsNT01():
     loopRest()
     enterState('EventAct2TKvsNT_EntryWait01')
 
+
 @State
 def EventAct2TKvsNT02():
 
@@ -11818,14 +12116,14 @@ def EventAct2TKvsNT02():
         ScreenCollision(0)
         CameraControlEnable(1)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 360000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 360000:
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-360000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -360000:
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('tk010_01', 6)
     sprite('tk010_00', 6)
     loopRest()
@@ -11860,6 +12158,7 @@ def EventAct2TKvsNT02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventAct2HeadKosikosi():
     sprite('tk601_14', 4)
@@ -11872,12 +12171,12 @@ def EventAct2HeadKosikosi():
     sprite('tk601_11', 8)
     AddActionMark(-1)
     loopRest()
-    (SLOT_2 > 0)
-    if SLOT_0:
-        _gotolabel(0)
+    if SLOT_2 > 0:
+        conditionalSendToLabel(0)
     sprite('tk601_11', 12)
     loopRest()
     gotoLabel(9)
+
 
 @State
 def EventAct2HeadKosikosiEnd():
@@ -11886,21 +12185,22 @@ def EventAct2HeadKosikosiEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventAct2Hatena():
     sprite('tk012_00', 4)
     sprite('tk012_01', 4)
     CreateObject('Eventtk450_?', -1)
-    if SLOT_38:
-        ApplyFunctionsToObjects(1)
-        AddX(140000)
-        AddY(12000)
-        ApplyFunctionsToSelf()
+    if SLOT_IsFacingRight:
+
+        def RunOnObject_1():
+            AddX(140000)
+            AddY(12000)
     else:
-        ApplyFunctionsToObjects(1)
-        AddX(5000)
-        AddY(12000)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_1():
+            AddX(5000)
+            AddY(12000)
     sprite('tk012_02', 4)
     CommonSE('208_brake_normal')
     sprite('tk012_01', 4)
@@ -11913,21 +12213,6 @@ def EventAct2Hatena():
     loopRest()
     enterState('EventAct2Crouch')
 
-@State
-def EventAct2Crouch():
-    label(0)
-    sprite('tk010_02', 6)
-    sprite('tk010_03', 6)
-    sprite('tk010_04', 6)
-    sprite('tk010_05', 6)
-    sprite('tk010_06', 6)
-    sprite('tk010_07', 6)
-    sprite('tk010_08', 6)
-    sprite('tk010_09', 6)
-    sprite('tk010_10', 6)
-    sprite('tk010_11', 6)
-    loopRest()
-    gotoLabel(0)
 
 @State
 def EventAct2Crouch():
@@ -11944,6 +12229,24 @@ def EventAct2Crouch():
     sprite('tk010_11', 6)
     loopRest()
     gotoLabel(0)
+
+
+@State
+def EventAct2Crouch():
+    label(0)
+    sprite('tk010_02', 6)
+    sprite('tk010_03', 6)
+    sprite('tk010_04', 6)
+    sprite('tk010_05', 6)
+    sprite('tk010_06', 6)
+    sprite('tk010_07', 6)
+    sprite('tk010_08', 6)
+    sprite('tk010_09', 6)
+    sprite('tk010_10', 6)
+    sprite('tk010_11', 6)
+    loopRest()
+    gotoLabel(0)
+
 
 @State
 def Act2EventTKvsTB00():
@@ -11951,9 +12254,9 @@ def Act2EventTKvsTB00():
     def upon_IMMEDIATE():
         SetActionMark(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_19 < 250000):
+                if SLOT_19 < 250000:
                     SetActionMark(0)
                     sendToLabel(1)
     sprite('tk032_00', 5)
@@ -11991,6 +12294,7 @@ def Act2EventTKvsTB00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventAct2TKvsTBWalklittlebit():
     sprite('tk030_00', 3)
@@ -12003,6 +12307,7 @@ def EventAct2TKvsTBWalklittlebit():
     sprite('tk030_05', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvsno_00():
@@ -12050,6 +12355,7 @@ def Act3Event_tkvsno_00():
     sprite('tk431_20', 32767)
     loopRest()
 
+
 @State
 def Act3Event_tkvsno_01():
 
@@ -12057,7 +12363,7 @@ def Act3Event_tkvsno_01():
         EnableCollision(0)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
             sendToLabel(0)
     sprite('tk431_19', 3)
@@ -12088,6 +12394,7 @@ def Act3Event_tkvsno_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvsno_02():
     sprite('tk418_00', 5)
@@ -12099,6 +12406,7 @@ def Act3Event_tkvsno_02():
     sprite('tk418_05', 6)
     loopRest()
     gotoLabel(100)
+
 
 @State
 def Act3Event_tkvsno_03():
@@ -12113,6 +12421,7 @@ def Act3Event_tkvsno_03():
     sprite('tk312_03', 4)
     PrivateSE('tkse_06')
     sprite('tk312_04', 32767)
+
 
 @State
 def Act3Event_tkvsno_04():
@@ -12132,12 +12441,13 @@ def Act3Event_tkvsno_04():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvsno_05():
 
     def upon_IMMEDIATE():
         XPositionRelativeFacing(-20000)
-        sendToLabelUpon(2, 0)
+        uponSendToLabel(LANDING, 0)
     sprite('tk040_02', 5)
     sprite('tk092_00', 12)
     ParticleColor(4278223103, 4278202623, 4278190335)
@@ -12171,6 +12481,7 @@ def Act3Event_tkvsno_05():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvsno_06():
 
@@ -12191,10 +12502,12 @@ def Act3Event_tkvsno_06():
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('tk611_08', 4)
     loopRest()
-    GotoIf0(9, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(9)
     sprite('tk611_09', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvsno_07():
@@ -12222,10 +12535,11 @@ def Act3Event_tkvsno_07():
     sprite('tk032_10', 3)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 32767)
     Visibility(1)
     EndMomentum(1)
+
 
 @State
 def Act3Event_tkvshz_00():
@@ -12251,6 +12565,7 @@ def Act3Event_tkvshz_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvshz_01():
 
@@ -12270,11 +12585,13 @@ def Act3Event_tkvshz_01():
     sprite('tk300_05', 6)
     sprite('tk300_06', 6)
     loopRest()
-    GotoIf0(9, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(9)
     sprite('tk300_07', 5)
     sprite('tk300_08', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvshz_02():
@@ -12307,6 +12624,7 @@ def Act3Event_tkvshz_02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvshz_03():
     sprite('tk032_00', 5)
@@ -12329,6 +12647,7 @@ def Act3Event_tkvshz_03():
     loopRest()
     enterState('Act3Event_Syobon')
 
+
 @State
 def Act3Event_Syobon():
     sprite('tk620_00', 7)
@@ -12348,6 +12667,7 @@ def Act3Event_Syobon():
     sprite('tk620_10', 8)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_tkvshz_04():
@@ -12379,10 +12699,11 @@ def Act3Event_tkvshz_04():
     sprite('tk032_10', 3)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 32767)
     Visibility(1)
     EndMomentum(1)
+
 
 @State
 def Act3Event_tkvslc_00():
@@ -12392,14 +12713,14 @@ def Act3Event_tkvslc_00():
         CameraControlEnable(1)
         ScreenCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 560000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 560000:
                     sendToLabel(0)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-560000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -560000:
                 sendToLabel(0)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('tk030_00', 3)
     physicsXImpulse(5000)
     label(9)
@@ -12443,6 +12764,7 @@ def Act3Event_tkvslc_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvslc_01():
 
@@ -12450,18 +12772,18 @@ def Act3Event_tkvslc_01():
         CameraControlEnable(0)
         ScreenCollision(0)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
                     sendToLabel(0)
                     EndMomentum(1)
                     XPositionRelativeFacing(-260000)
-                    clearUponHandler(3)
-            elif (SLOT_22 > (-260000)):
+                    clearUponHandler(EVERY_FRAME)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
                 sendToLabel(0)
                 EndMomentum(1)
                 XPositionRelativeFacing(-260000)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
     sprite('tk000_00', 7)
     CreateObject('Act3Event_Cam', 103)
     sprite('tk000_05', 7)
@@ -12490,14 +12812,15 @@ def Act3Event_tkvslc_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvslc_02():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
             XPositionRelativeFacing(-260000)
             sendToLabel(1)
@@ -12545,6 +12868,7 @@ def Act3Event_tkvslc_02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvslc_03():
     sprite('tk331_00', 3)
@@ -12559,12 +12883,14 @@ def Act3Event_tkvslc_03():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_tkvslc_04():
     sprite('tk331_08', 4)
     sprite('tk331_09', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvslc_05():
@@ -12576,7 +12902,7 @@ def Act3Event_tkvslc_05():
         AbsoluteY(100000)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(1)
             LandingEffects(100, 1, 1)
             XPositionRelativeFacing(-260000)
@@ -12606,6 +12932,7 @@ def Act3Event_tkvslc_05():
     sprite('tk024_04', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvslc_06():
@@ -12637,6 +12964,7 @@ def Act3Event_tkvslc_06():
     Visibility(1)
     loopRest()
 
+
 @State
 def Act3Event_tkvslc_07():
     sprite('null', 10)
@@ -12646,6 +12974,7 @@ def Act3Event_tkvslc_07():
     ParticleSize(1500)
     CallCustomizableParticle('ef_hitlz', 103)
     CommonSE('101_hit_slash_3')
+
 
 @State
 def Act3Event_tkvsmu_00():
@@ -12666,6 +12995,7 @@ def Act3Event_tkvsmu_00():
     sprite('tk090_04', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvsmu_01():

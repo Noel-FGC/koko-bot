@@ -19,6 +19,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_VH_OD():
 
@@ -40,6 +41,7 @@ def EMB_VH_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_VH_AH():
 
@@ -60,6 +62,7 @@ def EMB_VH_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 20)
 
+
 @State
 def WolfDamage():
 
@@ -71,6 +74,7 @@ def WolfDamage():
     sprite('keep', 30)
     ConstantAlphaModifier(-15)
     BlendMode_Normal()
+
 
 @State
 def Camera():
@@ -91,10 +95,10 @@ def Camera():
                 DeviationX(3800000, -3800000)
                 DeviationY(200000, -200000)
                 SLOT_106 = 500
-            if CheckInput(0x13):
-                SLOT_106 = (SLOT_106 + 40)
-            if CheckInput(0x1c):
-                SLOT_106 = (SLOT_106 + (-40))
+            if CheckInput(INPUT_HOLD_C):
+                SLOT_106 = SLOT_106 + 40
+            if CheckInput(INPUT_HOLD_D):
+                SLOT_106 = SLOT_106 + -40
             XImpulseAcceleration(80)
             YAccel(80)
             CameraNoScreenCollision(1)
@@ -113,6 +117,7 @@ def Camera():
     sprite('camera', 1200)
     NoDamageAction(1)
     Size(500)
+
 
 @State
 def Yugami():
@@ -135,10 +140,12 @@ def Yugami():
     AddRotationPerFrame(100)
     Unknown3059(30)
 
+
 @State
 def DummyA():
     sprite('null', 1)
     CreateObject('AstralHeatBunshin9', -1)
+
 
 @State
 def AstralHeatBunshin1stJump():
@@ -158,6 +165,7 @@ def AstralHeatBunshin1stJump():
     sprite('vh450_51add02', 2)
     sprite('vh450_51add02', 2)
     sprite('vh450_51add02', 2)
+
 
 @State
 def AstralHeatBunshinBlackUpper():
@@ -190,6 +198,7 @@ def AstralHeatBunshinBlackUpper():
     sprite('vh450_51add01', 80)
     RefreshMultihit()
     HitAnywhere(1)
+
 
 @State
 def AstralHeatMultiHitObj():
@@ -299,6 +308,7 @@ def AstralHeatMultiHitObj():
     FlipOnHit(1)
     Hitstop(100)
 
+
 @State
 def AstralDummyKillObj():
 
@@ -318,6 +328,7 @@ def AstralDummyKillObj():
         DefeatOpponentBehavior(3)
         Visibility(1)
     sprite('camera', 200)
+
 
 @State
 def AstralCamera():
@@ -350,14 +361,14 @@ def AstralCamera():
             sendToLabel(8)
 
         def upon_45():
-            if (SLOT_51 == 1):
-                ApplyFunctionsToObjects(22)
-                ColorForTransition(4282400832)
-                ApplyFunctionsToSelf()
-            if (SLOT_51 == 2):
-                ApplyFunctionsToObjects(22)
-                ColorForTransition(4278190080)
-                ApplyFunctionsToSelf()
+            if SLOT_51 == 1:
+
+                def RunOnObject_22():
+                    ColorForTransition(4282400832)
+            if SLOT_51 == 2:
+
+                def RunOnObject_22():
+                    ColorForTransition(4278190080)
     label(1)
     sprite('camera', 50)
     CameraControlEnable(1)
@@ -365,31 +376,31 @@ def AstralCamera():
     CameraNoScreenCollision(1)
     HUDVisibillity(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         TeleportToObject(22)
         AbsoluteY(200000)
     sprite('camera', 32767)
     loopRest()
     label(2)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('camera', 32767)
-    ApplyFunctionsToObjects(22)
-    setGravity(0)
-    physicsXImpulse(-50)
-    physicsYImpulse(400)
-    AddY(100)
-    EnableAfterimage(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        setGravity(0)
+        physicsXImpulse(-50)
+        physicsYImpulse(400)
+        AddY(100)
+        EnableAfterimage(1)
     loopRest()
     label(3)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('camera', 10)
     CameraFast(1)
-    ApplyFunctionsToObjects(22)
-    physicsXImpulse(0)
-    physicsYImpulse(100000)
-    Unknown23178(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        physicsXImpulse(0)
+        physicsYImpulse(100000)
+        Unknown23178(0)
     physicsYImpulse(70000)
     setGravity(0)
     sprite('camera', 6)
@@ -419,20 +430,20 @@ def AstralCamera():
     sprite('camera', 32767)
     loopRest()
     label(4)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('camera', 7)
     E0EAEffectPosition(0)
     physicsYImpulse(80000)
     setGravity(-4500)
     CameraFast(1)
     CameraPosition(1000)
-    clearUponHandler(3)
-    ApplyFunctionsToObjects(22)
-    EndMomentum(1)
-    AbsoluteY(38000000)
-    AddY(-600000)
-    Unknown23178(0)
-    ApplyFunctionsToSelf()
+    clearUponHandler(EVERY_FRAME)
+
+    def RunOnObject_22():
+        EndMomentum(1)
+        AbsoluteY(38000000)
+        AddY(-600000)
+        Unknown23178(0)
     SLOT_51 = 1
     loopRest()
     sprite('camera', 11)
@@ -444,16 +455,16 @@ def AstralCamera():
     CreateObject('Fade5', -1)
     sprite('camera', 32767)
     EndMomentum(1)
-    ApplyFunctionsToObjects(22)
-    AbsoluteY(38000000)
-    AddY(-300000)
-    physicsYImpulse(7000)
-    setGravity(0)
-    XPositionRelativeFacing(0)
-    ApplyFunctionsToSelf()
-    ApplyFunctionsToObjects(3)
-    XPositionRelativeFacing(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AbsoluteY(38000000)
+        AddY(-300000)
+        physicsYImpulse(7000)
+        setGravity(0)
+        XPositionRelativeFacing(0)
+
+    def RunOnObject_3():
+        XPositionRelativeFacing(0)
     TeleportToObject(22)
     AddY(200000)
     E0EAEffectPosition(22)
@@ -469,19 +480,19 @@ def AstralCamera():
     AddY(-250000)
     physicsYImpulse(10000)
     setGravity(125)
-    ApplyFunctionsToObjects(22)
-    AbsoluteY(39000000)
-    AddY(-700000)
-    physicsYImpulse(12000)
-    setGravity(125)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AbsoluteY(39000000)
+        AddY(-700000)
+        physicsYImpulse(12000)
+        setGravity(125)
     sprite('camera', 4)
     EndMomentum(1)
     sprite('camera', 10)
     sprite('camera', 4)
     sprite('camera', 32767)
     label(5)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('camera', 3)
     E0EAEffectPosition(0)
     TeleportToObject(3)
@@ -490,6 +501,7 @@ def AstralCamera():
     CameraNoCeiling(0)
     sprite('camera', 32767)
     CameraFast(0)
+
 
 @State
 def Fade1():
@@ -507,6 +519,7 @@ def Fade1():
     sprite('vr_fade', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def Fade2():
     sprite('vr_fade', 10)
@@ -522,6 +535,7 @@ def Fade2():
     sprite('vr_fade', 10)
     sprite('vr_fade', 10)
     ConstantAlphaModifier(-32)
+
 
 @State
 def Fade3():
@@ -539,6 +553,7 @@ def Fade3():
     sprite('vr_fade', 4)
     ConstantAlphaModifier(-65)
 
+
 @State
 def Fade4():
     sprite('vr_fade', 4)
@@ -555,14 +570,16 @@ def Fade4():
     sprite('vr_fade', 4)
     ConstantAlphaModifier(-65)
 
+
 @State
 def Fade5():
     sprite('null', 10)
     CreateObject('Fade5Sub', -1)
     CreateObject('Fade5Sub', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('Fade5Sub', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
+
 
 @State
 def Fade5Sub():
@@ -586,17 +603,20 @@ def Fade5Sub():
             AddX(-426666)
     sprite('vr_shadow', 100)
 
+
 @State
 def WolfHairColorA():
     sprite('null', 1)
     ParticleColorFromPalette(48, 48, 48)
     CallCustomizableParticle('vhef_form_ex_off_dust', -1)
 
+
 @State
 def WolfHairColorB():
     sprite('null', 1)
     ParticleColorFromPalette(52, 52, 52)
     CallCustomizableParticle('vhef_form_ex_off_dust', -1)
+
 
 @State
 def vhef_attack_c():
@@ -605,12 +625,14 @@ def vhef_attack_c():
     ParticleColorFromPalette(50, 50, 50)
     CallCustomizableParticle('vhef_attack_c', -1)
 
+
 @State
 def vhef_hit():
     sprite('null', 1)
     ParticleDeviation(15000, 75000)
     CallCustomizableParticle('vhef_hit', -1)
     CommonSE('020_blood_1')
+
 
 @State
 def vhef_hit_mini():
@@ -620,6 +642,7 @@ def vhef_hit_mini():
     CallCustomizableParticle('vhef_hit', -1)
     CommonSE('101_hit_slash_0')
     CommonSE('020_blood_1')
+
 
 @State
 def vh202LegEff():
@@ -633,6 +656,7 @@ def vh202LegEff():
     sprite('vrvhef202_04', 2)
     ConstantAlphaModifier(-20)
     sprite('vrvhef202_05', 4)
+
 
 @State
 def vh211ArmEff():
@@ -650,6 +674,7 @@ def vh211ArmEff():
     CreateObject('vhef_form_dust', 1)
     CreateObject('vhef_form_dustlight', 0)
     CreateObject('vhef_form_dustlight', 1)
+
 
 @State
 def vh212LegEff():
@@ -670,6 +695,7 @@ def vh212LegEff():
     CreateObject('vhef_form_dustlight', 1)
     ConstantAlphaModifier(-25)
 
+
 @State
 def vhef_213():
 
@@ -685,6 +711,7 @@ def vhef_213():
     sprite('vrvhef213_01', 3)
     sprite('vrvhef213_02', 3)
     ConstantAlphaModifier(-32)
+
 
 @State
 def vh232LegEff():
@@ -703,6 +730,7 @@ def vh232LegEff():
     CreateObject('vhef_form_dustlight', 0)
     CreateObject('vhef_form_dustlight', 1)
 
+
 @State
 def vh234LegEff():
 
@@ -719,6 +747,7 @@ def vh234LegEff():
     CreateObject('vhef_form_dust', 1)
     CreateObject('vhef_form_dustlight', 0)
     CreateObject('vhef_form_dustlight', 1)
+
 
 @State
 def vh252LegEff():
@@ -741,6 +770,7 @@ def vh252LegEff():
     CreateObject('vhef_form_dustlight', 1)
     CreateObject('vhef_form_dustlight', 2)
 
+
 @State
 def vw252LegEff():
 
@@ -760,12 +790,14 @@ def vw252LegEff():
     CreateObject('vhef_form_dustlight', 1)
     CreateObject('vhef_form_dustlight', 2)
 
+
 @State
 def vhef_form_dust():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(52, 52, 53)
     CallCustomizableParticle('vhef_form_dust', -1)
+
 
 @State
 def vhef_form_dustlight():
@@ -774,6 +806,7 @@ def vhef_form_dustlight():
     Visibility(1)
     ParticleColorFromPalette(241, 240, 241)
     CallCustomizableParticle('vhef_form_off', -1)
+
 
 @State
 def DriveForm():
@@ -789,6 +822,7 @@ def DriveForm():
     CreateObject('FormOffMoya_front', -1)
     CreateParticle('vhef_form_ex02', -1)
 
+
 @State
 def FormDust():
     sprite('null', 1)
@@ -796,12 +830,14 @@ def FormDust():
     ParticleColorFromPalette(48, 48, 48)
     CallCustomizableParticle('vhef_form_ex_dust', -1)
 
+
 @State
 def FormDust_b():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(50, 50, 50)
     CallCustomizableParticle('vhef_form_ex_dust', -1)
+
 
 @State
 def FormCircle():
@@ -811,6 +847,7 @@ def FormCircle():
     ParticleColorFromPalette(241, 240, 241)
     CallCustomizableParticle('vhef_form_ex', -1)
 
+
 @State
 def vhef_form_ex():
     sprite('null', 1)
@@ -819,12 +856,14 @@ def vhef_form_ex():
     ParticleColorFromPalette(241, 240, 241)
     CallCustomizableParticle('vhef_form_ex01', -1)
 
+
 @State
 def vhef_form_ex_dust():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(48, 48, 48)
     CallCustomizableParticle('vhef_form_ex_dust', -1)
+
 
 @State
 def vhef_form_ex_dust_b():
@@ -833,12 +872,14 @@ def vhef_form_ex_dust_b():
     ParticleColorFromPalette(50, 50, 50)
     CallCustomizableParticle('vhef_form_ex_dust', -1)
 
+
 @State
 def vhef_form_ex_round():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(52, 52, 52)
     CallCustomizableParticle('vhef_form_ex_round', -1)
+
 
 @State
 def DriveFormOff():
@@ -852,6 +893,7 @@ def DriveFormOff():
     CreateObject('FormOffCircle', -1)
     CreateParticle('vhef_form_ex02', -1)
 
+
 @State
 def FormOffCircle():
 
@@ -863,6 +905,7 @@ def FormOffCircle():
         Size(850)
     sprite('null', 45)
     Visibility(1)
+
 
 @State
 def FormOffMoya():
@@ -879,6 +922,7 @@ def FormOffMoya():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def FormOffMoya_front():
 
@@ -893,6 +937,7 @@ def FormOffMoya_front():
     ConstantAlphaModifier(-30)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def FormOffMoya_back():
@@ -910,6 +955,7 @@ def FormOffMoya_back():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def Form_Air():
 
@@ -918,6 +964,7 @@ def Form_Air():
     sprite('null', 60)
     AddY(90000)
     Visibility(1)
+
 
 @State
 def FormOff_Air():
@@ -930,6 +977,7 @@ def FormOff_Air():
         AddY(90000)
     sprite('null', 40)
     Visibility(1)
+
 
 @State
 def vhef431_form_ex_dust():
@@ -950,6 +998,7 @@ def vhef431_form_ex_dust():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def vh400_tossin():
 
@@ -959,7 +1008,7 @@ def vh400_tossin():
         RemoveOnCallStateEnd(3)
         BlendMode_Add()
         Size(1400)
-        sendToLabelUpon(32, 60)
+        uponSendToLabel(32, 60)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     AlphaValue(255)
@@ -972,6 +1021,7 @@ def vh400_tossin():
     sprite('null', 1)
     CreateObject('vh400_kakusan', -1)
 
+
 @State
 def vh400_kakusan():
 
@@ -982,6 +1032,7 @@ def vh400_kakusan():
         BlendMode_Add()
         Size(1300)
     sprite('null', 20)
+
 
 @State
 def vh400_step():
@@ -1001,6 +1052,7 @@ def vh400_step():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vh403_syogeki():
 
@@ -1015,6 +1067,7 @@ def vh403_syogeki():
     CreateObject('vh403_ring1', 0)
     sprite('null', 12)
 
+
 @State
 def vh403_ring1():
 
@@ -1026,6 +1079,7 @@ def vh403_ring1():
     AddX(80000)
     AddY(80000)
 
+
 @State
 def vh403_ring2():
 
@@ -1035,6 +1089,7 @@ def vh403_ring2():
         Size(800)
     sprite('null', 40)
 
+
 @State
 def ef_airdashf6C4C():
 
@@ -1042,6 +1097,7 @@ def ef_airdashf6C4C():
         LinkParticle('vhef_airdashf')
         BlendMode_Add()
     sprite('null', 20)
+
 
 @State
 def ef_airdashf8C():
@@ -1052,6 +1108,7 @@ def ef_airdashf8C():
         RotationAngle(270000)
     sprite('null', 20)
 
+
 @State
 def ef_airdashf2C():
 
@@ -1060,6 +1117,7 @@ def ef_airdashf2C():
         BlendMode_Add()
         RotationAngle(90000)
     sprite('null', 20)
+
 
 @State
 def ef_airdashf9C():
@@ -1070,6 +1128,7 @@ def ef_airdashf9C():
         RotationAngle(320000)
     sprite('null', 20)
 
+
 @State
 def ef_airdashf3C():
 
@@ -1079,6 +1138,7 @@ def ef_airdashf3C():
         RotationAngle(50000)
     sprite('null', 20)
 
+
 @State
 def ef_airdashf1C():
 
@@ -1087,6 +1147,7 @@ def ef_airdashf1C():
         BlendMode_Add()
         RotationAngle(120000)
     sprite('null', 20)
+
 
 @State
 def vw202_tossin():
@@ -1105,6 +1166,7 @@ def vw202_tossin():
     ConstantAlphaModifier(-25)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vw202_tossin8C():
@@ -1125,6 +1187,7 @@ def vw202_tossin8C():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw202_tossin2C():
 
@@ -1143,6 +1206,7 @@ def vw202_tossin2C():
     ConstantAlphaModifier(-25)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vw202_tossin9C():
@@ -1163,6 +1227,7 @@ def vw202_tossin9C():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw202_tossin3C():
 
@@ -1181,6 +1246,7 @@ def vw202_tossin3C():
     ConstantAlphaModifier(-25)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vw202_tossin1C():
@@ -1201,6 +1267,7 @@ def vw202_tossin1C():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw400_tame():
 
@@ -1208,6 +1275,7 @@ def vw400_tame():
         LinkParticle('vw400_tame')
         BlendMode_Add()
     sprite('null', 30)
+
 
 @State
 def vw400_tossin_dust():
@@ -1219,7 +1287,7 @@ def vw400_tossin_dust():
         Size(1000)
         AddX(-50000)
         AlphaValue(0)
-        sendToLabelUpon(32, 80)
+        uponSendToLabel(32, 80)
 
         def upon_33():
             RotationAngle(320000)
@@ -1247,6 +1315,7 @@ def vw400_tossin_dust():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw400_tossin_line():
 
@@ -1256,7 +1325,7 @@ def vw400_tossin_line():
         E0EAEffectPosition(3)
         Size(1000)
         AlphaValue(0)
-        sendToLabelUpon(32, 80)
+        uponSendToLabel(32, 80)
 
         def upon_33():
             RotationAngle(320000)
@@ -1284,6 +1353,7 @@ def vw400_tossin_line():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw401_tossin():
 
@@ -1293,7 +1363,7 @@ def vw401_tossin():
         E0EAEffectPosition(3)
         Size(1000)
         AlphaValue(0)
-        sendToLabelUpon(32, 80)
+        uponSendToLabel(32, 80)
 
         def upon_33():
             RotationAngle(320000)
@@ -1321,6 +1391,7 @@ def vw401_tossin():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw401_Rasen():
 
@@ -1332,7 +1403,7 @@ def vw401_Rasen():
         Size(600)
         AddX(-180000)
         AlphaValue(0)
-        sendToLabelUpon(32, 80)
+        uponSendToLabel(32, 80)
 
         def upon_33():
             RotationAngle(320000)
@@ -1370,6 +1441,7 @@ def vw401_Rasen():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw401_line():
 
@@ -1379,7 +1451,7 @@ def vw401_line():
         E0EAEffectPosition(3)
         Size(1000)
         AlphaValue(0)
-        sendToLabelUpon(32, 81)
+        uponSendToLabel(32, 81)
 
         def upon_33():
             RotationAngle(320000)
@@ -1400,6 +1472,7 @@ def vw401_line():
     ConstantAlphaModifier(-35)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def Sukuryu():
@@ -1455,6 +1528,7 @@ def Sukuryu():
     loopRest()
     gotoLabel(81)
 
+
 @State
 def vwef_hit_kiba():
 
@@ -1465,6 +1539,7 @@ def vwef_hit_kiba():
         CommonSE('101_hit_slash_2')
         CommonSE('020_blood_1')
     sprite('null', 40)
+
 
 @State
 def vwef_hit_kiba_mini():
@@ -1477,6 +1552,7 @@ def vwef_hit_kiba_mini():
         CommonSE('020_blood_1')
     sprite('null', 40)
 
+
 @State
 def vw402_kamituki():
 
@@ -1487,6 +1563,7 @@ def vw402_kamituki():
         Size(1100)
     sprite('null', 40)
 
+
 @State
 def vw402_keri():
 
@@ -1496,6 +1573,7 @@ def vw402_keri():
         Size(1000)
     sprite('null', 30)
 
+
 @State
 def vh431_jumpkick():
 
@@ -1503,7 +1581,7 @@ def vh431_jumpkick():
         LinkParticle('vh431_jumpkick')
         BlendMode_Add()
         RemoveOnCallStateEnd(3)
-        sendToLabelUpon(32, 70)
+        uponSendToLabel(32, 70)
         Size(1000)
     sprite('null', 3)
     E0EAEffectPosition(3)
@@ -1518,6 +1596,7 @@ def vh431_jumpkick():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw431_tossin():
 
@@ -1529,7 +1608,7 @@ def vw431_tossin():
         Size(1400)
         AlphaValue(0)
         RotationAngle(320000)
-        sendToLabelUpon(32, 71)
+        uponSendToLabel(32, 71)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 26)
@@ -1539,6 +1618,7 @@ def vw431_tossin():
     ConstantAlphaModifier(-25)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vw431_tame():
@@ -1558,6 +1638,7 @@ def vw431_tame():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vw431_line9():
 
@@ -1568,7 +1649,7 @@ def vw431_line9():
         Size(1200)
         AlphaValue(0)
         RotationAngle(320000)
-        sendToLabelUpon(32, 72)
+        uponSendToLabel(32, 72)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 26)
@@ -1579,12 +1660,14 @@ def vw431_line9():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vh431_syougeki():
 
     def upon_IMMEDIATE():
         BlendMode_Add()
     sprite('null', 30)
+
 
 @State
 def vh431_hit_kiba1():
@@ -1598,6 +1681,7 @@ def vh431_hit_kiba1():
         Size(1500)
     sprite('null', 40)
 
+
 @State
 def vh431_hit_kiba2():
 
@@ -1609,6 +1693,7 @@ def vh431_hit_kiba2():
         RotationAngle(-35000)
         Size(1500)
     sprite('null', 40)
+
 
 @State
 def vh431_hit():
@@ -1622,6 +1707,7 @@ def vh431_hit():
         Size(1500)
     sprite('null', 50)
 
+
 @State
 def vh430Hit():
 
@@ -1634,12 +1720,14 @@ def vh430Hit():
     CommonSE('101_hit_slash_1')
     RotationAngle(-105000)
 
+
 @State
 def vhef_hit_vh430():
     sprite('null', 3)
     CommonSE('101_hit_slash_1')
     sprite('null', 60)
     CreateObject('vh430Hit', -1)
+
 
 @State
 def vh450_kakato_kick2():
@@ -1652,6 +1740,7 @@ def vh450_kakato_kick2():
         RotationAngle(-25000)
     sprite('null', 30)
 
+
 @State
 def vh450_kakato_kickef1():
 
@@ -1660,6 +1749,7 @@ def vh450_kakato_kickef1():
         BlendMode_Add()
         Size(700)
     sprite('null', 30)
+
 
 @State
 def vh450_kakato_kickef2():
@@ -1670,6 +1760,7 @@ def vh450_kakato_kickef2():
         Size(850)
     sprite('null', 30)
 
+
 @State
 def vh450_kakato_kickef3():
 
@@ -1678,6 +1769,7 @@ def vh450_kakato_kickef3():
         BlendMode_Add()
         Size(900)
     sprite('null', 30)
+
 
 @State
 def vh450_tame():
@@ -1696,6 +1788,7 @@ def vh450_tame():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vh450_moya1():
 
@@ -1704,13 +1797,14 @@ def vh450_moya1():
         BlendMode_Add()
         E0EAEffectPosition(3)
         Size(1500)
-        sendToLabelUpon(32, 82)
+        uponSendToLabel(32, 82)
     sprite('null', 75)
     label(82)
     sprite('null', 5)
     ConstantAlphaModifier(-50)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vh450_moya2():
@@ -1722,6 +1816,7 @@ def vh450_moya2():
         Size(850)
     sprite('null', 95)
 
+
 @State
 def vh450_moya3():
 
@@ -1732,6 +1827,7 @@ def vh450_moya3():
         Size(1200)
     sprite('null', 40)
 
+
 @State
 def vh450_moya5():
 
@@ -1740,13 +1836,14 @@ def vh450_moya5():
         BlendMode_Add()
         E0EAEffectPosition(2)
         Size(1500)
-        sendToLabelUpon(32, 82)
+        uponSendToLabel(32, 82)
     sprite('null', 75)
     label(82)
     sprite('null', 5)
     ConstantAlphaModifier(-50)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vh450_moya4():
@@ -1758,6 +1855,7 @@ def vh450_moya4():
         Size(1000)
     sprite('null', 40)
 
+
 @State
 def vh450_howling1():
 
@@ -1767,6 +1865,7 @@ def vh450_howling1():
         BlendMode_Add()
         Size(560)
     sprite('null', 30)
+
 
 @State
 def vh450_howling2():
@@ -1785,6 +1884,7 @@ def vh450_howling2():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vh450_jump():
 
@@ -1794,13 +1894,13 @@ def vh450_jump():
         BlendMode_Add()
         Size(900)
     sprite('null', 30)
-sprite('null', 60)
-Size(2400)
-AddY(50000)
-AddX(50000)
-CommonSE('101_hit_slash_1')
-RotationAngle(-105000)
-endState()
+    sprite('null', 60)
+    Size(2400)
+    AddY(50000)
+    AddX(50000)
+    CommonSE('101_hit_slash_1')
+    RotationAngle(-105000)
+
 
 @State
 def AstralHeatBunshin9():
@@ -1863,6 +1963,7 @@ def AstralHeatBunshin9():
     sprite('vh450_37add02', 1)
     sprite('vh450_37add02', 1)
 
+
 @State
 def AstralHeatBunshin3():
 
@@ -1923,6 +2024,7 @@ def AstralHeatBunshin3():
     sprite('vh450_39add02', 1)
     sprite('vh450_39add02', 1)
 
+
 @State
 def AstralHeatBunshin1():
 
@@ -1982,6 +2084,7 @@ def AstralHeatBunshin1():
     sprite('vh450_40add02', 1)
     sprite('vh450_40add02', 1)
     sprite('vh450_40add02', 1)
+
 
 @State
 def AstralHeatBunshin7():
@@ -2044,6 +2147,7 @@ def AstralHeatBunshin7():
     sprite('vh450_38add02', 1)
     sprite('vh450_38add02', 1)
 
+
 @State
 def AstralHeatBunshin9short():
 
@@ -2097,6 +2201,7 @@ def AstralHeatBunshin9short():
     YAccel(140)
     sprite('vh450_37add02', 1)
     sprite('vh450_37add02', 1)
+
 
 @State
 def AstralHeatBunshin3short():
@@ -2152,6 +2257,7 @@ def AstralHeatBunshin3short():
     sprite('vh450_39add02', 1)
     sprite('vh450_39add02', 1)
 
+
 @State
 def AstralHeatBunshin1short():
 
@@ -2204,6 +2310,7 @@ def AstralHeatBunshin1short():
     YAccel(140)
     sprite('vh450_40add02', 1)
     sprite('vh450_40add02', 1)
+
 
 @State
 def AstralHeatBunshin7short():
@@ -2264,6 +2371,7 @@ def AstralHeatBunshin7short():
     sprite('vh450_38add02', 1)
     sprite('vh450_38add02', 1)
 
+
 @State
 def AstralHeatHitEffect():
     sprite('null', 1)
@@ -2273,6 +2381,7 @@ def AstralHeatHitEffect():
     ParticleLayer(2)
     CallCustomizableParticle('vhef_430hit_rip1b', 0)
 
+
 @State
 def AstralHeatHitEffect_Blood():
     sprite('null', 1)
@@ -2281,6 +2390,7 @@ def AstralHeatHitEffect_Blood():
     ParticleLayer(1)
     CallCustomizableParticle('vhef_astralhit_flash', 0)
 
+
 @State
 def vh_AH_ray():
 
@@ -2288,6 +2398,7 @@ def vh_AH_ray():
         ParticleLayer(1)
         CallPrivateEffect('vhef_astralspeedline_bk')
     sprite('null', 120)
+
 
 @State
 def vh450_tsume():
@@ -2348,6 +2459,7 @@ def vh450_tsume():
     CreateObject('WhiteBlood3D1', -1)
     CreateObject('WhiteBlood3D2', -1)
 
+
 @State
 def vh450_tsume01():
 
@@ -2398,6 +2510,7 @@ def vh450_tsume01():
     YAccel(5)
     XImpulseAcceleration(5)
     sprite('vrvhef450_01', 32767)
+
 
 @State
 def vh450_tsume02():
@@ -2450,6 +2563,7 @@ def vh450_tsume02():
     XImpulseAcceleration(5)
     sprite('vrvhef450_02', 32767)
 
+
 @State
 def vh450_tsume03():
 
@@ -2473,6 +2587,7 @@ def vh450_tsume03():
     CreateObject('vh450_claw04', 7)
     sprite('vrvhef450_01', 32767)
 
+
 @State
 def vh450_tsume04():
 
@@ -2493,6 +2608,7 @@ def vh450_tsume04():
     PrivateSE('vhse_10')
     sprite('vrvhef450_02', 32767)
 
+
 @State
 def vh450_claw():
 
@@ -2501,6 +2617,7 @@ def vh450_claw():
         E0EAEffectPosition(2)
         Size(1200)
     sprite('null', 80)
+
 
 @State
 def vh450_claw02():
@@ -2512,6 +2629,7 @@ def vh450_claw02():
         RotationAngle(55000)
     sprite('null', 80)
 
+
 @State
 def vh450_claw03():
 
@@ -2522,6 +2640,7 @@ def vh450_claw03():
         RotationAngle(300000)
     sprite('null', 80)
 
+
 @State
 def vh450_claw04():
 
@@ -2531,6 +2650,7 @@ def vh450_claw04():
         Size(1200)
         RotationAngle(300000)
     sprite('null', 80)
+
 
 @State
 def Fade_Backout():
@@ -2549,6 +2669,7 @@ def Fade_Backout():
     sprite('vr_fade', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def WhiteBlood():
 
@@ -2561,6 +2682,7 @@ def WhiteBlood():
     sprite('null', 140)
     BlendMode_Add()
     RenderLayer(4)
+
 
 @State
 def WhiteBlood3D1():
@@ -2581,6 +2703,7 @@ def WhiteBlood3D1():
     sprite('null', 20)
     ConstantAlphaModifier(-15)
 
+
 @State
 def WhiteBlood3D2():
 
@@ -2600,6 +2723,7 @@ def WhiteBlood3D2():
     sprite('null', 20)
     ConstantAlphaModifier(-15)
 
+
 @State
 def vh440_crow():
 
@@ -2616,6 +2740,7 @@ def vh440_crow():
     physicsXImpulse(10000)
     ConstantAlphaModifier(-51)
 
+
 @State
 def vh440_crow2():
 
@@ -2631,6 +2756,7 @@ def vh440_crow2():
     SetScaleSpeed(-15)
     physicsXImpulse(10000)
     ConstantAlphaModifier(-51)
+
 
 @State
 def vh440_hikkaki():
@@ -2653,6 +2779,7 @@ def vh440_hikkaki():
     CallCustomizableParticle('vhef440_end', 2)
     sprite('vrvhef430_03', 3)
 
+
 @State
 def vh440_hikkakiSub():
 
@@ -2674,6 +2801,7 @@ def vh440_hikkakiSub():
     ParticleSize(600)
     CallCustomizableParticle('vhef440_end', 2)
     sprite('vrvhef430_03', 2)
+
 
 @State
 def vh440_hikkakiEX():
@@ -2701,6 +2829,7 @@ def vh440_hikkakiEX():
     CallCustomizableParticle('vhef440_end', 2)
     sprite('vrvhef430_03', 3)
 
+
 @State
 def vh440_hikkakiSubEX():
 
@@ -2725,6 +2854,7 @@ def vh440_hikkakiSubEX():
     CallCustomizableParticle('vhef440_end', 2)
     sprite('vrvhef430_03', 2)
 
+
 @State
 def vh440_hikkakiShock():
 
@@ -2739,6 +2869,7 @@ def vh440_hikkakiShock():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def vh600_tojo_kick1():
 
@@ -2749,6 +2880,7 @@ def vh600_tojo_kick1():
         RotationAngle(-20000)
     sprite('null', 20)
 
+
 @State
 def vh600_tojo_kick2():
 
@@ -2758,6 +2890,7 @@ def vh600_tojo_kick2():
         Size(1200)
     sprite('null', 20)
 
+
 @State
 def vh600_tojo_kick3():
 
@@ -2766,6 +2899,7 @@ def vh600_tojo_kick3():
         Size(700)
         BlendMode_Add()
     sprite('null', 30)
+
 
 @State
 def vh601_line():
@@ -2778,7 +2912,7 @@ def vh601_line():
         AlphaValue(0)
         AddX(-250000)
         AddY(-35000)
-        sendToLabelUpon(32, 73)
+        uponSendToLabel(32, 73)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 4)
@@ -2788,6 +2922,7 @@ def vh601_line():
     ConstantAlphaModifier(-25)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vh601_line_masita():
@@ -2799,7 +2934,7 @@ def vh601_line_masita():
         Size(1000)
         AlphaValue(0)
         RotationAngle(90000)
-        sendToLabelUpon(32, 74)
+        uponSendToLabel(32, 74)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 4)
@@ -2809,6 +2944,7 @@ def vh601_line_masita():
     ConstantAlphaModifier(-25)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vh601_line_nanameue():
@@ -2822,7 +2958,7 @@ def vh601_line_nanameue():
         RotationAngle(320000)
         AddX(-480000)
         AddY(-400000)
-        sendToLabelUpon(32, 75)
+        uponSendToLabel(32, 75)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 4)
@@ -2833,6 +2969,7 @@ def vh601_line_nanameue():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def vhef_entry():
 
@@ -2841,7 +2978,7 @@ def vhef_entry():
         BlendMode_Add()
         Size(840)
         AlphaValue(0)
-        sendToLabelUpon(32, 76)
+        uponSendToLabel(32, 76)
     sprite('null', 8)
     ConstantAlphaModifier(32)
     sprite('null', 160)
@@ -2852,6 +2989,7 @@ def vhef_entry():
     ConstantAlphaModifier(-10)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def vhef_entry1_2D():
@@ -2866,6 +3004,7 @@ def vhef_entry1_2D():
         SetScaleY(3300)
     sprite('vrvhef_env', 110)
 
+
 @State
 def vhef_entry2_2D():
 
@@ -2879,6 +3018,7 @@ def vhef_entry2_2D():
         SetScaleY(4800)
     sprite('vrvhef_env', 90)
 
+
 @State
 def vh610_entry_moya():
 
@@ -2888,7 +3028,7 @@ def vh610_entry_moya():
         E0EAEffectPosition(3)
         Size(900)
         AlphaValue(0)
-        sendToLabelUpon(32, 78)
+        uponSendToLabel(32, 78)
     sprite('null', 5)
     ConstantAlphaModifier(50)
     sprite('null', 200)
@@ -2900,6 +3040,7 @@ def vh610_entry_moya():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def EventEffectRCFallWait():
     sprite('rc602_00', 6)
@@ -2908,12 +3049,13 @@ def EventEffectRCFallWait():
     PaletteIndex(7)
     loopRest()
 
+
 @State
 def EventEffectRCFall():
     AbsoluteY(720000)
     XPositionRelativeFacing(-100000)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 1)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 1)
     sprite('rc602_00', 6)
     PaletteIndex(7)
     setGravity(25)
@@ -2983,6 +3125,7 @@ def EventEffectRCFall():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -2991,6 +3134,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Eventoffset_Sosai():

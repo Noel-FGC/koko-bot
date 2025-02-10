@@ -19,6 +19,7 @@ def EMB_AR():
     ColorTransition(4286625023, 10)
     sprite('null', 19)
 
+
 @State
 def EMB_AR_OD():
 
@@ -39,6 +40,7 @@ def EMB_AR_OD():
     sprite('null', 10)
     ColorTransition(4278223103, 10)
     sprite('null', 19)
+
 
 @State
 def EMB_AR_AH():
@@ -63,6 +65,7 @@ def EMB_AR_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 19)
 
+
 @State
 def aref_droplet():
     sprite('null', 1)
@@ -70,6 +73,7 @@ def aref_droplet():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_down_droplet', 0)
+
 
 @State
 def aref_dropletL():
@@ -79,6 +83,7 @@ def aref_dropletL():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_dropletL', 0)
 
+
 @State
 def aref_dropletR():
     sprite('null', 1)
@@ -87,6 +92,7 @@ def aref_dropletR():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_dropletR', 0)
 
+
 @State
 def aref_moveL():
     sprite('null', 1)
@@ -94,6 +100,7 @@ def aref_moveL():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
+
 
 @State
 def aref_moveR():
@@ -104,6 +111,7 @@ def aref_moveR():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
 
+
 @State
 def aref_moveUP():
     sprite('null', 1)
@@ -112,6 +120,7 @@ def aref_moveUP():
     ParticleRotationAngle(270000)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
+
 
 @State
 def aref_moveDOWN():
@@ -122,6 +131,7 @@ def aref_moveDOWN():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
 
+
 @State
 def aref_moveUP_R():
     sprite('null', 1)
@@ -130,6 +140,7 @@ def aref_moveUP_R():
     ParticleRotationAngle(225000)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
+
 
 @State
 def aref_moveDOWN_R():
@@ -140,6 +151,7 @@ def aref_moveDOWN_R():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
 
+
 @State
 def aref_moveUP_L():
     sprite('null', 1)
@@ -148,6 +160,7 @@ def aref_moveUP_L():
     ParticleRotationAngle(315000)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
+
 
 @State
 def aref_moveDOWN_L():
@@ -158,6 +171,7 @@ def aref_moveDOWN_L():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_move', 0)
 
+
 @State
 def aref_rotation():
     sprite('null', 1)
@@ -165,6 +179,7 @@ def aref_rotation():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_rotation', 0)
+
 
 @State
 def aref_damage():
@@ -174,6 +189,7 @@ def aref_damage():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_damage', 0)
 
+
 @State
 def aref_crash():
     sprite('null', 1)
@@ -181,6 +197,7 @@ def aref_crash():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_crash', 0)
+
 
 @State
 def aref_burst():
@@ -190,6 +207,7 @@ def aref_burst():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_burst', 0)
 
+
 @State
 def aref_bubble():
     sprite('null', 1)
@@ -197,6 +215,7 @@ def aref_bubble():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_bubble', 0)
+
 
 @State
 def aref_ar201():
@@ -206,6 +225,7 @@ def aref_ar201():
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_ar201', 0)
 
+
 @State
 def vraref_ar213():
     sprite('null', 1)
@@ -213,6 +233,7 @@ def vraref_ar213():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(4, 5, 6)
     CallCustomizableParticle('aref_ar213', 0)
+
 
 @State
 def aref_D_aura():
@@ -222,6 +243,7 @@ def aref_D_aura():
     ParticleColorFromPalette(7, 7, 7)
     CallCustomizableParticle('aref_D_aura', 0)
 
+
 @State
 def AST_AuraPtc():
 
@@ -230,6 +252,7 @@ def AST_AuraPtc():
         AddY(220000)
     sprite('null', 2)
     CreateParticle('aref_450start', -1)
+
 
 @State
 def AST_AuraPtcDel():
@@ -243,6 +266,7 @@ def AST_AuraPtcDel():
     CreateParticle('aref_450del', -1)
     sprite('null', 3)
     CreateParticle('aref_450del', -1)
+
 
 @State
 def shotairD_born():
@@ -260,6 +284,7 @@ def shotairD_born():
     CommonSE('016_explode_0')
     CommonSE('012_stab_middle')
 
+
 @State
 def aref_ar400_A():
 
@@ -268,24 +293,24 @@ def aref_ar400_A():
         BlendMode_Normal()
         FaceLeft()
         HitsPerCall(1, 0, 0, 0, 0, 0, 1, 1)
-        sendToLabelUpon(54, 1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(54, 1)
+        uponSendToLabel(32, 1)
         ContinueState(900)
         AttackDirection(1)
         EndAttack()
 
-        def upon_FRAME_STEP():
-            if (SLOT_98 < 212500):
-                if (not SLOT_8):
-                    if (not SLOT_110):
+        def upon_EVERY_FRAME():
+            if SLOT_98 < 212500:
+                if not SLOT_8:
+                    if not SLOT_OverdriveTimer:
                         Unknown23149(20)
-                    if SLOT_110:
+                    if SLOT_OverdriveTimer:
                         Unknown23149(40)
                 if SLOT_4:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     clearUponHandler(32)
                     sendToLabel(1)
-        sendToLabelUpon(53, 1)
+        uponSendToLabel(53, 1)
     sprite('null', 9)
     PaletteIndex(1)
     ParticleColorFromPalette(1, 2, 3)
@@ -302,17 +327,19 @@ def aref_ar400_A():
     PrivateFunction(0, 2, 52, 0, -200000, 2, 52)
     PrivateFunction(3, 2, 52, 0, -50, 2, 13)
     loopRest()
-    GotoIf0(1, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(1)
     gotoLabel(10)
     label(1)
     clearUponHandler(54)
     clearUponHandler(32)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('null', 30)
     BlendMode_Normal()
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
     CreateObject('aref_hit_insect', -1)
+
 
 @State
 def aref_ar400_B():
@@ -322,24 +349,24 @@ def aref_ar400_B():
         BlendMode_Normal()
         FaceLeft()
         HitsPerCall(1, 0, 0, 0, 0, 0, 1, 1)
-        sendToLabelUpon(54, 1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(54, 1)
+        uponSendToLabel(32, 1)
         ContinueState(900)
         AttackDirection(1)
         EndAttack()
 
-        def upon_FRAME_STEP():
-            if (SLOT_98 < 222500):
-                if (not SLOT_8):
-                    if (not SLOT_110):
+        def upon_EVERY_FRAME():
+            if SLOT_98 < 222500:
+                if not SLOT_8:
+                    if not SLOT_OverdriveTimer:
                         Unknown23149(40)
-                    if SLOT_110:
+                    if SLOT_OverdriveTimer:
                         Unknown23149(80)
                 if SLOT_4:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     clearUponHandler(32)
                     sendToLabel(1)
-        sendToLabelUpon(53, 1)
+        uponSendToLabel(53, 1)
     sprite('null', 9)
     PaletteIndex(1)
     ParticleColorFromPalette(1, 2, 3)
@@ -356,17 +383,19 @@ def aref_ar400_B():
     PrivateFunction(0, 2, 52, 0, -180000, 2, 52)
     PrivateFunction(3, 2, 52, 0, -50, 2, 13)
     loopRest()
-    GotoIf0(1, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(1)
     gotoLabel(10)
     label(1)
     clearUponHandler(54)
     clearUponHandler(32)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('null', 30)
     BlendMode_Normal()
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
     CreateObject('aref_hit_insect', -1)
+
 
 @State
 def aref_ar400_C():
@@ -376,26 +405,26 @@ def aref_ar400_C():
         BlendMode_Normal()
         FaceLeft()
         HitsPerCall(1, 0, 0, 0, 0, 0, 1, 1)
-        sendToLabelUpon(54, 1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(54, 1)
+        uponSendToLabel(32, 1)
         ContinueState(900)
         AttackDirection(1)
         EndAttack()
 
-        def upon_FRAME_STEP():
-            if (SLOT_98 < 212500):
-                if (not SLOT_8):
-                    if (not SLOT_110):
+        def upon_EVERY_FRAME():
+            if SLOT_98 < 212500:
+                if not SLOT_8:
+                    if not SLOT_OverdriveTimer:
                         Unknown23149(60)
-                    if SLOT_110:
+                    if SLOT_OverdriveTimer:
                         Unknown23149(120)
                 if SLOT_4:
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
                     clearUponHandler(32)
                     sendToLabel(1)
-            if (SLOT_19 < 50000):
+            if SLOT_19 < 50000:
                 SetActionMark(1)
-        sendToLabelUpon(53, 1)
+        uponSendToLabel(53, 1)
     sprite('null', 25)
     PaletteIndex(1)
     ParticleColorFromPalette(1, 2, 3)
@@ -422,17 +451,19 @@ def aref_ar400_C():
     PrivateFunction(0, 2, 52, 0, -480000, 2, 52)
     PrivateFunction(3, 2, 52, 0, -30, 2, 13)
     loopRest()
-    GotoIf0(1, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(1)
     gotoLabel(10)
     label(1)
     clearUponHandler(54)
     clearUponHandler(32)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('null', 30)
     BlendMode_Normal()
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
     CreateObject('aref_hit_insect', -1)
+
 
 @State
 def aref_hit_insect():
@@ -441,6 +472,7 @@ def aref_hit_insect():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_hit_insect', 0)
+
 
 @State
 def aref_ar402_A():
@@ -451,6 +483,7 @@ def aref_ar402_A():
     ParticleColorFromPalette(47, 111, 159)
     CallCustomizableParticle('aref_ar402', 0)
 
+
 @State
 def aref_ar402_B():
     sprite('null', 1)
@@ -458,6 +491,7 @@ def aref_ar402_B():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(47, 111, 159)
     CallCustomizableParticle('aref_ar402', 0)
+
 
 @State
 def aref_ar402_C():
@@ -468,6 +502,7 @@ def aref_ar402_C():
     ParticleColorFromPalette(47, 111, 159)
     CallCustomizableParticle('aref_ar402', 0)
 
+
 @State
 def aref_ar300():
     sprite('null', 1)
@@ -475,6 +510,7 @@ def aref_ar300():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(1, 2, 3)
     CallCustomizableParticle('aref_ar300', 0)
+
 
 @State
 def aref_ar430():
@@ -484,6 +520,7 @@ def aref_ar430():
     ParticleColorFromPalette(47, 111, 159)
     CallCustomizableParticle('aref_ar430', 0)
 
+
 @State
 def aref_ar430_eff():
     sprite('null', 1)
@@ -491,6 +528,7 @@ def aref_ar430_eff():
     E0EAEffectPosition(3)
     ParticleColorFromPalette(47, 111, 159)
     CallCustomizableParticle('aref_ar430_eff', 0)
+
 
 @State
 def shot_air_Insect():
@@ -508,16 +546,16 @@ def shot_air_Insect():
         MoveAttributes(0, 0, 0, 1, 0)
         Hitstop(3)
         DamageEffect(2, 'Bughit')
-        sendToLabelUpon(10, 1)
-        sendToLabelUpon(44, 1)
-        sendToLabelUpon(2, 1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
+        uponSendToLabel(PLAYER_DAMAGED, 1)
+        uponSendToLabel(LANDING, 1)
+        uponSendToLabel(32, 1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (not SLOT_8):
-                if (not SLOT_110):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if not SLOT_8:
+                if not SLOT_OverdriveTimer:
                     Curse(1500, 750)
-                if SLOT_110:
+                if SLOT_OverdriveTimer:
                     Curse(3000, 1500)
         WallCollisionDetection(1)
     sprite('null', 2)
@@ -549,9 +587,9 @@ def shot_air_Insect():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
-    clearUponHandler(10)
-    clearUponHandler(44)
+    clearUponHandler(LANDING)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(32)
     sprite('vraref213_10', 4)
     physicsXImpulse(0)
@@ -562,6 +600,7 @@ def shot_air_Insect():
     sprite('vraref213_11', 4)
     CreateObject('vraref_ar213', 0)
     sprite('vraref213_12', 4)
+
 
 @State
 def shot_sit_Insect():
@@ -579,14 +618,14 @@ def shot_sit_Insect():
         DamageEffect(2, 'Bughit')
         AttackOff()
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (not SLOT_8):
-                if (not SLOT_110):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if not SLOT_8:
+                if not SLOT_OverdriveTimer:
                     Curse(1500, 750)
-                if SLOT_110:
+                if SLOT_OverdriveTimer:
                     Curse(3000, 1500)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         physicsXImpulse(54000)
         physicsYImpulse(-21000)
 
@@ -616,6 +655,7 @@ def shot_sit_Insect():
     sprite('vraref233_11', 3)
     sprite('vraref233_12', 3)
 
+
 @State
 def shot_ground_Insect():
 
@@ -637,12 +677,12 @@ def shot_ground_Insect():
         MoveAttributes(0, 0, 0, 1, 0)
         DamageEffect(2, 'Bughit')
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtkAIR5D', 32)
-            if (not SLOT_8):
-                if (not SLOT_110):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtkAIR5D', 32)
+            if not SLOT_8:
+                if not SLOT_OverdriveTimer:
                     Curse(1500, 750)
-                if SLOT_110:
+                if SLOT_OverdriveTimer:
                     Curse(3000, 1500)
         WallCollisionDetection(1)
 
@@ -690,11 +730,13 @@ def shot_ground_Insect():
     sprite('vraref253_11', 3)
     sprite('vraref253_12', 3)
 
+
 @State
 def Bughit():
     sprite('null', -1)
     CreateParticle('aref_bughit', 0)
     CommonSE('020_blood_1')
+
 
 @State
 def ar430_wave():
@@ -702,7 +744,7 @@ def ar430_wave():
     def upon_IMMEDIATE():
         TeleportToObject(22)
         AbsoluteY(0)
-        sendToLabelUpon(44, 9)
+        uponSendToLabel(PLAYER_DAMAGED, 9)
     sprite('vraref430_00', 4)
     CameraControlEnable(1)
     Size(1000)
@@ -824,13 +866,14 @@ def ar430_wave():
     CreateObject('ar430_Warm', 7)
     label(9)
     sprite('vraref430_02', 3)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ConstantAlphaModifier(-10)
     sprite('vraref430_03', 3)
     sprite('vraref430_04', 3)
     sprite('vraref430_02', 3)
     sprite('vraref430_03', 3)
     sprite('vraref430_04', 3)
+
 
 @State
 def ar430_wave_OD():
@@ -838,7 +881,7 @@ def ar430_wave_OD():
     def upon_IMMEDIATE():
         TeleportToObject(22)
         AbsoluteY(0)
-        sendToLabelUpon(44, 9)
+        uponSendToLabel(PLAYER_DAMAGED, 9)
     sprite('vraref430_00', 4)
     CameraControlEnable(1)
     Size(1000)
@@ -960,13 +1003,14 @@ def ar430_wave_OD():
     CreateObject('ar430_Warm_Atk_OD', 7)
     label(9)
     sprite('vraref430_02', 3)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     ConstantAlphaModifier(-10)
     sprite('vraref430_03', 3)
     sprite('vraref430_04', 3)
     sprite('vraref430_02', 3)
     sprite('vraref430_03', 3)
     sprite('vraref430_04', 3)
+
 
 @State
 def ar430_Warm_Atk():
@@ -992,18 +1036,18 @@ def ar430_Warm_Atk():
         DamageEffect(2, 'Bughit')
         AttackDirection(4)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (not SLOT_8):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if not SLOT_8:
                 Curse(500, 150)
         VoodooDamageMultiplier(2)
         BlendMode_Normal()
         ContinueState(30)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_FRAME_STEP():
-            if (not SLOT_21):
+        def upon_EVERY_FRAME():
+            if not SLOT_21:
                 Curse(0, 0)
         if SLOT_137:
             DamageMultiplier(80)
@@ -1018,6 +1062,7 @@ def ar430_Warm_Atk():
     sprite('vrarefsp03_00', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ar430_Warm_Atk_OD():
@@ -1043,19 +1088,19 @@ def ar430_Warm_Atk_OD():
         DamageEffect(2, 'Bughit')
         AttackDirection(4)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (not SLOT_8):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if not SLOT_8:
                 Curse(500, 150)
         AttackType(4)
         VoodooDamageMultiplier(2)
         BlendMode_Normal()
         ContinueState(30)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             AttackOff()
 
-        def upon_FRAME_STEP():
-            if (not SLOT_21):
+        def upon_EVERY_FRAME():
+            if not SLOT_21:
                 Curse(0, 0)
         if SLOT_137:
             DamageMultiplier(80)
@@ -1070,6 +1115,7 @@ def ar430_Warm_Atk_OD():
     sprite('vrarefsp03_00', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ar430_Warm():
@@ -1090,6 +1136,7 @@ def ar430_Warm():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Marking():
 
@@ -1102,6 +1149,7 @@ def Marking():
         RemoveOnContact(22)
     sprite('null', 32767)
     PrivateSE('arse_23')
+
 
 @State
 def aref_ar431_A():
@@ -1129,6 +1177,7 @@ def aref_ar431_A():
         if SLOT_137:
             DamageMultiplier(80)
     sprite('vraref431_00', 3)
+
 
 @State
 def aref_ar431_AOD():
@@ -1158,6 +1207,7 @@ def aref_ar431_AOD():
             DamageMultiplier(80)
     sprite('vraref431_00', 3)
 
+
 @State
 def aref431_attack():
 
@@ -1166,6 +1216,7 @@ def aref431_attack():
     sprite('null', 60)
     CreateParticle('aref_ar431_attack', -1)
 
+
 @State
 def aref431_Parts():
 
@@ -1173,6 +1224,7 @@ def aref431_Parts():
         LinkParticle('aref_ar431_attackparts')
     sprite('null', 60)
     Size(1500)
+
 
 @State
 def aref431_attackOD():
@@ -1184,12 +1236,14 @@ def aref431_attackOD():
     SetScaleY(2000)
     CreateObject('aref431_Parts', -1)
 
+
 @State
 def WarmLand():
 
     def upon_IMMEDIATE():
         LinkParticle('aref_spLandhit')
     sprite('null', 300)
+
 
 @State
 def SPAClash():
@@ -1200,12 +1254,14 @@ def SPAClash():
         CallCustomizableParticle('aref_spAclash', -1)
     sprite('null', 300)
 
+
 @State
 def SPCLandMark():
 
     def upon_IMMEDIATE():
         LinkParticle('aref_spCLandMark')
     sprite('null', 300)
+
 
 @State
 def SPDLandBirth():
@@ -1217,6 +1273,7 @@ def SPDLandBirth():
         AddX(-16000)
     sprite('null', 300)
 
+
 @Subroutine
 def DriveInsectInit():
     AttackLevel_(3)
@@ -1225,7 +1282,7 @@ def DriveInsectInit():
     StarterRating(2)
     AutoHitSignalSending(0)
     AttackDirection(3)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     BlendMode_Normal()
     PaletteIndex(2)
     if SLOT_95:
@@ -1236,10 +1293,11 @@ def DriveInsectInit():
     Unknown3054(178, 110)
     Unknown3054(177, 90)
     Unknown3054(176, 70)
-    SLOT_9 = (SLOT_9 + 1)
+    SLOT_9 = SLOT_9 + 1
 
     def upon_STATE_END():
-        SLOT_9 = (SLOT_9 + (-1))
+        SLOT_9 = SLOT_9 + -1
+
 
 @State
 def WarmA():
@@ -1287,12 +1345,12 @@ def WarmA():
     physicsXImpulse(-4000)
     physicsYImpulse(22000)
     sprite('vraref_spA_04', 80)
-    clearUponHandler(2)
-    sendToLabelUpon(2, 2)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 2)
     label(2)
     sprite('null', 1)
     CreateObject('SPAClash', -1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     clearUponHandler(54)
     AttackOff()
     physicsXImpulse(0)
@@ -1301,6 +1359,7 @@ def WarmA():
     sprite('vraref_spA_05', 4)
     sprite('vraref_spA_06', 4)
     loopRest()
+
 
 @State
 def WarmB():
@@ -1318,16 +1377,16 @@ def WarmB():
         Hitstop(6)
         callSubroutine('DriveInsectInit')
         ContinueState(80)
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
             XImpulseAcceleration(80)
             YAccel(80)
-            if (SLOT_2 == 3):
+            if SLOT_2 == 3:
                 NoAttackDuringAction(1)
                 sendToLabel(1)
-        sendToLabelUpon(44, 1)
+        uponSendToLabel(PLAYER_DAMAGED, 1)
         AbsoluteY(0)
         SetPosXByScreenPer(40)
 
@@ -1352,26 +1411,27 @@ def WarmB():
     RefreshMultihit()
     label(0)
     sprite('vraref_spB_03ex00', 3)
-    SLOT_51 = (SLOT_51 + (-1))
+    SLOT_51 = SLOT_51 + -1
     RefreshMultihit()
     sprite('vraref_spB_04ex00', 3)
     RefreshMultihit()
     loopRest()
     if SLOT_51:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     label(1)
     sprite('vraref_spB_03ex00', 3)
     EndMomentum(1)
     AlphaValue(200)
     ConstantAlphaModifier(-10)
-    clearUponHandler(10)
-    clearUponHandler(44)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(PLAYER_DAMAGED)
     AttackOff()
     sprite('vraref_spB_04ex00', 3)
     sprite('vraref_spB_03ex00', 3)
     sprite('vraref_spB_04ex00', 3)
     sprite('vraref_spB_03ex00', 3)
     sprite('vraref_spB_04ex00', 3)
+
 
 @State
 def WarmC():
@@ -1391,7 +1451,7 @@ def WarmC():
         SetActionMark(481)
         callSubroutine('DriveInsectInit')
         ContinueState(100)
-        sendToLabelUpon(44, 2)
+        uponSendToLabel(PLAYER_DAMAGED, 2)
         SetPosXByScreenPer(65)
         AbsoluteY(0)
         Size(750)
@@ -1426,8 +1486,8 @@ def WarmC():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
-    clearUponHandler(44)
+    clearUponHandler(LANDING)
+    clearUponHandler(PLAYER_DAMAGED)
     AddX(-100000)
     AddRotationPerFrame(0)
     RotationAngle(0)
@@ -1443,9 +1503,9 @@ def WarmC():
     sprite('vraref_spC_09', 2)
     ExitState()
     label(2)
-    clearUponHandler(2)
-    clearUponHandler(10)
-    clearUponHandler(44)
+    clearUponHandler(LANDING)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(PLAYER_DAMAGED)
     EndAttack()
     AddRotationPerFrame(0)
     RotationAngle(0)
@@ -1457,6 +1517,7 @@ def WarmC():
     ConstantAlphaModifier(-20)
     sprite('vraref_spC_08', 2)
     sprite('vraref_spC_09', 2)
+
 
 @State
 def WarmD():
@@ -1496,9 +1557,9 @@ def WarmD():
         def upon_38():
             SetPosXByScreenPer(65)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             PrivateFunction4(-20)
-            if (SLOT_23 >= SLOT_0):
+            if SLOT_YDistanceFromFloor >= SLOT_0:
                 if SLOT_51:
                     DeleteObject(23)
     sprite('vraref_spD_00', 3)
@@ -1538,8 +1599,8 @@ def WarmD():
     gotoLabel(2)
     label(3)
     sprite('keep', 10)
-    clearUponHandler(2)
-    clearUponHandler(3)
+    clearUponHandler(LANDING)
+    clearUponHandler(EVERY_FRAME)
     clearUponHandler(54)
     EndAttack()
     AddRotationPerFrame(0)
@@ -1549,6 +1610,7 @@ def WarmD():
     setGravity(0)
     SetScaleSpeed(-5)
     ConstantAlphaModifier(-20)
+
 
 @State
 def Warm_Ultimate():
@@ -1572,15 +1634,15 @@ def Warm_Ultimate():
         AutoHitSignalSending(0)
         SameMoveProration(-1)
 
-        def upon_FRAME_STEP():
-            if SLOT_30:
+        def upon_EVERY_FRAME():
+            if SLOT_IsInHitstun:
                 SLOT_52 = 1
             else:
                 SLOT_52 = 0
             if SLOT_53:
-                if (not SLOT_52):
-                    SLOT_53 = (SLOT_53 + 1)
-                if (SLOT_53 >= 31):
+                if not SLOT_52:
+                    SLOT_53 = SLOT_53 + 1
+                if SLOT_53 >= 31:
                     if SLOT_51:
                         Flip()
                         EndMomentum(1)
@@ -1596,29 +1658,29 @@ def Warm_Ultimate():
                         sendToLabel(1)
                     else:
                         sendToLabel(9)
-            elif SLOT_38:
+            elif SLOT_IsFacingRight:
                 PrivateFunction5(120)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     SLOT_53 = 1
             else:
                 PrivateFunction5(120)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     SLOT_53 = 1
-            SLOT_54 = (SLOT_54 + (-1))
-            if (not SLOT_IsInOverdrive2):
-                if (not (SLOT_55 >= 8)):
+            SLOT_54 = SLOT_54 + -1
+            if not SLOT_54:
+                if not SLOT_55 >= 8:
                     RefreshMultihit()
-            if (not SLOT_4):
+            if not SLOT_4:
                 SLOT_51 = 0
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             SLOT_54 = 6
-            SLOT_55 = (SLOT_55 + 1)
+            SLOT_55 = SLOT_55 + 1
             XImpulseAcceleration(95)
         SLOT_51 = 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         BlendMode_Normal()
         PaletteIndex(2)
         if SLOT_95:
@@ -1647,6 +1709,7 @@ def Warm_Ultimate():
     label(9)
     sprite('keep', 1)
     EndAttack()
+
 
 @State
 def Warm_UltimateOD():
@@ -1671,15 +1734,15 @@ def Warm_UltimateOD():
         AttackType(4)
         SameMoveProration(-1)
 
-        def upon_FRAME_STEP():
-            if SLOT_30:
+        def upon_EVERY_FRAME():
+            if SLOT_IsInHitstun:
                 SLOT_52 = 1
             else:
                 SLOT_52 = 0
             if SLOT_53:
-                if (not SLOT_52):
-                    SLOT_53 = (SLOT_53 + 1)
-                if (SLOT_53 >= 11):
+                if not SLOT_52:
+                    SLOT_53 = SLOT_53 + 1
+                if SLOT_53 >= 11:
                     if SLOT_51:
                         Flip()
                         EndMomentum(1)
@@ -1695,27 +1758,27 @@ def Warm_UltimateOD():
                         sendToLabel(1)
                     else:
                         sendToLabel(9)
-            elif SLOT_38:
+            elif SLOT_IsFacingRight:
                 PrivateFunction5(120)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     SLOT_53 = 1
             else:
                 PrivateFunction5(120)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     SLOT_53 = 1
-            SLOT_54 = (SLOT_54 + (-1))
-            if (not SLOT_IsInOverdrive2):
+            SLOT_54 = SLOT_54 + -1
+            if not SLOT_54:
                 RefreshMultihit()
-            if (not SLOT_4):
+            if not SLOT_4:
                 SLOT_51 = 0
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             SLOT_54 = 6
             XImpulseAcceleration(95)
         SLOT_51 = 1
 
         def upon_STATE_END():
-            SLOT_7 = (SLOT_7 + (-1))
+            SLOT_7 = SLOT_7 + -1
         BlendMode_Normal()
         PaletteIndex(2)
         if SLOT_95:
@@ -1745,6 +1808,7 @@ def Warm_UltimateOD():
     sprite('keep', 1)
     EndAttack()
 
+
 @State
 def RLAstFire():
 
@@ -1758,6 +1822,7 @@ def RLAstFire():
     ConstantAlphaModifier(2)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
+
 
 @State
 def CurseShotTest():
@@ -1775,20 +1840,20 @@ def CurseShotTest():
         FaceLeft()
         EndAttack()
         AddY(250000)
-        sendToLabelUpon(10, 2)
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 2)
+        uponSendToLabel(32, 10)
         HitsPerCall(1, 0, 0, 0, 0, 0, 1, 1)
-        sendToLabelUpon(54, 10)
+        uponSendToLabel(54, 10)
 
-        def upon_FRAME_STEP():
-            if (SLOT_98 < 150000):
+        def upon_EVERY_FRAME():
+            if SLOT_98 < 150000:
                 Unknown23144(22, 0, 103, 0, 0, 0, 0, 0, 90, 0, 3)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 SLOT_32 = 480
                 PrivateSE('arse_23')
                 Size(1500)
                 sendToLabel(2)
-        sendToLabelUpon(53, 10)
+        uponSendToLabel(53, 10)
     sprite('null', 9)
     PaletteIndex(2)
     if SLOT_95:
@@ -1807,7 +1872,8 @@ def CurseShotTest():
     PrivateFunction(0, 2, 52, 0, -200000, 2, 52)
     PrivateFunction(3, 2, 52, 0, -50, 2, 13)
     loopRest()
-    GotoIf0(10, 2, 21)
+    if not SLOT_21:
+        notConditionalSendToLabel(10)
     gotoLabel(1)
     label(2)
     sprite('vraref400_01', 32767)
@@ -1817,10 +1883,10 @@ def CurseShotTest():
         PrivateFunction3(22, 0, 0, 60, 1)
     sprite('vraref400_01', 32767)
     label(10)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     clearUponHandler(54)
     clearUponHandler(32)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     clearUponHandler(45)
     sprite('null', 30)
     SLOT_32 = 0
@@ -1828,6 +1894,7 @@ def CurseShotTest():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(100)
     CreateObject('aref_hit_insect', -1)
+
 
 @State
 def SpecialShotTest():
@@ -1846,11 +1913,11 @@ def SpecialShotTest():
         AutoHitSignalSending(0)
         Unknown12052(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (not SLOT_8):
-                if (not SLOT_110):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if not SLOT_8:
+                if not SLOT_OverdriveTimer:
                     Curse(2000, 1000)
-                if SLOT_110:
+                if SLOT_OverdriveTimer:
                     Curse(3000, 2000)
         BlendMode_Normal()
         PaletteIndex(2)
@@ -1864,8 +1931,8 @@ def SpecialShotTest():
         Unknown3054(177, 90)
         Unknown3054(176, 70)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(54, 1)
+        uponSendToLabel(LANDING, 1)
 
         def upon_33():
             SetPosXByScreenPer(15)
@@ -1896,7 +1963,7 @@ def SpecialShotTest():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     clearUponHandler(54)
     sprite('keep', 3)
     EndMomentum(1)
@@ -1921,6 +1988,7 @@ def SpecialShotTest():
     sprite('vraref404_01', 6)
     sprite('vraref404_00', 6)
 
+
 @State
 def ar407_Dummy():
 
@@ -1943,7 +2011,8 @@ def ar407_Dummy():
         FatalCounter(1)
         EnableCollision(1)
         SetYCollisionFromOrigin(1)
-        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647, 1000, 1000)
+        ArakuneSpriteOverlay('vraref000_00', 160, 0, 0, 500, 0, 2147483647,
+            1000, 1000)
         AlphaIsColorOnPalette(179, 130)
         AlphaIsColorOnPalette(178, 110)
         AlphaIsColorOnPalette(177, 90)
@@ -1952,7 +2021,7 @@ def ar407_Dummy():
         ForceShadowOn(1)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
 
             def upon_41():
                 sendToLabel(6)
@@ -2058,28 +2127,28 @@ def ar407_Dummy():
     sprite('ar407_04', 5)
     EndMomentum(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         PrivateFunction3(22, 0, 250000, 15, 0)
-        if (not Unknown23146(22, 'ar407_Dummy')):
+        if not SLOT_98 < 150000:
             NoAttackDuringAction(1)
             sendToLabel(6)
         CopyFromRightToLeft(23, 2, 51, 22, 2, 23)
-        if (SLOT_54 >= 1800000):
-            ApplyFunctionsToObjects(22)
-            AbsoluteY(1800000)
-            ApplyFunctionsToSelf()
+        if SLOT_54 >= 1800000:
+
+            def RunOnObject_22():
+                AbsoluteY(1800000)
         if SLOT_2:
-            SLOT_2 = (SLOT_2 + 1)
-            if (SLOT_2 > 11):
+            SLOT_2 = SLOT_2 + 1
+            if SLOT_2 > 11:
                 SetActionMark(1)
     RenderLayer(6)
     sprite('ar407_05', 5)
     CreateObject('aref_407_WebBall', -1)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     sprite('ar407_06', 5)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     if SLOT_6:
-        _gotolabel(6)
+        conditionalSendToLabel(6)
     sprite('ar407_07', 5)
     E0EAEffectPosition(22)
     PrivateFunction3(0, 0, 0, 0, 0)
@@ -2106,23 +2175,23 @@ def ar407_Dummy():
     sprite('ar407_07', 5)
     sprite('ar407_08', 5)
     loopRest()
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     E0EAEffectPosition(0)
     gotoLabel(7)
     label(6)
     sprite('keep', 1)
     clearUponHandler(41)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     E0EAEffectPosition(0)
     PrivateFunction3(0, 0, 0, 0, 0)
-    PassbackAddActionMarkToFunction('aref_407_WebBall', 32)
-    if (SLOT_52 == 1):
+    TriggerUponForState('aref_407_WebBall', 32)
+    if SLOT_52 == 1:
         sendToLabel(8)
-    elif (SLOT_52 == 0):
+    elif SLOT_52 == 0:
         sendToLabel(9)
     label(7)
     sprite('ar407_06ex00', 1)
-    PassbackAddActionMarkToFunction('aref_407_WebBall', 32)
+    TriggerUponForState('aref_407_WebBall', 32)
     CreateObject('aref_ar402_A', 106)
     CreateObject('aref_ar402_A', 106)
     CreateObject('aref_ar402_A', 106)
@@ -2221,7 +2290,7 @@ def ar407_Dummy():
     ExitState()
     label(8)
     sprite('ar407_05ex00', 1)
-    PassbackAddActionMarkToFunction('aref_407_WebBall', 32)
+    TriggerUponForState('aref_407_WebBall', 32)
     CreateObject('aref_ar402_A', 106)
     CreateObject('aref_ar402_A', 106)
     CreateObject('aref_ar402_A', 106)
@@ -2274,7 +2343,7 @@ def ar407_Dummy():
     ExitState()
     label(9)
     sprite('ar407_04ex00', 1)
-    PassbackAddActionMarkToFunction('aref_407_WebBall', 32)
+    TriggerUponForState('aref_407_WebBall', 32)
     CreateObject('aref_ar402_A', 106)
     CreateObject('aref_ar402_A', 106)
     CreateObject('aref_ar402_A', 106)
@@ -2322,6 +2391,7 @@ def ar407_Dummy():
     CreateObject('aref_ar402_A', 106)
     CreateObject('aref_ar402_A', 106)
 
+
 @State
 def MukadeMatome():
 
@@ -2331,110 +2401,111 @@ def MukadeMatome():
         Size(1200)
     sprite('null', 10)
     CreateObject('MukadeEye', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    AddX(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        AddX(300000)
     sprite('null', 10)
     CreateObject('MukadeEye2', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(200000)
-    AddX(-500000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(200000)
+        AddX(-500000)
     sprite('null', 10)
     CreateObject('MukadeEye', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(500000)
-    AddX(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(500000)
+        AddX(400000)
     sprite('null', 10)
     CreateObject('MukadeEye', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(700000)
-    AddX(-250000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(700000)
+        AddX(-250000)
     sprite('null', 10)
     CreateObject('MukadeEye', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(150000)
-    AddX(950000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(150000)
+        AddX(950000)
     sprite('null', 10)
     CreateObject('MukadeHead00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    AddX(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        AddX(300000)
     CreateObject('MukadeBodyIppai00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-150000)
-    AddX(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-150000)
+        AddX(300000)
     sprite('null', 10)
     CreateObject('MukadeHead00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(200000)
-    AddX(-600000)
-    RotationAngle(450000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(200000)
+        AddX(-600000)
+        RotationAngle(450000)
     CreateObject('MukadeBodyIppai00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(200000)
-    AddX(-600000)
-    RotationAngle(450000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(200000)
+        AddX(-600000)
+        RotationAngle(450000)
     sprite('null', 10)
     CreateObject('MukadeHead00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(500000)
-    AddX(400000)
-    RotationAngle(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(500000)
+        AddX(400000)
+        RotationAngle(0)
     CreateObject('MukadeBodyIppai00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(500000)
-    AddX(400000)
-    RotationAngle(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(500000)
+        AddX(400000)
+        RotationAngle(0)
     sprite('null', 10)
     CreateObject('MukadeHead00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(750000)
-    AddX(-300000)
-    RotationAngle(180000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(750000)
+        AddX(-300000)
+        RotationAngle(180000)
     CreateObject('MukadeBodyIppai00', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(750000)
-    AddX(-300000)
-    RotationAngle(180000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(750000)
+        AddX(-300000)
+        RotationAngle(180000)
     sprite('null', 10)
     CreateObject('MukadeBodyIppai01', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(900000)
-    RotationAngle(180000)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(900000)
+        RotationAngle(180000)
+        Flip()
     CreateObject('MukadeHead01', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(900000)
-    RotationAngle(180000)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(900000)
+        RotationAngle(180000)
+        Flip()
     sprite('null', 10)
     CreateObject('MukadeBodyIppai02', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(150000)
-    AddX(950000)
-    RotationAngle(250000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(150000)
+        AddX(950000)
+        RotationAngle(250000)
     CreateObject('MukadeHead02', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(150000)
-    AddX(950000)
-    RotationAngle(250000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(150000)
+        AddX(950000)
+        RotationAngle(250000)
+
 
 @State
 def MukadeHead00():
@@ -2447,6 +2518,7 @@ def MukadeHead00():
         Size(1200)
     sprite('null', 30)
     sprite('null', 150)
+
 
 @State
 def MukadeBodyIppai00():
@@ -2471,6 +2543,7 @@ def MukadeBodyIppai00():
     sprite('null', 100)
     CreateObject('MukadeTail00', -1)
 
+
 @State
 def MukadeBody00():
 
@@ -2482,6 +2555,7 @@ def MukadeBody00():
         E0EAEffectRotation(2)
     sprite('null', 50)
     sprite('null', 150)
+
 
 @State
 def MukadeTail00():
@@ -2495,6 +2569,7 @@ def MukadeTail00():
     sprite('null', 50)
     sprite('null', 150)
 
+
 @State
 def MukadeHead01():
 
@@ -2507,6 +2582,7 @@ def MukadeHead01():
         SetZVal(-500)
     sprite('null', 30)
     sprite('null', 150)
+
 
 @State
 def MukadeBodyIppai01():
@@ -2529,6 +2605,7 @@ def MukadeBodyIppai01():
     sprite('null', 100)
     CreateObject('MukadeTail01', -1)
 
+
 @State
 def MukadeBody01():
 
@@ -2542,6 +2619,7 @@ def MukadeBody01():
     sprite('null', 50)
     sprite('null', 150)
 
+
 @State
 def MukadeTail01():
 
@@ -2554,6 +2632,7 @@ def MukadeTail01():
         SetZVal(-500)
     sprite('null', 50)
     sprite('null', 200)
+
 
 @State
 def MukadeHead02():
@@ -2570,6 +2649,7 @@ def MukadeHead02():
     sprite('null', 100)
     AlphaValue(255)
     sprite('null', 200)
+
 
 @State
 def MukadeBodyIppai02():
@@ -2592,6 +2672,7 @@ def MukadeBodyIppai02():
     sprite('null', 100)
     CreateObject('MukadeTail02', -1)
 
+
 @State
 def MukadeBody02():
 
@@ -2607,6 +2688,7 @@ def MukadeBody02():
     sprite('null', 100)
     AlphaValue(255)
     sprite('null', 300)
+
 
 @State
 def MukadeTail02():
@@ -2624,6 +2706,7 @@ def MukadeTail02():
     AlphaValue(255)
     sprite('null', 300)
 
+
 @State
 def MukadeEye():
 
@@ -2634,7 +2717,7 @@ def MukadeEye():
         IgnoreScreenfreeze(1)
         Size(1200)
         SetZVal(1000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     sprite('null', 15)
     LinkParticle('aref_AHeyemoya_pos')
@@ -2644,6 +2727,7 @@ def MukadeEye():
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def MukadeEye2():
@@ -2655,7 +2739,7 @@ def MukadeEye2():
         IgnoreScreenfreeze(1)
         Size(1200)
         SetZVal(1000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     sprite('null', 15)
     CreateObject('MukadeEye3', -1)
@@ -2664,6 +2748,7 @@ def MukadeEye2():
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def MukadeEye3():
@@ -2677,279 +2762,291 @@ def MukadeEye3():
         Size(1200)
     sprite('null', 32767)
 
-    @State
-    def Bloodrain():
 
-        def upon_IMMEDIATE():
-            IgnoreScreenfreeze(1)
-            AddY(300000)
-        sprite('null', 1)
-        sprite('null', 32767)
-        LinkParticle('aref_AHbloodrain_02')
+@State
+def Bloodrain():
 
-    @State
-    def AHnenkin():
+    def upon_IMMEDIATE():
+        IgnoreScreenfreeze(1)
+        AddY(300000)
+    sprite('null', 1)
+    sprite('null', 32767)
+    LinkParticle('aref_AHbloodrain_02')
 
-        def upon_IMMEDIATE():
-            BlendMode_Normal()
-            Eff3DEffect('aref_nenkin', '')
-            TeleportToObject(22)
-            Size(1000)
-            AlphaValue(0)
-            sendToLabelUpon(32, 0)
-        sprite('null', 20)
-        ConstantAlphaModifier(17)
-        sprite('null', 32767)
-        label(0)
-        sprite('null', 10)
-        ConstantAlphaModifier(-26)
 
-    @State
-    def AstBlackOut():
+@State
+def AHnenkin():
 
-        def upon_IMMEDIATE():
-            IgnoreScreenfreeze(1)
-            RenderLayer(4)
-            ScreenPosition(1)
-            E0EAEffectPosition(3)
-            SetPosXByScreenPer(50)
-            ColorForTransition(4278190080)
-            Size(200000)
-            BlendMode_Normal()
-            AlphaValue(255)
-        sprite('vraref407_03', 71)
-        sprite('keep', 25)
-        ConstantAlphaModifier(-10)
+    def upon_IMMEDIATE():
+        BlendMode_Normal()
+        Eff3DEffect('aref_nenkin', '')
+        TeleportToObject(22)
+        Size(1000)
+        AlphaValue(0)
+        uponSendToLabel(32, 0)
+    sprite('null', 20)
+    ConstantAlphaModifier(17)
+    sprite('null', 32767)
+    label(0)
+    sprite('null', 10)
+    ConstantAlphaModifier(-26)
 
-    @State
-    def BrustDDyodare():
 
-        def upon_IMMEDIATE():
-            IgnoreScreenfreeze(1)
-            IgnoreFinishStop(1)
-            BlendMode_Normal()
-            Eff3DEffect('aref_430yodare00', '')
-        sprite('null', 5)
-        CreateParticle('aref_440yodare_00', -1)
-        Size(1350)
-        physicsYImpulse(35000)
-        sprite('null', 7)
-        Size(2250)
-        physicsYImpulse(0)
-        sprite('null', 9)
-        Eff3DEffect('aref_430yodare01', '')
-        IgnoreScreenfreeze(0)
-        IgnoreFinishStop(0)
-        sprite('null', 4)
-        SetScaleSpeed(80)
-        physicsYImpulse(-28000)
+@State
+def AstBlackOut():
 
-    @State
-    def BrustDDyodareSub():
+    def upon_IMMEDIATE():
+        IgnoreScreenfreeze(1)
+        RenderLayer(4)
+        ScreenPosition(1)
+        E0EAEffectPosition(3)
+        SetPosXByScreenPer(50)
+        ColorForTransition(4278190080)
+        Size(200000)
+        BlendMode_Normal()
+        AlphaValue(255)
+    sprite('vraref407_03', 71)
+    sprite('keep', 25)
+    ConstantAlphaModifier(-10)
 
-        def upon_IMMEDIATE():
-            BlendMode_Normal()
-            Eff3DEffect('aref_430yodare02', '')
-            AddY(75000)
-            SetScaleX(1250)
-        sprite('null', 20)
-        sprite('null', 10)
-        ConstantAlphaModifier(-26)
 
-    @State
-    def BrustDDyodareEX():
+@State
+def BrustDDyodare():
 
-        def upon_IMMEDIATE():
-            IgnoreScreenfreeze(1)
-            IgnoreFinishStop(1)
-            BlendMode_Normal()
-            Eff3DEffect('aref_430yodare00', '')
-        sprite('null', 5)
-        Size(1875)
-        physicsYImpulse(65000)
-        ParticleSize(1000)
-        CallCustomizableParticle('aref_440yodare_00', -1)
-        sprite('null', 7)
-        Size(3000)
-        physicsYImpulse(0)
-        sprite('null', 9)
-        Eff3DEffect('aref_430yodare01', '')
-        IgnoreScreenfreeze(0)
-        IgnoreFinishStop(0)
-        sprite('null', 4)
-        SetScaleSpeed(80)
-        physicsYImpulse(-28000)
+    def upon_IMMEDIATE():
+        IgnoreScreenfreeze(1)
+        IgnoreFinishStop(1)
+        BlendMode_Normal()
+        Eff3DEffect('aref_430yodare00', '')
+    sprite('null', 5)
+    CreateParticle('aref_440yodare_00', -1)
+    Size(1350)
+    physicsYImpulse(35000)
+    sprite('null', 7)
+    Size(2250)
+    physicsYImpulse(0)
+    sprite('null', 9)
+    Eff3DEffect('aref_430yodare01', '')
+    IgnoreScreenfreeze(0)
+    IgnoreFinishStop(0)
+    sprite('null', 4)
+    SetScaleSpeed(80)
+    physicsYImpulse(-28000)
 
-    @State
-    def aref_407_WebBall():
 
-        def upon_IMMEDIATE():
-            RemoveOnCallStateEnd(2)
-            E0EAEffectPosition(2)
-            IgnorePauses(2)
-            IgnoreScreenfreeze(1)
-            BlendMode_Normal()
-            PaletteIndex(4)
-            ForceBloomMaskOn(1)
-            AddY(-125000)
-            sendToLabelUpon(32, 0)
-        sprite('vraref407_00', 4)
-        CommonSE('020_blood_1')
-        sprite('vraref407_01', 4)
-        sprite('vraref407_02', 4)
-        ApplyFunctionsToObjects(22)
+@State
+def BrustDDyodareSub():
+
+    def upon_IMMEDIATE():
+        BlendMode_Normal()
+        Eff3DEffect('aref_430yodare02', '')
+        AddY(75000)
+        SetScaleX(1250)
+    sprite('null', 20)
+    sprite('null', 10)
+    ConstantAlphaModifier(-26)
+
+
+@State
+def BrustDDyodareEX():
+
+    def upon_IMMEDIATE():
+        IgnoreScreenfreeze(1)
+        IgnoreFinishStop(1)
+        BlendMode_Normal()
+        Eff3DEffect('aref_430yodare00', '')
+    sprite('null', 5)
+    Size(1875)
+    physicsYImpulse(65000)
+    ParticleSize(1000)
+    CallCustomizableParticle('aref_440yodare_00', -1)
+    sprite('null', 7)
+    Size(3000)
+    physicsYImpulse(0)
+    sprite('null', 9)
+    Eff3DEffect('aref_430yodare01', '')
+    IgnoreScreenfreeze(0)
+    IgnoreFinishStop(0)
+    sprite('null', 4)
+    SetScaleSpeed(80)
+    physicsYImpulse(-28000)
+
+
+@State
+def aref_407_WebBall():
+
+    def upon_IMMEDIATE():
+        RemoveOnCallStateEnd(2)
+        E0EAEffectPosition(2)
+        IgnorePauses(2)
+        IgnoreScreenfreeze(1)
+        BlendMode_Normal()
+        PaletteIndex(4)
+        ForceBloomMaskOn(1)
+        AddY(-125000)
+        uponSendToLabel(32, 0)
+    sprite('vraref407_00', 4)
+    CommonSE('020_blood_1')
+    sprite('vraref407_01', 4)
+    sprite('vraref407_02', 4)
+
+    def RunOnObject_22():
         Visibility(1)
-        ApplyFunctionsToSelf()
-        sprite('vraref407_03', 32767)
-        label(0)
-        sprite('vraref407_00', 5)
-        ApplyFunctionsToObjects(22)
+    sprite('vraref407_03', 32767)
+    label(0)
+    sprite('vraref407_00', 5)
+
+    def RunOnObject_22():
         Visibility(0)
-        ApplyFunctionsToSelf()
-        CreateParticle('aref_407del', -1)
-        CommonSE('020_blood_1')
-        sprite('vraref407_01', 5)
-        SetScaleSpeed(15)
-        ConstantAlphaModifier(-25)
+    CreateParticle('aref_407del', -1)
+    CommonSE('020_blood_1')
+    sprite('vraref407_01', 5)
+    SetScaleSpeed(15)
+    ConstantAlphaModifier(-25)
 
-    @State
-    def aref_441():
 
-        def upon_IMMEDIATE():
-            RemoveOnCallStateEnd(2)
-            E0EAEffectPosition(2)
-            IgnoreScreenfreeze(1)
-            PaletteIndex(0)
-        sprite('null', 3)
-        CreateParticle('aref_441', -1)
-        CreateParticle('aref_441aura', -1)
-        label(0)
-        sprite('null', 3)
-        CreateParticle('aref_441aura', -1)
-        CreateParticle('aref_441_b', 103)
-        gotoLabel(0)
+@State
+def aref_441():
 
-    @State
-    def aref_441_powder():
+    def upon_IMMEDIATE():
+        RemoveOnCallStateEnd(2)
+        E0EAEffectPosition(2)
+        IgnoreScreenfreeze(1)
+        PaletteIndex(0)
+    sprite('null', 3)
+    CreateParticle('aref_441', -1)
+    CreateParticle('aref_441aura', -1)
+    label(0)
+    sprite('null', 3)
+    CreateParticle('aref_441aura', -1)
+    CreateParticle('aref_441_b', 103)
+    gotoLabel(0)
 
-        def upon_IMMEDIATE():
-            RemoveOnCallStateEnd(2)
-            E0EAEffectPosition(2)
-            IgnoreScreenfreeze(1)
-            PaletteIndex(0)
-        label(0)
-        sprite('null', 3)
-        CreateParticle('aref_441powder', -1)
-        gotoLabel(0)
 
-    @State
-    def Eventyodare():
+@State
+def aref_441_powder():
 
-        def upon_IMMEDIATE():
-            IgnoreScreenfreeze(1)
-            IgnoreFinishStop(1)
-            BlendMode_Normal()
-            Eff3DEffect('aref_430yodare00', '')
-        sprite('null', 5)
-        CreateParticle('aref_440yodare_00', -1)
-        Size(1350)
-        physicsYImpulse(35000)
-        sprite('null', 7)
-        Size(2250)
-        physicsYImpulse(0)
-        sprite('null', 9)
-        Eff3DEffect('aref_430yodare01', '')
-        IgnoreScreenfreeze(0)
-        IgnoreFinishStop(0)
-        sprite('null', 4)
-        SetScaleSpeed(80)
-        physicsYImpulse(-28000)
+    def upon_IMMEDIATE():
+        RemoveOnCallStateEnd(2)
+        E0EAEffectPosition(2)
+        IgnoreScreenfreeze(1)
+        PaletteIndex(0)
+    label(0)
+    sprite('null', 3)
+    CreateParticle('aref_441powder', -1)
+    gotoLabel(0)
 
-    @State
-    def Act2EventBNCreate():
 
-        def upon_IMMEDIATE():
-            LoadSpritePalette(0)
-            SetZVal(-500)
-            sendToLabelUpon(32, 1)
-            sendToLabelUpon(33, 2)
-            AddX(160000)
-        label(0)
-        sprite('bn010_02', 6)
-        sprite('bn010_03', 6)
-        sprite('bn010_04', 6)
-        sprite('bn010_05', 6)
-        sprite('bn010_06', 6)
-        sprite('bn010_07', 6)
-        sprite('bn010_08', 6)
-        sprite('bn010_09', 6)
-        sprite('bn010_10', 6)
-        sprite('bn010_11', 6)
-        loopRest()
-        gotoLabel(0)
-        label(1)
-        sprite('bn010_01', 6)
-        sprite('bn010_00', 6)
-        sprite('bn000_00', 7)
-        sprite('bn000_01', 7)
-        sprite('bn032_00', 3)
-        physicsXImpulse(-32000)
-        Flip()
-        sprite('bn032_01', 3)
-        sprite('bn032_02', 3)
-        CommonSE('204_runjump_normal_1')
-        DashEffects(100, 1, 1)
-        sprite('bn032_03', 3)
-        sprite('bn032_04', 3)
-        sprite('bn032_05', 3)
-        sprite('bn032_06', 3)
-        CommonSE('204_runjump_normal_1')
-        DashEffects(100, 1, 1)
-        sprite('bn032_07', 3)
-        sprite('bn032_08', 3)
-        sprite('bn032_01', 3)
-        sprite('bn032_02', 3)
-        CommonSE('204_runjump_normal_1')
-        DashEffects(100, 1, 1)
-        sprite('bn032_03', 3)
-        sprite('bn032_04', 3)
-        sprite('bn032_05', 3)
-        sprite('bn032_06', 3)
-        CommonSE('204_runjump_normal_1')
-        DashEffects(100, 1, 1)
-        sprite('bn032_07', 3)
-        sprite('bn032_08', 3)
-        loopRest()
+@State
+def Eventyodare():
 
-    @State
-    def EventShakeObj():
-        sprite('null', 40)
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        CommonSE('019_quake_0')
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        CommonSE('019_quake_0')
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        CommonSE('019_quake_0')
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        CommonSE('019_quake_0')
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        CommonSE('019_quake_0')
-        sprite('null', 8)
-        ScreenShake(0, 3000)
-        CommonSE('019_quake_0')
-        label(0)
-        sprite('null', 8)
-        ScreenShake(0, 5000)
-        CommonSE('019_quake_0')
-        CommonSE('019_quake_1')
-        loopRest()
-        gotoLabel(0)
+    def upon_IMMEDIATE():
+        IgnoreScreenfreeze(1)
+        IgnoreFinishStop(1)
+        BlendMode_Normal()
+        Eff3DEffect('aref_430yodare00', '')
+    sprite('null', 5)
+    CreateParticle('aref_440yodare_00', -1)
+    Size(1350)
+    physicsYImpulse(35000)
+    sprite('null', 7)
+    Size(2250)
+    physicsYImpulse(0)
+    sprite('null', 9)
+    Eff3DEffect('aref_430yodare01', '')
+    IgnoreScreenfreeze(0)
+    IgnoreFinishStop(0)
+    sprite('null', 4)
+    SetScaleSpeed(80)
+    physicsYImpulse(-28000)
+
+
+@State
+def Act2EventBNCreate():
+
+    def upon_IMMEDIATE():
+        LoadSpritePalette(0)
+        SetZVal(-500)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
+        AddX(160000)
+    label(0)
+    sprite('bn010_02', 6)
+    sprite('bn010_03', 6)
+    sprite('bn010_04', 6)
+    sprite('bn010_05', 6)
+    sprite('bn010_06', 6)
+    sprite('bn010_07', 6)
+    sprite('bn010_08', 6)
+    sprite('bn010_09', 6)
+    sprite('bn010_10', 6)
+    sprite('bn010_11', 6)
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    sprite('bn010_01', 6)
+    sprite('bn010_00', 6)
+    sprite('bn000_00', 7)
+    sprite('bn000_01', 7)
+    sprite('bn032_00', 3)
+    physicsXImpulse(-32000)
+    Flip()
+    sprite('bn032_01', 3)
+    sprite('bn032_02', 3)
+    CommonSE('204_runjump_normal_1')
+    DashEffects(100, 1, 1)
+    sprite('bn032_03', 3)
+    sprite('bn032_04', 3)
+    sprite('bn032_05', 3)
+    sprite('bn032_06', 3)
+    CommonSE('204_runjump_normal_1')
+    DashEffects(100, 1, 1)
+    sprite('bn032_07', 3)
+    sprite('bn032_08', 3)
+    sprite('bn032_01', 3)
+    sprite('bn032_02', 3)
+    CommonSE('204_runjump_normal_1')
+    DashEffects(100, 1, 1)
+    sprite('bn032_03', 3)
+    sprite('bn032_04', 3)
+    sprite('bn032_05', 3)
+    sprite('bn032_06', 3)
+    CommonSE('204_runjump_normal_1')
+    DashEffects(100, 1, 1)
+    sprite('bn032_07', 3)
+    sprite('bn032_08', 3)
+    loopRest()
+
+
+@State
+def EventShakeObj():
+    sprite('null', 40)
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    CommonSE('019_quake_0')
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    CommonSE('019_quake_0')
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    CommonSE('019_quake_0')
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    CommonSE('019_quake_0')
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    CommonSE('019_quake_0')
+    sprite('null', 8)
+    ScreenShake(0, 3000)
+    CommonSE('019_quake_0')
+    label(0)
+    sprite('null', 8)
+    ScreenShake(0, 5000)
+    CommonSE('019_quake_0')
+    CommonSE('019_quake_1')
+    loopRest()
+    gotoLabel(0)

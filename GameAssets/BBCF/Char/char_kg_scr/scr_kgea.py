@@ -21,6 +21,7 @@ def EMB_KG():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_KG_OD():
 
@@ -43,6 +44,7 @@ def EMB_KG_OD():
     sprite('null', 8)
     ColorTransition(4278223103, 10)
     sprite('null', 80)
+
 
 @State
 def EMB_KG_AH():
@@ -67,14 +69,15 @@ def EMB_KG_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def EntrySword():
 
     def upon_IMMEDIATE():
         SetZVal(500)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
 
         def upon_41():
             Visibility(1)
@@ -94,6 +97,7 @@ def EntrySword():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def EntryKaguraGirl():
 
@@ -102,10 +106,10 @@ def EntryKaguraGirl():
         AddY(100000)
         physicsYImpulse(70000)
         EndYPhysicsImpulse()
-        sendToLabelUpon(32, 110)
-        sendToLabelUpon(33, 120)
-        sendToLabelUpon(34, 130)
-        sendToLabelUpon(35, 140)
+        uponSendToLabel(32, 110)
+        uponSendToLabel(33, 120)
+        uponSendToLabel(34, 130)
+        uponSendToLabel(35, 140)
     sprite('null', 1)
     label(110)
     sprite('kg601girl_a05', 30)
@@ -120,6 +124,7 @@ def EntryKaguraGirl():
     sprite('kg601girl_d05', 30)
     ExitState()
 
+
 @State
 def MatchWinKaguraGirl():
 
@@ -127,11 +132,11 @@ def MatchWinKaguraGirl():
         AddY(650000)
         physicsYImpulse(-10000)
         EndYPhysicsImpulse()
-        sendToLabelUpon(32, 110)
-        sendToLabelUpon(33, 120)
-        sendToLabelUpon(34, 130)
-        sendToLabelUpon(35, 140)
-        sendToLabelUpon(41, 150)
+        uponSendToLabel(32, 110)
+        uponSendToLabel(33, 120)
+        uponSendToLabel(34, 130)
+        uponSendToLabel(35, 140)
+        uponSendToLabel(41, 150)
     sprite('null', 1)
     label(110)
     sprite('kg611girl_a00', 3)
@@ -153,6 +158,7 @@ def MatchWinKaguraGirl():
     sprite('null', 1)
     ExitState()
 
+
 @State
 def LoseKaguraGirl():
 
@@ -163,86 +169,86 @@ def LoseKaguraGirl():
         physicsYImpulse(-30000)
         Flip()
         AddX(30000)
-        sendToLabelUpon(32, 110)
-        sendToLabelUpon(33, 120)
-        sendToLabelUpon(34, 130)
-        sendToLabelUpon(35, 140)
-        sendToLabelUpon(41, 150)
+        uponSendToLabel(32, 110)
+        uponSendToLabel(33, 120)
+        uponSendToLabel(34, 130)
+        uponSendToLabel(35, 140)
+        uponSendToLabel(41, 150)
     sprite('null', 1)
     label(110)
-    sendToLabelUpon(2, 115)
+    uponSendToLabel(LANDING, 115)
     label(111)
     sprite('kg611girl_a00', 3)
     sprite('kg611girl_a01', 3)
     gotoLabel(111)
     label(120)
-    sendToLabelUpon(2, 125)
+    uponSendToLabel(LANDING, 125)
     label(121)
     sprite('kg611girl_b00', 3)
     sprite('kg611girl_b01', 3)
     gotoLabel(121)
     label(130)
-    sendToLabelUpon(2, 135)
+    uponSendToLabel(LANDING, 135)
     label(131)
     sprite('kg611girl_c00', 3)
     sprite('kg611girl_c01', 3)
     gotoLabel(131)
     label(140)
-    sendToLabelUpon(2, 145)
+    uponSendToLabel(LANDING, 145)
     label(141)
     sprite('kg611girl_d00', 3)
     sprite('kg611girl_d01', 3)
     gotoLabel(141)
     label(115)
     sprite('kg611girl_a00', 3)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
     EndMomentum(1)
     physicsYImpulse(25000)
     EndYPhysicsImpulse()
-    clearUponHandler(2)
-    sendToLabelUpon(2, 118)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 118)
     sprite('kg611girl_a01', 3)
     gotoLabel(111)
     label(125)
     sprite('kg611girl_b00', 3)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
     EndMomentum(1)
     physicsYImpulse(25000)
     EndYPhysicsImpulse()
-    clearUponHandler(2)
-    sendToLabelUpon(2, 128)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 128)
     sprite('kg611girl_b01', 3)
     gotoLabel(121)
     label(135)
     sprite('kg611girl_c00', 3)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
     EndMomentum(1)
     physicsYImpulse(25000)
     EndYPhysicsImpulse()
-    clearUponHandler(2)
-    sendToLabelUpon(2, 138)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 138)
     sprite('kg611girl_c01', 3)
     gotoLabel(131)
     label(145)
     sprite('kg611girl_d00', 3)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     ParticleSize(1200)
     CallCustomizableParticle('ef_hitmd', 108)
     CommonSE('100_hit_grap_0')
     EndMomentum(1)
     physicsYImpulse(25000)
     EndYPhysicsImpulse()
-    clearUponHandler(2)
-    sendToLabelUpon(2, 148)
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 148)
     sprite('kg611girl_d01', 3)
     gotoLabel(141)
     label(118)
@@ -266,6 +272,7 @@ def LoseKaguraGirl():
     sprite('kg611girl_d10', 32767)
     CreateParticle('kgef_lose', 0)
 
+
 @State
 def TimeUpSword():
 
@@ -275,6 +282,7 @@ def TimeUpSword():
     ScreenShake(0, 15000)
     AltKnockdownEffects(100, 1, 1)
     sprite('kg620_05s', 32767)
+
 
 @State
 def efkg_203():
@@ -294,6 +302,7 @@ def efkg_203():
     ParticleSize(400)
     CallCustomizableParticle('kgef_kamaekira_pos01', -1)
 
+
 @State
 def efkg_213():
 
@@ -312,6 +321,7 @@ def efkg_213():
     ParticleSize(500)
     CallCustomizableParticle('kgef_kamaekira_pos00', -1)
 
+
 @State
 def efkg_233():
 
@@ -326,6 +336,7 @@ def efkg_233():
     FaceSpawnLocation()
     sprite('null', 7)
     PrivateSE('kgse_02')
+
 
 @State
 def efkg_253():
@@ -345,6 +356,7 @@ def efkg_253():
     ParticleSize(400)
     CallCustomizableParticle('kgef_kamaekira_pos02', -1)
 
+
 @State
 def efkg_254():
 
@@ -363,6 +375,7 @@ def efkg_254():
     ParticleSize(400)
     CallCustomizableParticle('kgef_kamaekira_pos02', -1)
 
+
 @State
 def efkg_255():
 
@@ -380,6 +393,7 @@ def efkg_255():
     sprite('null', 4)
     ParticleSize(500)
     CallCustomizableParticle('kgef_kamaekira_pos00', -1)
+
 
 @State
 def efkg_202():
@@ -401,6 +415,7 @@ def efkg_202():
     sprite('vrkgef202_00', 3)
     sprite('vrkgef202_01', 120)
 
+
 @State
 def efkg_212():
 
@@ -419,6 +434,7 @@ def efkg_212():
         AlphaValue(127)
     sprite('vrkgef212_00', 3)
     sprite('vrkgef212_01', 120)
+
 
 @State
 def efkg_232():
@@ -441,6 +457,7 @@ def efkg_232():
     sprite('vrkgef232_01', 2)
     sprite('vrkgef232_02', 120)
 
+
 @State
 def efkg_232_test():
 
@@ -458,6 +475,7 @@ def efkg_232_test():
     sprite('vrkgef232_00', 4)
     sprite('vrkgef232_01', 120)
 
+
 @State
 def efkg_232_test_2():
 
@@ -470,6 +488,7 @@ def efkg_232_test_2():
         SetZVal(-500)
     sprite('vrkgef232_00b', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def efkg_235():
@@ -492,6 +511,7 @@ def efkg_235():
     sprite('vrkgef235_01', 120)
     E0EAEffectPosition(0)
 
+
 @State
 def efkg_252():
 
@@ -510,6 +530,7 @@ def efkg_252():
         AlphaValue(127)
     sprite('vrkgef252_00', 3)
     sprite('vrkgef252_01', 3)
+
 
 @State
 def efkg_311():
@@ -532,6 +553,7 @@ def efkg_311():
     sprite('vrkgef311_01', 3)
     sprite('vrkgef311_02', 120)
 
+
 @State
 def efkg_340():
 
@@ -551,6 +573,7 @@ def efkg_340():
     sprite('vrkgef340_01', 2)
     sprite('vrkgef340_02', 2)
     sprite('vrkgef340_03', 120)
+
 
 @State
 def efkg_411():
@@ -578,6 +601,7 @@ def efkg_411():
     sprite('vrkgef411_04', 4)
     CreateParticle('kgef411_smoke', 0)
 
+
 @State
 def efkg_411_splash():
 
@@ -587,6 +611,7 @@ def efkg_411_splash():
         FaceSpawnLocation()
         BlendMode_Add()
     sprite('null', 13)
+
 
 @State
 def efkg_411Sub00():
@@ -607,6 +632,7 @@ def efkg_411Sub00():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def efkg_411Sub01():
 
@@ -619,6 +645,7 @@ def efkg_411Sub01():
     sprite('null', 20)
     CreateParticle('kgef411grsp_fly', -1)
 
+
 @State
 def efkg_slash():
 
@@ -627,6 +654,7 @@ def efkg_slash():
     sprite('null', -1)
     CallCustomizableParticle('ef_hitlz', 0)
     CommonSE('101_hit_slash_0')
+
 
 @State
 def __401slash00():
@@ -645,6 +673,7 @@ def __401slash00():
     FaceSpawnLocation()
     sprite('null', 7)
 
+
 @State
 def __401slash01():
 
@@ -658,6 +687,7 @@ def __401slash01():
     CallCustomizableParticle('kgefcmnkira_00', 1)
     sprite('vrkgef401papos_00', 4)
     CallCustomizableParticle('kgefcmnkira_00', 2)
+
 
 @State
 def __402slash00():
@@ -675,6 +705,7 @@ def __402slash00():
     FaceSpawnLocation()
     sprite('null', 3)
     AlphaValue(0)
+
 
 @State
 def __402slash01():
@@ -700,6 +731,7 @@ def __402slash01():
     AddX(75000)
     sprite('vrkgef402_03', 3)
     sprite('vrkgef402_04', 3)
+
 
 @State
 def __402slash02():
@@ -732,6 +764,7 @@ def __402slash02():
     sprite('vrkgef402papos_00', 3)
     sprite('vrkgef402papos_00', 3)
 
+
 @State
 def __403slash00():
 
@@ -749,6 +782,7 @@ def __403slash00():
     FaceSpawnLocation()
     sprite('null', 10)
     AlphaValue(0)
+
 
 @State
 def __403Zanzo():
@@ -784,6 +818,7 @@ def __403Zanzo():
     sprite('vrkg403_04', 3)
     sprite('vrkg403_05', 3)
 
+
 @State
 def __404slash00():
 
@@ -803,6 +838,7 @@ def __404slash00():
     sprite('null', 10)
     AlphaValue(0)
 
+
 @State
 def Yugami():
 
@@ -816,6 +852,7 @@ def Yugami():
     sprite('vrdist00', 10)
     RandAddRotation(-90000, 90000)
     sprite('vrdist00', 10)
+
 
 @State
 def __403slash01():
@@ -833,6 +870,7 @@ def __403slash01():
     CallCustomizableParticle('kgefcmnkira_00', 4)
     sprite('vrkgef403papos_00', 2)
 
+
 @State
 def __405Slash():
 
@@ -843,7 +881,7 @@ def __405Slash():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(3)
         SetZVal(-100)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 4)
     CreateObject('405noko2', -1)
     sprite('vrkgef405_00', 3)
@@ -870,6 +908,7 @@ def __405Slash():
     CreateObject('405noko', -1)
     sprite('vrkgef405_05', 2)
 
+
 @State
 def __405noko():
 
@@ -884,6 +923,7 @@ def __405noko():
     FaceSpawnLocation()
     sprite('null', 20)
     ConstantAlphaModifier(-13)
+
 
 @State
 def __405noko2():
@@ -900,6 +940,7 @@ def __405noko2():
     Eff3DEffect('kgef405_nokori2', '')
     FaceSpawnLocation()
 
+
 @State
 def __406slash00():
 
@@ -915,14 +956,15 @@ def __406slash00():
     CreateObject('406slash01', -1)
     CreateObject('406Rock', -1)
     CreateObject('406Rock', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    AddX(-150000)
-    Size(700)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        AddX(-150000)
+        Size(700)
     CreateObject('403slash01', -1)
     Eff3DEffect('kgef406_slash00', '')
     FaceSpawnLocation()
+
 
 @State
 def __406Rock():
@@ -940,6 +982,7 @@ def __406Rock():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
     physicsYImpulse(-1500)
+
 
 @State
 def __406slash01():
@@ -960,6 +1003,7 @@ def __406slash01():
     sprite('vrkgef406papos_00', 2)
     CallCustomizableParticle('kgefcmnkira_00', 5)
 
+
 @State
 def __408slash00():
 
@@ -973,6 +1017,7 @@ def __408slash00():
     CreateObject('408slashparticle00', -1)
     Eff3DEffect('kgef407_slash00', '')
     FaceSpawnLocation()
+
 
 @State
 def __408slashparticle00():
@@ -992,6 +1037,7 @@ def __408slashparticle00():
     CallCustomizableParticle('kgefcmnkira_00', 6)
     sprite('vrkgef408papos_00', 1)
 
+
 @State
 def __408slash01():
 
@@ -1007,15 +1053,16 @@ def __408slash01():
     Eff3DEffect('kgef407_slash01', '')
     FaceSpawnLocation()
     CreateObject('406Rock', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    Size(700)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
+        Size(700)
     CreateObject('406Rock', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    AddX(-325000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        AddX(-325000)
+
 
 @State
 def __408slashparticle01():
@@ -1031,6 +1078,7 @@ def __408slashparticle01():
     sprite('vrkgef408papos_01', 1)
     CallCustomizableParticle('kgefcmnkira_00', 4)
 
+
 @State
 def efkg_407():
 
@@ -1041,6 +1089,7 @@ def efkg_407():
         IgnorePauses(3)
     sprite('null', 1)
     CreateParticle('kgef407', -1)
+
 
 @State
 def ShotObj():
@@ -1069,15 +1118,15 @@ def ShotObj():
         PaletteIndex(3)
         LinkParticle('kgef_410core_00')
         CollideWithWall(1)
-        sendToLabelUpon(44, 2)
+        uponSendToLabel(PLAYER_DAMAGED, 2)
         RunLoopUpon(17, 70)
-        sendToLabelUpon(17, 2)
+        uponSendToLabel(17, 2)
         SetActionMark(4)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
             XImpulseAcceleration(50)
-            if (SLOT_2 >= 5):
+            if SLOT_2 >= 5:
                 sendToLabel(2)
                 NoAttackDuringAction(1)
                 AttackOff()
@@ -1156,8 +1205,8 @@ def ShotObj():
     gotoLabel(0)
     label(2)
     sprite('vrkg410_15', 2)
-    clearUponHandler(10)
-    clearUponHandler(44)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(17)
     XImpulseAcceleration(50)
     sprite('vrkg410_16', 2)
@@ -1170,7 +1219,7 @@ def ShotObj():
     sprite('vrkg410_20', 2)
     ExitState()
     label(1)
-    clearUponHandler(11)
+    clearUponHandler(OPPONENT_CHAR_HIT_OR_BLOCK)
     sprite('vrkg410_14', 3)
     physicsXImpulse(10000)
     sprite('vrkg410_15', 3)
@@ -1178,6 +1227,7 @@ def ShotObj():
     RefreshMultihit()
     sprite('vrkg410_16', 3)
     gotoLabel(2)
+
 
 @State
 def ChargeShotObj():
@@ -1205,15 +1255,15 @@ def ChargeShotObj():
         PaletteIndex(3)
         LinkParticle('kgef_410core_00')
         CollideWithWall(1)
-        sendToLabelUpon(44, 2)
+        uponSendToLabel(PLAYER_DAMAGED, 2)
         RunLoopUpon(17, 130)
-        sendToLabelUpon(17, 2)
+        uponSendToLabel(17, 2)
         SetActionMark(3)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
             XImpulseAcceleration(50)
-            if (SLOT_2 >= 5):
+            if SLOT_2 >= 5:
                 sendToLabel(2)
                 NoAttackDuringAction(1)
                 AttackOff()
@@ -1257,14 +1307,14 @@ def ChargeShotObj():
     sprite('vrkg410_15', 3)
     RefreshMultihit()
     sprite('vrkg410_16', 4)
-    if (not SLOT_51):
+    if not SLOT_51:
         AddActionMark(-2)
         Damage(500)
         if SLOT_137:
             DamageMultiplier(80)
         Size(1050)
         SetScaleSpeed(0)
-    SLOT_5 = (SLOT_5 + 2)
+    SLOT_5 = SLOT_5 + 2
     RefreshMultihit()
     CreateObject('ShotNokosi', -1)
     XImpulseAcceleration(180)
@@ -1298,7 +1348,7 @@ def ChargeShotObj():
     SetScaleSpeed(0)
     AddActionMark(-2)
     Damage(350)
-    SLOT_5 = (SLOT_5 + 2)
+    SLOT_5 = SLOT_5 + 2
     label(0)
     sprite('vrkg410_14', 3)
     RefreshMultihit()
@@ -1312,8 +1362,8 @@ def ChargeShotObj():
     label(2)
     sprite('vrkg410_14', 2)
     BlendMode_Add()
-    clearUponHandler(10)
-    clearUponHandler(44)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(PLAYER_DAMAGED)
     clearUponHandler(17)
     DespawnEAEffect('ShotNokosi')
     EndAttack()
@@ -1329,6 +1379,7 @@ def ChargeShotObj():
     sprite('vrkg410_19', 2)
     sprite('vrkg410_20', 2)
 
+
 @State
 def ShotNokosi():
 
@@ -1339,6 +1390,7 @@ def ShotNokosi():
     sprite('null', 5)
     CreateParticle('kgef_410nokosi_01', -1)
     gotoLabel(0)
+
 
 @State
 def ChargeTameFinFast():
@@ -1357,6 +1409,7 @@ def ChargeTameFinFast():
     sprite('vrkg410_08', 3)
     sprite('vrkg410_09', 3)
     sprite('vrkg410_10', 2)
+
 
 @State
 def ChargeTameFin():
@@ -1379,6 +1432,7 @@ def ChargeTameFin():
     sprite('vrkg410_09', 3)
     sprite('vrkg410_10', 2)
 
+
 @State
 def ChargeTameJizoku():
 
@@ -1397,6 +1451,7 @@ def ChargeTameJizoku():
     sprite('vrkg410_02', 3)
     sprite('vrkg410_03', 3)
 
+
 @State
 def ChargeTameAura():
 
@@ -1408,11 +1463,12 @@ def ChargeTameAura():
         LinkParticle('kgef_410tame_05')
         AddY(460000)
         AddX(50000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def UltimateShotMaster():
@@ -1425,27 +1481,28 @@ def UltimateShotMaster():
 
         def upon_41():
             Unknown2064(1)
-        if (SLOT_19 < 300000):
+        if SLOT_19 < 300000:
             CopyFromRightToLeft(23, 2, 83, 22, 2, 83)
         else:
             AddX(300000)
     sprite('null', 13)
     CreateObject('UltimateShotObj', -1)
-    ApplyFunctionsToObjects(1)
-    Size(700)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(700)
     sprite('null', 13)
     CreateObject('UltimateShotObj', -1)
-    ApplyFunctionsToObjects(1)
-    Size(1000)
-    AddX(200000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1000)
+        AddX(200000)
     sprite('null', 30)
     CreateObject('UltimateShotObj', -1)
-    ApplyFunctionsToObjects(1)
-    Size(1200)
-    AddX(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1200)
+        AddX(400000)
+
 
 @State
 def UltimateShotObj():
@@ -1478,11 +1535,11 @@ def UltimateShotObj():
         IgnoreScreenfreeze(1)
         AttackOff()
 
-        def upon_FRAME_STEP():
-            if Unknown2065(23):
-                clearUponHandler(3)
-                ObjectUpon(3, 41)
-                ObjectUpon(2, 41)
+        def upon_EVERY_FRAME():
+            if SLOT_19 < 300000:
+                clearUponHandler(EVERY_FRAME)
+                ObjectUpon(EVERY_FRAME, 41)
+                ObjectUpon(LANDING, 41)
     sprite('vrkgef430_00', 3)
     CreateObject('ShotAdd', 100)
     sprite('vrkgef430_01', 3)
@@ -1497,14 +1554,15 @@ def UltimateShotObj():
     sprite('vrkgef430_04', 3)
     EndAttack()
     CreateObject('UltimateShotNokoribi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(280000)
-    AddScale(300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(280000)
+        AddScale(300)
     sprite('vrkgef430_05', 3)
     sprite('vrkgef430_06', 3)
     sprite('vrkgef430_07', 3)
     sprite('vrkgef430_08', 2)
+
 
 @State
 def UltimateShotMasterOD():
@@ -1517,27 +1575,28 @@ def UltimateShotMasterOD():
 
         def upon_41():
             Unknown2064(1)
-        if (SLOT_19 < 300000):
+        if SLOT_19 < 300000:
             CopyFromRightToLeft(23, 2, 83, 22, 2, 83)
         else:
             AddX(300000)
     sprite('null', 13)
     CreateObject('UltimateShotObjOD', -1)
-    ApplyFunctionsToObjects(1)
-    Size(700)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(700)
     sprite('null', 13)
     CreateObject('UltimateShotObjOD', -1)
-    ApplyFunctionsToObjects(1)
-    Size(1000)
-    AddX(200000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1000)
+        AddX(200000)
     sprite('null', 30)
     CreateObject('UltimateLastShotObjOD', -1)
-    ApplyFunctionsToObjects(1)
-    Size(1200)
-    AddX(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1200)
+        AddX(400000)
+
 
 @State
 def UltimateShotObjOD():
@@ -1572,11 +1631,11 @@ def UltimateShotObjOD():
         IgnoreScreenfreeze(1)
         AttackOff()
 
-        def upon_FRAME_STEP():
-            if Unknown2065(23):
-                clearUponHandler(3)
-                ObjectUpon(3, 41)
-                ObjectUpon(2, 41)
+        def upon_EVERY_FRAME():
+            if SLOT_19 < 300000:
+                clearUponHandler(EVERY_FRAME)
+                ObjectUpon(EVERY_FRAME, 41)
+                ObjectUpon(LANDING, 41)
     sprite('vrkgef430_00', 3)
     CreateObject('ShotAdd', 100)
     sprite('vrkgef430_01', 3)
@@ -1591,14 +1650,15 @@ def UltimateShotObjOD():
     sprite('vrkgef430_04', 3)
     EndAttack()
     CreateObject('UltimateShotNokoribi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(280000)
-    AddScale(300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(280000)
+        AddScale(300)
     sprite('vrkgef430_05', 3)
     sprite('vrkgef430_06', 3)
     sprite('vrkgef430_07', 3)
     sprite('vrkgef430_08', 2)
+
 
 @State
 def UltimateLastShotObjOD():
@@ -1633,7 +1693,7 @@ def UltimateLastShotObjOD():
         AttackOff()
 
         def upon_OPPONENT_HIT():
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
     sprite('vrkgef430_00', 3)
     CreateObject('ShotAdd', 100)
     sprite('vrkgef430_01', 3)
@@ -1647,14 +1707,15 @@ def UltimateLastShotObjOD():
     sprite('vrkgef430_04', 3)
     EndAttack()
     CreateObject('UltimateShotNokoribi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(280000)
-    AddScale(300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(280000)
+        AddScale(300)
     sprite('vrkgef430_05', 3)
     sprite('vrkgef430_06', 3)
     sprite('vrkgef430_07', 3)
     sprite('vrkgef430_08', 2)
+
 
 @State
 def UltimateShotObjODAdd():
@@ -1692,9 +1753,9 @@ def UltimateShotObjODAdd():
         CreateObject('UltimateShotModel', -1)
         SetActionMark(0)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             AddActionMark(1)
-            if (SLOT_2 >= 3):
+            if SLOT_2 >= 3:
                 AirPushbackY(10000)
                 EndAttack()
     label(0)
@@ -1705,6 +1766,7 @@ def UltimateShotObjODAdd():
     sprite('vrkg410_16', 2)
     RefreshMultihit()
     gotoLabel(0)
+
 
 @State
 def UltimateShotModel():
@@ -1729,6 +1791,7 @@ def UltimateShotModel():
     SetScaleSpeed(0)
     gotoLabel(0)
 
+
 @State
 def UltimateShotYugami():
 
@@ -1744,6 +1807,7 @@ def UltimateShotYugami():
     sprite('vrdist01', 10)
     SetScaleSpeed(100)
 
+
 @State
 def UltimateShotUnderRay():
 
@@ -1753,6 +1817,7 @@ def UltimateShotUnderRay():
     PaletteIndex(2)
     ParticleColorFromPalette(96, 96, 96)
     CallCustomizableParticle('kgef_430ray_02', -1)
+
 
 @State
 def UltimateShotAura():
@@ -1766,6 +1831,7 @@ def UltimateShotAura():
     PaletteIndex(2)
     ParticleColorFromPalette(96, 96, 96)
     CallPrivateEffect('kgef_430endaura_01')
+
 
 @State
 def ShotAdd():
@@ -1788,6 +1854,7 @@ def ShotAdd():
     sprite('vrkgef430_16', 3)
     sprite('vrkgef430_17', 6)
 
+
 @State
 def UltimateShotAura():
 
@@ -1798,6 +1865,7 @@ def UltimateShotAura():
     PaletteIndex(2)
     ParticleColorFromPalette(96, 96, 96)
     CallPrivateEffect('kgef_430endaura_01')
+
 
 @State
 def UltimateShotImpact():
@@ -1815,6 +1883,7 @@ def UltimateShotImpact():
     Eff3DEffect('kgef430_impact00', '')
     FaceSpawnLocation()
 
+
 @State
 def UltimateShotrock():
 
@@ -1830,6 +1899,7 @@ def UltimateShotrock():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def NokoribiRenzok():
 
@@ -1839,10 +1909,11 @@ def NokoribiRenzok():
     CreateObject('UltimateShotNokoribi', -1)
     sprite('null', 6)
     CreateObject('UltimateShotNokoribi', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-30000)
-    AddScaleY(-300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-30000)
+        AddScaleY(-300)
+
 
 @State
 def UltimateShotNokoribi():
@@ -1857,6 +1928,7 @@ def UltimateShotNokoribi():
     Eff3DEffect('kgef430_nokoribi00', '')
     FaceSpawnLocation()
 
+
 @State
 def ImpactAuraMato():
 
@@ -1864,7 +1936,7 @@ def ImpactAuraMato():
         IgnoreScreenfreeze(1)
         RemoveOnCallStateEnd(2)
         BlendMode_Add()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         AddY(260000)
         AddX(-130000)
     sprite('null', 1)
@@ -1876,6 +1948,7 @@ def ImpactAuraMato():
     sprite('null', 15)
     DespawnEAEffect('ImpactAura')
 
+
 @State
 def ImpactAuraMatoAir():
 
@@ -1884,8 +1957,8 @@ def ImpactAuraMatoAir():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         BlendMode_Add()
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         AddY(450000)
         RotationAngle(100000)
     sprite('null', 1)
@@ -1904,6 +1977,7 @@ def ImpactAuraMatoAir():
     Rotation(-55000)
     DespawnEAEffect('ImpactAura')
 
+
 @State
 def ImpactAura():
 
@@ -1921,6 +1995,7 @@ def ImpactAura():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ImpactAuraAir():
 
@@ -1935,6 +2010,7 @@ def ImpactAuraAir():
     Eff3DEffect('kgef431_sordaura00', '')
     FaceSpawnLocation()
 
+
 @State
 def ImpactFirstShock():
 
@@ -1943,11 +2019,12 @@ def ImpactFirstShock():
         IgnoreScreenfreeze(1)
     sprite('null', 3)
     CreateObject('ImpactShock00', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(250000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(250000)
     sprite('null', 10)
     CreateObject('ImpactShock01', -1)
+
 
 @State
 def ImpactShock00():
@@ -1965,6 +2042,7 @@ def ImpactShock00():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ImpactShock01():
 
@@ -1973,6 +2051,7 @@ def ImpactShock01():
     sprite('null', 70)
     LinkParticle('kgef_431_bomstart_smoke')
 
+
 @State
 def UltimateImpactHibasira():
 
@@ -1980,7 +2059,7 @@ def UltimateImpactHibasira():
         IgnorePauses(2)
         RemoveOnCallStateEnd(2)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         RenderLayer(2)
         AddX(240000)
         SetScaleX(1400)
@@ -1996,11 +2075,12 @@ def UltimateImpactHibasira():
     label(0)
     sprite('null', 20)
     sprite('null', 7)
-    PassbackAddActionMarkToFunction('UltimateImpactCamera', 32)
-    PassbackAddActionMarkToFunction('UltimateImpactGround', 32)
+    TriggerUponForState('UltimateImpactCamera', 32)
+    TriggerUponForState('UltimateImpactGround', 32)
     CreateParticle('kgef_431jizokurayend_00', -1)
     ConstantAlphaModifier(-26)
     sprite('null', 8)
+
 
 @State
 def UltimateImpactCamera():
@@ -2008,7 +2088,7 @@ def UltimateImpactCamera():
     def upon_IMMEDIATE():
         CancelIfPlayerHit(3)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 1)
     CameraControlEnable(1)
     CameraNoScreenCollision(1)
@@ -2018,6 +2098,7 @@ def UltimateImpactCamera():
     sprite('null', 1)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
+
 
 @State
 def UltimateImpactBom():
@@ -2032,6 +2113,7 @@ def UltimateImpactBom():
     CreateParticle('kgef_431_bomray_pos', -1)
     sprite('null', 4)
     ScreenShake(75000, 75000)
+
 
 @State
 def UltimateImpactRock():
@@ -2049,6 +2131,7 @@ def UltimateImpactRock():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def UltimateImpactGround():
 
@@ -2059,7 +2142,7 @@ def UltimateImpactGround():
         AddY(-20000)
         SetScaleY(1300)
         RenderLayer(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 5)
     ConstantAlphaModifier(26)
     sprite('null', 32767)
@@ -2069,6 +2152,7 @@ def UltimateImpactGround():
     sprite('null', 10)
     sprite('null', 15)
     ConstantAlphaModifier(-13)
+
 
 @State
 def efkg_431_splash():
@@ -2082,6 +2166,7 @@ def efkg_431_splash():
         AddX(-273000)
     sprite('null', 10)
 
+
 @State
 def efkg_440Slash():
 
@@ -2094,7 +2179,7 @@ def efkg_440Slash():
         AddScaleY(100)
         AddScaleX(300)
         EnableAfterimage(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('vrkgef440_00', 2)
     sprite('vrkgef440_01', 2)
@@ -2106,6 +2191,7 @@ def efkg_440Slash():
     label(1)
     sprite('keep', 5)
     ConstantAlphaModifier(-51)
+
 
 @State
 def efkg_440AIMG():
@@ -2121,6 +2207,7 @@ def efkg_440AIMG():
     Eff3DEffect('kgef440_slash00', '')
     ConstantAlphaModifier(-51)
 
+
 @State
 def efkg_440AIMG2():
 
@@ -2134,6 +2221,7 @@ def efkg_440AIMG2():
     sprite('null', 5)
     Eff3DEffect('kgef440_slash01', '')
     ConstantAlphaModifier(-51)
+
 
 @State
 def efkg_440AIMG3():
@@ -2149,6 +2237,7 @@ def efkg_440AIMG3():
     Eff3DEffect('kgef440_slash03', '')
     ConstantAlphaModifier(-51)
 
+
 @State
 def efkg_440AIMG4():
 
@@ -2162,6 +2251,7 @@ def efkg_440AIMG4():
     sprite('null', 10)
     Eff3DEffect('kgef440_slash04', '')
     ConstantAlphaModifier(-26)
+
 
 @State
 def efkg_440BlackFire():
@@ -2180,6 +2270,7 @@ def efkg_440BlackFire():
     IgnoreFinishStop(0)
     sprite('null', 5)
 
+
 @State
 def efkg_440BlackFireSub():
 
@@ -2194,6 +2285,7 @@ def efkg_440BlackFireSub():
     SetScaleSpeed(10)
     physicsXImpulse(3000)
 
+
 @State
 def efkg_440BlackFireEx():
 
@@ -2203,7 +2295,7 @@ def efkg_440BlackFireEx():
         AbsoluteY(0)
         Size(2000)
         AddX(300000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 10)
     IgnoreFinishStop(1)
     ScreenShake(20000, 20000)
@@ -2220,7 +2312,8 @@ def efkg_440BlackFireEx():
     sprite('null', 15)
     SetScaleSpeed(-30)
     ConstantAlphaModifier(-26)
-    PassbackAddActionMarkToFunction('efkg_440ExBlackFireSub', 32)
+    TriggerUponForState('efkg_440ExBlackFireSub', 32)
+
 
 @State
 def efkg_440ExBlackFireSub():
@@ -2230,11 +2323,12 @@ def efkg_440ExBlackFireSub():
         LinkParticle('kgef440ex_fire')
         Size(1000)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     label(1)
     sprite('null', 15)
     ConstantAlphaModifier(-18)
+
 
 @State
 def efkg_412SlashEff():
@@ -2270,6 +2364,7 @@ def efkg_412SlashEff():
     CallCustomizableParticle('kgefcmnkira_01', 1)
     sprite('vrkgef412_03', 3)
 
+
 @State
 def __450slash00():
 
@@ -2282,6 +2377,7 @@ def __450slash00():
     sprite('null', 10)
     Eff3DEffect('kgef450_slash00', '')
     FaceSpawnLocation()
+
 
 @State
 def __450slash01():
@@ -2296,13 +2392,14 @@ def __450slash01():
     Eff3DEffect('kgef450_slash01', '')
     FaceSpawnLocation()
 
+
 @State
 def AstKousokuEff():
 
     def upon_IMMEDIATE():
         PaletteIndex(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         Flip()
         AddX(-500000)
         SetScaleX(1100)
@@ -2317,13 +2414,14 @@ def AstKousokuEff():
     sprite('vrkgef450_04', 3)
     sprite('vrkgef450_05', 3)
     CreateObject('UltimateShotNokoribi', 106)
-    ApplyFunctionsToObjects(1)
-    RenderLayer(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RenderLayer(1)
     gotoLabel(0)
     label(1)
     sprite('null', 3)
     DespawnEAEffect('UltimateShotNokoribi')
+
 
 @State
 def AstKousokuEffParticle():
@@ -2336,13 +2434,14 @@ def AstKousokuEffParticle():
     sprite('null', 200)
     LinkParticle('kgef_450start_00')
 
+
 @State
 def AstKousokuEff2():
 
     def upon_IMMEDIATE():
         PaletteIndex(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         AddX(230000)
         SetScaleY(600)
         SetScaleX(1100)
@@ -2362,6 +2461,7 @@ def AstKousokuEff2():
     sprite('null', 3)
     DespawnEAEffect('UltimateShotNokoribi')
 
+
 @State
 def AstBG00():
 
@@ -2379,6 +2479,7 @@ def AstBG00():
     Eff3DEffect('kgef450_sordaura00', '')
     sprite('null', 100)
     ScreenShake(10000, 10000)
+
 
 @State
 def AstBG01():
@@ -2398,6 +2499,7 @@ def AstBG01():
     sprite('null', 150)
     SetScaleSpeed(0)
 
+
 @State
 def AstBGRay():
 
@@ -2408,6 +2510,7 @@ def AstBGRay():
         RenderLayer(2)
     sprite('null', 150)
     LinkParticle('kgef_450sky_ray2')
+
 
 @State
 def AstAura():
@@ -2424,6 +2527,7 @@ def AstAura():
     sprite('null', 10)
     ConstantAlphaModifier(26)
     sprite('null', 100)
+
 
 @State
 def AstAura2():
@@ -2452,6 +2556,7 @@ def AstAura2():
     AlphaValue(0)
     CreateObject('AstAura3', -1)
 
+
 @State
 def AstAura3():
 
@@ -2468,6 +2573,7 @@ def AstAura3():
     sprite('null', 120)
     physicsYImpulse(-50)
 
+
 @State
 def AstOpenSky():
 
@@ -2481,6 +2587,7 @@ def AstOpenSky():
     sprite('null', 120)
     CreateObject('AstShake', 0)
     CallPrivateEffect('kgef_450opensky_02')
+
 
 @State
 def AstNemoto():
@@ -2496,6 +2603,7 @@ def AstNemoto():
     ConstantAlphaModifier(51)
     sprite('null', 120)
 
+
 @State
 def AstNemoto2():
 
@@ -2507,6 +2615,7 @@ def AstNemoto2():
         CallPrivateEffect('kgef_450nemoto_01')
         Size(700)
     sprite('null', 32767)
+
 
 @State
 def AstCutin00():
@@ -2521,6 +2630,7 @@ def AstCutin00():
     sprite('kg450cutin_06', 10)
     sprite('kg450cutin_06', 120)
     CreateObject('AstNemoto', 0)
+
 
 @State
 def AstCutin01():
@@ -2567,14 +2677,14 @@ def AstCutin01():
     sprite('kg450_20ex', 2)
     sprite('kg450_21ex', 2)
     sprite('kg450_22ex', 2)
-    PassbackAddActionMarkToFunction('AstCamera01', 32)
+    TriggerUponForState('AstCamera01', 32)
     SetScaleSpeed(0)
     sprite('kg450_21ex', 2)
     sprite('kg450_22ex', 2)
     sprite('kg450_20ex', 2)
     sprite('kg450_21ex', 40)
     sprite('kg450_22ex', 2)
-    PassbackAddActionMarkToFunction('AstCamera01', 33)
+    TriggerUponForState('AstCamera01', 33)
     sprite('kg450_23', 4)
     CreateObject('AstRockMato', -1)
     sprite('kg450_24', 4)
@@ -2591,6 +2701,7 @@ def AstCutin01():
     sprite('kg450_27', 4)
     sprite('null', 32767)
     DespawnEAEffect('AstBG01')
+
 
 @State
 def AstCamera00():
@@ -2615,6 +2726,7 @@ def AstCamera00():
     ParticleLayer(4)
     CallPrivateEffect('kgef_450kirikae_01')
 
+
 @State
 def AstCamera01():
 
@@ -2629,8 +2741,8 @@ def AstCamera01():
         RenderLayer(1)
         AddY(300000)
         Visibility(1)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
     label(0)
     sprite('vrkgef410dmy_00', 32767)
     CreateObject('AstShake', 0)
@@ -2659,15 +2771,16 @@ def AstCamera01():
     sprite('vrkgef410dmy_00', 2)
     CameraPosition(725)
     sprite('vrkgef410dmy_00', 32767)
-    PassbackAddActionMarkToFunction('AstShake', 32)
+    TriggerUponForState('AstShake', 32)
     CameraPosition(700)
     gotoLabel(1)
     label(2)
     sprite('vrkgef410dmy_00', 32767)
-    PassbackAddActionMarkToFunction('AstShake', 33)
+    TriggerUponForState('AstShake', 33)
     AddY(-300000)
     CameraPosition(1000)
     physicsYImpulse(0)
+
 
 @State
 def AstShake():
@@ -2675,8 +2788,8 @@ def AstShake():
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(2)
         ScreenCollision(1)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         CommonSE('019_quake_1')
     label(0)
     sprite('null', 10)
@@ -2694,6 +2807,7 @@ def AstShake():
     ScreenShake(20000, 20000)
     gotoLabel(2)
 
+
 @State
 def AstRockMato():
 
@@ -2702,21 +2816,22 @@ def AstRockMato():
         RenderLayer(1)
     sprite('null', 2)
     CreateObject('AstRock', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(-500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(-500)
     sprite('null', 2)
     CreateObject('AstRock', -1)
     sprite('null', 2)
     CreateObject('AstRock', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(300)
     sprite('null', 2)
     CreateObject('AstRock2', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(1600)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(1600)
+
 
 @State
 def AstRock():
@@ -2731,6 +2846,7 @@ def AstRock():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def AstRock2():
 
@@ -2742,1147 +2858,1168 @@ def AstRock2():
         E0EAEffectPosition(2)
     sprite('null', 145)
 
+
 @State
 def EntryMasterForKG():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
-    ApplyFunctionsToObjects(22)
-    enterState('CmnActStand')
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        enterState('CmnActStand')
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(0)
-    AddY(300000)
-    Size(250)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(0)
+        AddY(300000)
+        Size(250)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(150000)
-    AddY(60000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(150000)
+        AddY(60000)
     label(0)
     sprite('null', 32767)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-50000)
-    AddY(200000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-50000)
+        AddY(200000)
+        Size(150)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    Size(200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
+        Size(200)
     gotoLabel(0)
     label(3)
     sprite('null', 1)
-    ApplyFunctionsToObjects(22)
-    enterState('CmnActEntry')
-    ApplyFunctionsToSelf()
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+
+    def RunOnObject_22():
+        enterState('CmnActEntry')
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
+
 
 @State
 def EntryMasterForNO():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-22000)
-    AddY(270000)
-    Size(230)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-22000)
+        AddY(270000)
+        Size(230)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(28000)
-    AddY(216000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(28000)
+        AddY(216000)
+        Size(150)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-24000)
-    AddY(168000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-24000)
+        AddY(168000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(7500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(7500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForRC():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-10000)
-    AddY(245000)
-    Size(160)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-10000)
+        AddY(245000)
+        Size(160)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(15000)
-    AddY(200000)
-    Size(180)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(15000)
+        AddY(200000)
+        Size(180)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(24000)
-    AddY(175000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(24000)
+        AddY(175000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(7500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(7500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForTK():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(15000)
-    AddY(225000)
-    Size(160)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(15000)
+        AddY(225000)
+        Size(160)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(-35000)
-    AddY(180000)
-    Size(180)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(-35000)
+        AddY(180000)
+        Size(180)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-5000)
-    AddY(140000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-5000)
+        AddY(140000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(85000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(85000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(7500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(7500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForLC():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(15000)
-    AddY(275000)
-    Size(200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(15000)
+        AddY(275000)
+        Size(200)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(30000)
-    AddY(220000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(30000)
+        AddY(220000)
+        Size(150)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-15000)
-    AddY(165000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-15000)
+        AddY(165000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(30500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(30500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForNU():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-3000)
-    AddY(290000)
-    Size(170)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-3000)
+        AddY(290000)
+        Size(170)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(7500)
-    AddY(250000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(7500)
+        AddY(250000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(15000)
-    AddY(220000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(15000)
+        AddY(220000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(30500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(30500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForTB():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(15000)
-    AddY(275000)
-    Size(200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(15000)
+        AddY(275000)
+        Size(200)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(30500)
-    AddY(240000)
-    Size(160)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(30500)
+        AddY(240000)
+        Size(160)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(30500)
-    AddY(200000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(30500)
+        AddY(200000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(40500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(40500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForMU():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(3000)
-    AddY(290000)
-    Size(170)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(3000)
+        AddY(290000)
+        Size(170)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(3000)
-    AddY(252000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(3000)
+        AddY(252000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(14500)
-    AddY(220000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(14500)
+        AddY(220000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(30500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(30500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForMK():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-25000)
-    AddY(290000)
-    Size(170)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-25000)
+        AddY(290000)
+        Size(170)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(17500)
-    AddY(240000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(17500)
+        AddY(240000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(15500)
-    AddY(185000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(15500)
+        AddY(185000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
+
 
 @State
 def EntryMasterForCE():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-2000)
-    AddY(255000)
-    Size(170)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-2000)
+        AddY(255000)
+        Size(170)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(5000)
-    AddY(205000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(5000)
+        AddY(205000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(10000)
-    AddY(155000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(10000)
+        AddY(155000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 60)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForRM():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(12000)
-    AddY(275000)
-    Size(170)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(12000)
+        AddY(275000)
+        Size(170)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(-20000)
-    AddY(235000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(-20000)
+        AddY(235000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(50000)
-    AddY(210000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(50000)
+        AddY(210000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 60)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
+
 
 @State
 def EntryMasterForPT():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(10000)
-    AddY(225000)
-    Size(160)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(10000)
+        AddY(225000)
+        Size(160)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(-12500)
-    AddY(175000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(-12500)
+        AddY(175000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-4000)
-    AddY(140000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-4000)
+        AddY(140000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(90000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(90000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(7500)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(7500)
+        AddY(300000)
+
 
 @State
 def EntryMasterForIZ():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-20000)
-    AddY(285000)
-    Size(180)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-20000)
+        AddY(285000)
+        Size(180)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(20000)
-    AddY(245000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(20000)
+        AddY(245000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(9000)
-    AddY(185000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(9000)
+        AddY(185000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(55000)
-    AddY(120000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(55000)
+        AddY(120000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(7500)
-    AddY(380000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(7500)
+        AddY(380000)
+
 
 @State
 def EntryMasterForBL():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-28000)
-    AddY(230000)
-    Size(200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-28000)
+        AddY(230000)
+        Size(200)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(-4000)
-    AddY(200000)
-    Size(130)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(-4000)
+        AddY(200000)
+        Size(130)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(45000)
-    AddY(175000)
-    Size(180)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(45000)
+        AddY(175000)
+        Size(180)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(55000)
-    AddY(120000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(55000)
+        AddY(120000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(30000)
-    AddY(320000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(30000)
+        AddY(320000)
+
 
 @State
 def EntryMasterForKK():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(10000)
-    AddY(255000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(10000)
+        AddY(255000)
+        Size(150)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(-3000)
-    AddY(215000)
-    Size(100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(-3000)
+        AddY(215000)
+        Size(100)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(35000)
-    AddY(185000)
-    Size(145)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(35000)
+        AddY(185000)
+        Size(145)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(55000)
-    AddY(120000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(55000)
+        AddY(120000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(30000)
-    AddY(320000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(30000)
+        AddY(320000)
+
 
 @State
 def EntryMasterForAM():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(5000)
-    AddY(305000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(5000)
+        AddY(305000)
+        Size(150)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(-3000)
-    AddY(265000)
-    Size(100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(-3000)
+        AddY(265000)
+        Size(100)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(25000)
-    AddY(185000)
-    Size(145)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(25000)
+        AddY(185000)
+        Size(145)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(55000)
-    AddY(120000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(55000)
+        AddY(120000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(30000)
-    AddY(390000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(30000)
+        AddY(390000)
+
 
 @State
 def EntryMasterForCA():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(160000)
-    AddY(285000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(160000)
+        AddY(285000)
+        Size(150)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(-183000)
-    AddY(265000)
-    Size(100)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(-183000)
+        AddY(265000)
+        Size(100)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(235000)
-    AddY(245000)
-    Size(145)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(235000)
+        AddY(245000)
+        Size(145)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-95000)
-    AddY(180000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-95000)
+        AddY(180000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-120000)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-120000)
+        AddY(360000)
+
 
 @State
 def EntryMasterForPH():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(20000)
-    AddY(290000)
-    Size(200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(20000)
+        AddY(290000)
+        Size(200)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(10000)
-    AddY(245000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(10000)
+        AddY(245000)
+        Size(150)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(50000)
-    AddY(220000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(50000)
+        AddY(220000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-20000)
-    AddY(400000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-20000)
+        AddY(400000)
     loopRest()
+
 
 @State
 def EntryMasterForES():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-22000)
-    AddY(240000)
-    Size(230)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-22000)
+        AddY(240000)
+        Size(230)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(35000)
-    AddY(255000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(35000)
+        AddY(255000)
+        Size(150)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-5000)
-    AddY(235000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-5000)
+        AddY(235000)
+        Size(150)
     sprite('null', 5)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(7500)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(7500)
+        AddY(360000)
+
 
 @State
 def EntryMasterForMA():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-22000)
-    AddY(270000)
-    Size(230)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-22000)
+        AddY(270000)
+        Size(230)
     label(0)
     sprite('null', 32767)
     gotoLabel(0)
     label(1)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    Flip()
-    AddX(35000)
-    AddY(230000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        Flip()
+        AddX(35000)
+        AddY(230000)
+        Size(150)
     gotoLabel(0)
     label(2)
     sprite('null', 1)
     CreateObject('KaguraMeter00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-85000)
-    AddY(205000)
-    Size(150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-85000)
+        AddY(205000)
+        Size(150)
     sprite('null', 5)
     CreateObject('KaguraMeter01', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(75000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(75000)
+        AddY(100000)
     gotoLabel(0)
     label(3)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('KaguraMeter00', 32)
-    PassbackAddActionMarkToFunction('KaguraMeter01', 32)
+    TriggerUponForState('KaguraMeter00', 32)
+    TriggerUponForState('KaguraMeter01', 32)
     sprite('null', 60)
     CreateObject('KaguraQuestion', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    AddX(-50000)
-    AddY(360000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
+        AddX(-50000)
+        AddY(360000)
+
 
 @State
 def KaguraMeter00():
@@ -3892,12 +4029,13 @@ def KaguraMeter00():
         FaceSpawnLocation()
         BlendMode_Normal()
         Size(200)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 189)
     label(0)
     sprite('null', 10)
     SetScaleSpeed(-30)
     ConstantAlphaModifier(-26)
+
 
 @State
 def KaguraMeter01():
@@ -3908,7 +4046,7 @@ def KaguraMeter01():
         BlendMode_Normal()
         Size(400)
         FaceLeft()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         RenderLayer(1)
     sprite('null', 189)
     label(0)
@@ -3917,6 +4055,7 @@ def KaguraMeter01():
     SetScaleSpeedY(60)
     SetScaleXPerFrame(-100)
     ConstantAlphaModifier(-51)
+
 
 @State
 def KaguraQuestion():
@@ -3927,12 +4066,13 @@ def KaguraQuestion():
         FaceSpawnLocation()
         BlendMode_Normal()
         Size(500)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         FaceLeft()
     sprite('null', 49)
     sprite('null', 10)
     SetScaleSpeed(-30)
     ConstantAlphaModifier(-26)
+
 
 @State
 def kgef_enter():
@@ -3948,6 +4088,7 @@ def kgef_enter():
     SetScaleSpeed(100)
     sprite('vrkgef601_00', 13)
     SetScaleSpeed(0)
+
 
 @State
 def kgef_enter2():
@@ -3965,6 +4106,7 @@ def kgef_enter2():
     sprite('vrkgef601_10', 9)
     physicsYImpulse(0)
     SetScaleSpeed(0)
+
 
 @State
 def EntryBike():
@@ -3984,12 +4126,14 @@ def EntryBike():
     sprite('kg603_05b', 3)
     PreDashEffects(-1, 1, 0)
 
+
 @State
 def MatchWinSword():
     label(0)
     sprite('kg611_02s', 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventHB():
@@ -4040,6 +4184,7 @@ def EventHB():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -4048,6 +4193,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Eventoffset_Sosai_kgvsrg():
@@ -4060,6 +4206,7 @@ def Eventoffset_Sosai_kgvsrg():
     CreateParticle('ef_offset', 0)
     CommonSE('108_attack_offset')
     ScreenShake(30000, 30000)
+
 
 @State
 def Eventoffset_Sosai_kgvsmu():

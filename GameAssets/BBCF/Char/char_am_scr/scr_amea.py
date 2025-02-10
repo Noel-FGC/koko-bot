@@ -21,6 +21,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_AM_OD():
 
@@ -44,6 +45,7 @@ def EMB_AM_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_AM_AH():
 
@@ -65,6 +67,7 @@ def EMB_AM_AH():
     sprite('null', 10)
     ColorTransition(4294901760, 10)
     sprite('null', 80)
+
 
 @State
 def __6DTop():
@@ -95,28 +98,28 @@ def __6DTop():
         CreateParticle('amef_6D_koma', -1)
         CreateObject('6Ddrilwind', -1)
         CopyFromRightToLeft(23, 2, 56, 3, 2, 59)
-        if (SLOT_56 == 2):
+        if SLOT_56 == 2:
             SLOT_57 = 1
-        elif (SLOT_56 == 3):
+        elif SLOT_56 == 3:
             SLOT_58 = 1
 
         def upon_LANDING():
             EndMomentum(1)
             setGravity(0)
-            PassbackAddActionMarkToFunction('NmlAtk6D', 32)
+            TriggerUponForState('NmlAtk6D', 32)
 
         def upon_32():
             clearUponHandler(32)
             ChipPercentage(10)
             PushbackX(-5000)
             AirPushbackX(-5000)
-            if (not SLOT_IsInOverdrive2):
+            if not SLOT_54:
                 CopyFromRightToLeft(23, 2, 55, 22, 2, 22)
-                if (SLOT_55 >= SLOT_22):
+                if SLOT_55 >= SLOT_XDistanceFromCenterOfStage:
                     SetAcceleration(-1500)
                 else:
                     SetAcceleration(1500)
-            PassbackAddActionMarkToFunction('6Ddrilwind', 33)
+            TriggerUponForState('6Ddrilwind', 33)
             sendToLabel(101)
 
         def upon_33():
@@ -125,13 +128,13 @@ def __6DTop():
             PushbackX(-10000)
             AirPushbackX(-10000)
             Blockstun(18)
-            if (not SLOT_IsInOverdrive2):
+            if not SLOT_54:
                 CopyFromRightToLeft(23, 2, 55, 22, 2, 22)
-                if (SLOT_55 >= SLOT_22):
+                if SLOT_55 >= SLOT_XDistanceFromCenterOfStage:
                     SetAcceleration(-2000)
                 else:
                     SetAcceleration(2000)
-            PassbackAddActionMarkToFunction('6Ddrilwind', 34)
+            TriggerUponForState('6Ddrilwind', 34)
             sendToLabel(201)
 
         def upon_34():
@@ -142,36 +145,36 @@ def __6DTop():
             AirPushbackX(-15000)
             Blockstun(20)
             CHHardKnockdown(21)
-            if (not SLOT_IsInOverdrive2):
+            if not SLOT_54:
                 CopyFromRightToLeft(23, 2, 55, 22, 2, 22)
-                if (SLOT_55 >= SLOT_22):
+                if SLOT_55 >= SLOT_XDistanceFromCenterOfStage:
                     SetAcceleration(-2500)
                 else:
                     SetAcceleration(2500)
-            PassbackAddActionMarkToFunction('6Ddrilwind', 35)
+            TriggerUponForState('6Ddrilwind', 35)
             sendToLabel(301)
 
         def upon_35():
             clearUponHandler(35)
-            PassbackAddActionMarkToFunction('6Ddrilwind', 32)
+            TriggerUponForState('6Ddrilwind', 32)
             sendToLabel(1)
 
-        def upon_D_RELEASED():
-            if (SLOT_52 >= 3):
-                PassbackAddActionMarkToFunction('NmlAtk6D', 33)
+        def upon_RELEASE_D():
+            if SLOT_52 >= 3:
+                TriggerUponForState('NmlAtk6D', 33)
         RunLoopUpon(17, 30)
 
         def upon_17():
             clearUponHandler(17)
             NoAttackDuringAction(1)
             SetAcceleration(0)
-            PassbackAddActionMarkToFunction('NmlAtk6D', 33)
+            TriggerUponForState('NmlAtk6D', 33)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             clearUponHandler(17)
             SLOT_54 = 1
             SetAcceleration(0)
-            PassbackAddActionMarkToFunction('NmlAtk6D', 34)
+            TriggerUponForState('NmlAtk6D', 34)
         AttackOff()
     label(100)
     sprite('vramef213_10', 3)
@@ -192,25 +195,25 @@ def __6DTop():
     RefreshMultihit()
     CallCustomizableParticle('amef_213_shock', -1)
     ParticleColorFromPalette(226, 226, 226)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_01_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(70)
     sprite('vramef213_11', 3)
     RefreshMultihit()
     CallCustomizableParticle('amef_213_shock', -1)
     ParticleColorFromPalette(226, 226, 226)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_01_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(70)
     sprite('vramef213_12', 3)
     RefreshMultihit()
     CallCustomizableParticle('amef_213_shock', -1)
     ParticleColorFromPalette(226, 226, 226)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_01_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(70)
     gotoLabel(101)
     label(200)
@@ -226,24 +229,24 @@ def __6DTop():
     RefreshMultihit()
     CallCustomizableParticle('amef_213_shock', -1)
     ParticleColorFromPalette(226, 226, 226)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_02_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(70)
     sprite('vramef213_11', 1)
     RefreshMultihit()
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_02_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(70)
     sprite('vramef213_11', 1)
     CallCustomizableParticle('amef_213_shocklv2', -1)
     ParticleColorFromPalette(226, 226, 226)
     sprite('vramef213_12', 2)
     RefreshMultihit()
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_02_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(70)
     gotoLabel(201)
     label(300)
@@ -259,25 +262,25 @@ def __6DTop():
     RefreshMultihit()
     CallCustomizableParticle('amef_213_shock', -1)
     ParticleColorFromPalette(226, 226, 226)
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_03_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(80)
     sprite('vramef213_11', 1)
     RefreshMultihit()
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_03_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(80)
     sprite('vramef213_12', 1)
     RefreshMultihit()
-    SLOT_52 = (SLOT_52 + 1)
+    SLOT_52 = SLOT_52 + 1
     PrivateSE('amse_03_loop')
-    if SLOT_IsInOverdrive2:
+    if SLOT_54:
         XImpulseAcceleration(80)
     gotoLabel(301)
     label(1)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     sprite('keep', 1)
     RefreshMultihit()
     CancelIfPlayerHit(0)
@@ -296,6 +299,7 @@ def __6DTop():
     sprite('vramef213_26', 32)
     ConstantAlphaModifier(-16)
 
+
 @State
 def __6Ddrilwind():
 
@@ -305,10 +309,10 @@ def __6Ddrilwind():
         ColorFromPaletteIndex(225)
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 3)
-        sendToLabelUpon(33, 0)
-        sendToLabelUpon(34, 1)
-        sendToLabelUpon(35, 2)
+        uponSendToLabel(32, 3)
+        uponSendToLabel(33, 0)
+        uponSendToLabel(34, 1)
+        uponSendToLabel(35, 2)
         AlphaValue(150)
     sprite('null', 32767)
     label(0)
@@ -331,6 +335,7 @@ def __6Ddrilwind():
     SetScaleXPerFrame(100)
     ConstantAlphaModifier(-26)
 
+
 @Subroutine
 def Drill_SE():
     if SLOT_51:
@@ -339,6 +344,7 @@ def Drill_SE():
         PrivateSE('amse_02_loop')
     if SLOT_53:
         PrivateSE('amse_03_loop')
+
 
 @State
 def GroundDrill():
@@ -360,7 +366,7 @@ def GroundDrill():
             AirPushbackY(20000)
             AirHitstunAnimation(10)
             GroundedHitstunAnimation(10)
-            PassbackAddActionMarkToFunction('401_drill', 33)
+            TriggerUponForState('401_drill', 33)
             PrivateSE('amse_01')
             SLOT_51 = 1
             SLOT_58 = 10
@@ -378,7 +384,7 @@ def GroundDrill():
             AirPushbackY(30000)
             AirHitstunAnimation(18)
             GroundedHitstunAnimation(18)
-            PassbackAddActionMarkToFunction('401_drill', 34)
+            TriggerUponForState('401_drill', 34)
             PrivateSE('amse_02')
             SLOT_52 = 1
             SLOT_58 = 15
@@ -396,7 +402,7 @@ def GroundDrill():
             AirPushbackY(40000)
             AirHitstunAnimation(18)
             GroundedHitstunAnimation(18)
-            PassbackAddActionMarkToFunction('401_drill', 35)
+            TriggerUponForState('401_drill', 35)
             PrivateSE('amse_03')
             SLOT_53 = 1
             SLOT_58 = 20
@@ -418,10 +424,10 @@ def GroundDrill():
             SLOT_6 = 0
 
         def upon_45():
-            if (not SLOT_21):
+            if not SLOT_21:
                 sendToLabel(1)
-        sendToLabelUpon(54, 1)
-        sendToLabelUpon(35, 1)
+        uponSendToLabel(54, 1)
+        uponSendToLabel(35, 1)
         CancelIfPlayerHit(3)
     sprite('null', 1)
     IgnorePauses(3)
@@ -437,7 +443,7 @@ def GroundDrill():
     label(0)
     sprite('vramef401_01', 2)
     Size(900)
-    SLOT_58 = (SLOT_58 + (-1))
+    SLOT_58 = SLOT_58 + -1
     CallCustomizableParticle('amef_401dliwind_kuzu2', 0)
     ParticleColorFromPalette(226, 226, 226)
     RefreshMultihit()
@@ -453,15 +459,15 @@ def GroundDrill():
     RefreshMultihit()
     callSubroutine('Drill_SE')
     sprite('vramef401_03', 1)
-    if (not SLOT_58):
+    if not SLOT_58:
         sendToLabel(1)
     gotoLabel(0)
     label(1)
     sprite('vramef401_01', 4)
     clearUponHandler(45)
     SetScaleSpeed(0)
-    PassbackAddActionMarkToFunction('401_drill', 32)
-    clearUponHandler(3)
+    TriggerUponForState('401_drill', 32)
+    clearUponHandler(EVERY_FRAME)
     AttackOff()
     NoDamageAction(1)
     callSubroutine('Drill_SE')
@@ -484,6 +490,7 @@ def GroundDrill():
     sprite('vramef401_04', 6)
     sprite('null', 10)
 
+
 @State
 def __202_Particle():
 
@@ -491,6 +498,7 @@ def __202_Particle():
         PaletteIndex(0)
     sprite('null', 60)
     CreateParticle('amef_C_attack', 100)
+
 
 @State
 def __212_Particle():
@@ -501,6 +509,7 @@ def __212_Particle():
     ParticleRotationAngle(-22500)
     CallCustomizableParticle('amef_C_attack', 100)
 
+
 @State
 def __232_Particle():
 
@@ -508,6 +517,7 @@ def __232_Particle():
         PaletteIndex(0)
     sprite('null', 60)
     CreateParticle('amef_C_attack', 100)
+
 
 @State
 def __252_Particle():
@@ -518,6 +528,7 @@ def __252_Particle():
     ParticleRotationAngle(20000)
     CallCustomizableParticle('amef_C_attack', 100)
 
+
 @State
 def __255_Particle():
 
@@ -525,6 +536,7 @@ def __255_Particle():
         PaletteIndex(0)
     sprite('null', 60)
     CreateParticle('amef_C_attack', 100)
+
 
 @State
 def __256_Particle():
@@ -534,6 +546,7 @@ def __256_Particle():
     sprite('null', 60)
     ParticleRotationAngle(60000)
     CallCustomizableParticle('amef_C_attack', 100)
+
 
 @State
 def D_tornado():
@@ -548,6 +561,7 @@ def D_tornado():
     CallCustomizableParticle('amef_drillmonsholv1_kuzu', -1)
     gotoLabel(0)
 
+
 @State
 def D_tornado2():
 
@@ -559,6 +573,7 @@ def D_tornado2():
     CreateParticle('amef_drilv1wind00', -1)
     gotoLabel(0)
 
+
 @State
 def D_tornado3():
 
@@ -569,6 +584,7 @@ def D_tornado3():
     sprite('null', 6)
     CreateParticle('amef_5D_Lv1', -1)
     gotoLabel(0)
+
 
 @State
 def D_lv2_tornado():
@@ -583,6 +599,7 @@ def D_lv2_tornado():
     CallCustomizableParticle('amef_drillmonsholv2_kuzu', -1)
     gotoLabel(0)
 
+
 @State
 def D_lv2_tornado2():
 
@@ -594,6 +611,7 @@ def D_lv2_tornado2():
     CreateParticle('amef_drilv2wind00', -1)
     gotoLabel(0)
 
+
 @State
 def D_lv2_tornado3():
 
@@ -604,6 +622,7 @@ def D_lv2_tornado3():
     sprite('null', 6)
     CreateParticle('amef_5D_Lv2', -1)
     gotoLabel(0)
+
 
 @State
 def D_lv3_tornado():
@@ -618,6 +637,7 @@ def D_lv3_tornado():
     CallCustomizableParticle('amef_drillmonsholv3_kuzu', -1)
     gotoLabel(0)
 
+
 @State
 def D_lv3_tornado2():
 
@@ -628,6 +648,7 @@ def D_lv3_tornado2():
     sprite('null', 3)
     CreateParticle('amef_shagadriwind00', -1)
     gotoLabel(0)
+
 
 @State
 def D_lv3_tornado3():
@@ -640,6 +661,7 @@ def D_lv3_tornado3():
     CreateParticle('amef_5D_Lv3', -1)
     gotoLabel(0)
 
+
 @State
 def __203_drill():
 
@@ -651,10 +673,10 @@ def __203_drill():
         FaceSpawnLocation()
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 3)
-        sendToLabelUpon(33, 0)
-        sendToLabelUpon(34, 1)
-        sendToLabelUpon(35, 2)
+        uponSendToLabel(32, 3)
+        uponSendToLabel(33, 0)
+        uponSendToLabel(34, 1)
+        uponSendToLabel(35, 2)
         SetScaleY(800)
         AddX(-60000)
         AlphaValue(200)
@@ -679,6 +701,7 @@ def __203_drill():
     SetScaleSpeed(30)
     ConstantAlphaModifier(-26)
 
+
 @State
 def __2D_tornado():
 
@@ -692,6 +715,7 @@ def __2D_tornado():
     CallCustomizableParticle('amef_shagadrilv1_kuzu2', -1)
     gotoLabel(0)
 
+
 @State
 def __2D_tornado2():
 
@@ -702,6 +726,7 @@ def __2D_tornado2():
     sprite('null', 3)
     CreateParticle('amef_shagawindlv1_01', -1)
     gotoLabel(0)
+
 
 @State
 def __2D_tornado3():
@@ -714,6 +739,7 @@ def __2D_tornado3():
     ParticleRotationAngle(25000)
     CallCustomizableParticle('amef_2D_Lv1', -1)
     gotoLabel(0)
+
 
 @State
 def __2D_lv2_tornado():
@@ -728,6 +754,7 @@ def __2D_lv2_tornado():
     CallCustomizableParticle('amef_shagadrilv2_sub', -1)
     gotoLabel(0)
 
+
 @State
 def __2D_lv2_tornado2():
 
@@ -739,6 +766,7 @@ def __2D_lv2_tornado2():
     CreateParticle('amef_shagawindlv2_01', -1)
     gotoLabel(0)
 
+
 @State
 def __2D_lv2_tornado3():
 
@@ -748,6 +776,7 @@ def __2D_lv2_tornado3():
     sprite('null', 6)
     ParticleRotationAngle(25000)
     CreateParticle('amef_5D_Lv2', -1)
+
 
 @State
 def __2D_lv3_tornado():
@@ -762,6 +791,7 @@ def __2D_lv3_tornado():
     CallCustomizableParticle('amef_shagadrilv3_sub', -1)
     gotoLabel(0)
 
+
 @State
 def __2D_lv3_tornado2():
 
@@ -772,6 +802,7 @@ def __2D_lv3_tornado2():
     sprite('null', 3)
     CreateParticle('amef_shagawindlv3_01', -1)
     gotoLabel(0)
+
 
 @State
 def __2D_lv3_tornado3():
@@ -785,6 +816,7 @@ def __2D_lv3_tornado3():
     CallCustomizableParticle('amef_2D_Lv3', -1)
     gotoLabel(0)
 
+
 @State
 def __233_drill():
 
@@ -796,10 +828,10 @@ def __233_drill():
         ColorFromPaletteIndex(224)
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 3)
-        sendToLabelUpon(33, 0)
-        sendToLabelUpon(34, 1)
-        sendToLabelUpon(35, 2)
+        uponSendToLabel(32, 3)
+        uponSendToLabel(33, 0)
+        uponSendToLabel(34, 1)
+        uponSendToLabel(35, 2)
         RotationAngle(-60000)
         AddY(480000)
         AddX(140000)
@@ -824,6 +856,7 @@ def __233_drill():
     SetScaleSpeed(30)
     ConstantAlphaModifier(-26)
 
+
 @State
 def amef_airD():
 
@@ -836,6 +869,7 @@ def amef_airD():
     ParticleColorFromPalette(226, 226, 226)
     CallCustomizableParticle('amef_airdrilv1_pos', -1)
     gotoLabel(0)
+
 
 @State
 def amef_airD2():
@@ -864,6 +898,7 @@ def amef_airD2():
     CallCustomizableParticle('amef_airD', 1)
     gotoLabel(0)
 
+
 @State
 def __253_drill():
 
@@ -878,10 +913,10 @@ def __253_drill():
         AddX(-40000)
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 3)
-        sendToLabelUpon(33, 0)
-        sendToLabelUpon(34, 1)
-        sendToLabelUpon(35, 2)
+        uponSendToLabel(32, 3)
+        uponSendToLabel(33, 0)
+        uponSendToLabel(34, 1)
+        uponSendToLabel(35, 2)
     label(0)
     sprite('null', 32767)
     SetScaleY(600)
@@ -900,6 +935,7 @@ def __253_drill():
     sprite('null', 1)
     AlphaValue(0)
 
+
 @State
 def __401_drill():
 
@@ -911,10 +947,10 @@ def __401_drill():
         FaceSpawnLocation()
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 3)
-        sendToLabelUpon(33, 0)
-        sendToLabelUpon(34, 1)
-        sendToLabelUpon(35, 2)
+        uponSendToLabel(32, 3)
+        uponSendToLabel(33, 0)
+        uponSendToLabel(34, 1)
+        uponSendToLabel(35, 2)
         Size(300)
         AlphaValue(200)
     label(0)
@@ -939,6 +975,7 @@ def __401_drill():
     SetScaleXPerFrame(100)
     ConstantAlphaModifier(-26)
 
+
 @State
 def Air6D_tornado():
 
@@ -952,6 +989,7 @@ def Air6D_tornado():
     CallCustomizableParticle('amef_drillmonsholv1_kuzu', -1)
     gotoLabel(0)
 
+
 @State
 def Air6D_tornado2():
 
@@ -962,6 +1000,7 @@ def Air6D_tornado2():
     sprite('null', 6)
     CreateParticle('amef_air6D_Lv1', -1)
     gotoLabel(0)
+
 
 @State
 def Air6D_lv2_tornado():
@@ -976,6 +1015,7 @@ def Air6D_lv2_tornado():
     CallCustomizableParticle('amef_drillmonsholv2_kuzu', -1)
     gotoLabel(0)
 
+
 @State
 def Air6D_lv2_tornado2():
 
@@ -986,6 +1026,7 @@ def Air6D_lv2_tornado2():
     sprite('null', 6)
     CreateParticle('amef_air6D_Lv2', -1)
     gotoLabel(0)
+
 
 @State
 def Air6D_lv3_tornado():
@@ -1000,6 +1041,7 @@ def Air6D_lv3_tornado():
     CallCustomizableParticle('amef_drillmonsholv3_kuzu', -1)
     gotoLabel(0)
 
+
 @State
 def Air6D_lv3_tornado2():
 
@@ -1010,6 +1052,7 @@ def Air6D_lv3_tornado2():
     sprite('null', 6)
     CreateParticle('amef_air6D_Lv3', -1)
     gotoLabel(0)
+
 
 @State
 def __203_drill():
@@ -1022,10 +1065,10 @@ def __203_drill():
         FaceSpawnLocation()
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 3)
-        sendToLabelUpon(33, 0)
-        sendToLabelUpon(34, 1)
-        sendToLabelUpon(35, 2)
+        uponSendToLabel(32, 3)
+        uponSendToLabel(33, 0)
+        uponSendToLabel(34, 1)
+        uponSendToLabel(35, 2)
         SetScaleY(800)
         AddX(-60000)
         AlphaValue(200)
@@ -1050,6 +1093,7 @@ def __203_drill():
     SetScaleSpeed(30)
     ConstantAlphaModifier(-26)
 
+
 @State
 def __402_punch_miss():
 
@@ -1069,6 +1113,7 @@ def __402_punch_miss():
     sprite('vramef402_10', 6)
     sprite('vramef402_11', 6)
     sprite('vramef402_22', 6)
+
 
 @State
 def __402_punchA():
@@ -1111,6 +1156,7 @@ def __402_punchA():
     sprite('vramef402_11', 6)
     sprite('vramef402_22', 6)
 
+
 @State
 def __402_punchB():
 
@@ -1151,6 +1197,7 @@ def __402_punchB():
     CommonSE('019_cloth_b')
     sprite('vramef402_11', 6)
     sprite('vramef402_22', 6)
+
 
 @State
 def __402_punch():
@@ -1193,6 +1240,7 @@ def __402_punch():
     sprite('vramef402_11', 6)
     sprite('vramef402_22', 6)
 
+
 @State
 def __402_punchExe():
 
@@ -1229,6 +1277,7 @@ def __402_punchExe():
     sprite('vramef402_21', 6)
     sprite('vramef402_22', 6)
 
+
 @State
 def __402_punch_Particle():
 
@@ -1237,6 +1286,7 @@ def __402_punch_Particle():
         E0EAEffectPosition(2)
     sprite('null', 100)
     LinkParticle('amef_402_upper')
+
 
 @State
 def __402_punch_Particle_b():
@@ -1247,6 +1297,7 @@ def __402_punch_Particle_b():
     sprite('null', 100)
     ParticleColorFromPalette(64, 67, 67)
     CallPrivateEffect('amef_402_upper_b')
+
 
 @State
 def __403_tossinaura():
@@ -1259,7 +1310,7 @@ def __403_tossinaura():
         Eff3DEffect('amef_404aura00', '')
         FaceSpawnLocation()
         AlphaValue(0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 5)
     ConstantAlphaModifier(51)
     LinkParticle('amef_403atk_pos')
@@ -1272,6 +1323,7 @@ def __403_tossinaura():
     CreateParticle('amef_403atkend_pos', -1)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __430_tossindril():
 
@@ -1281,7 +1333,7 @@ def __430_tossindril():
         ColorFromPaletteIndex(63)
         RemoveOnCallStateEnd(2)
         SetScaleX(1200)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 11)
     Eff3DEffect('amef_430_aura00', '')
     FaceSpawnLocation()
@@ -1294,6 +1346,7 @@ def __430_tossindril():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def __430_roop():
 
@@ -1301,7 +1354,7 @@ def __430_roop():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         SetScaleX(1200)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     label(1)
     sprite('null', 10)
     CreateObject('430_2daura', -1)
@@ -1312,6 +1365,7 @@ def __430_roop():
     ConstantAlphaModifier(-17)
     sprite('null', 5)
     sprite('null', 10)
+
 
 @State
 def __430_2daura():
@@ -1336,6 +1390,7 @@ def __430_2daura():
     sprite('vramef430_09', 3)
     sprite('vramef430_10', 3)
 
+
 @State
 def __430_slash():
 
@@ -1343,7 +1398,7 @@ def __430_slash():
         RemoveOnCallStateEnd(2)
         TeleportToObject(22)
         AddY(240000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     label(1)
     sprite('null', 5)
     CallCustomizableParticle('amef_430slash_b', -1)
@@ -1354,6 +1409,7 @@ def __430_slash():
     CallCustomizableParticle('amef_430slash_finish', -1)
     ParticleColorFromPalette(226, 226, 226)
     CreateParticle('amef_430bomyotyou_d', -1)
+
 
 @State
 def __430_bomsakra():
@@ -1369,6 +1425,7 @@ def __430_bomsakra():
     CreateObject('430_bomsakrabloom', -1)
     sprite('null', 5)
 
+
 @State
 def __430_bomsakrabloom():
 
@@ -1382,6 +1439,7 @@ def __430_bomsakrabloom():
     sprite('null', 10)
     SetScaleSpeed(-20)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __430_bom():
@@ -1406,6 +1464,7 @@ def __430_bom():
     SetScaleSpeed(30)
     ConstantAlphaModifier(-5)
 
+
 @State
 def __430_bomyugami():
 
@@ -1415,6 +1474,7 @@ def __430_bomyugami():
     ParticleTransparency(1)
     PlayerTransparency(10000)
     SetScaleSpeed(100)
+
 
 @State
 def __431_wind():
@@ -1435,6 +1495,7 @@ def __431_wind():
     sprite('null', 10)
     SetScaleSpeedY(-150)
     ConstantAlphaModifier(-26)
+
 
 @State
 def amef_408():
@@ -1477,7 +1538,7 @@ def amef_408():
     WallCollisionDetection(0)
     label(0)
     sprite('vramef406_col', 3)
-    SLOT_58 = (SLOT_58 + (-1))
+    SLOT_58 = SLOT_58 + -1
     XImpulseAcceleration(80)
     sprite('vramef406_col', 3)
     XImpulseAcceleration(80)
@@ -1485,14 +1546,15 @@ def amef_408():
     XImpulseAcceleration(80)
     loopRest()
     if SLOT_58:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     label(1)
     sprite('vramef406_col', 12)
     XImpulseAcceleration(0)
     label(9)
     sprite('null', 20)
     NoAttackDuringAction(1)
-    PassbackAddActionMarkToFunction('amef_408_tornado', 32)
+    TriggerUponForState('amef_408_tornado', 32)
+
 
 @State
 def amef_408_tornado():
@@ -1505,7 +1567,7 @@ def amef_408_tornado():
         BlendMode_Normal()
         ForceBloomMaskOn(1)
         CreateObject('amef_408_tornado_add', -1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Size(1000)
     sprite('vramef406_00', 3)
     label(1)
@@ -1521,6 +1583,7 @@ def amef_408_tornado():
     ConstantAlphaModifier(-20)
     sprite('vramef406_11', 5)
 
+
 @State
 def amef_408_tornado_add():
 
@@ -1535,6 +1598,7 @@ def amef_408_tornado_add():
     CreateObject('amef_408_3D', -1)
     CreateObject('amef_408_pt', -1)
     gotoLabel(1)
+
 
 @State
 def amef_408_3D():
@@ -1556,6 +1620,7 @@ def amef_408_3D():
     sprite('null', 8)
     ConstantAlphaModifier(-32)
 
+
 @State
 def amef_408_pt():
 
@@ -1569,6 +1634,7 @@ def amef_408_pt():
     sprite('null', 16)
     CreateParticle('amef_406sakura', -1)
 
+
 @State
 def __430_bomsakraOD():
 
@@ -1580,6 +1646,7 @@ def __430_bomsakraOD():
         FaceSpawnLocation()
         Size(500)
     sprite('null', 10)
+
 
 @State
 def __430_bomOD():
@@ -1599,6 +1666,7 @@ def __430_bomOD():
     SetScaleSpeed(30)
     ConstantAlphaModifier(-5)
 
+
 @State
 def amef_440finish_a():
 
@@ -1608,6 +1676,7 @@ def amef_440finish_a():
     sprite('null', 1)
     CreateParticle('amef_440finish_a', -1)
 
+
 @State
 def amef_440finish_b():
 
@@ -1616,6 +1685,7 @@ def amef_440finish_b():
     sprite('null', 1)
     sprite('null', 1)
     CreateParticle('amef_440finish_b', -1)
+
 
 @State
 def __450_Hokaku():
@@ -1632,6 +1702,7 @@ def __450_Hokaku():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def __450_HokakuCircle():
 
@@ -1645,6 +1716,7 @@ def __450_HokakuCircle():
     sprite('null', 20)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def __450_renge():
@@ -1662,21 +1734,21 @@ def __450_renge():
     sprite('vramef450_01', 6)
     sprite('vramef450_02', 6)
     sprite('vramef450_03', 6)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(1)
     sprite('vramef450_04', 6)
     sprite('vramef450_05', 6)
     sprite('vramef450_06', 6)
     sprite('null', 40)
     CreateObject('450_rengeMogomogo', -1)
     sprite('null', 76)
-    PassbackAddActionMarkToFunction('450_rengeMogomogo', 33)
+    TriggerUponForState('450_rengeMogomogo', 33)
     sprite('null', 20)
-    PassbackAddActionMarkToFunction('450_rengeMogomogo', 34)
+    TriggerUponForState('450_rengeMogomogo', 34)
     sprite('vramef450_08', 4)
     ScreenShake(0, 25000)
-    PassbackAddActionMarkToFunction('450_rengeMogomogo', 32)
+    TriggerUponForState('450_rengeMogomogo', 32)
     CameraControlEnable(1)
     CreateObject('450_rengeBack', -1)
     LinkParticle('amef_450rengeopen_sub')
@@ -1690,6 +1762,7 @@ def __450_renge():
     sprite('vramef450_10', 4)
     gotoLabel(0)
 
+
 @State
 def __450_bg():
 
@@ -1700,6 +1773,7 @@ def __450_bg():
     sprite('null', 32767)
     LinkParticle('amef_ahbg_add')
 
+
 @State
 def __450_rengeMogomogo():
 
@@ -1707,9 +1781,9 @@ def __450_rengeMogomogo():
         PaletteIndex(0)
         BlendMode_Normal()
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(32, 3)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(32, 3)
     sprite('vramef450_07', 4)
     label(0)
     sprite('vramef450_07', 3)
@@ -1753,6 +1827,7 @@ def __450_rengeMogomogo():
     label(3)
     sprite('null', 1)
 
+
 @State
 def __450_rengeBack():
 
@@ -1767,6 +1842,7 @@ def __450_rengeBack():
     sprite('vramef450_09b', 4)
     sprite('vramef450_10b', 4)
     gotoLabel(0)
+
 
 @State
 def __450_maku():
@@ -1786,13 +1862,14 @@ def __450_maku():
     sprite('null', 32767)
     Eff3DEffect('amef_450maku', '')
 
+
 @State
 def __600_kamuro():
 
     def upon_IMMEDIATE():
         PaletteIndex(2)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vramef600_00', 32767)
     label(0)
     sprite('vramef600_01', 6)
@@ -1841,16 +1918,18 @@ def __600_kamuro():
     sprite('null', 6)
     CreateObject('600_kasamawaru', -1)
 
+
 @State
 def __600_ichiza():
 
     def upon_IMMEDIATE():
         PaletteIndex(2)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vramef600_09', 32767)
     label(0)
     sprite('vramef600_09', 30)
+
 
 @State
 def __600_kasamawaru():
@@ -1924,6 +2003,7 @@ def __600_kasamawaru():
     CreateParticle('amef_600anbleskr_skr', 7)
     CreateParticle('amef_600anbleskr_skr', 8)
 
+
 @State
 def __610_ichiza():
 
@@ -1934,6 +2014,7 @@ def __610_ichiza():
     sprite('vramef610_00', 6)
     sprite('vramef610_01', 6)
     gotoLabel(0)
+
 
 @State
 def __610_spot():
@@ -1948,6 +2029,7 @@ def __610_spot():
     sprite('null', 20)
     ConstantAlphaModifier(17)
     sprite('null', 32767)
+
 
 @State
 def UltimateAssaultExplosion():
@@ -1994,8 +2076,8 @@ def UltimateAssaultExplosion():
             if SLOT_137:
                 DamageMultiplier(80)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('UltimateAssault', 32)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('UltimateAssault', 32)
     sprite('null', 3)
     label(100)
     sprite('vrdmy', 3)
@@ -2014,6 +2096,7 @@ def UltimateAssaultExplosion():
     gotoLabel(1)
     label(1)
     sprite('null', 2)
+
 
 @State
 def UltimateAssaultExplosionOD():
@@ -2066,8 +2149,8 @@ def UltimateAssaultExplosionOD():
     CreateObject('430_bomOD', -1)
     ScreenShake(5000, 5000)
     sprite('vrdmy', 1)
-    SLOT_51 = (SLOT_51 + (-1))
-    if (not SLOT_51):
+    SLOT_51 = SLOT_51 + -1
+    if not SLOT_51:
         AttackP2(60)
         Hitstop(30)
         YImpulseBeforeWallbounce(1500)
@@ -2075,7 +2158,7 @@ def UltimateAssaultExplosionOD():
             sendToLabel(100)
         if SLOT_53:
             sendToLabel(200)
-        if SLOT_IsInOverdrive2:
+        if SLOT_54:
             sendToLabel(300)
     loopRest()
     gotoLabel(99)
@@ -2087,8 +2170,8 @@ def UltimateAssaultExplosionOD():
     CreateObject('430_bom', -1)
     ScreenShake(40000, 40000)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        PassbackAddActionMarkToFunction('UltimateAssault', 32)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        TriggerUponForState('UltimateAssault', 32)
     if SLOT_137:
         DamageMultiplier(80)
     gotoLabel(1)
@@ -2100,8 +2183,8 @@ def UltimateAssaultExplosionOD():
     CreateObject('430_bom', -1)
     ScreenShake(60000, 60000)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        PassbackAddActionMarkToFunction('UltimateAssault', 32)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        TriggerUponForState('UltimateAssault', 32)
     if SLOT_137:
         DamageMultiplier(80)
     gotoLabel(1)
@@ -2113,13 +2196,14 @@ def UltimateAssaultExplosionOD():
     CreateObject('430_bom', -1)
     ScreenShake(80000, 80000)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        PassbackAddActionMarkToFunction('UltimateAssault', 32)
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        TriggerUponForState('UltimateAssault', 32)
     if SLOT_137:
         DamageMultiplier(80)
     gotoLabel(1)
     label(1)
     sprite('null', 2)
+
 
 @State
 def ContinuationDrillCreater():
@@ -2138,6 +2222,7 @@ def ContinuationDrillCreater():
     CreateObject('ContinuationDrillMain', -1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ContinuationDrillMain():
@@ -2162,14 +2247,14 @@ def ContinuationDrillMain():
         StarterRating(2)
         CHStateIfCHStart(2)
         VoodooDamageMultiplier(2)
-        if (SLOT_4 == 1):
+        if SLOT_4 == 1:
             SetScaleX(780)
             SetScaleY(555)
             PrivateSE('amse_01_loop')
             PrivateSE('amse_02_loop')
             SLOT_51 = 1
             Damage(220)
-        if (SLOT_4 == 2):
+        if SLOT_4 == 2:
             SetScaleX(890)
             SetScaleY(780)
             PrivateSE('amse_01_loop')
@@ -2177,7 +2262,7 @@ def ContinuationDrillMain():
             PrivateSE('amse_03_loop')
             SLOT_52 = 1
             Damage(260)
-        if (SLOT_4 == 3):
+        if SLOT_4 == 3:
             SetScaleX(1000)
             SetScaleY(1000)
             PrivateSE('amse_01_loop')
@@ -2188,10 +2273,10 @@ def ContinuationDrillMain():
             Damage(300)
             ChipPercentage(40)
 
-        def upon_FRAME_STEP():
-            if Unknown2065(23):
-                clearUponHandler(3)
-                ObjectUpon(2, 41)
+        def upon_EVERY_FRAME():
+            if SLOT_4 == 3:
+                clearUponHandler(EVERY_FRAME)
+                ObjectUpon(LANDING, 41)
     sprite('vramef431_10', 3)
     CreateObject('431_wind', -1)
     CreateParticle('amef_431impact_crl', -1)
@@ -2219,6 +2304,7 @@ def ContinuationDrillMain():
     sprite('vramef431_21', 3)
     AttackOff()
 
+
 @State
 def ContinuationDrillCreaterOD():
     sprite('null', 1)
@@ -2230,6 +2316,7 @@ def ContinuationDrillCreaterOD():
     CreateObject('ContinuationDrillMainOD', -1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ContinuationDrillMainOD():
@@ -2256,14 +2343,14 @@ def ContinuationDrillMainOD():
         StarterRating(2)
         CHStateIfCHStart(2)
         VoodooDamageMultiplier(2)
-        if (SLOT_4 == 1):
+        if SLOT_4 == 1:
             SetScaleX(780)
             SetScaleY(555)
             PrivateSE('amse_01_loop')
             PrivateSE('amse_02_loop')
             SLOT_51 = 1
             Damage(220)
-        if (SLOT_4 == 2):
+        if SLOT_4 == 2:
             SetScaleX(890)
             SetScaleY(780)
             PrivateSE('amse_01_loop')
@@ -2271,7 +2358,7 @@ def ContinuationDrillMainOD():
             PrivateSE('amse_03_loop')
             SLOT_52 = 1
             Damage(260)
-        if (SLOT_4 == 3):
+        if SLOT_4 == 3:
             SetScaleX(1000)
             SetScaleY(1000)
             PrivateSE('amse_01_loop')
@@ -2308,6 +2395,7 @@ def ContinuationDrillMainOD():
     sprite('vramef431_21', 3)
     AttackOff()
 
+
 @State
 def AstralHeat_FirstAttack():
 
@@ -2328,8 +2416,9 @@ def AstralHeat_FirstAttack():
         RemoveOnCallStateEnd(3)
 
         def upon_OPPONENT_HIT():
-            PassbackAddActionMarkToFunction('AstralHeat', 32)
+            TriggerUponForState('AstralHeat', 32)
     sprite('vrhokakuatk', 9)
+
 
 @State
 def AstralHeatAttack():
@@ -2360,6 +2449,7 @@ def AstralHeatAttack():
     AirPushbackY(0)
     YImpulseBeforeWallbounce(0)
 
+
 @State
 def Throw_windmill():
 
@@ -2379,6 +2469,7 @@ def Throw_windmill():
     sprite('vramef311_00', 3)
     sprite('vramef311_01', 3)
 
+
 @State
 def BurstDDCamera():
 
@@ -2388,13 +2479,14 @@ def BurstDDCamera():
         CancelIfPlayerHit(3)
         E0EAEffectDirection(3)
         AddX(190000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 32767)
     CameraNoScreenCollision(0)
     TeleportToObject(3)
     AddX(-150000)
+
 
 @State
 def Ameff_BurstDDHit():
@@ -2415,6 +2507,7 @@ def Ameff_BurstDDHit():
     ConstantAlphaModifier(-31)
     sprite('vram440_hiteff04', 4)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -2424,6 +2517,7 @@ def Act2Event_Yure():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_vsphCamera():
 
@@ -2432,6 +2526,7 @@ def Act3Event_vsphCamera():
         AddX(-200000)
     sprite('null', 32767)
     CameraControlEnable(1)
+
 
 @State
 def Act3Event_CreateKK():
@@ -2461,6 +2556,7 @@ def Act3Event_CreateKK():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_vsizCamera():
 
@@ -2468,6 +2564,7 @@ def Act3Event_vsizCamera():
         AddX(200000)
     sprite('null', 32767)
     CameraControlEnable(1)
+
 
 @State
 def Act3Event_NagenukeEff():
@@ -2477,6 +2574,7 @@ def Act3Event_NagenukeEff():
         AddY(222000)
     sprite('null', 3)
     CreateParticle('ef_nagenuke', 0)
+
 
 @State
 def Eventoffset_Sosai():
@@ -2489,6 +2587,7 @@ def Eventoffset_Sosai():
     CreateParticle('ef_offset', 0)
     CommonSE('108_attack_offset')
     ScreenShake(30000, 30000)
+
 
 @State
 def Eventoffset_Sosai2():

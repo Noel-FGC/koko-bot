@@ -19,6 +19,7 @@ def EMB_CE():
     ColorTransition(4286625023, 10)
     sprite('null', 79)
 
+
 @State
 def EMB_CE_OD():
 
@@ -40,6 +41,7 @@ def EMB_CE_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 79)
 
+
 @State
 def EMB_CE_AH():
 
@@ -60,6 +62,7 @@ def EMB_CE_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 79)
 
+
 @Subroutine
 def MV_ActReset():
     AttackDefaults_Projectile()
@@ -76,38 +79,39 @@ def MV_ActReset():
     Unknown23042()
 
     def upon_48():
-        if (not SLOT_4):
+        if not SLOT_4:
             Visibility(1)
             EndAttack()
         else:
             Visibility(0)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         TurnAround()
-        if (not SLOT_51):
-            if SLOT_36:
+        if not SLOT_51:
+            if SLOT_IsAirborne:
                 PrivateFunction3(3, 0, 0, 25, 0)
             else:
                 PrivateFunction3(3, -100000, 0, 25, 0)
         else:
-            if (SLOT_52 == 1):
-                if SLOT_36:
+            if SLOT_52 == 1:
+                if SLOT_IsAirborne:
                     PrivateFunction3(3, 0, 0, 5, 0)
                 else:
                     PrivateFunction3(3, -100000, 0, 5, 0)
-            if (SLOT_52 == 2):
-                if SLOT_36:
+            if SLOT_52 == 2:
+                if SLOT_IsAirborne:
                     PrivateFunction3(3, 0, 0, 50, 0)
                 else:
                     PrivateFunction3(3, -100000, 0, 50, 0)
-            if (SLOT_52 == 3):
-                if SLOT_36:
+            if SLOT_52 == 3:
+                if SLOT_IsAirborne:
                     PrivateFunction3(3, 0, 0, 100, 0)
                 else:
                     PrivateFunction3(3, -100000, 0, 100, 0)
-            if (SLOT_52 == 4):
+            if SLOT_52 == 4:
                 TeleportToObject(3)
     callSubroutine('MinervaSignalSetup')
+
 
 @Subroutine
 def MV_AtkInit():
@@ -119,31 +123,33 @@ def MV_AtkInit():
     IgnorePauses(3)
     AttackOff()
 
+
 @Subroutine
 def MV_ChainAtkInit():
-    if (not SLOT_6):
+    if not SLOT_6:
         TeleportToObject(3)
         AddX(-100000)
     else:
         SLOT_51 = 1
         ObjectUpon24(23, 104, 3, 104)
-        if (SLOT_0 > 100000):
+        if SLOT_0 > 100000:
             CopyFromRightToLeft(23, 2, 56, 23, 2, 19)
             CopyFromRightToLeft(23, 2, 57, 3, 2, 19)
-            if (SLOT_57 > SLOT_56):
+            if SLOT_57 > SLOT_56:
                 TeleportToObject(3)
                 ForceFaceSprite()
                 AddX(100000)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         SLOT_51 = 1
 
     def upon_48():
-        if (SLOT_25 < 200000):
+        if SLOT_XDistanceFromFowardCorner < 200000:
             AddX(-50000)
-        if (SLOT_18 == 2):
+        if SLOT_StateDuration == 2:
             SLOT_6 = 1
             clearUponHandler(48)
+
 
 @State
 def MinervaCreate():
@@ -157,10 +163,10 @@ def MinervaCreate():
         ShadowOffsetY(-75000)
         CreateDecalOn(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             TurnAround()
             physicsXImpulse(0)
-            if (not SLOT_4):
+            if not SLOT_4:
                 Visibility(1)
             else:
                 Visibility(0)
@@ -168,105 +174,107 @@ def MinervaCreate():
     sprite('mv000_00', 100)
     enterState('MinervaStand')
 
+
 @Subroutine
 def MinervaSignalSetup():
 
-    def upon_43():
-        if (SLOT_48 == 100):
+    def upon_VALUE_RECEIVED():
+        if SLOT_ReceivedValue == 100:
             SLOT_6 = 0
             PrivateFunction2('MinervaStand', 900)
-        if (SLOT_48 == 112):
+        if SLOT_ReceivedValue == 112:
             SLOT_6 = 0
             PrivateFunction2('MinervaStandReaction', 1000)
-        if (SLOT_48 == 101):
+        if SLOT_ReceivedValue == 101:
             SLOT_6 = 0
             PrivateFunction2('MinervaTurn', 1000)
-        if (SLOT_48 == 102):
+        if SLOT_ReceivedValue == 102:
             SLOT_6 = 0
             PrivateFunction2('MinervaFWalk', 800)
-        if (SLOT_48 == 103):
+        if SLOT_ReceivedValue == 103:
             SLOT_6 = 0
             PrivateFunction2('MinervaBWalk', 800)
-        if (SLOT_48 == 110):
+        if SLOT_ReceivedValue == 110:
             SLOT_6 = 0
             PrivateFunction2('MinervaHold', 900)
-        if (SLOT_48 == 111):
+        if SLOT_ReceivedValue == 111:
             SLOT_6 = 0
             PrivateFunction2('MinervaSlowHoming', 900)
-        if (SLOT_48 == 300):
+        if SLOT_ReceivedValue == 300:
             PrivateFunction2('MinervaAtk5B', 1000)
-        if (SLOT_48 == 301):
+        if SLOT_ReceivedValue == 301:
             PrivateFunction2('MinervaAtk5C', 1000)
-        if (SLOT_48 == 310):
+        if SLOT_ReceivedValue == 310:
             PrivateFunction2('MinervaAtk2B', 1000)
-        if (SLOT_48 == 311):
+        if SLOT_ReceivedValue == 311:
             PrivateFunction2('MinervaAtk2C', 1000)
-        if (SLOT_48 == 312):
+        if SLOT_ReceivedValue == 312:
             PrivateFunction2('MinervaAtk3C', 1000)
-        if (SLOT_48 == 320):
+        if SLOT_ReceivedValue == 320:
             PrivateFunction2('MinervaAtk6B', 1000)
-        if (SLOT_48 == 321):
+        if SLOT_ReceivedValue == 321:
             PrivateFunction2('MinervaAtk6C', 1000)
-        if (SLOT_48 == 330):
+        if SLOT_ReceivedValue == 330:
             SLOT_6 = 0
             PrivateFunction2('MinervaAtkAIR5B', 1000)
-        if (SLOT_48 == 331):
+        if SLOT_ReceivedValue == 331:
             SLOT_6 = 0
             PrivateFunction2('MinervaAtkAIR5C', 1000)
-        if (SLOT_48 == 400):
+        if SLOT_ReceivedValue == 400:
             PrivateFunction2('MinervaAtkShot', 1000)
-        if (SLOT_48 == 401):
+        if SLOT_ReceivedValue == 401:
             SLOT_6 = 0
             PrivateFunction2('MinervaAtkAirAssault', 1000)
-        if (SLOT_48 == 402):
+        if SLOT_ReceivedValue == 402:
             PrivateFunction2('MinervaAtkUltimateShot', 1000)
-        if (SLOT_48 == 403):
+        if SLOT_ReceivedValue == 403:
             PrivateFunction2('MinervaAtkUltimateShotOD', 1000)
-        if (SLOT_48 == 404):
+        if SLOT_ReceivedValue == 404:
             PrivateFunction2('MinervaRecovery', 1000)
-        if (SLOT_48 == 450):
+        if SLOT_ReceivedValue == 450:
             PrivateFunction2('MinervaAtkBurstDD', 1000)
-        if (SLOT_48 == 500):
+        if SLOT_ReceivedValue == 500:
             SLOT_6 = 0
             PrivateFunction2('MinervaAtkAstralHeat', 1000)
-        if (SLOT_48 == 600):
+        if SLOT_ReceivedValue == 600:
             PrivateFunction2('MinervaEntry01', 1000)
-        if (SLOT_48 == 601):
+        if SLOT_ReceivedValue == 601:
             PrivateFunction2('MinervaEntry01Finish', 1000)
-        if (SLOT_48 == 602):
+        if SLOT_ReceivedValue == 602:
             PrivateFunction2('MinervaEntry02', 1000)
-        if (SLOT_48 == 607):
+        if SLOT_ReceivedValue == 607:
             PrivateFunction2('MinervaEntry03', 1000)
-        if (SLOT_48 == 608):
+        if SLOT_ReceivedValue == 608:
             PrivateFunction2('MinervaEntry03Finish', 1000)
-        if (SLOT_48 == 603):
+        if SLOT_ReceivedValue == 603:
             PrivateFunction2('MinervaRoundWin', 1000)
-        if (SLOT_48 == 604):
+        if SLOT_ReceivedValue == 604:
             PrivateFunction2('MinervaWin01', 1000)
-        if (SLOT_48 == 605):
+        if SLOT_ReceivedValue == 605:
             PrivateFunction2('MinervaWin02', 1000)
-        if (SLOT_48 == 606):
+        if SLOT_ReceivedValue == 606:
             PrivateFunction2('MinervaLose', 1000)
-        if (SLOT_48 == 650):
+        if SLOT_ReceivedValue == 650:
             PrivateFunction2('MinervaEventStay', 1000)
-        if (SLOT_48 == 651):
+        if SLOT_ReceivedValue == 651:
             PrivateFunction2('MinervaEventStayFaceUp', 1000)
-        if (SLOT_48 == 652):
+        if SLOT_ReceivedValue == 652:
             PrivateFunction2('MinervaEventStayToStand', 1000)
-        if (SLOT_48 == 660):
+        if SLOT_ReceivedValue == 660:
             PrivateFunction2('MinervaEventWalk', 1000)
-        if (SLOT_48 == 661):
+        if SLOT_ReceivedValue == 661:
             PrivateFunction2('MinervaEventWalkFast', 1000)
-        if (SLOT_48 == 652):
+        if SLOT_ReceivedValue == 652:
             PrivateFunction2('MinervaEventReaction2Stand', 1000)
-        if (SLOT_48 == 999):
+        if SLOT_ReceivedValue == 999:
             if SLOT_51:
                 SLOT_51 = 0
                 SLOT_52 = 0
                 SLOT_53 = 0
-            if (not SLOT_4):
-                if (not Unknown64(3)):
+            if not SLOT_4:
+                if not SLOT_ReceivedValue == 999:
                     PrivateFunction2('MinervaStand', 900)
+
 
 @Subroutine
 def MV_HitBack():
@@ -275,6 +283,7 @@ def MV_HitBack():
 
     def upon_STATE_END():
         E0EAEffectPosition(0)
+
 
 @State
 def MinervaStand():
@@ -299,6 +308,7 @@ def MinervaStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def MinervaTurn():
 
@@ -311,6 +321,7 @@ def MinervaTurn():
     sprite('mv003_00ex', 3)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaFWalk():
@@ -341,6 +352,7 @@ def MinervaFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def MinervaBWalk():
 
@@ -368,6 +380,7 @@ def MinervaBWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def MinervaHold():
 
@@ -387,6 +400,7 @@ def MinervaHold():
     sprite('mv000_09', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def MinervaSlowHoming():
@@ -416,6 +430,7 @@ def MinervaSlowHoming():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def dengeki_mv():
 
@@ -432,6 +447,7 @@ def dengeki_mv():
     sprite('ce082_01m', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def MinervaAtk5B():
@@ -465,6 +481,7 @@ def MinervaAtk5B():
     sprite('mv201_08', 4)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaAtk5C():
@@ -512,6 +529,7 @@ def MinervaAtk5C():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def MinervaAtk2B():
 
@@ -549,6 +567,7 @@ def MinervaAtk2B():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def MinervaAtk2C():
 
@@ -584,6 +603,7 @@ def MinervaAtk2C():
     sprite('mv232_10', 3)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaAtk3C():
@@ -624,6 +644,7 @@ def MinervaAtk3C():
     sprite('mv236_10', 3)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaAtk6B():
@@ -671,6 +692,7 @@ def MinervaAtk6B():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def MinervaAtk6C():
 
@@ -715,6 +737,7 @@ def MinervaAtk6C():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def MinervaAtkAIR5B():
 
@@ -739,9 +762,9 @@ def MinervaAtkAIR5B():
     sprite('mv251_03', 3)
     RefreshMultihit()
     CreateObject('mv251Eff', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(40000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(40000)
     CommonSE('004_swing_grap_1_0')
     PrivateSE('cese_05')
     sprite('mv251_04', 3)
@@ -752,6 +775,7 @@ def MinervaAtkAIR5B():
     sprite('mv251_08', 32767)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaAtkAIR5C():
@@ -799,6 +823,7 @@ def MinervaAtkAIR5C():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def MinervaAtkShot():
 
@@ -822,12 +847,13 @@ def MinervaAtkShot():
     sprite('mv403_10', 3)
     sprite('mv403_11', 3)
     sprite('mv403_12', 3)
-    PassbackAddActionMarkToFunction('mv403ConsentEff', 32)
+    TriggerUponForState('mv403ConsentEff', 32)
     sprite('mv403_13', 3)
     SLOT_51 = 0
     sprite('mv403_15', 3)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def ShotAtkObj():
@@ -862,7 +888,7 @@ def ShotAtkObj():
         def upon_17():
             sendToLabel(1)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 2)
+        uponSendToLabel(54, 2)
         AttackOff()
     sprite('vrceef999_99test', 5)
     SetScaleSpeed(40)
@@ -882,18 +908,19 @@ def ShotAtkObj():
     gotoLabel(0)
     label(1)
     sprite('vrceef999_99test2', 3)
-    PassbackAddActionMarkToFunction('mv403ShotEff', 32)
+    TriggerUponForState('mv403ShotEff', 32)
     clearUponHandler(17)
     physicsXImpulse(0)
     SetAcceleration(0)
     ExitState()
     label(2)
     sprite('null', 10)
-    PassbackAddActionMarkToFunction('mv403ShotEff', 32)
+    TriggerUponForState('mv403ShotEff', 32)
     clearUponHandler(17)
     clearUponHandler(54)
     physicsXImpulse(0)
     SetAcceleration(0)
+
 
 @State
 def MinervaAtkAirAssault():
@@ -904,18 +931,18 @@ def MinervaAtkAirAssault():
         SLOT_53 = 1
         FloorCollision(1)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_51):
-                if SLOT_36:
+        def upon_EVERY_FRAME():
+            if not SLOT_51:
+                if SLOT_IsAirborne:
                     PrivateFunction3(3, 0, 0, 25, 0)
                 else:
                     PrivateFunction3(3, -100000, 0, 25, 0)
-            if (SLOT_54 == 1):
+            if SLOT_54 == 1:
                 PrivateFunction3(3, -100000, 200000, 100, 0)
-            if (SLOT_54 == 2):
+            if SLOT_54 == 2:
                 PrivateFunction3(3, 0, -10000, 50, 0)
                 physicsYImpulse(-20000)
-            if (SLOT_54 == 3):
+            if SLOT_54 == 3:
                 PrivateFunction3(3, 0, 0, 100, 0)
             if SLOT_55:
                 TeleportToObject(3)
@@ -924,7 +951,7 @@ def MinervaAtkAirAssault():
         def upon_32():
             SLOT_54 = 2
             sendToLabel(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
     sprite('mv404_00', 3)
     TeleportToObject(3)
     SLOT_54 = 3
@@ -948,7 +975,7 @@ def MinervaAtkAirAssault():
     gotoLabel(1)
     label(2)
     sprite('mv212_11', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     SLOT_55 = 1
     AltKnockdownEffects(100, 1, 1)
@@ -957,6 +984,7 @@ def MinervaAtkAirAssault():
     sprite('mv212_14', 3)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaAtkUltimateShot():
@@ -982,8 +1010,8 @@ def MinervaAtkUltimateShot():
         StarterRating(2)
         SLOT_54 = 10
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (SLOT_54 == 1):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if SLOT_54 == 1:
                 Damage(1000)
                 MinimumDamage(20)
                 PushbackX(20000)
@@ -1006,8 +1034,8 @@ def MinervaAtkUltimateShot():
     sprite('mv403_20', 2)
     RefreshMultihit()
     DespawnEAEffect('mv403TameEffSub')
-    PassbackAddActionMarkToFunction('mv403Eff', 32)
-    PassbackAddActionMarkToFunction('mv403TameEff', 32)
+    TriggerUponForState('mv403Eff', 32)
+    TriggerUponForState('mv403TameEff', 32)
     sprite('mv403_21', 1)
     StartMultihit()
     sprite('mv403_21', 1)
@@ -1015,8 +1043,8 @@ def MinervaAtkUltimateShot():
     sprite('mv403_22', 1)
     sprite('mv403_22', 1)
     StartMultihit()
-    SLOT_54 = (SLOT_54 + (-1))
-    if (SLOT_54 > 0):
+    SLOT_54 = SLOT_54 + -1
+    if SLOT_54 > 0:
         sendToLabel(0)
     label(0)
     sprite('mv403_20', 2)
@@ -1028,8 +1056,8 @@ def MinervaAtkUltimateShot():
     sprite('mv403_22', 1)
     sprite('mv403_22', 1)
     StartMultihit()
-    SLOT_54 = (SLOT_54 + (-1))
-    if (SLOT_54 > 0):
+    SLOT_54 = SLOT_54 + -1
+    if SLOT_54 > 0:
         sendToLabel(0)
     label(1)
     sprite('mv403_23', 10)
@@ -1040,11 +1068,12 @@ def MinervaAtkUltimateShot():
     sprite('mv403_24', 5)
     sprite('mv403_25', 5)
     sprite('mv403_14', 5)
-    PassbackAddActionMarkToFunction('mv403ConsentEff', 32)
+    TriggerUponForState('mv403ConsentEff', 32)
     sprite('mv403_15', 5)
     sprite('mv403_16', 5)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaAtkUltimateShotOD():
@@ -1070,8 +1099,8 @@ def MinervaAtkUltimateShotOD():
         StarterRating(2)
         SLOT_54 = 10
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (SLOT_54 == 1):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if SLOT_54 == 1:
                 Damage(1250)
                 MinimumDamage(20)
                 PushbackX(20000)
@@ -1096,8 +1125,8 @@ def MinervaAtkUltimateShotOD():
     sprite('mv403_20', 2)
     RefreshMultihit()
     DespawnEAEffect('mv403TameEffSub')
-    PassbackAddActionMarkToFunction('mv403EffOD', 32)
-    PassbackAddActionMarkToFunction('mv403TameEffOD', 32)
+    TriggerUponForState('mv403EffOD', 32)
+    TriggerUponForState('mv403TameEffOD', 32)
     sprite('mv403_21', 1)
     StartMultihit()
     sprite('mv403_21', 1)
@@ -1105,8 +1134,8 @@ def MinervaAtkUltimateShotOD():
     sprite('mv403_22', 1)
     sprite('mv403_22', 1)
     StartMultihit()
-    SLOT_54 = (SLOT_54 + (-1))
-    if (SLOT_54 > 0):
+    SLOT_54 = SLOT_54 + -1
+    if SLOT_54 > 0:
         sendToLabel(0)
     label(0)
     sprite('mv403_20', 2)
@@ -1118,30 +1147,31 @@ def MinervaAtkUltimateShotOD():
     sprite('mv403_22', 1)
     sprite('mv403_22', 1)
     StartMultihit()
-    SLOT_54 = (SLOT_54 + (-1))
-    if (SLOT_54 > 0):
+    SLOT_54 = SLOT_54 + -1
+    if SLOT_54 > 0:
         sendToLabel(0)
     label(1)
     sprite('mv403_23', 10)
-    PassbackAddActionMarkToFunction('mv403EffOD', 33)
+    TriggerUponForState('mv403EffOD', 33)
     CreateParticle('ceef_403beamend00', 0)
     CreateParticle('ceef_403beamend00', 1)
     CreateParticle('ceef_403beamend00', 2)
     sprite('mv403_24', 5)
     sprite('mv403_25', 5)
     sprite('mv403_14', 5)
-    PassbackAddActionMarkToFunction('mv403ConsentEff', 32)
+    TriggerUponForState('mv403ConsentEff', 32)
     sprite('mv403_15', 5)
     sprite('mv403_16', 5)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaRecovery():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('mv601_03', 6)
     sprite('mv615_00', 6)
     sprite('mv615_01', 6)
@@ -1152,6 +1182,7 @@ def MinervaRecovery():
     sprite('mv601_03', 6)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaAtkBurstDD():
@@ -1191,7 +1222,7 @@ def MinervaAtkBurstDD():
     RefreshMultihit()
     sprite('mv236_05ex01', 3)
     sprite('mv236_06ex01', 3)
-    PassbackAddActionMarkToFunction('BurstDDAdd', 33)
+    TriggerUponForState('BurstDDAdd', 33)
     sprite('mv232_02ex01', 3)
     physicsXImpulse(30000)
     SetAcceleration(-3000)
@@ -1209,13 +1240,13 @@ def MinervaAtkBurstDD():
     EndMomentum(1)
     sprite('mv232_05ex01', 3)
     sprite('mv232_06ex01', 3)
-    PassbackAddActionMarkToFunction('BurstDDAdd', 34)
+    TriggerUponForState('BurstDDAdd', 34)
     sprite('mv212_05ex01', 3)
     physicsYImpulse(18000)
     setGravity(2000)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         EndMomentum(1)
     sprite('mv212_06ex01', 3)
     CommonSE('010_swing_sword_2')
@@ -1237,10 +1268,10 @@ def MinervaAtkBurstDD():
     sprite('mv212_11ex01', 3)
     loopRest()
     if SLOT_55:
-        _gotolabel(100)
+        conditionalSendToLabel(100)
     sprite('mv403_00ex01', 3)
     sprite('mv403_01ex01', 3)
-    PassbackAddActionMarkToFunction('BurstDDAdd', 35)
+    TriggerUponForState('BurstDDAdd', 35)
     sprite('mv403_02ex01', 3)
     sprite('mv440_00', 3)
     CreateObject('ce440EffMato', -1)
@@ -1250,9 +1281,9 @@ def MinervaAtkBurstDD():
     PrivateSE('cese_10')
     sprite('mv440_02', 1)
     CreateObject('mv403ConsentEff', 0)
-    ApplyFunctionsToObjects(1)
-    Rotation(90000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Rotation(90000)
     CreateObject('mv440Eff', -1)
     Damage(1000)
     EnemyHitstopAddition(-1, -1, -1)
@@ -1268,17 +1299,17 @@ def MinervaAtkBurstDD():
     DefeatOpponentBehavior(0)
     RefreshMultihit()
     EndMomentum(1)
-    PassbackAddActionMarkToFunction('BurstDDAdd', 41)
+    TriggerUponForState('BurstDDAdd', 41)
     sprite('mv440_03', 3)
     DespawnEAEffect('BurstDD_Camera')
     ScreenShake(40000, 40000)
     DespawnEAEffect('ce440EffMato')
-    PassbackAddActionMarkToFunction('mv440Eff', 32)
+    TriggerUponForState('mv440Eff', 32)
     sprite('mv440_04', 3)
     sprite('mv440_05', 3)
     sprite('mv202_09ex01', 4)
     sprite('mv202_10ex01', 5)
-    PassbackAddActionMarkToFunction('mv403ConsentEff', 32)
+    TriggerUponForState('mv403ConsentEff', 32)
     sprite('mv202_11ex01', 5)
     sprite('mv202_12ex01', 5)
     sprite('mv202_13ex01', 5)
@@ -1290,7 +1321,7 @@ def MinervaAtkBurstDD():
     sprite('mv403_00ex01', 3)
     sprite('mv403_01ex01', 3)
     sprite('mv403_02ex01', 3)
-    PassbackAddActionMarkToFunction('BurstDDAdd', 35)
+    TriggerUponForState('BurstDDAdd', 35)
     sprite('mv440_00', 3)
     CreateObject('ce440EffMato', -1)
     physicsXImpulse(3000)
@@ -1332,17 +1363,17 @@ def MinervaAtkBurstDD():
     AttackType(4)
     DefeatOpponentBehavior(0)
     RefreshMultihit()
-    PassbackAddActionMarkToFunction('BurstDDAdd', 41)
+    TriggerUponForState('BurstDDAdd', 41)
     sprite('mv440_03', 3)
     DespawnEAEffect('BurstDD_Camera')
     DespawnEAEffect('ce440EffMato')
-    PassbackAddActionMarkToFunction('mv440Eff', 32)
+    TriggerUponForState('mv440Eff', 32)
     sprite('mv440_04', 3)
     CreateObject('ceef_hiteff440HitEx', -1)
     sprite('mv440_05', 3)
     sprite('mv202_09ex01', 4)
     sprite('mv202_10ex01', 5)
-    PassbackAddActionMarkToFunction('mv403ConsentEff', 32)
+    TriggerUponForState('mv403ConsentEff', 32)
     sprite('mv202_11ex01', 5)
     sprite('mv202_12ex01', 5)
     sprite('mv202_13ex01', 5)
@@ -1350,6 +1381,7 @@ def MinervaAtkBurstDD():
     sprite('mv202_14ex01', 5)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def ThrowUpCelica():
@@ -1367,6 +1399,7 @@ def ThrowUpCelica():
     sprite('ce430_01', 3)
     sprite('ce430_00', 3)
 
+
 @State
 def ThrowDownCelica():
 
@@ -1376,10 +1409,10 @@ def ThrowDownCelica():
         AlphaValue(0)
         ConstantAlphaModifier(31)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             PrivateFunction3(3, 35000, 0, 8, 0)
-            if (SLOT_23 <= 250000):
-                ObjectUpon(3, 32)
+            if SLOT_YDistanceFromFloor <= 250000:
+                ObjectUpon(EVERY_FRAME, 32)
                 sendToLabel(1)
     label(0)
     sprite('ce430_02', 3)
@@ -1387,7 +1420,8 @@ def ThrowDownCelica():
     gotoLabel(0)
     label(1)
     sprite('null', 3)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
+
 
 @State
 def UltimateAssaultAddAttackMissVer():
@@ -1410,7 +1444,7 @@ def UltimateAssaultAddAttackMissVer():
         Hitstop(4)
         StarterRating(2)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             TeleportToObject(22)
     sprite('mv430_15', 2)
     RefreshMultihit()
@@ -1422,6 +1456,7 @@ def UltimateAssaultAddAttackMissVer():
     RefreshMultihit()
     sprite('mv430_15', 2)
     RefreshMultihit()
+
 
 @State
 def UltimateAssaultAddAttack():
@@ -1448,9 +1483,9 @@ def UltimateAssaultAddAttack():
         CHStateIfCHStart(3)
         DamageFromStateOnly('UltimateAssaultAddAttack')
 
-        def upon_ON_HIT_OR_BLOCK():
-            SLOT_54 = (SLOT_54 + 1)
-            if (SLOT_54 >= 13):
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            SLOT_54 = SLOT_54 + 1
+            if SLOT_54 >= 13:
                 DamageFromStateOnly('UltimateAssault')
                 sendToLabel(1)
         SetActionMark(60)
@@ -1459,12 +1494,13 @@ def UltimateAssaultAddAttack():
     AddActionMark(-1)
     RefreshMultihit()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     label(1)
     sprite('mv430_15', 1)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('null', 3)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def UltimateAssaultAddAttackOD():
@@ -1491,9 +1527,9 @@ def UltimateAssaultAddAttackOD():
         CHStateIfCHStart(3)
         DamageFromStateOnly('UltimateAssaultAddAttackOD')
 
-        def upon_ON_HIT_OR_BLOCK():
-            SLOT_54 = (SLOT_54 + 1)
-            if (SLOT_54 >= 5):
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            SLOT_54 = SLOT_54 + 1
+            if SLOT_54 >= 5:
                 sendToLabel(100)
         SetActionMark(60)
     label(0)
@@ -1501,15 +1537,15 @@ def UltimateAssaultAddAttackOD():
     AddActionMark(-1)
     RefreshMultihit()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     label(100)
     sprite('mv430_15', 1)
     Hitstop(2)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
 
-    def upon_ON_HIT_OR_BLOCK():
-        SLOT_54 = (SLOT_54 + 1)
-        if (SLOT_54 >= 17):
+    def upon_OPPONENT_HIT_OR_BLOCK():
+        SLOT_54 = SLOT_54 + 1
+        if SLOT_54 >= 17:
             DamageFromStateOnly('UltimateAssaultOD')
             sendToLabel(200)
     SetActionMark(60)
@@ -1518,12 +1554,13 @@ def UltimateAssaultAddAttackOD():
     AddActionMark(-1)
     RefreshMultihit()
     if SLOT_2:
-        _gotolabel(101)
+        conditionalSendToLabel(101)
     label(200)
     sprite('mv430_15', 1)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     sprite('null', 3)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
+
 
 @State
 def MinervaAtkAstralHeat():
@@ -1532,8 +1569,8 @@ def MinervaAtkAstralHeat():
         callSubroutine('MV_ActReset')
         IgnorePauses(3)
         SetZVal(500)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('mv000_00', 7)
     sprite('mv000_01', 7)
     sprite('mv000_02', 7)
@@ -1570,9 +1607,9 @@ def MinervaAtkAstralHeat():
     PrivateSE('cese_09')
     CreateParticle('ceef_450_tobishock', -1)
     CreateObject('mv450Smoke', -1)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
     sprite('null', 32767)
     TeleportToObject(3)
     EndMomentum(1)
@@ -1621,6 +1658,7 @@ def MinervaAtkAstralHeat():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def ceef_hiteffAst():
 
@@ -1630,6 +1668,7 @@ def ceef_hiteffAst():
     CreateParticle('ceef_shungokuodeff_end', -1)
     ScreenShake(20000, 20000)
     PrivateSE('cese_23')
+
 
 @State
 def AstCameraObj():
@@ -1643,12 +1682,13 @@ def AstCameraObj():
         WallCollisionDetection(0)
         ScreenCollision(0)
         TeleportToObject(22)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 1)
     sprite('null', 32767)
     AddX(-10000)
     label(1)
     sprite('null', 1)
+
 
 @State
 def AstDeathAttack():
@@ -1669,6 +1709,7 @@ def AstDeathAttack():
         TeleportToObject(22)
     sprite('mv450_06', 10)
 
+
 @State
 def MinervaEntry01():
 
@@ -1677,6 +1718,7 @@ def MinervaEntry01():
     label(1)
     sprite('mv601_00', 3)
     gotoLabel(1)
+
 
 @State
 def MinervaEntry01Finish():
@@ -1699,15 +1741,16 @@ def MinervaEntry01Finish():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def MinervaEntry02():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
         SLOT_51 = 1
-        sendToLabelUpon(32, 100)
-        sendToLabelUpon(33, 200)
-        sendToLabelUpon(34, 300)
+        uponSendToLabel(32, 100)
+        uponSendToLabel(33, 200)
+        uponSendToLabel(34, 300)
     sprite('mv602_00', 7)
     TeleportToObject(3)
     EndMomentum(1)
@@ -1748,12 +1791,13 @@ def MinervaEntry02():
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
 
+
 @State
 def MinervaEntry03():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
     label(0)
     sprite('mv610_03ex01', 8)
     sprite('mv610_03ex02', 8)
@@ -1764,16 +1808,18 @@ def MinervaEntry03():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def MinervaEntry03Finish():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
     sprite('mv610_02', 5)
     sprite('mv610_00', 6)
     sprite('keep', 100)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def MinervaRoundWin():
@@ -1800,6 +1846,7 @@ def MinervaRoundWin():
     sprite('mv615_01', 5)
     sprite('mv601_00', 32767)
 
+
 @State
 def MinervaWin01():
 
@@ -1817,6 +1864,7 @@ def MinervaWin01():
     sprite('mv610_03ex05', 8)
     sprite('mv610_03ex06', 8)
     gotoLabel(0)
+
 
 @State
 def MinervaWin02():
@@ -1849,6 +1897,7 @@ def MinervaWin02():
     label(90)
     sprite('null', 32767)
 
+
 @State
 def MinervaLose():
 
@@ -1870,6 +1919,7 @@ def MinervaLose():
     sprite('mv620_01ex6', 6)
     sprite('mv620_02', 6)
     sprite('mv620_03', 32767)
+
 
 @State
 def MinervaStandReaction():
@@ -1894,39 +1944,43 @@ def MinervaStandReaction():
     sprite('mv001_02ex06', 6)
     gotoLabel(10)
 
+
 @State
 def MinervaEventStay():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
     sprite('mv601_00', 32767)
+
 
 @State
 def MinervaEventStayFaceUp():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
     sprite('mv601_01', 6)
     sprite('mv601_02', 32767)
+
 
 @State
 def MinervaEventStayToStand():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
     sprite('mv601_01', 6)
     sprite('mv601_02', 6)
     sprite('mv601_03', 32767)
+
 
 @State
 def MinervaEventWalk():
 
     def upon_IMMEDIATE():
         callSubroutine('MV_ActReset')
-        clearUponHandler(3)
+        clearUponHandler(EVERY_FRAME)
     sprite('mv030_00', 7)
     physicsXImpulse(2000)
     label(0)
@@ -1938,6 +1992,7 @@ def MinervaEventWalk():
     sprite('mv030_06', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def MinervaEventWalkFast():
@@ -1955,6 +2010,7 @@ def MinervaEventWalkFast():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def MinervaEventReaction2Stand():
 
@@ -1967,6 +2023,7 @@ def MinervaEventReaction2Stand():
     sprite('mv001_00ex00', 6)
     sprite('mv001_00', 32767)
     PrivateFunction2('MinervaStand', 100)
+
 
 @State
 def ceef_hiteffD():
@@ -1993,6 +2050,7 @@ def ceef_hiteffD():
     sprite('vr_mvcmneff_07', 2)
     sprite('vr_mvcmneff_08', 2)
 
+
 @State
 def ceef_hiteffDSub():
 
@@ -2014,6 +2072,7 @@ def ceef_hiteffDSub():
     sprite('vr_mvcmneff_05', 2)
     sprite('vr_mvcmneff_07', 2)
     sprite('vr_mvcmneff_08', 2)
+
 
 @State
 def ceef_hiteffDSub2():
@@ -2040,6 +2099,7 @@ def ceef_hiteffDSub2():
     sprite('vr_mvcmneff2_07', 3)
     sprite('vr_mvcmneff2_08', 2)
 
+
 @State
 def ceef_hiteffDSub3():
 
@@ -2062,6 +2122,7 @@ def ceef_hiteffDSub3():
     sprite('vr_mvcmneff2_06', 3)
     sprite('vr_mvcmneff2_07', 3)
     sprite('vr_mvcmneff2_08', 2)
+
 
 @State
 def ceef_hiteffH():
@@ -2089,6 +2150,7 @@ def ceef_hiteffH():
     sprite('vr_mvcmneff_07', 2)
     sprite('vr_mvcmneff_08', 2)
 
+
 @State
 def ceef_hiteffHSub():
 
@@ -2110,6 +2172,7 @@ def ceef_hiteffHSub():
     sprite('vr_mvcmneff_07', 2)
     sprite('vr_mvcmneff_08', 2)
 
+
 @State
 def ceAirDashEff():
 
@@ -2121,11 +2184,12 @@ def ceAirDashEff():
         Eff3DEffect('ceef_airdash00.DIG', '')
         SetScaleX(400)
         SetScaleY(300)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 5)
     AlphaValue(230)
     CreateObject('ceAirDashEffNokosi', -1)
     sprite('null', 5)
+
 
 @State
 def ceAirDashEffNokosi():
@@ -2140,6 +2204,7 @@ def ceAirDashEffNokosi():
     CreateParticle('ceef_airdash_nokosi2', -1)
     ConstantAlphaModifier(-17)
 
+
 @State
 def ceAirBDashEff():
 
@@ -2151,11 +2216,12 @@ def ceAirBDashEff():
         Eff3DEffect('ceef_airdash01.DIG', '')
         SetScaleX(400)
         SetScaleY(300)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 5)
     AlphaValue(230)
     CreateObject('ceAirDashEffNokosi', -1)
     sprite('null', 5)
+
 
 @State
 def mv202Eff():
@@ -2172,13 +2238,14 @@ def mv202Eff():
     label(0)
     sprite('mvef202eff_00', 3)
     CreateObject('mv213thunder', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(250000)
-    AddX(400000)
-    Size(550)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(250000)
+        AddX(400000)
+        Size(550)
     sprite('mvef202eff_01', 3)
     gotoLabel(0)
+
 
 @State
 def mv203Eff():
@@ -2199,6 +2266,7 @@ def mv203Eff():
     Eff3DEffect('ceef_203eff01.DIG', '')
     ConstantAlphaModifier(-26)
 
+
 @State
 def mv204Smoke():
 
@@ -2214,6 +2282,7 @@ def mv204Smoke():
     sprite('null', 12)
     ConstantAlphaModifier(-17)
 
+
 @State
 def mv204ringLoops():
 
@@ -2227,6 +2296,7 @@ def mv204ringLoops():
     CreateParticle('ceef_kiramove00', -1)
     gotoLabel(0)
 
+
 @State
 def mv204ring():
 
@@ -2238,6 +2308,7 @@ def mv204ring():
     physicsXImpulse(-7500)
     SetScaleSpeed(60)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mv205Eff():
@@ -2257,6 +2328,7 @@ def mv205Eff():
     sprite('null', 2)
     sprite('null', 8)
 
+
 @State
 def mv205ConsentEff():
 
@@ -2264,13 +2336,14 @@ def mv205ConsentEff():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         LinkParticle('ceef_205_plugeff_bigc')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     CreateParticle('ceef_plugeff_cmnthunder', -1)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(30)
+
 
 @State
 def mv211Eff():
@@ -2295,6 +2368,7 @@ def mv211Eff():
     sprite('vr_ce211_02', 10)
     ConstantAlphaModifier(-12)
 
+
 @State
 def mv212Eff():
 
@@ -2317,6 +2391,7 @@ def mv212Eff():
     sprite('vr_ce212_01', 10)
     ConstantAlphaModifier(-12)
     AddY(-60000)
+
 
 @State
 def mv232Eff():
@@ -2341,6 +2416,7 @@ def mv232Eff():
     sprite('vr_ce232_02', 10)
     ConstantAlphaModifier(-12)
 
+
 @State
 def mv233Eff():
 
@@ -2350,6 +2426,7 @@ def mv233Eff():
         IgnorePauses(3)
     sprite('null', 20)
     LinkParticle('ceef_233shock00')
+
 
 @State
 def mv236Eff():
@@ -2373,6 +2450,7 @@ def mv236Eff():
     sprite('vr_ce236_00', 10)
     ConstantAlphaModifier(-12)
 
+
 @State
 def mv252Eff():
 
@@ -2394,6 +2472,7 @@ def mv252Eff():
     sprite('vr_ce252_00', 3)
     sprite('vr_ce252_00', 10)
     ConstantAlphaModifier(-12)
+
 
 @State
 def mv251Eff():
@@ -2418,6 +2497,7 @@ def mv251Eff():
     sprite('vr_ce251_02', 10)
     ConstantAlphaModifier(-12)
 
+
 @State
 def mv213Eff():
 
@@ -2437,6 +2517,7 @@ def mv213Eff():
     sprite('null', 3)
     CreateObject('mv213thunder', -1)
 
+
 @State
 def mv213thunder():
 
@@ -2447,6 +2528,7 @@ def mv213thunder():
         AlphaValue(160)
         RandAddRotation(-100000, 100000)
     sprite('null', 15)
+
 
 @State
 def mv214Eff():
@@ -2463,33 +2545,34 @@ def mv214Eff():
     sprite('null', 1)
     sprite('null', 2)
     CreateObject('mv214thunder', -1)
-    ApplyFunctionsToObjects(1)
-    Size(400)
-    AddX(150000)
-    AddY(150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(400)
+        AddX(150000)
+        AddY(150000)
     CreateObject('mv214thunder', -1)
-    ApplyFunctionsToObjects(1)
-    Size(600)
-    AddX(150000)
-    AddY(315000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(600)
+        AddX(150000)
+        AddY(315000)
     CreateObject('mv214thunder', -1)
-    ApplyFunctionsToObjects(1)
-    Size(600)
-    AddX(-30000)
-    AddY(420000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(600)
+        AddX(-30000)
+        AddY(420000)
     CreateObject('mv214thunder', -1)
-    ApplyFunctionsToObjects(1)
-    Size(400)
-    AddX(-240000)
-    AddY(420000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(400)
+        AddX(-240000)
+        AddY(420000)
     sprite('null', 1)
     sprite('null', 3)
     Eff3DEffect('ceef_214eff01', '')
     ConstantAlphaModifier(-26)
+
 
 @State
 def mv214thunder():
@@ -2502,6 +2585,7 @@ def mv214thunder():
         RandAddRotation(-100000, 100000)
     sprite('null', 15)
 
+
 @State
 def ce215JetEff():
 
@@ -2512,8 +2596,8 @@ def ce215JetEff():
         LinkParticle('ceef_400_shock')
         Eff3DEffect('ceef_400eff00.DIG', '')
         Size(600)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 0)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 0)
     sprite('null', 5)
     CreateObject('ce215JetEffNokosi', -1)
     label(0)
@@ -2523,6 +2607,7 @@ def ce215JetEff():
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ce215JetEffNokosi():
@@ -2537,6 +2622,7 @@ def ce215JetEffNokosi():
     CreateParticle('ceef_airdash_nokosi2', -1)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mv215ConsentEff():
 
@@ -2544,8 +2630,8 @@ def mv215ConsentEff():
         RemoveOnCallStateEnd(2)
         RotationAngle(90000)
         LinkParticle('ceef_208_plugeff_thunder')
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 32767)
     label(0)
     sprite('null', 32767)
@@ -2555,6 +2641,7 @@ def mv215ConsentEff():
     CreateParticle('ceef_plugeff_cmnthunder', -1)
     ConstantAlphaModifier(-51)
     SetScaleSpeed(30)
+
 
 @State
 def mv234Eff():
@@ -2573,6 +2660,7 @@ def mv234Eff():
     Eff3DEffect('ceef_234eff01', '')
     ConstantAlphaModifier(-26)
 
+
 @State
 def mv234ConsentEff():
 
@@ -2580,8 +2668,8 @@ def mv234ConsentEff():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         LinkParticle('ceef_208_plugeff_thunder')
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
         Rotation(180000)
     sprite('null', 32767)
     label(0)
@@ -2593,6 +2681,7 @@ def mv234ConsentEff():
     CreateParticle('ceef_plugeff_cmnthunder', -1)
     ConstantAlphaModifier(-51)
     SetScaleSpeed(30)
+
 
 @State
 def mv235Eff():
@@ -2615,6 +2704,7 @@ def mv235Eff():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def mv235ConsentEff():
 
@@ -2623,8 +2713,8 @@ def mv235ConsentEff():
         RemoveOnCallStateEnd(2)
         RotationAngle(90000)
         LinkParticle('ceef_208_plugeff_thunder')
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 32767)
     label(0)
     sprite('null', 32767)
@@ -2634,6 +2724,7 @@ def mv235ConsentEff():
     CreateParticle('ceef_plugeff_cmnthunder', -1)
     ConstantAlphaModifier(-51)
     SetScaleSpeed(30)
+
 
 @State
 def mv270Eff():
@@ -2654,6 +2745,7 @@ def mv270Eff():
     AddX(-30000)
     Eff3DEffect('ceef_203eff01.DIG', '')
     ConstantAlphaModifier(-26)
+
 
 @State
 def mv311Eff():
@@ -2676,32 +2768,33 @@ def mv311Eff():
     CreateObject('mv311ThunderEff', -1)
     CreateObject('mv311ThunderEff2', -1)
     CreateObject('mv311thunder', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(150000)
-    AddY(75000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(150000)
+        AddY(75000)
     CommonSE('014_electric_sl')
     CreateObject('mv311thunder2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(300000)
-    AddY(150000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(300000)
+        AddY(150000)
     CreateObject('mv311thunder', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(450000)
-    AddY(225000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(450000)
+        AddY(225000)
     CreateObject('mv311thunder2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(600000)
-    AddY(300000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(600000)
+        AddY(300000)
     sprite('null', 5)
     CreateObject('mv311thunder', -1)
     CreateObject('mv311BeamEnd', -1)
     ScreenShake(10000, 10000)
     SetScaleSpeedY(-350)
     SetScaleXPerFrame(-300)
+
 
 @State
 def mv311ThunderEff():
@@ -2726,6 +2819,7 @@ def mv311ThunderEff():
     CommonSE('014_electric_m')
     sprite('vr_mvef403a_03', 2)
 
+
 @State
 def mv311ThunderEff2():
 
@@ -2746,6 +2840,7 @@ def mv311ThunderEff2():
     sprite('vr_mvef403a_02', 2)
     sprite('vr_mvef403a_03', 2)
 
+
 @State
 def mv311thunder():
 
@@ -2762,6 +2857,7 @@ def mv311thunder():
     AlphaValue(255)
     CreateParticle('ceef_healsphere01', -1)
 
+
 @State
 def mv311thunder2():
 
@@ -2777,6 +2873,7 @@ def mv311thunder2():
     AlphaValue(255)
     CreateParticle('ceef_healsphere01', -1)
 
+
 @State
 def mv311BeamEnd():
 
@@ -2785,6 +2882,7 @@ def mv311BeamEnd():
         Rotation(-30000)
         IgnoreScreenfreeze(1)
     sprite('null', 60)
+
 
 @State
 def mv311wind():
@@ -2802,6 +2900,7 @@ def mv311wind():
     SetScaleSpeed(5)
     ConstantAlphaModifier(-5)
 
+
 @State
 def mv311ConsentEff():
 
@@ -2809,8 +2908,8 @@ def mv311ConsentEff():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         RotationAngle(180000)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
     sprite('null', 32767)
     CreateParticle('ceef_311__plugeff_sc', -1)
     label(1)
@@ -2822,6 +2921,7 @@ def mv311ConsentEff():
     ConstantAlphaModifier(-51)
     SetScaleSpeed(30)
     loopRest()
+
 
 @State
 def mv321BomEff():
@@ -2850,6 +2950,7 @@ def mv321BomEff():
     sprite('null', 9)
     AddScale(100)
 
+
 @State
 def mv340ConsentEff():
 
@@ -2857,13 +2958,14 @@ def mv340ConsentEff():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         LinkParticle('ceef_208_plugeff_thunder')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 32767)
     label(1)
     sprite('null', 5)
     CreateParticle('ceef_plugeff_cmnthunder', -1)
     ConstantAlphaModifier(-51)
     SetScaleSpeed(30)
+
 
 @State
 def ceef_270():
@@ -2874,6 +2976,7 @@ def ceef_270():
         IgnorePauses(2)
         LinkParticle('ceef_270ring')
     sprite('null', 60)
+
 
 @State
 def ce400JetEff():
@@ -2887,7 +2990,7 @@ def ce400JetEff():
         LinkParticle('ceef_400_shock')
         Eff3DEffect('ceef_400eff00.DIG', '')
         Size(750)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 4)
     CreateObject('ce400JetEffNokosi', -1)
     sprite('null', 1)
@@ -2899,6 +3002,7 @@ def ce400JetEff():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
     loopRest()
+
 
 @State
 def ce400JetEffBackFireAtk():
@@ -2925,7 +3029,7 @@ def ce400JetEffBackFireAtk():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(3)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
     sprite('null', 2)
     label(0)
     sprite('ce400_dummyAtk', 2)
@@ -2940,6 +3044,7 @@ def ce400JetEffBackFireAtk():
     DamageFromStateOnly('')
     HardKnockdown(0)
 
+
 @State
 def ce400JetEffNokosi():
 
@@ -2953,6 +3058,7 @@ def ce400JetEffNokosi():
     CreateParticle('ceef_airdash_nokosi2', -1)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mv400tameMatome():
 
@@ -2962,7 +3068,7 @@ def mv400tameMatome():
         BlendMode_Normal()
         AddY(150000)
         AddX(10000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 7)
     CreateObject('mv400tame', -1)
@@ -2978,6 +3084,7 @@ def mv400tameMatome():
     ParticleSize(800)
     CallCustomizableParticle('ceef_400tame_pos', -1)
 
+
 @State
 def mv400tame():
 
@@ -2987,6 +3094,7 @@ def mv400tame():
         Size(1300)
         RandAddRotation(-100000, 100000)
     sprite('null', 15)
+
 
 @State
 def mv400windMatome():
@@ -3001,6 +3109,7 @@ def mv400windMatome():
     sprite('null', 5)
     CreateParticle('ceef_cmn_stone00', -1)
     gotoLabel(0)
+
 
 @State
 def mv400wind():
@@ -3019,14 +3128,15 @@ def mv400wind():
     sprite('null', 12)
     ConstantAlphaModifier(-21)
 
+
 @State
 def AssaultPlug():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(3)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         RenderLayer(11)
         SetZVal(100)
         AddX(5000)
@@ -3039,6 +3149,7 @@ def AssaultPlug():
     sprite('vr_ce215_03', 10)
     ConstantAlphaModifier(-25)
     loopRest()
+
 
 @State
 def Cable():
@@ -3066,14 +3177,15 @@ def Cable():
             CallPrivateFunction('CableIdling', 0, 0, 0, 0, 0, 0, 0, 0)
         SLOT_54 = 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                CallPrivateFunction('CableAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0)
-            if SLOT_IsInOverdrive2:
+                CallPrivateFunction('CableAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0
+                    )
+            if SLOT_54:
                 RotationSomething(0)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 51)
-            if (not SLOT_52):
-                if (not SLOT_53):
+            if not SLOT_52:
+                if not SLOT_53:
                     DeleteObject(23)
 
         def upon_32():
@@ -3100,6 +3212,7 @@ def Cable():
     SLOT_54 = 0
     loopRest()
     ExitState()
+
 
 @State
 def EntryCelicaDummy():
@@ -3151,6 +3264,7 @@ def EntryCelicaDummy():
     sprite('null', 5)
     loopRest()
 
+
 @State
 def EntryCable():
 
@@ -3177,14 +3291,15 @@ def EntryCable():
             CallPrivateFunction('CableIdling', 0, 0, 0, 0, 0, 0, 0, 0)
         SLOT_54 = 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                CallPrivateFunction('CableAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0)
-            if SLOT_IsInOverdrive2:
+                CallPrivateFunction('CableAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0
+                    )
+            if SLOT_54:
                 RotationSomething(0)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 51)
-            if (not SLOT_52):
-                if (not SLOT_53):
+            if not SLOT_52:
+                if not SLOT_53:
                     DeleteObject(23)
 
         def upon_32():
@@ -3208,6 +3323,7 @@ def EntryCable():
     loopRest()
     ExitState()
 
+
 @State
 def ce401PanchEff():
 
@@ -3227,6 +3343,7 @@ def ce401PanchEff():
     sprite('null', 5)
     AddX(-50000)
 
+
 @State
 def mv401Nokosi():
 
@@ -3242,6 +3359,7 @@ def mv401Nokosi():
     sprite('null', 10)
     sprite('null', 5)
 
+
 @State
 def mv401Nokosi2():
 
@@ -3255,6 +3373,7 @@ def mv401Nokosi2():
     sprite('null', 10)
     sprite('null', 5)
 
+
 @State
 def mv401tameMatome():
 
@@ -3264,7 +3383,7 @@ def mv401tameMatome():
         BlendMode_Normal()
         AddY(300000)
         AddX(10000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 7)
     CreateObject('mv401tame', -1)
@@ -3277,6 +3396,7 @@ def mv401tameMatome():
     sprite('null', 7)
     CreateParticle('ceef_401tame_sub', -1)
 
+
 @State
 def mv401tame():
 
@@ -3286,6 +3406,7 @@ def mv401tame():
         Size(800)
         RandAddRotation(-100000, 100000)
     sprite('null', 15)
+
 
 @State
 def mv402Eff():
@@ -3303,37 +3424,38 @@ def mv402Eff():
     sprite('null', 4)
     LinkParticle('ceef_402_shock')
     CreateObject('mv402Nokosi2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-100000)
     CreateObject('mv402Nokosi2', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(200000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(200000)
     CreateObject('mv402wind', -1)
     CreateObject('mv402Nokosi', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(50000)
-    AlphaValue(175)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(50000)
+        AlphaValue(175)
     CreateObject('mv402Nokosi', -1)
-    ApplyFunctionsToObjects(1)
-    Size(600)
-    AddY(200000)
-    AddX(150000)
-    AlphaValue(175)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(600)
+        AddY(200000)
+        AddX(150000)
+        AlphaValue(175)
     CreateObject('mv402Nokosi', -1)
-    ApplyFunctionsToObjects(1)
-    Size(450)
-    AddY(200000)
-    AddX(300000)
-    AlphaValue(175)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(450)
+        AddY(200000)
+        AddX(300000)
+        AlphaValue(175)
     sprite('null', 4)
     Eff3DEffect('ceef_402eff01', '')
     sprite('null', 6)
     ConstantAlphaModifier(-51)
+
 
 @State
 def mv402Nokosi():
@@ -3349,6 +3471,7 @@ def mv402Nokosi():
     sprite('null', 9)
     AlphaValue(255)
 
+
 @State
 def mv402Nokosi2():
 
@@ -3362,6 +3485,7 @@ def mv402Nokosi2():
     sprite('null', 15)
     AlphaValue(255)
 
+
 @State
 def mv402tameMatome():
 
@@ -3371,7 +3495,7 @@ def mv402tameMatome():
         BlendMode_Normal()
         AddY(40000)
         AddX(-150000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 7)
     CreateObject('mv402tame', -1)
@@ -3384,6 +3508,7 @@ def mv402tameMatome():
     sprite('null', 7)
     CreateParticle('ceef_402tame_bloom', -1)
 
+
 @State
 def mv402tame():
 
@@ -3394,6 +3519,7 @@ def mv402tame():
         RandAddRotation(-100000, 100000)
         RenderLayer(2)
     sprite('null', 15)
+
 
 @State
 def mv402wind():
@@ -3409,6 +3535,7 @@ def mv402wind():
     sprite('null', 10)
     sprite('null', 12)
     ConstantAlphaModifier(-17)
+
 
 @State
 def ce404StarEff():
@@ -3428,6 +3555,7 @@ def ce404StarEff():
     ConstantAlphaModifier(-26)
     SetScaleSpeed(30)
 
+
 @State
 def ce404KickEff():
 
@@ -3442,7 +3570,7 @@ def ce404KickEff():
         AddX(90000)
         SetScaleX(1500)
         SetScaleY(3000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 1)
     CreateParticle('ceef_kickeff01', -1)
     CreateParticle('ceef_kickstart', -1)
@@ -3456,6 +3584,7 @@ def ce404KickEff():
     SetScaleSpeedY(120)
     ConstantAlphaModifier(-26)
     loopRest()
+
 
 @State
 def ceef_404StarSub():
@@ -3479,6 +3608,7 @@ def ceef_404StarSub():
     sprite('vr_mvcmneff_07', 2)
     sprite('vr_mvcmneff_08', 2)
 
+
 @State
 def mv403ShotEff():
 
@@ -3489,7 +3619,7 @@ def mv403ShotEff():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         AddY(75000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 15)
     Size(100)
     SetScaleSpeed(60)
@@ -3506,6 +3636,7 @@ def mv403ShotEff():
     sprite('null', 3)
     CreateParticle('ceef_shotbrake00', -1)
     loopRest()
+
 
 @State
 def mv403Nokosi():
@@ -3525,6 +3656,7 @@ def mv403Nokosi():
     sprite('null', 25)
     ConstantAlphaModifier(-10)
 
+
 @State
 def mv403Nokosi2():
 
@@ -3543,6 +3675,7 @@ def mv403Nokosi2():
     sprite('null', 25)
     ConstantAlphaModifier(-10)
 
+
 @State
 def mv403Nokosi3():
 
@@ -3555,6 +3688,7 @@ def mv403Nokosi3():
     ConstantAlphaModifier(-7)
     SetScaleSpeed(-7)
     physicsXImpulse(-6000)
+
 
 @State
 def mv403Nokosistart():
@@ -3572,6 +3706,7 @@ def mv403Nokosistart():
     ConstantAlphaModifier(-26)
     SetScaleSpeed(30)
 
+
 @State
 def mv403Impact():
 
@@ -3588,6 +3723,7 @@ def mv403Impact():
     sprite('null', 5)
     ConstantAlphaModifier(-17)
 
+
 @State
 def mv403Impact2():
 
@@ -3602,6 +3738,7 @@ def mv403Impact2():
     sprite('null', 5)
     ConstantAlphaModifier(-17)
 
+
 @State
 def mv403ConsentEff():
 
@@ -3609,13 +3746,14 @@ def mv403ConsentEff():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
         LinkParticle('ceef_208_plugeff_thunder')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     CreateParticle('ceef_plugeff_cmnthunder', -1)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(30)
+
 
 @State
 def mv403Eff():
@@ -3627,7 +3765,7 @@ def mv403Eff():
         SetZVal(-500)
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('vr_mvef403_00', 1)
@@ -3663,6 +3801,7 @@ def mv403Eff():
     PrivateSE('cese_12')
     gotoLabel(1)
 
+
 @State
 def mv403BeamEff():
 
@@ -3678,6 +3817,7 @@ def mv403BeamEff():
     sprite('null', 1)
     sprite('null', 1)
     AlphaValue(128)
+
 
 @State
 def mv403BeamEff2():
@@ -3695,6 +3835,7 @@ def mv403BeamEff2():
     sprite('null', 1)
     AlphaValue(128)
 
+
 @State
 def mvBeamNokosi():
 
@@ -3709,6 +3850,7 @@ def mvBeamNokosi():
     sprite('null', 10)
     SetScaleSpeed(-30)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mvBeamNokosi2():
@@ -3725,6 +3867,7 @@ def mvBeamNokosi2():
     SetScaleSpeed(-30)
     ConstantAlphaModifier(-26)
 
+
 @State
 def mvBeamNokosi3():
 
@@ -3740,6 +3883,7 @@ def mvBeamNokosi3():
     SetScaleSpeed(-7)
     physicsXImpulse(-6000)
 
+
 @State
 def mv403EffParticle():
 
@@ -3749,6 +3893,7 @@ def mv403EffParticle():
         IgnoreScreenfreeze(1)
     sprite('null', 32767)
     LinkParticle('ceef_ddlaser_00')
+
 
 @State
 def mv403SubEff():
@@ -3771,6 +3916,7 @@ def mv403SubEff():
     CreateObject('mv403BulletEff2', 100)
     gotoLabel(0)
 
+
 @State
 def mv403BulletEff():
 
@@ -3787,6 +3933,7 @@ def mv403BulletEff():
     sprite('vr_mvef403_03', 30)
     physicsXImpulse(70000)
     SetScaleXPerFrame(-100)
+
 
 @State
 def mv403BulletEff2():
@@ -3806,6 +3953,7 @@ def mv403BulletEff2():
     physicsXImpulse(70000)
     SetScaleXPerFrame(-75)
 
+
 @State
 def mv403mazleEff():
 
@@ -3821,6 +3969,7 @@ def mv403mazleEff():
     sprite('vr_mvef403mzl_00', 2)
     sprite('vr_mvef403mzl_01', 2)
     gotoLabel(0)
+
 
 @State
 def mv403mazleEff2():
@@ -3841,6 +3990,7 @@ def mv403mazleEff2():
     sprite('vr_mvef403mzl_01', 2)
     gotoLabel(0)
 
+
 @State
 def mv403mazleEff3():
 
@@ -3858,6 +4008,7 @@ def mv403mazleEff3():
     sprite('vr_mvef403mzl_01', 2)
     gotoLabel(0)
 
+
 @State
 def mv403EffOD():
 
@@ -3868,8 +4019,8 @@ def mv403EffOD():
         SetZVal(-500)
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 2)
     sprite('null', 32767)
     label(0)
     sprite('vr_mvef403_00od', 1)
@@ -3877,9 +4028,9 @@ def mv403EffOD():
     CreateObject('mv403EffParticleOD', 0)
     CreateObject('mv403SubEff', 100)
     CreateObject('mv403mazleEff', 100)
-    ApplyFunctionsToObjects(1)
-    AddScale(300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(300)
     CreateObject('mv403mazleEff2', 100)
     CreateObject('mv403mazleEff3', 100)
     PrivateSE('cese_12')
@@ -3890,45 +4041,45 @@ def mv403EffOD():
     CreateObject('mv403ThunderEff2', -1)
     CreateObject('mv403Smoke', 100)
     CreateObject('mvBeamNokosi', 1)
-    ApplyFunctionsToObjects(1)
-    AddY(50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(50000)
     CreateObject('mvBeamNokosi2', 1)
-    ApplyFunctionsToObjects(1)
-    AddY(-50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-50000)
     CreateObject('mvBeamNokosi', 2)
-    ApplyFunctionsToObjects(1)
-    AddY(50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(50000)
     CreateObject('mvBeamNokosi2', 2)
-    ApplyFunctionsToObjects(1)
-    AddY(-50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-50000)
     CreateObject('mvBeamNokosi', 3)
-    ApplyFunctionsToObjects(1)
-    AddY(50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(50000)
     CreateObject('mvBeamNokosi2', 3)
-    ApplyFunctionsToObjects(1)
-    AddY(-50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-50000)
     CreateObject('mvBeamNokosi', 4)
-    ApplyFunctionsToObjects(1)
-    AddY(50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(50000)
     CreateObject('mvBeamNokosi2', 4)
-    ApplyFunctionsToObjects(1)
-    AddY(-50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-50000)
     CreateObject('mvBeamNokosi', 5)
-    ApplyFunctionsToObjects(1)
-    AddY(50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(50000)
     CreateObject('mvBeamNokosi2', 5)
-    ApplyFunctionsToObjects(1)
-    AddY(-50000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-50000)
     PrivateSE('cese_12')
     sprite('vr_mvef403_01od', 2)
     ScreenShake(1000, 1000)
@@ -3940,7 +4091,7 @@ def mv403EffOD():
     label(2)
     sprite('vr_mvef403_00od', 2)
     ConstantAlphaModifier(-51)
-    PassbackAddActionMarkToFunction('mv403EffAddPartsOD', 32)
+    TriggerUponForState('mv403EffAddPartsOD', 32)
     DespawnEAEffect('mv403EffParticleOD')
     DespawnEAEffect('mv403SubEff')
     DespawnEAEffect('mv403mazleEff')
@@ -3964,6 +4115,7 @@ def mv403EffOD():
     DespawnEAEffect('mv403ThunderEff2')
     PrivateSE('cese_12')
 
+
 @State
 def mv403EffParticleOD():
 
@@ -3973,6 +4125,7 @@ def mv403EffParticleOD():
         IgnoreScreenfreeze(1)
     sprite('null', 32767)
     LinkParticle('ceef_ddlaserod_00')
+
 
 @State
 def mv403EffAddPartsOD():
@@ -3986,13 +4139,14 @@ def mv403EffAddPartsOD():
         SetScaleX(2000)
         SetScaleY(2500)
         AddAlpha(128)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     Eff3DEffect('ceef_403odbeam00', '')
     label(0)
     sprite('null', 10)
     SetScaleSpeedY(-80)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mv403TameEffOD():
@@ -4002,9 +4156,9 @@ def mv403TameEffOD():
         PaletteIndex(1)
         IgnoreScreenfreeze(1)
         LinkParticle('ceef_tamebeam_00')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             PrivateFunction3(2, 450000, 250000, 100, 0)
     label(0)
     sprite('null', 3)
@@ -4020,6 +4174,7 @@ def mv403TameEffOD():
     CreateParticle('ceef_tamebeam_end', -1)
     CreateParticle('ceef_beamstart00', -1)
 
+
 @State
 def mv403TameEff():
 
@@ -4028,9 +4183,9 @@ def mv403TameEff():
         PaletteIndex(1)
         IgnoreScreenfreeze(1)
         LinkParticle('ceef_tamebeam_00')
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             PrivateFunction3(2, 450000, 250000, 100, 0)
     label(0)
     sprite('null', 3)
@@ -4046,6 +4201,7 @@ def mv403TameEff():
     CreateParticle('ceef_tamebeam_end', -1)
     CreateParticle('ceef_beamstart00', -1)
 
+
 @State
 def mv403TameEffSub():
 
@@ -4055,7 +4211,7 @@ def mv403TameEffSub():
         IgnoreScreenfreeze(1)
         SetZVal(-500)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             PrivateFunction3(2, 0, -30000, 100, 0)
     sprite('null', 8)
     sprite('vr_mvef403s_00', 4)
@@ -4072,6 +4228,7 @@ def mv403TameEffSub():
     sprite('vr_mvef403s_06', 2)
     sprite('null', 3)
     gotoLabel(0)
+
 
 @State
 def mv403ThunderEff():
@@ -4102,6 +4259,7 @@ def mv403ThunderEff():
     sprite('vr_mvef403a_02', 2)
     sprite('vr_mvef403a_03', 2)
 
+
 @State
 def mv403ThunderEff2():
 
@@ -4131,6 +4289,7 @@ def mv403ThunderEff2():
     sprite('vr_mvef403a_02', 2)
     sprite('vr_mvef403a_03', 2)
 
+
 @State
 def mv403Smoke():
 
@@ -4147,6 +4306,7 @@ def mv403Smoke():
     sprite('null', 12)
     ConstantAlphaModifier(-8)
 
+
 @State
 def SuperHealEff():
 
@@ -4158,12 +4318,12 @@ def SuperHealEff():
         AddY(500000)
         AddX(40000)
         BlendMode_Normal()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 10)
     CreateObject('ceCmnHealAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(500)
     CreateParticle('ceef_healsphere_start', 100)
     CreateObject('SuperHealEff2', -1)
     CreateObject('SuperHealEff3', -1)
@@ -4173,10 +4333,10 @@ def SuperHealEff():
     label(0)
     sprite('null', 1)
     CreateObject('ceCmnHealAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(500)
-    AddX(70000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(500)
+        AddX(70000)
     SetScaleSpeed(0)
     Size(1450)
     sprite('null', 3)
@@ -4209,12 +4369,13 @@ def SuperHealEff():
     gotoLabel(0)
     label(1)
     sprite('null', 5)
-    PassbackAddActionMarkToFunction('SuperHealEff2', 32)
-    PassbackAddActionMarkToFunction('SuperHealEff3', 32)
+    TriggerUponForState('SuperHealEff2', 32)
+    TriggerUponForState('SuperHealEff3', 32)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(30)
     sprite('null', 5)
     loopRest()
+
 
 @State
 def SuperHealEff3():
@@ -4224,13 +4385,14 @@ def SuperHealEff3():
         E0EAEffectPosition(2)
         LinkParticle('ceef_healaura00')
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Size(800)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     CreateParticle('ceef_healauraend2', -1)
     ConstantAlphaModifier(-26)
+
 
 @State
 def SuperHealEffWing():
@@ -4266,6 +4428,7 @@ def SuperHealEffWing():
     CreateParticle('ceef_odhealkira02', 0)
     sprite('vr_ce432b_08', 4)
 
+
 @State
 def SuperHealEffWingL():
 
@@ -4299,6 +4462,7 @@ def SuperHealEffWingL():
     CreateParticle('ceef_odhealkira02', 0)
     sprite('vr_ce432b_08', 4)
 
+
 @State
 def SuperHealEff2():
 
@@ -4309,7 +4473,7 @@ def SuperHealEff2():
         IgnoreScreenfreeze(1)
         Size(1300)
         AddX(90000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 20)
     AlphaValue(0)
     ConstantAlphaModifier(17)
@@ -4319,6 +4483,7 @@ def SuperHealEff2():
     sprite('null', 20)
     ConstantAlphaModifier(-17)
     loopRest()
+
 
 @State
 def SuperHealEffOD():
@@ -4331,7 +4496,7 @@ def SuperHealEffOD():
         AddY(500000)
         AddX(40000)
         BlendMode_Normal()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 10)
     CreateObject('SuperHealEffWing', -1)
     CreateParticle('ceef_healsphere_start', 100)
@@ -4343,10 +4508,10 @@ def SuperHealEffOD():
     label(0)
     sprite('null', 1)
     CreateObject('ceCmnHealAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(500)
-    AddX(70000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(500)
+        AddX(70000)
     SetScaleSpeed(0)
     Size(1450)
     sprite('null', 3)
@@ -4379,12 +4544,13 @@ def SuperHealEffOD():
     gotoLabel(0)
     label(1)
     sprite('null', 5)
-    PassbackAddActionMarkToFunction('SuperHealEff2', 32)
-    PassbackAddActionMarkToFunction('SuperHealEff3OD', 32)
+    TriggerUponForState('SuperHealEff2', 32)
+    TriggerUponForState('SuperHealEff3OD', 32)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(30)
     sprite('null', 5)
     loopRest()
+
 
 @State
 def SuperHealEff3OD():
@@ -4395,12 +4561,13 @@ def SuperHealEff3OD():
         LinkParticle('ceef_healaura00od')
         IgnoreScreenfreeze(1)
         Size(1250)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     CreateParticle('ceef_healauraend2', -1)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ceef_healjunbieff():
@@ -4410,12 +4577,13 @@ def ceef_healjunbieff():
         E0EAEffectPosition(2)
         LinkParticle('ceef_healjunbieff')
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 20)
     CreateParticle('ceef_healtameendeff', -1)
     ConstantAlphaModifier(-17)
+
 
 @State
 def ceef_HealKurukuru():
@@ -4455,6 +4623,7 @@ def ceef_HealKurukuru():
     CreateParticle('ceef_kurukurutubu', 2)
     sprite('vr_ce432_07', 6)
 
+
 @State
 def ceef_HealJunbiAnim_R():
 
@@ -4484,6 +4653,7 @@ def ceef_HealJunbiAnim_R():
     sprite('vr_ce432a_07', 3)
     sprite('vr_ce432a_08', 3)
 
+
 @State
 def ceef_HealJunbiAnim_L():
 
@@ -4511,6 +4681,7 @@ def ceef_HealJunbiAnim_L():
     sprite('vr_ce432a_07', 3)
     sprite('vr_ce432a_08', 3)
 
+
 @State
 def ShungokuEff():
 
@@ -4535,6 +4706,7 @@ def ShungokuEff():
     sprite('null', 5)
     PrivateSE('cese_13')
 
+
 @State
 def ShungokuEff2():
 
@@ -4545,6 +4717,7 @@ def ShungokuEff2():
         Size(990)
     sprite('null', 35)
     PrivateSE('cese_13')
+
 
 @State
 def ShungokuEff4():
@@ -4564,6 +4737,7 @@ def ShungokuEff4():
     ScreenShake(40000, 40000)
     PrivateSE('cese_13')
 
+
 @State
 def ShungokuShake():
 
@@ -4573,6 +4747,7 @@ def ShungokuShake():
     sprite('null', 10)
     ScreenShake(10000, 10000)
     gotoLabel(0)
+
 
 @State
 def ShungokuEff3():
@@ -4593,6 +4768,7 @@ def ShungokuEff3():
     sprite('null', 4)
     Size(1350)
     PrivateSE('cese_13')
+
 
 @State
 def HensinThunder():
@@ -4615,6 +4791,7 @@ def HensinThunder():
     AlphaValue(0)
     gotoLabel(0)
 
+
 @State
 def HensinThunderSub():
 
@@ -4625,6 +4802,7 @@ def HensinThunderSub():
         Size(1500)
         IgnoreScreenfreeze(1)
     sprite('null', 32767)
+
 
 @State
 def ShungokuODSlashEff():
@@ -4646,6 +4824,7 @@ def ShungokuODSlashEff():
     PrivateSE('cese_13')
     sprite('null', 6)
     ScreenShake(20000, 20000)
+
 
 @State
 def ShungokuODSlashEff2():
@@ -4670,6 +4849,7 @@ def ShungokuODSlashEff2():
     sprite('null', 6)
     ScreenShake(20000, 20000)
 
+
 @State
 def ShungokuODSlashEff3():
 
@@ -4692,6 +4872,7 @@ def ShungokuODSlashEff3():
     sprite('null', 6)
     ScreenShake(20000, 20000)
 
+
 @State
 def ShungokuODFinishEff():
 
@@ -4705,6 +4886,7 @@ def ShungokuODFinishEff():
     CreateParticle('ceef_shungokuodeff_end', -1)
     ScreenShake(20000, 20000)
 
+
 @State
 def mv430ConsentEff():
 
@@ -4713,13 +4895,14 @@ def mv430ConsentEff():
         RemoveOnCallStateEnd(2)
         LinkParticle('ceef_205_plugeff_bigc')
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 10)
     CreateParticle('ceef_plugeff_cmnthunder', -1)
     ConstantAlphaModifier(-26)
     SetScaleSpeed(30)
+
 
 @State
 def ce440Eff():
@@ -4733,6 +4916,7 @@ def ce440Eff():
     sprite('null', 25)
     IgnoreFinishStop(0)
     ScreenShake(20000, 20000)
+
 
 @State
 def ce440Eff2():
@@ -4750,6 +4934,7 @@ def ce440Eff2():
     ScreenShake(20000, 20000)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def ce440Eff3():
@@ -4769,6 +4954,7 @@ def ce440Eff3():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ce440EffMato():
 
@@ -4782,10 +4968,11 @@ def ce440EffMato():
     sprite('null', 3)
     CreateObject('ce440EffCircle', -1)
     CreateObject('ce440EffCircle2', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(-200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(-200)
     gotoLabel(0)
+
 
 @State
 def ce440EffCircle():
@@ -4800,6 +4987,7 @@ def ce440EffCircle():
     SetScaleSpeed(120)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ce440EffCircle2():
 
@@ -4810,6 +4998,7 @@ def ce440EffCircle2():
     physicsXImpulse(-35000)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def mv440Eff():
@@ -4825,7 +5014,7 @@ def mv440Eff():
         RotationAngle(-90000)
         AddY(200000)
         AddX(525000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 1)
     CreateObject('mv440EffSub', -1)
@@ -4843,6 +5032,7 @@ def mv440Eff():
     sprite('null', 5)
     ConstantAlphaModifier(-51)
 
+
 @State
 def mv440EffSub():
 
@@ -4853,6 +5043,7 @@ def mv440EffSub():
     SetScaleSpeed(120)
     physicsXImpulse(-30000)
     LinkParticle('ceef_233shock00')
+
 
 @State
 def ceef_hiteff440():
@@ -4879,6 +5070,7 @@ def ceef_hiteff440():
     sprite('vr_mvcmneff_07', 2)
     sprite('vr_mvcmneff_08', 2)
 
+
 @State
 def ceef_hiteff440sub():
 
@@ -4901,6 +5093,7 @@ def ceef_hiteff440sub():
     sprite('vr_mvcmneff_05', 2)
     sprite('vr_mvcmneff_07', 2)
     sprite('vr_mvcmneff_08', 2)
+
 
 @State
 def ceef_hiteff440End():
@@ -4925,6 +5118,7 @@ def ceef_hiteff440End():
     sprite('vr_mvcmneff3_07', 3)
     sprite('vr_mvcmneff3_08', 3)
 
+
 @State
 def ceef_hiteff440HitEx():
 
@@ -4943,6 +5137,7 @@ def ceef_hiteff440HitEx():
     SetScaleSpeed(200)
     ConstantAlphaModifier(-51)
 
+
 @State
 def BurstDD_Camera():
 
@@ -4953,6 +5148,7 @@ def BurstDD_Camera():
         AddX(200000)
     sprite('null', 32767)
 
+
 @State
 def ceef450_Kousoku():
 
@@ -4960,10 +5156,10 @@ def ceef450_Kousoku():
         LinkParticle('ceef_healbaind_00')
         AddX(200000)
         WallCollisionDetection(1)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 TeleportToObject(22)
             else:
@@ -4978,6 +5174,7 @@ def ceef450_Kousoku():
     ConstantAlphaModifier(-26)
     CreateParticle('ceef_healbaind_end', -1)
 
+
 @State
 def ceef450_BG():
 
@@ -4986,7 +5183,7 @@ def ceef450_BG():
         Eff3DEffect('ceef_450_BG00', '')
         BlendMode_Normal()
         AddY(37500)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         RenderLayer(2)
         LinkParticle('ceef_healBG')
     sprite('null', 32767)
@@ -4994,7 +5191,8 @@ def ceef450_BG():
     CreateObject('ceef450_BGa', -1)
     label(0)
     sprite('null', 30)
-    PassbackAddActionMarkToFunction('ceef450_BGa', 32)
+    TriggerUponForState('ceef450_BGa', 32)
+
 
 @State
 def ceef450_BGa():
@@ -5003,12 +5201,13 @@ def ceef450_BGa():
         RemoveOnCallStateEnd(2)
         Eff3DEffect('ceef_450_BG00_a', '')
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     LinkParticle('ceef_450_healaura_kira')
     label(0)
     sprite('null', 10)
     CreateObject('ceef450_Ryuhai', -1)
+
 
 @State
 def ceef450_Ryuhai():
@@ -5020,6 +5219,7 @@ def ceef450_Ryuhai():
         RenderLayer(1)
     sprite('null', 39)
 
+
 @State
 def AHCamera():
 
@@ -5027,8 +5227,8 @@ def AHCamera():
         CameraControlEnable(1)
         CameraNoScreenCollision(1)
         CameraNoCeiling(1)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 180)
     physicsYImpulse(150000)
     sprite('null', 2)
@@ -5046,6 +5246,7 @@ def AHCamera():
     label(1)
     sprite('null', 32767)
     TeleportToObject(3)
+
 
 @State
 def AHKiraEff():
@@ -5073,6 +5274,7 @@ def AHKiraEff():
     AlphaValue(0)
     CreateObject('AHKiraEff2', -1)
 
+
 @State
 def AHKiraEff2():
 
@@ -5087,6 +5289,7 @@ def AHKiraEff2():
     sprite('null', 1)
     physicsYImpulse(0)
     CreateObject('AHce450', -1)
+
 
 @State
 def AHce450():
@@ -5108,6 +5311,7 @@ def AHce450():
     sprite('ce450cutin_00', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def ceef450Shake():
 
@@ -5118,13 +5322,14 @@ def ceef450Shake():
     ScreenShake(6000, 6000)
     gotoLabel(0)
 
+
 @State
 def ceef450_BG3():
 
     def upon_IMMEDIATE():
         Eff3DEffect('ceef_450_BG01', '')
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 75)
     AddX(400000)
     CreateObject('ceef450_BG3Eff', -1)
@@ -5134,10 +5339,11 @@ def ceef450_BG3():
     label(0)
     sprite('null', 20)
     TeleportToObject(3)
-    PassbackAddActionMarkToFunction('mv450WhiteOut', 32)
+    TriggerUponForState('mv450WhiteOut', 32)
     LinkParticle('ceef_450_hanatiri')
     sprite('null', 32767)
     CreateObject('ceef_WinBG', -1)
+
 
 @State
 def ceef450_BG3Eff():
@@ -5148,6 +5354,7 @@ def ceef450_BG3Eff():
     sprite('null', 32767)
     LinkParticle('ceef_healBG')
 
+
 @State
 def ceef_WinBG():
 
@@ -5157,6 +5364,7 @@ def ceef_WinBG():
         Eff3DEffect('ceef_450sky00', '')
     sprite('null', 32767)
     LinkParticle('ceef_450winbg')
+
 
 @State
 def mv450Smoke():
@@ -5172,6 +5380,7 @@ def mv450Smoke():
     sprite('null', 12)
     ConstantAlphaModifier(-17)
 
+
 @State
 def mv450SmokeMato():
 
@@ -5184,17 +5393,18 @@ def mv450SmokeMato():
     PrivateSE('cese_14')
     sprite('null', 4)
     CreateObject('mv450Smoke1', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(600000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(600000)
     sprite('null', 4)
     CreateObject('mv450Smoke1', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(1200000)
-    AddScaleY(-300)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(1200000)
+        AddScaleY(-300)
     sprite('null', 6)
     CreateObject('mv450Smoke2', -1)
+
 
 @State
 def mv450Smoke1():
@@ -5210,6 +5420,7 @@ def mv450Smoke1():
     sprite('null', 10)
     sprite('null', 12)
     ConstantAlphaModifier(-17)
+
 
 @State
 def mv450Smoke2():
@@ -5227,6 +5438,7 @@ def mv450Smoke2():
     sprite('null', 60)
     ConstantAlphaModifier(-5)
 
+
 @State
 def mv450HanaTiri():
 
@@ -5237,13 +5449,14 @@ def mv450HanaTiri():
     sprite('null', 60)
     ConstantAlphaModifier(-5)
 
+
 @State
 def mv450WhiteOut():
 
     def upon_IMMEDIATE():
         AddY(300000)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         Size(2000)
     sprite('null', 60)
     sprite('null', 32767)
@@ -5253,6 +5466,7 @@ def mv450WhiteOut():
     AddY(300000)
     sprite('null', 60)
     ConstantAlphaModifier(-5)
+
 
 @State
 def ce450JetEff():
@@ -5266,7 +5480,7 @@ def ce450JetEff():
         LinkParticle('ceef_400_shock')
         Eff3DEffect('ceef_400eff00.DIG', '')
         Size(550)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('null', 5)
     gotoLabel(0)
@@ -5274,6 +5488,7 @@ def ce450JetEff():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
     loopRest()
+
 
 @State
 def mv450BomEff():
@@ -5302,13 +5517,14 @@ def mv450BomEff():
     sprite('null', 9)
     AddScale(100)
 
+
 @State
 def RecoveryCapa():
 
     def upon_IMMEDIATE():
         CancelIfPlayerHit(3)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             EffectPosition(3, 103)
         SLOT_10 = 1
 
@@ -5322,6 +5538,7 @@ def RecoveryCapa():
     sprite('null', 10)
     CreateObject('RecoveryCapa_aura', 100)
 
+
 @State
 def RecoveryCapa_buff():
 
@@ -5329,6 +5546,7 @@ def RecoveryCapa_buff():
         E0EAEffectPosition(3)
         LinkParticle('ceef_RecoveryCapa_buff')
     sprite('null', 60)
+
 
 @State
 def RecoveryCapa_aura():
@@ -5339,6 +5557,7 @@ def RecoveryCapa_aura():
     sprite('null', 15)
     sprite('null', 15)
     E0EAEffectPosition(0)
+
 
 @State
 def ce615Eff():
@@ -5351,6 +5570,7 @@ def ce615Eff():
     sprite('null', 58)
     CreateObject('ceCmnHealAura', -1)
     gotoLabel(0)
+
 
 @State
 def ceCmnHealAura():
@@ -5366,6 +5586,7 @@ def ceCmnHealAura():
     SetScaleSpeed(10)
     physicsYImpulse(500)
 
+
 @State
 def ce615Eff2():
 
@@ -5374,6 +5595,7 @@ def ce615Eff2():
         LinkParticle('ceef_enemyhealaura')
         TeleportToObject(22)
     sprite('null', 32767)
+
 
 @State
 def Act2Event_Yure():
@@ -5384,6 +5606,7 @@ def Act2Event_Yure():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_CreateNO():
 
@@ -5391,7 +5614,7 @@ def Act3Event_CreateNO():
         LoadSpritePalette(0)
         XPositionRelativeFacing(-400000)
         SetZVal(-100)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('no064_04', 32767)
     loopRest()
     label(1)
@@ -5407,6 +5630,7 @@ def Act3Event_CreateNO():
     sprite('no032_08', 4)
     DashEffects(100, 1, 1)
     sprite('no032_09', 4)
+
 
 @State
 def Act3Event_HealEff():

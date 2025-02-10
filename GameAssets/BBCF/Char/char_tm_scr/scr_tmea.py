@@ -21,6 +21,7 @@ def EMB_TM():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_TM_OD():
 
@@ -44,6 +45,7 @@ def EMB_TM_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_TM_AH():
 
@@ -66,6 +68,7 @@ def EMB_TM_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def AntiAirWindSmokeOpt():
 
@@ -73,9 +76,9 @@ def AntiAirWindSmokeOpt():
         Eff3DEffect('hzef_windsmoke.DIG', 'hzef_windsmoke_motion_000.mmot')
         IgnoreScreenfreeze(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 99)
-        sendToLabelUpon(56, 99)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 99)
+        uponSendToLabel(56, 99)
         RotationAngle(-180000)
         Size(1250)
         AddScaleY(-500)
@@ -94,6 +97,7 @@ def AntiAirWindSmokeOpt():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
 
+
 @State
 def tmef_Aura():
 
@@ -101,6 +105,7 @@ def tmef_Aura():
         IgnorePauses(3)
     sprite('null', 1)
     CreateParticle('tmef_envaura', -1)
+
 
 @State
 def tmef_AuraDelete():
@@ -114,6 +119,7 @@ def tmef_AuraDelete():
         ContinueState(1)
     sprite('null', 1)
 
+
 @State
 def EffKamae():
 
@@ -121,8 +127,8 @@ def EffKamae():
         RemoveOnCallStateEnd(3)
         E0EAEffectPosition(3)
         LinkParticle('tmef_kamaeaura')
-        sendToLabelUpon(56, 99)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(56, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 32767)
     loopRest()
     label(99)
@@ -132,6 +138,7 @@ def EffKamae():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
 
+
 @State
 def EffKamaeLand():
 
@@ -140,8 +147,8 @@ def EffKamaeLand():
         E0EAEffectPosition(3)
         ParticleLayer(5)
         CallPrivateEffect('tmef_landaura')
-        sendToLabelUpon(56, 99)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(56, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 10)
     SetScaleSpeed(50)
     sprite('null', 32767)
@@ -153,6 +160,7 @@ def EffKamaeLand():
     AlphaValue(100)
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
+
 
 @State
 def EffLandAura():
@@ -166,6 +174,7 @@ def EffLandAura():
     ConstantAlphaModifier(-10)
     Size(1500)
     SetScaleSpeed(200)
+
 
 @State
 def EffAirAura():
@@ -182,12 +191,14 @@ def EffAirAura():
     Size(1500)
     SetScaleSpeed(200)
 
+
 @State
 def EffCommandThrowAura():
 
     def upon_IMMEDIATE():
         LinkParticle('tmef_spaura')
     sprite('null', 60)
+
 
 @State
 def EffCommandThrowWind():
@@ -199,6 +210,7 @@ def EffCommandThrowWind():
         RandAddScale(-200, 250)
         AlphaValue(150)
     sprite('null', 30)
+
 
 @State
 def ExBodyAura():
@@ -212,8 +224,8 @@ def ExBodyAura():
         ColorForTransition(3355473940)
         AddX(20000)
         AddY(200000)
-        sendToLabelUpon(32, 99)
-        sendToLabelUpon(44, 99)
+        uponSendToLabel(32, 99)
+        uponSendToLabel(PLAYER_DAMAGED, 99)
         ContinueState(160)
     sprite('vref_env', 10)
     SetScaleSpeed(600)
@@ -222,11 +234,12 @@ def ExBodyAura():
     label(99)
     sprite('vref_env', 14)
     clearUponHandler(32)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     RemoveOnCallStateEnd(0)
     E0EAEffectPosition(0)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def EffKnifeSignal():
@@ -241,48 +254,50 @@ def EffKnifeSignal():
     Size(900)
     RandAddRotation(-90000, 90000)
 
+
 @State
 def HZEF_GuardLoop():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(3)
         AddX(-16000)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 20)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(32000)
-    AddY(-97500)
-    physicsYImpulse(20000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(32000)
+        AddY(-97500)
+        physicsYImpulse(20000)
+        Unknown1082(4)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(16000)
-    AddY(110000)
-    physicsYImpulse(-40000)
-    SetScaleX(-1000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(16000)
+        AddY(110000)
+        physicsYImpulse(-40000)
+        SetScaleX(-1000)
+        Unknown1082(4)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-16000)
-    AddY(-100000)
-    physicsYImpulse(40000)
-    SetScaleX(-1000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-16000)
+        AddY(-100000)
+        physicsYImpulse(40000)
+        SetScaleX(-1000)
+        Unknown1082(4)
     CreateObject('HZEF_GuardLoopParts', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-40000)
-    AddY(95000)
-    physicsYImpulse(-15000)
-    Unknown1082(4)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-40000)
+        AddY(95000)
+        physicsYImpulse(-15000)
+        Unknown1082(4)
     loopRest()
     ExitState()
     label(99)
-    PassbackAddActionMarkToFunction('HZEF_GuardLoopParts', 32)
+    TriggerUponForState('HZEF_GuardLoopParts', 32)
+
 
 @State
 def HZEF_GuardLoopParts():
@@ -290,7 +305,7 @@ def HZEF_GuardLoopParts():
     def upon_IMMEDIATE():
         SetZVal(-100)
         BlendMode_Normal()
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(32, 99)
     sprite('vrtmef_guard00', 4)
     AlphaValue(100)
     sprite('vrtmef_guard00', 2)
@@ -305,40 +320,42 @@ def HZEF_GuardLoopParts():
     label(99)
     EndObject()
 
+
 @State
 def HZEF_HeavyGuardLoop():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(3)
         IgnorePauses(3)
-        PassbackAddActionMarkToFunction('HZEF_GuardLoop', 32)
+        TriggerUponForState('HZEF_GuardLoop', 32)
     sprite('null', 20)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(48000)
-    AddY(32000)
-    physicsYImpulse(10000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(48000)
+        AddY(32000)
+        physicsYImpulse(10000)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(16000)
-    AddY(-16000)
-    physicsYImpulse(-15000)
-    SetScaleX(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(16000)
+        AddY(-16000)
+        physicsYImpulse(-15000)
+        SetScaleX(-1000)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-16000)
-    AddY(16000)
-    physicsYImpulse(15000)
-    SetScaleX(-1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-16000)
+        AddY(16000)
+        physicsYImpulse(15000)
+        SetScaleX(-1000)
     CreateObject('HZEF_HeavyGuardLoopObj', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-48000)
-    AddY(-32000)
-    physicsYImpulse(-10000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-48000)
+        AddY(-32000)
+        physicsYImpulse(-10000)
+
 
 @State
 def HZEF_HeavyGuardLoopObj():
@@ -353,6 +370,7 @@ def HZEF_HeavyGuardLoopObj():
     sprite('vrtmef_guard00', 10)
     AlphaValue(150)
     ConstantAlphaModifier(-15)
+
 
 @State
 def Eff6AZanzo():
@@ -375,6 +393,7 @@ def Eff6AZanzo():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def Eff5CZanzo():
 
@@ -395,6 +414,7 @@ def Eff5CZanzo():
     E0EAEffectPosition(0)
     sprite('vrtmef202_01', 6)
     AddAlpha(-100)
+
 
 @State
 def Eff8CZanzo():
@@ -418,6 +438,7 @@ def Eff8CZanzo():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def Eff8CZanzo_2():
 
@@ -439,6 +460,7 @@ def Eff8CZanzo_2():
     sprite('vrtmef252_03', 6)
     AddAlpha(-100)
     E0EAEffectPosition(0)
+
 
 @State
 def Eff8CZanzo_3():
@@ -462,6 +484,7 @@ def Eff8CZanzo_3():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def Eff8CZanzo_4():
 
@@ -483,6 +506,7 @@ def Eff8CZanzo_4():
     sprite('vrtmef252_07', 6)
     AddAlpha(-100)
     E0EAEffectPosition(0)
+
 
 @State
 def Eff2CZanzo():
@@ -506,6 +530,7 @@ def Eff2CZanzo():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def Eff6CZanzo():
 
@@ -527,6 +552,7 @@ def Eff6CZanzo():
     AddAlpha(-100)
     E0EAEffectPosition(0)
 
+
 @State
 def Eff6CZanzo2():
 
@@ -547,6 +573,7 @@ def Eff6CZanzo2():
     sprite('vrtmef213_12', 6)
     AddAlpha(-100)
     E0EAEffectPosition(0)
+
 
 @State
 def tmef203():
@@ -670,6 +697,7 @@ def tmef203():
     CreateObject('tmef_AuraDelete', 5)
     sprite('vrtmef203_06', 4)
     ConstantAlphaModifier(-30)
+
 
 @State
 def tmef203_OD():
@@ -795,6 +823,7 @@ def tmef203_OD():
     CreateObject('tmef_AuraDelete', 5)
     sprite('vrtmef203_06', 4)
 
+
 @State
 def tmef_233_snoke():
 
@@ -806,6 +835,7 @@ def tmef_233_snoke():
         Size(550)
     sprite('null', 30)
     LinkParticle('tmef_400_hand')
+
 
 @State
 def tmef_233_arm_a():
@@ -819,6 +849,7 @@ def tmef_233_arm_a():
         BlendMode_Normal()
     sprite('null', 60)
 
+
 @State
 def tmef_233_arm_b():
 
@@ -830,6 +861,7 @@ def tmef_233_arm_b():
         Eff3DEffect('tmef_233_arm_b', '')
         BlendMode_Normal()
     sprite('null', 60)
+
 
 @State
 def tmef_233_arm_c():
@@ -843,6 +875,7 @@ def tmef_233_arm_c():
         BlendMode_Normal()
     sprite('null', 60)
 
+
 @State
 def tmef_233_arm_d():
 
@@ -855,6 +888,7 @@ def tmef_233_arm_d():
         BlendMode_Normal()
     sprite('null', 60)
 
+
 @State
 def tmef_233_arm_e():
 
@@ -866,6 +900,7 @@ def tmef_233_arm_e():
         Eff3DEffect('tmef_233_arm_e', '')
         BlendMode_Normal()
     sprite('null', 60)
+
 
 @State
 def tmef_233_arm_f():
@@ -882,6 +917,7 @@ def tmef_233_arm_f():
         PerAngleSpeed(15000)
     sprite('null', 60)
 
+
 @State
 def tmef_233_arm_g():
 
@@ -896,6 +932,7 @@ def tmef_233_arm_g():
         Rotation(-35000)
         PerAngleSpeed(5000)
     sprite('null', 60)
+
 
 @State
 def tmef_233_magiccircle():
@@ -913,6 +950,7 @@ def tmef_233_magiccircle():
     SetScaleSpeed(100)
     ConstantAlphaModifier(-32)
 
+
 @State
 def tmef_233_exportal_tm():
 
@@ -926,6 +964,7 @@ def tmef_233_exportal_tm():
     sprite('null', 35)
     LinkParticle('tmef_233_exportal2')
     CreateParticle('tmef_233_splash', -1)
+
 
 @State
 def tmef_233_chain():
@@ -946,6 +985,7 @@ def tmef_233_chain():
     sprite('null', 30)
     CreateObject('tmef_233_snake', -1)
 
+
 @State
 def tmef_233_snake():
 
@@ -958,6 +998,7 @@ def tmef_233_snake():
     sprite('null', 22)
     Size(2475)
     CreateObject('tmef_233_snake_end', -1)
+
 
 @State
 def tmef_233_snake_end():
@@ -1169,6 +1210,7 @@ def tmef_233_snake_end():
     CreateObject('tmef_AuraDelete', 7)
     CreateObject('tmef_AuraDelete', 8)
 
+
 @State
 def tmef_233_exportal():
 
@@ -1183,6 +1225,7 @@ def tmef_233_exportal():
     sprite('null', 60)
     physicsXImpulse(0)
 
+
 @State
 def tmef_233_exportal_b():
 
@@ -1196,6 +1239,7 @@ def tmef_233_exportal_b():
     LinkParticle('tmef_233_exportal')
     sprite('null', 60)
     physicsXImpulse(0)
+
 
 @State
 def tmef_233_chain_DD():
@@ -1216,6 +1260,7 @@ def tmef_233_chain_DD():
     sprite('null', 30)
     CreateObject('tmef_233_snake_DD', -1)
 
+
 @State
 def tmef_233_snake_DD():
 
@@ -1228,6 +1273,7 @@ def tmef_233_snake_DD():
     sprite('null', 22)
     Size(3375)
     CreateObject('tmef_233_snake_end_DD', -1)
+
 
 @State
 def tmef_233_snake_end_DD():
@@ -1439,6 +1485,7 @@ def tmef_233_snake_end_DD():
     CreateObject('tmef_AuraDelete', 7)
     CreateObject('tmef_AuraDelete', 8)
 
+
 @State
 def tmef_233_exportal_DD():
 
@@ -1453,6 +1500,7 @@ def tmef_233_exportal_DD():
     sprite('null', 60)
     physicsXImpulse(0)
 
+
 @State
 def tmef_233_exportal_b_DD():
 
@@ -1466,6 +1514,7 @@ def tmef_233_exportal_b_DD():
     LinkParticle('tmef_233_exportal')
     sprite('null', 60)
     physicsXImpulse(0)
+
 
 @State
 def tm233_Atk():
@@ -1489,18 +1538,19 @@ def tm233_Atk():
         HeatGainMultiplier(400)
         OppHeatGainMultiplier(0)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             HeatChange(500)
             CreateObject('HeatDrainEff', 103)
-            ApplyFunctionsToObjects(1)
-            EffectPosition(3, 103)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_1():
+                EffectPosition(3, 103)
     sprite('null', 27)
     sprite('tm233_AtkCol00', 3)
     sprite('tm233_AtkCol01', 3)
     sprite('tm233_AtkCol02', 3)
     sprite('tm233_AtkCol03', 3)
     sprite('tm233_AtkCol04', 3)
+
 
 @State
 def tm233_AtkOD():
@@ -1526,22 +1576,22 @@ def tm233_AtkOD():
         OppHeatGainMultiplier(0)
         CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             HeatChange(500)
-            ApplyFunctionsToObjects(22)
-            HeatChange(-200)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_22():
+                HeatChange(-200)
             CopyFromRightToLeft(23, 2, 57, 22, 2, 122)
             PrivateFunction(1, 2, 56, 2, 57, 2, 58)
-            SLOT_122 = (SLOT_122 + SLOT_58)
+            SLOT_Meter = SLOT_Meter + SLOT_58
             CopyFromRightToLeft(23, 2, 56, 22, 2, 122)
             AddActionMark(-1)
-            if (not SLOT_2):
+            if not SLOT_2:
                 NoAttackDuringAction(1)
             CreateObject('HeatDrainEff', 103)
-            ApplyFunctionsToObjects(1)
-            EffectPosition(3, 103)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_1():
+                EffectPosition(3, 103)
         SetActionMark(3)
         Size(1200)
     sprite('null', 27)
@@ -1555,6 +1605,7 @@ def tm233_AtkOD():
     RefreshMultihit()
     sprite('tm233_AtkColSP04', 3)
     RefreshMultihit()
+
 
 @State
 def tmef214():
@@ -1616,6 +1667,7 @@ def tmef214():
     CreateObject('tmef_Aura', 2)
     CreateObject('tmef_AuraDelete', 2)
 
+
 @State
 def tmef214_2():
 
@@ -1673,6 +1725,7 @@ def tmef214_2():
     CreateObject('tmef_Aura', 2)
     CreateObject('tmef_AuraDelete', 2)
     ConstantAlphaModifier(-30)
+
 
 @State
 def tmef214sp():
@@ -1733,6 +1786,7 @@ def tmef214sp():
     CreateObject('tmef_Aura', 2)
     CreateObject('tmef_AuraDelete', 2)
 
+
 @State
 def tmef214_2sp():
 
@@ -1790,6 +1844,7 @@ def tmef214_2sp():
     CreateObject('tmef_Aura', 2)
     CreateObject('tmef_AuraDelete', 2)
 
+
 @State
 def tmef253():
 
@@ -1844,6 +1899,7 @@ def tmef253():
     CreateObject('tmef_AuraDelete', 2)
     ConstantAlphaModifier(-30)
 
+
 @State
 def tmef253SP():
 
@@ -1897,6 +1953,7 @@ def tmef253SP():
     CreateObject('tmef_AuraDelete', 0)
     CreateObject('tmef_AuraDelete', 1)
     CreateObject('tmef_AuraDelete', 2)
+
 
 @State
 def tmef254():
@@ -1991,6 +2048,7 @@ def tmef254():
     CreateObject('tmef_AuraDelete', 6)
     CreateObject('tmef_AuraDelete', 7)
 
+
 @State
 def tmef340():
 
@@ -2001,6 +2059,7 @@ def tmef340():
         BlendMode_Normal()
         PaletteIndex(0)
     sprite('vrtmef340_00z', 2)
+
 
 @State
 def Atk2DChain():
@@ -2027,7 +2086,7 @@ def Atk2DChain():
         Unknown3054(58, 40)
         RenderLayer(8)
         CallPrivateFunction('KusariRenderStage', 0, 7, 0, 6, 0, 0, 0, 0)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AttackOff()
     sprite('null', 1)
     EnableAfterimage(1)
@@ -2055,6 +2114,7 @@ def Atk2DChain():
     EndObject()
     loopRest()
 
+
 @State
 def tmef_400_hand():
 
@@ -2062,12 +2122,13 @@ def tmef_400_hand():
         RemoveOnCallStateEnd(3)
         E0EAEffectPosition(3)
         LinkParticle('tmef_400_hand')
-        sendToLabelUpon(56, 99)
-        sendToLabelUpon(32, 99)
+        uponSendToLabel(56, 99)
+        uponSendToLabel(32, 99)
     sprite('null', 10)
     sprite('null', 10)
     E0EAEffectPosition(0)
     loopRest()
+
 
 @State
 def AssaultChain():
@@ -2092,9 +2153,10 @@ def AssaultChain():
         def upon_48():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                CallPrivateFunction('KusariAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0)
+                CallPrivateFunction('KusariAngleByChain', 0, 0, 0, 0, 0, 0,
+                    0, 0)
                 RotationSomething(-180000)
             if SLOT_2:
                 Unknown4055(0)
@@ -2103,9 +2165,9 @@ def AssaultChain():
                 ParticleLayer(5)
                 CallCustomizableParticle('tmef_exheadmoveopt', -1)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 54)
-            if (not SLOT_52):
+            if not SLOT_52:
                 DeleteObject(23)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_chain_tip03aa', 1)
     RenderLayer(1)
     Unknown23143(40000, 55000, 70)
@@ -2126,7 +2188,7 @@ def AssaultChain():
     SetActionMark(0)
     SLOT_51 = 1
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('ExPortalSp', 32)
+    TriggerUponForState('ExPortalSp', 32)
     Unknown23143(-60000, -45000, 20)
     AddRotationPerFrame(-1000)
     BlendMode_Normal()
@@ -2160,6 +2222,7 @@ def AssaultChain():
     Unknown23143(0, 0, 0)
     Unknown23144(3, 0, 109, 0, 0, 0, 0, 0, 80, 0, 3)
 
+
 @State
 def tmef_400_Aura():
 
@@ -2174,6 +2237,7 @@ def tmef_400_Aura():
     sprite('null', 1)
     CreateParticle('tmef_400_tossinaura00', -1)
     gotoLabel(0)
+
 
 @State
 def tmef_400_Sneak():
@@ -2257,6 +2321,7 @@ def tmef_400_Sneak():
     sprite('vrtmef400_16', 4)
     ConstantAlphaModifier(-20)
 
+
 @State
 def tmef_Aura400():
 
@@ -2264,6 +2329,7 @@ def tmef_Aura400():
         pass
     sprite('null', 1)
     CreateParticle('tmef_envaura_400', -1)
+
 
 @State
 def tmef_AuraDelete400():
@@ -2277,6 +2343,7 @@ def tmef_AuraDelete400():
         ContinueState(1)
     sprite('null', 1)
 
+
 @State
 def tmef_401_hand():
 
@@ -2288,6 +2355,7 @@ def tmef_401_hand():
     sprite('null', 60)
     E0EAEffectPosition(0)
     loopRest()
+
 
 @State
 def tmef_401_enemy():
@@ -2301,45 +2369,46 @@ def tmef_401_enemy():
     Size(850)
     CreateObject('tmef_401_magiccircle', -1)
     CreateObject('tmef_401_bind', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(138000)
-    Rotation(175000)
-    SetScaleZ(1000)
-    SetScaleX(1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(138000)
+        Rotation(175000)
+        SetScaleZ(1000)
+        SetScaleX(1000)
     CreateObject('tmef_401_bind', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(40000)
-    Rotation(3000)
-    SetScaleZ(1200)
-    SetScaleX(1200)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(40000)
+        Rotation(3000)
+        SetScaleZ(1200)
+        SetScaleX(1200)
     CreateObject('tmef_401_bind', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-24000)
-    Rotation(-3000)
-    SetScaleZ(1075)
-    SetScaleX(1075)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-24000)
+        Rotation(-3000)
+        SetScaleZ(1075)
+        SetScaleX(1075)
     CreateObject('tmef_401_bind', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-88000)
-    Rotation(2000)
-    SetScaleZ(1150)
-    SetScaleX(1150)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-88000)
+        Rotation(2000)
+        SetScaleZ(1150)
+        SetScaleX(1150)
     CreateObject('tmef_401_bind', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-154000)
-    Rotation(175000)
-    SetScaleZ(950)
-    SetScaleX(950)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-154000)
+        Rotation(175000)
+        SetScaleZ(950)
+        SetScaleX(950)
     sprite('null', 15)
     sprite('null', 60)
     sprite('null', 1)
     DespawnEAEffect('tmef_401_bind')
     CreateParticle('tmef_401_finish', -1)
+
 
 @State
 def tmef_401_bind():
@@ -2362,6 +2431,7 @@ def tmef_401_bind():
     SetScaleXPerFrame(-4)
     SetScaleSpeedZ(-4)
 
+
 @State
 def tmef_401_magiccircle():
 
@@ -2377,6 +2447,7 @@ def tmef_401_magiccircle():
     SetScaleSpeed(100)
     ConstantAlphaModifier(-50)
 
+
 @State
 def CommandThrow_HitEff():
 
@@ -2389,6 +2460,7 @@ def CommandThrow_HitEff():
     CommonSE('101_hit_slash_1')
     CommonSE('021_bonecleak_0')
     PrivateSE('tmse_08')
+
 
 @State
 def CommandThrowChain():
@@ -2415,11 +2487,11 @@ def CommandThrowChain():
         WallCollisionDetection(1)
         FloorCollision(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('KusariAngleByChain', 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_2:
                 pass
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 1)
     RenderLayer(1)
     Unknown23143(-10000, -70000, 100)
@@ -2452,6 +2524,7 @@ def CommandThrowChain():
     sprite('vr_chain_tip04', 1)
     EndObject()
     loopRest()
+
 
 @State
 def tmef_403():
@@ -2538,6 +2611,7 @@ def tmef_403():
     CreateObject('tmef_AuraDelete', 2)
     CreateObject('tmef_AuraDelete', 3)
 
+
 @State
 def UltimateAssault_Atk():
 
@@ -2568,11 +2642,12 @@ def UltimateAssault_Atk():
             sendToLabel(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             AddCombo(3)
     sprite('null', 32767)
     label(0)
     sprite('tm430_AtkCol', 3)
+
 
 @State
 def eftm430_snake00():
@@ -2583,8 +2658,8 @@ def eftm430_snake00():
         PaletteIndex(1)
         Flip()
         Size(1100)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('vrhzef430_00', 6)
     AlphaValue(0)
     ConstantAlphaModifier(26)
@@ -2643,6 +2718,7 @@ def eftm430_snake00():
     sprite('null', 4)
     CreateObject('eftm430_snake01', -1)
 
+
 @State
 def eftm430_snakeOD():
 
@@ -2652,8 +2728,8 @@ def eftm430_snakeOD():
         PaletteIndex(1)
         Flip()
         Size(1000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('vrhzef430_03', 6)
     sprite('vrhzef430_03', 32767)
     AddX(80000)
@@ -2671,6 +2747,7 @@ def eftm430_snakeOD():
     sprite('null', 4)
     CreateObject('eftm430_snake01', -1)
 
+
 @State
 def eftm430_snake01():
 
@@ -2681,6 +2758,7 @@ def eftm430_snake01():
     sprite('null', 6)
     sprite('null', 5)
     ConstantAlphaModifier(-17)
+
 
 @State
 def UltimateAssault_OD_Atk():
@@ -2713,7 +2791,7 @@ def UltimateAssault_OD_Atk():
             sendToLabel(0)
 
             def upon_OPPONENT_HIT():
-                clearUponHandler(12)
+                clearUponHandler(OPPONENT_HIT)
                 AddCombo(3)
 
         def upon_33():
@@ -2727,7 +2805,7 @@ def UltimateAssault_OD_Atk():
             ResetVerticalDrag()
 
             def upon_OPPONENT_HIT():
-                clearUponHandler(12)
+                clearUponHandler(OPPONENT_HIT)
                 AddCombo(5)
     sprite('null', 32767)
     label(0)
@@ -2739,6 +2817,7 @@ def UltimateAssault_OD_Atk():
     label(1)
     sprite('tm430_AtkCol', 3)
     RefreshMultihit()
+
 
 @State
 def UltimateAirAssault_Atk():
@@ -2769,11 +2848,12 @@ def UltimateAirAssault_Atk():
         TeleportToObject(22)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             AddCombo(3)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('tm430_AtkCol', 3)
+
 
 @State
 def eftm430_snake02():
@@ -2787,8 +2867,8 @@ def eftm430_snake02():
         Size(1200)
         AddX(80000)
         AlphaValue(0)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
     label(0)
     sprite('vrhzef430_05', 5)
     ConstantAlphaModifier(26)
@@ -2824,6 +2904,7 @@ def eftm430_snake02():
     Size(1200)
     CreateObject('eftm430_snake02air', -1)
 
+
 @State
 def eftm430_snake01air():
 
@@ -2837,6 +2918,7 @@ def eftm430_snake01air():
         Size(1500)
         AddY(150000)
     sprite('null', 15)
+
 
 @State
 def eftm430_snake02air():
@@ -2852,6 +2934,7 @@ def eftm430_snake02air():
     sprite('null', 6)
     ConstantAlphaModifier(-51)
 
+
 @State
 def eftm430_snake01test():
 
@@ -2861,6 +2944,7 @@ def eftm430_snake01test():
         RemoveOnCallStateEnd(2)
         Eff3DEffect('tmef_430_test00', '')
     sprite('null', 32767)
+
 
 @State
 def UltimateAirAssault_OD_Atk():
@@ -2889,7 +2973,7 @@ def UltimateAirAssault_OD_Atk():
         SetScaleX(2000)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             AddCombo(3)
 
         def upon_32():
@@ -2908,7 +2992,7 @@ def UltimateAirAssault_OD_Atk():
             Hitstop(5)
 
             def upon_OPPONENT_HIT():
-                clearUponHandler(12)
+                clearUponHandler(OPPONENT_HIT)
                 AddCombo(5)
             if SLOT_137:
                 DamageMultiplier(80)
@@ -2923,6 +3007,7 @@ def UltimateAirAssault_OD_Atk():
     label(0)
     sprite('tm430_AtkCol', 3)
     RefreshMultihit()
+
 
 @State
 def eftm432():
@@ -2965,6 +3050,7 @@ def eftm432():
     sprite('vrtmef432_11', 4)
     CreateParticle('tmef_432backaura_01', 0)
 
+
 @State
 def eftm432_air():
 
@@ -3006,6 +3092,7 @@ def eftm432_air():
     sprite('vrtmef432_11', 4)
     CreateParticle('tmef_432backaura_01', 0)
 
+
 @State
 def tmef433():
 
@@ -3038,6 +3125,7 @@ def tmef433():
     ConstantAlphaModifier(-30)
     sprite('vrhzef432_06', 3)
 
+
 @State
 def tmef434_hand():
 
@@ -3050,6 +3138,7 @@ def tmef434_hand():
     sprite('null', 4)
     CreateParticle('tmef_434_hand_add', -1)
     gotoLabel(0)
+
 
 @State
 def tmef434_hand_2():
@@ -3064,6 +3153,7 @@ def tmef434_hand_2():
     CreateParticle('tmef_434_hand2', -1)
     CreateParticle('tmef_434_hand2_ryushi', -1)
     gotoLabel(0)
+
 
 @State
 def tmef434_hand_3():
@@ -3095,6 +3185,7 @@ def tmef434_hand_3():
     sprite('null', 4)
     CreateParticle('tmef_434_hand2', -1)
 
+
 @State
 def eftm434_slashRed():
 
@@ -3116,6 +3207,7 @@ def eftm434_slashRed():
     sprite('vrtmef434_03', 4)
     sprite('vrtmef434_04', 4)
 
+
 @State
 def eftm434_slashBlack():
 
@@ -3126,6 +3218,7 @@ def eftm434_slashBlack():
         AlphaValue(150)
         E0EAEffectPosition(2)
     sprite('null', 19)
+
 
 @State
 def eftm434_YotyouMoya():
@@ -3140,6 +3233,7 @@ def eftm434_YotyouMoya():
     sprite('null', 50)
     LinkParticle('tmef_434_chainmoya02')
 
+
 @State
 def eftm434_Chain00():
 
@@ -3148,8 +3242,8 @@ def eftm434_Chain00():
         E0EAEffectPosition(2)
         BlendMode_Normal()
         Eff3DEffect('tmef_434chain00', '')
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
     sprite('null', 32767)
     label(0)
     sprite('null', 32767)
@@ -3159,6 +3253,7 @@ def eftm434_Chain00():
     sprite('null', 9)
     AlphaValue(0)
     CreateObject('eftm434_Chain00a', -1)
+
 
 @State
 def eftm434_Chain00a():
@@ -3170,6 +3265,7 @@ def eftm434_Chain00a():
         Eff3DEffect('tmef_434chain00a', '')
         FaceSpawnLocation()
     sprite('null', 5)
+
 
 @State
 def eftm434_Chain01():
@@ -3184,6 +3280,7 @@ def eftm434_Chain01():
     sprite('null', 10)
     ConstantAlphaModifier(-20)
 
+
 @State
 def eftm_436_snake():
 
@@ -3193,8 +3290,8 @@ def eftm_436_snake():
         IgnoreScreenfreeze(1)
         AbsoluteY(0)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_2):
+        def upon_EVERY_FRAME():
+            if not SLOT_2:
                 ScreenPosition(1)
                 XPositionRelativeFacing(-640000)
             else:
@@ -3209,6 +3306,7 @@ def eftm_436_snake():
     CreateObject('eftm_436_snake_pt', -1)
     sprite('null', 1)
     CreateObject('eftm_436_snake_atk', -1)
+
 
 @State
 def eftm_436_snake_atk():
@@ -3237,6 +3335,7 @@ def eftm_436_snake_atk():
     sprite('vrtmef436_06', 6)
     sprite('null', 30)
 
+
 @State
 def eftm_436_snake_pt():
 
@@ -3246,6 +3345,7 @@ def eftm_436_snake_pt():
         AbsoluteY(1000000)
     sprite('null', 1)
     CreateParticle('tmef_436_assault2', -1)
+
 
 @State
 def eftm_436_snake_wind():
@@ -3266,6 +3366,7 @@ def eftm_436_snake_wind():
     SetScaleSpeedZ(100)
     ConstantAlphaModifier(-20)
 
+
 @State
 def eftm_436_assault():
 
@@ -3279,6 +3380,7 @@ def eftm_436_assault():
     CallCustomizableParticle('tmef_436_assault', -1)
     sprite('null', 1)
     CreateObject('eftm_436_assault_3d', -1)
+
 
 @State
 def eftm_436_assault2():
@@ -3294,6 +3396,7 @@ def eftm_436_assault2():
     CallCustomizableParticle('tmef_436_assault', -1)
     sprite('null', 1)
     CreateObject('eftm_436_assault_3d', -1)
+
 
 @State
 def eftm_436_assault_3d():
@@ -3317,6 +3420,7 @@ def eftm_436_assault_3d():
     SetScaleSpeedY(-45)
     ConstantAlphaModifier(-10)
 
+
 @State
 def eftm_436_assault_3d2():
 
@@ -3333,6 +3437,7 @@ def eftm_436_assault_3d2():
     SetScaleSpeedY(-45)
     sprite('null', 10)
     ConstantAlphaModifier(-20)
+
 
 @State
 def UltimateChainLand():
@@ -3355,10 +3460,11 @@ def UltimateChainLand():
         def upon_31():
             CallPrivateFunction('KusariDraw', 0, 0, 0, 0, 0, 0, 0, 0)
         CallPrivateFunction('KusariKansetsu', 0, 7, 0, 0, 0, 0, 0, 0)
-        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0)
+        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0
+            )
         SLOT_54 = 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 RotationSomething(0)
                 Unknown4055(0)
@@ -3367,12 +3473,12 @@ def UltimateChainLand():
                 ParticleLayer(5)
                 CallCustomizableParticle('tmef_exheadmoveopt', -1)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 54)
-            if (not SLOT_52):
+            if not SLOT_52:
                 DeleteObject(23)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
         AttackOff()
     sprite('vr_chain_tip03', 1)
     SetActionMark(1)
@@ -3448,6 +3554,7 @@ def UltimateChainLand():
     loopRest()
     ExitState()
 
+
 @State
 def UltimateChainLand2nd():
 
@@ -3463,7 +3570,8 @@ def UltimateChainLand2nd():
         Unknown3054(57, 80)
         Unknown3054(58, 40)
         CallPrivateFunction('KusariKansetsu', 0, 3, 0, 0, 0, 0, 0, 0)
-        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0)
+        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0
+            )
 
         def upon_48():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
@@ -3472,7 +3580,7 @@ def UltimateChainLand2nd():
             CallPrivateFunction('KusariDraw', 0, 0, 0, 0, 0, 0, 0, 0)
         SLOT_54 = 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 RotationSomething(0)
                 Unknown4055(0)
@@ -3481,11 +3589,11 @@ def UltimateChainLand2nd():
                 ParticleLayer(5)
                 CallCustomizableParticle('tmef_exheadmoveopt', -1)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 54)
-            if (not SLOT_52):
+            if not SLOT_52:
                 DeleteObject(23)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
         AttackOff()
     sprite('vr_chain_tip05', 1)
     SetActionMark(1)
@@ -3558,6 +3666,7 @@ def UltimateChainLand2nd():
     loopRest()
     ExitState()
 
+
 @State
 def UltimateChainAir():
 
@@ -3579,10 +3688,11 @@ def UltimateChainAir():
         def upon_31():
             CallPrivateFunction('KusariDraw', 0, 0, 0, 0, 0, 0, 0, 0)
         CallPrivateFunction('KusariKansetsu', 0, 7, 0, 0, 0, 0, 0, 0)
-        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0)
+        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0
+            )
         SLOT_54 = 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 Unknown4055(0)
                 ParticleSize(500)
@@ -3590,12 +3700,12 @@ def UltimateChainAir():
                 ParticleLayer(5)
                 CallCustomizableParticle('tmef_exheadmoveopt', -1)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 54)
-            if (not SLOT_52):
+            if not SLOT_52:
                 DeleteObject(23)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
         AttackOff()
     sprite('vr_chain_tip03aa', 1)
     SetActionMark(1)
@@ -3675,6 +3785,7 @@ def UltimateChainAir():
     loopRest()
     ExitState()
 
+
 @State
 def UltimateChainAir2nd():
 
@@ -3690,7 +3801,8 @@ def UltimateChainAir2nd():
         Unknown3054(57, 80)
         Unknown3054(58, 40)
         CallPrivateFunction('KusariKansetsu', 0, 3, 0, 0, 0, 0, 0, 0)
-        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0)
+        CallPrivateFunction('UltimateKusariAtkVectorX', 0, 80, 0, 0, 0, 0, 0, 0
+            )
 
         def upon_48():
             CallPrivateFunction('KusariIdling', 0, 0, 0, 0, 0, 0, 0, 0)
@@ -3699,7 +3811,7 @@ def UltimateChainAir2nd():
             CallPrivateFunction('KusariDraw', 0, 0, 0, 0, 0, 0, 0, 0)
         SLOT_54 = 1
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 RotationSomething(0)
                 Unknown4055(0)
@@ -3708,11 +3820,11 @@ def UltimateChainAir2nd():
                 ParticleLayer(5)
                 CallCustomizableParticle('tmef_exheadmoveopt', -1)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 54)
-            if (not SLOT_52):
+            if not SLOT_52:
                 DeleteObject(23)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
         AttackOff()
     sprite('vr_chain_tip05', 1)
     SetActionMark(1)
@@ -3786,6 +3898,7 @@ def UltimateChainAir2nd():
     loopRest()
     ExitState()
 
+
 @State
 def UltimateChain3rd():
 
@@ -3809,14 +3922,14 @@ def UltimateChain3rd():
         def upon_31():
             CallPrivateFunction('KusariDraw', 0, 0, 0, 0, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 Unknown4055(0)
                 ParticleSize(500)
                 CallCustomizableParticle('tmef_antiairchain', -1)
                 ParticleLayer(5)
                 CallCustomizableParticle('tmef_exheadmoveopt', -1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AttackOff()
     sprite('vr_chain_tip03aa', 1)
     SetActionMark(1)
@@ -3855,6 +3968,7 @@ def UltimateChain3rd():
     loopRest()
     ExitState()
 
+
 @State
 def UltimateShot_FinishAtk():
 
@@ -3880,6 +3994,7 @@ def UltimateShot_FinishAtk():
         TeleportToObject(22)
     sprite('tm436_AtkCol', 3)
 
+
 @State
 def UltimateShot_FinishAtk2():
 
@@ -3903,6 +4018,7 @@ def UltimateShot_FinishAtk2():
         HitAnywhere(1)
         TeleportToObject(22)
     sprite('tm436_AtkCol', 3)
+
 
 @State
 def UltimateShotAtk_OD():
@@ -3995,6 +4111,7 @@ def UltimateShotAtk_OD():
     sprite('tm436_38', 3)
     sprite('tm436_39', 3)
 
+
 @State
 def UltimateShot_FinishAtk_OD():
 
@@ -4022,6 +4139,7 @@ def UltimateShot_FinishAtk_OD():
         TeleportToObject(22)
     sprite('tm436_AtkCol', 3)
 
+
 @State
 def UltimateShot_FinishAtk2_OD():
 
@@ -4048,6 +4166,7 @@ def UltimateShot_FinishAtk2_OD():
         TeleportToObject(22)
     sprite('tm436_AtkCol', 3)
 
+
 @State
 def tmef_435_weapon():
 
@@ -4066,6 +4185,7 @@ def tmef_435_weapon():
     sprite('vrtmef435_weapon', 32767)
     physicsYImpulse(-3000)
 
+
 @State
 def tmef_435_weapon_pt():
 
@@ -4076,6 +4196,7 @@ def tmef_435_weapon_pt():
         AddY(144000)
     sprite('null', 32767)
     LinkParticle('tmef_435_weapon')
+
 
 @State
 def tmef_435_slash():
@@ -4100,6 +4221,7 @@ def tmef_435_slash():
     CreateParticle('tmef_432backaura_01', 0)
     sprite('vrtmef435_03', 3)
 
+
 @State
 def tmef_435_slash2():
 
@@ -4116,6 +4238,7 @@ def tmef_435_slash2():
     sprite('vrtmef435_11', 2)
     CreateParticle('tmef_432backaura_01', 1)
     sprite('vrtmef435_12', 4)
+
 
 @State
 def tmef_435_snake():
@@ -4137,6 +4260,7 @@ def tmef_435_snake():
     CreateParticle('tmef_432backaura_01', 2)
     gotoLabel(0)
 
+
 @State
 def tmef_435_snake_b():
 
@@ -4156,6 +4280,7 @@ def tmef_435_snake_b():
     CreateParticle('tmef_432backaura_01', 0)
     CreateParticle('tmef_432backaura_01', 1)
     gotoLabel(0)
+
 
 @State
 def tmef_435_snakemesh():
@@ -4177,6 +4302,7 @@ def tmef_435_snakemesh():
     sprite('vrtmef435_30z', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def tmef_435_wavelight():
 
@@ -4197,6 +4323,7 @@ def tmef_435_wavelight():
     sprite('null', 24)
     loopRest()
 
+
 @State
 def tmef_435_damege():
 
@@ -4206,6 +4333,7 @@ def tmef_435_damege():
         AddX(64000)
     sprite('null', 1)
     CreateParticle('tmef_435_damege', -1)
+
 
 @State
 def tmef_435_magiccircle():
@@ -4221,6 +4349,7 @@ def tmef_435_magiccircle():
     CreateObject('tmef_435_smallcircle', -1)
     CreateObject('tmef_435_smallcircle2', -1)
 
+
 @State
 def tmef_435_magiccircle_end():
 
@@ -4233,6 +4362,7 @@ def tmef_435_magiccircle_end():
     sprite('null', 32767)
     CreateParticle('tmef_435_magiccircle_end', -1)
 
+
 @State
 def tmef_435_smallcircle():
 
@@ -4243,6 +4373,7 @@ def tmef_435_smallcircle():
     sprite('null', 32767)
     LinkParticle('tmef_435_smallcircle')
 
+
 @State
 def tmef_435_smallcircle2():
 
@@ -4252,6 +4383,7 @@ def tmef_435_smallcircle2():
         AddX(-144000)
     sprite('null', 32767)
     LinkParticle('tmef_435_smallcircle')
+
 
 @State
 def tmef_435_finish():
@@ -4272,6 +4404,7 @@ def tmef_435_finish():
     sprite('vrtmef435_33', 4)
     CreateParticle('tmef_432backaura_01', 0)
     ConstantAlphaModifier(-50)
+
 
 @State
 def tmef_435_finish_b():
@@ -4294,6 +4427,7 @@ def tmef_435_finish_b():
     sprite('vrtmef435_33b', 4)
     CreateParticle('tmef_432backaura_01', 0)
     ConstantAlphaModifier(-50)
+
 
 @State
 def tmef_435_Samaso():
@@ -4382,6 +4516,7 @@ def tmef_435_Samaso():
     CreateObject('tmef_AuraDelete', 4)
     CreateObject('tmef_AuraDelete', 5)
 
+
 @State
 def tmef_435_ODaura():
 
@@ -4392,6 +4527,7 @@ def tmef_435_ODaura():
     sprite('null', 32767)
     LinkParticle('tmef_401_aura')
 
+
 @State
 def tmef_440_magiccircle():
 
@@ -4400,7 +4536,7 @@ def tmef_440_magiccircle():
         TeleportToObject(22)
         AbsoluteY(0)
         AddX(-35000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 8)
     AlphaValue(0)
     ConstantAlphaModifier(15)
@@ -4416,6 +4552,7 @@ def tmef_440_magiccircle():
     sprite('null', 120)
     ConstantAlphaModifier(-32)
 
+
 @State
 def tmef_440_snakes():
 
@@ -4427,28 +4564,29 @@ def tmef_440_snakes():
         AddX(-100000)
     sprite('null', 9)
     CreateObject('tmef_440_snake', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(100000)
     PrivateSE('tmse_10')
     sprite('null', 9)
     CreateObject('tmef_440_snake', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-100000)
     PrivateSE('tmse_02')
     sprite('null', 9)
     CreateObject('tmef_440_snake', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(100000)
     PrivateSE('tmse_02')
     sprite('null', 9)
     CreateObject('tmef_440_snake', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-100000)
     PrivateSE('tmse_02')
+
 
 @State
 def tmef_440_snake():
@@ -4473,6 +4611,7 @@ def tmef_440_snake():
     sprite('vrtmef440_05', 3)
     sprite('vrtmef440_06', 3)
 
+
 @State
 def tmef_440_snake_pt():
 
@@ -4485,6 +4624,7 @@ def tmef_440_snake_pt():
     sprite('null', 7)
     CreateParticle('tmef_440aura3', -1)
     gotoLabel(0)
+
 
 @State
 def tmef_440_snake_large():
@@ -4519,6 +4659,7 @@ def tmef_440_snake_large():
     sprite('vrtmef440_57', 8)
     ConstantAlphaModifier(-45)
 
+
 @State
 def tmef_440_snake_large_pt():
 
@@ -4531,6 +4672,7 @@ def tmef_440_snake_large_pt():
     sprite('null', 7)
     CreateParticle('tmef_440aura', -1)
     gotoLabel(0)
+
 
 @State
 def tmef_215():
@@ -4552,6 +4694,7 @@ def tmef_215():
     CreateParticle('tmef_215splash2', -1)
     sprite('null', 30)
 
+
 @State
 def ASTcamera():
 
@@ -4560,6 +4703,7 @@ def ASTcamera():
         CameraNoScreenCollision(1)
         AddX(300000)
     sprite('null', 32767)
+
 
 @State
 def tmef_450_knife():
@@ -4578,6 +4722,7 @@ def tmef_450_knife():
     CallCustomizableParticle('tmef_450_knife', 0)
     sprite('vrtmef450_knife01', 3)
 
+
 @State
 def tmef_450_knife2():
 
@@ -4595,11 +4740,12 @@ def tmef_450_knife2():
     CallCustomizableParticle('tmef_450_knife', 0)
     sprite('vrtmef450_knife11', 4)
 
+
 @State
 def tmef_aststartcircle():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 16)
     LinkParticle('tmef_aststartcircle')
     SetScaleSpeed(25)
@@ -4610,6 +4756,7 @@ def tmef_aststartcircle():
     sprite('null', 32)
     clearUponHandler(32)
     ConstantAlphaModifier(-8)
+
 
 @State
 def AstralHeat_1st():
@@ -4631,10 +4778,11 @@ def AstralHeat_1st():
         AddX(600000)
 
         def upon_OPPONENT_HIT():
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
             NoAttackDuringAction(1)
     sprite('tm450_AtkCol', 16)
     CreateObject('tmef_aststartcircle', -1)
+
 
 @State
 def AstralHeat_2nd():
@@ -4659,6 +4807,7 @@ def AstralHeat_2nd():
     CreateObject('tmef_450_chain2', -1)
     sprite('tm450_AtkCol', 8)
 
+
 @State
 def tmef_450_chain():
 
@@ -4671,6 +4820,7 @@ def tmef_450_chain():
     sprite('null', 520)
     sprite('null', 60)
     ConstantAlphaModifier(-20)
+
 
 @State
 def tmef_450_chain2():
@@ -4687,6 +4837,7 @@ def tmef_450_chain2():
     sprite('null', 520)
     sprite('null', 60)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AstralHeat_3rd():
@@ -4706,7 +4857,7 @@ def AstralHeat_3rd():
         YImpulseBeforeWallbounce(0)
         Hitstop(0)
         DefeatOpponentBehavior(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     label(0)
     sprite('tm450_AtkCol2', 5)
     RefreshMultihit()
@@ -4716,13 +4867,14 @@ def AstralHeat_3rd():
     label(1)
     sprite('null', 3)
 
+
 @State
 def tmef_450_hole():
 
     def upon_IMMEDIATE():
         AddX(-192000)
         AddY(320000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 30)
     LinkParticle('tmef_450_hole')
     CreateParticle('tmef_450_hole2', -1)
@@ -4748,6 +4900,7 @@ def tmef_450_hole():
     SetScaleSpeed(-25)
     ConstantAlphaModifier(-4)
 
+
 @State
 def tmef_450_linework():
 
@@ -4756,6 +4909,7 @@ def tmef_450_linework():
         SetPosYByScreenPer(50)
     sprite('null', 1)
     CreateParticle('tmef_450_bg6', -1)
+
 
 @State
 def tmef_450_snake_a():
@@ -4768,6 +4922,7 @@ def tmef_450_snake_a():
     sprite('null', 20)
     CreateParticle('tmef_450_snakesplash', -1)
 
+
 @State
 def tmef_450_snake_b():
 
@@ -4778,6 +4933,7 @@ def tmef_450_snake_b():
         AddY(-96000)
     sprite('null', 20)
     CreateParticle('tmef_450_snakesplash', -1)
+
 
 @State
 def tmef_450_snake_c():
@@ -4791,6 +4947,7 @@ def tmef_450_snake_c():
     sprite('null', 20)
     CreateParticle('tmef_450_snakesplash', -1)
 
+
 @State
 def tmef_450_snake_d():
 
@@ -4803,6 +4960,7 @@ def tmef_450_snake_d():
     sprite('null', 20)
     CreateParticle('tmef_450_snakesplash', -1)
 
+
 @State
 def tmef_450_aura():
 
@@ -4810,6 +4968,7 @@ def tmef_450_aura():
         pass
     sprite('null', 1)
     CreateParticle('tmef_450_aura', -1)
+
 
 @State
 def tmef_450_aura2():
@@ -4820,6 +4979,7 @@ def tmef_450_aura2():
     sprite('null', 1)
     CreateParticle('tmef_450_aura2', 103)
     gotoLabel(0)
+
 
 @State
 def tmef_450_bg():
@@ -4832,6 +4992,7 @@ def tmef_450_bg():
     CreateParticle('tmef_450_bg', -1)
     gotoLabel(0)
 
+
 @State
 def tmef_450_bg2():
 
@@ -4843,6 +5004,7 @@ def tmef_450_bg2():
     CreateParticle('tmef_450_bg2', -1)
     gotoLabel(0)
 
+
 @State
 def tmef_450_henshinshock():
 
@@ -4850,6 +5012,7 @@ def tmef_450_henshinshock():
         AddY(256000)
     sprite('null', 1)
     CreateParticle('tmef_450_henshinshock', -1)
+
 
 @State
 def tmef_450_slash():
@@ -4861,6 +5024,7 @@ def tmef_450_slash():
     CreateObject('tmef_450_slash_3D', 0)
     CreateObject('tmef_450_slash_b_3D', 0)
     sprite('vrtmef450_91', 6)
+
 
 @State
 def tmef_450_slash_3D():
@@ -4881,6 +5045,7 @@ def tmef_450_slash_3D():
     sprite('null', 16)
     ConstantAlphaModifier(-21)
 
+
 @State
 def tmef_450_slash_b_3D():
 
@@ -4898,6 +5063,7 @@ def tmef_450_slash_b_3D():
     SetScaleSpeedY(-40)
     sprite('null', 16)
     ConstantAlphaModifier(-21)
+
 
 @State
 def tmef_450_end():
@@ -4919,6 +5085,7 @@ def tmef_450_end():
     sprite('vrtmef450_37z', 17)
     ConstantAlphaModifier(-12)
 
+
 @State
 def tmef611S():
 
@@ -4937,6 +5104,7 @@ def tmef611S():
     CreateParticle('tmef_611_aura2_hinoko', 7)
     CreateParticle('tmef_611_aura2_hinoko', 8)
     gotoLabel(0)
+
 
 @State
 def tmef611M():
@@ -4962,6 +5130,7 @@ def tmef611M():
     CreateParticle('tmef_611_aura3_sub', 12)
     CreateParticle('tmef_611_aura3_sub', 13)
     gotoLabel(0)
+
 
 @State
 def tmef611():
@@ -4992,6 +5161,7 @@ def tmef611():
     CreateObject('tmef611solo', 19)
     CreateObject('tmef611solo', 20)
 
+
 @State
 def tmef611solo():
 
@@ -5000,6 +5170,7 @@ def tmef611solo():
         E0EAEffectPosition(3)
     sprite('null', 32767)
     LinkParticle('tmef_611_aura01')
+
 
 @State
 def SummonHZ():
@@ -5019,6 +5190,7 @@ def SummonHZ():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def TakeBowHZ():
 
@@ -5037,6 +5209,7 @@ def TakeBowHZ():
     sprite('hz601_10', 5)
     sprite('hz601_11', 5)
     sprite('hz601_12', 32767)
+
 
 @State
 def TakeBowHZEnd():
@@ -5063,6 +5236,7 @@ def TakeBowHZEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def ThinkingHZ():
 
@@ -5080,6 +5254,7 @@ def ThinkingHZ():
     sprite('hz610_05', 6)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ThinkingHZEnd():
@@ -5102,6 +5277,7 @@ def ThinkingHZEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def LaughingHZ():
 
@@ -5115,6 +5291,7 @@ def LaughingHZ():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def HeatDrainEff():
 
@@ -5123,6 +5300,7 @@ def HeatDrainEff():
         IgnoreScreenfreeze(1)
         LinkParticle('tmef_heatup')
     sprite('null', 36)
+
 
 @State
 def tmef433_event():
@@ -5155,6 +5333,7 @@ def tmef433_event():
     ConstantAlphaModifier(-30)
     sprite('vrhzef432_06', 3)
 
+
 @State
 def eftm432_event():
 
@@ -5176,6 +5355,7 @@ def eftm432_event():
     sprite('vrtmef432_05', 4)
     sprite('vrtmef432_06', 4)
 
+
 @State
 def eftm434_slashRed_event():
 
@@ -5196,6 +5376,7 @@ def eftm434_slashRed_event():
     sprite('vrtmef434_03', 4)
     sprite('vrtmef434_04', 4)
 
+
 @State
 def BurstDDCamera():
 
@@ -5203,19 +5384,22 @@ def BurstDDCamera():
         RemoveOnCallStateEnd(3)
         CancelIfPlayerHit(3)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             TeleportToObject(3)
             SLOT_51 = SLOT_19
-            SLOT_51 = (SLOT_51 / 4)
+            SLOT_51 = SLOT_51 / 4
             CopyFromRightToLeft(23, 2, 52, 3, 2, 22)
             CopyFromRightToLeft(23, 2, 53, 22, 2, 22)
-            if (SLOT_52 < SLOT_53):
-                SLOT_22 = (SLOT_22 + SLOT_51)
-            elif (SLOT_52 > SLOT_53):
-                SLOT_22 = (SLOT_22 - SLOT_51)
+            if SLOT_52 < SLOT_53:
+                SLOT_XDistanceFromCenterOfStage = (
+                    SLOT_XDistanceFromCenterOfStage + SLOT_51)
+            elif SLOT_52 > SLOT_53:
+                SLOT_XDistanceFromCenterOfStage = (
+                    SLOT_XDistanceFromCenterOfStage - SLOT_51)
             else:
                 pass
-            SLOT_22 = (SLOT_22 + 100000)
+            SLOT_XDistanceFromCenterOfStage = (
+                SLOT_XDistanceFromCenterOfStage + 100000)
 
         def upon_33():
             clearUponHandler(33)
@@ -5228,6 +5412,7 @@ def BurstDDCamera():
     sprite('null', 1)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
+
 
 @State
 def Act2Event_Yure():

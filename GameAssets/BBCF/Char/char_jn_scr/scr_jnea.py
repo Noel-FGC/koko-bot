@@ -19,6 +19,7 @@ def EMB_JN():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_JN_OD():
 
@@ -40,6 +41,7 @@ def EMB_JN_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_JN_AH():
 
@@ -60,9 +62,10 @@ def EMB_JN_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @Subroutine
 def CheckOverDriveShotFreeze():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         ResetAttackP2()
         FreezeCount(3)
         EnemyHitstopAddition(6, 0, 5)
@@ -70,11 +73,13 @@ def CheckOverDriveShotFreeze():
         def upon_OPPONENT_HIT():
             ScreenShake(20000, 20000)
 
+
 @Subroutine
 def CheckOverDriveSpecial():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         HeatGainMultiplier(100)
         HeatCooldown(0)
+
 
 @State
 def ModelMagicCircle1():
@@ -88,6 +93,7 @@ def ModelMagicCircle1():
         ColorFromPaletteIndex(240)
     sprite('null', 42)
 
+
 @State
 def ModelMagicCircle2():
 
@@ -99,6 +105,7 @@ def ModelMagicCircle2():
         PaletteIndex(1)
         ColorFromPaletteIndex(240)
     sprite('null', 42)
+
 
 @State
 def ModelMagicCircle3():
@@ -112,6 +119,7 @@ def ModelMagicCircle3():
         ColorFromPaletteIndex(240)
     sprite('null', 30)
 
+
 @State
 def ModelMagicCircle4():
 
@@ -124,6 +132,7 @@ def ModelMagicCircle4():
         ColorFromPaletteIndex(240)
     sprite('null', 42)
 
+
 @State
 def jn_DD_2_ex():
 
@@ -134,6 +143,7 @@ def jn_DD_2_ex():
         ParticleFacing(2)
         CallPrivateEffect('jnef_DD_ex')
     sprite('null', 300)
+
 
 @State
 def EffNoutou():
@@ -146,6 +156,7 @@ def EffNoutou():
     LinkParticle('jnef_bl')
     PrivateSE('jnse_00')
 
+
 @State
 def EffYukikaze():
 
@@ -155,6 +166,7 @@ def EffYukikaze():
     sprite('null', 32767)
     LinkParticle('jnef_yukikaze')
 
+
 @State
 def IceBreakPtcL():
     sprite('null', 1)
@@ -162,6 +174,7 @@ def IceBreakPtcL():
     Visibility(1)
     ParticleColorFromPalette(96, 96, 96)
     CallCustomizableParticle('jnef_icebrl', -1)
+
 
 @State
 def IceBreakPtcM():
@@ -171,6 +184,7 @@ def IceBreakPtcM():
     ParticleColorFromPalette(96, 96, 96)
     CallCustomizableParticle('jnef_icebrm', -1)
 
+
 @State
 def IceBreakPtcS():
     sprite('null', 1)
@@ -178,6 +192,7 @@ def IceBreakPtcS():
     Visibility(1)
     ParticleColorFromPalette(96, 96, 96)
     CallCustomizableParticle('jnef_icebrs', -1)
+
 
 @State
 def IceMakePtc():
@@ -190,6 +205,7 @@ def IceMakePtc():
     ParticleColorFromPalette(175, 96, 48)
     CallCustomizableParticle('jnef_iceptc', -1)
 
+
 @State
 def IceCirclePtc():
     sprite('null', 1)
@@ -197,6 +213,7 @@ def IceCirclePtc():
     Visibility(1)
     ParticleColorFromPalette(175, 175, 175)
     CallCustomizableParticle('jnef_circle00', -1)
+
 
 @State
 def IceBreakPtc601():
@@ -206,6 +223,7 @@ def IceBreakPtc601():
     ParticleColorFromPalette(96, 96, 96)
     ParticleSize(500)
     CallCustomizableParticle('jnef_icebrm', -1)
+
 
 @State
 def jnef601ptc():
@@ -225,6 +243,7 @@ def jnef601ptc():
     ParticleColorFromPalette(175, 175, 175)
     CallCustomizableParticle('jnef601', -1)
 
+
 @State
 def jnef611_hane():
     sprite('null', 1)
@@ -233,11 +252,13 @@ def jnef611_hane():
     ParticleColorFromPalette(175, 175, 1)
     CallCustomizableParticle('jnef611_hane', 2)
 
+
 @State
 def jnef_25percent():
     sprite('null', 1)
     AddY(300000)
     CallCustomizableParticle('jnef_25percent', -1)
+
 
 @State
 def zan_a0():
@@ -255,6 +276,7 @@ def zan_a0():
     PaletteColor3(241)
     PaletteColor4(250)
 
+
 @State
 def zan_b0():
 
@@ -271,6 +293,7 @@ def zan_b0():
     PaletteColor2(242)
     PaletteColor3(241)
     PaletteColor4(250)
+
 
 @State
 def zan_d0():
@@ -291,6 +314,7 @@ def zan_d0():
     sprite('vrzan_d1', 1)
     sprite('vrzan_d2', 12)
 
+
 @State
 def zan_e0():
 
@@ -307,6 +331,7 @@ def zan_e0():
     PaletteColor2(242)
     PaletteColor3(241)
     PaletteColor4(250)
+
 
 @State
 def zan407():
@@ -325,6 +350,7 @@ def zan407():
     PaletteColor3(241)
     PaletteColor4(250)
 
+
 @State
 def zan408():
 
@@ -342,6 +368,7 @@ def zan408():
     PaletteColor3(241)
     PaletteColor4(250)
 
+
 @State
 def zan409():
 
@@ -358,6 +385,7 @@ def zan409():
     PaletteColor2(242)
     PaletteColor3(241)
     PaletteColor4(250)
+
 
 @State
 def zan412():
@@ -379,6 +407,7 @@ def zan412():
     sprite('vrzan412_01', 16)
     physicsYImpulse(-4000)
 
+
 @State
 def zan414():
 
@@ -396,6 +425,7 @@ def zan414():
     PaletteColor3(241)
     PaletteColor4(250)
     sprite('vrzan414_01', 20)
+
 
 @State
 def zan235():
@@ -415,6 +445,7 @@ def zan235():
     PaletteColor2(242)
     PaletteColor3(241)
     PaletteColor4(250)
+
 
 @State
 def IcicleSub():
@@ -440,6 +471,7 @@ def IcicleSub():
     CreateObject('IceMakePtc', -1)
     sprite('vrjnef233_04', 12)
 
+
 @State
 def Icicle_Env():
 
@@ -460,6 +492,7 @@ def Icicle_Env():
     sprite('vrjnef233env', 16)
     SetScaleSpeed(-10)
     ConstantAlphaModifier(-10)
+
 
 @State
 def IcicleAttack():
@@ -484,7 +517,7 @@ def IcicleAttack():
         Size(1000)
         AlphaValue(255)
         callSubroutine('CheckOverDriveShotFreeze')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             FreezeTime(55)
         HitsPerCall(1, 0, 0, 0, 0, 1, 1, 1)
 
@@ -542,6 +575,7 @@ def IcicleAttack():
     CommonSE('018_ice_break_1')
     sprite('vrjnef233atk_05', 10)
 
+
 @State
 def EffAtk5D():
 
@@ -593,6 +627,7 @@ def EffAtk5D():
     CommonSE('018_ice_break_1')
     sprite('vrjnef203_04', 20)
 
+
 @State
 def EffAtk5D_Env():
 
@@ -611,6 +646,7 @@ def EffAtk5D_Env():
     SetScaleSpeed(-5)
     AlphaValue(160)
     ConstantAlphaModifier(-8)
+
 
 @State
 def EffAtk6D():
@@ -638,7 +674,7 @@ def EffAtk6D():
         def upon_54():
             AttackOff()
         callSubroutine('CheckOverDriveShotFreeze')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             FreezeTime(55)
     sprite('vrjnef213_00', 3)
     CreateObject('EffAtk6D_Env', -1)
@@ -684,6 +720,7 @@ def EffAtk6D():
     sprite('vrjnef213_03', 4)
     sprite('vrjnef213_05', 4)
 
+
 @State
 def EffAtk6D_Env():
 
@@ -704,6 +741,7 @@ def EffAtk6D_Env():
     AlphaValue(240)
     ConstantAlphaModifier(-24)
     physicsXImpulse(1000)
+
 
 @State
 def EffAtk8D():
@@ -733,6 +771,7 @@ def EffAtk8D():
     ConstantAlphaModifier(-24)
     CommonSE('017_freeze_1')
 
+
 @State
 def EffAtk8D_Env():
 
@@ -749,6 +788,7 @@ def EffAtk8D_Env():
     SetScaleSpeed(5)
     AlphaValue(240)
     ConstantAlphaModifier(-20)
+
 
 @State
 def jnef311():
@@ -804,6 +844,7 @@ def jnef311():
     sprite('vrjnef311_08', 12)
     ConstantAlphaModifier(-30)
 
+
 @State
 def jnef321top():
 
@@ -855,6 +896,7 @@ def jnef321top():
     sprite('vrjnef321_08', 12)
     ConstantAlphaModifier(-30)
 
+
 @State
 def jnef321bottom():
 
@@ -892,6 +934,7 @@ def jnef321bottom():
     sprite('vrjnef321_08', 12)
     ConstantAlphaModifier(-30)
 
+
 @State
 def EFF28AtkA():
 
@@ -915,6 +958,7 @@ def EFF28AtkA():
     AlphaValue(200)
     ConstantAlphaModifier(-30)
 
+
 @State
 def EFF28AtkB():
 
@@ -937,6 +981,7 @@ def EFF28AtkB():
     sprite('vrjnef405_06', 8)
     AlphaValue(200)
     ConstantAlphaModifier(-30)
+
 
 @State
 def EFF28AtkC():
@@ -963,6 +1008,7 @@ def EFF28AtkC():
     AlphaValue(200)
     ConstantAlphaModifier(-40)
 
+
 @State
 def EFF28AtkD():
 
@@ -987,6 +1033,7 @@ def EFF28AtkD():
     AlphaValue(200)
     ConstantAlphaModifier(-30)
 
+
 @State
 def EFF413C():
 
@@ -1007,6 +1054,7 @@ def EFF413C():
     AlphaValue(200)
     ConstantAlphaModifier(-30)
 
+
 @State
 def EFF413D():
 
@@ -1025,6 +1073,7 @@ def EFF413D():
     AlphaValue(200)
     ConstantAlphaModifier(-30)
 
+
 @State
 def IceBoard():
 
@@ -1036,7 +1085,7 @@ def IceBoard():
         AddY(110000)
 
         def upon_45():
-            if (not SLOT_51):
+            if not SLOT_51:
                 CopyFromRightToLeft(23, 2, 83, 3, 2, 83)
 
         def upon_32():
@@ -1064,6 +1113,7 @@ def IceBoard():
     SetScaleSpeedY(0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def IceBoard_koware():
@@ -1095,6 +1145,7 @@ def IceBoard_koware():
     CommonSE('018_ice_break_0')
     sprite('vrjnef408_00', 5)
 
+
 @State
 def ice_shot():
 
@@ -1117,19 +1168,19 @@ def ice_shot():
         def upon_STATE_END():
             SLOT_4 = 0
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         Size(750)
         CollideWithWall(1)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 1)
+        uponSendToLabel(54, 1)
         RunLoopUpon(17, 75)
 
         def upon_17():
@@ -1182,7 +1233,8 @@ def ice_shot():
     CreateObject('IceMakePtc', 1)
     CreateObject('IceMakePtc', 2)
     clearUponHandler(54)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+
 
 @State
 def air_ice_shot():
@@ -1205,19 +1257,19 @@ def air_ice_shot():
         def upon_STATE_END():
             SLOT_4 = 0
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
                 PrivateFunction5(105)
-                if (SLOT_22 < SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage < SLOT_0:
                     DeleteObject(23)
             else:
                 PrivateFunction5(105)
-                if (SLOT_22 > SLOT_0):
+                if SLOT_XDistanceFromCenterOfStage > SLOT_0:
                     DeleteObject(23)
         Size(650)
         CollideWithWall(1)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 1)
+        uponSendToLabel(54, 1)
         RunLoopUpon(17, 75)
 
         def upon_17():
@@ -1271,7 +1323,8 @@ def air_ice_shot():
     physicsYImpulse(0)
     setGravity(0)
     clearUponHandler(54)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+
 
 @State
 def ice_shot_ex2():
@@ -1294,13 +1347,13 @@ def ice_shot_ex2():
         SetZVal(-100)
         SetActionMark(-2)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_2):
-                clearUponHandler(10)
-                clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if not SLOT_2:
+                clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+                clearUponHandler(EVERY_FRAME)
                 ResetPushback()
                 AirPushbackY(36000)
                 ResetGravity()
@@ -1313,7 +1366,7 @@ def ice_shot_ex2():
         callSubroutine('CheckOverDriveSpecial')
         AddX(50000)
         AttackOff()
-        sendToLabelUpon(54, 9)
+        uponSendToLabel(54, 9)
         RunLoopUpon(17, 180)
 
         def upon_17():
@@ -1328,9 +1381,9 @@ def ice_shot_ex2():
     ConstantAlphaModifier(20)
     CreateObject('jnef_400ice_pt', -1)
     CreateObject('ModelMagicCircle3', -1)
-    ApplyFunctionsToObjects(1)
-    Size(1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1000)
     sprite('vrjnef400_50', 1)
     CreateObject('jnef_400_env', -1)
     Size(1000)
@@ -1357,8 +1410,9 @@ def ice_shot_ex2():
     CreateObject('IceBreakPtcS', 3)
     CreateObject('IceBreakPtcS', 4)
     CommonSE('018_ice_break_1')
-    PassbackAddActionMarkToFunction('jnef_400_env', 32)
-    PassbackAddActionMarkToFunction('jnef_400ice_pt', 32)
+    TriggerUponForState('jnef_400_env', 32)
+    TriggerUponForState('jnef_400ice_pt', 32)
+
 
 @State
 def air_ice_shot_ex2():
@@ -1381,13 +1435,13 @@ def air_ice_shot_ex2():
         SetZVal(-100)
         SetActionMark(-2)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AddActionMark(1)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_2):
-                clearUponHandler(10)
-                clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if not SLOT_2:
+                clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+                clearUponHandler(EVERY_FRAME)
                 ResetPushback()
                 ResetGravity()
                 PushbackX(30400)
@@ -1400,7 +1454,7 @@ def air_ice_shot_ex2():
         AddX(120000)
         AddY(30000)
         AttackOff()
-        sendToLabelUpon(54, 9)
+        uponSendToLabel(54, 9)
         RunLoopUpon(17, 180)
 
         def upon_17():
@@ -1415,9 +1469,9 @@ def air_ice_shot_ex2():
     ConstantAlphaModifier(20)
     CreateObject('jnef_400ice_pt', -1)
     CreateObject('ModelMagicCircle3', -1)
-    ApplyFunctionsToObjects(1)
-    Size(1000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(1000)
     sprite('vrjnef400_50', 1)
     CreateObject('jnef_400_env', -1)
     Size(1000)
@@ -1444,8 +1498,9 @@ def air_ice_shot_ex2():
     CreateObject('IceBreakPtcS', 3)
     CreateObject('IceBreakPtcS', 4)
     CommonSE('018_ice_break_1')
-    PassbackAddActionMarkToFunction('jnef_400_env', 32)
-    PassbackAddActionMarkToFunction('jnef_400ice_pt', 32)
+    TriggerUponForState('jnef_400_env', 32)
+    TriggerUponForState('jnef_400ice_pt', 32)
+
 
 @State
 def jnef_400_env():
@@ -1456,7 +1511,7 @@ def jnef_400_env():
         IgnorePauses(2)
         PaletteIndex(1)
         BlendMode_Add()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AlphaValue(96)
     label(0)
     sprite('vrjnef400env', 15)
@@ -1466,6 +1521,7 @@ def jnef_400_env():
     sprite('vrjnef400env', 32)
     ConstantAlphaModifier(-4)
 
+
 @State
 def jnef_400ice_pt():
 
@@ -1473,7 +1529,7 @@ def jnef_400ice_pt():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         PaletteIndex(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 5)
     Size(500)
     SetScaleSpeed(50)
@@ -1499,6 +1555,7 @@ def jnef_400ice_pt():
     gotoLabel(0)
     label(0)
     sprite('null', 0)
+
 
 @State
 def UltimateSlashShotObj():
@@ -1538,20 +1595,20 @@ def UltimateSlashShotObj():
         AfterimageSize_2(500)
         BlendMode_Add()
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            SLOT_51 = (SLOT_51 + 1)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            SLOT_51 = SLOT_51 + 1
         SetActionMark(0)
 
         def upon_OPPONENT_HIT():
             AddActionMark(1)
-            if (SLOT_2 >= 5):
+            if SLOT_2 >= 5:
                 EndAttack()
         if SLOT_137:
             DamageMultiplier(80)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 Damage(400)
                 if SLOT_137:
                     DamageMultiplier(80)
@@ -1577,6 +1634,7 @@ def UltimateSlashShotObj():
     sprite('vrjnef430_02', 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def OverDriveSlashShotObj():
@@ -1617,26 +1675,26 @@ def OverDriveSlashShotObj():
         AfterimageSize_2(500)
         BlendMode_Add()
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            SLOT_51 = (SLOT_51 + 1)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            SLOT_51 = SLOT_51 + 1
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_2 >= 5:
                 clearUponHandler(45)
-                ObjectUpon(3, 41)
+                ObjectUpon(EVERY_FRAME, 41)
         SetActionMark(0)
 
         def upon_OPPONENT_HIT():
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
             AddActionMark(1)
-            if (SLOT_2 >= 5):
+            if SLOT_2 >= 5:
                 EndAttack()
         if SLOT_137:
             DamageMultiplier(80)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
                 Damage(400)
                 if SLOT_137:
                     DamageMultiplier(80)
@@ -1662,6 +1720,7 @@ def OverDriveSlashShotObj():
     sprite('vrjnef430_02', 1)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def IceBow():
@@ -1733,6 +1792,7 @@ def IceBow():
     CreateObject('IceBreakPtcS', 7)
     sprite('vrjnef431_03', 20)
 
+
 @State
 def IceCircleA():
 
@@ -1751,6 +1811,7 @@ def IceCircleA():
     sprite('vrjnef431b_00', 12)
     ConstantAlphaModifier(-20)
     SetScaleSpeed(10)
+
 
 @State
 def IceCircleB():
@@ -1771,6 +1832,7 @@ def IceCircleB():
     ConstantAlphaModifier(-12)
     SetScaleSpeed(20)
 
+
 @State
 def IceCircleC():
 
@@ -1789,6 +1851,7 @@ def IceCircleC():
     sprite('vrjnef431b_00', 30)
     ConstantAlphaModifier(-8)
     SetScaleSpeed(15)
+
 
 @State
 def IceArrow():
@@ -1854,13 +1917,13 @@ def IceArrow():
             physicsYImpulse(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             sendToLabel(3)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_2):
-                clearUponHandler(3)
-                clearUponHandler(12)
+        def upon_EVERY_FRAME():
+            if not SLOT_2:
+                clearUponHandler(EVERY_FRAME)
+                clearUponHandler(OPPONENT_HIT)
                 sendToLabel(101)
         if SLOT_137:
             DamageMultiplier(80)
@@ -1898,18 +1961,18 @@ def IceArrow():
     label(3)
     sprite('vrjnef431atk_00', 1)
     if SLOT_51:
-        ApplyFunctionsToObjects(25)
-        TeleportToObject(24)
-        AddX(-200000)
-        AddY(-100000)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_25():
+            TeleportToObject(24)
+            AddX(-200000)
+            AddY(-100000)
     else:
-        ApplyFunctionsToObjects(25)
-        TeleportToObject(24)
-        AddX(-200000)
-        AddY(-300000)
-        ApplyFunctionsToSelf()
-    ObjectUpon(3, 32)
+
+        def RunOnObject_25():
+            TeleportToObject(24)
+            AddX(-200000)
+            AddY(-300000)
+    ObjectUpon(EVERY_FRAME, 32)
 
     def upon_OPPONENT_HIT():
         XImpulseAcceleration(106)
@@ -2018,6 +2081,7 @@ def IceArrow():
     loopRest()
     label(55)
     sprite('vrjnef431atk_02', 3)
+
 
 @State
 def IceArrow_OD():
@@ -2084,14 +2148,14 @@ def IceArrow_OD():
             physicsYImpulse(0)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             CreateObject('EffAtk8D', 0)
             sendToLabel(3)
 
-        def upon_FRAME_STEP():
-            if (not SLOT_2):
-                clearUponHandler(3)
-                clearUponHandler(12)
+        def upon_EVERY_FRAME():
+            if not SLOT_2:
+                clearUponHandler(EVERY_FRAME)
+                clearUponHandler(OPPONENT_HIT)
                 sendToLabel(101)
         if SLOT_137:
             DamageMultiplier(80)
@@ -2129,18 +2193,18 @@ def IceArrow_OD():
     label(3)
     sprite('vrjnef431atk_00', 1)
     if SLOT_51:
-        ApplyFunctionsToObjects(25)
-        TeleportToObject(24)
-        AddX(-200000)
-        AddY(-100000)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_25():
+            TeleportToObject(24)
+            AddX(-200000)
+            AddY(-100000)
     else:
-        ApplyFunctionsToObjects(25)
-        TeleportToObject(24)
-        AddX(-200000)
-        AddY(-300000)
-        ApplyFunctionsToSelf()
-    ObjectUpon(3, 32)
+
+        def RunOnObject_25():
+            TeleportToObject(24)
+            AddX(-200000)
+            AddY(-300000)
+    ObjectUpon(EVERY_FRAME, 32)
 
     def upon_OPPONENT_HIT():
         XImpulseAcceleration(106)
@@ -2250,6 +2314,7 @@ def IceArrow_OD():
     label(55)
     sprite('vrjnef431atk_02', 3)
 
+
 @State
 def Yukikazedmy():
 
@@ -2280,6 +2345,7 @@ def Yukikazedmy():
     CreateObject('JNFreezeDamageBreakParts', -1)
     StartMultihit()
     sprite('vrdmy_yukikaze', 3)
+
 
 @State
 def YukikazedmyOD():
@@ -2312,6 +2378,7 @@ def YukikazedmyOD():
     StartMultihit()
     sprite('vrdmy_yukikaze', 3)
 
+
 @State
 def JNFreezeDamageBreakParts():
 
@@ -2322,6 +2389,7 @@ def JNFreezeDamageBreakParts():
     sprite('null', 200)
     ParticleColorFromPalette(175, 111, 111)
     CallPrivateEffect('jnef_freezebreak')
+
 
 @State
 def jnef600_envStart():
@@ -2339,6 +2407,7 @@ def jnef600_envStart():
     sprite('vrjnef600env', 2)
     AlphaValue(0)
 
+
 @State
 def jnef600_envLoop():
 
@@ -2354,6 +2423,7 @@ def jnef600_envLoop():
     sprite('vrjnef600env', 20)
     ConstantAlphaModifier(-2)
 
+
 @State
 def jnef600_envEnd():
 
@@ -2368,6 +2438,7 @@ def jnef600_envEnd():
     SetScaleSpeed(-5)
     AlphaValue(120)
     ConstantAlphaModifier(-20)
+
 
 @State
 def jnef600iceSword():
@@ -2450,6 +2521,7 @@ def jnef600iceSword():
     CommonSE('018_ice_break_1')
     sprite('vrjnef600_08', 3)
 
+
 @State
 def jnef601env():
 
@@ -2467,6 +2539,7 @@ def jnef601env():
     sprite('vrjnef601env', 20)
     SetScaleSpeed(5)
     ConstantAlphaModifier(-5)
+
 
 @State
 def jnef601makeSword():
@@ -2509,6 +2582,7 @@ def jnef601makeSword():
     PaletteIndex(0)
     sprite('vrjnef601_03', 6)
 
+
 @State
 def jnef601Sword():
 
@@ -2521,6 +2595,7 @@ def jnef601Sword():
     ConstantAlphaModifier(15)
     sprite('vrjnef601_03', 4)
     AlphaValue(255)
+
 
 @State
 def jnef611icewing():
@@ -2593,6 +2668,7 @@ def jnef611icewing():
     sprite('jnef611_09', 24)
     sprite('null', 32)
 
+
 @State
 def cmp():
     sprite('vrtest00', 10)
@@ -2609,6 +2685,7 @@ def cmp():
     sprite('vrtest03', 10)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def ef_jnah_A():
@@ -2629,6 +2706,7 @@ def ef_jnah_A():
     CommonSE('018_ice_break_0')
     CommonSE('018_ice_break_1')
     ConstantAlphaModifier(-10)
+
 
 @State
 def ef_jnah_B():
@@ -2722,6 +2800,7 @@ def ef_jnah_B():
     sprite('null', 60)
     ConstantAlphaModifier(-10)
 
+
 @State
 def LookAtMe():
 
@@ -2731,6 +2810,7 @@ def LookAtMe():
         AbsoluteY(0)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def AstralStartPtc():
@@ -2744,6 +2824,7 @@ def AstralStartPtc():
         AbsoluteY(0)
     sprite('null', 32767)
 
+
 @State
 def AstralFinishPtc():
 
@@ -2756,6 +2837,7 @@ def AstralFinishPtc():
     sprite('null', 32767)
     CreateParticle('jnef_ast_snowfloor', -1)
 
+
 @State
 def JNEF_ast_attack():
 
@@ -2763,6 +2845,7 @@ def JNEF_ast_attack():
         RemoveOnCallStateEnd(2)
     sprite('null', 300)
     LinkParticle('jnef_ast_attack')
+
 
 @State
 def EventEffSpKensei():
@@ -2773,7 +2856,7 @@ def EventEffSpKensei():
         PaletteIndex(7)
         BlendMode_Normal()
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             EndObject()
         Size(1100)
         AddX(720000)
@@ -2890,6 +2973,7 @@ def EventEffSpKensei():
     CreateObject('HZEF_AuraDelete', 5)
     sprite('vrhzef407_06', 4)
 
+
 @State
 def HZEF_Aura():
 
@@ -2901,6 +2985,7 @@ def HZEF_Aura():
     sprite('null', 20)
     ConstantAlphaModifier(-15)
 
+
 @State
 def HZEF_AuraDelete():
 
@@ -2910,6 +2995,7 @@ def HZEF_AuraDelete():
         CallPrivateEffect('hzef_deleteaura')
         Size(600)
     sprite('null', 60)
+
 
 @State
 def RushAssaultFinishAtkObj():
@@ -2937,11 +3023,12 @@ def RushAssaultFinishAtkObj():
         TeleportToObject(22)
         callSubroutine('CheckOverDriveSpecial')
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             CommonSE('018_ice_break_1')
             CreateObject('JNFreezeDamageBreakParts', -1)
             CreateObject('JNFreezeDamageBreakParts', -1)
     sprite('vrdmy_yukikaze', 3)
+
 
 @State
 def UltimateShotOverDrive():
@@ -2989,11 +3076,11 @@ def UltimateShotOverDrive():
             AirPushbackY(10000)
 
         def upon_OPPONENT_HIT():
-            ObjectUpon(3, 32)
+            ObjectUpon(EVERY_FRAME, 32)
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             SLOT_51 = 1
-        sendToLabelUpon(41, 0)
+        uponSendToLabel(41, 0)
     sprite('vrjnef233atk_00', 3)
     SetScaleSpeed(-5)
     CreateObject('IceMakePtc', 0)
@@ -3014,7 +3101,7 @@ def UltimateShotOverDrive():
     CommonSE('017_freeze_0')
     loopRest()
     if SLOT_51:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('vrjnef233atk_02', 3)
     ScreenShake(30000, 30000)
     SetScaleSpeed(5)
@@ -3024,7 +3111,7 @@ def UltimateShotOverDrive():
     SetScaleSpeed(0)
     loopRest()
     label(0)
-    clearUponHandler(44)
+    clearUponHandler(PLAYER_DAMAGED)
     sprite('vrjnef233atk_03', 3)
     SetScaleSpeed(0)
     AlphaValue(200)
@@ -3051,6 +3138,7 @@ def UltimateShotOverDrive():
     CreateObject('IceBreakPtcS', 9)
     CommonSE('018_ice_break_1')
     sprite('vrjnef233atk_05', 10)
+
 
 @State
 def OverDriveSlashShotFinish():
@@ -3084,6 +3172,7 @@ def OverDriveSlashShotFinish():
     StartMultihit()
     sprite('vrdmy_yukikaze', 3)
 
+
 @State
 def BurstDD_Sword():
 
@@ -3102,6 +3191,7 @@ def BurstDD_Sword():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def BurstDD_IceNew():
 
@@ -3113,7 +3203,7 @@ def BurstDD_IceNew():
         LinkParticle('jnef_440_root')
         BlendMode_Add()
         EffectPosition(22, 104)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     ScreenShake(10000, 10000)
     SetScaleSpeed(75)
@@ -3126,6 +3216,7 @@ def BurstDD_IceNew():
     SetScaleSpeed(15)
     CreateParticle('jnef_440_break', -1)
 
+
 @State
 def BurstDD_Slash():
 
@@ -3137,6 +3228,7 @@ def BurstDD_Slash():
     ScreenShake(20000, 20000)
     sprite('null', 41)
     ScreenShake(20000, 20000)
+
 
 @State
 def BurstDD_SlashEX():
@@ -3161,9 +3253,10 @@ def BurstDD_SlashEX():
     ScreenShake(5000, 5000)
     sprite('null', 2)
     CreateObject('BurstDD_Slash', -1)
-    ApplyFunctionsToObjects(1)
-    AddScale(500)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddScale(500)
+
 
 @State
 def BurstDD_Ice():
@@ -3174,7 +3267,7 @@ def BurstDD_Ice():
         SetScaleY(2800)
         SetScaleX(2000)
         EffectPosition(22, 104)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vrjnef311_00', 2)
     CreateDecal(1, 'FLORE_FROST', -1, 2000, 2000)
     AlphaValue(192)
@@ -3219,6 +3312,7 @@ def BurstDD_Ice():
     sprite('vrjnef311_08', 12)
     ConstantAlphaModifier(-30)
 
+
 @State
 def BurstDD_Camera():
 
@@ -3230,9 +3324,9 @@ def BurstDD_Camera():
         E0EAEffectPosition(3)
         E0EAEffectDirection(3)
         AddX(175000)
-        sendToLabelUpon(32, 0)
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
+        uponSendToLabel(32, 0)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
     sprite('null', 32767)
     label(0)
     sprite('null', 2)
@@ -3268,6 +3362,7 @@ def BurstDD_Camera():
     sprite('null', 32767)
     CameraControlEnable(0)
 
+
 @State
 def ptPhantom():
 
@@ -3276,7 +3371,7 @@ def ptPhantom():
         AlphaValue(0)
         BlendMode_Normal()
         AddY(70000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('pt999_00', 22)
     CommonSE('302_spsys_rapid')
     ConstantAlphaModifier(10)
@@ -3311,12 +3406,14 @@ def ptPhantom():
     sprite('pt999_00', 6)
     sprite('pt999_00', 6)
 
+
 @State
 def EventTBHitEff():
     sprite('null', 5)
     ParticleRandomRotation()
     CallCustomizableParticle('ef_hitlz', 108)
     CommonSE('101_hit_slash_3')
+
 
 @State
 def EventShakeObj():
@@ -3351,6 +3448,7 @@ def EventShakeObj():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventIceMakePtc():
     sprite('null', 1)
@@ -3367,6 +3465,7 @@ def EventIceMakePtc():
     ParticleSize(2000)
     CallCustomizableParticle('jnef_iceptc', -1)
     ParticleSize(2000)
+
 
 @State
 def Event_UltimateSlashShotObj():
@@ -3407,6 +3506,7 @@ def Event_UltimateSlashShotObj():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_ptPhantom_Renew():
 
@@ -3417,7 +3517,7 @@ def Act3Event_ptPhantom_Renew():
         AddX(-50000)
         AddY(70000)
         SetZVal(-500)
-        sendToLabelUpon(32, 9)
+        uponSendToLabel(32, 9)
     sprite('pt999_00', 45)
     CommonSE('302_spsys_rapid')
     ConstantAlphaModifier(5)
@@ -3453,6 +3553,7 @@ def Act3Event_ptPhantom_Renew():
     sprite('pt999_00', 6)
     sprite('pt999_00', 6)
 
+
 @State
 def ptPhantom_NoSound():
 
@@ -3461,7 +3562,7 @@ def ptPhantom_NoSound():
         AlphaValue(0)
         BlendMode_Normal()
         AddY(70000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('pt999_00', 22)
     ConstantAlphaModifier(10)
     sprite('pt999_00', 6)
@@ -3495,6 +3596,7 @@ def ptPhantom_NoSound():
     sprite('pt999_00', 6)
     sprite('pt999_00', 6)
 
+
 @State
 def Act3Event_IceBoard():
 
@@ -3506,7 +3608,7 @@ def Act3Event_IceBoard():
         AddY(160000)
 
         def upon_45():
-            if (not SLOT_51):
+            if not SLOT_51:
                 CopyFromRightToLeft(23, 2, 83, 3, 2, 83)
 
         def upon_32():
@@ -3534,6 +3636,7 @@ def Act3Event_IceBoard():
     SetScaleSpeedY(0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_IceBoard_koware():
@@ -3564,6 +3667,7 @@ def Act3Event_IceBoard_koware():
     sprite('vrjnef408_00', 3)
     CommonSE('018_ice_break_0')
     sprite('vrjnef408_00', 5)
+
 
 @State
 def Act3Event_Offset():

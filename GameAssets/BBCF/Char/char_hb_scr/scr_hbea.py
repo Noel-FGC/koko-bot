@@ -20,6 +20,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_HB_OD():
 
@@ -42,6 +43,7 @@ def EMB_HB_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_HB_AH():
 
@@ -63,6 +65,7 @@ def EMB_HB_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def ModelMagicCircle1():
 
@@ -74,6 +77,7 @@ def ModelMagicCircle1():
         IgnoreScreenfreeze(1)
     sprite('null', 74)
 
+
 @State
 def hbef_test():
 
@@ -84,19 +88,21 @@ def hbef_test():
         BlendMode_Normal()
     sprite('null', 120)
 
+
 @State
 def hbef_Drive():
 
     def upon_IMMEDIATE():
         E0EAEffectPosition(2)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 6)
     CallPrivateEffect('hbef_Drive')
     PrivateSE('hbse_00')
     label(0)
     sprite('null', 30)
     E0EAEffectPosition(0)
+
 
 @State
 def hbef_D_feather():
@@ -107,6 +113,7 @@ def hbef_D_feather():
     sprite('null', 1)
     CreateParticle('hbef_D_feather', 100)
 
+
 @State
 def hbef_2D_feather():
 
@@ -114,6 +121,7 @@ def hbef_2D_feather():
         pass
     sprite('null', 1)
     CreateParticle('hbef_2D_feather', 100)
+
 
 @State
 def hbef_Air2D_feather():
@@ -123,6 +131,7 @@ def hbef_Air2D_feather():
     sprite('null', 1)
     sprite('null', 1)
     CreateParticle('hbef_405feather', 100)
+
 
 @State
 def hbef_crow():
@@ -137,6 +146,7 @@ def hbef_crow():
     E0EAEffectPosition(0)
     sprite('null', 60)
 
+
 @State
 def hbef_BunshinSmoke():
 
@@ -150,6 +160,7 @@ def hbef_BunshinSmoke():
         SetScaleSpeed(10)
     sprite('null', 120)
 
+
 @Subroutine
 def Bunshin_Black():
     ColorTransition(0, 10)
@@ -159,9 +170,11 @@ def Bunshin_Black():
     AfterimageCount(5)
     EnableAfterimagePulse(1)
 
+
 @Subroutine
 def Bunshin_Alpha():
     ConstantAlphaModifier(-17)
+
 
 @Subroutine
 def Bunshin_Zanzou():
@@ -171,6 +184,7 @@ def Bunshin_Zanzou():
     AfterimageMask_2(0, 0, 63, 191)
     AfterimageCount(4)
     AfterimageInterval(1)
+
 
 @State
 def hbef_201_slash():
@@ -187,6 +201,7 @@ def hbef_201_slash():
     sprite('null', 5)
     sprite('null', 8)
     ConstantAlphaModifier(-32)
+
 
 @State
 def hbef_201_slash2():
@@ -207,6 +222,7 @@ def hbef_201_slash2():
     sprite('vr_hb201_10', 4)
     sprite('vr_hb201_11', 30)
 
+
 @State
 def hbef_202_slash():
 
@@ -221,6 +237,7 @@ def hbef_202_slash():
     ConstantRedModifier(-16)
     ConstantGreenModifier(-16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def hbef_203_slash():
@@ -239,6 +256,7 @@ def hbef_203_slash():
     ConstantGreenModifier(-25)
     sprite('null', 5)
 
+
 @State
 def hbef_210_slash():
 
@@ -252,6 +270,7 @@ def hbef_210_slash():
     CreateObject('hbef_210_lead', 100)
     sprite('vr_hb210_01', 3)
 
+
 @State
 def hbef_210_lead():
 
@@ -262,6 +281,7 @@ def hbef_210_lead():
     CreateParticle('hbef_210stuck', 0)
     sprite('vr_hb210_10', 15)
     ConstantAlphaModifier(-16)
+
 
 @State
 def hbef_211_slash():
@@ -278,6 +298,7 @@ def hbef_211_slash():
     sprite('vr_hb211_01', 6)
     ConstantAlphaModifier(-20)
 
+
 @State
 def hbef_211_slash2():
 
@@ -292,6 +313,7 @@ def hbef_211_slash2():
     ConstantGreenModifier(-16)
     sprite('null', 8)
     ConstantAlphaModifier(-32)
+
 
 @State
 def hbef_212_slash():
@@ -313,6 +335,7 @@ def hbef_212_slash():
         CustomPalette(-200)
     sprite('vr_hb212_00', 120)
 
+
 @State
 def hbef_212_slash2():
 
@@ -328,6 +351,7 @@ def hbef_212_slash2():
     ConstantRedModifier(-25)
     ConstantGreenModifier(-25)
 
+
 @State
 def hbef_213_slash():
 
@@ -341,6 +365,7 @@ def hbef_213_slash():
     sprite('null', 10)
     ConstantRedModifier(-16)
     ConstantGreenModifier(-16)
+
 
 @State
 def hbef_213_slash2():
@@ -356,6 +381,7 @@ def hbef_213_slash2():
     ConstantRedModifier(-16)
     ConstantGreenModifier(-16)
 
+
 @State
 def hbef_213_slash3():
 
@@ -369,6 +395,7 @@ def hbef_213_slash3():
     sprite('null', 10)
     ConstantRedModifier(-16)
     ConstantGreenModifier(-16)
+
 
 @State
 def hbef_231_slash():
@@ -384,6 +411,7 @@ def hbef_231_slash():
     ConstantGreenModifier(-16)
     sprite('null', 8)
     ConstantAlphaModifier(-32)
+
 
 @State
 def hbef_231_slash2():
@@ -406,6 +434,7 @@ def hbef_231_slash2():
     sprite('vr_hb231_11', 30)
     SetZVal(-100)
 
+
 @State
 def hbef_232_slash():
 
@@ -418,6 +447,7 @@ def hbef_232_slash():
     sprite('null', 10)
     ConstantRedModifier(-16)
     ConstantGreenModifier(-16)
+
 
 @State
 def hbef_234_slash():
@@ -433,6 +463,7 @@ def hbef_234_slash():
     ConstantRedModifier(-28)
     ConstantGreenModifier(-28)
 
+
 @State
 def hbef_234_shadow():
 
@@ -444,6 +475,7 @@ def hbef_234_shadow():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def hbef_234_shadow_b():
 
@@ -453,6 +485,7 @@ def hbef_234_shadow_b():
         IgnorePauses(2)
     sprite('null', 1)
     CreateParticle('hbef_234shadow_b', 100)
+
 
 @State
 def hbef_251_slash():
@@ -467,6 +500,7 @@ def hbef_251_slash():
     ConstantRedModifier(-16)
     ConstantGreenModifier(-16)
 
+
 @State
 def hbef_251_slash2():
 
@@ -479,6 +513,7 @@ def hbef_251_slash2():
         AlphaValue(200)
     sprite('vr_hb251_10', 2)
     sprite('vr_hb251_11', 4)
+
 
 @State
 def hbef_252_slash():
@@ -498,6 +533,7 @@ def hbef_252_slash():
     sprite('null', 7)
     ConstantAlphaModifier(-36)
 
+
 @State
 def hbef_253_slash():
 
@@ -512,6 +548,7 @@ def hbef_253_slash():
     ConstantGreenModifier(-16)
     sprite('null', 5)
 
+
 @State
 def hbef_254_slash():
 
@@ -524,6 +561,7 @@ def hbef_254_slash():
     sprite('null', 9)
     ConstantRedModifier(-28)
     ConstantGreenModifier(-28)
+
 
 @Subroutine
 def Drive_Bunshin_Init():
@@ -538,14 +576,15 @@ def Drive_Bunshin_Init():
     AutoHitStopSending(1)
     IgnorePauses(3)
 
-    def upon_44():
+    def upon_PLAYER_DAMAGED():
         IgnorePauses(0)
     HitsPerCall(1, 0, 0, 1, 0, 1, 1, 1)
-    sendToLabelUpon(54, 9)
+    uponSendToLabel(54, 9)
     Unknown23091(1)
     DespawnEAEffect('hbef_crow')
     RunLoopUpon(17, 120)
-    sendToLabelUpon(17, 9)
+    uponSendToLabel(17, 9)
+
 
 @Subroutine
 def Drive_Bunshin_Break():
@@ -559,7 +598,8 @@ def Drive_Bunshin_Break():
     AttackOff()
     EnableCollision(0)
     CameraFollowTarget(0, 0)
-    ObjectUpon(3, 41)
+    ObjectUpon(EVERY_FRAME, 41)
+
 
 @State
 def AN_NmlAtk5D_Bunshin():
@@ -574,19 +614,19 @@ def AN_NmlAtk5D_Bunshin():
         AirUntechableTime(30)
         AlphaValue(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                if (SLOT_19 <= 320000):
-                    clearUponHandler(3)
+                if SLOT_19 <= 320000:
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
     sprite('hb203_06', 3)
     ConstantAlphaModifier(50)
     AddX(50000)
     physicsXImpulse(50000)
     CreateObject('hbef_D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(192000)
     sprite('hb203_07', 3)
     SLOT_51 = 1
     sprite('hb203_06', 3)
@@ -594,12 +634,12 @@ def AN_NmlAtk5D_Bunshin():
     label(0)
     sprite('hb203_08', 3)
     CommonSE('010_swing_sword_1')
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     XImpulseAcceleration(80)
     sprite('hb203_09', 3)
     XImpulseAcceleration(10)
     CreateObject('hbef_203_slash', 100)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     sprite('hb203_10', 3)
     sprite('hb203_11', 5)
     EndMomentum(1)
@@ -614,10 +654,11 @@ def AN_NmlAtk5D_Bunshin():
     label(9)
     sprite('keep', 20)
     callSubroutine('Drive_Bunshin_Break')
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     CreateObject('hbef_crow', 100)
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
+
 
 @State
 def AN_NmlAtk6D_Bunshin():
@@ -653,6 +694,7 @@ def AN_NmlAtk6D_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def AN_NmlAtk2D_Bunshin():
 
@@ -674,7 +716,7 @@ def AN_NmlAtk2D_Bunshin():
     NoDamageAction(1)
     Visibility(1)
     sprite('hb234_06', 10)
-    if (SLOT_19 < 1000000):
+    if SLOT_19 < 1000000:
         TeleportToObject(22)
         AbsoluteY(0)
         AddX(-50000)
@@ -689,8 +731,8 @@ def AN_NmlAtk2D_Bunshin():
     SetYCollisionFromOrigin(80)
     PushCollisionHeightLow(80000)
     EnableCollision(1)
-    clearUponHandler(3)
-    sendToLabelUpon(2, 1)
+    clearUponHandler(EVERY_FRAME)
+    uponSendToLabel(LANDING, 1)
     sprite('hb234_13', 4)
     physicsXImpulse(3000)
     physicsYImpulse(18000)
@@ -712,7 +754,7 @@ def AN_NmlAtk2D_Bunshin():
     sprite('hb234_18', 32767)
     label(1)
     sprite('hb234_19', 2)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
     EnableCollision(0)
@@ -721,11 +763,11 @@ def AN_NmlAtk2D_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    AddY(-100000)
-    AddX(-16000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        AddY(-100000)
+        AddX(-16000)
     sprite('hb234_20', 2)
     sprite('hb234_21', 20)
     loopRest()
@@ -736,8 +778,9 @@ def AN_NmlAtk2D_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
-    clearUponHandler(2)
-    clearUponHandler(3)
+    clearUponHandler(LANDING)
+    clearUponHandler(EVERY_FRAME)
+
 
 @State
 def AN_NmlAtk3D_Bunshin():
@@ -773,6 +816,7 @@ def AN_NmlAtk3D_Bunshin():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @State
 def AN_NmlAtkAir5D_Bunshin():
 
@@ -793,9 +837,9 @@ def AN_NmlAtkAir5D_Bunshin():
     AddX(50000)
     physicsXImpulse(40000)
     CreateObject('hbef_D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(192000)
     sprite('hb253_06', 3)
     sprite('hb253_07', 2)
     CommonSE('010_swing_sword_1')
@@ -820,6 +864,7 @@ def AN_NmlAtkAir5D_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
+
 
 @State
 def AN_NmlAtkAir6D_Bunshin():
@@ -854,6 +899,7 @@ def AN_NmlAtkAir6D_Bunshin():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @State
 def AN_NmlAtkAir2D_Bunshin():
 
@@ -872,20 +918,20 @@ def AN_NmlAtkAir2D_Bunshin():
         FloorCollision(0)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
         AlphaValue(0)
-        if (SLOT_25 < 110000):
+        if SLOT_XDistanceFromFowardCorner < 110000:
             EnableCollision(0)
     sprite('hb254_05', 4)
     physicsXImpulse(26400)
     physicsYImpulse(-36000)
     ConstantAlphaModifier(70)
     CreateObject('hbef_Air2D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddX(60000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(60000)
+        AddY(100000)
     sprite('hb254_06', 3)
     sprite('hb254_07', 2)
     CommonSE('010_swing_sword_1')
@@ -911,7 +957,7 @@ def AN_NmlAtkAir2D_Bunshin():
     EndMomentum(1)
     EnableCollision(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('hb024_01', 3)
     sprite('hb024_02', 3)
     label(9)
@@ -920,6 +966,7 @@ def AN_NmlAtkAir2D_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
+
 
 @State
 def AN_NmlAtkAir3D_Bunshin():
@@ -955,6 +1002,7 @@ def AN_NmlAtkAir3D_Bunshin():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @State
 def AN_NmlAtk5D_Bunshin_OD():
 
@@ -970,19 +1018,19 @@ def AN_NmlAtk5D_Bunshin_OD():
         AirUntechableTime(30)
         AlphaValue(0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                if (SLOT_19 <= 320000):
-                    clearUponHandler(3)
+                if SLOT_19 <= 320000:
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(0)
     sprite('hb203_06', 3)
     ConstantAlphaModifier(50)
     AddX(50000)
     physicsXImpulse(55000)
     CreateObject('hbef_D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(192000)
     sprite('hb203_07', 3)
     SLOT_51 = 1
     sprite('hb203_06', 3)
@@ -990,12 +1038,12 @@ def AN_NmlAtk5D_Bunshin_OD():
     label(0)
     sprite('hb203_08', 2)
     CommonSE('010_swing_sword_1')
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     XImpulseAcceleration(80)
     sprite('hb203_09', 3)
     XImpulseAcceleration(10)
     CreateObject('hbef_203_slash', 100)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     sprite('hb203_10', 3)
     sprite('hb203_11', 5)
     EndMomentum(1)
@@ -1011,10 +1059,11 @@ def AN_NmlAtk5D_Bunshin_OD():
     label(9)
     sprite('keep', 20)
     callSubroutine('Drive_Bunshin_Break')
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     CreateObject('hbef_crow', 100)
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
+
 
 @State
 def AN_NmlAtk6D_Bunshin_OD():
@@ -1050,6 +1099,7 @@ def AN_NmlAtk6D_Bunshin_OD():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def AN_NmlAtk2D_Bunshin_OD():
 
@@ -1073,7 +1123,7 @@ def AN_NmlAtk2D_Bunshin_OD():
     NoDamageAction(1)
     Visibility(1)
     sprite('hb234_06', 1)
-    if (SLOT_19 < 1000000):
+    if SLOT_19 < 1000000:
         TeleportToObject(22)
         AbsoluteY(0)
         AddX(-50000)
@@ -1088,8 +1138,8 @@ def AN_NmlAtk2D_Bunshin_OD():
     SetYCollisionFromOrigin(80)
     PushCollisionHeightLow(80000)
     EnableCollision(1)
-    clearUponHandler(3)
-    sendToLabelUpon(2, 1)
+    clearUponHandler(EVERY_FRAME)
+    uponSendToLabel(LANDING, 1)
     sprite('hb234_13', 2)
     physicsXImpulse(3000)
     physicsYImpulse(18000)
@@ -1111,7 +1161,7 @@ def AN_NmlAtk2D_Bunshin_OD():
     sprite('hb234_18', 32767)
     label(1)
     sprite('hb234_19', 2)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     EndMomentum(1)
     LandingEffects(100, 1, 1)
     EnableCollision(0)
@@ -1120,11 +1170,11 @@ def AN_NmlAtk2D_Bunshin_OD():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    AddY(-100000)
-    AddX(-16000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        AddY(-100000)
+        AddX(-16000)
     sprite('hb234_20', 2)
     sprite('hb234_21', 20)
     loopRest()
@@ -1135,8 +1185,9 @@ def AN_NmlAtk2D_Bunshin_OD():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
-    clearUponHandler(2)
-    clearUponHandler(3)
+    clearUponHandler(LANDING)
+    clearUponHandler(EVERY_FRAME)
+
 
 @State
 def AN_NmlAtk3D_Bunshin_OD():
@@ -1159,10 +1210,10 @@ def AN_NmlAtk3D_Bunshin_OD():
             callSubroutine('Bunshin_Black')
             callSubroutine('Bunshin_Alpha')
             CreateObject('hbef_crow', 100)
-            ApplyFunctionsToObjects(1)
-            Flip()
-            AddY(-65000)
-            ApplyFunctionsToSelf()
+
+            def RunOnObject_1():
+                Flip()
+                AddY(-65000)
     sprite('hb234_07', 3)
     callSubroutine('Bunshin_Zanzou')
     sprite('hb234_08', 3)
@@ -1211,6 +1262,7 @@ def AN_NmlAtk3D_Bunshin_OD():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @State
 def AN_NmlAtkAir5D_Bunshin_OD():
 
@@ -1234,9 +1286,9 @@ def AN_NmlAtkAir5D_Bunshin_OD():
     AddX(50000)
     physicsXImpulse(50000)
     CreateObject('hbef_D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(192000)
     sprite('hb253_06', 3)
     sprite('hb253_07', 2)
     CommonSE('010_swing_sword_1')
@@ -1261,6 +1313,7 @@ def AN_NmlAtkAir5D_Bunshin_OD():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
+
 
 @State
 def AN_NmlAtkAir6D_Bunshin_OD():
@@ -1295,6 +1348,7 @@ def AN_NmlAtkAir6D_Bunshin_OD():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @State
 def AN_NmlAtkAir2D_Bunshin_OD():
 
@@ -1315,20 +1369,20 @@ def AN_NmlAtkAir2D_Bunshin_OD():
         FloorCollision(0)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             EndMomentum(1)
         AlphaValue(0)
-        if (SLOT_25 < 110000):
+        if SLOT_XDistanceFromFowardCorner < 110000:
             EnableCollision(0)
     sprite('hb254_05', 4)
     physicsXImpulse(26400)
     physicsYImpulse(-36000)
     ConstantAlphaModifier(70)
     CreateObject('hbef_Air2D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddX(60000)
-    AddY(100000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(60000)
+        AddY(100000)
     sprite('hb254_06', 3)
     sprite('hb254_07', 2)
     CommonSE('010_swing_sword_1')
@@ -1354,7 +1408,7 @@ def AN_NmlAtkAir2D_Bunshin_OD():
     EndMomentum(1)
     EnableCollision(0)
     LandingEffects(100, 1, 1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('hb024_01', 3)
     sprite('hb024_02', 3)
     label(9)
@@ -1363,6 +1417,7 @@ def AN_NmlAtkAir2D_Bunshin_OD():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
+
 
 @State
 def AN_NmlAtkAir3D_Bunshin_OD():
@@ -1398,6 +1453,7 @@ def AN_NmlAtkAir3D_Bunshin_OD():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @State
 def hbef_313_smoke():
 
@@ -1407,6 +1463,7 @@ def hbef_313_smoke():
     sprite('null', 1)
     CreateParticle('hbef_313smoke', 100)
     CreateObject('hbef_313_shot', 100)
+
 
 @State
 def hbef_313_shot():
@@ -1435,15 +1492,16 @@ def hbef_313_shot():
         AttackDirection(3)
         UseSlashHitspark(1)
         IgnoreBurst(1)
-        sendToLabelUpon(12, 0)
+        uponSendToLabel(OPPONENT_HIT, 0)
     sprite('vr_hb313_00', 20)
     physicsYImpulse(-64000)
     LinkParticle('hbef_313shot')
     label(0)
     sprite('keep', 1)
     EndMomentum(1)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     EndAttack()
+
 
 @State
 def __313_AttackEffect():
@@ -1456,6 +1514,7 @@ def __313_AttackEffect():
     ParticleSize(700)
     CallCustomizableParticle('ef_hitlz', 103)
     CommonSE('101_hit_slash_0')
+
 
 @State
 def ThrowExe_Bunshin_a():
@@ -1487,6 +1546,7 @@ def ThrowExe_Bunshin_a():
     sprite('keep', 20)
     ConstantAlphaModifier(-20)
 
+
 @State
 def ThrowExe_Bunshin_b():
 
@@ -1496,6 +1556,7 @@ def ThrowExe_Bunshin_b():
     CreateObject('hbef_crow', 100)
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
+
 
 @State
 def hbef_311_slash():
@@ -1509,6 +1570,7 @@ def hbef_311_slash():
     sprite('null', 3)
     sprite('null', 4)
 
+
 @State
 def AirThrowExe_Bunshin_a():
 
@@ -1520,6 +1582,7 @@ def AirThrowExe_Bunshin_a():
     physicsXImpulse(30000)
     StartMultihit()
 
+
 @State
 def AirThrowExe_Bunshin_b():
 
@@ -1530,6 +1593,7 @@ def AirThrowExe_Bunshin_b():
     sprite('hb320_02', 20)
     StartMultihit()
     ConstantAlphaModifier(-20)
+
 
 @State
 def hbef_321_slash():
@@ -1554,6 +1618,7 @@ def hbef_321_slash():
     sprite('vr_hb321_02', 3)
     sprite('vr_hb321_03', 3)
 
+
 @State
 def hbef_312_slash():
 
@@ -1575,6 +1640,7 @@ def hbef_312_slash():
     sprite('vr_hb312_01', 4)
     sprite('vr_hb312_02', 4)
 
+
 @State
 def AntiAir_Bunshin_a():
 
@@ -1583,7 +1649,7 @@ def AntiAir_Bunshin_a():
         EnableCollision(0)
         FloorCollision(1)
         HitsPerCall(1, 0, 0, 1, 0, 1, 1, 1)
-        sendToLabelUpon(54, 0)
+        uponSendToLabel(54, 0)
         Unknown23091(1)
         NoDamageAction(1)
         NoAttackDuringAction(1)
@@ -1608,9 +1674,9 @@ def AntiAir_Bunshin_a():
     NoDamageAction(1)
     clearUponHandler(54)
     CreateObject('hbef_crow', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(96000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(96000)
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     loopRest()
@@ -1627,6 +1693,7 @@ def AntiAir_Bunshin_a():
     CreateObject('hbef_crow', 100)
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
+
 
 @State
 def hbef_411_slash_3d():
@@ -1645,6 +1712,7 @@ def hbef_411_slash_3d():
     sprite('null', 2)
     E0EAEffectPosition(0)
 
+
 @State
 def hbef_411_slash_pt():
 
@@ -1660,6 +1728,7 @@ def hbef_411_slash_pt():
     sprite('null', 10)
     E0EAEffectPosition(0)
 
+
 @State
 def hbef_400_dash():
 
@@ -1673,6 +1742,7 @@ def hbef_400_dash():
     sprite('null', 2)
     CallCustomizableParticle('hbef_400_dash', 100)
     gotoLabel(0)
+
 
 @State
 def hbef_400_slash():
@@ -1690,6 +1760,7 @@ def hbef_400_slash():
     sprite('null', 7)
     ConstantAlphaModifier(-36)
 
+
 @State
 def hbef_400_damage():
 
@@ -1702,6 +1773,7 @@ def hbef_400_damage():
     PaletteIndex(1)
     ParticleColorFromPalette(240, 242, 242)
     CallCustomizableParticle('hbef_400damage', 100)
+
 
 @State
 def hbef_401_slash():
@@ -1722,6 +1794,7 @@ def hbef_401_slash():
     sprite('null', 15)
     ConstantAlphaModifier(-17)
 
+
 @State
 def Assault_Dash():
 
@@ -1733,6 +1806,7 @@ def Assault_Dash():
     CallCustomizableParticle('hbef_400', 100)
     gotoLabel(0)
 
+
 @State
 def Assault_D_Bunshin():
 
@@ -1740,7 +1814,7 @@ def Assault_D_Bunshin():
         WallCollisionDetection(1)
         EnableCollision(0)
         HitsPerCall(1, 0, 0, 1, 0, 1, 1, 1)
-        sendToLabelUpon(54, 0)
+        uponSendToLabel(54, 0)
         Unknown23091(1)
     sprite('hb400_03', 5)
     clearUponHandler(54)
@@ -1770,6 +1844,7 @@ def Assault_D_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def hbef_402_kick():
 
@@ -1787,6 +1862,7 @@ def hbef_402_kick():
     E0EAEffectPosition(0)
     sprite('vr_hb402_02', 3)
 
+
 @State
 def hbef_403_kick():
 
@@ -1802,6 +1878,7 @@ def hbef_403_kick():
     sprite('vr_hb403_01', 2)
     sprite('vr_hb403_02', 5)
 
+
 @State
 def BunshinAssault_Bunshin():
 
@@ -1809,7 +1886,7 @@ def BunshinAssault_Bunshin():
         WallCollisionDetection(1)
         FloorCollision(1)
         HitsPerCall(1, 0, 0, 1, 0, 1, 1, 1)
-        sendToLabelUpon(54, 0)
+        uponSendToLabel(54, 0)
         Unknown23091(1)
     sprite('hb402_02', 3)
     callSubroutine('Bunshin_Zanzou')
@@ -1841,6 +1918,7 @@ def BunshinAssault_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def BunshinAssault_A_Bunshin():
 
@@ -1848,7 +1926,7 @@ def BunshinAssault_A_Bunshin():
         WallCollisionDetection(1)
         FloorCollision(1)
         HitsPerCall(1, 0, 0, 1, 0, 1, 1, 1)
-        sendToLabelUpon(54, 0)
+        uponSendToLabel(54, 0)
         Unknown23091(1)
         AlphaValue(0)
 
@@ -1898,6 +1976,7 @@ def BunshinAssault_A_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def BunshinAssault_A_BunshinF():
 
@@ -1935,7 +2014,7 @@ def BunshinAssault_A_BunshinF():
         callSubroutine('Bunshin_Black')
         callSubroutine('Bunshin_Alpha')
         CreateObject('hbef_crow', 100)
-        PassbackAddActionMarkToFunction('BunshinAssault_A', 32)
+        TriggerUponForState('BunshinAssault_A', 32)
     sprite('hb402_14', 2)
     sprite('hb402_15', 1)
     sprite('hb402_16', 10)
@@ -1955,6 +2034,7 @@ def BunshinAssault_A_BunshinF():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def BunshinAssault_B_Bunshin():
 
@@ -1962,7 +2042,7 @@ def BunshinAssault_B_Bunshin():
         WallCollisionDetection(1)
         FloorCollision(1)
         HitsPerCall(1, 0, 0, 1, 0, 1, 1, 1)
-        sendToLabelUpon(54, 0)
+        uponSendToLabel(54, 0)
         Unknown23091(1)
         AlphaValue(0)
 
@@ -2011,6 +2091,7 @@ def BunshinAssault_B_Bunshin():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def BunshinAssault_B_BunshinF():
 
@@ -2047,7 +2128,7 @@ def BunshinAssault_B_BunshinF():
         CreateObject('hbef_crow', 100)
     sprite('hb403_06', 3)
     if SLOT_2:
-        PassbackAddActionMarkToFunction('BunshinAssault_B', 32)
+        TriggerUponForState('BunshinAssault_B', 32)
     sprite('hb403_07', 2)
     sprite('hb403_08', 2)
     sprite('hb403_09', 10)
@@ -2067,6 +2148,7 @@ def BunshinAssault_B_BunshinF():
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
 
+
 @State
 def FrontJump_Testdummy():
 
@@ -2074,16 +2156,17 @@ def FrontJump_Testdummy():
         NoDamageAction(1)
     sprite('hb024_00', 3)
     LandingEffects(100, 1, 1)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('hb024_01', 3)
     sprite('hb024_02', 20)
     callSubroutine('Bunshin_Black')
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(-70000)
-    AddX(15000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-70000)
+        AddX(15000)
+
 
 @State
 def hbef_405_kick():
@@ -2098,6 +2181,7 @@ def hbef_405_kick():
     CreateParticle('hbef_405kick', 100)
     CreateParticle('hbef_405feather', 100)
     sprite('null', 2)
+
 
 @State
 def Derive_A_Dummy():
@@ -2131,7 +2215,7 @@ def Derive_A_Dummy():
             RotationAngle(-15000)
             HitboxMovement(70000, -75000)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             NoAttackDuringAction(1)
     sprite('vr_hb407_00', 7)
     Visibility(1)
@@ -2143,6 +2227,7 @@ def Derive_A_Dummy():
     CreateParticle('hbef_407stuck', 0)
     sprite('keep', 20)
     ConstantAlphaModifier(-25)
+
 
 @State
 def Derive_A_Dummy_kg():
@@ -2174,7 +2259,7 @@ def Derive_A_Dummy_kg():
             RotationAngle(-15000)
             HitboxMovement(70000, -75000)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             NoAttackDuringAction(1)
     sprite('vr_hb407_00ex', 7)
     Visibility(1)
@@ -2186,6 +2271,7 @@ def Derive_A_Dummy_kg():
     CreateParticle('hbef_407stuck', 0)
     sprite('keep', 20)
     ConstantAlphaModifier(-25)
+
 
 @State
 def Derive_A_Attack():
@@ -2208,6 +2294,7 @@ def Derive_A_Attack():
         AbsoluteY(0)
     sprite('hb407_AtkDummy2', 3)
 
+
 @State
 def Derive_C_Bunshin():
 
@@ -2223,6 +2310,7 @@ def Derive_C_Bunshin():
     sprite('hb409_04', 20)
     ConstantAlphaModifier(-30)
 
+
 @State
 def hbef_408_slash():
 
@@ -2237,6 +2325,7 @@ def hbef_408_slash():
     sprite('vr_hb408_00', 3)
     sprite('vr_hb408_01', 3)
     sprite('vr_hb408_02', 3)
+
 
 @State
 def hbef_409_crow():
@@ -2265,6 +2354,7 @@ def hbef_409_crow():
     CreateObject('hbef_409_change', 103)
     ConstantAlphaModifier(-32)
 
+
 @State
 def hbef_409_jump():
 
@@ -2290,6 +2380,7 @@ def hbef_409_jump():
     CreateParticle('hbef_409jump', 100)
     sprite('null', 3)
     CreateParticle('hbef_409jump', 100)
+
 
 @State
 def hbef_409_feather():
@@ -2317,6 +2408,7 @@ def hbef_409_feather():
     sprite('null', 3)
     CreateParticle('hbef_409feather_r', 100)
 
+
 @State
 def hbef_409_feather2():
 
@@ -2343,6 +2435,7 @@ def hbef_409_feather2():
     sprite('null', 3)
     CreateParticle('hbef_409feather_l', 100)
 
+
 @State
 def hbef_409_change():
 
@@ -2350,6 +2443,7 @@ def hbef_409_change():
         E0EAEffectPosition(2)
     sprite('null', 1)
     CreateParticle('hbef_409change', 100)
+
 
 @State
 def hbef_409_atemi():
@@ -2359,6 +2453,7 @@ def hbef_409_atemi():
         LinkParticle('hbef_409atemi')
     sprite('null', 15)
     CreateParticle('hbef_409atemi_feather', -1)
+
 
 @State
 def Derive_D_Bunshin():
@@ -2383,6 +2478,7 @@ def Derive_D_Bunshin():
     sprite('hb410_02', 2)
     sprite('hb410_03', 2)
 
+
 @State
 def hbef_410_slash():
 
@@ -2396,7 +2492,7 @@ def hbef_410_slash():
         AddY(128000)
         Size(1075)
         AlphaValue(191)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         LinkParticle('hbef_410slash')
     label(1)
     sprite('null', 4)
@@ -2413,6 +2509,7 @@ def hbef_410_slash():
     ConstantGreenModifier(-32)
     SetScaleSpeed(50)
     E0EAEffectPosition(0)
+
 
 @State
 def hbef_410_slash_Air():
@@ -2427,7 +2524,7 @@ def hbef_410_slash_Air():
         AddY(128000)
         Size(1075)
         AlphaValue(191)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         LinkParticle('hbef_410slash')
     label(1)
     sprite('null', 4)
@@ -2442,6 +2539,7 @@ def hbef_410_slash_Air():
     SetScaleSpeed(50)
     E0EAEffectPosition(0)
 
+
 @State
 def hbef_410_smoke():
 
@@ -2451,6 +2549,7 @@ def hbef_410_smoke():
         AbsoluteY(0)
     sprite('null', 1)
     CreateParticle('hbef_410smoke', 100)
+
 
 @State
 def hbef_430_slash():
@@ -2464,6 +2563,7 @@ def hbef_430_slash():
     sprite('vr_hb430_00', 3)
     CreateParticle('hbef_430fall_b', 100)
     sprite('vr_hb430_01', 3)
+
 
 @State
 def hbef_430_fall():
@@ -2480,6 +2580,7 @@ def hbef_430_fall():
     SetScaleXPerFrame(75)
     ConstantAlphaModifier(-4)
 
+
 @State
 def hbef_430_fall_OD():
 
@@ -2495,6 +2596,7 @@ def hbef_430_fall_OD():
     SetScaleXPerFrame(75)
     ConstantAlphaModifier(-4)
 
+
 @State
 def hbef_430_fall_OD_add():
 
@@ -2508,6 +2610,7 @@ def hbef_430_fall_OD_add():
     SetScaleSpeedY(-16)
     SetScaleXPerFrame(75)
     ConstantAlphaModifier(-4)
+
 
 @State
 def hbef_431_shot():
@@ -2525,7 +2628,7 @@ def hbef_431_shot():
         AfterimageCount(3)
         AfterimageColor_1(255, 191, 191, 255)
         AfterimageColor_2(0, 191, 191, 255)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_hb431_00', 3)
     PrivateSE('hbse_07')
     sprite('vr_hb431_01', 3)
@@ -2549,6 +2652,7 @@ def hbef_431_shot():
     sprite('vr_hb431_01', 3)
     gotoLabel(1)
 
+
 @State
 def UltimateAssault2():
 
@@ -2566,7 +2670,7 @@ def UltimateAssault2():
         CancelIfPlayerHit(3)
         HitboxMovement(65000, 0)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             NoAttackDuringAction(1)
 
         def upon_OPPONENT_HIT():
@@ -2574,12 +2678,12 @@ def UltimateAssault2():
             DefeatOpponentBehavior(1)
             Hitstun(500)
             PushbackX(0)
-            ObjectUpon(3, 33)
+            ObjectUpon(EVERY_FRAME, 33)
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_XDistanceFromFowardCorner < 110000:
                 clearUponHandler(45)
-                ObjectUpon(2, 40)
+                ObjectUpon(LANDING, 40)
         if SLOT_137:
             DamageMultiplier(80)
     sprite('hb407_AtkDummy', 5)
@@ -2591,13 +2695,13 @@ def UltimateAssault2():
     XImpulseAcceleration(20)
     ConstantAlphaModifier(-20)
     NoAttackDuringAction(1)
-    PassbackAddActionMarkToFunction('hbef_431_shot', 32)
+    TriggerUponForState('hbef_431_shot', 32)
     CreateObject('hbef_crow', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(-192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-192000)
     sprite('hb407_AtkDummy', 10)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     EndMomentum(1)
     loopRest()
     ExitState()
@@ -2606,14 +2710,15 @@ def UltimateAssault2():
     XImpulseAcceleration(5)
     EndAttack()
     clearUponHandler(54)
-    clearUponHandler(10)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
     ConstantAlphaModifier(-50)
     CreateObject('hbef_crow', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(-192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-192000)
     sprite('keep', 20)
     EndMomentum(1)
+
 
 @State
 def hbef_431_slash():
@@ -2627,6 +2732,7 @@ def hbef_431_slash():
         BlendMode_Add()
     sprite('null', 9)
 
+
 @State
 def hbef_431_slash2():
 
@@ -2639,6 +2745,7 @@ def hbef_431_slash2():
         BlendMode_Add()
         AddY(200000)
     sprite('null', 4)
+
 
 @State
 def hbef_431_slash3():
@@ -2656,6 +2763,7 @@ def hbef_431_slash3():
     sprite('null', 10)
     ConstantAlphaModifier(-16)
 
+
 @State
 def hbef_431_rolling():
 
@@ -2670,7 +2778,7 @@ def hbef_431_rolling():
         AddY(128000)
         Size(1075)
         AlphaValue(191)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 60)
     label(0)
     sprite('null', 10)
@@ -2679,6 +2787,7 @@ def hbef_431_rolling():
     ConstantGreenModifier(-32)
     SetScaleSpeed(50)
     E0EAEffectPosition(0)
+
 
 @State
 def hbef_431_rolling_dash():
@@ -2690,6 +2799,7 @@ def hbef_431_rolling_dash():
     sprite('null', 4)
     CreateParticle('hbef_431rolling', 100)
     gotoLabel(0)
+
 
 @State
 def hbef_431_slash4():
@@ -2710,6 +2820,7 @@ def hbef_431_slash4():
     ConstantGreenModifier(-17)
     ConstantAlphaModifier(-17)
 
+
 @State
 def hbef_431_slash_bg():
     sprite('null', 1)
@@ -2717,6 +2828,7 @@ def hbef_431_slash_bg():
     ParticleRotationAngle(110000)
     ParticleLayer(11)
     CallCustomizableParticle('hbef_431slash_bg', 103)
+
 
 @State
 def hbef_431_slash_bg2():
@@ -2726,6 +2838,7 @@ def hbef_431_slash_bg2():
     ParticleLayer(11)
     CallCustomizableParticle('hbef_431slash_bg', 103)
 
+
 @State
 def hbef_431_slash_bg3():
     sprite('null', 1)
@@ -2733,6 +2846,7 @@ def hbef_431_slash_bg3():
     ParticleRotationAngle(250000)
     ParticleLayer(11)
     CallCustomizableParticle('hbef_431slash_bg', 103)
+
 
 @State
 def hbef_431_slash_bg4():
@@ -2742,6 +2856,7 @@ def hbef_431_slash_bg4():
     ParticleLayer(11)
     CallCustomizableParticle('hbef_431slash_bg2', 103)
 
+
 @State
 def hbef_431_hit():
 
@@ -2749,7 +2864,7 @@ def hbef_431_hit():
         TeleportToObject(22)
         ParticleLayer(13)
         CallPrivateEffect('hbef_431hit')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 1)
     Size(500)
     sprite('null', 32767)
@@ -2758,6 +2873,7 @@ def hbef_431_hit():
     sprite('null', 1)
     ParticleLayer(13)
     CallCustomizableParticle('nbef_431end', -1)
+
 
 @State
 def __431_AttackEffect():
@@ -2772,6 +2888,7 @@ def __431_AttackEffect():
     else:
         CommonSE('101_hit_slash_2')
     ScreenShake(0, 5000)
+
 
 @State
 def __431_AttackDummy():
@@ -2806,7 +2923,7 @@ def __431_AttackDummy():
     sprite('hb431_AtkDummy', 1)
     RefreshMultihit()
     AddCombo(3)
-    PassbackAddActionMarkToFunction('hbef_431_hit', 32)
+    TriggerUponForState('hbef_431_hit', 32)
     sprite('hb431_AtkDummy', 1)
     AddCombo(4)
     sprite('hb431_AtkDummy', 1)
@@ -2815,13 +2932,14 @@ def __431_AttackDummy():
     sprite('hb431_AtkDummy', 1)
     AddCombo(4)
     sprite('hb431_AtkDummy', 1)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     RefreshMultihit()
     Damage(2400)
     if SLOT_137:
         DamageMultiplier(80)
     DefeatOpponentBehavior(0)
     AddCombo(3)
+
 
 @State
 def UltimateAssault2_Bunshin0():
@@ -2849,6 +2967,7 @@ def UltimateAssault2_Bunshin0():
     sprite('hb431_07', 3)
     sprite('hb431_08', 3)
 
+
 @State
 def UltimateAssault2_Bunshin1():
 
@@ -2867,6 +2986,7 @@ def UltimateAssault2_Bunshin1():
     CreateObject('hbef_crow', 100)
     sprite('hb431_14', 20)
     ConstantAlphaModifier(-12)
+
 
 @State
 def UltimateAssault2_Bunshin2():
@@ -2888,6 +3008,7 @@ def UltimateAssault2_Bunshin2():
     sprite('hb431_20', 20)
     ConstantAlphaModifier(-12)
 
+
 @State
 def hbef_431_hit_OD():
 
@@ -2895,7 +3016,7 @@ def hbef_431_hit_OD():
         TeleportToObject(22)
         ParticleLayer(13)
         CallPrivateEffect('hbef_431hit_od')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 1)
     Size(500)
     sprite('null', 32767)
@@ -2905,6 +3026,7 @@ def hbef_431_hit_OD():
     sprite('null', 1)
     ParticleLayer(13)
     CallCustomizableParticle('nbef_431end_od', -1)
+
 
 @State
 def hbef_431_odbg():
@@ -2920,6 +3042,7 @@ def hbef_431_odbg():
     CallCustomizableParticle('hbef_431odbg', 103)
     gotoLabel(0)
 
+
 @State
 def hbef_431_slash_od():
     sprite('null', 1)
@@ -2929,6 +3052,7 @@ def hbef_431_slash_od():
     CallCustomizableParticle('hbef_431slash_bg', 103)
     CreateParticle('hbef_431hit_add', 103)
 
+
 @State
 def hbef_431_slash_od2():
     sprite('null', 1)
@@ -2936,6 +3060,7 @@ def hbef_431_slash_od2():
     ParticleRotationAngle(90000)
     CallCustomizableParticle('hbef_431slash_bg', 103)
     CreateParticle('hbef_431hit_add', 103)
+
 
 @State
 def __431_AttackEffect_OD():
@@ -2948,6 +3073,7 @@ def __431_AttackEffect_OD():
     CommonSE('103_hit_counter_slash_0')
     CommonSE('101_hit_slash_2')
     ScreenShake(0, 12000)
+
 
 @State
 def __431_AttackDummy_OD():
@@ -3000,10 +3126,11 @@ def __431_AttackDummy_OD():
     sprite('hb431_AtkDummy', 1)
     RefreshMultihit()
     sprite('hb431_AtkDummy', 1)
-    PassbackAddActionMarkToFunction('hbef_431_hit_OD', 32)
-    ObjectUpon(3, 32)
+    TriggerUponForState('hbef_431_hit_OD', 32)
+    ObjectUpon(EVERY_FRAME, 32)
     DefeatOpponentBehavior(0)
     RefreshMultihit()
+
 
 @State
 def UltimateAssault2_OD_Bunshin():
@@ -3014,8 +3141,8 @@ def UltimateAssault2_OD_Bunshin():
         AlphaValue(0)
         DespawnEAEffect('hbef_crow')
 
-        def upon_FRAME_STEP():
-            if (SLOT_19 < 80000):
+        def upon_EVERY_FRAME():
+            if SLOT_19 < 80000:
                 CreateObject('431_AttackEffect_OD', 103)
     sprite('hb203_06', 2)
     callSubroutine('Zanzou_Ranbu')
@@ -3025,9 +3152,9 @@ def UltimateAssault2_OD_Bunshin():
     AddX(-480000)
     physicsXImpulse(50000)
     CreateObject('hbef_D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(192000)
     sprite('hb203_07', 2)
     sprite('hb203_08', 2)
     CommonSE('010_swing_sword_1')
@@ -3043,6 +3170,7 @@ def UltimateAssault2_OD_Bunshin():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @State
 def UltimateAssault2_OD_Bunshin1():
 
@@ -3052,8 +3180,8 @@ def UltimateAssault2_OD_Bunshin1():
         AlphaValue(0)
         DespawnEAEffect('hbef_crow')
 
-        def upon_FRAME_STEP():
-            if (SLOT_19 < 80000):
+        def upon_EVERY_FRAME():
+            if SLOT_19 < 80000:
                 CreateObject('431_AttackEffect_OD', 103)
     sprite('hb203_06', 2)
     callSubroutine('Zanzou_Ranbu')
@@ -3063,9 +3191,9 @@ def UltimateAssault2_OD_Bunshin1():
     AddX(-480000)
     physicsXImpulse(50000)
     CreateObject('hbef_D_feather', 100)
-    ApplyFunctionsToObjects(1)
-    AddY(192000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(192000)
     sprite('hb203_07', 2)
     sprite('hb203_08', 2)
     CommonSE('010_swing_sword_1')
@@ -3081,12 +3209,14 @@ def UltimateAssault2_OD_Bunshin1():
     callSubroutine('Bunshin_Alpha')
     CreateObject('hbef_crow', 100)
 
+
 @Subroutine
 def Zanzou_Ranbu():
     ColorForTransition(4278190080)
     AlphaValue(0)
     ConstantAlphaModifier(42)
     ColorTransition(4294967295, 6)
+
 
 @State
 def hbef_440_kick():
@@ -3101,6 +3231,7 @@ def hbef_440_kick():
         AddY(190000)
         AddX(112000)
     sprite('null', 10)
+
 
 @State
 def hbef_440_kick2():
@@ -3117,6 +3248,7 @@ def hbef_440_kick2():
         Size(1225)
     sprite('null', 10)
 
+
 @State
 def hbef_440_kickBG():
 
@@ -3126,6 +3258,7 @@ def hbef_440_kickBG():
         AddX(90000)
     sprite('null', 1)
     CallCustomizableParticle('hbef_440upper', -1)
+
 
 @State
 def hbef_440_slash():
@@ -3139,6 +3272,7 @@ def hbef_440_slash():
     SetScaleSpeed(40)
     CreateParticle('hbef_440slash', -1)
 
+
 @State
 def hbef_440_slash2():
 
@@ -3149,6 +3283,7 @@ def hbef_440_slash2():
     sprite('null', 15)
     AddRotationPerFrame(-22500)
     Size(1250)
+
 
 @State
 def hbef_440_wing():
@@ -3168,6 +3303,7 @@ def hbef_440_wing():
     sprite('vr_hb440_00', 16)
     ConstantAlphaModifier(-16)
 
+
 @State
 def hbef_450_bg():
 
@@ -3175,11 +3311,12 @@ def hbef_450_bg():
         RemoveOnCallStateEnd(2)
         IgnoreScreenfreeze(1)
         LinkParticle('hbef_450bg')
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 60)
     ConstantAlphaModifier(-4)
+
 
 @State
 def hbef_450_lead():
@@ -3188,7 +3325,7 @@ def hbef_450_lead():
         IgnorePauses(3)
         PaletteIndex(0)
         BlendMode_Normal()
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_hb450_00', 6)
     sprite('vr_hb450_01', 6)
     sprite('vr_hb450_10', 10)
@@ -3197,6 +3334,7 @@ def hbef_450_lead():
     ColorTransition(4278190080, 10)
     sprite('vr_hb450_10', 1)
     CreateObject('hbef_450_lead_c', 100)
+
 
 @State
 def hbef_450_lead_c():
@@ -3211,6 +3349,7 @@ def hbef_450_lead_c():
         SetCustomPaletteAlpha(-400)
     sprite('vr_hb450_20', 60)
 
+
 @State
 def hbef_450_circle():
 
@@ -3218,7 +3357,7 @@ def hbef_450_circle():
         RemoveOnCallStateEnd(3)
         IgnorePauses(3)
         AddY(16000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     Size(1250)
     ParticleLayer(11)
@@ -3232,6 +3371,7 @@ def hbef_450_circle():
     label(0)
     sprite('null', 25)
     ConstantAlphaModifier(-10)
+
 
 @State
 def hbef_450_cicle_wave():
@@ -3249,6 +3389,7 @@ def hbef_450_cicle_wave():
     sprite('null', 32)
     ConstantAlphaModifier(-8)
 
+
 @State
 def hbef_450_splash():
 
@@ -3261,6 +3402,7 @@ def hbef_450_splash():
     CreateParticle('hbef_450splash', 100)
     gotoLabel(0)
 
+
 @State
 def hbef_450_crows():
 
@@ -3271,6 +3413,7 @@ def hbef_450_crows():
     sprite('null', 160)
     CallPrivateEffect('hbef_450crows')
     CreateObject('Fade_Out', 100)
+
 
 @State
 def Fade_Out():
@@ -3291,14 +3434,16 @@ def Fade_Out():
     sprite('vr_screen_black', 32767)
     ConstantAlphaModifier(4)
 
+
 @State
 def Fade_Up():
     sprite('null', 100)
     CreateObject('Fade_Up_Sub', -1)
     CreateObject('Fade_Up_Sub', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('Fade_Up_Sub', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
+
 
 @State
 def Fade_Up_Sub():
@@ -3323,6 +3468,7 @@ def Fade_Up_Sub():
             AddX(-426666)
     sprite('vr_screen_fade', 100)
 
+
 @State
 def Screen_Black():
 
@@ -3334,6 +3480,7 @@ def Screen_Black():
         RenderLayer(1)
         Size(20000)
     sprite('vr_screen_black', 32767)
+
 
 @State
 def Fade_In():
@@ -3351,14 +3498,16 @@ def Fade_In():
     AlphaValue(255)
     ConstantAlphaModifier(-6)
 
+
 @State
 def hbef_enemy_black():
 
-    def upon_FRAME_STEP():
-        ApplyFunctionsToObjects(22)
-        ColorForTransition(4282400832)
-        ApplyFunctionsToSelf()
+    def upon_EVERY_FRAME():
+
+        def RunOnObject_22():
+            ColorForTransition(4282400832)
     sprite('null', 32767)
+
 
 @State
 def hbef_450_ground():
@@ -3367,11 +3516,12 @@ def hbef_450_ground():
         TeleportToObject(22)
         LinkParticle('hbef_450ground')
         AddY(-16000)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     label(0)
     sprite('null', 32)
     ConstantAlphaModifier(-8)
+
 
 @State
 def hbef_450_mist():
@@ -3385,7 +3535,7 @@ def hbef_450_mist():
         Size(1300)
         BlendMode_Add()
         BlueColorValue(184)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         SetActionMark(0)
 
         def upon_33():
@@ -3393,12 +3543,13 @@ def hbef_450_mist():
             SetActionMark(1)
 
         def upon_48():
-            if (not SLOT_2):
+            if not SLOT_2:
                 SetPosXByScreenPer(50)
     sprite('null', 32767)
     label(0)
     sprite('null', 4)
     ConstantAlphaModifier(-64)
+
 
 @State
 def AstralHeat_ExclamationControl():
@@ -3408,6 +3559,7 @@ def AstralHeat_ExclamationControl():
         AddY(480000)
     sprite('null', 10)
     CreateParticle('ef_girdmiss_m', 0)
+
 
 @State
 def BG_Black():
@@ -3426,6 +3578,7 @@ def BG_Black():
     AlphaValue(0)
     ConstantAlphaModifier(6)
 
+
 @State
 def hbef_450_cross():
 
@@ -3439,14 +3592,16 @@ def hbef_450_cross():
     RenderLayer(3)
     LinkParticle('hbef_450cross')
 
+
 @State
 def hbef_450_EnemyWhite():
     label(0)
     sprite('null', 1)
-    ApplyFunctionsToObjects(22)
-    StopCharacterFlash1(-1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        StopCharacterFlash1(-1)
     gotoLabel(0)
+
 
 @State
 def hbef_450_crash():
@@ -3462,6 +3617,7 @@ def hbef_450_crash():
     LinkParticle('hbef_450blood')
     sprite('null', 16)
     ConstantAlphaModifier(-16)
+
 
 @State
 def Astralheat_Bunshin0():
@@ -3499,6 +3655,7 @@ def Astralheat_Bunshin0():
     sprite('hb030_07ex', 9)
     sprite('hb030_08ex', 9)
 
+
 @State
 def Astralheat_Bunshin1():
 
@@ -3530,16 +3687,17 @@ def Astralheat_Bunshin1():
     ColorForTransition(4294967295)
     DespawnEAEffect('hbef_enemy_black')
     CreateObject('hbef_213_slash2', 100)
-    ApplyFunctionsToObjects(22)
-    ParticleRotationAngle(45000)
-    CallCustomizableParticle('hbef_450slash', 103)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ParticleRotationAngle(45000)
+        CallCustomizableParticle('hbef_450slash', 103)
     sprite('hb213_11', 3)
     callSubroutine('AH_Bunshin_black')
     callSubroutine('AH_Bunshin_end')
     CreateObject('hbef_enemy_black', 100)
     sprite('hb213_12', 4)
     sprite('hb213_12', 20)
+
 
 @State
 def Astralheat_Bunshin2():
@@ -3577,16 +3735,17 @@ def Astralheat_Bunshin2():
     ColorForTransition(4294967295)
     DespawnEAEffect('hbef_enemy_black')
     CreateObject('hbef_234_slash', 100)
-    ApplyFunctionsToObjects(22)
-    ParticleRotationAngle(45000)
-    CallCustomizableParticle('hbef_450slash', 103)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ParticleRotationAngle(45000)
+        CallCustomizableParticle('hbef_450slash', 103)
     sprite('hb234_16', 4)
     callSubroutine('AH_Bunshin_black')
     callSubroutine('AH_Bunshin_end')
     CreateObject('hbef_enemy_black', 100)
     sprite('hb234_17', 4)
     sprite('hb234_18', 20)
+
 
 @State
 def Astralheat_Bunshin3():
@@ -3626,10 +3785,10 @@ def Astralheat_Bunshin3():
     ColorForTransition(4294967295)
     DespawnEAEffect('hbef_enemy_black')
     CreateObject('hbef_251_slash2', 100)
-    ApplyFunctionsToObjects(22)
-    ParticleRotationAngle(180000)
-    CallCustomizableParticle('hbef_450slash', 103)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ParticleRotationAngle(180000)
+        CallCustomizableParticle('hbef_450slash', 103)
     sprite('hb251_11', 2)
     callSubroutine('AH_Bunshin_black')
     callSubroutine('AH_Bunshin_end')
@@ -3637,6 +3796,7 @@ def Astralheat_Bunshin3():
     sprite('hb251_12', 2)
     YAccel(10)
     sprite('hb251_13', 20)
+
 
 @State
 def Astralheat_Bunshin4():
@@ -3678,23 +3838,24 @@ def Astralheat_Bunshin4():
     sprite('hb253_07', 1)
     CommonSE('010_swing_sword_1')
     sprite('hb253_08', 3)
-    PassbackAddActionMarkToFunction('hbef_450_ground', 32)
-    PassbackAddActionMarkToFunction('hbef_450_mist', 32)
+    TriggerUponForState('hbef_450_ground', 32)
+    TriggerUponForState('hbef_450_mist', 32)
     ScreenShake(4000, 4000)
     XImpulseAcceleration(30)
     ColorForTransition(4294967295)
     DespawnEAEffect('hbef_enemy_black')
     CreateObject('hbef_253_slash', 100)
-    ApplyFunctionsToObjects(22)
-    ParticleRotationAngle(90000)
-    CallCustomizableParticle('hbef_450slash', 103)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        ParticleRotationAngle(90000)
+        CallCustomizableParticle('hbef_450slash', 103)
     sprite('hb253_09', 3)
     callSubroutine('AH_Bunshin_black')
     callSubroutine('AH_Bunshin_end')
     CreateObject('hbef_enemy_black', 100)
     sprite('hb253_10', 3)
     sprite('hb253_11', 4)
+
 
 @State
 def Astralheat_Bunshin5():
@@ -3723,7 +3884,7 @@ def Astralheat_Bunshin5():
         EnableAfterimage(1)
         AfterimageCount(8)
         AfterimageInterval(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         FloorCollision(1)
         AttackOff()
     sprite('hb601_01', 3)
@@ -3754,17 +3915,17 @@ def Astralheat_Bunshin5():
     RefreshMultihit()
     AddCombo(1)
     CreateObject('hbef_450_cross', 100)
-    ApplyFunctionsToObjects(22)
-    StopCharacterFlash1(-1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        StopCharacterFlash1(-1)
     StopCharacterFlash1(-1)
     label(1)
     sprite('hb450_21', 8)
     EndMomentum(1)
     AbsoluteY(8000)
-    ApplyFunctionsToObjects(22)
-    StopCharacterFlash1(-1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        StopCharacterFlash1(-1)
     sprite('hb450_22', 52)
     StartMultihit()
     CreateObject('ScreenSlashMain', 0)
@@ -3778,9 +3939,9 @@ def Astralheat_Bunshin5():
     DespawnEAEffect('Astralheat_Bunshin6')
     ScreenShake(30000, 30000)
     CreateObject('hbef_450_crash', 100)
-    ApplyFunctionsToObjects(22)
-    StopCharacterFlash1(-16777216)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        StopCharacterFlash1(-16777216)
     SetBackground(3)
     FinishBG(1)
     PrivateSE('hbse_09')
@@ -3795,10 +3956,11 @@ def Astralheat_Bunshin5():
     DefeatOpponentBehavior(3)
 
     def upon_OPPONENT_HIT():
-        ApplyFunctionsToObjects(22)
-        Visibility(1)
-        AlphaValue(0)
-        ApplyFunctionsToSelf()
+
+        def RunOnObject_22():
+            Visibility(1)
+            AlphaValue(0)
+
 
 @State
 def Astralheat_Bunshin6():
@@ -3828,7 +3990,7 @@ def Astralheat_Bunshin6():
         AfterimageCount(8)
         AfterimageInterval(3)
         Flip()
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         FloorCollision(1)
 
         def upon_32():
@@ -3878,6 +4040,7 @@ def Astralheat_Bunshin6():
     sprite('hb450_22', 30)
     StartMultihit()
 
+
 @State
 def AstralHeat_CameraControl00():
 
@@ -3898,6 +4061,7 @@ def AstralHeat_CameraControl00():
     sprite('null', 50)
     CreateObject('Fade_Up', 100)
 
+
 @State
 def AstralHeat_CameraControl01():
 
@@ -3916,64 +4080,66 @@ def AstralHeat_CameraControl01():
     sprite('null', 60)
     EndMomentum(1)
 
+
 @State
 def Astralheat_EnemyControl():
 
     def upon_IMMEDIATE():
         NoDamageAction(1)
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
     sprite('null', 1)
     SetActionMark(4)
-    ApplyFunctionsToObjects(22)
-    EnableAfterimage(1)
-    AfterimageCount(5)
-    AfterimageInterval(2)
-    XImpulseAcceleration(0)
-    YAccel(0)
-    setGravity(1400)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EnableAfterimage(1)
+        AfterimageCount(5)
+        AfterimageInterval(2)
+        XImpulseAcceleration(0)
+        YAccel(0)
+        setGravity(1400)
     label(1)
     sprite('null', 3)
     AddActionMark(-1)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     sprite('null', 1)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     loopRest()
     if SLOT_2:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('null', 1)
     SetActionMark(4)
-    ApplyFunctionsToObjects(22)
-    XImpulseAcceleration(5)
-    YAccel(5)
-    setGravity(20)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        XImpulseAcceleration(5)
+        YAccel(5)
+        setGravity(20)
     label(2)
     sprite('null', 5)
     AddActionMark(-1)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
     sprite('null', 1)
-    ApplyFunctionsToObjects(22)
-    EndSprite(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(0)
     loopRest()
     gotoLabel(2)
     label(10)
     sprite('null', 32767)
     clearUponHandler(32)
-    ApplyFunctionsToObjects(22)
-    EndSprite(1)
-    physicsXImpulse(0)
-    physicsYImpulse(0)
-    setGravity(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        EndSprite(1)
+        physicsXImpulse(0)
+        physicsYImpulse(0)
+        setGravity(0)
     loopRest()
+
 
 @Subroutine
 def AH_Bunshin():
@@ -3982,10 +4148,12 @@ def AH_Bunshin():
     AlphaValue(0)
     ConstantAlphaModifier(51)
 
+
 @Subroutine
 def AH_Bunshin_end():
     ColorTransition(4278190080, 9)
     ConstantAlphaModifier(-28)
+
 
 @Subroutine
 def AH_Bunshin_Zanzoh():
@@ -3996,9 +4164,11 @@ def AH_Bunshin_Zanzoh():
     AfterimageCount(5)
     AfterimageInterval(1)
 
+
 @Subroutine
 def AH_Bunshin_black():
     ColorForTransition(4282400832)
+
 
 @State
 def ScreenSlashMain():
@@ -4009,6 +4179,7 @@ def ScreenSlashMain():
     CreateObject('ScreenSlashTop', 0)
     CreateObject('ScreenSlashUnder', 0)
     loopRest()
+
 
 @State
 def ScreenSlashWhite():
@@ -4025,6 +4196,7 @@ def ScreenSlashWhite():
     Size(4000)
     ColorForTransition(4294967295)
     loopRest()
+
 
 @State
 def ScreenSlashRight():
@@ -4048,6 +4220,7 @@ def ScreenSlashRight():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def ScreenSlashLeft():
     sprite('vr_screen_slashL', 20)
@@ -4069,6 +4242,7 @@ def ScreenSlashLeft():
     sprite('vr_screen_slashL', 32767)
     EndMomentum(1)
     loopRest()
+
 
 @State
 def ScreenSlashTop():
@@ -4093,6 +4267,7 @@ def ScreenSlashTop():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def ScreenSlashUnder():
     sprite('vr_screen_slashU', 20)
@@ -4115,6 +4290,7 @@ def ScreenSlashUnder():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def ScreenOverTop():
     sprite('vr_screen_over_t', 32767)
@@ -4128,6 +4304,7 @@ def ScreenOverTop():
     AddY(384000)
     SetScaleX(960)
     loopRest()
+
 
 @State
 def ScreenOverUnder():
@@ -4143,6 +4320,7 @@ def ScreenOverUnder():
     SetScaleX(960)
     loopRest()
 
+
 @State
 def hbef_600_feather():
 
@@ -4154,6 +4332,7 @@ def hbef_600_feather():
     CreateParticle('hbef_600feather', 100)
     gotoLabel(0)
 
+
 @State
 def hbef_600_feather2():
 
@@ -4162,6 +4341,7 @@ def hbef_600_feather2():
         E0EAEffectPosition(2)
     sprite('null', 1)
     CreateParticle('hbef_600feather2', 100)
+
 
 @State
 def hbef_611_shadow():
@@ -4188,6 +4368,7 @@ def hbef_611_shadow():
     sprite('vr_hb611_01', 6)
     sprite('vr_hb611_02', 6)
 
+
 @State
 def hbef_615_hibana():
 
@@ -4198,6 +4379,7 @@ def hbef_615_hibana():
     sprite('null', 1)
     CreateParticle('hbef_615hibana', 100)
 
+
 @State
 def hbef_615_smoke():
 
@@ -4207,6 +4389,7 @@ def hbef_615_smoke():
         AddX(-1000)
     sprite('null', 1)
     CreateParticle('hbef_615smoke', 100)
+
 
 @State
 def hbef_615_lead():
@@ -4226,6 +4409,7 @@ def hbef_615_lead():
     physicsYImpulse(-5000)
     ConstantAlphaModifier(-20)
 
+
 @State
 def hbef_615_lead2():
 
@@ -4242,6 +4426,7 @@ def hbef_615_lead2():
     physicsYImpulse(-5000)
     AddRotationPerFrame(-300)
     ConstantAlphaModifier(-20)
+
 
 @State
 def AmAstralDamage_karasu():
@@ -4260,6 +4445,7 @@ def AmAstralDamage_karasu():
     physicsYImpulse(400)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Kunai_Event():
@@ -4283,9 +4469,9 @@ def Kunai_Event():
             RotationAngle(-10000)
             HitboxMovement(60000, -80000)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             NoAttackDuringAction(1)
-        sendToLabelUpon(2, 0)
+        uponSendToLabel(LANDING, 0)
     sprite('vr_hb407_00', 60)
     label(0)
     sprite('vr_hb407_01', 10)
@@ -4293,10 +4479,11 @@ def Kunai_Event():
     EndMomentum(1)
     EndAttack()
     clearUponHandler(54)
-    clearUponHandler(10)
-    clearUponHandler(3)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(EVERY_FRAME)
     sprite('keep', 20)
     ConstantAlphaModifier(-25)
+
 
 @State
 def hbef_611_shadow_Event():
@@ -4322,6 +4509,7 @@ def hbef_611_shadow_Event():
     sprite('vr_hb611_01', 6)
     sprite('vr_hb611_02', 6)
 
+
 @State
 def Act2Event_Fade():
 
@@ -4339,6 +4527,7 @@ def Act2Event_Fade():
     ConstantAlphaModifier(0)
     AlphaValue(255)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -4347,6 +4536,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act3Event_BNvsHB00shadow():
@@ -4375,6 +4565,7 @@ def Act3Event_BNvsHB00shadow():
     sprite('hb603_00', 6)
     sprite('hb603_00', 6)
     sprite('hb603_00', 6)
+
 
 @State
 def Act3Event_BNvsHB01shadow():

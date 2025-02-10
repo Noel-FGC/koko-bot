@@ -19,6 +19,7 @@ def EMB():
     ColorTransition(4286625023, 10)
     sprite('null', 18)
 
+
 @State
 def EMB_PT_OD():
 
@@ -39,6 +40,7 @@ def EMB_PT_OD():
     sprite('null', 8)
     ColorTransition(4278223103, 10)
     sprite('null', 18)
+
 
 @State
 def EMB_PT_AH():
@@ -61,12 +63,14 @@ def EMB_PT_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 18)
 
+
 @State
 def DebugObject():
     sprite('null', 2)
     loopRest()
     sprite('null', 30)
     CreateObject('Shabon', -1)
+
 
 @State
 def ShabonDist():
@@ -87,11 +91,13 @@ def ShabonDist():
     SetScaleSpeed(20)
     ConstantAlphaModifier(-30)
 
+
 @State
 def Shabon1():
     sprite('vr_shabon00', 4)
     RenderLayer(1)
     sprite('vr_shabon01', 4)
+
 
 @State
 def Shabon2():
@@ -114,7 +120,7 @@ def Shabon2():
         StarterRating(2)
         RenderLayer(1)
         HitsPerCall(1, 0, 1, 1, 1, 0, 1, 0)
-        sendToLabelUpon(54, 10)
+        uponSendToLabel(54, 10)
         Unknown23091(1)
         WallCollisionDetection(1)
         LandingHeight(135000)
@@ -137,10 +143,10 @@ def Shabon2():
         def upon_LANDING():
             YAccel(-50)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             NoDamageAction(1)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             AttackOff()
             Unknown23090(23)
 
@@ -150,9 +156,9 @@ def Shabon2():
         SetScaleX(1620)
         SetScaleY(1380)
 
-        def upon_FRAME_STEP():
-            SLOT_52 = (SLOT_52 + 1)
-            if (not op(4, 2, 52, 0, 30)):
+        def upon_EVERY_FRAME():
+            SLOT_52 = SLOT_52 + 1
+            if not SLOT_52 % 30:
                 if SLOT_51:
                     SLOT_51 = 0
                 else:
@@ -240,9 +246,9 @@ def Shabon2():
     Size(1200)
     SetScaleSpeed(125)
     ConstantAlphaModifier(40)
-    ApplyFunctionsToObjects(4)
-    PlayerTransparency(25000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_4():
+        PlayerTransparency(25000)
     sprite('vr_shabon', 12)
     sprite('vr_shabon', 43)
     AlphaValue(255)
@@ -266,14 +272,16 @@ def Shabon2():
     EndAttack()
     CommonSE('207_runjump_water_0')
     CommonSE('207_runjump_water_0')
-    PassbackAddActionMarkToFunction('ShabonDist', 33)
+    TriggerUponForState('ShabonDist', 33)
     CreateParticle('ptef_shabonkoware', -1)
     ExitState()
+
 
 @State
 def test1_2():
     sprite('test1_pt204_07_lv2', 3000)
     AddY(300000)
+
 
 @State
 def test0():
@@ -302,6 +310,7 @@ def test0():
         CancelIfPlayerHit(3)
     sprite('test0_pt204_07_lv2', 300)
 
+
 @State
 def test1():
 
@@ -328,6 +337,7 @@ def test1():
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
     sprite('test2_pt204_07_lv2', 300)
+
 
 @State
 def test2():
@@ -360,6 +370,7 @@ def test2():
         CancelIfPlayerHit(3)
     sprite('test1_pt204_07_lv2', 300)
 
+
 @Subroutine
 def ItemThrowInit():
     AttackLevel_(5)
@@ -372,6 +383,7 @@ def ItemThrowInit():
     setGravity(400)
     physicsXImpulse(26000)
     physicsYImpulse(18000)
+
 
 @State
 def Hummer():
@@ -399,7 +411,7 @@ def Hummer():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_hummer', 30)
     CommonSE('008_swing_pole_1')
@@ -408,6 +420,7 @@ def Hummer():
     label(1)
     sprite('vr_hummer', 30)
     StartMultihit()
+
 
 @State
 def __16t_Hummer():
@@ -438,7 +451,7 @@ def __16t_Hummer():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_16thummer', 30)
     CommonSE('008_swing_pole_1')
@@ -447,6 +460,7 @@ def __16t_Hummer():
     label(1)
     sprite('vr_16thummer', 30)
     StartMultihit()
+
 
 @State
 def Cat_Hummer():
@@ -474,7 +488,7 @@ def Cat_Hummer():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_Cat_hummer', 30)
     CommonSE('008_swing_pole_1')
@@ -483,6 +497,7 @@ def Cat_Hummer():
     label(1)
     sprite('vr_Cat_hummer', 30)
     StartMultihit()
+
 
 @State
 def Lion_Hummer():
@@ -513,7 +528,7 @@ def Lion_Hummer():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_Lion_hummer', 30)
     CommonSE('008_swing_pole_1')
@@ -523,8 +538,9 @@ def Lion_Hummer():
     sprite('vr_Lion_hummer', 30)
     StartMultihit()
 
+
 @State
-def Frying-pan():
+def Frying__ds__pan():
 
     def upon_IMMEDIATE():
         AttackDefaults_SpecialProjectile()
@@ -549,7 +565,7 @@ def Frying-pan():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_Frying-pan', 30)
     CommonSE('008_swing_pole_1')
@@ -558,6 +574,7 @@ def Frying-pan():
     label(1)
     sprite('vr_Frying-pan', 30)
     StartMultihit()
+
 
 @State
 def Harisen():
@@ -588,7 +605,7 @@ def Harisen():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_Harisen', 30)
     CommonSE('008_swing_pole_1')
@@ -597,6 +614,7 @@ def Harisen():
     label(1)
     sprite('vr_Harisen', 30)
     StartMultihit()
+
 
 @State
 def Bat():
@@ -624,7 +642,7 @@ def Bat():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_Bat', 30)
     CommonSE('008_swing_pole_1')
@@ -633,6 +651,7 @@ def Bat():
     label(1)
     sprite('vr_Bat', 30)
     StartMultihit()
+
 
 @State
 def Kanabou():
@@ -663,7 +682,7 @@ def Kanabou():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_Kanabou', 30)
     CommonSE('008_swing_pole_1')
@@ -672,6 +691,7 @@ def Kanabou():
     label(1)
     sprite('vr_Kanabou', 30)
     StartMultihit()
+
 
 @State
 def PaletteControlObj1():
@@ -685,6 +705,7 @@ def PaletteControlObj1():
         AbsoluteY(-200000)
     sprite('null', 32767)
 
+
 @State
 def PaletteControlObj2():
 
@@ -696,6 +717,7 @@ def PaletteControlObj2():
         AddX(100000)
         AbsoluteY(-200000)
     sprite('null', 32767)
+
 
 @State
 def PaletteControlObj3():
@@ -709,6 +731,7 @@ def PaletteControlObj3():
         AbsoluteY(-200000)
     sprite('null', 32767)
 
+
 @State
 def PaletteControlObj4():
 
@@ -720,6 +743,7 @@ def PaletteControlObj4():
         AddX(200000)
         AbsoluteY(-200000)
     sprite('null', 32767)
+
 
 @State
 def PaletteControlObj5():
@@ -733,6 +757,7 @@ def PaletteControlObj5():
         AbsoluteY(-200000)
     sprite('null', 32767)
 
+
 @State
 def PaletteControlObj6():
 
@@ -744,6 +769,7 @@ def PaletteControlObj6():
         AddX(300000)
         AbsoluteY(-200000)
     sprite('null', 32767)
+
 
 @State
 def PaletteControlObj7():
@@ -757,6 +783,7 @@ def PaletteControlObj7():
         AbsoluteY(-200000)
     sprite('null', 32767)
 
+
 @State
 def PaletteControlObj8():
 
@@ -769,40 +796,42 @@ def PaletteControlObj8():
         AbsoluteY(-200000)
     sprite('null', 32767)
 
+
 @Subroutine
 def SetHikariColorByObjReg0():
     PrivateFunction(9, 2, 59, 0, 1, 2, 55)
     PrivateFunction(9, 2, 59, 0, 2, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-60396)
     PrivateFunction(9, 2, 59, 0, 3, 2, 55)
     PrivateFunction(9, 2, 59, 0, 4, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-15461121)
     PrivateFunction(9, 2, 59, 0, 5, 2, 55)
     PrivateFunction(9, 2, 59, 0, 6, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-15401196)
     PrivateFunction(9, 2, 59, 0, 7, 2, 55)
     PrivateFunction(9, 2, 59, 0, 8, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-690166)
     PrivateFunction(9, 2, 59, 0, 9, 2, 55)
     PrivateFunction(9, 2, 59, 0, 10, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-658171)
     PrivateFunction(9, 2, 59, 0, 11, 2, 55)
     PrivateFunction(9, 2, 59, 0, 12, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-16386571)
     PrivateFunction(9, 2, 59, 0, 13, 2, 55)
     PrivateFunction(9, 2, 59, 0, 14, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-64001)
     PrivateFunction(9, 2, 59, 0, 15, 2, 55)
     PrivateFunction(9, 2, 59, 0, 16, 2, 56)
-    if op(6, 2, 55, 2, 56):
+    if not SLOT_55 or not SLOT_56:
         StopCharacterFlash1(-69999)
+
 
 @State
 def SphereLight():
@@ -823,20 +852,20 @@ def SphereLight():
             MoveToCollision(3, 13, 0)
 
         def upon_45():
-            SLOT_52 = (SLOT_52 + 1)
+            SLOT_52 = SLOT_52 + 1
             if SLOT_51:
                 if SLOT_28:
                     MoveToCollision(3, 13, 0)
-                    if (not op(4, 2, 52, 0, 8)):
+                    if not SLOT_52 % 8:
                         CreateParticle('ptef_driveptc', -1)
-                if (not SLOT_28):
+                if not SLOT_28:
                     sendToLabel(0)
                     SLOT_51 = 0
-                    PassbackAddActionMarkToFunction('SphereLight_Model', 33)
-                if (not SLOT_4):
+                    TriggerUponForState('SphereLight_Model', 33)
+                if not SLOT_4:
                     sendToLabel(0)
                     SLOT_51 = 0
-                    PassbackAddActionMarkToFunction('SphereLight_Model', 33)
+                    TriggerUponForState('SphereLight_Model', 33)
             elif SLOT_28:
                 if SLOT_4:
                     sendToLabel(1)
@@ -855,8 +884,8 @@ def SphereLight():
     SetScaleSpeed(100)
     AddRotationPerFrame(8000)
     SetZVal(500)
-    if (not op(4, 2, 59, 0, 2)):
-        PassbackAddActionMarkToFunction('SphereLight_Model', 32)
+    if not SLOT_59 % 2:
+        TriggerUponForState('SphereLight_Model', 32)
     loopRest()
     SetScaleSpeed(0)
     Size(2000)
@@ -871,6 +900,7 @@ def SphereLight():
     loopRest()
     gotoLabel(2)
 
+
 @State
 def SphereLight_Shutsugen():
     sprite('null', 30)
@@ -879,6 +909,7 @@ def SphereLight_Shutsugen():
     IgnoreScreenfreeze(1)
     sprite('null', 30)
     ConstantAlphaModifier(-30)
+
 
 @State
 def SphereLight_Model():
@@ -911,6 +942,7 @@ def SphereLight_Model():
             ConstantAlphaModifier(-30)
     sprite('null', 32767)
 
+
 @State
 def StaggerSoul():
 
@@ -927,11 +959,13 @@ def StaggerSoul():
     sprite('vrptef070_00', 10)
     ConstantAlphaModifier(-20)
 
+
 @State
 def ptef_hit_low():
     sprite('null', 1)
     CreateParticle('ptef_hit_low', -1)
     PrivateSE('ptse_15')
+
 
 @State
 def ptef_hit_middle():
@@ -939,11 +973,13 @@ def ptef_hit_middle():
     CreateParticle('ptef_hit_middle', -1)
     PrivateSE('ptse_16')
 
+
 @State
 def ptef_hit_high():
     sprite('null', 1)
     CreateParticle('ptef_hit_high', -1)
     PrivateSE('ptse_17')
+
 
 @State
 def ptef_hit_fripan():
@@ -952,11 +988,13 @@ def ptef_hit_fripan():
     PrivateSE('ptse_18')
     CommonSE('102_hit_counter_grap_1')
 
+
 @State
 def ptef_hit_harisen():
     sprite('null', 1)
     CreateParticle('ptef_hit_middle', -1)
     PrivateSE('ptse_19')
+
 
 @State
 def ptef_hit_bat():
@@ -965,11 +1003,13 @@ def ptef_hit_bat():
     PrivateSE('ptse_20')
     CommonSE('102_hit_counter_grap_1')
 
+
 @State
 def ptef_hit_pikohan_throw():
     sprite('null', 1)
     CreateParticle('ptef_hit_middle', -1)
     PrivateSE('ptse_02')
+
 
 @State
 def ptef_hit_fripan_throw():
@@ -978,12 +1018,14 @@ def ptef_hit_fripan_throw():
     PrivateSE('ptse_18')
     CommonSE('102_hit_counter_grap_1')
 
+
 @State
 def ptef_hit_harisen_throw():
     sprite('null', 1)
     CreateParticle('ptef_hit_middle', -1)
     PrivateSE('ptse_19')
     CommonSE('100_hit_grap_2')
+
 
 @State
 def ptef_hit_bat_throw():
@@ -992,11 +1034,13 @@ def ptef_hit_bat_throw():
     PrivateSE('ptse_20')
     CommonSE('102_hit_counter_grap_1')
 
+
 @State
 def ptef_hit_cat_throw():
     sprite('null', 1)
     CreateParticle('ptef_hit_middle', -1)
     PrivateSE('ptse_24')
+
 
 @State
 def ptef_hit_other_throw():
@@ -1004,11 +1048,13 @@ def ptef_hit_other_throw():
     CreateParticle('ptef_hit_middle', -1)
     CommonSE('100_hit_grap_2')
 
+
 @State
 def ptef_hit_kanabou():
     sprite('null', 1)
     CreateParticle('ptef_hit_middle', -1)
     CommonSE('025_cleanhit_grap')
+
 
 @State
 def ptef_hit_throw():
@@ -1016,6 +1062,7 @@ def ptef_hit_throw():
     CreateParticle('ptef_throw', -1)
     PrivateSE('ptse_18')
     CommonSE('102_hit_counter_grap_1')
+
 
 @State
 def Atk6CZanzo():
@@ -1035,6 +1082,7 @@ def Atk6CZanzo():
     AddX(-20000)
     AddY(-5000)
 
+
 @State
 def ThrowBind():
 
@@ -1050,16 +1098,18 @@ def ThrowBind():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(30)
 
+
 @State
 def ThrowMcircle():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('ptef_kousokucircle.DIG', 'ptef_kousokucircle_motion_000.m')
+        Eff3DEffect('ptef_kousokucircle.DIG', 'ptef_kousokucircle_motion_000.m'
+            )
         FaceSpawnLocation()
         BlendMode_Add()
         Size(1100)
         AddY(-40000)
-        sendToLabelUpon(32, 12)
+        uponSendToLabel(32, 12)
     sprite('null', 8)
     AlphaValue(0)
     ConstantAlphaModifier(20)
@@ -1068,6 +1118,7 @@ def ThrowMcircle():
     sprite('null', 10)
     ConstantAlphaModifier(-35)
     SetScaleSpeed(75)
+
 
 @State
 def Throwef():
@@ -1085,6 +1136,7 @@ def Throwef():
     sprite('null', 20)
     ConstantAlphaModifier(-20)
 
+
 @State
 def ThrowKousoku():
     sprite('null', 4)
@@ -1092,6 +1144,7 @@ def ThrowKousoku():
     CreateObject('Throwef', 1)
     sprite('null', 1)
     CreateObject('ThrowBind', 1)
+
 
 @State
 def MagicIron():
@@ -1120,7 +1173,7 @@ def MagicIron():
     label(0)
     sprite('vrptef311_00', 32767)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         sendToLabel(3)
     CommonSE('016_explode_1')
     physicsXImpulse(0)
@@ -1128,31 +1181,31 @@ def MagicIron():
     physicsYImpulse(-10000)
     setGravity(-200)
     Visibility(0)
-    sendToLabelUpon(35, 3)
+    uponSendToLabel(35, 3)
     loopRest()
     ExitState()
     label(1)
     sprite('vrptef311_00', 32767)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         sendToLabel(4)
     CommonSE('016_explode_1')
     physicsXImpulse(0)
     SetAcceleration(-1500)
     physicsYImpulse(-10000)
     setGravity(-200)
-    sendToLabelUpon(36, 4)
+    uponSendToLabel(36, 4)
     loopRest()
     ExitState()
     label(2)
     sprite('vrptef311_00', 32767)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         sendToLabel(5)
     CommonSE('016_explode_1')
     physicsXImpulse(0)
     physicsYImpulse(-36000)
-    sendToLabelUpon(37, 5)
+    uponSendToLabel(37, 5)
     loopRest()
     ExitState()
     label(3)
@@ -1198,6 +1251,7 @@ def MagicIron():
     loopRest()
     ExitState()
 
+
 @State
 def Kemuri():
 
@@ -1207,6 +1261,7 @@ def Kemuri():
         AddX(-600000)
         AddY(100000)
     sprite('null', 40)
+
 
 @State
 def Kemuri2():
@@ -1218,6 +1273,7 @@ def Kemuri2():
         AddY(100000)
     sprite('null', 40)
 
+
 @State
 def Kemuri3():
 
@@ -1226,6 +1282,7 @@ def Kemuri3():
         BlendMode_Normal()
         AddY(200000)
     sprite('null', 40)
+
 
 @State
 def Kemuri4():
@@ -1237,6 +1294,7 @@ def Kemuri4():
         AddX(-15000)
         AddY(500000)
     sprite('null', 40)
+
 
 @State
 def pt203_mahojin():
@@ -1254,6 +1312,7 @@ def pt203_mahojin():
     E0EAEffectPosition(0)
     sprite('null', 13)
     ConstantAlphaModifier(-20)
+
 
 @State
 def pt203_airmahojin():
@@ -1273,6 +1332,7 @@ def pt203_airmahojin():
     sprite('null', 13)
     ConstantAlphaModifier(-30)
 
+
 @State
 def pt203_aura1():
 
@@ -1289,6 +1349,7 @@ def pt203_aura1():
     sprite('vrptef_env', 20)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def pt203_aura2():
@@ -1309,6 +1370,7 @@ def pt203_aura2():
     sprite('vrptef_env', 20)
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
+
 
 @State
 def pt203_aura3():
@@ -1331,6 +1393,7 @@ def pt203_aura3():
     sprite('vrptef_env', 60)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt203_airaura1():
 
@@ -1348,6 +1411,7 @@ def pt203_airaura1():
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt203_airaura2():
 
@@ -1364,6 +1428,7 @@ def pt203_airaura2():
     SetScaleSpeed(-100)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt203_airaura3():
 
@@ -1379,6 +1444,7 @@ def pt203_airaura3():
     sprite('vrptef_env', 10)
     ConstantAlphaModifier(-30)
 
+
 @State
 def pt203_mahojinsub():
 
@@ -1388,6 +1454,7 @@ def pt203_mahojinsub():
         IgnoreScreenfreeze(1)
     sprite('null', 70)
 
+
 @State
 def pt203_stick():
 
@@ -1396,6 +1463,7 @@ def pt203_stick():
         BlendMode_Add()
         Size(750)
     sprite('null', 70)
+
 
 @State
 def yugami_ring():
@@ -1412,6 +1480,7 @@ def yugami_ring():
     SetScaleSpeed(100)
     Unknown3059(-2800)
 
+
 @State
 def Atk5DHiWave():
 
@@ -1420,6 +1489,7 @@ def Atk5DHiWave():
         BlendMode_Add()
         AlphaValue(128)
     sprite('null', 60)
+
 
 @State
 def Atk5DHiquake():
@@ -1440,6 +1510,7 @@ def Atk5DHiquake():
         SetScaleX(4000)
     sprite('vrdmy_jishin', 1)
     CommonSE('019_quake_1')
+
 
 @State
 def Bomb():
@@ -1493,7 +1564,7 @@ def Bomb():
             physicsXImpulse(21000)
             physicsYImpulse(32000)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         sendToLabel(0)
 
     def upon_LANDING():
@@ -1539,6 +1610,7 @@ def Bomb():
     loopRest()
     label(2)
     sprite('null', 20)
+
 
 @State
 def SpBomb():
@@ -1592,7 +1664,7 @@ def SpBomb():
             physicsXImpulse(21000)
             physicsYImpulse(32000)
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         sendToLabel(0)
 
     def upon_LANDING():
@@ -1642,6 +1714,7 @@ def SpBomb():
     label(2)
     sprite('null', 20)
 
+
 @State
 def BombSpark():
 
@@ -1657,6 +1730,7 @@ def BombSpark():
     sprite('vrptef208_bombspark01', 2)
     gotoLabel(15)
 
+
 @State
 def BombBigSpark():
 
@@ -1671,6 +1745,7 @@ def BombBigSpark():
     sprite('vrptef208_bombspark00', 2)
     sprite('vrptef208_bombspark01', 2)
     gotoLabel(15)
+
 
 @State
 def BombAttackFire():
@@ -1696,6 +1771,7 @@ def BombAttackFire():
     CreateParticle('ptef_bombattackfire', 0)
     sprite('vrdmy_bombfire00', 15)
 
+
 @State
 def BombFire():
 
@@ -1719,6 +1795,7 @@ def BombFire():
     StartMultihit()
     CreateParticle('ptef_bombDfire', 0)
     sprite('vrdmy_bombfire01', 15)
+
 
 @State
 def SpAttackBombFire():
@@ -1746,6 +1823,7 @@ def SpAttackBombFire():
     Size(1500)
     sprite('vrdmy_bombfire00', 15)
 
+
 @State
 def SpBombFire():
 
@@ -1771,6 +1849,7 @@ def SpBombFire():
     StartMultihit()
     Size(1500)
     sprite('vrdmy_bombfire01', 15)
+
 
 @State
 def Missile():
@@ -1800,7 +1879,7 @@ def Missile():
         def upon_34():
             sendToLabel(2)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             sendToLabel(3)
 
         def upon_CORNERED():
@@ -1840,8 +1919,8 @@ def Missile():
     loopRest()
     label(3)
     sprite('vrptef208_missile00', 2)
-    clearUponHandler(10)
-    clearUponHandler(7)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(CORNERED)
     CreateObject('MissileFire', -1)
     CommonSE('016_explode_1')
     physicsXImpulse(0)
@@ -1852,6 +1931,7 @@ def Missile():
     sprite('vrptef208_missile00', 3)
     SetScaleSpeed(80)
     sprite('null', 1)
+
 
 @State
 def SpMissile():
@@ -1883,7 +1963,7 @@ def SpMissile():
         def upon_34():
             sendToLabel(2)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             sendToLabel(3)
 
         def upon_CORNERED():
@@ -1926,8 +2006,8 @@ def SpMissile():
     loopRest()
     label(3)
     sprite('vrptef208_missile01', 1)
-    clearUponHandler(10)
-    clearUponHandler(7)
+    clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+    clearUponHandler(CORNERED)
     CreateObject('SpMissileFire', 3)
     CommonSE('016_explode_2')
     physicsXImpulse(0)
@@ -1937,6 +2017,7 @@ def SpMissile():
     SetScaleSpeed(-30)
     sprite('vrptef208_missile01', 3)
     SetScaleSpeed(80)
+
 
 @State
 def MissileFire():
@@ -1960,6 +2041,7 @@ def MissileFire():
         UseFireHitspark(1)
     sprite('vrdmy_bombfire02', 10)
     CreateParticle('ptef_missileattackfire', 0)
+
 
 @State
 def SpMissileFire():
@@ -1987,6 +2069,7 @@ def SpMissileFire():
     Size(1500)
     sprite('vrdmy_bombfire02', 35)
     StartMultihit()
+
 
 @State
 def MissileBackfire():
@@ -2016,6 +2099,7 @@ def MissileBackfire():
     CreateParticle('ptef430charge', -1)
     gotoLabel(15)
 
+
 @State
 def MissileBackfire_front():
 
@@ -2033,6 +2117,7 @@ def MissileBackfire_front():
     sprite('vrptef208_missilefire02', 3)
     CreateParticle('ptef430charge', -1)
     gotoLabel(15)
+
 
 @State
 def MissileBackfire_back():
@@ -2052,6 +2137,7 @@ def MissileBackfire_back():
     CreateParticle('ptef430charge', -1)
     gotoLabel(15)
 
+
 @State
 def Trap():
 
@@ -2067,24 +2153,24 @@ def Trap():
         def upon_54():
             sendToLabel(2)
             clearUponHandler(54)
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
         NoDamageAction(1)
         MaxHP(700)
         CurrentHP(700)
-        sendToLabelUpon(19, 3)
+        uponSendToLabel(19, 3)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_19 < 150000):
-                    clearUponHandler(3)
+                if SLOT_19 < 150000:
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(1)
-        sendToLabelUpon(2, 0)
-        sendToLabelUpon(32, 2)
-        sendToLabelUpon(53, 2)
+        uponSendToLabel(LANDING, 0)
+        uponSendToLabel(32, 2)
+        uponSendToLabel(53, 2)
     sprite('vrptef209_box00', 32767)
-    sendToLabelUpon(33, 10)
-    sendToLabelUpon(34, 20)
-    sendToLabelUpon(35, 30)
+    uponSendToLabel(33, 10)
+    uponSendToLabel(34, 20)
+    uponSendToLabel(35, 30)
     label(10)
     sprite('vrptef209_box00', 10)
     sprite('vrptef209_box00', 32767)
@@ -2132,7 +2218,7 @@ def Trap():
     label(2)
     sprite('vrptef209_box00', 2)
     NoDamageAction(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     EndMomentum(1)
     ConstantAlphaModifier(-10)
     sprite('vrptef209_box00', 10)
@@ -2144,13 +2230,14 @@ def Trap():
     sprite('vrptef209_box01', 10)
     NoDamageAction(1)
     EndMomentum(1)
-    clearUponHandler(3)
-    clearUponHandler(2)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(LANDING)
     clearUponHandler(54)
     PrivateSE('ptse_02')
     CreateParticle('ptef_boxbom', 0)
     ConstantAlphaModifier(-15)
     sprite('vrptef209_box00', 10)
+
 
 @State
 def TrapAttack():
@@ -2187,8 +2274,9 @@ def TrapAttack():
     sprite('vrptef209_box06', 5)
     sprite('vrptef209_box07', 10)
     ConstantAlphaModifier(-25)
-    PassbackAddActionMarkToFunction('spring_04', 32)
+    TriggerUponForState('spring_04', 32)
     sprite('vrptef209_box07', 10)
+
 
 @State
 def spring_01():
@@ -2200,6 +2288,7 @@ def spring_01():
         AddY(50000)
     sprite('vrptef209_spring01', 5)
 
+
 @State
 def spring_02():
 
@@ -2209,6 +2298,7 @@ def spring_02():
         AddX(10000)
         AddY(50000)
     sprite('vrptef209_spring02', 5)
+
 
 @State
 def spring_03():
@@ -2220,6 +2310,7 @@ def spring_03():
         AddY(50000)
     sprite('vrptef209_spring03', 5)
 
+
 @State
 def spring_04():
 
@@ -2228,11 +2319,12 @@ def spring_04():
         AddZVal(1)
         AddX(10000)
         AddY(50000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrptef209_spring02', 32767)
     label(1)
     sprite('vrptef209_spring02', 8)
     ConstantAlphaModifier(-31)
+
 
 @State
 def SpTrap():
@@ -2254,20 +2346,20 @@ def SpTrap():
         NoDamageAction(1)
         MaxHP(1000)
         CurrentHP(1000)
-        sendToLabelUpon(19, 3)
+        uponSendToLabel(19, 3)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if (SLOT_19 < 200000):
-                    clearUponHandler(3)
+                if SLOT_19 < 200000:
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(1)
-        sendToLabelUpon(2, 0)
-        sendToLabelUpon(32, 2)
-        sendToLabelUpon(53, 2)
+        uponSendToLabel(LANDING, 0)
+        uponSendToLabel(32, 2)
+        uponSendToLabel(53, 2)
     sprite('vrptef209_spbox00', 32767)
-    sendToLabelUpon(33, 10)
-    sendToLabelUpon(34, 20)
-    sendToLabelUpon(35, 30)
+    uponSendToLabel(33, 10)
+    uponSendToLabel(34, 20)
+    uponSendToLabel(35, 30)
     label(10)
     sprite('vrptef209_spbox00', 10)
     sprite('vrptef209_spbox00', 32767)
@@ -2318,7 +2410,7 @@ def SpTrap():
     label(2)
     sprite('vrptef209_spbox00', 2)
     NoDamageAction(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     EndMomentum(1)
     ConstantAlphaModifier(-10)
     sprite('vrptef209_spbox00', 10)
@@ -2330,13 +2422,14 @@ def SpTrap():
     sprite('vrptef209_spbox01', 10)
     NoDamageAction(1)
     EndMomentum(1)
-    clearUponHandler(3)
-    clearUponHandler(2)
+    clearUponHandler(EVERY_FRAME)
+    clearUponHandler(LANDING)
     clearUponHandler(54)
     PrivateSE('ptse_02')
     CreateParticle('ptef_boxbom', 0)
     ConstantAlphaModifier(-15)
     sprite('vrptef209_spbox00', 10)
+
 
 @State
 def SpTrapAttack():
@@ -2377,9 +2470,10 @@ def SpTrapAttack():
     sprite('vrptef209_spbox06', 5)
     sprite('vrptef209_spbox07', 10)
     ConstantAlphaModifier(-25)
-    PassbackAddActionMarkToFunction('SPspring_04', 32)
+    TriggerUponForState('SPspring_04', 32)
     CreateObject('pt209_neko_rocket', -1)
     sprite('null', 30)
+
 
 @State
 def spbox_parts01():
@@ -2394,6 +2488,7 @@ def spbox_parts01():
     physicsYImpulse(30000)
     EndYPhysicsImpulse()
 
+
 @State
 def spbox_parts02():
 
@@ -2407,6 +2502,7 @@ def spbox_parts02():
     physicsYImpulse(15000)
     EndYPhysicsImpulse()
 
+
 @State
 def SPspring_01():
 
@@ -2417,6 +2513,7 @@ def SPspring_01():
         AddX(10000)
         AddY(50000)
     sprite('vrptef209_spring01', 5)
+
 
 @State
 def SPspring_02():
@@ -2429,6 +2526,7 @@ def SPspring_02():
         AddY(50000)
     sprite('vrptef209_spring02', 5)
 
+
 @State
 def SPspring_03():
 
@@ -2440,6 +2538,7 @@ def SPspring_03():
         AddY(50000)
     sprite('vrptef209_spring03', 5)
 
+
 @State
 def SPspring_04():
 
@@ -2449,11 +2548,12 @@ def SPspring_04():
         Size(1200)
         AddX(10000)
         AddY(50000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrptef209_spring02', 32767)
     label(1)
     sprite('vrptef209_spring02', 8)
     ConstantAlphaModifier(-31)
+
 
 @State
 def pt209_neko_rocket():
@@ -2500,6 +2600,7 @@ def pt209_neko_rocket():
     sprite('vrptef209_neko_rocket', 45)
     YAccel(300)
 
+
 @State
 def pt209_neko_Backfire():
 
@@ -2524,6 +2625,7 @@ def pt209_neko_Backfire():
     CreateParticle('ptef209_rocket', -1)
     gotoLabel(0)
 
+
 @State
 def pt_box():
 
@@ -2535,7 +2637,7 @@ def pt_box():
     AddX(224000)
     setGravity(1500)
     CreateParticle('ptef_drivethrow', -1)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     label(0)
     sprite('vrptef209_box00', 30)
     setGravity(0)
@@ -2551,6 +2653,7 @@ def pt_box():
     sprite('vrptef209_box07', 32)
     ConstantAlphaModifier(-8)
 
+
 @State
 def pt_box2():
 
@@ -2562,7 +2665,7 @@ def pt_box2():
     AddX(224000)
     setGravity(1500)
     CreateParticle('ptef_drivethrow', -1)
-    sendToLabelUpon(2, 0)
+    uponSendToLabel(LANDING, 0)
     label(0)
     sprite('vrptef209_spbox00', 30)
     setGravity(0)
@@ -2577,6 +2680,7 @@ def pt_box2():
     sprite('vrptef209_spbox07', 32)
     ConstantAlphaModifier(-8)
 
+
 @State
 def AirSlideMcirle():
 
@@ -2586,6 +2690,7 @@ def AirSlideMcirle():
         BlendMode_Add()
     sprite('null', 20)
     AddY(200000)
+
 
 @State
 def AirSlideBalloon():
@@ -2602,6 +2707,7 @@ def AirSlideBalloon():
     sprite('vrptef401_04', 2)
     sprite('vrptef401_05', 4)
 
+
 @State
 def AssaultAwave():
 
@@ -2614,6 +2720,7 @@ def AssaultAwave():
     E0EAEffectPosition(2)
     sprite('null', 30)
     E0EAEffectPosition(0)
+
 
 @State
 def AssaultBwave():
@@ -2628,6 +2735,7 @@ def AssaultBwave():
     sprite('null', 30)
     E0EAEffectPosition(0)
 
+
 @State
 def AssaultCwave():
 
@@ -2641,16 +2749,18 @@ def AssaultCwave():
     sprite('null', 30)
     E0EAEffectPosition(0)
 
+
 @State
 def CommandThrowMcircle():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('ptef_kousokucircle.DIG', 'ptef_kousokucircle_motion_000.m')
+        Eff3DEffect('ptef_kousokucircle.DIG', 'ptef_kousokucircle_motion_000.m'
+            )
         FaceSpawnLocation()
         BlendMode_Add()
         Size(1100)
         AddY(-40000)
-        sendToLabelUpon(32, 12)
+        uponSendToLabel(32, 12)
     sprite('null', 30)
     AlphaValue(0)
     ConstantAlphaModifier(8)
@@ -2660,6 +2770,7 @@ def CommandThrowMcircle():
     sprite('null', 10)
     ConstantAlphaModifier(-30)
     SetScaleSpeed(25)
+
 
 @State
 def CommandThrowHeart():
@@ -2675,6 +2786,7 @@ def CommandThrowHeart():
     sprite('vrptef404_02', 6)
     CharacterFlash(16777215, 6, 2)
 
+
 @State
 def CommandThrowRod():
 
@@ -2687,6 +2799,7 @@ def CommandThrowRod():
     StopCharacterFlash1(16777215)
     CharacterFlash(0, 4, 1)
     sprite('vrptef404_03', 1)
+
 
 @State
 def FakeDoll():
@@ -2709,7 +2822,7 @@ def FakeDoll():
         DamageEffect(6, 'ptef_hit_low')
         setInvincible(1)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
     sprite('null', 1)
     if CharacterIDCheck('ha'):
@@ -2750,7 +2863,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 20)
+    uponSendToLabel(LANDING, 20)
     sprite('vrptef406_00', 32767)
     RefreshMultihit()
     label(20)
@@ -2778,7 +2891,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 21)
+    uponSendToLabel(LANDING, 21)
     sprite('vrptef406_01', 32767)
     RefreshMultihit()
     label(21)
@@ -2806,7 +2919,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 22)
+    uponSendToLabel(LANDING, 22)
     sprite('vrptef406_02', 32767)
     RefreshMultihit()
     label(22)
@@ -2834,7 +2947,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 23)
+    uponSendToLabel(LANDING, 23)
     sprite('vrptef406_03', 32767)
     RefreshMultihit()
     label(23)
@@ -2862,7 +2975,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 24)
+    uponSendToLabel(LANDING, 24)
     sprite('vrptef406_04', 32767)
     RefreshMultihit()
     label(24)
@@ -2890,7 +3003,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 25)
+    uponSendToLabel(LANDING, 25)
     sprite('vrptef406_05', 32767)
     RefreshMultihit()
     label(25)
@@ -2918,7 +3031,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 26)
+    uponSendToLabel(LANDING, 26)
     sprite('vrptef406_06', 32767)
     RefreshMultihit()
     label(26)
@@ -2946,7 +3059,7 @@ def FakeDoll():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 27)
+    uponSendToLabel(LANDING, 27)
     sprite('vrptef406_07', 32767)
     RefreshMultihit()
     label(27)
@@ -2962,6 +3075,7 @@ def FakeDoll():
     CreateParticle('ptef_winsmoke', -1)
     CreateParticle('ptef_winsmoke', -1)
 
+
 @State
 def Atemi_Smoke():
 
@@ -2972,6 +3086,7 @@ def Atemi_Smoke():
     CreateParticle('ptef_atemi_smoke', -1)
     CreateParticle('ptef_atemi_leaf', -1)
     loopRest()
+
 
 @State
 def DollMaker():
@@ -3000,6 +3115,7 @@ def DollMaker():
     sprite('null', 120)
     clearUponHandler(32)
 
+
 @State
 def AttackDoll1():
 
@@ -3023,21 +3139,21 @@ def AttackDoll1():
     sprite('null', 1)
     Unknown61(0, 1, 0, 8, 0, 0, 0, 9999, 0, 9999, 0, 9999)
     SLOT_53 = SLOT_0
-    if (SLOT_53 == 1):
+    if SLOT_53 == 1:
         gotoLabel(11)
-    if (SLOT_53 == 2):
+    if SLOT_53 == 2:
         gotoLabel(12)
-    if (SLOT_53 == 3):
+    if SLOT_53 == 3:
         gotoLabel(13)
-    if (SLOT_53 == 4):
+    if SLOT_53 == 4:
         gotoLabel(14)
-    if (SLOT_53 == 5):
+    if SLOT_53 == 5:
         gotoLabel(15)
-    if (SLOT_53 == 6):
+    if SLOT_53 == 6:
         gotoLabel(16)
-    if (SLOT_53 == 7):
+    if SLOT_53 == 7:
         gotoLabel(17)
-    if (SLOT_53 == 8):
+    if SLOT_53 == 8:
         gotoLabel(18)
     loopRest()
     label(11)
@@ -3050,7 +3166,7 @@ def AttackDoll1():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 21)
+    uponSendToLabel(LANDING, 21)
     label(21)
     sprite('vrptef406_00', 20)
     PrivateSE('ptse_00')
@@ -3074,7 +3190,7 @@ def AttackDoll1():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 22)
+    uponSendToLabel(LANDING, 22)
     label(22)
     sprite('vrptef406_01', 20)
     PrivateSE('ptse_00')
@@ -3098,7 +3214,7 @@ def AttackDoll1():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 23)
+    uponSendToLabel(LANDING, 23)
     label(23)
     sprite('vrptef406_02', 20)
     PrivateSE('ptse_00')
@@ -3153,7 +3269,7 @@ def AttackDoll1():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 25)
+    uponSendToLabel(LANDING, 25)
     label(25)
     sprite('vrptef406_04', 20)
     PrivateSE('ptse_00')
@@ -3177,7 +3293,7 @@ def AttackDoll1():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 26)
+    uponSendToLabel(LANDING, 26)
     label(26)
     sprite('vrptef406_05', 20)
     PrivateSE('ptse_00')
@@ -3201,7 +3317,7 @@ def AttackDoll1():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 27)
+    uponSendToLabel(LANDING, 27)
     label(27)
     sprite('vrptef406_06', 20)
     PrivateSE('ptse_00')
@@ -3225,7 +3341,7 @@ def AttackDoll1():
     setGravity(700)
     XImpulseAcceleration(90)
     YAccel(90)
-    sendToLabelUpon(2, 28)
+    uponSendToLabel(LANDING, 28)
     label(28)
     sprite('vrptef406_07', 20)
     PrivateSE('ptse_00')
@@ -3240,6 +3356,7 @@ def AttackDoll1():
     CreateParticle('ptef_winsmoke', -1)
     ExitState()
 
+
 @State
 def pt430_mahojin():
 
@@ -3253,6 +3370,7 @@ def pt430_mahojin():
         Size(800)
     sprite('null', 100)
 
+
 @State
 def ptef_430power():
 
@@ -3265,6 +3383,7 @@ def ptef_430power():
     sprite('null', 7)
     ConstantAlphaModifier(-40)
 
+
 @State
 def pt430_circle1():
 
@@ -3275,6 +3394,7 @@ def pt430_circle1():
         BlendMode_Add()
         Size(850)
     sprite('null', 65)
+
 
 @State
 def pt430_circle2():
@@ -3287,6 +3407,7 @@ def pt430_circle2():
         Size(800)
     sprite('null', 65)
 
+
 @State
 def pt430_mahojinsub():
 
@@ -3295,6 +3416,7 @@ def pt430_mahojinsub():
         IgnoreScreenfreeze(1)
         BlendMode_Add()
     sprite('null', 100)
+
 
 @State
 def pt430_aura1():
@@ -3315,6 +3437,7 @@ def pt430_aura1():
     sprite('vrptef_env', 50)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt430_aura2():
 
@@ -3332,6 +3455,7 @@ def pt430_aura2():
     ConstantAlphaModifier(20)
     sprite('vrptef_env', 50)
     ConstantAlphaModifier(-20)
+
 
 @State
 def pt430_aura3():
@@ -3352,6 +3476,7 @@ def pt430_aura3():
     sprite('vrptef_env', 50)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt430_stick():
 
@@ -3362,6 +3487,7 @@ def pt430_stick():
         BlendMode_Add()
         Size(1000)
     sprite('null', 70)
+
 
 @State
 def pt430_kurukuru():
@@ -3375,6 +3501,7 @@ def pt430_kurukuru():
         Size(1000)
     sprite('null', 55)
 
+
 @State
 def ptef_431aura():
 
@@ -3383,6 +3510,7 @@ def ptef_431aura():
         IgnoreScreenfreeze(1)
         BlendMode_Add()
     sprite('null', 70)
+
 
 @State
 def pt431_startcircle():
@@ -3398,6 +3526,7 @@ def pt431_startcircle():
         Size(800)
     sprite('null', 65)
 
+
 @State
 def pt431_floorcircle():
 
@@ -3411,6 +3540,7 @@ def pt431_floorcircle():
         BlendMode_Add()
         Size(850)
     sprite('null', 180)
+
 
 @State
 def pt431_ranbucircle():
@@ -3427,6 +3557,7 @@ def pt431_ranbucircle():
         Size(700)
     sprite('null', 100)
 
+
 @State
 def pt431_tornado():
 
@@ -3441,6 +3572,7 @@ def pt431_tornado():
         Size(800)
     sprite('null', 100)
 
+
 @State
 def pt431_smoke():
 
@@ -3453,6 +3585,7 @@ def pt431_smoke():
     sprite('null', 105)
     sprite('null', 20)
     ConstantAlphaModifier(-15)
+
 
 @State
 def pt431_aura1():
@@ -3475,6 +3608,7 @@ def pt431_aura1():
     sprite('vrptef_env', 50)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt431_aura2():
 
@@ -3496,6 +3630,7 @@ def pt431_aura2():
     sprite('vrptef_env', 50)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt431_aura3():
 
@@ -3516,6 +3651,7 @@ def pt431_aura3():
     sprite('vrptef_env', 30)
     ConstantAlphaModifier(-10)
 
+
 @State
 def pt440kira():
 
@@ -3527,6 +3663,7 @@ def pt440kira():
     sprite('null', 4)
     CreateParticle('ptef_440kira_00', -1)
     gotoLabel(0)
+
 
 @State
 def pt440HitEx():
@@ -3543,6 +3680,7 @@ def pt440HitEx():
     ParticleSize(1700)
     CallCustomizableParticle('ptef_hit_middle05', -1)
 
+
 @State
 def Astral1stBeam():
 
@@ -3550,7 +3688,7 @@ def Astral1stBeam():
         RemoveOnCallStateEnd(3)
         LinkParticle('ptef_450fast')
         BlendMode_Add()
-        sendToLabelUpon(32, 12)
+        uponSendToLabel(32, 12)
     sprite('null', 350)
     label(12)
     sprite('null', 14)
@@ -3558,11 +3696,13 @@ def Astral1stBeam():
     SetScaleXPerFrame(20)
     SetScaleSpeedY(30)
 
+
 @State
 def AstralMcircle():
 
     def upon_IMMEDIATE():
-        Eff3DEffect('ptef_kousokucircle.DIG', 'ptef_kousokucircle_motion_000.m')
+        Eff3DEffect('ptef_kousokucircle.DIG', 'ptef_kousokucircle_motion_000.m'
+            )
         FaceSpawnLocation()
         BlendMode_Add()
         Size(1100)
@@ -3577,6 +3717,7 @@ def AstralMcircle():
     sprite('null', 10)
     ConstantAlphaModifier(-30)
     SetScaleSpeed(15)
+
 
 @State
 def Fade1():
@@ -3595,6 +3736,7 @@ def Fade1():
     sprite('vr_fade', 9)
     ConstantAlphaModifier(-22)
 
+
 @State
 def AstralAura():
 
@@ -3606,7 +3748,7 @@ def AstralAura():
         RenderLayer(5)
         BlendMode_Add()
         ColorForTransition(16750230)
-        sendToLabelUpon(32, 13)
+        uponSendToLabel(32, 13)
     sprite('vrptef_env450_00', 3)
     ConstantAlphaModifier(20)
     AlphaValue(0)
@@ -3624,6 +3766,7 @@ def AstralAura():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(20)
 
+
 @State
 def AstralAura02():
 
@@ -3637,7 +3780,7 @@ def AstralAura02():
         SetScaleY(6000)
         AddX(10000)
         ColorForTransition(16750230)
-        sendToLabelUpon(32, 13)
+        uponSendToLabel(32, 13)
     sprite('vrptef_env', 25)
     ConstantAlphaModifier(9)
     AlphaValue(0)
@@ -3648,6 +3791,7 @@ def AstralAura02():
     sprite('null', 10)
     ConstantAlphaModifier(-20)
     SetScaleSpeed(20)
+
 
 @State
 def pt450cutin_hand():
@@ -3679,6 +3823,7 @@ def pt450cutin_hand():
     sprite('pt450cutin_00', 4)
     ConstantAlphaModifier(-40)
 
+
 @State
 def pt450cutin_handbg():
 
@@ -3709,6 +3854,7 @@ def pt450cutin_handbg():
     sprite('vr_pt450cutinbg02', 4)
     ConstantAlphaModifier(-40)
 
+
 @State
 def pt450cutin_hand_par():
 
@@ -3721,6 +3867,7 @@ def pt450cutin_hand_par():
     sprite('null', 30)
     sprite('null', 6)
     ConstantAlphaModifier(-40)
+
 
 @State
 def pt450cutin_leg():
@@ -3752,6 +3899,7 @@ def pt450cutin_leg():
     sprite('pt450cutin_01', 4)
     ConstantAlphaModifier(-40)
 
+
 @State
 def pt450cutin_legbg():
 
@@ -3782,6 +3930,7 @@ def pt450cutin_legbg():
     sprite('vr_pt450cutinbg02re', 4)
     ConstantAlphaModifier(-40)
 
+
 @State
 def pt450cutin_leg_par():
 
@@ -3794,6 +3943,7 @@ def pt450cutin_leg_par():
     sprite('null', 30)
     sprite('null', 6)
     ConstantAlphaModifier(-40)
+
 
 @State
 def pt450cutin_bustup():
@@ -3844,13 +3994,14 @@ def pt450cutin_bustup():
     physicsYImpulse(0)
     sprite('pt450cutin_08', 5)
     sprite('pt450cutin_12', 6)
-    PassbackAddActionMarkToFunction('pt450cutin_kira', 32)
+    TriggerUponForState('pt450cutin_kira', 32)
     AddY(36000)
     sprite('pt450cutin_13', 6)
     physicsYImpulse(3000)
     sprite('pt450cutin_14', 6)
     ConstantAlphaModifier(-20)
     sprite('pt450cutin_15', 6)
+
 
 @State
 def pt450cutin_up_par():
@@ -3867,6 +4018,7 @@ def pt450cutin_up_par():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(10)
 
+
 @State
 def pt450cutin_kira():
 
@@ -3876,12 +4028,13 @@ def pt450cutin_kira():
         BlendMode_Add()
         SetPosXByScreenPer(50)
         SetPosYByScreenPer(50)
-        sendToLabelUpon(32, 14)
+        uponSendToLabel(32, 14)
     sprite('null', 32767)
     label(14)
     sprite('null', 20)
     ConstantAlphaModifier(-10)
     SetScaleSpeed(10)
+
 
 @State
 def pt450cutin_bustupbg():
@@ -3906,6 +4059,7 @@ def pt450cutin_bustupbg():
     sprite('vr_pt450cutinbg03', 12)
     ConstantAlphaModifier(-20)
 
+
 @State
 def pt450_mahojin1():
 
@@ -3924,6 +4078,7 @@ def pt450_mahojin1():
     sprite('null', 40)
     ConstantAlphaModifier(-15)
 
+
 @State
 def pt450_mahojin2():
 
@@ -3938,6 +4093,7 @@ def pt450_mahojin2():
         XPositionRelativeFacing(200000)
         AbsoluteY(250000)
     sprite('null', 140)
+
 
 @State
 def pt450_mahojin3():
@@ -3960,6 +4116,7 @@ def pt450_mahojin3():
     physicsXImpulse(-5000)
     SetScaleSpeed(10)
 
+
 @State
 def pt450Beam():
 
@@ -3979,6 +4136,7 @@ def pt450Beam():
     physicsXImpulse(0)
     SetScaleSpeedY(0)
 
+
 @State
 def FadeWhite():
     sprite('vr_fade', 15)
@@ -3995,6 +4153,7 @@ def FadeWhite():
     ConstantAlphaModifier(0)
     sprite('vr_fade', 15)
     ConstantAlphaModifier(-17)
+
 
 @State
 def AstralAuraWin():
@@ -4015,6 +4174,7 @@ def AstralAuraWin():
     ConstantAlphaModifier(0)
     AlphaValue(180)
 
+
 @State
 def EntryHeart():
 
@@ -4034,6 +4194,7 @@ def EntryHeart():
     sprite('null', 15)
     physicsYImpulse(20000)
 
+
 @State
 def EntryRod():
 
@@ -4051,6 +4212,7 @@ def EntryRod():
     AddRotationPerFrame(-15000)
     sprite('vrptef601_00', 3)
     AddRotationPerFrame(-12000)
+
 
 @State
 def FusenEntry():
@@ -4097,11 +4259,12 @@ def FusenEntry():
     sprite('vrptef401_05', 6)
     loopRest()
 
+
 @State
 def EventPT01_ibbn():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         PaletteIndex(7)
         SetZLine(0, 100)
     label(0)
@@ -4137,6 +4300,7 @@ def EventPT01_ibbn():
     CreateParticle('haef_event_lose_end', 103)
     sprite('bn050_02', 32767)
 
+
 @State
 def ptPhantom():
 
@@ -4168,6 +4332,7 @@ def ptPhantom():
     sprite('pt999_00', 6)
     sprite('pt999_00', 6)
 
+
 @State
 def ptPhantom_2():
 
@@ -4181,7 +4346,7 @@ def ptPhantom_2():
     sprite('pt999_00', 6)
     ConstantAlphaModifier(0)
     CharacterFlash(3289650, 120, 120)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     label(0)
     sprite('pt999_00', 50)
     physicsYImpulse(100)
@@ -4210,6 +4375,7 @@ def ptPhantom_2():
     sprite('pt999_00', 6)
     sprite('pt999_00', 6)
 
+
 @State
 def BurstDDCamera():
 
@@ -4231,6 +4397,7 @@ def BurstDDCamera():
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
 
+
 @State
 def ptef_408_splash():
 
@@ -4242,6 +4409,7 @@ def ptef_408_splash():
     sprite('null', 3)
     CreateParticle('ptef408splash', -1)
     gotoLabel(0)
+
 
 @State
 def ptef_409_ring():
@@ -4255,6 +4423,7 @@ def ptef_409_ring():
     sprite('vrptef409_04', 2)
     sprite('vrptef409_05', 2)
 
+
 @State
 def ptef_409_ring_air():
 
@@ -4267,6 +4436,7 @@ def ptef_409_ring_air():
     sprite('vrptef409_15', 5)
     sprite('vrptef409_16', 2)
     sprite('vrptef409_17', 2)
+
 
 @State
 def BoomerangAtk():
@@ -4301,36 +4471,36 @@ def BoomerangAtk():
         def upon_32():
             SLOT_53 = 1
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             EndAttack()
             AlphaValue(144)
             DespawnEAEffect('Boomerang_blm')
-            PassbackAddActionMarkToFunction('Boomerang_wing', 33)
-            PassbackAddActionMarkToFunction('Boomerang_wing_b', 33)
+            TriggerUponForState('Boomerang_wing', 33)
+            TriggerUponForState('Boomerang_wing_b', 33)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
             AlphaValue(144)
             DespawnEAEffect('Boomerang_blm')
-            PassbackAddActionMarkToFunction('Boomerang_wing', 33)
-            PassbackAddActionMarkToFunction('Boomerang_wing_b', 33)
+            TriggerUponForState('Boomerang_wing', 33)
+            TriggerUponForState('Boomerang_wing_b', 33)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             XImpulseAcceleration(99)
-            if (not SLOT_2):
-                if (SLOT_12 < 10000):
+            if not SLOT_2:
+                if SLOT_XVelocity < 10000:
                     SetActionMark(1)
                     sendToLabel(1)
             else:
                 ObjectUpon24(23, 100, 3, 100)
-                if (SLOT_0 < 150000):
+                if SLOT_0 < 150000:
                     SetActionMark(0)
-                    clearUponHandler(3)
-                    if (not SLOT_53):
+                    clearUponHandler(EVERY_FRAME)
+                    if not SLOT_53:
                         sendToLabel(2)
                 ObjectUpon24(23, 100, 3, 100)
-                if (SLOT_0 >= 5000000):
-                    clearUponHandler(3)
+                if SLOT_0 >= 5000000:
+                    clearUponHandler(EVERY_FRAME)
     sprite('vrptef409_boomerang', 32767)
     PrivateSE('ptse_30')
     CreateObject('Boomerang_ring', 0)
@@ -4354,10 +4524,11 @@ def BoomerangAtk():
     AlphaValue(255)
     ConstantAlphaModifier(-51)
     EndMomentum(1)
-    if (SLOT_4 == 15):
-        SLOT_31 = (SLOT_31 + 1)
+    if SLOT_4 == 15:
+        SLOT_31 = SLOT_31 + 1
     else:
         ObjectUpon2(3, 0, 0)
+
 
 @State
 def Boomerang_ring():
@@ -4374,6 +4545,7 @@ def Boomerang_ring():
         Size(500)
         RenderLayer(7)
     sprite('null', 32767)
+
 
 @State
 def Boomerang_wing():
@@ -4395,10 +4567,12 @@ def Boomerang_wing():
     sprite('vrptef409_wing01', 4)
     sprite('vrptef409_wing02', 4)
     sprite('vrptef409_wing01', 4)
-    GotoIf0(0, 2, 51)
+    if not SLOT_51:
+        notConditionalSendToLabel(0)
     sprite('vrptef409_wing00', 4)
     sprite('vrptef409_wing01', 4)
     sprite('vrptef409_wing02', 4)
+
 
 @State
 def Boomerang_wing_b():
@@ -4420,10 +4594,12 @@ def Boomerang_wing_b():
     sprite('vrptef409_wing01b', 4)
     sprite('vrptef409_wing02b', 4)
     sprite('vrptef409_wing01b', 4)
-    GotoIf0(0, 2, 51)
+    if not SLOT_51:
+        notConditionalSendToLabel(0)
     sprite('vrptef409_wing00b', 4)
     sprite('vrptef409_wing01b', 4)
     sprite('vrptef409_wing02b', 4)
+
 
 @State
 def Boomerang_blm():
@@ -4438,6 +4614,7 @@ def Boomerang_blm():
         Size(925)
     sprite('null', 32767)
 
+
 @State
 def Boomerang_pt():
 
@@ -4448,6 +4625,7 @@ def Boomerang_pt():
     sprite('null', 4)
     CreateParticle('ptef409_light', -1)
     gotoLabel(0)
+
 
 @State
 def SPBoomerangAtk():
@@ -4484,39 +4662,39 @@ def SPBoomerangAtk():
         def upon_32():
             SLOT_53 = 1
 
-        def upon_44():
+        def upon_PLAYER_DAMAGED():
             EndAttack()
             AlphaValue(144)
             DespawnEAEffect('Boomerang_blm_sp')
-            PassbackAddActionMarkToFunction('SPBoomerang_wing', 33)
-            PassbackAddActionMarkToFunction('SPBoomerang_wing_b', 33)
+            TriggerUponForState('SPBoomerang_wing', 33)
+            TriggerUponForState('SPBoomerang_wing_b', 33)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             AttackOff()
             AlphaValue(144)
             DespawnEAEffect('Boomerang_blm_sp')
-            PassbackAddActionMarkToFunction('SPBoomerang_wing', 33)
-            PassbackAddActionMarkToFunction('SPBoomerang_wing_b', 33)
+            TriggerUponForState('SPBoomerang_wing', 33)
+            TriggerUponForState('SPBoomerang_wing_b', 33)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             XImpulseAcceleration(99)
             CopyFromRightToLeft(23, 2, 52, 3, 2, 23)
             PrivateFunction(1, 2, 23, 2, 52, 2, 52)
             PrivateFunction(3, 2, 52, 0, -60, 2, 13)
-            if (not SLOT_2):
-                if (SLOT_12 < 10000):
+            if not SLOT_2:
+                if SLOT_XVelocity < 10000:
                     SetActionMark(1)
                     sendToLabel(1)
             else:
                 ObjectUpon24(23, 100, 3, 100)
-                if (SLOT_0 < 200000):
+                if SLOT_0 < 200000:
                     SetActionMark(0)
-                    clearUponHandler(3)
-                    if (not SLOT_53):
+                    clearUponHandler(EVERY_FRAME)
+                    if not SLOT_53:
                         sendToLabel(2)
                 ObjectUpon24(23, 100, 3, 100)
-                if (SLOT_0 >= 5000000):
-                    clearUponHandler(3)
+                if SLOT_0 >= 5000000:
+                    clearUponHandler(EVERY_FRAME)
     sprite('vrptef409_boomerang_sp', 32767)
     PrivateSE('ptse_30')
     CreateObject('SPBoomerang_ring', 0)
@@ -4540,10 +4718,11 @@ def SPBoomerangAtk():
     AlphaValue(255)
     ConstantAlphaModifier(-51)
     EndMomentum(1)
-    if (SLOT_4 == 16):
-        SLOT_31 = (SLOT_31 + 1)
+    if SLOT_4 == 16:
+        SLOT_31 = SLOT_31 + 1
     else:
         ObjectUpon2(3, 1, 0)
+
 
 @State
 def SPBoomerang_ring():
@@ -4560,6 +4739,7 @@ def SPBoomerang_ring():
         Size(750)
         RenderLayer(7)
     sprite('null', 32767)
+
 
 @State
 def SPBoomerang_wing():
@@ -4579,11 +4759,13 @@ def SPBoomerang_wing():
     label(0)
     sprite('vrptef409_sp_wing00', 4)
     sprite('vrptef409_sp_wing01', 4)
-    GotoIf0(0, 2, 51)
+    if not SLOT_51:
+        notConditionalSendToLabel(0)
     sprite('vrptef409_sp_wing00', 4)
     sprite('vrptef409_sp_wing01', 4)
     sprite('vrptef409_sp_wing00', 4)
     sprite('vrptef409_sp_wing01', 4)
+
 
 @State
 def SPBoomerang_wing_b():
@@ -4603,11 +4785,13 @@ def SPBoomerang_wing_b():
     label(0)
     sprite('vrptef409_sp_wing00b', 4)
     sprite('vrptef409_sp_wing01b', 4)
-    GotoIf0(0, 2, 51)
+    if not SLOT_51:
+        notConditionalSendToLabel(0)
     sprite('vrptef409_sp_wing00b', 4)
     sprite('vrptef409_sp_wing01b', 4)
     sprite('vrptef409_sp_wing00b', 4)
     sprite('vrptef409_sp_wing01b', 4)
+
 
 @State
 def Boomerang_blm_sp():
@@ -4622,6 +4806,7 @@ def Boomerang_blm_sp():
         Size(1390)
     sprite('null', 32767)
 
+
 @State
 def Boomerang():
 
@@ -4635,7 +4820,7 @@ def Boomerang():
         RandSpeedX(-2000, 2000)
         Visibility(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             DespawnEAEffect('Boomerang_pt')
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
 
@@ -4649,7 +4834,7 @@ def Boomerang():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_Boomerang', 30)
     CommonSE('008_swing_pole_1')
@@ -4665,6 +4850,7 @@ def Boomerang():
     label(1)
     sprite('vr_Boomerang', 30)
     StartMultihit()
+
 
 @State
 def SPBoomerang():
@@ -4682,7 +4868,7 @@ def SPBoomerang():
         RandSpeedX(-2000, 2000)
         Visibility(1)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             DespawnEAEffect('Boomerang_pt')
         HitsPerCall(1, 1, 1, 1, 1, 0, 0, 0)
 
@@ -4696,7 +4882,7 @@ def SPBoomerang():
             ResetExternalForces()
             AddRotationPerFrame(-10000)
         CancelIfPlayerHit(3)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     label(0)
     sprite('vr_SPboomerang', 30)
     CommonSE('008_swing_pole_1')
@@ -4712,6 +4898,7 @@ def SPBoomerang():
     label(1)
     sprite('vr_SPboomerang', 30)
     StartMultihit()
+
 
 @State
 def Act2Event_Camera():
@@ -4730,7 +4917,7 @@ def Act2Event_Camera():
             sendToLabel(9)
         CameraControlEnable(1)
         RunLoopUpon(17, 2000)
-        sendToLabelUpon(17, 9)
+        uponSendToLabel(17, 9)
     sprite('null', 32767)
     CameraNoScreenCollision(1)
     loopRest()
@@ -4742,6 +4929,7 @@ def Act2Event_Camera():
     sprite('null', 10)
     CameraControlEnable(0)
     CameraNoScreenCollision(0)
+
 
 @State
 def Act2Event_Fade():
@@ -4760,11 +4948,12 @@ def Act2Event_Fade():
     ConstantAlphaModifier(0)
     AlphaValue(255)
 
+
 @State
 def Act3Event_FadeWhite():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('vr_fade', 30)
     BlendMode_Normal()
     Size(20000)

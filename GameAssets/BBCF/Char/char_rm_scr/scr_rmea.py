@@ -23,6 +23,7 @@ def EMB_NY():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(200)
 
+
 @State
 def EMB_NY_OD():
 
@@ -48,6 +49,7 @@ def EMB_NY_OD():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(200)
 
+
 @State
 def EMB_NY_AH():
 
@@ -72,10 +74,11 @@ def EMB_NY_AH():
     ConstantAlphaModifier(-10)
     SetScaleSpeed(100)
 
+
 @State
 def DIST_NY5D():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -88,10 +91,11 @@ def DIST_NY5D():
     sprite('vrdist_ny00', 10)
     SetScaleSpeedY(-100)
 
+
 @State
 def DIST_NY5DADD():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -104,10 +108,11 @@ def DIST_NY5DADD():
     sprite('vrdist_ny00', 10)
     SetScaleSpeedY(-100)
 
+
 @State
 def DIST_TriSwd():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -118,6 +123,7 @@ def DIST_TriSwd():
     SetScaleSpeedY(150)
     sprite('vrdist_ny00', 10)
     SetScaleXPerFrame(-200)
+
 
 @State
 def NY_SummonA():
@@ -134,6 +140,7 @@ def NY_SummonA():
     else:
         PrivateSE('nyse_25')
 
+
 @State
 def NY_SummonDmc():
     PaletteIndex(1)
@@ -141,6 +148,7 @@ def NY_SummonDmc():
     CreateParticle('nyef_dmc00', -1)
     ParticleColorFromPalette(229, 226, 229)
     CallCustomizableParticle('rmef_dmc', -1)
+
 
 @State
 def NY_SummonAirDmc():
@@ -150,6 +158,7 @@ def NY_SummonAirDmc():
     ParticleColorFromPalette(229, 226, 229)
     CallCustomizableParticle('rmef_airdmc', -1)
 
+
 @State
 def NY_SlowMc():
     PaletteIndex(1)
@@ -157,6 +166,7 @@ def NY_SlowMc():
     CreateParticle('nyef_slowmc01', -1)
     ParticleColorFromPalette(229, 225, 229)
     CallCustomizableParticle('nyef_slowmc', -1)
+
 
 @State
 def NY_SlowHand():
@@ -167,6 +177,7 @@ def NY_SlowHand():
     CallCustomizableParticle('nyef_slowhandcircle00', -1)
     ParticleColorFromPalette(225, 225, 226)
     CallCustomizableParticle('nyef_slowhand', -1)
+
 
 @State
 def NY_SumMultiSwordBigmc():
@@ -181,6 +192,7 @@ def NY_SumMultiSwordBigmc():
     CallCustomizableParticle('rmef_sumDDstart03', -1)
     CallCustomizableParticle('nyef_sumDDstart', -1)
 
+
 @State
 def NY_SumMultiSwordBigmcOD():
 
@@ -188,7 +200,7 @@ def NY_SumMultiSwordBigmcOD():
         BlendMode_Normal()
         PaletteIndex(1)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         ParticleColorFromPalette(226, 225, 226)
         CallPrivateEffect('rmef_sumDDstart03b')
     sprite('null', 1000)
@@ -198,9 +210,10 @@ def NY_SumMultiSwordBigmcOD():
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
-    PassbackAddActionMarkToFunction('NY_MultiSwordODSub', 32)
-    PassbackAddActionMarkToFunction('NY_MultiSwordODSub2', 32)
-    PassbackAddActionMarkToFunction('NY_MultiSwordODSub3', 32)
+    TriggerUponForState('NY_MultiSwordODSub', 32)
+    TriggerUponForState('NY_MultiSwordODSub2', 32)
+    TriggerUponForState('NY_MultiSwordODSub3', 32)
+
 
 @State
 def NY_MultiSwordODSub():
@@ -209,12 +222,13 @@ def NY_MultiSwordODSub():
         BlendMode_Normal()
         PaletteIndex(1)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     LinkParticle('rmef_sumDDstart00')
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def NY_MultiSwordODSub2():
@@ -223,13 +237,14 @@ def NY_MultiSwordODSub2():
         BlendMode_Normal()
         PaletteIndex(1)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     ParticleColorFromPalette(229, 225, 229)
     CallPrivateEffect('nyef_sumDDstart01')
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def NY_MultiSwordODSub3():
@@ -238,13 +253,14 @@ def NY_MultiSwordODSub3():
         BlendMode_Normal()
         PaletteIndex(1)
         RemoveOnCallStateEnd(2)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 32767)
     ParticleColorFromPalette(226, 226, 226)
     CallPrivateEffect('rmef_sumDDstart02')
     label(0)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def NY_SumMultiSwordMc():
@@ -253,6 +269,7 @@ def NY_SumMultiSwordMc():
     CreateParticle('nyef_sumDDlaser01', -1)
     ParticleColorFromPalette(225, 225, 226)
     CallCustomizableParticle('rmef_sumDDlaser', -1)
+
 
 @State
 def NY_SumBigSword():
@@ -267,6 +284,7 @@ def NY_SumBigSword():
     ParticleColorFromPalette(229, 225, 229)
     CallCustomizableParticle('rmef_sumDD', -1)
 
+
 @State
 def NY_SlowFieldStart():
     PaletteIndex(1)
@@ -277,6 +295,7 @@ def NY_SlowFieldStart():
     ParticleColorFromPalette(229, 230, 229)
     CallCustomizableParticle('nyef_slowmagicloop', -1)
 
+
 @State
 def NY_SlowField():
     PaletteIndex(1)
@@ -285,6 +304,7 @@ def NY_SlowField():
     CreateParticle('nyef_slowfieldloop', -1)
     ParticleColorFromPalette(229, 230, 229)
     CallCustomizableParticle('nyef_slowmagicloop', -1)
+
 
 @State
 def NY_ActP2_Down():
@@ -298,6 +318,7 @@ def NY_ActP2_Down():
     sprite('null', 200)
     ConstantAlphaModifier(-5)
 
+
 @State
 def NY_ActP2_Up():
 
@@ -310,10 +331,12 @@ def NY_ActP2_Up():
     sprite('null', 200)
     ConstantAlphaModifier(-5)
 
+
 @State
 def NY_MagicA():
     sprite('null', 200)
     CreateParticle('nyef_mcircle', -1)
+
 
 @State
 def SummonSlowArea():
@@ -356,6 +379,7 @@ def SummonSlowArea():
     sprite('null', 20)
     CreateParticle('nyef_slowfieldend', -1)
 
+
 @Subroutine
 def DriveSwordInit():
     AttackDefaults_Projectile()
@@ -381,20 +405,21 @@ def DriveSwordInit():
         Size(1150)
         SLOT_58 = 1
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         CreateParticle('nyef_breakA', 101)
         CopyFromRightToLeft(3, 2, 59, 25, 2, 83)
         CopyFromRightToLeft(3, 2, 60, 25, 2, 23)
         if SLOT_58:
             ScreenShake(2000, 2000)
 
-    def upon_FRAME_STEP():
-        if Unknown2065(23):
-            clearUponHandler(3)
-            ObjectUpon(2, 41)
-    sendToLabelUpon(2, 580)
+    def upon_EVERY_FRAME():
+        if random_(2, 0, 50):
+            clearUponHandler(EVERY_FRAME)
+            ObjectUpon(LANDING, 41)
+    uponSendToLabel(LANDING, 580)
     HitsPerCall(1, 0, 0, 1, 1, 0, 1, 1)
-    sendToLabelUpon(54, 580)
+    uponSendToLabel(54, 580)
+
 
 @Subroutine
 def DriveSwordInit_Air():
@@ -425,20 +450,21 @@ def DriveSwordInit_Air():
         Size(1150)
         SLOT_58 = 1
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         CreateParticle('nyef_breakA', 101)
         CopyFromRightToLeft(3, 2, 59, 25, 2, 83)
         CopyFromRightToLeft(3, 2, 60, 25, 2, 23)
         if SLOT_58:
             ScreenShake(2000, 2000)
 
-    def upon_FRAME_STEP():
-        if Unknown2065(23):
-            clearUponHandler(3)
-            ObjectUpon(2, 41)
-    sendToLabelUpon(2, 580)
+    def upon_EVERY_FRAME():
+        if random_(2, 0, 50):
+            clearUponHandler(EVERY_FRAME)
+            ObjectUpon(LANDING, 41)
+    uponSendToLabel(LANDING, 580)
     HitsPerCall(1, 0, 0, 1, 1, 0, 1, 1)
-    sendToLabelUpon(54, 580)
+    uponSendToLabel(54, 580)
+
 
 @Subroutine
 def DriveSwordLandingParam():
@@ -453,6 +479,7 @@ def DriveSwordLandingParam():
     CreateObject('NY_MagicA', -1)
     CreateObject('DIST_NY5D', -1)
 
+
 @Subroutine
 def DriveSwordBreakParam():
     AttackOff()
@@ -466,6 +493,7 @@ def DriveSwordBreakParam():
     CreateObject('NY_MagicA', -1)
     CreateObject('DIST_NY5D', -1)
 
+
 @State
 def NY_Sword5D():
 
@@ -478,8 +506,8 @@ def NY_Sword5D():
         AirPushbackY(16000)
         AirPushbackX(3000)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtk5D', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtk5D', 33)
     sprite('vrnyef_swda00', 2)
     CreateObject('NY_SummonA', 0)
     sprite('vrnyef_swda01', 2)
@@ -488,7 +516,7 @@ def NY_Sword5D():
     sprite('vrnyef_swda04', 2)
     sprite('vrnyef_swda05', 2)
     sprite('vrnyef_swdaatk', 12)
-    if (not SLOT_2):
+    if not SLOT_2:
         ProjectileLevel(1)
     XImpulseAcceleration(157)
     label(1)
@@ -500,6 +528,7 @@ def NY_Sword5D():
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
 
+
 @State
 def NY_Sword5DEntryVsRg():
 
@@ -507,8 +536,8 @@ def NY_Sword5DEntryVsRg():
         callSubroutine('DriveSwordInit')
         SetZVal(-500)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 260000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 260000:
             sendToLabel(580)
     sprite('vrnyef_swda00', 2)
     CreateObject('NY_SummonA', 0)
@@ -527,17 +556,18 @@ def NY_Sword5DEntryVsRg():
     loopRest()
     ExitState()
     label(580)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
     ParticleColor(4278223103, 4278202623, 4278190335)
-    if (not SLOT_51):
+    if not SLOT_51:
         ParticleFacing(1)
     CallCustomizableParticle('ef_girdm', 0)
     ScreenShake(8000, 2000)
     CommonSE('105_guard_slash_2')
-    ObjectUpon(2, 33)
+    ObjectUpon(LANDING, 33)
     loopRest()
+
 
 @State
 def NY_Sword6D():
@@ -549,8 +579,8 @@ def NY_Sword6D():
         physicsXImpulse(31200)
         physicsYImpulse(6300)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtk6D', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtk6D', 33)
     sprite('vrnyef_swdb00a', 2)
     CreateObject('NY_SummonA', 0)
     sprite('vrnyef_swdb01a', 2)
@@ -560,7 +590,7 @@ def NY_Sword6D():
     sprite('vrnyef_swdb05a', 1)
     sprite('vrnyef_swdb06a', 1)
     sprite('vrnyef_swdbaatk', 20)
-    if (not SLOT_2):
+    if not SLOT_2:
         ProjectileLevel(1)
     XImpulseAcceleration(210)
     YAccel(210)
@@ -573,6 +603,7 @@ def NY_Sword6D():
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
 
+
 @State
 def NY_Sword2D():
 
@@ -584,8 +615,8 @@ def NY_Sword2D():
         physicsYImpulse(26000)
         AirHitstunAnimation(13)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtk2D', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtk2D', 33)
     sprite('vrnyef_swdc00a', 1)
     CreateObject('NY_SummonA', 0)
     sprite('vrnyef_swdc01a', 1)
@@ -597,7 +628,7 @@ def NY_Sword2D():
     sprite('vrnyef_swdc07a', 1)
     sprite('vrnyef_swdc08a', 1)
     sprite('vrnyef_swdcatka', 20)
-    if (not SLOT_2):
+    if not SLOT_2:
         ProjectileLevel(1)
     XImpulseAcceleration(160)
     YAccel(160)
@@ -611,6 +642,7 @@ def NY_Sword2D():
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
 
+
 @State
 def NY_SwordAirD():
 
@@ -621,8 +653,8 @@ def NY_SwordAirD():
         physicsXImpulse(41400)
         physicsYImpulse(5760)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtkAIR5D', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtkAIR5D', 33)
     sprite('vrnyef_swde00a', 1)
     CreateObject('NY_SummonA', 0)
     sprite('vrnyef_swde01a', 1)
@@ -634,7 +666,7 @@ def NY_SwordAirD():
     XImpulseAcceleration(180)
     YAccel(180)
     sprite('vrnyef_swde00aatk', 8)
-    if (not SLOT_2):
+    if not SLOT_2:
         ProjectileLevel(1)
     label(1)
     sprite('vrnyef_swddel', 12)
@@ -644,6 +676,7 @@ def NY_SwordAirD():
     label(580)
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
+
 
 @State
 def NY_SwordAir2D():
@@ -655,8 +688,8 @@ def NY_SwordAir2D():
         physicsXImpulse(19200)
         physicsYImpulse(-12800)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtkAIR2D', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtkAIR2D', 33)
     sprite('vrnyef_swde00c', 1)
     CreateObject('NY_SummonA', 0)
     sprite('vrnyef_swde01c', 1)
@@ -668,7 +701,7 @@ def NY_SwordAir2D():
     XImpulseAcceleration(160)
     YAccel(160)
     sprite('vrnyef_swde00catk', 6)
-    if (not SLOT_2):
+    if not SLOT_2:
         ProjectileLevel(1)
     label(1)
     sprite('vrnyef_swddel', 12)
@@ -678,6 +711,7 @@ def NY_SwordAir2D():
     label(580)
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
+
 
 @State
 def NY_SwordAir6D():
@@ -689,8 +723,8 @@ def NY_SwordAir6D():
         physicsXImpulse(36800)
         physicsYImpulse(-3200)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtkAIR6D', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtkAIR6D', 33)
     sprite('vrnyef_swde00', 1)
     CreateObject('NY_SummonA', 0)
     sprite('vrnyef_swde01b', 1)
@@ -702,7 +736,7 @@ def NY_SwordAir6D():
     XImpulseAcceleration(160)
     YAccel(160)
     sprite('vrnyef_swde00batk', 4)
-    if (not SLOT_2):
+    if not SLOT_2:
         ProjectileLevel(1)
     label(1)
     sprite('vrnyef_swddel', 12)
@@ -713,12 +747,13 @@ def NY_SwordAir6D():
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
 
+
 @State
 def NY_Sword4D():
 
     def upon_IMMEDIATE():
         callSubroutine('DriveSwordInit')
-        if (SLOT_19 > 600000):
+        if SLOT_19 > 600000:
             TeleportToObject(22)
             AddX(150000)
         else:
@@ -734,8 +769,8 @@ def NY_Sword4D():
         GroundedHitstunAnimation(3)
         HitOverhead(2)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtk4D', 33)
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtk4D', 33)
     sprite('vrnyef_swdd00a', 6)
     AttackOff()
     sprite('vrnyef_swdd01a', 3)
@@ -756,6 +791,7 @@ def NY_Sword4D():
     label(580)
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
+
 
 @State
 def NY_SwordDChain():
@@ -783,11 +819,11 @@ def NY_SwordDChain():
         CopyFromRightToLeft(23, 2, 23, 3, 2, 60)
         CancelIfPlayerHit(3)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             CreateParticle('nyef_breakA', 101)
-            clearUponHandler(10)
-            ObjectUpon(2, 32)
-        sendToLabelUpon(2, 1)
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+            ObjectUpon(LANDING, 32)
+        uponSendToLabel(LANDING, 1)
 
         def upon_32():
             AirHitstunAnimation(10)
@@ -885,7 +921,7 @@ def NY_SwordDChain():
             RotationSomething(0)
             CreateObject('NY_SummonA', -1)
         HitsPerCall(1, 0, 0, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
     sprite('vrnyef_swdchain00', 1)
     AlphaValue(0)
     ConstantAlphaModifier(30)
@@ -905,6 +941,7 @@ def NY_SwordDChain():
     label(580)
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
+
 
 @State
 def NY_SwordDChainOD():
@@ -931,11 +968,11 @@ def NY_SwordDChainOD():
         AfterimageSize_2(1000)
         CancelIfPlayerHit(3)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             ScreenShake(5000, 5000)
             CreateParticle('nyef_breakA', 101)
-            ObjectUpon(2, 32)
-        sendToLabelUpon(2, 1)
+            ObjectUpon(LANDING, 32)
+        uponSendToLabel(LANDING, 1)
         CopyFromRightToLeft(23, 2, 83, 3, 2, 59)
         CopyFromRightToLeft(23, 2, 23, 3, 2, 60)
 
@@ -1033,7 +1070,7 @@ def NY_SwordDChainOD():
             RotationSomething(0)
             CreateObject('NY_SummonA', -1)
         HitsPerCall(1, 0, 0, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
     sprite('vrnyef_swdchain00', 1)
     AlphaValue(0)
     ConstantAlphaModifier(30)
@@ -1054,6 +1091,7 @@ def NY_SwordDChainOD():
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
 
+
 @State
 def NY_BlackArea():
 
@@ -1063,6 +1101,7 @@ def NY_BlackArea():
     sprite('null', 120)
     CreateParticle('nyef_blackptcstart', -1)
     CreateParticle('nyef_sumlight00', -1)
+
 
 @State
 def NY_TripleSword11Mode():
@@ -1075,46 +1114,46 @@ def NY_TripleSword11Mode():
             SLOT_51 = 200
 
         def upon_32():
-            ObjectUpon(4, 41)
+            ObjectUpon(FALLING, 41)
             ObjectUpon(5, 41)
             ObjectUpon(6, 41)
-            ObjectUpon(7, 41)
+            ObjectUpon(CORNERED, 41)
             ObjectUpon(8, 41)
             sendToLabel(1)
 
-        def upon_44():
-            ObjectUpon(4, 41)
+        def upon_PLAYER_DAMAGED():
+            ObjectUpon(FALLING, 41)
             ObjectUpon(5, 41)
             ObjectUpon(6, 41)
-            ObjectUpon(7, 41)
+            ObjectUpon(CORNERED, 41)
             ObjectUpon(8, 41)
             sendToLabel(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                SLOT_51 = (SLOT_51 + (-1))
-                if (not SLOT_51):
+                SLOT_51 = SLOT_51 + -1
+                if not SLOT_51:
                     sendToLabel(1)
-            if (SLOT_22 > 2100000):
+            if SLOT_XDistanceFromCenterOfStage > 2100000:
                 sendToLabel(1)
-                clearUponHandler(3)
-            if (SLOT_22 < (-2100000)):
+                clearUponHandler(EVERY_FRAME)
+            if SLOT_XDistanceFromCenterOfStage < -2100000:
                 sendToLabel(1)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
         if CharacterIDCheck('ta'):
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
 
-            def upon_FRAME_STEP():
+            def upon_EVERY_FRAME():
                 if SLOT_51:
-                    SLOT_51 = (SLOT_51 + (-1))
-                    if (not SLOT_51):
+                    SLOT_51 = SLOT_51 + -1
+                    if not SLOT_51:
                         sendToLabel(1)
-                if (SLOT_22 > 3900000):
+                if SLOT_XDistanceFromCenterOfStage > 3900000:
                     sendToLabel(1)
-                    clearUponHandler(3)
-                if (SLOT_22 < (-3900000)):
+                    clearUponHandler(EVERY_FRAME)
+                if SLOT_XDistanceFromCenterOfStage < -3900000:
                     sendToLabel(1)
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
         AddX(100000)
     sprite('null', 1)
     CreateObject('NY_BlackArea', -1)
@@ -1135,6 +1174,7 @@ def NY_TripleSword11Mode():
     label(1)
     sprite('null', 10)
 
+
 @State
 def NY_TripleSword13Mode():
 
@@ -1143,41 +1183,41 @@ def NY_TripleSword13Mode():
         SLOT_51 = 200
 
         def upon_32():
-            ObjectUpon(4, 41)
+            ObjectUpon(FALLING, 41)
             ObjectUpon(5, 41)
             ObjectUpon(6, 41)
-            ObjectUpon(7, 41)
+            ObjectUpon(CORNERED, 41)
             ObjectUpon(8, 41)
             sendToLabel(1)
 
         def upon_39():
             SLOT_51 = 27
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                SLOT_51 = (SLOT_51 + (-1))
-                if (not SLOT_51):
+                SLOT_51 = SLOT_51 + -1
+                if not SLOT_51:
                     sendToLabel(1)
-            if (SLOT_22 > 2100000):
+            if SLOT_XDistanceFromCenterOfStage > 2100000:
                 sendToLabel(1)
-                clearUponHandler(3)
-            if (SLOT_22 < (-2100000)):
+                clearUponHandler(EVERY_FRAME)
+            if SLOT_XDistanceFromCenterOfStage < -2100000:
                 sendToLabel(1)
-                clearUponHandler(3)
+                clearUponHandler(EVERY_FRAME)
         if CharacterIDCheck('ta'):
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
 
-            def upon_FRAME_STEP():
+            def upon_EVERY_FRAME():
                 if SLOT_51:
-                    SLOT_51 = (SLOT_51 + (-1))
-                    if (not SLOT_51):
+                    SLOT_51 = SLOT_51 + -1
+                    if not SLOT_51:
                         sendToLabel(1)
-                if (SLOT_22 > 3900000):
+                if SLOT_XDistanceFromCenterOfStage > 3900000:
                     sendToLabel(1)
-                    clearUponHandler(3)
-                if (SLOT_22 < (-3900000)):
+                    clearUponHandler(EVERY_FRAME)
+                if SLOT_XDistanceFromCenterOfStage < -3900000:
                     sendToLabel(1)
-                    clearUponHandler(3)
+                    clearUponHandler(EVERY_FRAME)
         AddX(70000)
     sprite('null', 1)
     CreateObject('NY_BlackArea', -1)
@@ -1197,6 +1237,7 @@ def NY_TripleSword13Mode():
     gotoLabel(0)
     label(1)
     sprite('null', 10)
+
 
 @State
 def NY_SwordD400_effA():
@@ -1222,6 +1263,7 @@ def NY_SwordD400_effA():
     sprite('vrnyef_swd400a', 12)
     ConstantAlphaModifier(-24)
 
+
 @State
 def NY_SwordD400_effB():
 
@@ -1246,6 +1288,7 @@ def NY_SwordD400_effB():
     sprite('vrnyef_swd400a', 12)
     ConstantAlphaModifier(-20)
 
+
 @State
 def NY_SwordD400_Attack13Mode():
 
@@ -1257,8 +1300,8 @@ def NY_SwordD400_Attack13Mode():
         UseSlashHitspark(1)
         EnemyHitstopAddition(15, 15, 15)
 
-        def upon_ON_HIT_OR_BLOCK():
-            ObjectUpon(2, 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            ObjectUpon(LANDING, 32)
         E0EAEffectScale(2)
         Damage(1200)
         Hitstop(0)
@@ -1307,6 +1350,7 @@ def NY_SwordD400_Attack13Mode():
     CreateObject('DIST_TriSwd', -1)
     CreateParticle('nyef_blackptcdel', -1)
 
+
 @State
 def NY_SwordD400_Attack11Mode():
 
@@ -1331,8 +1375,8 @@ def NY_SwordD400_Attack11Mode():
         UseSlashHitspark(1)
         VoodooDamageMultiplier(2)
 
-        def upon_ON_HIT_OR_BLOCK():
-            ObjectUpon(2, 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            ObjectUpon(LANDING, 32)
         E0EAEffectScale(2)
 
         def upon_41():
@@ -1375,6 +1419,7 @@ def NY_SwordD400_Attack11Mode():
     CreateObject('DIST_TriSwd', -1)
     CreateParticle('nyef_blackptcdel', -1)
 
+
 @State
 def White():
     sprite('vr_white', 30)
@@ -1390,6 +1435,7 @@ def White():
     Size(4000)
     sprite('vr_white', 30)
     ConstantAlphaModifier(-10)
+
 
 @State
 def StartWhite():
@@ -1407,6 +1453,7 @@ def StartWhite():
     sprite('vr_white', 30)
     ConstantAlphaModifier(-10)
 
+
 @State
 def FinishWhite():
     sprite('vr_white', 30)
@@ -1421,6 +1468,7 @@ def FinishWhite():
     Size(4000)
     sprite('vr_white', 30)
     ConstantAlphaModifier(-10)
+
 
 @State
 def NY_AHAnime():
@@ -1449,9 +1497,15 @@ def NY_AHAnime():
     ConstantAlphaModifier(10)
     Voiceline('rm292')
     if SLOT_43:
-        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409,
+            13411, 13409, 13411, 13409, 13411, 13409, 99, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     else:
-        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409,
+            13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     CreateObject('Astral3DFunnel', -1)
     sprite('ny450_a01', 4)
     sprite('ny450_a02', 4)
@@ -1470,9 +1524,15 @@ def NY_AHAnime():
     sprite('ny450_a02', 4)
     sprite('ny450_a03', 4)
     if SLOT_43:
-        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409,
+            13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     else:
-        Mouth(12643, 24886, 25396, 24884, 25396, 24884, 25396, 24884, 25396, 24884, 25396, 24884, 25396, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(12643, 24886, 25396, 24884, 25396, 24884, 25396, 24884, 25396,
+            24884, 25396, 24884, 25396, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     sprite('ny450_a00', 4)
     CommonSE('019_quake_0')
     sprite('ny450_a01', 4)
@@ -1486,9 +1546,16 @@ def NY_AHAnime():
     CommonSE('019_quake_1')
     sprite('ny450_a01', 4)
     if SLOT_43:
-        Mouth(13409, 13923, 13409, 13923, 13409, 13923, 13409, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(13409, 13923, 13409, 13923, 13409, 13923, 13409, 13923, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     else:
-        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 14179, 13409, 14179, 13409, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409,
+            13411, 13409, 13411, 13409, 13411, 13409, 13411, 13409, 13411, 
+            13409, 14179, 13409, 14179, 13409, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     sprite('ny450_a02', 4)
     sprite('ny450_a03', 4)
     sprite('ny450_a00', 4)
@@ -1502,7 +1569,10 @@ def NY_AHAnime():
     sprite('ny450_a02', 4)
     sprite('ny450_a03', 4)
     if SLOT_43:
-        Mouth(13409, 13923, 13409, 13923, 13153, 25392, 14389, 13409, 13667, 13921, 12643, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(13409, 13923, 13409, 13923, 13153, 25392, 14389, 13409, 13667,
+            13921, 12643, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     else:
         pass
     sprite('ny450_a00', 4)
@@ -1522,7 +1592,10 @@ def NY_AHAnime():
     CommonSE('019_quake_0')
     CommonSE('019_quake_1')
     if SLOT_43:
-        Mouth(14433, 13155, 24882, 25399, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Mouth(14433, 13155, 24882, 25399, 24886, 25398, 24886, 25398, 54, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     else:
         pass
     sprite('ny450_a01', 4)
@@ -1645,6 +1718,7 @@ def NY_AHAnime():
     ConstantAlphaModifier(-10)
     sprite('ny450_a31', 30)
 
+
 @State
 def Astral3DFunnel():
 
@@ -1677,6 +1751,7 @@ def Astral3DFunnel():
     SetScaleSpeed(50)
     physicsYImpulse(-40000)
 
+
 @State
 def AstrakFinishPtc():
 
@@ -1688,6 +1763,7 @@ def AstrakFinishPtc():
         AbsoluteY(0)
     sprite('null', 32767)
 
+
 @State
 def AstralSword():
 
@@ -1696,7 +1772,7 @@ def AstralSword():
         DefeatOpponentBehavior(3)
         Hitstop(30)
         AttackDirection(3)
-        sendToLabelUpon(2, 0)
+        uponSendToLabel(LANDING, 0)
         Flip()
         AbsoluteY(2000000)
         AddX(1600000)
@@ -1728,6 +1804,7 @@ def AstralSword():
     ParticleSize(4000)
     CallCustomizableParticle('nyef_sumB', 6)
 
+
 @State
 def AstralLookAtMeDummy():
     sprite('null', 2000)
@@ -1736,6 +1813,7 @@ def AstralLookAtMeDummy():
     TeleportToObject(22)
     AbsoluteY(0)
     RemoveOnCallStateEnd(3)
+
 
 @State
 def NY_AirCurveSword13Mode():
@@ -1809,6 +1887,7 @@ def NY_AirCurveSword13Mode():
     CreateParticle('nyef_sumB', 5)
     CreateParticle('nyef_sumBlight', 5)
 
+
 @State
 def NY_AirCurveSword11Mode():
 
@@ -1851,7 +1930,7 @@ def NY_AirCurveSword11Mode():
             BouncePercentage(30)
             AirHitstunAfterWallbounce(40)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             ScreenShake(3000, 6000)
         SameMoveProration(1)
     sprite('vrnyef_swdg00', 4)
@@ -1898,12 +1977,14 @@ def NY_AirCurveSword11Mode():
     CreateParticle('nyef_sumBlight', 5)
     sprite('vrnyef_swdg08', 3)
 
+
 @State
 def BottomSword11ModeOD():
     sprite('null', 240)
     CreateObject('BottomSword11Mode', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CreateObject('BottomSword11Mode_Add', -1)
+
 
 @State
 def BottomSword11Mode():
@@ -1939,11 +2020,11 @@ def BottomSword11Mode():
             VoodooDamageMultiplier(2)
         AddY(-32000)
         AddX(750000)
-        if (not SLOT_38):
-            (SLOT_40 >= 0)
+        if not SLOT_IsFacingRight:
+            SLOT_40 >= 0
             SLOT_51 = SLOT_0
         else:
-            (SLOT_40 <= (-1))
+            SLOT_40 <= -1
             SLOT_51 = SLOT_0
         if SLOT_51:
             PushbackX(6000)
@@ -1961,14 +2042,14 @@ def BottomSword11Mode():
         PushAcceleration()
         EndMomentum(1)
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             WallCollisionDetection(1)
             XImpulseAcceleration(0)
             SetActionMark(3)
             sendToLabel(1)
         HitsPerCall(1, 0, 0, 0, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
         ContinueState(120)
         SLOT_5 = 1
 
@@ -2070,7 +2151,7 @@ def BottomSword11Mode():
     label(2)
     sprite('vrnyef_swdf00', 1)
     RefreshMultihit()
-    if (SLOT_2 == 1):
+    if SLOT_2 == 1:
         HardKnockdown(0)
     XImpulseAcceleration(50)
     PerAcceleration(50)
@@ -2097,7 +2178,8 @@ def BottomSword11Mode():
     sprite('vrnyef_swdf06', 1)
     sprite('vrnyef_swdf07', 1)
     AddActionMark(-1)
-    GotoIf0(580, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(580)
     loopRest()
     gotoLabel(2)
     label(580)
@@ -2111,6 +2193,7 @@ def BottomSword11Mode():
     CallCustomizableParticle('nyef_bottomswd', -1)
     ParticleSize(2400)
     CallCustomizableParticle('nyef_bottomswd', -1)
+
 
 @State
 def BottomSword11Mode_Add():
@@ -2143,13 +2226,13 @@ def BottomSword11Mode_Add():
         VoodooDamageMultiplier(2)
         AddY(-32000)
         AddX(750000)
-        if (not SLOT_38):
-            (SLOT_40 >= 0)
+        if not SLOT_IsFacingRight:
+            SLOT_40 >= 0
             SLOT_51 = SLOT_0
         else:
-            (SLOT_40 <= (-1))
+            SLOT_40 <= -1
             SLOT_51 = SLOT_0
-        if (not SLOT_51):
+        if not SLOT_51:
             PushbackX(6000)
             AirPushbackX(2000)
             physicsXImpulse(24000)
@@ -2165,14 +2248,14 @@ def BottomSword11Mode_Add():
         PushAcceleration()
         EndMomentum(1)
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             WallCollisionDetection(1)
             XImpulseAcceleration(0)
             SetActionMark(3)
             sendToLabel(1)
         HitsPerCall(1, 0, 0, 0, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
         ContinueState(120)
         SLOT_5 = 1
 
@@ -2274,7 +2357,7 @@ def BottomSword11Mode_Add():
     label(2)
     sprite('vrnyef_swdf00', 1)
     RefreshMultihit()
-    if (SLOT_2 == 1):
+    if SLOT_2 == 1:
         HardKnockdown(0)
     XImpulseAcceleration(50)
     PerAcceleration(50)
@@ -2301,7 +2384,8 @@ def BottomSword11Mode_Add():
     sprite('vrnyef_swdf06', 1)
     sprite('vrnyef_swdf07', 1)
     AddActionMark(-1)
-    GotoIf0(580, 2, 2)
+    if not SLOT_2:
+        notConditionalSendToLabel(580)
     loopRest()
     gotoLabel(2)
     label(580)
@@ -2315,6 +2399,7 @@ def BottomSword11Mode_Add():
     CallCustomizableParticle('nyef_bottomswd', -1)
     ParticleSize(2400)
     CallCustomizableParticle('nyef_bottomswd', -1)
+
 
 @State
 def BottomSword13Mode():
@@ -2383,10 +2468,10 @@ def BottomSword13Mode():
             CallCustomizableParticle('nyef_bottomswd', -1)
 
         def upon_45():
-            if (SLOT_18 > 70):
+            if SLOT_StateDuration > 70:
                 CollideWithWall(1)
         HitsPerCall(1, 0, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
     sprite('vrnyef_swdf03', 6)
     RotationAngle(-90000)
     AddRotationPerFrame(10000)
@@ -2452,6 +2537,7 @@ def BottomSword13Mode():
     ConstantAlphaModifier(-20)
     AttackOff()
 
+
 @State
 def SummonBottomSwordHold():
 
@@ -2480,7 +2566,7 @@ def SummonBottomSwordHold():
         PushbackX(-18000)
         CollideWithWall(1)
         HitsPerCall(1, 0, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
     sprite('vrnyef_swdf03', 6)
     RotationAngle(-90000)
     AddRotationPerFrame(-10000)
@@ -2552,6 +2638,7 @@ def SummonBottomSwordHold():
     AddRotationPerFrame(0)
     ConstantAlphaModifier(-20)
 
+
 @State
 def SummonDDBigSwordBoss():
     sprite('null', 20)
@@ -2568,6 +2655,7 @@ def SummonDDBigSwordBoss():
     CreateObject('SummonDDBigSword', -1)
     AddX(150000)
 
+
 @State
 def SummonDDBigSwordOverDrive():
     sprite('null', 15)
@@ -2582,8 +2670,9 @@ def SummonDDBigSwordOverDrive():
     AddX(150000)
     sprite('null', 15)
     CreateObject('SummonDDBigSwordOD', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     AddX(150000)
+
 
 @State
 def SummonDDBigSword():
@@ -2674,6 +2763,7 @@ def SummonDDBigSword():
     CreateParticle('nyef_bottomswd', 4)
     CreateParticle('nyef_bottomswd', 5)
 
+
 @State
 def SummonDDBigSwordOD():
 
@@ -2724,8 +2814,8 @@ def SummonDDBigSwordOD():
     sprite('vrnyef_ddbigswd00', 41)
     CreateObject('NY_SumBigSword', -1)
     CreateObject('SummonDDBigSwordSub', -1)
-    if (not SLOT_51):
-        ObjectUpon(1, 32)
+    if not SLOT_51:
+        ObjectUpon(STATE_END, 32)
         AddY(150000)
     ConstantAlphaModifier(10)
     AddY(512000)
@@ -2769,6 +2859,7 @@ def SummonDDBigSwordOD():
     CreateParticle('nyef_bottomswd', 4)
     CreateParticle('nyef_bottomswd', 5)
 
+
 @State
 def SummonDDBigSwordSub():
 
@@ -2808,6 +2899,7 @@ def SummonDDBigSwordSub():
     physicsYImpulse(2000)
     ConstantAlphaModifier(-10)
 
+
 @State
 def __6CZanzo():
 
@@ -2827,6 +2919,7 @@ def __6CZanzo():
     AlphaValue(0)
     ConstantAlphaModifier(20)
     sprite('vrnyef213_f00', 8)
+
 
 @State
 def __2CZanzo():
@@ -2848,6 +2941,7 @@ def __2CZanzo():
     ConstantAlphaModifier(40)
     sprite('vrnyef232_f01', 6)
     ConstantAlphaModifier(-40)
+
 
 @State
 def __8CZanzo():
@@ -2872,6 +2966,7 @@ def __8CZanzo():
     ConstantAlphaModifier(-40)
     sprite('vrnyef252_f02', 4)
 
+
 @State
 def __82CZanzo():
 
@@ -2894,6 +2989,7 @@ def __82CZanzo():
     AlphaValue(255)
     ConstantAlphaModifier(-40)
     sprite('vrnyef254_f02', 2)
+
 
 @State
 def __3CZanzo():
@@ -2918,6 +3014,7 @@ def __3CZanzo():
     SetScaleSpeed(-5)
     ConstantAlphaModifier(-20)
 
+
 @State
 def rmef413():
 
@@ -2928,6 +3025,7 @@ def rmef413():
         AddY(170000)
     sprite('null', 60)
     LinkParticle('rmef_413')
+
 
 @State
 def rmef413_Zanzo():
@@ -2958,6 +3056,7 @@ def rmef413_Zanzo():
     AddX(10000)
     AddY(20000)
 
+
 @State
 def Funnel2C():
     sprite('ny232_fx00', 2)
@@ -2971,6 +3070,7 @@ def Funnel2C():
     sprite('ny232_fx05', 2)
     sprite('ny232_fx06', 2)
 
+
 @Subroutine
 def Funnel5CReset():
     IgnorePauses(3)
@@ -2980,6 +3080,7 @@ def Funnel5CReset():
     AddX(-100000)
     E0EAEffectObjectZ(3)
     SetZVal(1)
+
 
 @State
 def FunnelRevive():
@@ -2991,19 +3092,20 @@ def FunnelRevive():
     sprite('ny202_f21', 2)
     sprite('ny202_f22', 32767)
 
+
 @State
 def Funnel5CMain():
 
     def upon_IMMEDIATE():
         callSubroutine('Funnel5CReset')
-        sendToLabelUpon(33, 1)
-        sendToLabelUpon(34, 2)
-        sendToLabelUpon(35, 3)
-        sendToLabelUpon(36, 4)
-        sendToLabelUpon(37, 5)
-        sendToLabelUpon(38, 6)
-        sendToLabelUpon(39, 7)
-        sendToLabelUpon(40, 8)
+        uponSendToLabel(33, 1)
+        uponSendToLabel(34, 2)
+        uponSendToLabel(35, 3)
+        uponSendToLabel(36, 4)
+        uponSendToLabel(37, 5)
+        uponSendToLabel(38, 6)
+        uponSendToLabel(39, 7)
+        uponSendToLabel(40, 8)
 
         def upon_41():
             clearUponHandler(33)
@@ -3018,13 +3120,13 @@ def Funnel5CMain():
 
         def upon_32():
             Unknown2064(1)
-            PassbackAddActionMarkToFunction('Funnel5C_Atk', 41)
+            TriggerUponForState('Funnel5C_Atk', 41)
     sprite('ny202_f01', 2)
     sprite('ny202_f02', 2)
     sprite('ny202_f03', 2)
     sprite('ny202_f04', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('ny202_f05', 1)
     sprite('ny202_f05', 1)
     sprite('ny202_f06', 1)
@@ -3039,7 +3141,7 @@ def Funnel5CMain():
     label(2)
     sprite('ny202_f06', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     sprite('ny202_f07', 1)
     RotationAngle(3000)
     sprite('ny202_f07', 1)
@@ -3056,7 +3158,7 @@ def Funnel5CMain():
     label(3)
     sprite('ny202_f08', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     sprite('ny202_f09', 1)
     RotationAngle(3000)
     sprite('ny202_f09', 1)
@@ -3073,7 +3175,7 @@ def Funnel5CMain():
     label(4)
     sprite('ny202_f10', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     sprite('ny202_f11', 1)
     RotationAngle(3000)
     sprite('ny202_f11', 1)
@@ -3090,7 +3192,7 @@ def Funnel5CMain():
     label(5)
     sprite('ny202_f12', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     sprite('ny202_f13', 1)
     RotationAngle(3000)
     sprite('ny202_f13', 1)
@@ -3107,7 +3209,7 @@ def Funnel5CMain():
     label(6)
     sprite('ny202_f14', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     sprite('ny202_f15', 1)
     RotationAngle(3000)
     sprite('ny202_f15', 1)
@@ -3124,7 +3226,7 @@ def Funnel5CMain():
     label(7)
     sprite('ny202_f16', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     sprite('ny202_f17', 1)
     RotationAngle(3000)
     sprite('ny202_f17', 1)
@@ -3141,11 +3243,12 @@ def Funnel5CMain():
     label(8)
     sprite('ny202_f18', 2)
     CreateObject('Funnel5C_Atk', -1)
-    ObjectUpon(1, 40)
+    ObjectUpon(STATE_END, 40)
     loopRest()
     label(9)
     sprite('null', 1)
     ExitState()
+
 
 @State
 def Funnel5C_Atk():
@@ -3162,8 +3265,8 @@ def Funnel5C_Atk():
         HitsparkSize(600)
         VoodooDamageMultiplier(2)
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('NmlAtk5C', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('NmlAtk5C', 32)
 
         def upon_33():
             HitboxMovement(3000, 250000)
@@ -3189,8 +3292,8 @@ def Funnel5C_Atk():
         def upon_40():
             HitboxMovement(3000, 600000)
 
-            def upon_ON_HIT_OR_BLOCK():
-                PassbackAddActionMarkToFunction('NmlAtk5C', 33)
+            def upon_OPPONENT_HIT_OR_BLOCK():
+                TriggerUponForState('NmlAtk5C', 33)
         RemoveOnCallStateEnd(3)
         E0EAEffectObjectZ(3)
         SetZVal(-1)
@@ -3199,13 +3302,13 @@ def Funnel5C_Atk():
         RandSpeedX(-4000, 4000)
         RandSpeedY(-4000, 4000)
         HitsPerCall(1, 1, 1, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
         AttackOff()
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_StateDuration > 70:
                 clearUponHandler(45)
-                ObjectUpon(2, 32)
+                ObjectUpon(LANDING, 32)
         Unknown2064(0)
 
         def upon_41():
@@ -3237,6 +3340,7 @@ def Funnel5C_Atk():
     ConstantAlphaModifier(-10)
     CreateParticle('nyef_cfanneldel', 0)
 
+
 @State
 def NY_SumDDMultiSword():
 
@@ -3250,7 +3354,7 @@ def NY_SumDDMultiSword():
 
         def upon_41():
             Unknown2064(1)
-            PassbackAddActionMarkToFunction('NY_MultiSword', 41)
+            TriggerUponForState('NY_MultiSword', 41)
     sprite('vrnyef_multiswddmy', 4)
     CreateObject('NY_SumMultiSwordBigmc', -1)
     label(0)
@@ -3311,6 +3415,7 @@ def NY_SumDDMultiSword():
     label(1)
     sprite('null', 4)
 
+
 @State
 def NY_MultiSword():
 
@@ -3332,14 +3437,14 @@ def NY_MultiSword():
         UseSlashHitspark(1)
         StarterRating(2)
         VoodooDamageMultiplier(2)
-        if SLOT_85:
+        if SLOT_IsUnlimited:
             Damage(140)
         PaletteIndex(2)
         AlphaValue(0)
         SetZVal(-50)
         ContinueState(120)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             sendToLabel(1)
         EnableAfterimage(1)
         AfterimageBlendMode(2)
@@ -3351,9 +3456,9 @@ def NY_MultiSword():
         PrivateSE('nyse_00')
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_StateDuration > 70:
                 clearUponHandler(45)
-                ObjectUpon(2, 41)
+                ObjectUpon(LANDING, 41)
         Unknown2064(0)
 
         def upon_41():
@@ -3384,6 +3489,7 @@ def NY_MultiSword():
     SetScaleXPerFrame(100)
     SetScaleSpeedY(-100)
 
+
 @State
 def NY_SumDDMultiSwordOD():
 
@@ -3397,7 +3503,7 @@ def NY_SumDDMultiSwordOD():
 
         def upon_41():
             Unknown2064(1)
-            PassbackAddActionMarkToFunction('NY_MultiSwordOD', 41)
+            TriggerUponForState('NY_MultiSwordOD', 41)
     sprite('vrnyef_multiswddmy', 4)
     CreateObject('NY_SumMultiSwordBigmcOD', -1)
     label(0)
@@ -3458,7 +3564,8 @@ def NY_SumDDMultiSwordOD():
     label(1)
     sprite('null', 10)
     sprite('null', 4)
-    PassbackAddActionMarkToFunction('NY_SumMultiSwordBigmcOD', 32)
+    TriggerUponForState('NY_SumMultiSwordBigmcOD', 32)
+
 
 @State
 def NY_MultiSwordOD():
@@ -3482,14 +3589,14 @@ def NY_MultiSwordOD():
         StarterRating(2)
         VoodooDamageMultiplier(2)
         AttackType(4)
-        if SLOT_85:
+        if SLOT_IsUnlimited:
             Damage(140)
         PaletteIndex(2)
         AlphaValue(0)
         SetZVal(-50)
         ContinueState(120)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             sendToLabel(1)
         EnableAfterimage(1)
         AfterimageBlendMode(2)
@@ -3501,9 +3608,9 @@ def NY_MultiSwordOD():
         PrivateSE('nyse_00')
 
         def upon_45():
-            if Unknown2065(23):
+            if SLOT_StateDuration > 70:
                 clearUponHandler(45)
-                ObjectUpon(2, 41)
+                ObjectUpon(LANDING, 41)
         Unknown2064(0)
 
         def upon_41():
@@ -3534,6 +3641,7 @@ def NY_MultiSwordOD():
     SetScaleXPerFrame(100)
     SetScaleSpeedY(-100)
 
+
 @State
 def monoeye_line():
 
@@ -3542,6 +3650,7 @@ def monoeye_line():
         CallObject('MonoeyeLine')
         E0EAEffectPolyline('vr_monoeye.hip', 2000)
     sprite('null', 32767)
+
 
 @State
 def EF_ny300():
@@ -3572,6 +3681,7 @@ def EF_ny300():
     CreateObject('DIST_NY5D', 0)
     CreateParticle('nyef_cfanneldel', 0)
 
+
 @State
 def EF_ny300_parts2():
 
@@ -3593,6 +3703,7 @@ def EF_ny300_parts2():
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
 
+
 @State
 def EF_ny300_parts3():
 
@@ -3612,6 +3723,7 @@ def EF_ny300_parts3():
     sprite('vrnyef300_parts3_00', 12)
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
+
 
 @State
 def EF_ny300_parts4():
@@ -3633,6 +3745,7 @@ def EF_ny300_parts4():
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
 
+
 @State
 def EF_ny300_parts5():
 
@@ -3651,6 +3764,7 @@ def EF_ny300_parts5():
     PrivateSE('nyse_30')
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
+
 
 @State
 def EntryFallSword():
@@ -3677,6 +3791,7 @@ def EntryFallSword():
     sprite('vrnyef600_swd', 6)
     CreateParticle('nyef_entrylightB', 0)
 
+
 @State
 def EntryFallSword_RGVsNY():
 
@@ -3696,7 +3811,7 @@ def EntryFallSword_RGVsNY():
     physicsYImpulse(-500)
     sprite('vrnyef600_swd', 10)
     EndMomentum(1)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     label(0)
     sprite('vrnyef600_swd', 1)
     gotoLabel(0)
@@ -3707,6 +3822,7 @@ def EntryFallSword_RGVsNY():
     CommonSE('022_magiccircle_a')
     sprite('vrnyef600_swd', 6)
     CreateParticle('nyef_entrylightB', 0)
+
 
 @State
 def RLAstSmoke():
@@ -3720,6 +3836,7 @@ def RLAstSmoke():
     ConstantAlphaModifier(3)
     sprite('null', 32767)
     ConstantAlphaModifier(0)
+
 
 @State
 def Changering():
@@ -3736,7 +3853,7 @@ def Changering():
 
         def upon_16():
             PrivateFunction3(3, 0, 200000, 50, 1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
     sprite('null', 10)
     ConstantAlphaModifier(26)
     sprite('null', 32767)
@@ -3748,6 +3865,7 @@ def Changering():
     ConstantAlphaModifier(-12)
     sprite('null', 1)
     ExitState()
+
 
 @State
 def ModeChangeEf():
@@ -3761,6 +3879,7 @@ def ModeChangeEf():
     sprite('null', 30)
     ConstantAlphaModifier(-9)
 
+
 @State
 def __407slash():
 
@@ -3773,6 +3892,7 @@ def __407slash():
         Eff3DEffect('nyef_407slash', '')
         AddY(120000)
     sprite('null', 28)
+
 
 @State
 def NY_BackShot():
@@ -3806,8 +3926,8 @@ def NY_BackShot():
         def upon_32():
             GroundedHitstunAnimation(2)
 
-        def upon_FRAME_STEP():
-            if (SLOT_23 <= 80000):
+        def upon_EVERY_FRAME():
+            if SLOT_YDistanceFromFloor <= 80000:
                 sendToLabel(1)
         SameMoveProration(1)
     sprite('vrnyef_swdh00', 1)
@@ -3829,9 +3949,10 @@ def NY_BackShot():
     sprite('vrnyef_swdhatk', 30)
     label(1)
     sprite('vrnyef_swddel', 6)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     StartMultihit()
     callSubroutine('DriveSwordLandingParam')
+
 
 @State
 def NY_BackShotEffLoop():
@@ -3846,6 +3967,7 @@ def NY_BackShotEffLoop():
     sprite('keep', 4)
     CreateParticle('rmef_backshot', -1)
     gotoLabel(0)
+
 
 @State
 def NY_BackShotEff():
@@ -3864,6 +3986,7 @@ def NY_BackShotEff():
     SetScaleSpeed(10)
     sprite('null', 10)
     ConstantAlphaModifier(-26)
+
 
 @State
 def RM_DDSlashEff():
@@ -3884,6 +4007,7 @@ def RM_DDSlashEff():
     AddRotationPerFrame(-24000)
     ConstantAlphaModifier(-26)
 
+
 @State
 def RM_DDSlashEffLast():
 
@@ -3902,6 +4026,7 @@ def RM_DDSlashEffLast():
     sprite('null', 10)
     AddRotationPerFrame(-18000)
     ConstantAlphaModifier(-26)
+
 
 @State
 def RM_DDSlashEffEX():
@@ -3922,6 +4047,7 @@ def RM_DDSlashEffEX():
     AddRotationPerFrame(-24000)
     ConstantAlphaModifier(-26)
 
+
 @State
 def RM_DDSlashEffLastEX():
 
@@ -3941,13 +4067,14 @@ def RM_DDSlashEffLastEX():
     AddRotationPerFrame(-18000)
     ConstantAlphaModifier(-51)
 
+
 @State
 def RM_StandEffLoop():
 
     def upon_IMMEDIATE():
         CancelIfPlayerHit(3)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             EffectPosition(3, 110)
         SLOT_7 = 1
 
@@ -3962,6 +4089,7 @@ def RM_StandEffLoop():
     CreateObject('RM_StandEff', -1)
     sprite('null', 7)
     CreateObject('RM_StandEff', -1)
+
 
 @State
 def RM_StandEff():
@@ -3990,6 +4118,7 @@ def RM_StandEff():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def RM_StandEffSub():
 
@@ -4014,6 +4143,7 @@ def RM_StandEffSub():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def RM_StandEff2():
 
@@ -4037,6 +4167,7 @@ def RM_StandEff2():
     sprite('null', 10)
     ConstantAlphaModifier(-7)
 
+
 @State
 def RM_SummonEff3d():
 
@@ -4059,6 +4190,7 @@ def RM_SummonEff3d():
     sprite('null', 5)
     ConstantAlphaModifier(-30)
 
+
 @State
 def NY_Sword4D_Event():
 
@@ -4066,7 +4198,7 @@ def NY_Sword4D_Event():
         callSubroutine('DriveSwordInit')
 
         def upon_32():
-            if (SLOT_19 > 600000):
+            if SLOT_19 > 600000:
                 TeleportToObject(22)
                 AddX(100000)
             else:
@@ -4076,7 +4208,7 @@ def NY_Sword4D_Event():
             CreateObject('NY_SummonA', 0)
 
         def upon_33():
-            if (SLOT_19 > 600000):
+            if SLOT_19 > 600000:
                 TeleportToObject(22)
                 AddX(-25000)
             else:
@@ -4109,6 +4241,7 @@ def NY_Sword4D_Event():
     sprite('keep', 12)
     callSubroutine('DriveSwordBreakParam')
 
+
 @State
 def Event_EF_ny300():
 
@@ -4118,10 +4251,10 @@ def Event_EF_ny300():
         AddY(-30000)
 
         def upon_32():
-            PassbackAddActionMarkToFunction('Event_EF_ny300_parts2', 32)
-            PassbackAddActionMarkToFunction('Event_EF_ny300_parts3', 32)
-            PassbackAddActionMarkToFunction('Event_EF_ny300_parts4', 32)
-            PassbackAddActionMarkToFunction('Event_EF_ny300_parts5', 32)
+            TriggerUponForState('Event_EF_ny300_parts2', 32)
+            TriggerUponForState('Event_EF_ny300_parts3', 32)
+            TriggerUponForState('Event_EF_ny300_parts4', 32)
+            TriggerUponForState('Event_EF_ny300_parts5', 32)
             sendToLabel(0)
     sprite('vrnyef300_parts1_00', 2)
     sprite('vrnyef300_parts1_01', 2)
@@ -4145,6 +4278,7 @@ def Event_EF_ny300():
     BlendMode_Normal()
     CreateObject('DIST_NY5D', 0)
     CreateParticle('nyef_cfanneldel', 0)
+
 
 @State
 def Event_EF_ny300_parts2():
@@ -4171,6 +4305,7 @@ def Event_EF_ny300_parts2():
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
 
+
 @State
 def Event_EF_ny300_parts3():
 
@@ -4194,6 +4329,7 @@ def Event_EF_ny300_parts3():
     sprite('vrnyef300_parts3_00', 12)
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
+
 
 @State
 def Event_EF_ny300_parts4():
@@ -4219,6 +4355,7 @@ def Event_EF_ny300_parts4():
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
 
+
 @State
 def Event_EF_ny300_parts5():
 
@@ -4241,6 +4378,7 @@ def Event_EF_ny300_parts5():
     PrivateSE('nyse_30')
     ConstantAlphaModifier(-20)
     BlendMode_Normal()
+
 
 @State
 def ActEvent_rmvsrl_DD():

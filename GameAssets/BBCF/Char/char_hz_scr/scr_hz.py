@@ -1,7 +1,8 @@
 @Subroutine
 def PreInit():
     CharacterID('hz')
-    Unknown12050(1)
+    EnableDashBuffer(1)
+
 
 @Subroutine
 def MatchInit():
@@ -21,7 +22,7 @@ def MatchInit():
     NegativePenaltyResistance(4)
     Unknown12054(3, 2)
     OverdriveDuration(240, 270, 300, 330, 360, 390, 420, 480, 480, 480)
-    if SLOT_IsUnlimitedCharacter:
+    if SLOT_116:
         Health(14000)
         WalkFSpeed(9300)
         WalkBSpeed(7200)
@@ -238,7 +239,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(100000, 250000, -20000, 50000, 1000, 50)
     Move_EndRegister()
-    Move_Register('DriveJump8', 0x2)
+    Move_Register('DriveJump8', INPUT_SPECIALMOVE)
     Move_Condition(0x304d)
     Move_Input_(0x8d)
     Move_Input_(INPUT_PRESS_B)
@@ -246,7 +247,7 @@ def MatchInit():
     OpponentAttackPriority(100000)
     SkillEstimateRange(400000, 1200000, -600000, 1000000, 1000, 50)
     Move_EndRegister()
-    Move_Register('DriveJump6', 0x2)
+    Move_Register('DriveJump6', INPUT_SPECIALMOVE)
     Move_Condition(0x304d)
     Move_Input_(0x8d)
     Move_Input_(INPUT_PRESS_D)
@@ -255,7 +256,7 @@ def MatchInit():
     GuardStunPriority(10000)
     SkillEstimateRange(-200000, 1200000, -600000, 1000000, 1000, 50)
     Move_EndRegister()
-    Move_Register('DriveJump4', 0x2)
+    Move_Register('DriveJump4', INPUT_SPECIALMOVE)
     Move_Condition(0x304d)
     Move_Input_(0x8d)
     Move_Input_(INPUT_PRESS_C)
@@ -263,7 +264,7 @@ def MatchInit():
     GuardStunPriority(100000)
     SkillEstimateRange(400000, 1200000, -600000, 1000000, 1000, 50)
     Move_EndRegister()
-    Move_Register('Kamae', 0x2)
+    Move_Register('Kamae', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_D)
@@ -272,7 +273,7 @@ def MatchInit():
     GuardStunPriority(3000)
     SkillEstimateRange(0, 500000, -150000, 400000, 500, 50)
     Move_EndRegister()
-    Move_Register('KamaeA', 0x2)
+    Move_Register('KamaeA', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -281,57 +282,57 @@ def MatchInit():
     GuardStunPriority(5000)
     SkillEstimateRange(50000, 550000, 0, 350000, 750, 50)
     Move_EndRegister()
-    Move_Register('KamaeB', 0x2)
+    Move_Register('KamaeB', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_B)
     OpponentAttackPriority(4000)
     SkillEstimateRange(-200000, 350000, 0, 450000, 1000, 50)
     Move_EndRegister()
-    Move_Register('KamaeC', 0x2)
+    Move_Register('KamaeC', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_C)
     MoveLow()
     SkillEstimateRange(-50000, 450000, -250000, 150000, 2000, 50)
     Move_EndRegister()
-    Move_Register('KamaeD', 0x2)
+    Move_Register('KamaeD', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_D)
     GuardStunPriority(10000)
     SkillEstimateRange(0, 400000, -200000, 180000, 50, 1000)
     Move_EndRegister()
-    Move_Register('KamaeDashF', 0x2)
+    Move_Register('KamaeDashF', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0xda)
+    Move_Input_(INPUT_66)
     AddChain(1)
     SkillEstimateRange(0, 500000, -200000, 200000, 50, 1500)
     Move_EndRegister()
-    Move_Register('KamaeDashB', 0x2)
+    Move_Register('KamaeDashB', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
-    Move_Input_(0xdb)
+    Move_Input_(INPUT_44)
     AddChain(1)
     OpponentAttackPriority(2000)
     SkillEstimateRange(0, 300000, -200000, 200000, 50, 1000)
     Move_EndRegister()
-    Move_Register('SpecialShot', 0x2)
+    Move_Register('SpecialShot', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
     GuardStunPriority(2000)
     SkillEstimateRange(350000, 600000, -200000, 100000, 250, 50)
     Move_EndRegister()
-    Move_Register('SpecialAssault', 0x2)
+    Move_Register('SpecialAssault', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
     DamageStunPriority(1)
     SkillEstimateRange(-50000, 400000, -200000, 250000, 500, 50)
     Move_EndRegister()
-    Move_Register('AntiAir', 0x2)
+    Move_Register('AntiAir', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_D)
@@ -339,7 +340,7 @@ def MatchInit():
     AirborneOpponentPriority(2000)
     SkillEstimateRange(300000, 800000, 650000, 1100000, 200, 0)
     Move_EndRegister()
-    Move_Register('SpecialShot_Easy', 0x2)
+    Move_Register('SpecialShot_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_41236)
     Move_Input_(INPUT_PRESS_D)
@@ -347,7 +348,7 @@ def MatchInit():
     PlayerUsable(0)
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('SPThrow', 0x2)
+    Move_Register('SPThrow', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
@@ -356,14 +357,14 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(0, 200000, -100000, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('AirAssault2', 0x2)
+    Move_Register('AirAssault2', INPUT_SPECIALMOVE)
     Move_Condition(0x2001)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
     MovePriority(1)
     SkillEstimateRange(0, 350000, -200000, 350000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateAssault', 0x606)
+    Move_Register('UltimateAssault', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -372,7 +373,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 350000, -100000, 200000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateAssault_OD', 0x606)
+    Move_Register('UltimateAssault_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -382,7 +383,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 350000, -100000, 200000, 500, 0)
     Move_EndRegister()
-    Move_Register('UltimateShot', 0x606)
+    Move_Register('UltimateShot', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -391,7 +392,7 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(400000, 1500000, -200000, 0, 100, 0)
     Move_EndRegister()
-    Move_Register('UltimateShot_OD', 0x606)
+    Move_Register('UltimateShot_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_632146)
@@ -401,7 +402,7 @@ def MatchInit():
     JumpAvoidPriority(10000)
     SkillEstimateRange(400000, 1500000, -200000, 0, 100, 0)
     Move_EndRegister()
-    Move_Register('UltimateThrow', 0x606)
+    Move_Register('UltimateThrow', INPUT_DISTORTION)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
@@ -411,7 +412,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 250000, -200000, 200000, 1000, 0)
     Move_EndRegister()
-    Move_Register('UltimateThrow_OD', 0x606)
+    Move_Register('UltimateThrow_OD', INPUT_DISTORTION)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
@@ -422,7 +423,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(0, 250000, -200000, 200000, 1000, 0)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x2000)
     Move_Condition(0x304a)
     Move_Input_(0xf7)
@@ -430,12 +431,12 @@ def MatchInit():
     DamageStunPriority(20000)
     SkillEstimateRange(-300000, 300000, -200000, 1000000, 500, 1)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(8000)
@@ -443,7 +444,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -456,7 +457,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 450000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -654,49 +655,53 @@ def MatchInit():
     CommonVoicelines(73, 'hz402')
     CommonVoicelines(74, 'hz403')
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
 
+
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_81):
-        if SLOT_110:
-            SLOT_32 = (SLOT_32 + 30)
-        elif SLOT_37:
-            SLOT_32 = (SLOT_32 + 10)
-        elif (SLOT_32 <= 900):
-            SLOT_32 = (SLOT_32 + 5)
-        if (SLOT_32 >= 1500):
+    if not SLOT_81:
+        if SLOT_OverdriveTimer:
+            SLOT_32 = SLOT_32 + 30
+        elif SLOT_IsGrounded:
+            SLOT_32 = SLOT_32 + 10
+        elif SLOT_32 <= 900:
+            SLOT_32 = SLOT_32 + 5
+        if SLOT_32 >= 1500:
             SLOT_31 = 2
-        if SLOT_90:
+        if SLOT_InNeutral:
             TrainingModeSLOT('TRI_HazamaUroboros', 2, 67)
             if SLOT_67:
                 SLOT_31 = 1500
-    if (not SLOT_30):
+    if not SLOT_IsInHitstun:
         if SLOT_21:
-            if SLOT_85:
-                if (not CheckObjectPresence(5)):
-                    if (not SLOT_66):
+            if SLOT_IsUnlimited:
+                if not CheckObjectPresence(5):
+                    if not SLOT_66:
                         CreateObject('HZEF_DrainField', -1)
                         RegisterObject(5, 1)
             elif SLOT_21:
-                if SLOT_110:
-                    if (not CheckObjectPresence(5)):
-                        if (not SLOT_66):
+                if SLOT_OverdriveTimer:
+                    if not CheckObjectPresence(5):
+                        if not SLOT_66:
                             CreateObject('HZEF_DrainField', -1)
                             RegisterObject(5, 1)
-                if (not SLOT_110):
-                    if (not SLOT_64):
-                        PassbackAddActionMarkToFunction('HZEF_DrainField', 32)
+                if not SLOT_OverdriveTimer:
+                    if not SLOT_64:
+                        TriggerUponForState('HZEF_DrainField', 32)
         else:
-            PassbackAddActionMarkToFunction('HZEF_DrainField', 32)
+            TriggerUponForState('HZEF_DrainField', 32)
+
 
 @Subroutine
 def OnActionBegin():
-    PassbackAddActionMarkToFunction('EffKamaeLand', 32)
+    TriggerUponForState('EffKamaeLand', 32)
+
 
 @State
 def CmnActStand():
@@ -711,12 +716,10 @@ def CmnActStand():
     sprite('hz000_07', 8)
     sprite('hz000_08', 8)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     sprite('hz001_00', 7)
     SLOT_88 = 960
     SmartVoiceline('hz000')
@@ -737,6 +740,7 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('hz003_00', 3)
@@ -744,10 +748,12 @@ def CmnActStandTurn():
     sprite('hz003_01', 3)
     sprite('hz003_02', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('hz010_00', 4)
     sprite('hz010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -763,16 +769,19 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('hz013_00', 3)
     sprite('hz013_01', 3)
     sprite('hz013_02', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('hz010_01', 4)
     sprite('hz010_00', 4)
+
 
 @State
 def CmnActJumpPre():
@@ -780,12 +789,13 @@ def CmnActJumpPre():
     sprite('hz023_01', 1)
     sprite('hz023_02', 1)
 
+
 @State
 def CmnActJumpUpper():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('hz020_00', 3)
     sprite('hz020_01', 3)
     SmartVoiceline('hz002')
@@ -813,12 +823,13 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(22)
 
+
 @State
 def CmnActJumpUpperEnd():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('hz020_02', 3)
     sprite('hz020_03', 3)
     sprite('hz020_04', 3)
@@ -837,12 +848,13 @@ def CmnActJumpUpperEnd():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActJumpDown():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('hz020_05', 3)
     sprite('hz020_06', 3)
     label(0)
@@ -866,6 +878,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(22)
 
+
 @State
 def CmnActJumpLanding():
     sprite('hz024_00', 3)
@@ -875,17 +888,20 @@ def CmnActJumpLanding():
     sprite('hz024_04', 3)
     sprite('hz024_05', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('hz024_00', 2)
     sprite('hz024_01', 2)
     sprite('hz024_02', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('hz024_03', 3)
     sprite('hz024_04', 3)
     sprite('hz024_05', 3)
+
 
 @State
 def CmnActFWalk():
@@ -907,6 +923,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalk():
     sprite('hz031_00', 7)
@@ -926,6 +943,7 @@ def CmnActBWalk():
     sprite('hz031_11', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActFDash():
@@ -960,9 +978,11 @@ def CmnActFDash():
     sprite('hz032_07', 1)
     loopRest()
 
+
 @State
 def CmnActFDashStop():
     pass
+
 
 @State
 def CmnActBDash():
@@ -972,7 +992,7 @@ def CmnActBDash():
         EnterStateIfEventID(8, '_NEUTRAL')
         InvincibilityDuration(7)
         EndMomentum(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         ExternalForcesRate(100, 0)
         NegativeForBackDash()
     sprite('hz033_00', 1)
@@ -997,9 +1017,11 @@ def CmnActBDash():
     sprite('hz033_06', 2)
     sprite('hz033_07', 2)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1010,6 +1032,7 @@ def CmnActAirFDash():
     sprite('hz035_03', 3)
     sprite('hz035_00', 3)
     sprite('hz020_04', 3)
+
 
 @State
 def CmnActAirBDash():
@@ -1022,11 +1045,13 @@ def CmnActAirBDash():
     sprite('hz036_00', 2)
     sprite('hz020_04', 2)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('hz050_00', 1)
     sprite('hz050_01', 1)
     sprite('hz050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1034,6 +1059,7 @@ def CmnActHitStandLv2():
     sprite('hz050_02', 1)
     sprite('hz050_01', 2)
     sprite('hz050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1043,6 +1069,7 @@ def CmnActHitStandLv3():
     sprite('hz050_01', 2)
     sprite('hz050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('hz050_03', 1)
@@ -1051,6 +1078,7 @@ def CmnActHitStandLv4():
     sprite('hz050_02', 2)
     sprite('hz050_01', 2)
     sprite('hz050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1062,11 +1090,13 @@ def CmnActHitStandLv5():
     sprite('hz050_01', 2)
     sprite('hz050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('hz052_00', 1)
     sprite('hz052_01', 1)
     sprite('hz052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1074,6 +1104,7 @@ def CmnActHitStandLowLv2():
     sprite('hz052_02', 1)
     sprite('hz052_01', 2)
     sprite('hz052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1083,6 +1114,7 @@ def CmnActHitStandLowLv3():
     sprite('hz052_01', 2)
     sprite('hz052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('hz052_03', 1)
@@ -1091,6 +1123,7 @@ def CmnActHitStandLowLv4():
     sprite('hz052_02', 2)
     sprite('hz052_01', 2)
     sprite('hz052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1102,11 +1135,13 @@ def CmnActHitStandLowLv5():
     sprite('hz052_01', 2)
     sprite('hz052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('hz054_00', 1)
     sprite('hz054_01', 1)
     sprite('hz054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1114,6 +1149,7 @@ def CmnActHitCrouchLv2():
     sprite('hz054_02', 1)
     sprite('hz054_01', 2)
     sprite('hz054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1123,6 +1159,7 @@ def CmnActHitCrouchLv3():
     sprite('hz054_01', 2)
     sprite('hz054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('hz054_03', 1)
@@ -1131,6 +1168,7 @@ def CmnActHitCrouchLv4():
     sprite('hz054_02', 2)
     sprite('hz054_01', 2)
     sprite('hz054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1142,6 +1180,7 @@ def CmnActHitCrouchLv5():
     sprite('hz054_01', 2)
     sprite('hz054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('hz060_00', 4)
@@ -1151,9 +1190,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('hz060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1164,10 +1205,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('hz060_07', 2)
     sprite('hz060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1177,9 +1220,11 @@ def CmnActBDownBound():
     sprite('hz060_12', 3)
     sprite('hz060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('hz060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1198,13 +1243,16 @@ def CmnActBDown2Stand():
     sprite('hz061_12', 3)
     sprite('hz061_13', 3)
 
+
 @State
 def CmnActFDownUpper():
     sprite('hz063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('hz063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1214,10 +1262,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('hz063_04', 3)
     sprite('hz063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1228,9 +1278,11 @@ def CmnActFDownBound():
     sprite('hz063_10', 3)
     sprite('hz063_11', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('hz063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1247,6 +1299,7 @@ def CmnActFDown2Stand():
     sprite('hz064_10', 3)
     sprite('hz064_11', 3)
 
+
 @State
 def CmnActVDownUpper():
     sprite('hz062_00', 3)
@@ -1256,10 +1309,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('hz062_03', 3)
     sprite('hz062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1271,15 +1326,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('hz062_09', 2)
     sprite('hz062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('hz062_09', 2)
     sprite('hz062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1292,6 +1350,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1302,6 +1361,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1310,14 +1370,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('hz071_04', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('hz073_00', 3)
     sprite('hz073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1327,6 +1390,7 @@ def CmnActWallBoundDown():
     sprite('hz073_04', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActStaggerLoop():
@@ -1344,6 +1408,7 @@ def CmnActStaggerLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerDown():
     sprite('hz070_04', 4)
@@ -1353,6 +1418,7 @@ def CmnActStaggerDown():
     sprite('hz070_08', 4)
     sprite('hz070_09', 4)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('hz070_10', 2)
@@ -1360,11 +1426,13 @@ def CmnActUkemiStagger():
     sprite('hz070_12', 2)
     sprite('hz070_13', 2)
 
+
 @State
 def CmnActUkemiAirF():
     sprite('hz113_00', 3)
     sprite('hz113_01', 3)
     sprite('hz113_02', 3)
+
 
 @State
 def CmnActUkemiAirB():
@@ -1372,11 +1440,13 @@ def CmnActUkemiAirB():
     sprite('hz113_01', 3)
     sprite('hz113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('hz113_00', 3)
     sprite('hz113_01', 3)
     sprite('hz113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1391,6 +1461,7 @@ def CmnActUkemiLandF():
     sprite('hz110_09', 3)
     sprite('hz110_10', 3)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('hz111_00', 2)
@@ -1404,6 +1475,7 @@ def CmnActUkemiLandB():
     sprite('hz111_09', 3)
     sprite('hz111_10', 3)
 
+
 @State
 def CmnActUkemiLandN():
     sprite('hz112_00', 2)
@@ -1416,6 +1488,7 @@ def CmnActUkemiLandN():
     sprite('hz112_07', 2)
     sprite('hz112_08', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('hz024_00', 3)
@@ -1425,10 +1498,12 @@ def CmnActUkemiLandNLanding():
     sprite('hz024_04', 3)
     sprite('hz024_05', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('hz040_00', 3)
     sprite('hz040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1444,10 +1519,12 @@ def CmnActMidGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('hz040_01', 3)
     sprite('hz040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
@@ -1461,15 +1538,18 @@ def CmnActMidHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('hz040_01', 3)
     sprite('hz040_00', 3)
 
+
 @State
 def CmnActHighGuardPre():
     sprite('hz041_00', 3)
     sprite('hz041_01', 3)
+
 
 @State
 def CmnActHighGuardLoop():
@@ -1485,10 +1565,12 @@ def CmnActHighGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighGuardEnd():
     sprite('hz041_01', 3)
     sprite('hz041_00', 3)
+
 
 @State
 def CmnActHighHeavyGuardLoop():
@@ -1502,15 +1584,18 @@ def CmnActHighHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('hz041_01', 3)
     sprite('hz041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('hz043_00', 3)
     sprite('hz043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1526,10 +1611,12 @@ def CmnActCrouchGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('hz043_01', 3)
     sprite('hz043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
@@ -1543,15 +1630,18 @@ def CmnActCrouchHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('hz043_01', 3)
     sprite('hz043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('hz045_00', 3)
     sprite('hz045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1567,10 +1657,12 @@ def CmnActAirGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('hz045_01', 3)
     sprite('hz045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
@@ -1584,10 +1676,12 @@ def CmnActAirHeavyGuardLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('hz045_01', 3)
     sprite('hz045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1599,6 +1693,7 @@ def CmnActGuardBreakStand():
     sprite('hz090_03', 6)
     sprite('hz090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('hz091_00', 2)
@@ -1608,6 +1703,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('hz091_03', 6)
     sprite('hz091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1619,17 +1715,20 @@ def CmnActGuardBreakAir():
     sprite('hz092_03', 6)
     sprite('hz092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('hz025_00', 3)
     sprite('hz025_01', 3)
     sprite('hz025_02', 3)
 
+
 @State
 def CmnActLockWait():
     sprite('hz040_02', 1)
     sprite('hz040_01', 3)
     sprite('hz040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1644,11 +1743,13 @@ def CmnActLockReject():
     sprite('hz312_08', 3)
     sprite('hz312_09', 3)
 
+
 @State
 def CmnActAirLockWait():
     sprite('hz045_02', 1)
     sprite('hz045_01', 3)
     sprite('hz045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1661,6 +1762,7 @@ def CmnActAirLockReject():
     sprite('hz322_06', 4)
     sprite('hz322_07', 3)
     sprite('hz322_08', 3)
+
 
 @State
 def CmnActLandSpin():
@@ -1678,11 +1780,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('hz071_10', 6)
     sprite('hz071_11', 5)
     sprite('hz071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1698,6 +1802,7 @@ def CmnActVertSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideAir():
     label(0)
@@ -1712,6 +1817,7 @@ def CmnActSlideAir():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideKeep():
     sprite('hz077_02', 4)
@@ -1721,10 +1827,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('hz077_05', 5)
     sprite('hz077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1734,10 +1842,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('hz060_11', 5)
     sprite('hz060_12', 4)
+
 
 @State
 def CmnActBurstBegin():
@@ -1750,6 +1860,7 @@ def CmnActBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstLoop():
     sprite('hz331_05', 2)
@@ -1760,10 +1871,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('hz331_09', 3)
     sprite('hz331_10', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -1776,6 +1889,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('hz331_05', 2)
@@ -1785,6 +1899,7 @@ def CmnActAirBurstLoop():
     sprite('hz331_08', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -1796,6 +1911,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('hz333_00', 3)
@@ -1805,6 +1921,7 @@ def CmnActOverDriveBegin():
     sprite('hz333_03', 32767)
     CreateObject('EMB_OD', -1)
     loopRest()
+
 
 @State
 def CmnActOverDriveLoop():
@@ -1818,11 +1935,13 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('hz333_08', 4)
     sprite('hz333_09', 4)
     sprite('hz333_10', 4)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -1834,6 +1953,7 @@ def CmnActAirOverDriveBegin():
     CreateObject('EMB_OD', -1)
     loopRest()
 
+
 @State
 def CmnActAirOverDriveLoop():
     sprite('hz333_15', 3)
@@ -1844,11 +1964,13 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('hz333_16', 4)
     sprite('hz333_17', 4)
     sprite('hz333_18', 4)
+
 
 @State
 def NmlAtk5A():
@@ -1891,6 +2013,7 @@ def NmlAtk5A():
     sprite('hz200_05', 3)
     sprite('hz200_06', 3)
 
+
 @State
 def NmlAtk5B():
 
@@ -1918,6 +2041,7 @@ def NmlAtk5B():
     sprite('hz201_06', 3)
     sprite('hz201_07', 3)
     SFX_FOOTSTEP_(100, 1, 1)
+
 
 @State
 def NmlAtk5C():
@@ -1969,6 +2093,7 @@ def NmlAtk5C():
     sprite('hz202_12', 4)
     sprite('hz202_13', 5)
 
+
 @State
 def NmlAtk2A():
 
@@ -2002,6 +2127,7 @@ def NmlAtk2A():
     Unknown2063()
     sprite('hz230_05', 4)
     sprite('hz230_06', 3)
+
 
 @State
 def NmlAtk2B():
@@ -2047,6 +2173,7 @@ def NmlAtk2B():
     WhiffOverdriveCancel(1)
     sprite('hz231_10', 3)
     sprite('hz231_11', 3)
+
 
 @State
 def NmlAtk2C():
@@ -2112,6 +2239,7 @@ def NmlAtk2C():
     sprite('hz232_12', 4)
     sprite('hz232_13', 4)
 
+
 @State
 def NmlAtk3C():
 
@@ -2150,6 +2278,7 @@ def NmlAtk3C():
     sprite('hz240_10', 3)
     sprite('hz240_11', 3)
     sprite('hz240_12', 3)
+
 
 @State
 def NmlAtk6A():
@@ -2191,6 +2320,7 @@ def NmlAtk6A():
     sprite('hz210_12', 2)
     sprite('hz210_13', 2)
     sprite('hz210_14', 2)
+
 
 @State
 def NmlAtk6B():
@@ -2236,6 +2366,7 @@ def NmlAtk6B():
     sprite('hz211_12', 2)
     sprite('hz211_13', 2)
 
+
 @State
 def NmlAtk6C():
 
@@ -2259,8 +2390,8 @@ def NmlAtk6C():
         AttackOff()
         SpecialCancel(0)
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             BeginBuffer('NmlAtk5D_Easy')
             BeginBuffer('NmlAtk4D_Easy')
             BeginBuffer('NmlAtk6D_Easy')
@@ -2279,7 +2410,7 @@ def NmlAtk6C():
     SetAcceleration(400)
     EndYPhysicsImpulse()
     RandomCommonVoiceline(2)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('hz212_07', 3)
     CreateObject('ShotKnifeObj', 0)
     ObjectHitbox(1)
@@ -2319,6 +2450,7 @@ def NmlAtk6C():
     sprite('hz212_17', 2)
     sprite('hz212_18', 2)
 
+
 @State
 def NmlAtkAIR5A():
 
@@ -2343,6 +2475,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('hz250_05', 3)
     sprite('hz250_06', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2371,6 +2504,7 @@ def NmlAtkAIR5B():
     sprite('hz251_06', 4)
     sprite('hz251_07', 3)
     sprite('hz251_08', 3)
+
 
 @State
 def NmlAtkAIR5C():
@@ -2419,6 +2553,7 @@ def NmlAtkAIR5C():
     sprite('hz252_34', 3)
     sprite('hz252_35', 3)
 
+
 @State
 def NmlAtkAIR5C_2():
 
@@ -2440,8 +2575,8 @@ def NmlAtkAIR5C_2():
         HitOrBlockCancel('NmlAtkAIR4D')
         HitOrBlockCancel('NmlAtkAIR8D')
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             YAccel(50)
             PerGravity(50)
     sprite('hz252_07', 2)
@@ -2469,6 +2604,7 @@ def NmlAtkAIR5C_2():
     sprite('hz252_34', 3)
     sprite('hz252_35', 3)
 
+
 @State
 def NmlAtkAIR5C_3():
 
@@ -2489,8 +2625,8 @@ def NmlAtkAIR5C_3():
         HitOrBlockCancel('NmlAtkAIR4D')
         HitOrBlockCancel('NmlAtkAIR8D')
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             XImpulseAcceleration(80)
             YAccel(50)
             PerGravity(50)
@@ -2518,6 +2654,7 @@ def NmlAtkAIR5C_3():
     sprite('hz252_34', 3)
     sprite('hz252_35', 3)
 
+
 @State
 def NmlAtkAIR5C_4():
 
@@ -2538,8 +2675,8 @@ def NmlAtkAIR5C_4():
         HitOrBlockCancel('NmlAtkAIR4D')
         HitOrBlockCancel('NmlAtkAIR8D')
 
-        def upon_ON_HIT_OR_BLOCK():
-            clearUponHandler(10)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            clearUponHandler(OPPONENT_HIT_OR_BLOCK)
             XImpulseAcceleration(80)
             YAccel(50)
             PerGravity(50)
@@ -2567,6 +2704,7 @@ def NmlAtkAIR5C_4():
     sprite('hz252_33', 3)
     sprite('hz252_34', 3)
     sprite('hz252_35', 3)
+
 
 @State
 def NmlAtkAIR5C_5():
@@ -2609,6 +2747,7 @@ def NmlAtkAIR5C_5():
     sprite('hz252_34', 3)
     sprite('hz252_35', 3)
 
+
 @State
 def NmlAtkAIR2C():
 
@@ -2647,6 +2786,7 @@ def NmlAtkAIR2C():
     sprite('hz253_12', 4)
     sprite('hz253_13', 3)
 
+
 @Subroutine
 def UroborosInit():
     AttackLevel_(1)
@@ -2666,7 +2806,7 @@ def UroborosInit():
     Unknown12052(1)
     AttackOff()
     MoveAttributes(0, 0, 0, 1, 0)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         AttackLevel_(5)
         DamageMultiplier(200)
         Blockstun(9)
@@ -2680,35 +2820,36 @@ def UroborosInit():
         SLOT_31 = 2
         SLOT_32 = 0
 
-    def upon_ON_HIT_OR_BLOCK():
+    def upon_OPPONENT_HIT_OR_BLOCK():
         clearUponHandler(39)
-        clearUponHandler(10)
-        ObjectUpon(4, 38)
+        clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+        ObjectUpon(FALLING, 38)
         AttackOff()
         SetActionMark(1)
 
     def upon_39():
         clearUponHandler(39)
-        clearUponHandler(10)
-        ObjectUpon(4, 38)
+        clearUponHandler(OPPONENT_HIT_OR_BLOCK)
+        ObjectUpon(FALLING, 38)
         AttackOff()
         SetActionMark(1)
     SetActionMark(0)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
             SetActionMark(0)
-            clearUponHandler(3)
+            clearUponHandler(EVERY_FRAME)
             sendToLabel(0)
-        if (SLOT_23 >= 3000000):
-            SLOT_23 = 3000000
+        if SLOT_YDistanceFromFloor >= 3000000:
+            SLOT_YDistanceFromFloor = 3000000
     WhiffCancel('DriveJump6')
     WhiffCancel('DriveJump4')
     WhiffCancel('DriveJump8')
 
+
 @Subroutine
 def UroborosPowerUp():
-    if (not SLOT_51):
+    if not SLOT_51:
         AttackLevel_(5)
         DamageMultiplier(200)
         Blockstun(9)
@@ -2716,6 +2857,7 @@ def UroborosPowerUp():
         EnemyHitstopAddition(0, 20, 20)
         AirUntechableTime(28)
         Hitstun(14)
+
 
 @State
 def NmlAtk5D():
@@ -2753,7 +2895,7 @@ def NmlAtk5D():
     label(0)
     sprite('hz203_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtk5DStop')
     sprite('hz203_07', 3)
@@ -2771,6 +2913,7 @@ def NmlAtk5D():
     AttackOff()
     enterState('NmlAtk5DEnd')
 
+
 @State
 def NmlAtk5DEnd():
 
@@ -2781,12 +2924,13 @@ def NmlAtk5DEnd():
         Recovery()
         SLOT_54 = 1
     sprite('hz203_09', 3)
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz203_10', 5)
     sprite('hz203_11', 3)
     sprite('hz203_12', 3)
     sprite('hz203_13', 3)
+
 
 @State
 def NmlAtk5DStop():
@@ -2797,15 +2941,16 @@ def NmlAtk5DStop():
         AttackOff()
         Recovery()
         SLOT_54 = 1
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         SLOT_32 = 0
     sprite('hz203_09', 3)
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz203_10', 5)
     sprite('hz203_11', 3)
     sprite('hz203_12', 3)
     sprite('hz203_13', 3)
+
 
 @State
 def NmlAtk2D():
@@ -2831,10 +2976,10 @@ def NmlAtk2D():
     ObjectUpon2(4, 3, 0)
     ObjectHitbox(4)
     CreateObject('ExBodyAura', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-80000)
-    AddY(-160000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-80000)
+        AddY(-160000)
     sprite('hz233_05', 2)
     RefreshMultihit()
     WhiffCancelEnable(1)
@@ -2848,7 +2993,7 @@ def NmlAtk2D():
     label(0)
     sprite('hz233_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtk2DStop')
     sprite('hz233_07', 3)
@@ -2866,6 +3011,7 @@ def NmlAtk2D():
     AttackOff()
     enterState('NmlAtk2DEnd')
 
+
 @State
 def NmlAtk2DEnd():
 
@@ -2876,12 +3022,13 @@ def NmlAtk2DEnd():
         Recovery()
         SLOT_54 = 1
     sprite('hz233_09', 3)
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz233_10', 3)
     sprite('hz233_11', 3)
     sprite('hz233_12', 3)
     sprite('hz233_13', 3)
+
 
 @State
 def NmlAtk2DStop():
@@ -2892,15 +3039,16 @@ def NmlAtk2DStop():
         AttackOff()
         Recovery()
         SLOT_54 = 1
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         SLOT_32 = 0
     sprite('hz233_09', 3)
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz233_10', 3)
     sprite('hz233_11', 3)
     sprite('hz233_12', 3)
     sprite('hz233_13', 3)
+
 
 @State
 def NmlAtk6D():
@@ -2938,7 +3086,7 @@ def NmlAtk6D():
     label(0)
     sprite('hz213_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtk6DStop')
     sprite('hz213_07', 3)
@@ -2955,6 +3103,7 @@ def NmlAtk6D():
     WhiffCancelEnable(0)
     AttackOff()
     enterState('NmlAtk6DEnd')
+
 
 @State
 def NmlAtk4D():
@@ -2992,7 +3141,7 @@ def NmlAtk4D():
     label(0)
     sprite('hz213_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtk6DStop')
     sprite('hz213_07', 3)
@@ -3010,6 +3159,7 @@ def NmlAtk4D():
     AttackOff()
     enterState('NmlAtk6DEnd')
 
+
 @State
 def NmlAtk6DEnd():
 
@@ -3020,12 +3170,13 @@ def NmlAtk6DEnd():
         Recovery()
         SLOT_54 = 1
     sprite('hz213_09', 3)
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz213_10', 3)
     sprite('hz213_11', 3)
     sprite('hz213_12', 3)
     sprite('hz213_13', 3)
+
 
 @State
 def NmlAtk6DStop():
@@ -3036,15 +3187,16 @@ def NmlAtk6DStop():
         AttackOff()
         Recovery()
         SLOT_54 = 1
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         SLOT_32 = 0
     sprite('hz213_09', 3)
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz213_10', 3)
     sprite('hz213_11', 3)
     sprite('hz213_12', 3)
     sprite('hz213_13', 3)
+
 
 @State
 def NmlAtkAIR5D():
@@ -3091,7 +3243,7 @@ def NmlAtkAIR5D():
     label(0)
     sprite('hz254_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtkAIR5DStop')
     sprite('hz254_07', 3)
@@ -3108,6 +3260,7 @@ def NmlAtkAIR5D():
     WhiffCancelEnable(0)
     AttackOff()
     enterState('NmlAtkAIR5DEnd')
+
 
 @State
 def NmlAtkAIR2D():
@@ -3154,7 +3307,7 @@ def NmlAtkAIR2D():
     label(0)
     sprite('hz254_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtkAIR5DStop')
     sprite('hz254_07', 3)
@@ -3171,6 +3324,7 @@ def NmlAtkAIR2D():
     WhiffCancelEnable(0)
     AttackOff()
     enterState('NmlAtkAIR5DEnd')
+
 
 @State
 def NmlAtkAIR4D():
@@ -3217,7 +3371,7 @@ def NmlAtkAIR4D():
     label(0)
     sprite('hz254_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtkAIR5DStop')
     sprite('hz254_07', 3)
@@ -3234,6 +3388,7 @@ def NmlAtkAIR4D():
     WhiffCancelEnable(0)
     AttackOff()
     enterState('NmlAtkAIR5DEnd')
+
 
 @State
 def NmlAtkAIR6D():
@@ -3280,7 +3435,7 @@ def NmlAtkAIR6D():
     label(0)
     sprite('hz254_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtkAIR5DStop')
     sprite('hz254_07', 3)
@@ -3297,6 +3452,7 @@ def NmlAtkAIR6D():
     WhiffCancelEnable(0)
     AttackOff()
     enterState('NmlAtkAIR5DEnd')
+
 
 @State
 def NmlAtkAIR8D():
@@ -3344,7 +3500,7 @@ def NmlAtkAIR8D():
     label(0)
     sprite('hz254_06', 3)
     clearUponHandler(39)
-    ObjectUpon(4, 40)
+    ObjectUpon(FALLING, 40)
     EndMomentum(1)
     PreventWhiffCancel('NmlAtkAIR5DStop')
     sprite('hz254_07', 3)
@@ -3362,6 +3518,7 @@ def NmlAtkAIR8D():
     AttackOff()
     enterState('NmlAtkAIR5DEnd')
 
+
 @State
 def NmlAtkAIR5DEnd():
 
@@ -3373,12 +3530,13 @@ def NmlAtkAIR5DEnd():
         SLOT_54 = 1
     sprite('hz254_09', 6)
     EndYPhysicsImpulse()
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz254_10', 6)
     sprite('hz254_11', 6)
     sprite('hz254_12', 5)
     sprite('hz254_13', 5)
+
 
 @State
 def NmlAtkAIR5DStop():
@@ -3389,16 +3547,17 @@ def NmlAtkAIR5DStop():
         AttackOff()
         Recovery()
         SLOT_54 = 1
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         SLOT_32 = 0
     sprite('hz254_09', 4)
     EndYPhysicsImpulse()
-    ObjectUpon(4, 32)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    ObjectUpon(FALLING, 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz254_10', 4)
     sprite('hz254_11', 4)
     sprite('hz254_12', 3)
     sprite('hz254_13', 3)
+
 
 @State
 def DriveJump6():
@@ -3407,34 +3566,30 @@ def DriveJump6():
         AttackDefaults_AirSpecial()
 
         def upon_STATE_END():
-            if (not SLOT_30):
+            if not SLOT_IsInHitstun:
                 XImpulseAcceleration(40)
                 YAccel(60)
                 setGravity(2000)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('KusariJumpIdling', 0, 0, 0, 0, 0, 0, 0, 0)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         SLOT_32 = 0
         SLOT_52 = 12
         SLOT_53 = 16
-        ObjectUpon(4, 33)
-        ObjectUpon(4, 39)
+        ObjectUpon(FALLING, 33)
+        ObjectUpon(FALLING, 39)
         SLOT_54 = 1
-        PassbackAddActionMarkToFunction('ExPortal', 32)
+        TriggerUponForState('ExPortal', 32)
     EndMomentum(1)
-    PreviousStateCheck('NmlAtk6D')
-    if SLOT_0:
-        _gotolabel(0)
-    PreviousStateCheck('NmlAtk4D')
-    if SLOT_0:
-        _gotolabel(0)
-    PreviousStateCheck('NmlAtk5D')
-    if SLOT_0:
-        _gotolabel(1)
-    PreviousStateCheck('NmlAtk2D')
-    if SLOT_0:
-        _gotolabel(2)
+    if PreviousStateCheck('NmlAtk6D'):
+        conditionalSendToLabel(0)
+    if PreviousStateCheck('NmlAtk4D'):
+        conditionalSendToLabel(0)
+    if PreviousStateCheck('NmlAtk5D'):
+        conditionalSendToLabel(1)
+    if PreviousStateCheck('NmlAtk2D'):
+        conditionalSendToLabel(2)
     gotoLabel(3)
     label(0)
     Unknown23130(25650, 8, 2)
@@ -3474,7 +3629,7 @@ def DriveJump6():
     CallPrivateFunction('KusariJumpSpeed6', 0, 600, 0, 100, 0, 0, 0, 0)
     EnableAfterimage(1)
     SetActionMark(1)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    TriggerUponForState('ExBodyAura', 32)
     ConstantAlphaModifier(20)
     label(108)
     sprite('hz408_05', 3)
@@ -3532,37 +3687,34 @@ def DriveJump6():
     loopRest()
     ExitState()
 
+
 @State
 def DriveJump4():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirSpecial()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('KusariJumpIdling', 0, 0, 0, 0, 0, 0, 0, 0)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         SLOT_32 = 0
         SLOT_52 = 27
         SLOT_53 = 23
         EnableAfterimage(1)
-        ObjectUpon(4, 33)
-        ObjectUpon(4, 39)
+        ObjectUpon(FALLING, 33)
+        ObjectUpon(FALLING, 39)
         SetXCollisionFromOrigin(20)
         SLOT_54 = 1
-        PassbackAddActionMarkToFunction('ExPortal', 32)
+        TriggerUponForState('ExPortal', 32)
     EndMomentum(1)
-    PreviousStateCheck('NmlAtk6D')
-    if SLOT_0:
-        _gotolabel(0)
-    PreviousStateCheck('NmlAtk4D')
-    if SLOT_0:
-        _gotolabel(0)
-    PreviousStateCheck('NmlAtk5D')
-    if SLOT_0:
-        _gotolabel(1)
-    PreviousStateCheck('NmlAtk2D')
-    if SLOT_0:
-        _gotolabel(2)
+    if PreviousStateCheck('NmlAtk6D'):
+        conditionalSendToLabel(0)
+    if PreviousStateCheck('NmlAtk4D'):
+        conditionalSendToLabel(0)
+    if PreviousStateCheck('NmlAtk5D'):
+        conditionalSendToLabel(1)
+    if PreviousStateCheck('NmlAtk2D'):
+        conditionalSendToLabel(2)
     gotoLabel(3)
     label(0)
     Unknown23130(25650, 16, 2)
@@ -3623,7 +3775,7 @@ def DriveJump4():
     EnableAfterimage(1)
     EnableCollision(0)
     SetActionMark(1)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    TriggerUponForState('ExBodyAura', 32)
     setGravity(2500)
     label(108)
     sprite('hz408_05', 3)
@@ -3721,6 +3873,7 @@ def DriveJump4():
     loopRest()
     ExitState()
 
+
 @State
 def DriveJump8():
 
@@ -3728,38 +3881,34 @@ def DriveJump8():
         AttackDefaults_AirSpecial()
 
         def upon_STATE_END():
-            if (not SLOT_30):
+            if not SLOT_IsInHitstun:
                 XImpulseAcceleration(50)
                 YAccel(50)
                 setGravity(2000)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             CallPrivateFunction('KusariJumpIdling', 0, 0, 0, 0, 0, 0, 0, 0)
-            if (SLOT_12 <= 1000):
+            if SLOT_XVelocity <= 1000:
                 PerAcceleration(0)
-        SLOT_31 = (SLOT_31 + (-1))
+        SLOT_31 = SLOT_31 + -1
         SLOT_32 = 0
         SLOT_52 = 30
         SLOT_53 = 64
-        ObjectUpon(4, 33)
-        ObjectUpon(4, 39)
+        ObjectUpon(FALLING, 33)
+        ObjectUpon(FALLING, 39)
         SLOT_54 = 1
-        PassbackAddActionMarkToFunction('ExPortal', 32)
+        TriggerUponForState('ExPortal', 32)
         setInvincible(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
     EndMomentum(1)
-    PreviousStateCheck('NmlAtk6D')
-    if SLOT_0:
-        _gotolabel(0)
-    PreviousStateCheck('NmlAtk4D')
-    if SLOT_0:
-        _gotolabel(0)
-    PreviousStateCheck('NmlAtk5D')
-    if SLOT_0:
-        _gotolabel(1)
-    PreviousStateCheck('NmlAtk2D')
-    if SLOT_0:
-        _gotolabel(2)
+    if PreviousStateCheck('NmlAtk6D'):
+        conditionalSendToLabel(0)
+    if PreviousStateCheck('NmlAtk4D'):
+        conditionalSendToLabel(0)
+    if PreviousStateCheck('NmlAtk5D'):
+        conditionalSendToLabel(1)
+    if PreviousStateCheck('NmlAtk2D'):
+        conditionalSendToLabel(2)
     gotoLabel(3)
     label(0)
     Unknown23130(25650, 8, 2)
@@ -3798,7 +3947,7 @@ def DriveJump8():
     physicsYImpulse(0)
     setGravity(-5000)
     SetAcceleration(3000)
-    PassbackAddActionMarkToFunction('ExBodyAura', 32)
+    TriggerUponForState('ExBodyAura', 32)
     sprite('hz408_03', 4)
     sprite('hz408_04', 2)
     sprite('hz408_04', 1)
@@ -3887,6 +4036,7 @@ def DriveJump8():
     loopRest()
     ExitState()
 
+
 @State
 def NmlAtkExcite():
 
@@ -3899,7 +4049,7 @@ def NmlAtkExcite():
             WhiffBarrierCancel2(1)
             WhiffSpecialCancel(1)
     if SLOT_45:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('hz300_00', 3)
     sprite('hz300_00', 3)
     if random_(2, 0, 50):
@@ -3914,7 +4064,7 @@ def NmlAtkExcite():
     label(3)
     sprite('hz300_06', 6)
     if SLOT_97:
-        _gotolabel(3)
+        conditionalSendToLabel(3)
     sprite('hz300_07', 6)
     sprite('hz300_08', 6)
     sprite('hz300_09', 6)
@@ -3937,6 +4087,7 @@ def NmlAtkExcite():
     label(2)
     loopRest()
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -3953,6 +4104,7 @@ def NmlAtkDeadAngle():
     sprite('hz201_06', 6)
     sprite('hz201_07', 6)
     SFX_FOOTSTEP_(100, 1, 1)
+
 
 @State
 def NmlAtkGuardCrush():
@@ -3975,11 +4127,11 @@ def NmlAtkGuardCrush():
         HitBackReturnIgnore(1)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3987,8 +4139,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -4005,7 +4157,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('hz410_00', 3)
     sprite('hz410_00', 1)
@@ -4024,7 +4176,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('hz410_05', 3)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('hz410_06', 2)
     sprite('hz410_06', 4)
     CreateObject('Eff410', -1)
@@ -4044,6 +4196,7 @@ def NmlAtkGuardCrush():
     sprite('hz410_14', 3)
     sprite('hz410_15', 2)
 
+
 @State
 def NmlAtkThrow():
 
@@ -4060,6 +4213,7 @@ def NmlAtkThrow():
     sprite('hz310_05', 7)
     sprite('hz310_06', 4)
     sprite('hz310_07', 4)
+
 
 @State
 def ThrowExe():
@@ -4112,6 +4266,7 @@ def ThrowExe():
     sprite('hz311_13', 3)
     sprite('hz311_14', 3)
 
+
 @State
 def NmlAtkBackThrow():
 
@@ -4128,6 +4283,7 @@ def NmlAtkBackThrow():
     sprite('hz310_05', 7)
     sprite('hz310_06', 4)
     sprite('hz310_07', 4)
+
 
 @State
 def BackThrowExe():
@@ -4186,6 +4342,7 @@ def BackThrowExe():
     sprite('hz313_14', 4)
     sprite('hz313_15', 4)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -4202,6 +4359,7 @@ def NmlAtkAirThrow():
     SmartVoiceline('hz155')
     sprite('hz320_05', 5)
     sprite('hz320_06', 5)
+
 
 @State
 def AirThrowExe():
@@ -4256,6 +4414,7 @@ def AirThrowExe():
     sprite('hz321_12', 2)
     sprite('hz321_13', 2)
 
+
 @Subroutine
 def Kamae_Zanzou():
     EnableAfterimage(1)
@@ -4269,6 +4428,7 @@ def Kamae_Zanzou():
     AfterimageSize_1(1010)
     AfterimageSize_2(1010)
 
+
 @State
 def Kamae():
 
@@ -4279,22 +4439,22 @@ def Kamae():
         WhiffCancel('UltimateThrow')
         WhiffCancel('UltimateThrow_OD')
         AttackOff()
-        if (not PreviousStateCheck('KamaeDashF')):
+        if not PreviousStateCheck('KamaeDashF'):
             SLOT_65 = 0
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             SLOT_65 = 0
 
-        def upon_FRAME_STEP():
-            SLOT_65 = (SLOT_65 + 1)
-            if (SLOT_65 > 6):
+        def upon_EVERY_FRAME():
+            SLOT_65 = SLOT_65 + 1
+            if SLOT_65 > 6:
                 WhiffCancelEnable(1)
                 BeginBuffer('KamaeA')
                 BeginBuffer('KamaeB')
                 BeginBuffer('KamaeC')
                 BeginBuffer('KamaeDashB')
                 BeginBuffer('KamaeDashF')
-            if (SLOT_65 > 22):
+            if SLOT_65 > 22:
                 callSubroutine('Kamae_Zanzou')
                 BufferedOrPressedGoto('KamaeA')
                 BufferedOrPressedGoto('KamaeB')
@@ -4326,6 +4486,7 @@ def Kamae():
     sprite('hz400_09', 4)
     sprite('hz400_09', 1)
     enterState('KamaeD')
+
 
 @State
 def SpecialAssault():
@@ -4374,9 +4535,9 @@ def SpecialAssault():
     PreventBlocking(1)
     CreateObject('EffKamae', 0)
 
-    def upon_FRAME_STEP():
-        SLOT_65 = (SLOT_65 + 1)
-        if (SLOT_65 > 22):
+    def upon_EVERY_FRAME():
+        SLOT_65 = SLOT_65 + 1
+        if SLOT_65 > 22:
             callSubroutine('Kamae_Zanzou')
     PrivateSE('hzse_05')
     WhiffCancelEnable(1)
@@ -4406,6 +4567,7 @@ def SpecialAssault():
     sprite('hz400_09', 1)
     enterState('KamaeD')
 
+
 @State
 def KamaeA():
 
@@ -4423,14 +4585,14 @@ def KamaeA():
         Damage(700)
         AttackP2(79)
         Hitstun(19)
-        if (SLOT_65 > 22):
+        if SLOT_65 > 22:
             AttackLevel_(4)
             Damage(840)
             AttackP2(82)
             GroundedHitstunAnimation(11)
             HardKnockdown(15)
             callSubroutine('Kamae_Zanzou')
-            Comment('KamaeATame')
+            GotoState('KamaeATame')
             SLOT_51 = 1
             PerInertia(30)
         SLOT_65 = 0
@@ -4459,7 +4621,7 @@ def KamaeA():
         XImpulseAcceleration(125)
     if PreviousStateCheck('KamaeDashB'):
         XImpulseAcceleration(150)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     sprite('hz402_03', 2)
     sprite('hz402_04', 2)
     CommonSE('004_swing_grap_1_1')
@@ -4482,6 +4644,7 @@ def KamaeA():
     sprite('hz402_14', 2)
     sprite('hz402_15', 2)
 
+
 @State
 def KamaeB():
 
@@ -4501,7 +4664,7 @@ def KamaeB():
         AirPushbackY(40000)
         CHAirPushbackX(4000)
         CHAirPushbackY(48000)
-        if (SLOT_65 > 22):
+        if SLOT_65 > 22:
             AttackLevel_(5)
             Damage(1080)
             AttackP2(84)
@@ -4516,9 +4679,9 @@ def KamaeB():
             EnemyHitstopAddition(0, 10, 18)
             SLOT_52 = 1
             callSubroutine('Kamae_Zanzou')
-            Comment('KamaeBTame')
+            GotoState('KamaeBTame')
         SLOT_65 = 0
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         PerInertia(80)
         setInvincible(1)
         EnableAfterimage(1)
@@ -4561,6 +4724,7 @@ def KamaeB():
     sprite('hz401_13', 2)
     sprite('hz401_14', 2)
 
+
 @State
 def KamaeC():
 
@@ -4580,7 +4744,7 @@ def KamaeC():
         AirPushbackY(22000)
         CHAirPushbackX(-2000)
         CHAirPushbackY(27000)
-        if (SLOT_65 > 22):
+        if SLOT_65 > 22:
             SLOT_52 = 1
             AttackLevel_(5)
             Damage(1080)
@@ -4592,7 +4756,7 @@ def KamaeC():
             YImpulseBeforeWallbounce(1600)
             HitAirUnblockable(3)
             callSubroutine('Kamae_Zanzou')
-            Comment('KamaeCTame')
+            GotoState('KamaeCTame')
         SLOT_65 = 0
         StayAfterMovement(1, 0)
         physicsXImpulse(2000)
@@ -4642,6 +4806,7 @@ def KamaeC():
     sprite('hz403_14', 2)
     sprite('hz403_15', 2)
 
+
 @State
 def KamaeD():
 
@@ -4653,9 +4818,10 @@ def KamaeD():
         SLOT_65 = 0
     sprite('hz400_01', 6)
     CreateObject('EffLandAura', -1)
-    PassbackAddActionMarkToFunction('EffKamae', 32)
+    TriggerUponForState('EffKamae', 32)
     sprite('hz400_10', 6)
     sprite('hz400_11', 6)
+
 
 @State
 def KamaeDashF():
@@ -4669,9 +4835,9 @@ def KamaeDashF():
         WhiffCancel('UltimateThrow')
         WhiffCancel('UltimateThrow_OD')
 
-        def upon_FRAME_STEP():
-            SLOT_65 = (SLOT_65 + 1)
-            if (SLOT_65 > 22):
+        def upon_EVERY_FRAME():
+            SLOT_65 = SLOT_65 + 1
+            if SLOT_65 > 22:
                 callSubroutine('Kamae_Zanzou')
 
         def upon_STATE_END():
@@ -4709,10 +4875,11 @@ def KamaeDashF():
     XImpulseAcceleration(0)
     sprite('hz032_07', 3)
     sprite('hz032_07', 1)
-    if CheckInput(0x1c):
+    if CheckInput(INPUT_HOLD_D):
         enterState('KamaeD')
     else:
         enterState('Kamae')
+
 
 @State
 def KamaeDashB():
@@ -4726,13 +4893,13 @@ def KamaeDashB():
         WhiffCancel('UltimateThrow')
         WhiffCancel('UltimateThrow_OD')
 
-        def upon_FRAME_STEP():
-            SLOT_65 = (SLOT_65 + 1)
-            if (SLOT_65 > 22):
+        def upon_EVERY_FRAME():
+            SLOT_65 = SLOT_65 + 1
+            if SLOT_65 > 22:
                 callSubroutine('Kamae_Zanzou')
         AddX(-80000)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             SLOT_65 = 0
 
         def upon_STATE_END():
@@ -4769,9 +4936,10 @@ def KamaeDashB():
     sprite('hz409_04', 4)
     XImpulseAcceleration(0)
     WhiffCancelEnable(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     SLOT_65 = 0
-    PassbackAddActionMarkToFunction('EffKamae', 32)
+    TriggerUponForState('EffKamae', 32)
+
 
 @State
 def SpecialShot():
@@ -4814,6 +4982,7 @@ def SpecialShot():
     sprite('hz407_12', 2)
     sprite('hz407_13', 2)
 
+
 @State
 def AntiAir():
 
@@ -4835,23 +5004,23 @@ def AntiAir():
         FatalCounter(1)
         MoveAttributes(0, 0, 0, 1, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if Unknown23146(22, 'AntiAir'):
+                if SLOT_65 > 22:
                     CopyFromRightToLeft(22, 2, 83, 4, 2, 83)
                     CopyFromRightToLeft(23, 2, 51, 4, 2, 23)
-                    SLOT_51 = (SLOT_51 + (-300000))
+                    SLOT_51 = SLOT_51 + -300000
                     CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
-        sendToLabelUpon(12, 0)
+        uponSendToLabel(OPPONENT_HIT, 0)
         AttackOff()
     sprite('hz405_00', 2)
     sprite('hz405_01', 2)
     SmartVoiceline('hz205')
     CreateObject('AntiAirWindSmoke', -1)
     CreateObject('ExBodyAuraAntiAir', -1)
-    ApplyFunctionsToObjects(1)
-    AddY(-80000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddY(-80000)
     sprite('hz405_02', 2)
     sprite('hz405_03', 2)
     sprite('hz405_04', 2)
@@ -4861,14 +5030,14 @@ def AntiAir():
     CreateObject('KusariAntiAir', 109)
     RegisterObject(4, 1)
     ObjectHitbox(4)
-    PassbackAddActionMarkToFunction('AntiAirWindSmoke', 32)
+    TriggerUponForState('AntiAirWindSmoke', 32)
     sprite('hz405_06', 3)
     RefreshMultihit()
     sprite('hz405_06', 7)
     SLOT_51 = 1
     sprite('hz405_20', 2)
     AttackOff()
-    PassbackAddActionMarkToFunction('AntiAirWindSmoke', 33)
+    TriggerUponForState('AntiAirWindSmoke', 33)
     Recovery()
     sprite('hz405_21', 2)
     sprite('hz405_22', 2)
@@ -4885,16 +5054,16 @@ def AntiAir():
     sprite('hz405_32', 3)
     ExitState()
     label(0)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     SetActionMark(1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     SetXCollisionFromOrigin(150)
     sprite('hz405_07', 6)
     sprite('hz405_08', 6)
     sprite('hz405_09', 2)
     sprite('hz405_10', 2)
     SmartVoiceline('hz206')
-    PassbackAddActionMarkToFunction('AntiAirWindSmoke', 33)
+    TriggerUponForState('AntiAirWindSmoke', 33)
     sprite('hz405_11', 2)
     CommonSE('011_spin_0')
     sprite('hz405_12', 2)
@@ -4927,6 +5096,7 @@ def AntiAir():
     sprite('hz405_18', 5)
     sprite('hz405_19', 5)
 
+
 @State
 def AirAssault2():
 
@@ -4945,10 +5115,10 @@ def AirAssault2():
         CHGroundBounce(1)
         CHBouncePercentage(50)
         UseSlashHitspark(1)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             SetActionMark(1)
         if SLOT_137:
             DamageMultiplier(80)
@@ -4988,7 +5158,7 @@ def AirAssault2():
     LandingEffects(100, 1, 1)
     sprite('hz412_07', 4)
     EnableAfterimage(0)
-    if (not SLOT_2):
+    if not SLOT_2:
         WhiffCrouchBlockCancel(1)
         WhiffStandingTurnCancel(1)
         WhiffCrouchingTurnCancel(1)
@@ -4998,6 +5168,7 @@ def AirAssault2():
         WhiffFWalkCancel(1)
     sprite('hz412_08', 4)
     sprite('hz412_09', 4)
+
 
 @State
 def SPThrow():
@@ -5050,6 +5221,7 @@ def SPThrow():
     sprite('hz406_14', 3)
     sprite('hz406_15', 3)
 
+
 @State
 def SPThrowExe():
 
@@ -5098,6 +5270,7 @@ def SPThrowExe():
     sprite('hz406_24', 3)
     sprite('hz406_25', 3)
 
+
 @State
 def UltimateAssault():
 
@@ -5117,7 +5290,7 @@ def UltimateAssault():
         AttackDirection(0)
         StarterRating(2)
         FatalCounter(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         StayAfterMovement(1, 0)
 
         def upon_STATE_END():
@@ -5175,6 +5348,7 @@ def UltimateAssault():
     sprite('hz430_17', 4)
     sprite('hz430_18', 4)
 
+
 @State
 def UltimateAssault_OD():
 
@@ -5195,7 +5369,7 @@ def UltimateAssault_OD():
         AttackType(4)
         StarterRating(2)
         FatalCounter(1)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         StayAfterMovement(1, 0)
 
         def upon_OPPONENT_HIT():
@@ -5258,6 +5432,7 @@ def UltimateAssault_OD():
     sprite('hz430_17', 4)
     sprite('hz430_18', 4)
 
+
 @State
 def UltimateShot():
 
@@ -5278,14 +5453,14 @@ def UltimateShot():
         StayAfterMovement(1, 0)
         AttackOff()
         EndMomentum(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if Unknown23146(22, 'AntiAir'):
+                if SLOT_65 > 22:
                     CopyFromRightToLeft(22, 2, 83, 4, 2, 83)
                     CopyFromRightToLeft(23, 2, 51, 4, 2, 23)
-                    SLOT_51 = (SLOT_51 + (-300000))
+                    SLOT_51 = SLOT_51 + -300000
                     CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
         Unknown2064(0)
 
@@ -5307,18 +5482,18 @@ def UltimateShot():
     sprite('hz431_02', 11)
     SpecificInvincibility(0, 0, 0, 1, 0)
     sprite('hz431_03', 4)
-    PassbackAddActionMarkToFunction('UltimateLockMagic', 32)
+    TriggerUponForState('UltimateLockMagic', 32)
     sprite('hz431_04', 4)
     sprite('hz431_05', 4)
     CreateObject('UltimateLockObj', -1)
-    PassbackAddActionMarkToFunction('UltimateLockMagic', 33)
+    TriggerUponForState('UltimateLockMagic', 33)
     CreateObject('EffUltimateLockSignal', -1)
     sprite('hz431_06', 3)
     setInvincible(0)
-    PassbackAddActionMarkToFunction('UltimateLockObjCenter', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjTop', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjBottom', 32)
-    PassbackAddActionMarkToFunction('DDLockAura', 32)
+    TriggerUponForState('UltimateLockObjCenter', 32)
+    TriggerUponForState('UltimateLockObjTop', 32)
+    TriggerUponForState('UltimateLockObjBottom', 32)
+    TriggerUponForState('DDLockAura', 32)
     sprite('hz431_07', 3)
     sprite('hz431_08', 3)
     sprite('hz431_06', 3)
@@ -5339,7 +5514,7 @@ def UltimateShot():
     ExitState()
     label(0)
     clearUponHandler(32)
-    PassbackAddActionMarkToFunction('DDLockAura', 32)
+    TriggerUponForState('DDLockAura', 32)
     sprite('hz431_06', 4)
     ForceFaceSprite()
     setInvincible(1)
@@ -5354,11 +5529,11 @@ def UltimateShot():
     sprite('hz431_10', 3)
     sprite('hz431_11', 3)
     CreateObject('UltimateKusari', 109)
-    sendToLabelUpon(33, 22)
+    uponSendToLabel(33, 22)
     sprite('hz431_12', 3)
-    PassbackAddActionMarkToFunction('UltimateLockObjCenter', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjTop', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjBottom', 32)
+    TriggerUponForState('UltimateLockObjCenter', 32)
+    TriggerUponForState('UltimateLockObjTop', 32)
+    TriggerUponForState('UltimateLockObjBottom', 32)
     SLOT_52 = 10
     loopRest()
     label(1)
@@ -5366,9 +5541,9 @@ def UltimateShot():
     sprite('hz431_14', 3)
     sprite('hz431_15', 2)
     sprite('hz431_15', 1)
-    SLOT_52 = (SLOT_52 + (-1))
+    SLOT_52 = SLOT_52 + -1
     if SLOT_52:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(22)
     clearUponHandler(33)
     sprite('hz431_16', 4)
@@ -5438,8 +5613,8 @@ def UltimateShot():
     CommonSE('009_swing_rapier_0')
     sprite('hz431_30', 3)
     CreateObject('HZEF_DDBackAura', -1)
-    PassbackAddActionMarkToFunction('UltimateWindSmoke', 32)
-    PassbackAddActionMarkToFunction('DDBodyAura', 32)
+    TriggerUponForState('UltimateWindSmoke', 32)
+    TriggerUponForState('DDBodyAura', 32)
     sprite('hz431_31', 3)
     sprite('hz431_32', 3)
     sprite('hz431_33', 3)
@@ -5467,7 +5642,7 @@ def UltimateShot():
     sprite('hz431_39', 3)
     sprite('hz431_40', 2)
     CameraControlEnable(1)
-    PassbackAddActionMarkToFunction('UltimateWindSmoke', 33)
+    TriggerUponForState('UltimateWindSmoke', 33)
     sprite('hz431_41', 1)
     CommonSE('009_swing_rapier_1')
     sprite('hz431_42', 3)
@@ -5489,11 +5664,11 @@ def UltimateShot():
     setInvincible(0)
     IgnoreComboTime(1)
     SingleComboCorrection(1)
-    Comment('UltimateShotFinish')
+    GotoState('UltimateShotFinish')
     sprite('hz431_43', 5)
     EnableCollision(1)
-    PassbackAddActionMarkToFunction('HZEF_DDBackAura', 32)
-    PassbackAddActionMarkToFunction('DDBodyAura', 33)
+    TriggerUponForState('HZEF_DDBackAura', 32)
+    TriggerUponForState('DDBodyAura', 33)
     sprite('hz431_44', 5)
     sprite('hz431_45', 5)
     sprite('hz431_43', 5)
@@ -5515,6 +5690,7 @@ def UltimateShot():
     CommonSE('007_swing_knife_2')
     sprite('hz431_53', 12)
     sprite('hz431_55', 4)
+
 
 @State
 def UltimateShot_OD():
@@ -5543,16 +5719,16 @@ def UltimateShot_OD():
             SLOT_64 = 0
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(100)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
-                if Unknown23146(22, 'AntiAir'):
+                if SLOT_65 > 22:
                     CopyFromRightToLeft(22, 2, 83, 4, 2, 83)
                     CopyFromRightToLeft(23, 2, 51, 4, 2, 23)
-                    SLOT_51 = (SLOT_51 + (-300000))
+                    SLOT_51 = SLOT_51 + -300000
                     CopyFromRightToLeft(22, 2, 23, 23, 2, 51)
         Unknown2064(0)
 
@@ -5574,18 +5750,18 @@ def UltimateShot_OD():
     sprite('hz431_02', 11)
     SpecificInvincibility(0, 0, 0, 1, 0)
     sprite('hz431_03', 4)
-    PassbackAddActionMarkToFunction('UltimateLockMagic', 32)
+    TriggerUponForState('UltimateLockMagic', 32)
     sprite('hz431_04', 4)
     sprite('hz431_05', 4)
     CreateObject('UltimateLockObj', -1)
-    PassbackAddActionMarkToFunction('UltimateLockMagic', 33)
+    TriggerUponForState('UltimateLockMagic', 33)
     CreateObject('EffUltimateLockSignal', -1)
     sprite('hz431_06', 3)
     setInvincible(0)
-    PassbackAddActionMarkToFunction('UltimateLockObjCenter', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjTop', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjBottom', 32)
-    PassbackAddActionMarkToFunction('DDLockAura', 32)
+    TriggerUponForState('UltimateLockObjCenter', 32)
+    TriggerUponForState('UltimateLockObjTop', 32)
+    TriggerUponForState('UltimateLockObjBottom', 32)
+    TriggerUponForState('DDLockAura', 32)
     sprite('hz431_07', 3)
     sprite('hz431_08', 3)
     sprite('hz431_06', 3)
@@ -5606,7 +5782,7 @@ def UltimateShot_OD():
     ExitState()
     label(0)
     clearUponHandler(32)
-    PassbackAddActionMarkToFunction('DDLockAura', 32)
+    TriggerUponForState('DDLockAura', 32)
     sprite('hz431_06', 4)
     ForceFaceSprite()
     setInvincible(1)
@@ -5621,11 +5797,11 @@ def UltimateShot_OD():
     sprite('hz431_10', 3)
     sprite('hz431_11', 3)
     CreateObject('UltimateKusari', 109)
-    sendToLabelUpon(33, 22)
+    uponSendToLabel(33, 22)
     sprite('hz431_12', 3)
-    PassbackAddActionMarkToFunction('UltimateLockObjCenter', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjTop', 32)
-    PassbackAddActionMarkToFunction('UltimateLockObjBottom', 32)
+    TriggerUponForState('UltimateLockObjCenter', 32)
+    TriggerUponForState('UltimateLockObjTop', 32)
+    TriggerUponForState('UltimateLockObjBottom', 32)
     SLOT_52 = 10
     loopRest()
     label(1)
@@ -5633,9 +5809,9 @@ def UltimateShot_OD():
     sprite('hz431_14', 3)
     sprite('hz431_15', 2)
     sprite('hz431_15', 1)
-    SLOT_52 = (SLOT_52 + (-1))
+    SLOT_52 = SLOT_52 + -1
     if SLOT_52:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     label(22)
     clearUponHandler(33)
     sprite('hz431_16', 4)
@@ -5788,14 +5964,14 @@ def UltimateShot_OD():
     sprite('hz431_31', 3)
     sprite('hz431_32', 3)
     sprite('hz431_33', 3)
-    PassbackAddActionMarkToFunction('UltimateWindSmoke', 33)
+    TriggerUponForState('UltimateWindSmoke', 33)
     CreateObject('hzef432_bind', -1)
     CommonSE('022_magiccircle_c')
     sprite('hz432_10', 3)
     CreateObject('HZEF_DDBackAura', -1)
     sprite('hz432_11', 3)
     sprite('hz432_12', 3)
-    PassbackAddActionMarkToFunction('DDBodyAura', 33)
+    TriggerUponForState('DDBodyAura', 33)
     sprite('hz432_13', 3)
     sprite('hz432_14', 3)
     sprite('hz432_15', 3)
@@ -5807,7 +5983,7 @@ def UltimateShot_OD():
     sprite('hz432_16', 3)
     sprite('hz432_17', 3)
     sprite('hz432_18', 4)
-    PassbackAddActionMarkToFunction('HZEF_DDBackAura', 32)
+    TriggerUponForState('HZEF_DDBackAura', 32)
     sprite('hz432_19', 2)
     SetYCollisionFromOrigin(360)
     physicsXImpulse(2000)
@@ -5828,7 +6004,7 @@ def UltimateShot_OD():
     HardKnockdown(1)
     DamageEffect(0, '')
     OppPositionOnHit(0, 0, 0)
-    PassbackAddActionMarkToFunction('hzef432_bind', 32)
+    TriggerUponForState('hzef432_bind', 32)
     sprite('hz432_21', 3)
     sprite('hz432_22', 3)
     sprite('hz432_47', 3)
@@ -5854,13 +6030,13 @@ def UltimateShot_OD():
     CommonSE('025_cleanhit_grap')
     CommonSE('213_bound_1')
     PrivateSE('hzse_12')
-    Comment('UltimateShot_ODFinish')
+    GotoState('UltimateShot_ODFinish')
     sprite('hz432_50', 5)
     sprite('hz432_51', 5)
     sprite('hz432_52', 5)
     sprite('hz432_53', 5)
     sprite('hz432_53ex', 5)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('hz432_57', 5)
     sprite('hz432_58', 5)
     sprite('hz432_59', 5)
@@ -5881,6 +6057,7 @@ def UltimateShot_OD():
     sprite('hz301_06', 5)
     sprite('hz301_07', 5)
 
+
 @State
 def UltimateThrow():
 
@@ -5889,7 +6066,7 @@ def UltimateThrow():
         RangeCheck(80000)
         DistanceCheck(250000, 1, -1, -1)
         setInvincible(1)
-        if (SLOT_65 > 22):
+        if SLOT_65 > 22:
             SLOT_51 = 1
             callSubroutine('Kamae_Zanzou')
 
@@ -5940,6 +6117,7 @@ def UltimateThrow():
     sprite('hz432_06', 8)
     sprite('hz432_07', 8)
 
+
 @State
 def UltimateThrowExe():
 
@@ -5962,7 +6140,7 @@ def UltimateThrowExe():
         StayAfterMovement(1, 0)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(1)
     sprite('hz432_02', 3)
     OppThrowAnimation(8, 0)
@@ -6008,7 +6186,7 @@ def UltimateThrowExe():
     Hitstop(7)
     HardKnockdown(1)
     DamageEffect(0, '')
-    PassbackAddActionMarkToFunction('hzef432_bind', 32)
+    TriggerUponForState('hzef432_bind', 32)
     if SLOT_137:
         DamageMultiplier(80)
     sprite('hz432_21', 4)
@@ -6080,8 +6258,9 @@ def UltimateThrowExe():
     RefreshMultihit()
     ScreenShake(0, 1000)
     sprite('hz432_39', 1)
-    SLOT_52 = (SLOT_52 + (-1))
-    GotoIf0(11, 2, 52)
+    SLOT_52 = SLOT_52 + -1
+    if not SLOT_52:
+        notConditionalSendToLabel(11)
     loopRest()
     gotoLabel(10)
     label(11)
@@ -6118,7 +6297,7 @@ def UltimateThrowExe():
     EndYPhysicsImpulse()
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(2)
     if SLOT_137:
         DamageMultiplier(80)
@@ -6147,7 +6326,7 @@ def UltimateThrowExe():
     HardKnockdown(40)
     DefeatOpponentBehavior(0)
     ScreenShake(50000, 50000)
-    Comment('UltimateThrow_Finish')
+    GotoState('UltimateThrow_Finish')
     if SLOT_137:
         DamageMultiplier(80)
     sprite('hz432_50', 6)
@@ -6158,7 +6337,7 @@ def UltimateThrowExe():
     sprite('hz432_53ex', 6)
     sprite('hz432_54', 6)
     sprite('hz432_55', 15)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('hz432_56', 7)
     sprite('hz432_57', 7)
     sprite('hz432_58', 7)
@@ -6167,6 +6346,7 @@ def UltimateThrowExe():
     CommonSE('019_cloth_a')
     sprite('hz601_18', 7)
     sprite('hz601_19', 7)
+
 
 @State
 def UltimateThrow_OD():
@@ -6177,7 +6357,7 @@ def UltimateThrow_OD():
         DistanceCheck(250000, 1, -1, -1)
         AttackType(4)
         setInvincible(1)
-        if (SLOT_65 > 22):
+        if SLOT_65 > 22:
             SLOT_51 = 1
             callSubroutine('Kamae_Zanzou')
 
@@ -6228,6 +6408,7 @@ def UltimateThrow_OD():
     sprite('hz432_06', 8)
     sprite('hz432_07', 8)
 
+
 @State
 def UltimateThrowExe_OD():
 
@@ -6251,13 +6432,13 @@ def UltimateThrowExe_OD():
         StayAfterMovement(1, 0)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(1)
         SLOT_64 = 1
 
         def upon_STATE_END():
             SLOT_64 = 0
-        if (not CheckObjectPresence(5)):
+        if not CheckObjectPresence(5):
             CreateObject('HZEF_DrainField', -1)
             RegisterObject(5, 1)
     sprite('hz432_02', 3)
@@ -6304,7 +6485,7 @@ def UltimateThrowExe_OD():
     Hitstop(7)
     HardKnockdown(1)
     DamageEffect(0, '')
-    PassbackAddActionMarkToFunction('hzef432_bind', 32)
+    TriggerUponForState('hzef432_bind', 32)
     if SLOT_137:
         DamageMultiplier(80)
     sprite('hz432_21', 4)
@@ -6376,8 +6557,9 @@ def UltimateThrowExe_OD():
     RefreshMultihit()
     ScreenShake(0, 1000)
     sprite('hz432_39', 1)
-    SLOT_52 = (SLOT_52 + (-1))
-    GotoIf0(11, 2, 52)
+    SLOT_52 = SLOT_52 + -1
+    if not SLOT_52:
+        notConditionalSendToLabel(11)
     loopRest()
     gotoLabel(10)
     label(11)
@@ -6465,7 +6647,7 @@ def UltimateThrowExe_OD():
     EndYPhysicsImpulse()
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(2)
     if SLOT_137:
         DamageMultiplier(80)
@@ -6496,7 +6678,7 @@ def UltimateThrowExe_OD():
     HardKnockdown(40)
     DefeatOpponentBehavior(0)
     ScreenShake(50000, 50000)
-    Comment('UltimateThrowOD_Finish')
+    GotoState('UltimateThrowOD_Finish')
     if SLOT_137:
         DamageMultiplier(80)
     sprite('hz432_50', 6)
@@ -6507,7 +6689,7 @@ def UltimateThrowExe_OD():
     sprite('hz432_53ex', 6)
     sprite('hz432_54', 6)
     sprite('hz432_55', 15)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('hz432_56', 7)
     sprite('hz432_57', 7)
     sprite('hz432_58', 7)
@@ -6517,11 +6699,12 @@ def UltimateThrowExe_OD():
     sprite('hz601_18', 7)
     sprite('hz601_19', 7)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         AirPushbackY(15000)
@@ -6541,10 +6724,10 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -6570,11 +6753,12 @@ def BurstDD():
     sprite('hz440_06', 5)
     sprite('hz000_00', 4)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         AirPushbackY(15000)
@@ -6594,10 +6778,10 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -6625,11 +6809,12 @@ def BurstDD_Easy():
     sprite('hz440_06', 5)
     sprite('hz000_00', 4)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(4)
         Damage(400)
         AirUntechableTime(120)
@@ -6638,7 +6823,7 @@ def BurstDDAdd():
         CameraNoScreenCollision(1)
         CameraControlEnable(1)
         SetBackground(1)
-        sendToLabelUpon(2, 2)
+        uponSendToLabel(LANDING, 2)
         SLOT_64 = 1
 
         def upon_STATE_END():
@@ -6724,7 +6909,7 @@ def BurstDDAdd():
     Hitstop(0)
     EnemyHitstopAddition(7, 30, 30)
     sprite('hz440_21', 3)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('hz440_22', 3)
     sprite('hz405_10ex01', 3)
     sprite('hz405_11ex01', 3)
@@ -6756,7 +6941,7 @@ def BurstDDAdd():
         Voiceline('hz282')
     loopRest()
     if SLOT_51:
-        _gotolabel(3)
+        conditionalSendToLabel(3)
     sprite('hz440_24', 4)
     CreateObject('Eff440snake', -1)
     PrivateSE('hzse_08')
@@ -6811,13 +6996,13 @@ def BurstDDAdd():
     def upon_OPPONENT_HIT():
         ScreenShake(2000, 10000)
     CreateObject('HZEF_UltimateAssault', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-390000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-390000)
     CreateObject('HZEF_UltimateAssaultOD', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(-390000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(-390000)
     sprite('hz440_25', 2)
     RefreshMultihit()
     sprite('hz440_25ex01', 2)
@@ -6845,6 +7030,7 @@ def BurstDDAdd():
     sprite('hz440_33', 4)
     sprite('hz000_00', 1)
     Flip()
+
 
 @State
 def AstralHeat():
@@ -6884,31 +7070,31 @@ def AstralHeat():
     CommonSE('015_blaze_1')
     sprite('hz450_09', 3)
     CreateObject('KusariAstral', 0)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
     CommonSE('019_quake_0')
     PrivateSE('hzse_06')
     sprite('hz450_10', 3)
     CreateObject('KusariAstral', 1)
-    ObjectUpon(1, 33)
+    ObjectUpon(STATE_END, 33)
     sprite('hz450_11', 3)
     CreateObject('KusariAstral', 2)
-    ObjectUpon(1, 34)
+    ObjectUpon(STATE_END, 34)
     sprite('hz450_12', 3)
     CreateObject('KusariAstral', 3)
-    ObjectUpon(1, 35)
+    ObjectUpon(STATE_END, 35)
     PrivateSE('hzse_06')
     sprite('hz450_13', 3)
     CreateObject('KusariAstral', 4)
-    ObjectUpon(1, 36)
+    ObjectUpon(STATE_END, 36)
     sprite('hz450_09', 3)
     CreateObject('KusariAstral', 5)
-    ObjectUpon(1, 37)
+    ObjectUpon(STATE_END, 37)
     sprite('hz450_10', 3)
     CreateObject('KusariAstral', 6)
-    ObjectUpon(1, 38)
+    ObjectUpon(STATE_END, 38)
     sprite('hz450_11', 3)
     CreateObject('KusariAstral', 7)
-    ObjectUpon(1, 39)
+    ObjectUpon(STATE_END, 39)
     sprite('hz450_12', 3)
     sprite('hz450_13', 3)
     sprite('hz450_09', 3)
@@ -6927,13 +7113,13 @@ def AstralHeat():
     sprite('hz450_11', 3)
     sprite('hz450_12', 3)
     sprite('hz450_13', 3)
-    PassbackAddActionMarkToFunction('KusariAstral', 41)
+    TriggerUponForState('KusariAstral', 41)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('hz450_23', 4)
     setInvincible(0)
-    PassbackAddActionMarkToFunction('KusariAstral', 40)
+    TriggerUponForState('KusariAstral', 40)
     sprite('hz450_24', 4)
     sprite('hz450_25', 4)
     sprite('hz450_26', 4)
@@ -6946,7 +7132,7 @@ def AstralHeat():
     CameraControlInfinity(1)
     CameraWinnerControlStop(1)
     SetBackground(3)
-    PassbackAddActionMarkToFunction('HZEF_ASTBACK', 32)
+    TriggerUponForState('HZEF_ASTBACK', 32)
     sprite('hz450_14', 3)
     random_(2, 0, 50)
     SLOT_55 = SLOT_0
@@ -6962,10 +7148,10 @@ def AstralHeat():
     sprite('hz450_16', 3)
     CreateObject('HZEF_ASTSIGNAL', -1)
     sprite('hz450_17', 3)
-    PassbackAddActionMarkToFunction('KusariAstral', 40)
+    TriggerUponForState('KusariAstral', 40)
     loopRest()
     RunLoopUpon(17, 350)
-    sendToLabelUpon(17, 2)
+    uponSendToLabel(17, 2)
     sprite('hz450_18', 6)
     PrivateSE('hzse_00')
     PrivateSE('hzse_05')
@@ -7049,15 +7235,15 @@ def AstralHeat():
     AlphaValue(255)
     XPositionRelativeFacing(0)
     SetZVal(500)
-    ApplyFunctionsToObjects(22)
-    Flip()
-    EndMomentum(1)
-    XPositionRelativeFacing(0)
-    AddX(280000)
-    AbsoluteY(2560000)
-    physicsXImpulse(1000)
-    GravityDefault()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Flip()
+        EndMomentum(1)
+        XPositionRelativeFacing(0)
+        AddX(280000)
+        AbsoluteY(2560000)
+        physicsXImpulse(1000)
+        GravityDefault()
     sprite('hz001_00', 6)
     sprite('hz001_01', 6)
     sprite('hz001_02', 8)
@@ -7088,6 +7274,7 @@ def AstralHeat():
     loopRest()
     gotoLabel(100)
 
+
 @State
 def RlAstralDamage():
 
@@ -7095,7 +7282,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('hz054')
     sprite('hz900_00', 32767)
     EnableCollision(0)
@@ -7112,6 +7299,7 @@ def RlAstralDamage():
     CreateObject('RLAstLockAura', 0)
     loopRest()
 
+
 @State
 def AmAstralDamage():
 
@@ -7124,7 +7312,10 @@ def AmAstralDamage():
     sprite('hz901_00', 50)
     physicsYImpulse(150)
     Voiceline('hz055')
-    Mouth(13665, 13667, 13665, 13155, 24880, 25397, 24885, 25397, 24885, 25397, 24885, 25397, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Mouth(13665, 13667, 13665, 13155, 24880, 25397, 24885, 25397, 24885, 
+        25397, 24885, 25397, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     label(0)
     sprite('hz901_00', 50)
     physicsYImpulse(-150)
@@ -7132,124 +7323,482 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('hz000', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz257', 13923, 12641, 25400, 12849, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz261', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz307', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz400', 12643, 24880, 12339, 12643, 24886, 12337, 12643, 24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz401', 13411, 12641, 25392, 12337, 14433, 14435, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14433, 14435, 14433, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz404', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 14177, 14179, 14689, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz405', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 14177, 14179, 12641, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz406', 12643, 24880, 12338, 12643, 24880, 12337, 12643, 24880, 12337, 12899, 24880, 13617, 13667, 12641, 25397, 24885, 12338, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz407', 13667, 13665, 13667, 12897, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz408', 14435, 12641, 25392, 24888, 25400, 24888, 25400, 24888, 12337, 14435, 12641, 25394, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz411', 14689, 14691, 14689, 13155, 24885, 25400, 24888, 25400, 24888, 12337, 12643, 24880, 12849, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz412', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 13923, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz414', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 25398, 24884, 25400, 24888, 25400, 24888, 12337, 12643, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz415', 13411, 13665, 13667, 12641, 25394, 13873, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz416', 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('hz417', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz000', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 
+        24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 48, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz257', 13923, 12641, 25400, 12849, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+        13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
+    Unknown18011('hz261', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+        13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz307', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+        13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 
+        13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz400', 12643, 24880, 12339, 12643, 24886, 12337, 12643, 
+        24880, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz401', 13411, 12641, 25392, 12337, 14433, 14435, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 14433, 14435, 
+        14433, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz404', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 
+        13923, 14177, 14179, 14689, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz405', 14177, 14179, 14177, 14179, 13921, 13923, 13921, 
+        13923, 14177, 14179, 12641, 25392, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz406', 12643, 24880, 12338, 12643, 24880, 12337, 12643, 
+        24880, 12337, 12899, 24880, 13617, 13667, 12641, 25397, 24885, 
+        12338, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
+    Unknown18011('hz407', 13667, 13665, 13667, 12897, 25392, 12337, 12641, 
+        25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 
+        25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz408', 14435, 12641, 25392, 24888, 25400, 24888, 25400, 
+        24888, 12337, 14435, 12641, 25394, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz411', 14689, 14691, 14689, 13155, 24885, 25400, 24888, 
+        25400, 24888, 12337, 12643, 24880, 12849, 14435, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz412', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 
+        24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 
+        24880, 12337, 12643, 24880, 12337, 13923, 12641, 25392, 12337, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz414', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 
+        24880, 25398, 24884, 25400, 24888, 25400, 24888, 12337, 12643, 
+        12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0)
+    Unknown18011('hz415', 13411, 13665, 13667, 12641, 25394, 13873, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 14435, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('hz416', 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('hz417', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+        13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('hz000', 13411, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz257', 13923, 12641, 25400, 12849, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz261', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz307', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz400', 12899, 12641, 25392, 12337, 14433, 14435, 13921, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz401', 12643, 24880, 12337, 12643, 24880, 12337, 13667, 12641, 25392, 24886, 13873, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz404', 12641, 25398, 24888, 25400, 24888, 25400, 24888, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz405', 12641, 25392, 12337, 12641, 25392, 12337, 14433, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz406', 13923, 12641, 25392, 12337, 12641, 25392, 12339, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz407', 12641, 25392, 12337, 14433, 12643, 24880, 12337, 13923, 12641, 25392, 24886, 12337, 13923, 12641, 25392, 24886, 13361, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz408', 14433, 14435, 14433, 14435, 14433, 12899, 24887, 25400, 24888, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz411', 12899, 24880, 13873, 12643, 24880, 25400, 13875, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz412', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 13873, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz414', 12641, 25394, 24888, 12849, 14435, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz415', 12643, 24880, 12337, 12643, 24880, 12337, 13411, 24880, 12337, 12643, 24880, 12337, 13411, 24880, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz416', 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz417', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25394, 12337, 12641, 25394, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz000', 13411, 12641, 25392, 12337, 12641, 25392, 
+            12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz257', 13923, 12641, 25400, 12849, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz261', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 
+            13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz307', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 
+            13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz400', 12899, 12641, 25392, 12337, 14433, 14435, 
+            13921, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz401', 12643, 24880, 12337, 12643, 24880, 12337, 
+            13667, 12641, 25392, 24886, 13873, 12643, 48, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('hz404', 12641, 25398, 24888, 25400, 24888, 25400, 
+            24888, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz405', 12641, 25392, 12337, 12641, 25392, 12337, 
+            14433, 14435, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz406', 13923, 12641, 25392, 12337, 12641, 25392, 
+            12339, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz407', 12641, 25392, 12337, 14433, 12643, 24880, 
+            12337, 13923, 12641, 25392, 24886, 12337, 13923, 12641, 25392, 
+            24886, 13361, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz408', 14433, 14435, 14433, 14435, 14433, 12899, 
+            24887, 25400, 24888, 25398, 24886, 25398, 24886, 25398, 24886, 
+            25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz411', 12899, 24880, 13873, 12643, 24880, 25400, 
+            13875, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0)
+        Unknown18011('hz412', 12643, 24880, 12337, 12643, 24880, 12337, 
+            12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 
+            12643, 24880, 13873, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz414', 12641, 25394, 24888, 12849, 14435, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 12899, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz415', 12643, 24880, 12337, 12643, 24880, 12337, 
+            13411, 24880, 12337, 12643, 24880, 12337, 13411, 24880, 25400, 
+            56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz416', 14691, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz417', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 12641, 25394, 12337, 12641, 25394, 12337, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0)
     if SLOT_45:
-        Unknown18011('hz000', 14177, 14179, 14689, 12643, 24880, 12337, 14435, 12641, 25394, 14388, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25396, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz257', 13923, 13921, 13923, 13921, 12643, 24882, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 12849, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz261', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz307', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz400', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25395, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz406', 13921, 13411, 12641, 25392, 24886, 25398, 13875, 13921, 13923, 13921, 13923, 13921, 14435, 12641, 25394, 24886, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz407', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz408', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12641, 25394, 12850, 14433, 12899, 24883, 25398, 24884, 25398, 24884, 25398, 24884, 25398, 24884, 12337, 13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz411', 12641, 25392, 24886, 25398, 24886, 12337, 13923, 13921, 13923, 13409, 13411, 13409, 13411, 12641, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz412', 12643, 24880, 12337, 12643, 24880, 12337, 13411, 12641, 25392, 24884, 12337, 13411, 12641, 25392, 24884, 12337, 13411, 12641, 25392, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz414', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12897, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz416', 12643, 12341, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('hz417', 12641, 25392, 24888, 12337, 14435, 12641, 25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('hz000', 14177, 14179, 14689, 12643, 24880, 12337, 
+            14435, 12641, 25394, 14388, 12641, 25392, 12337, 12641, 25392, 
+            12337, 12641, 25396, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz257', 13923, 13921, 13923, 13921, 12643, 24882, 
+            25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+            24886, 12849, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz261', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 
+            13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz307', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 
+            13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz400', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 12641, 25395, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz406', 13921, 13411, 12641, 25392, 24886, 25398, 
+            13875, 13921, 13923, 13921, 13923, 13921, 14435, 12641, 25394, 
+            24886, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz407', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 12899, 24887, 12337, 13923, 
+            13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz408', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 12641, 25394, 12850, 14433, 
+            12899, 24883, 25398, 24884, 25398, 24884, 25398, 24884, 25398, 
+            24884, 12337, 13411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+            )
+        Unknown18011('hz411', 12641, 25392, 24886, 25398, 24886, 12337, 
+            13923, 13921, 13923, 13409, 13411, 13409, 13411, 12641, 25400, 
+            54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz412', 12643, 24880, 12337, 12643, 24880, 12337, 
+            13411, 12641, 25392, 24884, 12337, 13411, 12641, 25392, 24884, 
+            12337, 13411, 12641, 25392, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz414', 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 
+            13923, 12897, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0)
+        Unknown18011('hz416', 12643, 12341, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('hz417', 12641, 25392, 24888, 12337, 14435, 12641, 
+            25392, 24888, 12337, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('tm'):
-            Unknown18011('hz000', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz400', 13921, 13923, 13921, 13155, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz401', 12641, 25392, 12339, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25392, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz000', 13923, 13921, 13923, 13921, 13923, 13921,
+                13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0)
+            Unknown18011('hz400', 13921, 13923, 13921, 13155, 24885, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz401', 12641, 25392, 12339, 14177, 14179, 14177,
+                14179, 14177, 14179, 14177, 14179, 12641, 25392, 24887, 
+                12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('hz000', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz400', 14433, 13923, 14433, 13155, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz401', 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24880, 12337, 13923, 12641, 25392, 24886, 12337, 13923, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz000', 13923, 13921, 13923, 13921, 13923, 13921,
+                13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0)
+            Unknown18011('hz400', 14433, 13923, 14433, 13155, 24880, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('hz401', 13923, 13921, 13923, 13921, 13923, 13921,
+                13411, 24880, 12337, 13923, 12641, 25392, 24886, 12337, 
+                13923, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('su'):
-            Unknown18011('hz000', 13923, 13921, 13923, 13921, 13923, 13921, 13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz400', 13921, 13923, 13921, 13155, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz401', 12641, 25392, 12339, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25392, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz000', 13923, 13921, 13923, 13921, 13923, 13921,
+                13923, 12897, 25392, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0)
+            Unknown18011('hz400', 13921, 13923, 13921, 13155, 24885, 25398,
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz401', 12641, 25392, 12339, 14177, 14179, 14177,
+                14179, 14177, 14179, 14177, 14179, 12641, 25392, 24887, 
+                12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('no'):
-            Unknown18011('hz504', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz505', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13155, 24885, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz504', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('hz505', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13155, 24885, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 
+                24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('hz504', 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('hz505', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12899, 24884, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz504', 14177, 14179, 14177, 13411, 24880, 
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz505', 13921, 13923, 13921, 13923, 13921, 
+                    13923, 13921, 13923, 13921, 13923, 13921, 12899, 24884,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0)
         if CharacterIDCheck('tb'):
-            Unknown18011('hz524', 13921, 13923, 13921, 13155, 24880, 25398, 24886, 25398, 12343, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz525', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz524', 13921, 13923, 13921, 13155, 24880, 25398,
+                24886, 25398, 12343, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('hz525', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('hz524', 14177, 14179, 14177, 14179, 14177, 13155, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12849, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('hz525', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 12341, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz524', 14177, 14179, 14177, 14179, 14177, 
+                    13155, 24885, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 12849, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz525', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 12641, 25394, 12341,
+                    14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mk'):
-            Unknown18011('hz530', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz531', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz530', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 13155, 24880, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('hz531', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 
+                24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('hz530', 12643, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('hz531', 14177, 14179, 14177, 14179, 14177, 13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz530', 12643, 12340, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz531', 14177, 14179, 14177, 14179, 14177, 
+                    13411, 24885, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rl'):
-            Unknown18011('hz536', 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz537', 12641, 25392, 24887, 12337, 14179, 14177, 14179, 14177, 13155, 24880, 12337, 14179, 12641, 25392, 24887, 12337, 14179, 12641, 25392, 24887, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz536', 14179, 14177, 14179, 14177, 14179, 14177,
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz537', 12641, 25392, 24887, 12337, 14179, 14177,
+                14179, 14177, 13155, 24880, 12337, 14179, 12641, 25392, 
+                24887, 12337, 14179, 12641, 25392, 24887, 12337, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kg'):
-            Unknown18011('hz546', 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12338, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz547', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14177, 14179, 14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz546', 14179, 14177, 14179, 14177, 14179, 14177,
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 
+                25399, 24887, 25399, 12338, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz547', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14177, 14179, 14177, 14179, 
+                14177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0)
         if CharacterIDCheck('tm'):
             if SLOT_138:
-                Unknown18011('hz550', 13921, 13923, 13921, 13923, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 13617, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('hz551', 12641, 25392, 24887, 12337, 14179, 12641, 25392, 24887, 12337, 14179, 12641, 25392, 24887, 12337, 14179, 12641, 25392, 24887, 12337, 14179, 12641, 25392, 24887, 12337, 14179, 12641, 25392, 12342, 12641, 25392, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz550', 13921, 13923, 13921, 13923, 24880, 
+                    25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886,
+                    25398, 24886, 13617, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz551', 12641, 25392, 24887, 12337, 14179, 
+                    12641, 25392, 24887, 12337, 14179, 12641, 25392, 24887,
+                    12337, 14179, 12641, 25392, 24887, 12337, 14179, 12641,
+                    25392, 24887, 12337, 14179, 12641, 25392, 12342, 12641,
+                    25392, 24887, 12337, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0)
             else:
-                Unknown18011('hz550', 12897, 25392, 13617, 14177, 13667, 24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('hz551', 13665, 13667, 14177, 14179, 14177, 14179, 14177, 14179, 14433, 14435, 12641, 25396, 14386, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25396, 24886, 13361, 13923, 14177, 14179, 12641, 25396, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz550', 12897, 25392, 13617, 14177, 13667, 
+                    24880, 25398, 24886, 25398, 24886, 25398, 24886, 25398,
+                    24886, 25398, 24886, 25398, 24886, 25398, 24886, 25398,
+                    24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('hz551', 13665, 13667, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14433, 14435, 12641, 25396, 14386,
+                    14177, 14179, 14177, 14179, 14177, 14179, 12641, 25396,
+                    24886, 13361, 13923, 14177, 14179, 12641, 25396, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_140:
-                    Unknown18011('hz550', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 12338, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('hz551', 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('hz550', 14177, 14179, 14177, 14179, 14177,
+                        14179, 14177, 14179, 14177, 13923, 24880, 25399, 
+                        24887, 25399, 24887, 25399, 12338, 14177, 14179, 
+                        14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                        )
+                    Unknown18011('hz551', 14177, 14179, 14177, 14179, 14177,
+                        13667, 24880, 25399, 24887, 25399, 24887, 25399, 
+                        24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+                        25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('hb'):
-            Unknown18011('hz556', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 13923, 24880, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 13617, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz557', 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz556', 14433, 13923, 14433, 13923, 14433, 13923,
+                14433, 13923, 13923, 24880, 25400, 24886, 25400, 24886, 
+                25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 
+                25400, 24886, 25400, 24886, 25400, 24886, 13617, 13923, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz557', 14433, 13923, 14433, 13923, 14433, 13923,
+                14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 
+                14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('ph'):
-            Unknown18011('hz558', 14433, 13923, 14433, 13923, 14433, 13923, 24880, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz559', 12641, 25397, 13617, 12641, 25392, 13620, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz558', 14433, 13923, 14433, 13923, 14433, 13923,
+                24880, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 
+                24886, 25400, 24886, 25400, 24886, 25400, 24886, 25400, 
+                24886, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
+            Unknown18011('hz559', 12641, 25397, 13617, 12641, 25392, 13620,
+                14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 
+                14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mi'):
-            Unknown18011('hz562', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25397, 12341, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz563', 14433, 14435, 14433, 13667, 13665, 13411, 13665, 13411, 13665, 13667, 12641, 25394, 24887, 25399, 24887, 25398, 24886, 25399, 24887, 12338, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz562', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 12641, 25397, 12341, 14177, 14179, 14177, 
+                14179, 14177, 14179, 13921, 13923, 13921, 13923, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz563', 14433, 14435, 14433, 13667, 13665, 13411,
+                13665, 13411, 13665, 13667, 12641, 25394, 24887, 25399, 
+                24887, 25398, 24886, 25399, 24887, 12338, 14179, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('su'):
-            Unknown18011('hz564', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 13619, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('hz565', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz564', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                12641, 25394, 13619, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('hz565', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
-    if SLOT_85:
-        _gotolabel(99)
-    if Unknown63('no'):
+        conditionalSendToLabel(482)
+    if SLOT_IsUnlimited:
+        conditionalSendToLabel(99)
+    if CharacterIDCheck('su'):
         SyncEntry()
         if SLOT_140:
             gotoLabel(2120)
@@ -7293,17 +7842,15 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(420)
     label(482)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(1)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(5)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(1)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(5)
     label(0)
     sprite('hz600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('hz600_00', 20)
     Voiceline('hz412')
     sprite('hz600_01', 6)
@@ -7341,7 +7888,7 @@ def CmnActEntry():
     sprite('hz000_08', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(1)
+        conditionalSendToLabel(1)
     sprite('hz601_00', 5)
     Voiceline('hz414')
     sprite('hz601_01', 5)
@@ -7358,16 +7905,16 @@ def CmnActEntry():
     label(2)
     sprite('hz601_12', 5)
     if SLOT_97:
-        _gotolabel(2)
+        conditionalSendToLabel(2)
     sprite('hz601_12', 16)
     if SLOT_45:
-        _gotolabel(4)
+        conditionalSendToLabel(4)
     sprite('hz601_12', 1)
     Voiceline('hz415')
     label(3)
     sprite('hz601_12', 5)
     if SLOT_97:
-        _gotolabel(3)
+        conditionalSendToLabel(3)
     label(4)
     sprite('hz601_13', 6)
     sprite('hz601_14', 6)
@@ -7383,13 +7930,13 @@ def CmnActEntry():
     sprite('hz600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(5)
+        conditionalSendToLabel(5)
     sprite('hz600_00', 1)
     Voiceline('hz416')
     label(6)
     sprite('hz600_00', 5)
     if SLOT_97:
-        _gotolabel(6)
+        conditionalSendToLabel(6)
     sprite('hz600_01', 6)
     sprite('hz600_02', 6)
     sprite('hz600_03', 6)
@@ -7426,7 +7973,7 @@ def CmnActEntry():
     sprite('hz000_08', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(99)
+        conditionalSendToLabel(99)
     sprite('hz213_00', 8)
     sprite('hz213_01', 8)
     sprite('hz213_02', 8)
@@ -7445,7 +7992,7 @@ def CmnActEntry():
     ScreenShake(0, 8000)
     CommonSE('019_quake_0')
     if SLOT_97:
-        _gotolabel(199)
+        conditionalSendToLabel(199)
     sprite('hz213_03', 15)
     Voiceline('hz303')
     ScreenShake(0, 8000)
@@ -7489,8 +8036,8 @@ def CmnActEntry():
     sprite('hz213_05', 5)
     CreateParticle('rgef_bkkakusan', -1)
     CreateObject('HZEF_BBStart', -1)
-    if SLOT_85:
-        if (not CheckObjectPresence(5)):
+    if SLOT_IsUnlimited:
+        if not CheckObjectPresence(5):
             CreateObject('HZEF_DrainField', -1)
             RegisterObject(5, 1)
     sprite('hz213_06', 5)
@@ -7512,14 +8059,14 @@ def CmnActEntry():
     sprite('hz602_00', 5)
     loopRest()
     if SLOT_17:
-        _gotolabel(120)
+        conditionalSendToLabel(120)
     sprite('hz602_00', 360)
     Voiceline('hz504')
     label(121)
     sprite('hz602_00', 8)
     loopRest()
     if SLOT_97:
-        _gotolabel(121)
+        conditionalSendToLabel(121)
     sprite('hz602_01', 8)
     sprite('hz602_02', 8)
     sprite('hz602_03', 8)
@@ -7533,7 +8080,7 @@ def CmnActEntry():
     sprite('hz600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2120)
+        conditionalSendToLabel(2120)
     label(2121)
     sprite('hz600_00', 20)
     sprite('hz600_00', 200)
@@ -7563,7 +8110,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(220)
-    sendToLabelUpon(32, 222)
+    uponSendToLabel(32, 222)
     label(221)
     sprite('hz000_00', 8)
     sprite('hz000_01', 8)
@@ -7624,7 +8171,7 @@ def CmnActEntry():
     ExitState()
     label(2220)
     sprite('keep', 2)
-    sendToLabelUpon(32, 2222)
+    uponSendToLabel(32, 2222)
     label(2221)
     sprite('hz000_00', 8)
     sprite('hz000_01', 8)
@@ -7666,7 +8213,7 @@ def CmnActEntry():
     sprite('hz000_08', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(250)
+        conditionalSendToLabel(250)
     sprite('hz300_00', 6)
     Voiceline('hz530')
     sprite('hz300_01', 6)
@@ -7685,7 +8232,7 @@ def CmnActEntry():
     sprite('hz600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(2250)
+        conditionalSendToLabel(2250)
     sprite('hz600_00', 150)
     Voiceline('hz530')
     sprite('hz600_01', 6)
@@ -7713,7 +8260,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(280)
-    sendToLabelUpon(32, 282)
+    uponSendToLabel(32, 282)
     label(281)
     sprite('hz600_00', 6)
     loopRest()
@@ -7749,7 +8296,7 @@ def CmnActEntry():
     sprite('hz600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(330)
+        conditionalSendToLabel(330)
     sprite('hz600_01', 6)
     sprite('hz600_02', 6)
     sprite('hz600_03', 6)
@@ -7813,7 +8360,7 @@ def CmnActEntry():
     sprite('hz000_08', 8)
     loopRest()
     if SLOT_17:
-        _gotolabel(350)
+        conditionalSendToLabel(350)
     sprite('hz300_00', 6)
     Voiceline('hz550')
     sprite('hz300_01', 6)
@@ -7830,7 +8377,7 @@ def CmnActEntry():
     ExitState()
     label(1350)
     sprite('hz000_00', 8)
-    sendToLabelUpon(32, 1351)
+    uponSendToLabel(32, 1351)
     sprite('hz000_01', 8)
     sprite('hz000_02', 8)
     sprite('hz000_03', 8)
@@ -7869,7 +8416,7 @@ def CmnActEntry():
     ExitState()
     label(2350)
     sprite('hz000_00', 8)
-    sendToLabelUpon(32, 2351)
+    uponSendToLabel(32, 2351)
     sprite('hz000_01', 8)
     sprite('hz000_02', 8)
     sprite('hz000_03', 8)
@@ -7907,7 +8454,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(380)
-    sendToLabelUpon(32, 382)
+    uponSendToLabel(32, 382)
     label(381)
     sprite('hz600_00', 6)
     loopRest()
@@ -7965,7 +8512,7 @@ def CmnActEntry():
     sprite('hz600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(390)
+        conditionalSendToLabel(390)
     sprite('hz600_01', 6)
     sprite('hz600_02', 6)
     sprite('hz600_03', 6)
@@ -7986,7 +8533,7 @@ def CmnActEntry():
     sprite('hz600_17', 6)
     sprite('hz600_18', 6)
     sprite('hz600_19', 6)
-    sendToLabelUpon(32, 392)
+    uponSendToLabel(32, 392)
     loopRest()
     label(391)
     sprite('hz000_00', 8)
@@ -8020,21 +8567,21 @@ def CmnActEntry():
     AddX(-700000)
     ScreenCollision(0)
     EnableCollision(0)
-    sendToLabelUpon(32, 414)
+    uponSendToLabel(32, 414)
     label(411)
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(411)
+        conditionalSendToLabel(411)
     sprite('hz030_00', 7)
     physicsXImpulse(5600)
     sprite('hz030_01', 7)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 <= 780000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 <= 780000:
             ObjectUpon(22, 32)
-        if (SLOT_19 <= 520000):
-            clearUponHandler(3)
+        if SLOT_19 <= 520000:
+            clearUponHandler(EVERY_FRAME)
             XPositionRelativeFacing(-260000)
             EndMomentum(1)
             sendToLabel(413)
@@ -8092,7 +8639,7 @@ def CmnActEntry():
     ExitState()
     label(420)
     sprite('hz600_00', 6)
-    sendToLabelUpon(32, 421)
+    uponSendToLabel(32, 421)
     sprite('hz600_00', 32767)
     loopRest()
     label(421)
@@ -8141,6 +8688,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
 
+
 @State
 def EntrySeqVsRg():
     AttackDefaults_StandingNormal()
@@ -8149,11 +8697,11 @@ def EntrySeqVsRg():
     AttackLevel_(4)
     setInvincible(1)
     clearUponHandler(32)
-    sendToLabelUpon(32, 22)
+    uponSendToLabel(32, 22)
     label(20)
     sprite('null', 1)
     if SLOT_17:
-        _gotolabel(20)
+        conditionalSendToLabel(20)
     sprite('hz030_00', 7)
     physicsXImpulse(6200)
     sprite('hz030_01', 7)
@@ -8174,7 +8722,7 @@ def EntrySeqVsRg():
     gotoLabel(21)
     label(22)
     clearUponHandler(32)
-    sendToLabelUpon(2, 24)
+    uponSendToLabel(LANDING, 24)
     sprite('hz033_00', 2)
     EndMomentum(1)
     sprite('hz033_01', 2)
@@ -8194,7 +8742,7 @@ def EntrySeqVsRg():
     label(24)
     physicsXImpulse(0)
     physicsYImpulse(0)
-    sendToLabelUpon(32, 26)
+    uponSendToLabel(32, 26)
     label(25)
     sprite('hz000_00', 1)
     loopRest()
@@ -8228,7 +8776,7 @@ def EntrySeqVsRg():
     physicsXImpulse(0)
     SetAcceleration(0)
     loopRest()
-    sendToLabelUpon(32, 28)
+    uponSendToLabel(32, 28)
     label(27)
     sprite('hz000_00', 1)
     loopRest()
@@ -8258,13 +8806,13 @@ def EntrySeqVsRg():
     SetAcceleration(0)
     sprite('hz232_13', 2)
     loopRest()
-    sendToLabelUpon(32, 1030)
+    uponSendToLabel(32, 1030)
     label(29)
     sprite('hz010_02', 1)
     gotoLabel(29)
     label(1030)
     clearUponHandler(32)
-    sendToLabelUpon(2, 1032)
+    uponSendToLabel(LANDING, 1032)
     sprite('hz430_00', 5)
     sprite('hz430_00', 35)
     DistortionSettings(40, -1, 4)
@@ -8316,7 +8864,7 @@ def EntrySeqVsRg():
     sprite('hz430_18', 4)
     EndAttack()
     if SLOT_45:
-        sendToLabelUpon(32, 1034)
+        uponSendToLabel(32, 1034)
     else:
         gotoLabel(1034)
     sprite('hz000_00', 1)
@@ -8352,12 +8900,13 @@ def EntrySeqVsRg():
     label(1035)
     sprite('hz300_06', 6)
     if SLOT_97:
-        _gotolabel(1035)
+        conditionalSendToLabel(1035)
     sprite('hz300_07', 6)
     ObjectUpon(22, 32)
     sprite('hz300_08', 6)
     sprite('hz300_09', 6)
     loopRest()
+
 
 @State
 def CmnActRoundWin():
@@ -8379,10 +8928,11 @@ def CmnActRoundWin():
     sprite('hz615_05', 20)
     sprite('hz615_05', 32767)
 
+
 @State
 def CmnActMatchWin():
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('no'):
         if SLOT_140:
             gotoLabel(2120)
@@ -8398,12 +8948,10 @@ def CmnActMatchWin():
             gotoLabel(2250)
         else:
             gotoLabel(250)
-    CharacterIDCheck('rl')
-    if SLOT_0:
-        _gotolabel(280)
-    CharacterIDCheck('kg')
-    if SLOT_0:
-        _gotolabel(330)
+    if CharacterIDCheck('rl'):
+        conditionalSendToLabel(280)
+    if CharacterIDCheck('kg'):
+        conditionalSendToLabel(330)
     if CharacterIDCheck('tm'):
         if SLOT_138:
             gotoLabel(350)
@@ -8411,32 +8959,26 @@ def CmnActMatchWin():
             gotoLabel(1350)
         else:
             gotoLabel(2350)
-    CharacterIDCheck('hb')
-    if SLOT_0:
-        _gotolabel(380)
-    CharacterIDCheck('ph')
-    if SLOT_0:
-        _gotolabel(390)
+    if CharacterIDCheck('hb'):
+        conditionalSendToLabel(380)
+    if CharacterIDCheck('ph'):
+        conditionalSendToLabel(390)
     if CharacterIDCheck('mi'):
         if SLOT_138:
             gotoLabel(410)
         else:
             gotoLabel(1410)
-    CharacterIDCheck('su')
-    if SLOT_0:
-        _gotolabel(420)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('su'):
+        conditionalSendToLabel(420)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
     if SLOT_109:
-        _gotolabel(1)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(1)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(3)
+        conditionalSendToLabel(1)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(1)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(3)
     sprite('hz610_00', 6)
     sprite('hz610_01', 6)
     sprite('hz610_02', 6)
@@ -8490,9 +9032,9 @@ def CmnActMatchWin():
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(5)
     sprite('hz030_00', 7)
@@ -8538,7 +9080,7 @@ def CmnActMatchWin():
     sprite('hz612_12', 4)
     loopRest()
     if SLOT_97:
-        _gotolabel(6)
+        conditionalSendToLabel(6)
     sprite('hz612_06', 1)
     DemoTimer(30)
     label(7)
@@ -8582,9 +9124,9 @@ def CmnActMatchWin():
     gotoLabel(121)
     label(2120)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2122)
     sprite('hz030_00', 7)
@@ -8656,9 +9198,9 @@ def CmnActMatchWin():
     label(2220)
     sprite('keep', 1)
 
-    def upon_FRAME_STEP():
-        if (SLOT_29 < 280000):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if SLOT_29 < 280000:
+            clearUponHandler(EVERY_FRAME)
             EndMomentum(1)
             sendToLabel(2222)
     sprite('hz030_00', 7)
@@ -8739,14 +9281,14 @@ def CmnActMatchWin():
     loopRest()
     label(280)
     if SLOT_109:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     CameraControlEnable(1)
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(282)
     sprite('hz030_00', 7)
@@ -8933,14 +9475,14 @@ def CmnActMatchWin():
     loopRest()
     label(410)
     if SLOT_109:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     CameraControlEnable(1)
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(412)
     sprite('hz030_00', 7)
@@ -8989,14 +9531,14 @@ def CmnActMatchWin():
     gotoLabel(413)
     label(1410)
     if SLOT_109:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     CameraControlEnable(1)
     physicsXImpulse(5000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_29 < 280000):
+            if SLOT_29 < 280000:
                 SetActionMark(0)
                 sendToLabel(1412)
     sprite('hz030_00', 7)
@@ -9073,6 +9615,7 @@ def CmnActMatchWin():
     loopRest()
     gotoLabel(421)
 
+
 @State
 def CmnActLose():
     sprite('hz620_00', 7)
@@ -9097,6 +9640,7 @@ def CmnActLose():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -9112,11 +9656,13 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefWin():
@@ -9124,13 +9670,16 @@ def EventDefWin():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefLose():
     sprite('hz620_05', 32767)
 
+
 @State
 def EventDefDown():
     sprite('hz060_14', 32767)
+
 
 @State
 def EventHZCenterWait():
@@ -9138,6 +9687,7 @@ def EventHZCenterWait():
     XPositionRelativeFacing(0)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventAdjustTie():
@@ -9162,17 +9712,18 @@ def EventAdjustTie():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefEntryWalkIn():
     EnableCollision(0)
     ScreenCollision(0)
     XPositionRelativeFacing(-1280000)
 
-    def upon_FRAME_STEP():
-        if SLOT_38:
-            if (SLOT_22 < 265000):
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_XDistanceFromCenterOfStage < 265000:
                 sendToLabel(1)
-        elif (SLOT_22 > (-265000)):
+        elif SLOT_XDistanceFromCenterOfStage > -265000:
             sendToLabel(1)
     sprite('hz030_00', 7)
     physicsXImpulse(6200)
@@ -9193,10 +9744,11 @@ def EventDefEntryWalkIn():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
+
 
 @State
 def EventDefWalkOutOpposite():
@@ -9226,15 +9778,18 @@ def EventDefWalkOutOpposite():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventNoDisp():
     sprite('null', 32767)
     Visibility(1)
     loopRest()
 
+
 @State
 def EventPale():
     sprite('hz301_02', 32767)
+
 
 @State
 def EventPaleToStand():
@@ -9245,12 +9800,14 @@ def EventPaleToStand():
     sprite('hz301_07', 7)
     enterState('CmnActStand')
 
+
 @State
 def EventWarp():
     sprite('keep', 2)
     ConstantAlphaModifier(-10)
     CommonSE('014_electric_s')
     CommonSE('000_airdash_2')
+
 
 @State
 def EventWarp2():
@@ -9259,11 +9816,11 @@ def EventWarp2():
     AlphaValue(255)
     XPositionRelativeFacing(-1280000)
 
-    def upon_FRAME_STEP():
-        if SLOT_38:
-            if (SLOT_22 < 265000):
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_XDistanceFromCenterOfStage < 265000:
                 sendToLabel(1)
-        elif (SLOT_22 > (-265000)):
+        elif SLOT_XDistanceFromCenterOfStage > -265000:
             sendToLabel(1)
     sprite('hz030_00', 7)
     physicsXImpulse(6200)
@@ -9284,10 +9841,11 @@ def EventWarp2():
     loopRest()
     gotoLabel(0)
     label(1)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
+
 
 @State
 def EventBow():
@@ -9297,10 +9855,11 @@ def EventBow():
     sprite('hz432_56', 6)
     sprite('hz432_55', 32767)
 
+
 @State
 def EventHZVsJN_EntryWaitJNsAttack():
     XPositionRelativeFacing(0)
-    sendToLabelUpon(32, 1)
+    uponSendToLabel(32, 1)
     label(0)
     sprite('hz000_00', 8)
     sprite('hz000_01', 8)
@@ -9315,7 +9874,7 @@ def EventHZVsJN_EntryWaitJNsAttack():
     gotoLabel(0)
     label(1)
     clearUponHandler(32)
-    sendToLabelUpon(2, 3)
+    uponSendToLabel(LANDING, 3)
     sprite('hz033_00', 2)
     EndMomentum(1)
     sprite('hz033_01', 2)
@@ -9332,13 +9891,14 @@ def EventHZVsJN_EntryWaitJNsAttack():
     loopRest()
     gotoLabel(2)
     label(3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('hz033_05', 4)
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
     sprite('hz033_06', 4)
     sprite('hz033_07', 4)
     enterState('CmnActStand')
+
 
 @State
 def EventHZVsRG_KickAndStomp0():
@@ -9351,14 +9911,12 @@ def EventHZVsRG_KickAndStomp0():
     SLOT_51 = SLOT_0
     label(2)
     sprite('hz432_37', 1)
-    SLOT_51 = (SLOT_51 - 1)
+    SLOT_51 = SLOT_51 - 1
     loopRest()
-    (SLOT_51 > 0)
-    if SLOT_0:
-        _gotolabel(2)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(3)
+    if SLOT_51 > 0:
+        conditionalSendToLabel(2)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(3)
     sprite('hz432_38', 2)
     CommonSE('004_swing_grap_1_0')
     sprite('hz432_36', 2)
@@ -9369,10 +9927,9 @@ def EventHZVsRG_KickAndStomp0():
     sprite('hz432_35', 5)
     sprite('hz432_36', 5)
     loopRest()
-    SLOT_52 = (SLOT_52 - 1)
-    (SLOT_52 <= 0)
-    if SLOT_0:
-        _gotolabel(4)
+    SLOT_52 = SLOT_52 - 1
+    if SLOT_52 <= 0:
+        conditionalSendToLabel(4)
     gotoLabel(1)
     label(3)
     sprite('hz432_38', 5)
@@ -9382,10 +9939,9 @@ def EventHZVsRG_KickAndStomp0():
     ObjectUpon(22, 32)
     ScreenShake(0, 8000)
     loopRest()
-    SLOT_52 = (SLOT_52 - 1)
-    (SLOT_52 <= 0)
-    if SLOT_0:
-        _gotolabel(4)
+    SLOT_52 = SLOT_52 - 1
+    if SLOT_52 <= 0:
+        conditionalSendToLabel(4)
     gotoLabel(1)
     label(4)
     sprite('hz432_37', 6)
@@ -9398,6 +9954,7 @@ def EventHZVsRG_KickAndStomp0():
     loopRest()
     sprite('hz432_40', 32767)
     loopRest()
+
 
 @State
 def EventHZVsRG_KickAndStomp1():
@@ -9444,6 +10001,7 @@ def EventHZVsRG_KickAndStomp1():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventHZVsRG_KickAndStomp2():
     XPositionRelativeFacing(-170000)
@@ -9456,14 +10014,12 @@ def EventHZVsRG_KickAndStomp2():
     SLOT_51 = SLOT_0
     label(2)
     sprite('hz432_37', 1)
-    SLOT_51 = (SLOT_51 - 1)
+    SLOT_51 = SLOT_51 - 1
     loopRest()
-    (SLOT_51 > 0)
-    if SLOT_0:
-        _gotolabel(2)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(3)
+    if SLOT_51 > 0:
+        conditionalSendToLabel(2)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(3)
     sprite('hz432_38', 2)
     CommonSE('004_swing_grap_1_0')
     sprite('hz432_36', 2)
@@ -9483,9 +10039,8 @@ def EventHZVsRG_KickAndStomp2():
     ObjectUpon(22, 32)
     ScreenShake(0, 8000)
     loopRest()
-    random_(2, 0, 10)
-    if SLOT_0:
-        _gotolabel(4)
+    if random_(2, 0, 10):
+        conditionalSendToLabel(4)
     gotoLabel(1)
     label(4)
     sprite('hz432_40', 6)
@@ -9496,10 +10051,11 @@ def EventHZVsRG_KickAndStomp2():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def EventHZBackStepShort1():
     setInvincible(1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     ExternalForcesRate(100, 0)
     sprite('hz033_00', 1)
     sprite('hz033_01', 2)
@@ -9523,10 +10079,11 @@ def EventHZBackStepShort1():
     sprite('hz033_07', 3)
     enterState('CmnActStand')
 
+
 @State
 def EventHZBackStepShort2():
     setInvincible(1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     ExternalForcesRate(100, 0)
     sprite('hz033_00', 1)
     sprite('hz033_01', 2)
@@ -9551,10 +10108,11 @@ def EventHZBackStepShort2():
     sprite('hz033_07', 3)
     enterState('CmnActStand')
 
+
 @State
 def EventHZBackStep():
     setInvincible(1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     ExternalForcesRate(100, 0)
     sprite('hz033_00', 1)
     sprite('hz033_01', 2)
@@ -9579,10 +10137,11 @@ def EventHZBackStep():
     sprite('hz033_07', 3)
     enterState('CmnActStand')
 
+
 @State
 def EventHZBackStep02():
     setInvincible(1)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     ExternalForcesRate(100, 0)
     sprite('hz033_00', 1)
     sprite('hz033_01', 2)
@@ -9600,7 +10159,7 @@ def EventHZBackStep02():
     gotoLabel(0)
     label(1)
     setInvincible(0)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     ExternalForcesRate(100, 0)
     sprite('hz033_00', 1)
     physicsXImpulse(0)
@@ -9613,7 +10172,7 @@ def EventHZBackStep02():
     setGravity(1550)
     JumpSoundEffects()
     sprite('hz033_02', 3)
-    sendToLabelUpon(2, 3)
+    uponSendToLabel(LANDING, 3)
     sprite('hz033_03', 3)
     loopRest()
     label(2)
@@ -9631,14 +10190,15 @@ def EventHZBackStep02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventFWalk():
     ScreenCollision(0)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('hz030_00', 7)
@@ -9663,6 +10223,7 @@ def EventFWalk():
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
 
+
 @State
 def EventHZStandTurn():
     Flip()
@@ -9672,10 +10233,12 @@ def EventHZStandTurn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventHZStartAction01Start():
     sprite('hz600_00', 32767)
     loopRest()
+
 
 @State
 def EventHZStartAction01Stop():
@@ -9702,6 +10265,7 @@ def EventHZStartAction01Stop():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventHZStartAction02Start():
     sprite('hz601_00', 5)
@@ -9719,6 +10283,7 @@ def EventHZStartAction02Start():
     sprite('hz601_12', 32767)
     loopRest()
 
+
 @State
 def EventHZStartAction02Stop():
     sprite('hz601_13', 6)
@@ -9730,6 +10295,7 @@ def EventHZStartAction02Stop():
     sprite('hz601_19', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTimeUpLose():
@@ -9745,6 +10311,7 @@ def EventTimeUpLose():
     sprite('hz620_08', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventHZPowerUpSet():
@@ -9768,6 +10335,7 @@ def EventHZPowerUpSet():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def EventHZPowerUpGo():
     sprite('hz213_04', 2)
@@ -9779,8 +10347,8 @@ def EventHZPowerUpGo():
     sprite('hz213_05', 5)
     CreateParticle('rgef_bkkakusan', -1)
     CreateObject('HZEF_BBStart', -1)
-    if SLOT_85:
-        if (not CheckObjectPresence(5)):
+    if SLOT_IsUnlimited:
+        if not CheckObjectPresence(5):
             CreateObject('HZEF_DrainField', -1)
             RegisterObject(5, 1)
     sprite('hz213_06', 5)
@@ -9799,11 +10367,13 @@ def EventHZPowerUpGo():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventHZPowerDown():
     sprite('hz000_00', 1)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventHZExcite01Start():
@@ -9818,6 +10388,7 @@ def EventHZExcite01Start():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventHZExcite01Stop():
     sprite('hz300_07', 6)
@@ -9825,6 +10396,7 @@ def EventHZExcite01Stop():
     sprite('hz300_09', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventHZExcite02Start():
@@ -9836,6 +10408,7 @@ def EventHZExcite02Start():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventHZExcite02Loop():
     label(0)
@@ -9843,6 +10416,7 @@ def EventHZExcite02Loop():
     sprite('hz301_03', 6)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventHZExcite02Stop():
@@ -9852,6 +10426,7 @@ def EventHZExcite02Stop():
     sprite('hz301_07', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventHZWinActionStart():
@@ -9865,6 +10440,7 @@ def EventHZWinActionStart():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventHZWinActionStop():
     sprite('hz610_06', 6)
@@ -9876,6 +10452,7 @@ def EventHZWinActionStop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventHZWinActionToStand():
     sprite('hz610_08', 5)
@@ -9885,6 +10462,7 @@ def EventHZWinActionToStand():
     sprite('hz610_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventShot():
@@ -9911,6 +10489,7 @@ def EventShot():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventRGvsHZEntry00():
     Flip()
@@ -9927,19 +10506,23 @@ def EventRGvsHZEntry00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventHZvsRGEntry00():
     XPositionRelativeFacing(0)
     enterState('CmnActStand')
 
+
 @State
 def EventJNvsHZWin01():
     sprite('hz301_02', 32767)
+
 
 @State
 def EventNOvsHZEntry00():
     XPositionRelativeFacing(-500000)
     enterState('EventTimeUpLose')
+
 
 @State
 def EventRCvsHZEntry00():
@@ -9949,6 +10532,7 @@ def EventRCvsHZEntry00():
     sprite('hz000_00', 1)
     CreateObject('NoelTimeUpLose', -1)
     sprite('hz000_00', 32767)
+
 
 @State
 def Event5D():
@@ -9965,12 +10549,14 @@ def Event5D():
     sprite('hz203_08', 2)
     loopRest()
 
+
 @State
 def EventNoelCatchSet():
     sprite('hz310_02', 1)
     CreateObject('NoelDownUpperSet', -1)
     sprite('hz310_02', 32767)
     loopRest()
+
 
 @State
 def EventNoelCatchGo():
@@ -10000,6 +10586,7 @@ def EventNoelCatchGo():
     loopRest()
     enterState('EventHZStandTurn')
 
+
 @State
 def NoelCollectEntrySet():
     ScreenCollision(0)
@@ -10009,6 +10596,7 @@ def NoelCollectEntrySet():
     CreateObject('NoelEntry', -1)
     sprite('hz000_00', 32767)
 
+
 @State
 def NoelCollectEntryGo():
     sprite('keep', 1)
@@ -10016,10 +10604,12 @@ def NoelCollectEntryGo():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventHZvsHAEntry():
     XPositionRelativeFacing(260000)
     enterState('CmnActStand')
+
 
 @State
 def EventHZvsRGGoBackStep():
@@ -10032,6 +10622,7 @@ def EventHZvsRGGoBackStep():
     sprite('hz000_06', 8)
     enterState('EventHZBackStep')
 
+
 @State
 def EventVHvsHZEntry00():
     XPositionRelativeFacing(-900000)
@@ -10040,9 +10631,11 @@ def EventVHvsHZEntry00():
     sprite('hz000_00', 1)
     sprite('hz000_00', 32767)
 
+
 @State
 def EventRlvsHzEntry01():
     sprite('hz060_14', 32767)
+
 
 @State
 def EventRlvsHzEntry02():
@@ -10054,6 +10647,7 @@ def EventRlvsHzEntry02():
     sprite('hz061_05', 7)
     sprite('hz061_06', 7)
     sprite('hz061_07', 32767)
+
 
 @State
 def EventRlvsHzEntry03():
@@ -10076,11 +10670,13 @@ def EventRlvsHzEntry03():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventTimeUpLoseEnd():
     sprite('hz620_00', 7)
     sprite('hz620_01', 7)
     enterState('CmnActStand')
+
 
 @State
 def EventHZWalkIn():
@@ -10088,9 +10684,9 @@ def EventHZWalkIn():
     XPositionRelativeFacing(-900000)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if SLOT_2:
-            if (SLOT_19 < 520000):
+            if SLOT_19 < 520000:
                 SetActionMark(0)
                 sendToLabel(1)
     sprite('hz030_00', 7)
@@ -10116,12 +10712,13 @@ def EventHZWalkIn():
     XPositionRelativeFacing(-260000)
     enterState('CmnActStand')
 
+
 @State
 def EventVsVHAction1():
 
     def upon_IMMEDIATE():
         callSubroutine('Kamae_Zanzou')
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
     sprite('hz400_00', 3)
     sprite('hz400_01', 2)
     sprite('hz400_01', 1)
@@ -10152,6 +10749,7 @@ def EventVsVHAction1():
     loopRest()
     enterState('EventVsVHAction2')
 
+
 @State
 def EventVsVHAction2():
 
@@ -10170,7 +10768,7 @@ def EventVsVHAction2():
         UseSlashHitspark(1)
         StarterRating(2)
         HardKnockdown(999)
-        if (SLOT_65 > 22):
+        if SLOT_65 > 22:
             AttackLevel_(5)
             Damage(1080)
             AttackP2(84)
@@ -10185,7 +10783,7 @@ def EventVsVHAction2():
             EnemyHitstopAddition(0, 10, 18)
             SLOT_52 = 1
             callSubroutine('Kamae_Zanzou')
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
         PerInertia(80)
         setInvincible(1)
         EnableAfterimage(1)
@@ -10227,15 +10825,18 @@ def EventVsVHAction2():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventHZvsVHEntry():
     XPositionRelativeFacing(-160000)
     enterState('CmnActStand')
 
+
 @State
 def EventvsHBEntry():
     sprite('hz602_00', 32767)
     loopRest()
+
 
 @State
 def EventvsHBEntryCameraON():
@@ -10244,6 +10845,7 @@ def EventvsHBEntryCameraON():
         CameraControlEnable(1)
     sprite('hz602_00', 32767)
     loopRest()
+
 
 @State
 def EventvsHBEntryEnd():
@@ -10256,6 +10858,7 @@ def EventvsHBEntryEnd():
     sprite('hz602_06', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Bow():
@@ -10282,6 +10885,7 @@ def Act2Event_Bow():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Chouhatsu():
     sprite('hz300_00', 6)
@@ -10297,6 +10901,7 @@ def Act2Event_Chouhatsu():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_ChouhatsuStop():
     sprite('hz300_00', 6)
@@ -10310,6 +10915,7 @@ def Act2Event_ChouhatsuStop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_Warai():
     sprite('hz301_00', 6)
@@ -10320,6 +10926,7 @@ def Act2Event_Warai():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_WaraiEnd():
     sprite('hz301_04', 6)
@@ -10329,10 +10936,12 @@ def Act2Event_WaraiEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Down():
     sprite('hz060_14', 32767)
     loopRest()
+
 
 @State
 def Act2Event_NoDisp():
@@ -10344,6 +10953,7 @@ def Act2Event_NoDisp():
             Visibility(0)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def Act2Event_DownEnd():
@@ -10365,6 +10975,7 @@ def Act2Event_DownEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Yareyare():
     sprite('keep', 2)
@@ -10376,6 +10987,7 @@ def Act2Event_Yareyare():
     sprite('hz610_09', 6)
     sprite('hz610_10', 32767)
 
+
 @State
 def Act2Event_YareyareEnd():
     sprite('keep', 2)
@@ -10386,6 +10998,7 @@ def Act2Event_YareyareEnd():
     sprite('hz610_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Why():
@@ -10405,6 +11018,7 @@ def Act2Event_Why():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_WalkIn():
 
@@ -10412,15 +11026,15 @@ def Act2Event_WalkIn():
         ScreenCollision(0)
         XPositionRelativeFacing(-720000)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 260000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 260000:
+                    clearUponHandler(EVERY_FRAME)
                     XPositionRelativeFacing(-260000)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-260000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -260000:
+                clearUponHandler(EVERY_FRAME)
                 XPositionRelativeFacing(-260000)
                 EndMomentum(1)
                 sendToLabel(0)
@@ -10448,12 +11062,14 @@ def Act2Event_WalkIn():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Laugh():
     sprite('hz301_00', 6)
     sprite('hz301_01', 6)
     loopRest()
     enterState('Act2Event_Laughing')
+
 
 @State
 def Act2Event_Laughing():
@@ -10464,13 +11080,13 @@ def Act2Event_Laughing():
     sprite('hz301_02', 1)
     AddActionMark(-1)
     loopRest()
-    (SLOT_2 > 0)
-    if SLOT_0:
-        _gotolabel(0)
+    if SLOT_2 > 0:
+        conditionalSendToLabel(0)
     loopRest()
     sprite('hz301_03', 6)
     loopRest()
     gotoLabel(9)
+
 
 @State
 def Act2Event_LaughEnd():
@@ -10481,6 +11097,7 @@ def Act2Event_LaughEnd():
     sprite('hz301_07', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_hzvsrg_00():
@@ -10508,6 +11125,7 @@ def Act2Event_hzvsrg_00():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_tmvshz_00():
     sprite('keep', 2)
@@ -10518,6 +11136,7 @@ def Act2Event_tmvshz_00():
     sprite('hz610_08', 6)
     sprite('hz610_09', 6)
     sprite('hz610_10', 32767)
+
 
 @State
 def Act2Event_tmvshz_01():
@@ -10564,6 +11183,7 @@ def Act2Event_tmvshz_01():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def Act2Event_hzvshb_00():
 
@@ -10606,6 +11226,7 @@ def Act2Event_hzvshb_00():
     EndMomentum(1)
     loopRest()
 
+
 @State
 def Act2Event_tbvshz_00():
 
@@ -10616,6 +11237,7 @@ def Act2Event_tbvshz_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_Tokei_Pause():
     sprite('hz615_00', 6)
@@ -10625,6 +11247,7 @@ def Act2Event_Tokei_Pause():
     sprite('hz615_04', 8)
     sprite('hz615_05', 32767)
 
+
 @State
 def Act2Event_Tokei_PauseEnd():
     sprite('hz615_04', 4)
@@ -10632,6 +11255,7 @@ def Act2Event_Tokei_PauseEnd():
     sprite('hz615_02', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_BDash():
@@ -10663,6 +11287,7 @@ def Act2Event_BDash():
     sprite('hz033_06', 3)
     sprite('hz033_07', 3)
 
+
 @State
 def Act2Event_izvshz_00():
 
@@ -10679,6 +11304,7 @@ def Act2Event_izvshz_00():
     sprite('hz070_03', 32767)
     loopRest()
 
+
 @State
 def Act2Event_izvshz_01():
     sprite('hz070_10', 5)
@@ -10687,6 +11313,7 @@ def Act2Event_izvshz_01():
     sprite('hz070_13', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_izvshz_02():
@@ -10708,6 +11335,7 @@ def Act2Event_izvshz_02():
     sprite('hz610_09', 6)
     sprite('hz610_10', 32767)
     loopRest()
+
 
 @State
 def Act2Event_izvshz_03():
@@ -10735,6 +11363,7 @@ def Act2Event_izvshz_03():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_izvshz_04():
 
@@ -10746,6 +11375,7 @@ def Act2Event_izvshz_04():
     sprite('hz301_01', 6)
     loopRest()
     enterState('Act2Event_izvshz_05')
+
 
 @State
 def Act2Event_izvshz_05():
@@ -10761,13 +11391,13 @@ def Act2Event_izvshz_05():
     sprite('hz301_02', 1)
     AddActionMark(-1)
     loopRest()
-    (SLOT_2 > 0)
-    if SLOT_0:
-        _gotolabel(0)
+    if SLOT_2 > 0:
+        conditionalSendToLabel(0)
     loopRest()
     sprite('hz301_03', 6)
     loopRest()
     gotoLabel(9)
+
 
 @State
 def Act3Event_tkvshz_00():
@@ -10786,13 +11416,14 @@ def Act3Event_tkvshz_00():
     loopRest()
     gotoLabel(9)
 
+
 @State
 def Act3Event_tkvshz_01():
 
     def upon_IMMEDIATE():
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(0)
             EndMomentum(1)
             XPositionRelativeFacing(-260000)
@@ -10836,20 +11467,23 @@ def Act3Event_tkvshz_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvshz_02():
     sprite('keep', 1)
-    ObjectUpon(4, 32)
+    ObjectUpon(FALLING, 32)
     sprite('keep', 1)
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvshz_03():
     sprite('keep', 1)
-    ObjectUpon(4, 33)
+    ObjectUpon(FALLING, 33)
     ObjectUpon(22, 32)
     sprite('keep', 1)
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvshz_04():
@@ -10863,6 +11497,7 @@ def Act3Event_tkvshz_04():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_tkvshz_05():
     sprite('keep', 2)
@@ -10871,6 +11506,7 @@ def Act3Event_tkvshz_05():
     sprite('hz610_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_tkvshz_06():
@@ -10894,6 +11530,7 @@ def Act3Event_tkvshz_06():
     loopRest()
     enterState('Act2Event_Yareyare')
 
+
 @State
 def Act3Event_tkvshz_07():
 
@@ -10901,7 +11538,7 @@ def Act3Event_tkvshz_07():
         XPositionRelativeFacing(-160000)
 
         def upon_LANDING():
-            clearUponHandler(2)
+            clearUponHandler(LANDING)
             sendToLabel(0)
             EndMomentum(1)
             LandingEffects(100, 1, 1)
@@ -10927,6 +11564,7 @@ def Act3Event_tkvshz_07():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_tkvshz_08():
 
@@ -10934,16 +11572,16 @@ def Act3Event_tkvshz_08():
         SetActionMark(30)
         SLOT_58 = 3
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_2:
                 AddActionMark(-1)
-                if (SLOT_2 <= 0):
-                    SLOT_58 = (SLOT_58 + (-1))
+                if SLOT_2 <= 0:
+                    SLOT_58 = SLOT_58 + -1
                     Unknown61(0, 60, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0)
                     SLOT_2 = SLOT_0
                     sendToLabel(1)
-            if (SLOT_58 <= 0):
-                clearUponHandler(3)
+            if SLOT_58 <= 0:
+                clearUponHandler(EVERY_FRAME)
     label(0)
     sprite('hz000_00', 8)
     sprite('hz000_01', 8)
@@ -10970,6 +11608,7 @@ def Act3Event_tkvshz_08():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_hzvsmk_00():
     sprite('hz300_00', 6)
@@ -10980,6 +11619,7 @@ def Act3Event_hzvsmk_00():
     sprite('hz300_05', 6)
     sprite('hz300_06', 32767)
 
+
 @State
 def Act3Event_hzvsmk_01():
     sprite('hz300_07', 6)
@@ -10987,6 +11627,7 @@ def Act3Event_hzvsmk_01():
     sprite('hz300_09', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_hzvsmk_02():
@@ -11012,6 +11653,7 @@ def Act3Event_hzvsmk_02():
     sprite('hz403_15', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_hzvskk_00():
@@ -11052,6 +11694,7 @@ def Act3Event_hzvskk_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_hzvskk_01():
 
@@ -11060,14 +11703,14 @@ def Act3Event_hzvskk_01():
         ScreenCollision(0)
         SetZVal(750)
 
-        def upon_FRAME_STEP():
-            if SLOT_38:
-                if (SLOT_22 < 120000):
-                    clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_IsFacingRight:
+                if SLOT_XDistanceFromCenterOfStage < 120000:
+                    clearUponHandler(EVERY_FRAME)
                     EndMomentum(1)
                     sendToLabel(0)
-            elif (SLOT_22 > (-120000)):
-                clearUponHandler(3)
+            elif SLOT_XDistanceFromCenterOfStage > -120000:
+                clearUponHandler(EVERY_FRAME)
                 EndMomentum(1)
                 sendToLabel(0)
     sprite('keep', 2)
@@ -11107,6 +11750,7 @@ def Act3Event_hzvskk_01():
     loopRest()
     gotoLabel(1)
 
+
 @State
 def Act3Event_hzvskk_02():
     sprite('hz612_05', 6)
@@ -11117,6 +11761,7 @@ def Act3Event_hzvskk_02():
     sprite('hz612_00', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_hzvsrl_00():
@@ -11141,6 +11786,7 @@ def Act3Event_hzvsrl_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_hzvsrl_01():
     sprite('hz620_00', 7)
@@ -11156,12 +11802,14 @@ def Act3Event_hzvsrl_01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_hzvsrl_02():
     sprite('hz620_01', 7)
     sprite('hz620_00', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_hzvstm_00():
@@ -11176,6 +11824,7 @@ def Act3Event_hzvstm_00():
     sprite('hz410_04', 5)
     loopRest()
     gotoLabel(9)
+
 
 @State
 def Act3Event_hzvstm_01():
@@ -11200,6 +11849,7 @@ def Act3Event_hzvstm_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_vhvshz_00():
 
@@ -11222,6 +11872,7 @@ def Act3Event_vhvshz_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Ac32Event_ntvshz_00():
 
@@ -11231,6 +11882,7 @@ def Ac32Event_ntvshz_00():
     ObjectUpon(22, 35)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Ac32Event_ntvshz_01():
@@ -11242,6 +11894,7 @@ def Ac32Event_ntvshz_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Ac32Event_ntvshz_02():
 
@@ -11251,6 +11904,7 @@ def Ac32Event_ntvshz_02():
     ObjectUpon(22, 37)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Ac32Event_ntvshz_03():
@@ -11276,7 +11930,7 @@ def Ac32Event_ntvshz_03():
     gotoLabel(0)
     label(1)
     sprite('hz401_00', 1)
-    sendToLabelUpon(2, 3)
+    uponSendToLabel(LANDING, 3)
     PrivateSE('hzse_07')
     CommonSE('006_swing_blade_2')
     CreateObject('EffSamaso', -1)
@@ -11320,6 +11974,7 @@ def Ac32Event_ntvshz_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_CAvsHZ00():
     sprite('hz001_00', 6)
@@ -11338,6 +11993,7 @@ def Act3Event_CAvsHZ00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_CAvsHZ01():
     sprite('hz040_00', 4)
@@ -11350,6 +12006,7 @@ def Act3Event_CAvsHZ01():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act3Event_CAvsHZ02():
     sprite('hz602_04', 4)
@@ -11357,6 +12014,7 @@ def Act3Event_CAvsHZ02():
     sprite('hz602_02', 4)
     sprite('hz602_01', 4)
     sprite('hz602_00', 32767)
+
 
 @State
 def Act3Event_tbvshz_00():

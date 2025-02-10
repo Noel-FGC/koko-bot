@@ -20,6 +20,7 @@ def EMB_tg():
     ColorTransition(4286625023, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_TG_OD():
 
@@ -42,6 +43,7 @@ def EMB_TG_OD():
     ColorTransition(4278223103, 10)
     sprite('null', 80)
 
+
 @State
 def EMB_TG_AH():
 
@@ -62,12 +64,14 @@ def EMB_TG_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 80)
 
+
 @State
 def tgef_plas_mc():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(160, 170, 175)
     CallCustomizableParticle('tgef_plas_mc05', -1)
+
 
 @State
 def AddMagnetPtc():
@@ -76,6 +80,7 @@ def AddMagnetPtc():
     ParticleColorFromPalette(160, 170, 175)
     ParticleSize(1000)
     CallCustomizableParticle('tgef_exptc00', -1)
+
 
 @State
 def tgef203mc():
@@ -88,6 +93,7 @@ def tgef203mc():
     ParticleSize(1500)
     CallCustomizableParticle('tgef_thunder00', -1)
 
+
 @State
 def tgef233mc():
     sprite('null', 1)
@@ -96,6 +102,7 @@ def tgef233mc():
     CallCustomizableParticle('tgef233_mc05', -1)
     ParticleColorFromPalette(160, 170, 175)
     CallCustomizableParticle('tgef_thunder00', -1)
+
 
 @State
 def tgef213mc():
@@ -108,6 +115,7 @@ def tgef213mc():
     ParticleSize(1500)
     CallCustomizableParticle('tgef_thunder00', -1)
 
+
 @State
 def tgef253mc():
     sprite('null', 1)
@@ -119,6 +127,7 @@ def tgef253mc():
     ParticleSize(1500)
     CallCustomizableParticle('tgef_thunder00', -1)
 
+
 @State
 def ShockA():
     sprite('null', 1)
@@ -126,6 +135,7 @@ def ShockA():
     CreateParticle('tgef_shock01', -1)
     CreateParticle('tgef_shock02', -1)
     CreateParticle('tgef_shock03', -1)
+
 
 @State
 def ShockB():
@@ -139,6 +149,7 @@ def ShockB():
     CreateParticle('tgef_shock06', -1)
     CreateParticle('tgef_shock07', -1)
 
+
 @State
 def GETBFallBody():
 
@@ -149,6 +160,7 @@ def GETBFallBody():
         E0EAEffectPosition(3)
     sprite('null', 120)
 
+
 @State
 def GETBJumpEFF():
     sprite('null', 1)
@@ -156,12 +168,14 @@ def GETBJumpEFF():
     ParticleColorFromPalette(239, 239, 239)
     CallCustomizableParticle('tgef_shock06', -1)
 
+
 @State
 def MagneticStorm():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(239, 236, 224)
     CallCustomizableParticle('tgef400maghand', -1)
+
 
 @State
 def LoopHandAtk():
@@ -174,6 +188,7 @@ def LoopHandAtk():
         RotationAngle(-30000)
     sprite('null', 120)
 
+
 @State
 def HeadBatAtk():
 
@@ -184,12 +199,14 @@ def HeadBatAtk():
     sprite('null', 1)
     CreateParticle('tgef_side_shockA', -1)
 
+
 @State
 def tgef403chgptc():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(175, 175, 175)
     CallCustomizableParticle('tgef403chg', -1)
+
 
 @State
 def ShotObjCharge():
@@ -220,11 +237,13 @@ def ShotObjCharge():
     sprite('vrtgef403sht_chg01', 1)
     CreateObject('tgef403chgptc', -1)
 
+
 @State
 def ShotMagicCircle():
     sprite('null', 1)
     ParticleColorFromPalette(160, 170, 175)
     CallCustomizableParticle('tgef_tg403mc', 1)
+
 
 @State
 def ShotObj():
@@ -253,7 +272,7 @@ def ShotObj():
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
         CollideWithWall(1)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
 
         def upon_32():
             AddMagnetism(1200)
@@ -276,6 +295,7 @@ def ShotObj():
     ParticleColorFromPalette(160, 170, 175)
     ParticleSize(2000)
     CallCustomizableParticle('tgef430_break', -1)
+
 
 @State
 def AntiAirShotObj():
@@ -304,7 +324,7 @@ def AntiAirShotObj():
         AfterimageSize_1(1000)
         AfterimageSize_2(1000)
         CollideWithWall(1)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
 
         def upon_32():
             AddMagnetism(1200)
@@ -329,6 +349,7 @@ def AntiAirShotObj():
     ParticleSize(2000)
     CallCustomizableParticle('tgef430_break', -1)
 
+
 @State
 def tgef_tg403pla():
     sprite('null', 1)
@@ -338,6 +359,7 @@ def tgef_tg403pla():
     ParticleColorFromPalette(160, 170, 175)
     CallCustomizableParticle('tgef_tg403pla_01', -1)
 
+
 @State
 def shot_plas():
     sprite('null', 1)
@@ -346,6 +368,7 @@ def shot_plas():
     CallCustomizableParticle('tgef403_sht00', -1)
     ParticleColorFromPalette(160, 170, 175)
     CallCustomizableParticle('tgef403_sht01', -1)
+
 
 @State
 def GroundShake430():
@@ -364,6 +387,7 @@ def GroundShake430():
     ParticleSize(2000)
     CallCustomizableParticle('tgef_430a', -1)
 
+
 @State
 def tgef_430_light():
     sprite('null', 1)
@@ -371,12 +395,14 @@ def tgef_430_light():
     ParticleColorFromPalette(224, 230, 239)
     CallCustomizableParticle('tgef_430_light', -1)
 
+
 @State
 def tgef_DD_MH_finish():
     sprite('null', 1)
     Visibility(1)
     ParticleColorFromPalette(207, 223, 239)
     CallCustomizableParticle('tgef_DD_MH_finish', -1)
+
 
 @State
 def StayMagneticA():
@@ -408,6 +434,7 @@ def StayMagneticA():
     sprite('null', 1)
     sprite('vrtgef_stmga03', 1)
 
+
 @State
 def StayMagneticA_nl():
 
@@ -436,6 +463,7 @@ def StayMagneticA_nl():
     sprite('null', 1)
     sprite('vrtgef_stmga03', 1)
 
+
 @State
 def StayMagneticA400():
 
@@ -455,6 +483,7 @@ def StayMagneticA400():
     sprite('vrtgef_stmga02', 1)
     sprite('null', 1)
     sprite('vrtgef_stmga03', 1)
+
 
 @State
 def StayMagneticA402():
@@ -492,6 +521,7 @@ def StayMagneticA402():
     sprite('null', 1)
     sprite('vrtgef_stmga03', 1)
 
+
 @State
 def StayMagneticA404():
 
@@ -511,6 +541,7 @@ def StayMagneticA404():
     sprite('vrtgef_stmga02', 1)
     sprite('null', 1)
     sprite('vrtgef_stmga03', 1)
+
 
 @State
 def StayMagneticA432():
@@ -538,6 +569,7 @@ def StayMagneticA432():
     sprite('vrtgef_stmga02', 1)
     sprite('null', 1)
     sprite('vrtgef_stmga03', 1)
+
 
 @State
 def StayMagneticA430b():
@@ -583,6 +615,7 @@ def StayMagneticA430b():
     sprite('vrtgef_stmga03', 1)
     sprite('null', 1)
 
+
 @State
 def StayMagneticA431():
 
@@ -610,6 +643,7 @@ def StayMagneticA431():
     sprite('null', 1)
     sprite('vrtgef_stmga03', 1)
 
+
 @State
 def StayMagneticB():
 
@@ -628,6 +662,7 @@ def StayMagneticB():
     sprite('vrtgef_stmgb02', 1)
     sprite('null', 1)
     sprite('vrtgef_stmgb03', 1)
+
 
 @State
 def StayMagneticB203():
@@ -657,6 +692,7 @@ def StayMagneticB203():
     sprite('vrtgef_stmgb03', 1)
     sprite('null', 1)
 
+
 @State
 def StayMagneticB233():
 
@@ -684,6 +720,7 @@ def StayMagneticB233():
     sprite('null', 1)
     sprite('vrtgef_stmgb03', 1)
     sprite('null', 1)
+
 
 @State
 def StayMagneticB253():
@@ -713,6 +750,7 @@ def StayMagneticB253():
     sprite('null', 1)
     sprite('vrtgef_stmgb03', 1)
     sprite('null', 1)
+
 
 @State
 def tgef210_ShotDelete():
@@ -775,6 +813,7 @@ def tgef210_ShotDelete():
     CreateObject('StayMagneticA_nl', 1)
     CreateObject('StayMagneticA_nl', 2)
 
+
 @State
 def tgef210_ShotDeleteex1():
 
@@ -793,6 +832,7 @@ def tgef210_ShotDeleteex1():
     CreateObject('StayMagneticA_nl', 0)
     CreateObject('StayMagneticA_nl', 1)
     CreateObject('StayMagneticA_nl', 2)
+
 
 @State
 def tgef210_ShotDeleteex2():
@@ -814,6 +854,7 @@ def tgef210_ShotDeleteex2():
     CreateObject('StayMagneticA_nl', 1)
     CreateObject('StayMagneticA_nl', 2)
 
+
 @State
 def MTH_rotate():
 
@@ -829,6 +870,7 @@ def MTH_rotate():
     sprite('vrtgef430a_06', 2)
     sprite('vrtgef430a_07', 2)
 
+
 @State
 def MTH_rotate_end():
 
@@ -840,6 +882,7 @@ def MTH_rotate_end():
     sprite('vrtgef430a_08', 3)
     sprite('vrtgef430a_09', 4)
     sprite('vrtgef430a_10', 5)
+
 
 @State
 def MTH_punch_down():
@@ -899,6 +942,7 @@ def MTH_punch_down():
     CreateObject('StayMagneticA', 0)
     CreateObject('StayMagneticA', 1)
     sprite('vrtgef430b_09', 5)
+
 
 @State
 def MTH_punch_str():
@@ -968,6 +1012,7 @@ def MTH_punch_str():
     sprite('vrtgef431_10', 5)
     CreateObject('StayMagneticA431', 0)
 
+
 @State
 def RollingAttackEff():
 
@@ -992,6 +1037,7 @@ def RollingAttackEff():
     sprite('vrtgef401_04', 2)
     sprite('vrtgef401_05', 2)
 
+
 @State
 def RollAtkShotBreak():
 
@@ -1004,6 +1050,7 @@ def RollAtkShotBreak():
     ParticleColorFromPalette(232, 216, 212)
     ParticleSize(2000)
     CallCustomizableParticle('tgef430_break', -1)
+
 
 @State
 def SledgeHammerEFF():
@@ -1039,11 +1086,13 @@ def SledgeHammerEFF():
     sprite('null', 12)
     Visibility(1)
 
+
 @State
 def ShockB402():
     sprite('null', 1)
     Visibility(1)
     CreateParticle('tgef_430ring', -1)
+
 
 @State
 def AntiAirDmyMagnet():
@@ -1054,6 +1103,7 @@ def AntiAirDmyMagnet():
     Visibility(1)
     MagnetismLevel(0, 3000)
 
+
 @State
 def AntiAirDmyMagnet2():
 
@@ -1063,12 +1113,14 @@ def AntiAirDmyMagnet2():
     Visibility(1)
     MagnetismLevel(0, 2500)
 
+
 @State
 def tgefGETBexpl():
     sprite('null', 1)
     Visibility(1)
     ParticleSize(20000)
     CallCustomizableParticle('tgef_explC2', -1)
+
 
 @State
 def GETB_Crash():
@@ -1077,6 +1129,7 @@ def GETB_Crash():
     Visibility(1)
     Eff3DEffect('eftg_gr_crash.DIG', 'eftg_gr_crash_motion_000.mmot')
 
+
 @State
 def GETB_Fall():
     sprite('null', 80)
@@ -1084,17 +1137,20 @@ def GETB_Fall():
     Eff3DEffect('eftg_getb.DIG', 'eftg_getb_motion_000.mmot')
     E0EAEffectPosition(3)
 
+
 @State
 def tgef_appA():
     sprite('null', 1)
     ParticleColorFromPalette(215, 220, 225)
     CallCustomizableParticle('tgef_appA', 0)
 
+
 @State
 def tgef_appB():
     sprite('null', 1)
     ParticleColorFromPalette(150, 160, 170)
     CallCustomizableParticle('tgef_appB', 0)
+
 
 @State
 def tgef_guardcrash():
@@ -1111,6 +1167,7 @@ def tgef_guardcrash():
     ParticleColorFromPalette(239, 239, 239)
     CallCustomizableParticle('tgef_guardcrash', 0)
 
+
 @State
 def tgef_guardcrash_stump():
 
@@ -1126,6 +1183,7 @@ def tgef_guardcrash_stump():
     ParticleColorFromPalette(233, 233, 233)
     CallCustomizableParticle('tgef_guardcrash_stamp', 0)
 
+
 @State
 def tgef_guardcrash_stump_b():
 
@@ -1136,6 +1194,7 @@ def tgef_guardcrash_stump_b():
     sprite('null', 1)
     ParticleColorFromPalette(233, 233, 233)
     CallCustomizableParticle('tgef_guardcrash_stamp_b', 0)
+
 
 @State
 def tgef_overdrive_bigen():
@@ -1152,6 +1211,7 @@ def tgef_overdrive_bigen():
     ParticleColorFromPalette(233, 233, 233)
     CallCustomizableParticle('tgef_overdrive_bigen', -1)
 
+
 @State
 def tgef_overdrive_loop():
 
@@ -1162,6 +1222,7 @@ def tgef_overdrive_loop():
     sprite('null', 60)
     ParticleColorFromPalette(208, 208, 208)
     CallPrivateEffect('tgef_overdrive_loop00')
+
 
 @State
 def tgef_overdrive_loop2():
@@ -1174,6 +1235,7 @@ def tgef_overdrive_loop2():
     ParticleColorFromPalette(224, 224, 224)
     CallPrivateEffect('tgef_overdrive_loop02')
 
+
 @State
 def tgef_overdrive_loop3():
 
@@ -1184,6 +1246,7 @@ def tgef_overdrive_loop3():
     sprite('null', 60)
     ParticleColorFromPalette(233, 233, 233)
     CallPrivateEffect('tgef_overdrive_loop')
+
 
 @State
 def tgef_overdrive():
@@ -1200,6 +1263,7 @@ def tgef_overdrive():
     ParticleColorFromPalette(233, 233, 233)
     CallCustomizableParticle('tgef_overdrive', -1)
 
+
 @State
 def tgef_overdrive_thunder():
 
@@ -1213,6 +1277,7 @@ def tgef_overdrive_thunder():
     ParticleColorFromPalette(224, 224, 224)
     CallCustomizableParticle('tgef_overdrive_thunder', -1)
 
+
 @State
 def tgef_overdrive_eye():
 
@@ -1222,6 +1287,7 @@ def tgef_overdrive_eye():
         IgnoreScreenfreeze(1)
     sprite('null', 32767)
     LinkParticle('tgef_overdrive_eye')
+
 
 @State
 def tgef_overdrive_eye_keep():
@@ -1233,6 +1299,7 @@ def tgef_overdrive_eye_keep():
     sprite('null', 32767)
     LinkParticle('tgef_overdrive_eye_keep')
 
+
 @State
 def tgef_overdrive_eyeflash():
 
@@ -1242,6 +1309,7 @@ def tgef_overdrive_eyeflash():
         IgnoreScreenfreeze(1)
     sprite('null', 32767)
     LinkParticle('tgef_overdrive_eyeflash')
+
 
 @State
 def TG_AST_A():
@@ -1256,6 +1324,7 @@ def TG_AST_A():
         AddY(256000)
     sprite('null', 80)
 
+
 @State
 def TG_AST_B():
 
@@ -1267,6 +1336,7 @@ def TG_AST_B():
     Size(600)
     SetScaleXPerFrame(50)
     SetScaleSpeedY(5)
+
 
 @State
 def TG_AST_C():
@@ -1285,6 +1355,7 @@ def TG_AST_C():
     sprite('null', 60)
     ConstantAlphaModifier(-5)
 
+
 @State
 def TG_AST_D():
 
@@ -1297,6 +1368,7 @@ def TG_AST_D():
     sprite('null', 60)
     ConstantAlphaModifier(-5)
 
+
 @State
 def TG_AST_E():
 
@@ -1307,6 +1379,7 @@ def TG_AST_E():
         AbsoluteY(-41200000)
         Eff3DEffect('tg_AH_E.DIG', 'tg_AH_E_mt_000.mmot')
     sprite('null', 60)
+
 
 @State
 def TG_AST_F():
@@ -1320,6 +1393,7 @@ def TG_AST_F():
         Eff3DEffect('tg_AH_F.DIG', 'tg_AH_F_mt_000.mmot')
         IgnoreScreenfreeze(1)
     sprite('null', 60)
+
 
 @State
 def TG_AST_G():
@@ -1335,6 +1409,7 @@ def TG_AST_G():
     SetScaleSpeed(10)
     ConstantAlphaModifier(-3)
 
+
 @State
 def TG_AST_H():
 
@@ -1348,6 +1423,7 @@ def TG_AST_H():
         Eff3DEffect('tg_AH_H.DIG', 'tg_AH_H_mt_000.mmot')
     sprite('null', 60)
 
+
 @State
 def TG_AST_I():
 
@@ -1359,6 +1435,7 @@ def TG_AST_I():
         Eff3DEffect('tg_AH_I.DIG', 'tg_AH_I_mt_000.mmot')
     sprite('null', 32767)
 
+
 @State
 def LookAtPos():
 
@@ -1369,6 +1446,7 @@ def LookAtPos():
     CameraControlEnable(1)
     CameraNoCeiling(1)
     CameraNoScreenCollision(1)
+
 
 @State
 def AstWhiteOut():
@@ -1385,6 +1463,7 @@ def AstWhiteOut():
     sprite('vr_white', 30)
     ConstantAlphaModifier(-9)
 
+
 @State
 def AstLight():
 
@@ -1393,6 +1472,7 @@ def AstLight():
         LinkParticle('tgef_astlight')
     sprite('null', 32767)
 
+
 @State
 def AstBackLight():
 
@@ -1400,6 +1480,7 @@ def AstBackLight():
         E0EAEffectPosition(3)
         LinkParticle('tgef_astairaura')
     sprite('null', 32767)
+
 
 @State
 def AstJumpExpl():
@@ -1420,15 +1501,16 @@ def AstJumpExpl():
     ParticleSize(3000)
     CallCustomizableParticle('tgef_astexpl', -1)
 
+
 @State
 def OiuchiBallEffect():
 
     def upon_IMMEDIATE():
         RemoveOnCallStateEnd(3)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             MoveToCollision(3, 2, 0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         Visibility(1)
     sprite('vrtgef406', 2)
     ParticleColorFromPalette(232, 223, 208)
@@ -1446,6 +1528,7 @@ def OiuchiBallEffect():
     ParticleSize(2000)
     CallCustomizableParticle('tgef430_break', -1)
 
+
 @State
 def RLAstMagnetic():
 
@@ -1459,6 +1542,7 @@ def RLAstMagnetic():
     sprite('null', 32767)
     ConstantAlphaModifier(0)
 
+
 @State
 def AntiAirShotObj_Event():
 
@@ -1466,7 +1550,7 @@ def AntiAirShotObj_Event():
         AttackDefaults_SpecialProjectile()
         BlendMode_Add()
         CollideWithWall(1)
-        sendToLabelUpon(10, 1)
+        uponSendToLabel(OPPONENT_HIT_OR_BLOCK, 1)
         Hitstop(0)
         AttackLevel_(4)
         Damage(1100)
@@ -1510,6 +1594,7 @@ def AntiAirShotObj_Event():
     ParticleSize(2000)
     CallCustomizableParticle('tgef430_break', -1)
 
+
 @State
 def NOISE():
 
@@ -1522,6 +1607,7 @@ def NOISE():
     sprite('null', 60)
     loopRest()
 
+
 @State
 def NOISE_Long():
 
@@ -1533,6 +1619,7 @@ def NOISE_Long():
         SetPosYByScreenPer(50)
     sprite('null', 300)
     loopRest()
+
 
 @State
 def OdFallEff():
@@ -1553,6 +1640,7 @@ def OdFallEff():
     ConstantAlphaModifier(0)
     sprite('null', 60)
     ConstantAlphaModifier(-5)
+
 
 @State
 def OdFallThunder():
@@ -1580,6 +1668,7 @@ def OdFallThunder():
     sprite('vrtgef432_05', 5)
     sprite('null', 21)
 
+
 @State
 def OdFallThunder2():
 
@@ -1591,6 +1680,7 @@ def OdFallThunder2():
         AddY(300000)
     sprite('null', 30)
     CreateParticle('tgef_odgetbfinish_02', -1)
+
 
 @State
 def OdFallThunder_nigi00():
@@ -1611,6 +1701,7 @@ def OdFallThunder_nigi00():
     sprite('vrtgef432_10', 3)
     sprite('vrtgef432_11', 3)
     sprite('vrtgef432_12', 3)
+
 
 @State
 def OdFallThunder_nigi01():
@@ -1633,6 +1724,7 @@ def OdFallThunder_nigi01():
     sprite('vrtgef432_11', 3)
     sprite('vrtgef432_12', 3)
 
+
 @State
 def OdFallThunder_nigi02():
 
@@ -1654,6 +1746,7 @@ def OdFallThunder_nigi02():
     sprite('vrtgef432_11', 3)
     sprite('vrtgef432_12', 3)
 
+
 @State
 def OdFallThunder_nigi03():
 
@@ -1674,13 +1767,14 @@ def OdFallThunder_nigi03():
     sprite('vrtgef432_11', 3)
     sprite('vrtgef432_12', 3)
 
+
 @State
 def OdHandThunder():
 
     def upon_IMMEDIATE():
         BlendMode_Normal()
         E0EAEffectPosition(2)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
         PaletteIndex(0)
         ColorFromPaletteIndex(230)
         Eff3DEffect('tg_432handthunder', 'tg_432handthunder')
@@ -1693,6 +1787,7 @@ def OdHandThunder():
     gotoLabel(0)
     label(1)
     sprite('null', 1)
+
 
 @State
 def KK_lose():
@@ -1710,6 +1805,7 @@ def KK_lose():
     sprite('tg920_07', 3)
     sprite('tg920_08', 3)
     loopRest()
+
 
 @State
 def BurstSippaiEff():
@@ -1729,6 +1825,7 @@ def BurstSippaiEff():
     sprite('vrtgef440_07', 2)
     sprite('vrtgef440_08', 2)
     sprite('vrtgef440_09', 2)
+
 
 @State
 def BurstHodenEff():
@@ -1755,6 +1852,7 @@ def BurstHodenEff():
     sprite('vrtgef440_09', 2)
     CreateObject('BurstHodenEffSub4', -1)
 
+
 @State
 def BurstHodenEffSub():
 
@@ -1771,6 +1869,7 @@ def BurstHodenEffSub():
     sprite('vrtgef440_11', 1)
     sprite('vrtgef440_12', 1)
     sprite('vrtgef440_13', 1)
+
 
 @State
 def BurstHodenEffSub2():
@@ -1789,6 +1888,7 @@ def BurstHodenEffSub2():
     sprite('vrtgef440_12', 1)
     sprite('vrtgef440_13', 1)
 
+
 @State
 def BurstHodenEffSub3():
 
@@ -1805,6 +1905,7 @@ def BurstHodenEffSub3():
     sprite('vrtgef440_11', 1)
     sprite('vrtgef440_12', 1)
     sprite('vrtgef440_13', 1)
+
 
 @State
 def BurstHodenEffSub4():
@@ -1823,6 +1924,7 @@ def BurstHodenEffSub4():
     sprite('vrtgef440_12', 1)
     sprite('vrtgef440_13', 1)
 
+
 @State
 def BurstHodenEndLoop():
 
@@ -1834,6 +1936,7 @@ def BurstHodenEndLoop():
     sprite('null', 8)
     CreateObject('BurstHodenEnd', -1)
     gotoLabel(0)
+
 
 @State
 def BurstHodenEndStop():
@@ -1883,13 +1986,14 @@ def BurstHodenEndStop():
     CreateObject('BurstHodenEffSub2', 0)
     CreateObject('BurstHodenEffSub4', 1)
     CreateObject('BurstHodenEffSub', 2)
-    ApplyFunctionsToObjects(1)
-    Size(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(800)
     CreateObject('BurstHodenEffSub3', 3)
-    ApplyFunctionsToObjects(1)
-    Size(800)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Size(800)
+
 
 @State
 def BurstHodenEndStopB():
@@ -1904,6 +2008,7 @@ def BurstHodenEndStopB():
     AddScale(100)
     sprite('vrtgef440heart_03', 3)
     AddScale(100)
+
 
 @State
 def BurstHodenBodyRay():
@@ -1945,6 +2050,7 @@ def BurstHodenBodyRay():
     CallCustomizableParticle('tgef_430thunderbody_core', 9)
     gotoLabel(0)
 
+
 @State
 def BurstDDSmokeA():
 
@@ -1959,6 +2065,7 @@ def BurstDDSmokeA():
     sprite('null', 10)
     ConstantAlphaModifier(-26)
 
+
 @State
 def BurstDDSmokeB():
 
@@ -1969,6 +2076,7 @@ def BurstDDSmokeB():
     sprite('null', 24)
     sprite('null', 20)
     ConstantAlphaModifier(-13)
+
 
 @State
 def BurstDDthunderdome():
@@ -1999,6 +2107,7 @@ def BurstDDthunderdome():
     AlphaValue(255)
     AddScale(50)
 
+
 @State
 def BurstDDthunderdomeB():
 
@@ -2023,6 +2132,7 @@ def BurstDDthunderdomeB():
     sprite('null', 1)
     AlphaValue(255)
 
+
 @State
 def tgef_412_throw():
 
@@ -2044,6 +2154,7 @@ def tgef_412_throw():
     CreateParticle('tgef_412throw', -1)
     sprite('null', 2)
     CreateParticle('tgef_412throw', -1)
+
 
 @State
 def tgef_412_throw_add():
@@ -2083,6 +2194,7 @@ def tgef_412_throw_add():
     sprite('null', 1)
     CreateParticle('tgef_412throw_add', -1)
 
+
 @State
 def tgef_412_throw_add_bg():
 
@@ -2099,12 +2211,13 @@ def tgef_412_throw_add_bg():
     sprite('null', 1)
     CreateParticle('tgef_412throw_add2', -1)
 
+
 @State
 def EventBL():
 
     def upon_IMMEDIATE():
         LoadSpritePalette(7)
-        sendToLabelUpon(32, 10)
+        uponSendToLabel(32, 10)
         XPositionRelativeFacing(-220000)
     label(0)
     sprite('bl000_00', 6)
@@ -2146,6 +2259,7 @@ def EventBL():
     sprite('bl033_06', 2)
     sprite('bl033_07', 2)
 
+
 @State
 def EventBL2():
 
@@ -2164,12 +2278,13 @@ def EventBL2():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2EventCamera_tgvsha():
 
     def upon_IMMEDIATE():
         CameraControlEnable(1)
-        sendToLabelUpon(32, 0)
+        uponSendToLabel(32, 0)
         AddX(400000)
     sprite('null', 32767)
     label(0)

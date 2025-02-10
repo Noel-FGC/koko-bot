@@ -10,28 +10,30 @@ def IgnisCreate():
         AbsoluteY(0)
         CreateDecalOn(1)
         FloorCollision(1)
-        SLOT_59 = (-150000)
+        SLOT_59 = -150000
         SLOT_61 = 2
     sprite('null', 32767)
     Visibility(1)
     SLOT_63 = 0
     PrivateFunction2('IGAct_Wait', 100)
 
+
 @Subroutine
 def OnFrameStep():
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_63 = 0
-        if (SLOT_62 > 0):
-            SLOT_61 = (-15)
+        if SLOT_62 > 0:
+            SLOT_61 = -15
         else:
-            SLOT_61 = (-45)
+            SLOT_61 = -45
     else:
         SLOT_61 = 2
 
     def upon_59():
         SLOT_61 = 2
     if SLOT_65:
-        SLOT_65 = (SLOT_65 + (-1))
+        SLOT_65 = SLOT_65 + -1
+
 
 @Subroutine
 def IG_ActReset():
@@ -55,80 +57,82 @@ def IG_ActReset():
     def upon_53():
         EndObject()
 
+
 @Subroutine
 def IG_SetupIntrptSignal():
 
-    def upon_43():
-        if (SLOT_48 == 1):
+    def upon_VALUE_RECEIVED():
+        if SLOT_ReceivedValue == 1:
             PrivateFunction2('IGAct_Startup', 900)
-        if (SLOT_48 == 21):
+        if SLOT_ReceivedValue == 21:
             PrivateFunction2('IGAct_Delete', 900)
-        if (SLOT_48 == 101):
+        if SLOT_ReceivedValue == 101:
             PrivateFunction2('IGAct_Attack01', 50)
-        if (SLOT_48 == 102):
+        if SLOT_ReceivedValue == 102:
             PrivateFunction2('IGAct_Attack02', 50)
-        if (SLOT_48 == 103):
+        if SLOT_ReceivedValue == 103:
             PrivateFunction2('IGAct_Attack03', 50)
-        if (SLOT_48 == 201):
+        if SLOT_ReceivedValue == 201:
             PrivateFunction2('IGAct_AirAttack01', 50)
-        if (SLOT_48 == 202):
+        if SLOT_ReceivedValue == 202:
             PrivateFunction2('IGAct_AirAttack02', 50)
-        if (SLOT_48 == 203):
+        if SLOT_ReceivedValue == 203:
             PrivateFunction2('IGAct_AirAttack03', 50)
-        if (SLOT_48 == 301):
+        if SLOT_ReceivedValue == 301:
             PrivateFunction2('IGAct_SpAttack01', 100)
-        if (SLOT_48 == 302):
+        if SLOT_ReceivedValue == 302:
             PrivateFunction2('IGAct_SpAttack02', 100)
-        if (SLOT_48 == 303):
+        if SLOT_ReceivedValue == 303:
             PrivateFunction2('IGAct_SpAttack03', 100)
-        if (SLOT_48 == 304):
+        if SLOT_ReceivedValue == 304:
             PrivateFunction2('IGAct_SpAttack04', 100)
-        if (SLOT_48 == 305):
+        if SLOT_ReceivedValue == 305:
             PrivateFunction2('IGAct_SpAttack05', 100)
-        if (SLOT_48 == 401):
+        if SLOT_ReceivedValue == 401:
             SLOT_64 = SLOT_49
             PrivateFunction2('IGAct_AirSpAttack01', 100)
-        if (SLOT_48 == 402):
+        if SLOT_ReceivedValue == 402:
             PrivateFunction2('IGAct_SpThrow', 100)
-        if (SLOT_48 == 501):
+        if SLOT_ReceivedValue == 501:
             PrivateFunction2('IGAct_AddAttack01', 100)
-        if (SLOT_48 == 502):
+        if SLOT_ReceivedValue == 502:
             PrivateFunction2('IGAct_AddAttack02', 100)
-        if (SLOT_48 == 503):
+        if SLOT_ReceivedValue == 503:
             PrivateFunction2('IGAct_AddAttack03', 100)
-        if (SLOT_48 == 601):
+        if SLOT_ReceivedValue == 601:
             PrivateFunction2('IGAct_DDAttack01', 200)
-        if (SLOT_48 == 603):
+        if SLOT_ReceivedValue == 603:
             PrivateFunction2('IGAct_DDAttack01OD', 200)
-        if (SLOT_48 == 602):
+        if SLOT_ReceivedValue == 602:
             PrivateFunction2('IGAct_DDAttack02', 200)
-        if (SLOT_48 == 604):
+        if SLOT_ReceivedValue == 604:
             PrivateFunction2('IGAct_DDAttack02OD', 200)
-        if (SLOT_48 == 701):
+        if SLOT_ReceivedValue == 701:
             PrivateFunction2('IGAct_AstralHeat', 200)
-        if (SLOT_48 == 801):
+        if SLOT_ReceivedValue == 801:
             PrivateFunction2('IGAct_MatchWin1', 200)
-        if (SLOT_48 == 901):
+        if SLOT_ReceivedValue == 901:
             PrivateFunction2('IGAct_EventVsCA00', 200)
-        if (SLOT_48 == 1001):
+        if SLOT_ReceivedValue == 1001:
             PrivateFunction2('IGAct_EventAct2_azvsrl', 200)
-        if (SLOT_48 == 810):
+        if SLOT_ReceivedValue == 810:
             PrivateFunction2('IGAct_EntryVsCa0', 200)
-        if (SLOT_48 == 811):
+        if SLOT_ReceivedValue == 811:
             PrivateFunction2('IGAct_EntryVsCa1', 200)
-        if (SLOT_48 == 814):
+        if SLOT_ReceivedValue == 814:
             PrivateFunction2('IGAct_EntryVsRg0', 200)
-        if (SLOT_48 == 830):
+        if SLOT_ReceivedValue == 830:
             PrivateFunction2('IGAct_EntryVsHa0', 200)
-        if (SLOT_48 == 840):
+        if SLOT_ReceivedValue == 840:
             PrivateFunction2('IGAct_EntryVsVh0', 200)
-        if (SLOT_48 == 850):
+        if SLOT_ReceivedValue == 850:
             PrivateFunction2('IGAct_EntryVsCaAct3_0', 200)
-        if (SLOT_48 == 820):
-            if (SLOT_4 == 2):
+        if SLOT_ReceivedValue == 820:
+            if SLOT_4 == 2:
                 PrivateFunction2('IGAct_Delete', 200)
-        if (SLOT_48 == 821):
+        if SLOT_ReceivedValue == 821:
             PrivateFunction2('IGAct_SwitchFollow', 200)
+
 
 @Subroutine
 def IG_AttackInit():
@@ -140,14 +144,15 @@ def IG_AttackInit():
     StrikeProjectileLevel(1)
     ProjectileLevel(0)
     DollAttackAttributes(1)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_55 = 1
     if SLOT_66:
         EnableCollision(1)
 
+
 @Subroutine
 def IG_SpAttackInit():
-    if (SLOT_4 == 0):
+    if SLOT_4 == 0:
         SLOT_51 = 1
     callSubroutine('IG_ActReset')
     CallObject('IgnisAttack')
@@ -155,12 +160,13 @@ def IG_SpAttackInit():
     StrikeProjectileLevel(1)
     ProjectileLevel(0)
     DollAttackAttributes(1)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_55 = 1
+
 
 @Subroutine
 def IG_DDAttackInit():
-    if (SLOT_4 == 0):
+    if SLOT_4 == 0:
         SLOT_51 = 1
     callSubroutine('IG_ActReset')
     AttackDefaults_SuperProjectile()
@@ -170,9 +176,10 @@ def IG_DDAttackInit():
     ProjectileLevel(0)
     DollAttackAttributes(1)
 
+
 @Subroutine
 def IG_AHAttackInit():
-    if (SLOT_4 == 0):
+    if SLOT_4 == 0:
         SLOT_51 = 1
     callSubroutine('IG_ActReset')
     AttackDefaults_AstralHeatProjectile()
@@ -182,6 +189,7 @@ def IG_AHAttackInit():
     ProjectileLevel(0)
     DollAttackAttributes(1)
 
+
 @Subroutine
 def IG_FollowInit():
     callSubroutine('IG_ActReset')
@@ -190,12 +198,14 @@ def IG_FollowInit():
     NoDamageAction(1)
     SLOT_4 = 2
 
+
 @Subroutine
 def IG_DamageInit():
     callSubroutine('IG_ActReset')
     CallObject('IgnisDamage')
     NoDamageAction(1)
     SLOT_4 = 20
+
 
 @State
 def IGAct_Wait():
@@ -208,28 +218,29 @@ def IGAct_Wait():
         ResourceBarIcon(0, 37)
         ResourceGaugeX(0, 0)
 
-    def upon_FRAME_STEP():
-        if (SLOT_62 > 0):
-            SLOT_62 = (SLOT_62 + (-1))
+    def upon_EVERY_FRAME():
+        if SLOT_62 > 0:
+            SLOT_62 = SLOT_62 + -1
             ResourceBarColor(0, 4278234042)
             ResourceBarFullColor(0, 4278234042)
         else:
             ResourceBarColor(0, 4291559526)
             ResourceBarFullColor(0, 4294967295)
-        if (SLOT_63 > 0):
-            SLOT_63 = (SLOT_63 + (-1))
-        elif (SLOT_62 > 0):
-            if SLOT_110:
-                SLOT_31 = (SLOT_31 + 50)
+        if SLOT_63 > 0:
+            SLOT_63 = SLOT_63 + -1
+        elif SLOT_62 > 0:
+            if SLOT_OverdriveTimer:
+                SLOT_31 = SLOT_31 + 50
             else:
-                SLOT_31 = (SLOT_31 + 0)
-        elif SLOT_110:
-            SLOT_31 = (SLOT_31 + 75)
+                SLOT_31 = SLOT_31 + 0
+        elif SLOT_OverdriveTimer:
+            SLOT_31 = SLOT_31 + 75
         else:
-            SLOT_31 = (SLOT_31 + 75)
+            SLOT_31 = SLOT_31 + 75
     sprite('null', 32767)
     Visibility(1)
     loopRest()
+
 
 @State
 def IGAct_Startup():
@@ -260,6 +271,7 @@ def IGAct_Startup():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_Delete():
 
@@ -269,16 +281,19 @@ def IGAct_Delete():
         NoDamageAction(1)
     sprite('rl800_00', 15)
     sprite('rl800_00', 10)
+    if SLOT_11:
+        SLOT_31 = 0
     PrivateSE('rlse_16')
     CreateParticle('rlef_warp_out', -1)
     CreateObject('DIST_TEST', 0)
     SetScaleXPerFrame(-100)
     sprite('keep', 100)
-    if SLOT_110:
+    if SLOT_OverdriveTimer:
         SLOT_63 = 0
     else:
         SLOT_63 = 180
     PrivateFunction2('IGAct_Wait', 100)
+
 
 @State
 def IGAct_DamageDelete():
@@ -294,12 +309,13 @@ def IGAct_DamageDelete():
     CreateObject('DIST_TEST', 0)
     SetScaleXPerFrame(-100)
     sprite('keep', 100)
-    if (SLOT_62 <= 0):
+    if SLOT_62 <= 0:
         SLOT_62 = 261
         ResourceBarColor(0, 4278234042)
         ResourceBarFullColor(0, 4278234042)
     SLOT_63 = 0
     PrivateFunction2('IGAct_Wait', 100)
+
 
 @State
 def IGAct_OverHeat():
@@ -312,12 +328,12 @@ def IGAct_OverHeat():
         ResourceBarColor(0, 4284506208)
         NoDamageAction(1)
 
-    def upon_FRAME_STEP():
-        if SLOT_110:
-            SLOT_31 = (SLOT_31 + 75)
+    def upon_EVERY_FRAME():
+        if SLOT_OverdriveTimer:
+            SLOT_31 = SLOT_31 + 75
         else:
-            SLOT_31 = (SLOT_31 + 15)
-        if (SLOT_31 >= 10000):
+            SLOT_31 = SLOT_31 + 15
+        if SLOT_31 >= 10000:
             ResourceGaugeFlash(0, 1)
             sendToLabel(1)
     sprite('rl814_00', 7)
@@ -346,7 +362,7 @@ def IGAct_OverHeat():
     SLOT_62 = 0
     ResourceBarColor(0, 4291559526)
     ResourceBarFullColor(0, 4294967295)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('rl814_11', 8)
     sprite('rl814_12', 8)
     sprite('rl814_13', 8)
@@ -365,6 +381,7 @@ def IGAct_OverHeat():
     SLOT_63 = 0
     PrivateFunction2('IGAct_Wait', 100)
 
+
 @State
 def IGAct_SwitchFollow():
 
@@ -373,6 +390,7 @@ def IGAct_SwitchFollow():
         SLOT_65 = 60
     sprite('keep', 32767)
     loopRest()
+
 
 @State
 def IGAct_Follow():
@@ -392,6 +410,7 @@ def IGAct_Follow():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def IGAct_FMove():
 
@@ -410,6 +429,7 @@ def IGAct_FMove():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def IGAct_FMoveEnd():
 
@@ -419,6 +439,7 @@ def IGAct_FMoveEnd():
     sprite('rl800_07', 2)
     sprite('keep', 32767)
     PrivateFunction2('IGAct_Follow', 100)
+
 
 @State
 def IGAct_BMove():
@@ -438,6 +459,7 @@ def IGAct_BMove():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def IGAct_BMoveEnd():
 
@@ -447,6 +469,7 @@ def IGAct_BMoveEnd():
     sprite('rl800_07', 2)
     sprite('keep', 32767)
     PrivateFunction2('IGAct_Follow', 100)
+
 
 @State
 def IGAct_Turn():
@@ -460,6 +483,7 @@ def IGAct_Turn():
     sprite('keep', 32767)
     PrivateFunction2('IGAct_Follow', 100)
 
+
 @State
 def IGAct_Jump():
 
@@ -471,6 +495,7 @@ def IGAct_Jump():
     sprite('rl815_00', 3)
     sprite('keep', 100)
     PrivateFunction2('IGAct_AirRelay', 100)
+
 
 @State
 def IGAct_AirF():
@@ -487,6 +512,7 @@ def IGAct_AirF():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def IGAct_AirFEnd():
 
@@ -496,6 +522,7 @@ def IGAct_AirFEnd():
     sprite('rl815_00', 3)
     sprite('keep', 100)
     PrivateFunction2('IGAct_AirRelay', 100)
+
 
 @State
 def IGAct_AirB():
@@ -512,6 +539,7 @@ def IGAct_AirB():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def IGAct_AirBEnd():
 
@@ -521,6 +549,7 @@ def IGAct_AirBEnd():
     sprite('rl815_00', 3)
     sprite('keep', 100)
     PrivateFunction2('IGAct_AirRelay', 100)
+
 
 @State
 def IGAct_AirD():
@@ -535,6 +564,7 @@ def IGAct_AirD():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def IGAct_AirDEnd():
 
@@ -545,6 +575,7 @@ def IGAct_AirDEnd():
     sprite('keep', 100)
     PrivateFunction2('IGAct_AirRelay', 100)
 
+
 @State
 def IGAct_AirRelay():
 
@@ -552,6 +583,7 @@ def IGAct_AirRelay():
         callSubroutine('IG_FollowInit')
     sprite('keep', 32767)
     loopRest()
+
 
 @State
 def IGAct_AirTurn():
@@ -565,6 +597,7 @@ def IGAct_AirTurn():
     sprite('keep', 100)
     PrivateFunction2('IGAct_AirRelay', 100)
 
+
 @State
 def IGAct_Landing():
 
@@ -577,6 +610,7 @@ def IGAct_Landing():
     sprite('rl812_04', 3)
     sprite('keep', 32767)
     PrivateFunction2('IGAct_Follow', 100)
+
 
 @State
 def IGAct_ReliusDamage():
@@ -595,6 +629,7 @@ def IGAct_ReliusDamage():
     sprite('keep', 32767)
     PrivateFunction2('IGAct_DamageEnd', 100)
 
+
 @State
 def IGAct_DamageBody():
 
@@ -611,6 +646,7 @@ def IGAct_DamageBody():
     sprite('rl803_00', 3)
     sprite('keep', 100)
     PrivateFunction2('IGAct_DamageEnd', 100)
+
 
 @State
 def IGAct_DamageLeg():
@@ -629,6 +665,7 @@ def IGAct_DamageLeg():
     sprite('keep', 100)
     PrivateFunction2('IGAct_DamageEnd', 100)
 
+
 @State
 def IGAct_DamageEnd():
 
@@ -636,6 +673,7 @@ def IGAct_DamageEnd():
         callSubroutine('IG_DamageInit')
     sprite('keep', 32767)
     loopRest()
+
 
 @State
 def IGAct_Attack01():
@@ -667,7 +705,7 @@ def IGAct_Attack01():
     sprite('rl800_00', 3)
     sprite('rl820_00', 2)
     sprite('rl820_01', 2)
-    SLOT_31 = (SLOT_31 + (-1300))
+    SLOT_31 = SLOT_31 + -1300
     sprite('rl820_02', 2)
     sprite('rl820_03', 2)
     sprite('rl820_04', 2)
@@ -696,6 +734,7 @@ def IGAct_Attack01():
     sprite('rl820_09', 2)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_Attack02():
@@ -733,7 +772,7 @@ def IGAct_Attack02():
     sprite('rl821_00', 3)
     sprite('rl821_01', 3)
     sprite('rl821_02', 3)
-    SLOT_31 = (SLOT_31 + (-2000))
+    SLOT_31 = SLOT_31 + -2000
     sprite('rl821_03', 3)
     sprite('rl821_04', 3)
     sprite('rl821_05', 3)
@@ -776,6 +815,7 @@ def IGAct_Attack02():
     sprite('rl821_17', 2)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_Attack03():
@@ -822,7 +862,7 @@ def IGAct_Attack03():
     sprite('rl843_00', 2)
     sprite('rl843_01', 3)
     sprite('rl843_02', 4)
-    SLOT_31 = (SLOT_31 + (-1000))
+    SLOT_31 = SLOT_31 + -1000
     sprite('rl843_03', 4)
     sprite('rl843_04', 2)
     CommonSE('005_swing_grap_2_2')
@@ -856,6 +896,7 @@ def IGAct_Attack03():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_AirAttack01():
 
@@ -869,14 +910,14 @@ def IGAct_AirAttack01():
         UseSlashHitspark(1)
         MoveAttributes(1, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
-            if SLOT_IsInOverdrive2:
-                if (SLOT_19 < 100000):
+        def upon_EVERY_FRAME():
+            if SLOT_54:
+                if SLOT_19 < 100000:
                     sendToLabel(0)
                     SLOT_54 = 0
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('Act_IG_AirAttack01', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('Act_IG_AirAttack01', 32)
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
@@ -898,7 +939,7 @@ def IGAct_AirAttack01():
     sprite('rl830_01', 3)
     physicsXImpulse(15000)
     sprite('rl830_02', 2)
-    SLOT_31 = (SLOT_31 + (-1000))
+    SLOT_31 = SLOT_31 + -1000
     physicsXImpulse(58000)
     SLOT_54 = 1
     sprite('rl830_01', 2)
@@ -906,7 +947,7 @@ def IGAct_AirAttack01():
     sprite('rl830_04', 2)
     physicsXImpulse(30000)
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('rl830_04', 1)
     CommonSE('006_swing_blade_2')
     sprite('rl830_05', 4)
@@ -938,6 +979,7 @@ def IGAct_AirAttack01():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_AirAttack02():
 
@@ -951,14 +993,14 @@ def IGAct_AirAttack02():
         UseSlashHitspark(1)
         MoveAttributes(1, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
-            if SLOT_IsInOverdrive2:
-                if (SLOT_19 < 120000):
+        def upon_EVERY_FRAME():
+            if SLOT_54:
+                if SLOT_19 < 120000:
                     sendToLabel(0)
                     SLOT_54 = 0
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('Act_IG_AirAttack02', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('Act_IG_AirAttack02', 32)
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
@@ -984,7 +1026,7 @@ def IGAct_AirAttack02():
     physicsXImpulse(20000)
     physicsYImpulse(25000)
     sprite('rl832_01', 1)
-    SLOT_31 = (SLOT_31 + (-1000))
+    SLOT_31 = SLOT_31 + -1000
     physicsXImpulse(60000)
     physicsYImpulse(35000)
     SLOT_54 = 1
@@ -994,7 +1036,7 @@ def IGAct_AirAttack02():
     physicsXImpulse(20000)
     physicsYImpulse(10000)
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('rl832_04', 1)
     CommonSE('006_swing_blade_2')
     sprite('rl832_05', 3)
@@ -1040,6 +1082,7 @@ def IGAct_AirAttack02():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_AirAttack03():
 
@@ -1053,14 +1096,14 @@ def IGAct_AirAttack03():
         UseSlashHitspark(1)
         MoveAttributes(1, 0, 0, 0, 0)
 
-        def upon_FRAME_STEP():
-            if SLOT_IsInOverdrive2:
-                if (SLOT_19 < 100000):
+        def upon_EVERY_FRAME():
+            if SLOT_54:
+                if SLOT_19 < 100000:
                     sendToLabel(0)
                     SLOT_54 = 0
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('Act_IG_AirAttack03', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('Act_IG_AirAttack03', 32)
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
@@ -1083,7 +1126,7 @@ def IGAct_AirAttack03():
     physicsXImpulse(7500)
     physicsYImpulse(-3750)
     sprite('rl831_01', 1)
-    SLOT_31 = (SLOT_31 + (-1000))
+    SLOT_31 = SLOT_31 + -1000
     sprite('rl831_02', 2)
     physicsXImpulse(30000)
     physicsYImpulse(-20000)
@@ -1097,7 +1140,7 @@ def IGAct_AirAttack03():
     physicsXImpulse(20000)
     physicsYImpulse(-10000)
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('rl831_04', 1)
     CommonSE('006_swing_blade_2')
     sprite('rl831_05', 3)
@@ -1138,6 +1181,7 @@ def IGAct_AirAttack03():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_SpAttack01():
 
@@ -1175,7 +1219,7 @@ def IGAct_SpAttack01():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     gotoLabel(20)
     label(10)
@@ -1198,11 +1242,11 @@ def IGAct_SpAttack01():
     sprite('rl840_02', 1)
     sprite('rl840_03', 1)
     if SLOT_55:
-        SLOT_31 = (SLOT_31 + (-3000))
+        SLOT_31 = SLOT_31 + -3000
     else:
-        SLOT_31 = (SLOT_31 + (-1000))
-        if (SLOT_51 == 1):
-            SLOT_31 = (SLOT_31 + (-1000))
+        SLOT_31 = SLOT_31 + -1000
+        if SLOT_51 == 1:
+            SLOT_31 = SLOT_31 + -1000
     sprite('rl840_04', 2)
     physicsXImpulse(5000)
     sprite('rl840_05', 2)
@@ -1227,7 +1271,7 @@ def IGAct_SpAttack01():
     XImpulseAcceleration(75)
     CreateParticle('rlef_ignisparksAir', -1)
     sprite('rl840_11', 6)
-    PassbackAddActionMarkToFunction('SpAttack01Eff', 32)
+    TriggerUponForState('SpAttack01Eff', 32)
     XImpulseAcceleration(80)
     sprite('rl840_12', 6)
     XImpulseAcceleration(80)
@@ -1263,7 +1307,7 @@ def IGAct_SpAttack01():
     sprite('rl840_10', 3)
     XImpulseAcceleration(70)
     sprite('rl840_11', 3)
-    PassbackAddActionMarkToFunction('SpAttack01Eff', 32)
+    TriggerUponForState('SpAttack01Eff', 32)
     XImpulseAcceleration(60)
     sprite('rl840_12', 2)
     XImpulseAcceleration(30)
@@ -1274,6 +1318,7 @@ def IGAct_SpAttack01():
     physicsXImpulse(0)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_SpAttack02():
@@ -1324,7 +1369,7 @@ def IGAct_SpAttack02():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     sprite('rl800_00', 2)
     PrivateSE('rlse_16')
@@ -1353,11 +1398,11 @@ def IGAct_SpAttack02():
     CreateObject('IgActSignalLight', 0)
     sprite('rl841_00', 14)
     if SLOT_55:
-        SLOT_31 = (SLOT_31 + (-3000))
+        SLOT_31 = SLOT_31 + -3000
     else:
-        SLOT_31 = (SLOT_31 + (-1500))
-        if (SLOT_51 == 1):
-            SLOT_31 = (SLOT_31 + (-1500))
+        SLOT_31 = SLOT_31 + -1500
+        if SLOT_51 == 1:
+            SLOT_31 = SLOT_31 + -1500
     sprite('rl841_01', 2)
     sprite('rl841_02', 2)
     sprite('rl841_03', 2)
@@ -1411,6 +1456,7 @@ def IGAct_SpAttack02():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_SpAttack03():
 
@@ -1429,9 +1475,9 @@ def IGAct_SpAttack03():
         if SLOT_55:
             GroundedHitstunAnimation(9)
 
-        def upon_FRAME_STEP():
-            if SLOT_IsInOverdrive2:
-                if (SLOT_19 < 320000):
+        def upon_EVERY_FRAME():
+            if SLOT_54:
+                if SLOT_19 < 320000:
                     sendToLabel(40)
                     SLOT_54 = 0
         setInvincible(1)
@@ -1453,7 +1499,7 @@ def IGAct_SpAttack03():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     gotoLabel(20)
     label(10)
@@ -1479,11 +1525,11 @@ def IGAct_SpAttack03():
     sprite('rl842_01', 3)
     sprite('rl842_02', 3)
     if SLOT_55:
-        SLOT_31 = (SLOT_31 + (-3000))
+        SLOT_31 = SLOT_31 + -3000
     else:
-        SLOT_31 = (SLOT_31 + (-1500))
-        if (SLOT_51 == 1):
-            SLOT_31 = (SLOT_31 + (-1500))
+        SLOT_31 = SLOT_31 + -1500
+        if SLOT_51 == 1:
+            SLOT_31 = SLOT_31 + -1500
     sprite('rl842_03', 3)
     CreateObject('IgActSignalLight', 0)
     CreateObject('IgActSignalLight', 1)
@@ -1506,7 +1552,7 @@ def IGAct_SpAttack03():
     XImpulseAcceleration(200)
     sprite('rl842_07', 3)
     label(40)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     SetAcceleration(0)
     sprite('rl842_08', 2)
     CreateParticle('rlef_ignisparksAir', 0)
@@ -1582,6 +1628,7 @@ def IGAct_SpAttack03():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_SpAttack04():
 
@@ -1624,7 +1671,7 @@ def IGAct_SpAttack04():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     gotoLabel(20)
     label(10)
@@ -1646,11 +1693,11 @@ def IGAct_SpAttack04():
     XImpulseAcceleration(20)
     YAccel(20)
     if SLOT_55:
-        SLOT_31 = (SLOT_31 + (-3500))
+        SLOT_31 = SLOT_31 + -3500
     else:
-        SLOT_31 = (SLOT_31 + (-1500))
-        if (SLOT_51 == 1):
-            SLOT_31 = (SLOT_31 + (-1500))
+        SLOT_31 = SLOT_31 + -1500
+        if SLOT_51 == 1:
+            SLOT_31 = SLOT_31 + -1500
     sprite('rl822_02', 6)
     sprite('rl822_03', 5)
     sprite('rl822_04', 4)
@@ -1665,11 +1712,11 @@ def IGAct_SpAttack04():
     physicsYImpulse(8000)
     sprite('rl822_01', 6)
     if SLOT_55:
-        SLOT_31 = (SLOT_31 + (-3500))
+        SLOT_31 = SLOT_31 + -3500
     else:
-        SLOT_31 = (SLOT_31 + (-1500))
-        if (SLOT_51 == 1):
-            SLOT_31 = (SLOT_31 + (-2000))
+        SLOT_31 = SLOT_31 + -1500
+        if SLOT_51 == 1:
+            SLOT_31 = SLOT_31 + -2000
     sprite('rl822_02', 6)
     physicsYImpulse(7000)
     sprite('rl822_03', 5)
@@ -1685,7 +1732,7 @@ def IGAct_SpAttack04():
     physicsXImpulse(50000)
     physicsYImpulse(-17500)
     RefreshMultihit()
-    sendToLabelUpon(2, 40)
+    uponSendToLabel(LANDING, 40)
     label(30)
     sprite('rl822_07', 3)
     physicsXImpulse(30000)
@@ -1695,9 +1742,9 @@ def IGAct_SpAttack04():
     sprite('rl822_06', 3)
     gotoLabel(30)
     label(40)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     sprite('rl822_08', 3)
-    PassbackAddActionMarkToFunction('zan_822', 32)
+    TriggerUponForState('zan_822', 32)
     AddX(50000)
     physicsYImpulse(-10000)
     XImpulseAcceleration(50)
@@ -1737,6 +1784,7 @@ def IGAct_SpAttack04():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_SpThrow():
 
@@ -1751,10 +1799,10 @@ def IGAct_SpThrow():
         RangeCheck(200000)
         ThrowTechWindow(-1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_19 < 100000):
+        def upon_EVERY_FRAME():
+            if SLOT_19 < 100000:
                 XImpulseAcceleration(60)
-            if (SLOT_23 <= 150000):
+            if SLOT_YDistanceFromFloor <= 150000:
                 setGravity(1000)
                 PreventGroundedHit(0)
                 PreventAirborneHit(1)
@@ -1782,7 +1830,7 @@ def IGAct_SpThrow():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     gotoLabel(20)
     label(10)
@@ -1801,13 +1849,13 @@ def IGAct_SpThrow():
     sprite('rl890_01', 6)
     physicsXImpulse(2000)
     if SLOT_55:
-        SLOT_31 = (SLOT_31 + (-3000))
+        SLOT_31 = SLOT_31 + -3000
         XSpeed(1000)
         sendToLabel(30)
     else:
-        SLOT_31 = (SLOT_31 + (-2000))
-        if (SLOT_51 == 1):
-            SLOT_31 = (SLOT_31 + (-2000))
+        SLOT_31 = SLOT_31 + -2000
+        if SLOT_51 == 1:
+            SLOT_31 = SLOT_31 + -2000
     sprite('rl890_02', 6)
     XImpulseAcceleration(300)
     sprite('rl890_03', 6)
@@ -1862,6 +1910,7 @@ def IGAct_SpThrow():
     sprite('rl841_23', 1)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_SpThrow_Exe():
@@ -1953,9 +2002,9 @@ def IGAct_SpThrow_Exe():
     sprite('rl890_13', 3)
     RefreshMultihit()
 
-    def upon_FRAME_STEP():
-        if (not Unknown64(22)):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if not GuardpointNonProjectileCheck():
+            clearUponHandler(EVERY_FRAME)
             NoAttackDuringAction(1)
             sendToLabel(9)
     sprite('rl890_14', 3)
@@ -1983,9 +2032,9 @@ def IGAct_SpThrow_Exe():
     if SLOT_137:
         DamageMultiplier(80)
 
-    def upon_FRAME_STEP():
-        if (not Unknown64(22)):
-            clearUponHandler(3)
+    def upon_EVERY_FRAME():
+        if not GuardpointNonProjectileCheck():
+            clearUponHandler(EVERY_FRAME)
             NoAttackDuringAction(1)
             sendToLabel(9)
     sprite('rl890_13', 1)
@@ -2015,7 +2064,7 @@ def IGAct_SpThrow_Exe():
     gotoLabel(9)
     label(9)
     sprite('keep', 3)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     NoAttackDuringAction(1)
     EnableCollision(0)
     PreventSelfPush(0)
@@ -2030,6 +2079,7 @@ def IGAct_SpThrow_Exe():
     sprite('rl843_15', 6)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_SpAttack05_AtkObj():
@@ -2048,11 +2098,11 @@ def IGAct_SpAttack05_AtkObj():
         HitLow(2)
         MoveAttributes(0, 0, 0, 1, 0)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             AddActionMark(1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 >= 1):
+        def upon_EVERY_FRAME():
+            if SLOT_2 >= 1:
                 HitLow(0)
         RemoveOnCallStateEnd(2)
     sprite('vrrlef823atk_00', 4)
@@ -2100,10 +2150,11 @@ def IGAct_SpAttack05_AtkObj():
     sprite('vrrlef823atk_00', 4)
     RefreshMultihit()
     CreateObject('IGAct_SpAttack05_Particle_re', -1)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
     CommonSE('009_swing_rapier_0')
     sprite('vrrlef823atk_00', 1)
     CreateObject('IGAct_SpAttack05_Particle_re', -1)
+
 
 @State
 def IGAct_SpAttack05_AtkObjOD():
@@ -2124,11 +2175,11 @@ def IGAct_SpAttack05_AtkObjOD():
         HitLow(2)
         MoveAttributes(0, 0, 1, 0, 0)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             AddActionMark(1)
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 >= 1):
+        def upon_EVERY_FRAME():
+            if SLOT_2 >= 1:
                 HitLow(0)
         RemoveOnCallStateEnd(2)
     sprite('vrrlef823atk_00', 4)
@@ -2175,10 +2226,11 @@ def IGAct_SpAttack05_AtkObjOD():
     sprite('vrrlef823atk_00', 4)
     RefreshMultihit()
     CreateObject('IGAct_SpAttack05_Particle_re', -1)
-    ObjectUpon(2, 32)
+    ObjectUpon(LANDING, 32)
     CommonSE('009_swing_rapier_0')
     sprite('vrrlef823atk_00', 1)
     CreateObject('IGAct_SpAttack05_Particle_re', -1)
+
 
 @State
 def IGAct_SpAttack05_Particle():
@@ -2191,6 +2243,7 @@ def IGAct_SpAttack05_Particle():
         IgnoreScreenfreeze(1)
     sprite('null', 32)
 
+
 @State
 def IGAct_SpAttack05_Particle_re():
 
@@ -2202,6 +2255,7 @@ def IGAct_SpAttack05_Particle_re():
         IgnoreScreenfreeze(1)
         Flip()
     sprite('null', 32)
+
 
 @State
 def IGAct_AirSpAttack01():
@@ -2245,7 +2299,7 @@ def IGAct_AirSpAttack01():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     sprite('rl800_00', 10)
     PrivateSE('rlse_16')
@@ -2278,19 +2332,19 @@ def IGAct_AirSpAttack01():
     loopRest()
     sprite('rl844_00', 4)
     if SLOT_55:
-        SLOT_31 = (SLOT_31 + (-3000))
+        SLOT_31 = SLOT_31 + -3000
     else:
-        SLOT_31 = (SLOT_31 + (-1500))
-        if (SLOT_51 == 1):
-            SLOT_31 = (SLOT_31 + (-1500))
+        SLOT_31 = SLOT_31 + -1500
+        if SLOT_51 == 1:
+            SLOT_31 = SLOT_31 + -1500
     sprite('rl844_00', 3)
     Size(1000)
     SetScaleXPerFrame(0)
     sprite('rl844_01', 3)
     if SLOT_55:
-        sendToLabelUpon(2, 50)
+        uponSendToLabel(LANDING, 50)
     else:
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     sprite('rl844_02', 3)
     setGravity(2000)
     sprite('rl844_03', 3)
@@ -2373,6 +2427,7 @@ def IGAct_AirSpAttack01():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_AddAttack01():
 
@@ -2396,9 +2451,9 @@ def IGAct_AddAttack01():
             AirUntechableTime(60)
             Floorslide(58)
         if SLOT_55:
-            SLOT_31 = (SLOT_31 + (-2000))
+            SLOT_31 = SLOT_31 + -2000
         else:
-            SLOT_31 = (SLOT_31 + (-1000))
+            SLOT_31 = SLOT_31 + -1000
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
@@ -2416,7 +2471,7 @@ def IGAct_AddAttack01():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(20)
     sprite('rl800_00', 10)
     PrivateSE('rlse_16')
@@ -2462,7 +2517,7 @@ def IGAct_AddAttack01():
     sprite('rl840_11', 6)
     if SLOT_55:
         sendToLabel(50)
-    PassbackAddActionMarkToFunction('SpAttack01Eff', 32)
+    TriggerUponForState('SpAttack01Eff', 32)
     XImpulseAcceleration(60)
     sprite('rl840_12', 3)
     XImpulseAcceleration(50)
@@ -2486,6 +2541,7 @@ def IGAct_AddAttack01():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_AddAttack02():
 
@@ -2508,9 +2564,9 @@ def IGAct_AddAttack02():
         HitsparkSize(600)
         EndMomentum(0)
         if SLOT_55:
-            SLOT_31 = (SLOT_31 + (-4000))
+            SLOT_31 = SLOT_31 + -4000
         else:
-            SLOT_31 = (SLOT_31 + (-1000))
+            SLOT_31 = SLOT_31 + -1000
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
@@ -2528,7 +2584,7 @@ def IGAct_AddAttack02():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(20)
     sprite('rl800_00', 7)
     PrivateSE('rlse_16')
@@ -2559,9 +2615,9 @@ def IGAct_AddAttack02():
     sprite('rl844_00', 3)
     sprite('rl844_01', 3)
     if SLOT_55:
-        sendToLabelUpon(2, 50)
+        uponSendToLabel(LANDING, 50)
     else:
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
     sprite('rl844_02', 3)
     setGravity(2000)
     sprite('rl844_03', 3)
@@ -2642,6 +2698,7 @@ def IGAct_AddAttack02():
     PrivateFunction2('IGAct_SwitchFollow', 100)
     ExitState()
 
+
 @State
 def IGAct_AddAttack03():
 
@@ -2664,9 +2721,9 @@ def IGAct_AddAttack03():
             AirPushbackX(-8000)
             AirPushbackY(50000)
         if SLOT_55:
-            SLOT_31 = (SLOT_31 + (-4000))
+            SLOT_31 = SLOT_31 + -4000
         else:
-            SLOT_31 = (SLOT_31 + (-2000))
+            SLOT_31 = SLOT_31 + -2000
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
@@ -2684,7 +2741,7 @@ def IGAct_AddAttack03():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(20)
     sprite('rl800_00', 7)
     PrivateSE('rlse_16')
@@ -2770,6 +2827,7 @@ def IGAct_AddAttack03():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_DDAttack01():
 
@@ -2793,7 +2851,7 @@ def IGAct_DDAttack01():
         SLOT_52 = 1
         Unknown23042()
         AutoHitSignalSending(0)
-        SLOT_31 = (SLOT_31 + (-1000))
+        SLOT_31 = SLOT_31 + -1000
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
@@ -2813,9 +2871,9 @@ def IGAct_DDAttack01():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
-    if (SLOT_23 >= 300):
+    if SLOT_YDistanceFromFloor >= 300:
         gotoLabel(60)
     else:
         gotoLabel(70)
@@ -2884,8 +2942,8 @@ def IGAct_DDAttack01():
     sprite('rl850_12', 4)
     sprite('rl850_13', 3)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 600000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 600000:
             sendToLabel(30)
     CreateObject('IgnisShot_TosshinObj', -1)
     RegisterObject(5, 1)
@@ -2897,8 +2955,8 @@ def IGAct_DDAttack01():
     physicsXImpulse(60000)
     label(30)
     sprite('rl850_16', 7)
-    clearUponHandler(3)
-    sendToLabelUpon(12, 40)
+    clearUponHandler(EVERY_FRAME)
+    uponSendToLabel(OPPONENT_HIT, 40)
     XImpulseAcceleration(50)
     CreateParticle('rlef_ignisparks', 1)
     CreateParticle('rlef_ignisparks', 2)
@@ -2920,7 +2978,7 @@ def IGAct_DDAttack01():
     CreateParticle('rlef_ignisparks', 1)
     CreateParticle('rlef_igshot_wind', 2)
     sprite('rl850_20', 3)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     ObjectUpon(6, 33)
     XImpulseAcceleration(10)
     PrivateSE('rlse_13')
@@ -2940,8 +2998,8 @@ def IGAct_DDAttack01():
     label(40)
     sprite('rl850_20', 1)
     physicsXImpulse(0)
-    clearUponHandler(12)
-    ObjectUpon(3, 32)
+    clearUponHandler(OPPONENT_HIT)
+    ObjectUpon(EVERY_FRAME, 32)
     ObjectUpon(6, 32)
     SetZVal(-500)
     PrivateSE('rlse_09')
@@ -2972,7 +3030,7 @@ def IGAct_DDAttack01():
     sprite('rl850_21', 3)
     sprite('rl850_22', 3)
     ScreenShake(10000, 10000)
-    PassbackAddActionMarkToFunction('IgnisShotHitCharge', 32)
+    TriggerUponForState('IgnisShotHitCharge', 32)
     sprite('rl850_20', 3)
     sprite('rl850_21', 3)
     sprite('rl850_22', 3)
@@ -2992,7 +3050,7 @@ def IGAct_DDAttack01():
     OppPositionOnHit(0, 0, 0)
     HitAnywhere(1)
     ScreenShake(20000, 20000)
-    PassbackAddActionMarkToFunction('big_volante_3D', 33)
+    TriggerUponForState('big_volante_3D', 33)
     CommonSE('013_thunder_1')
     PrivateSE('rlse_14')
     if SLOT_137:
@@ -3011,6 +3069,7 @@ def IGAct_DDAttack01():
     EnableAfterimage(0)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_DDAttack01OD():
@@ -3035,17 +3094,17 @@ def IGAct_DDAttack01OD():
         SLOT_52 = 1
         Unknown23042()
         AutoHitSignalSending(0)
-        SLOT_31 = (SLOT_31 + (-1000))
+        SLOT_31 = SLOT_31 + -1000
         AttackType(4)
         DefeatOpponentBehavior(1)
         setInvincible(1)
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
 
-        def upon_FRAME_STEP():
-            if Unknown2065(23):
-                clearUponHandler(3)
-                ObjectUpon(3, 41)
+        def upon_EVERY_FRAME():
+            if SLOT_19 < 600000:
+                clearUponHandler(EVERY_FRAME)
+                ObjectUpon(EVERY_FRAME, 41)
         if SLOT_137:
             DamageMultiplier(80)
 
@@ -3062,9 +3121,9 @@ def IGAct_DDAttack01OD():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
-    if (SLOT_23 >= 300):
+    if SLOT_YDistanceFromFloor >= 300:
         gotoLabel(60)
     else:
         gotoLabel(70)
@@ -3133,8 +3192,8 @@ def IGAct_DDAttack01OD():
     sprite('rl850_12', 4)
     sprite('rl850_13', 3)
 
-    def upon_FRAME_STEP():
-        if (SLOT_19 < 600000):
+    def upon_EVERY_FRAME():
+        if SLOT_19 < 600000:
             sendToLabel(30)
     CreateObject('IgnisShot_TosshinObj', -1)
     RegisterObject(5, 1)
@@ -3146,8 +3205,8 @@ def IGAct_DDAttack01OD():
     physicsXImpulse(60000)
     label(30)
     sprite('rl850_16', 7)
-    clearUponHandler(3)
-    sendToLabelUpon(12, 40)
+    clearUponHandler(EVERY_FRAME)
+    uponSendToLabel(OPPONENT_HIT, 40)
     XImpulseAcceleration(50)
     CreateParticle('rlef_ignisparks', 1)
     CreateParticle('rlef_ignisparks', 2)
@@ -3169,7 +3228,7 @@ def IGAct_DDAttack01OD():
     CreateParticle('rlef_ignisparks', 1)
     CreateParticle('rlef_igshot_wind', 2)
     sprite('rl850_20', 3)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     ObjectUpon(6, 33)
     XImpulseAcceleration(10)
     PrivateSE('rlse_13')
@@ -3189,8 +3248,8 @@ def IGAct_DDAttack01OD():
     label(40)
     sprite('rl850_20', 1)
     physicsXImpulse(0)
-    clearUponHandler(12)
-    ObjectUpon(3, 32)
+    clearUponHandler(OPPONENT_HIT)
+    ObjectUpon(EVERY_FRAME, 32)
     ObjectUpon(6, 32)
     SetZVal(500)
     sprite('rl850_20', 2)
@@ -3230,7 +3289,7 @@ def IGAct_DDAttack01OD():
     sprite('rl850_21', 3)
     sprite('rl850_22', 3)
     ScreenShake(10000, 10000)
-    PassbackAddActionMarkToFunction('IgnisShotHitCharge', 32)
+    TriggerUponForState('IgnisShotHitCharge', 32)
     sprite('rl850_20', 3)
     sprite('rl850_21', 3)
     sprite('rl850_22', 3)
@@ -3251,7 +3310,7 @@ def IGAct_DDAttack01OD():
     OppPositionOnHit(0, 0, 0)
     HitAnywhere(1)
     ScreenShake(20000, 20000)
-    PassbackAddActionMarkToFunction('big_volante_3D', 33)
+    TriggerUponForState('big_volante_3D', 33)
     CommonSE('013_thunder_1')
     PrivateSE('rlse_14')
     if SLOT_137:
@@ -3271,6 +3330,7 @@ def IGAct_DDAttack01OD():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def __850Cam():
 
@@ -3287,6 +3347,7 @@ def __850Cam():
     physicsXImpulse(0)
     sprite('null', 20)
     physicsXImpulse(-3700)
+
 
 @State
 def IGAct_DDAttack02():
@@ -3309,10 +3370,10 @@ def IGAct_DDAttack02():
         DistanceCheck(1000000, 0, -1, -1)
         IgnoreScreenfreeze(1)
         SLOT_52 = 1
-        SLOT_31 = (SLOT_31 + (-2000))
+        SLOT_31 = SLOT_31 + -2000
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 >= 10):
+        def upon_EVERY_FRAME():
+            if SLOT_2 >= 10:
                 sendToLabel(200)
         setInvincible(1)
         GuardPoint_(1)
@@ -3331,7 +3392,7 @@ def IGAct_DDAttack02():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     if SLOT_66:
         sendToLabel(50)
@@ -3357,7 +3418,7 @@ def IGAct_DDAttack02():
     Visibility(1)
     TeleportToObject(2)
     TurnAround()
-    if (SLOT_19 < 150000):
+    if SLOT_19 < 150000:
         TeleportToObject(22)
         AddX(-1000)
     else:
@@ -3443,7 +3504,7 @@ def IGAct_DDAttack02():
     sprite('rl851_18', 1)
     sprite('rl851_18', 1)
     sprite('rl851_19', 2)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     physicsXImpulse(4000)
     sprite('rl851_20', 2)
     sprite('rl851_21', 3)
@@ -3555,6 +3616,7 @@ def IGAct_DDAttack02():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_DDAttack02OD():
 
@@ -3577,10 +3639,10 @@ def IGAct_DDAttack02OD():
         DistanceCheck(1000000, 0, -1, -1)
         IgnoreScreenfreeze(1)
         SLOT_52 = 1
-        SLOT_31 = (SLOT_31 + (-2000))
+        SLOT_31 = SLOT_31 + -2000
 
-        def upon_FRAME_STEP():
-            if (SLOT_2 >= 10):
+        def upon_EVERY_FRAME():
+            if SLOT_2 >= 10:
                 sendToLabel(200)
         setInvincible(1)
         GuardPoint_(1)
@@ -3599,7 +3661,7 @@ def IGAct_DDAttack02OD():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(10)
     if SLOT_66:
         sendToLabel(50)
@@ -3625,7 +3687,7 @@ def IGAct_DDAttack02OD():
     Visibility(1)
     TeleportToObject(2)
     TurnAround()
-    if (SLOT_19 < 150000):
+    if SLOT_19 < 150000:
         TeleportToObject(22)
         AddX(-1000)
     else:
@@ -3730,7 +3792,7 @@ def IGAct_DDAttack02OD():
     CreateParticle('rlef_ignisparksAir', 0)
     RefreshMultihit()
     sprite('rl842_14', 2)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     sprite('rl842_15', 1)
     sprite('rl842_16', 1)
     sprite('rl842_17', 1)
@@ -3761,7 +3823,7 @@ def IGAct_DDAttack02OD():
     gotoLabel(0)
     label(200)
     sprite('rl851_19', 2)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     physicsXImpulse(4000)
     sprite('rl851_20', 2)
     sprite('rl851_21', 3)
@@ -3875,6 +3937,7 @@ def IGAct_DDAttack02OD():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_AstralHeat():
 
@@ -3914,7 +3977,7 @@ def IGAct_AstralHeat():
         Unknown23102(-48)
         Unknown23108(-48)
         Unknown23114(-48)
-    if (SLOT_51 == 1):
+    if SLOT_51 == 1:
         gotoLabel(0)
     sprite('rl800_00', 5)
     CreateParticle('rlef_warp_out', -1)
@@ -3953,14 +4016,15 @@ def IGAct_AstralHeat():
     CommonSE('005_swing_grap_2_2')
     sprite('rl860_11', 7)
     sprite('rl860_12', 7)
-    PassbackAddActionMarkToFunction('AstStartMc', 32)
-    PassbackAddActionMarkToFunction('AstStartAura', 32)
+    TriggerUponForState('AstStartMc', 32)
+    TriggerUponForState('AstStartAura', 32)
     sprite('rl860_13', 7)
-    ObjectUpon(3, 33)
+    ObjectUpon(EVERY_FRAME, 33)
     sprite('rl860_14', 7)
     sprite('rl860_15', 7)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_AstralHeat2nd():
@@ -3988,6 +4052,7 @@ def IGAct_AstralHeat2nd():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_AstralHeat3rd():
 
@@ -4012,12 +4077,12 @@ def IGAct_AstralHeat3rd():
         GuardPoint_(1)
         SpecificInvincibility(0, 0, 0, 1, 0)
     sprite('rl860_06', 6)
-    ObjectUpon(3, 32)
+    ObjectUpon(EVERY_FRAME, 32)
     PlayPlayAstralBGM(1)
     OppThrowAnimation(0, 0)
     OppThrowPosition(0, 0, 0, 0, 0)
-    PassbackAddActionMarkToFunction('AstStartMc', 32)
-    PassbackAddActionMarkToFunction('AstStartAura', 32)
+    TriggerUponForState('AstStartMc', 32)
+    TriggerUponForState('AstStartAura', 32)
     sprite('rl860_07', 6)
     OppThrowAnimation(0, 0)
     OppThrowPosition(0, 0, 0, 0, 0)
@@ -4043,7 +4108,7 @@ def IGAct_AstralHeat3rd():
     loopRest()
     sprite('rl860_10_atk', 10)
     sprite('rl800_07', 7)
-    ObjectUpon(3, 34)
+    ObjectUpon(EVERY_FRAME, 34)
     FaceRight()
     XPositionRelativeFacing(-290000)
     AbsoluteY(5000)
@@ -4063,6 +4128,7 @@ def IGAct_AstralHeat3rd():
     gotoLabel(0)
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
+
 
 @State
 def IGAct_AstralHeatDoor():
@@ -4097,6 +4163,7 @@ def IGAct_AstralHeatDoor():
     CreateObject('AstClosedDoor', -1)
     loopRest()
 
+
 @State
 def AstStartBlackOut():
 
@@ -4113,6 +4180,7 @@ def AstStartBlackOut():
     ConstantAlphaModifier(3)
     sprite('vr_white', 100)
     ConstantAlphaModifier(-3)
+
 
 @State
 def EMB_RL():
@@ -4135,6 +4203,7 @@ def EMB_RL():
     ColorTransition(4286625023, 10)
     sprite('null', 20)
 
+
 @State
 def EMB_RL_OD():
 
@@ -4155,6 +4224,7 @@ def EMB_RL_OD():
     sprite('null', 10)
     ColorTransition(4278223103, 10)
     sprite('null', 20)
+
 
 @State
 def EMB_RL_AH():
@@ -4177,6 +4247,7 @@ def EMB_RL_AH():
     ColorTransition(4294901760, 10)
     sprite('null', 20)
 
+
 @State
 def InstallFont():
 
@@ -4191,6 +4262,7 @@ def InstallFont():
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-25)
+
 
 @State
 def StrikeMcircle():
@@ -4208,6 +4280,7 @@ def StrikeMcircle():
     ConstantAlphaModifier(-40)
     SetScaleSpeed(50)
 
+
 @State
 def StrikeUraManto():
 
@@ -4223,6 +4296,7 @@ def StrikeUraManto():
     sprite('rl400_08ex', 6)
     sprite('rl400_09ex', 6)
     sprite('rl400_10ex', 6)
+
 
 @State
 def StrikeArm():
@@ -4253,6 +4327,7 @@ def StrikeArm():
     sprite('vrrlef400atk_07', 5)
     ConstantAlphaModifier(-30)
 
+
 @State
 def StrikeGear():
 
@@ -4277,6 +4352,7 @@ def StrikeGear():
     sprite('vrrlef400_05', 5)
     ConstantAlphaModifier(-30)
 
+
 @State
 def StrikeMcircleAir():
 
@@ -4287,12 +4363,13 @@ def StrikeMcircleAir():
         AlphaValue(255)
         IgnoreScreenfreeze(1)
         Size(600)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 120)
     label(1)
     sprite('null', 6)
     ConstantAlphaModifier(-40)
     SetScaleSpeed(50)
+
 
 @State
 def strikeair_eff():
@@ -4316,6 +4393,7 @@ def strikeair_eff():
     ConstantAlphaModifier(-30)
     sprite('vrrlef401atk_08', 3)
 
+
 @State
 def AssaultMcircle():
 
@@ -4326,12 +4404,13 @@ def AssaultMcircle():
         BlendMode_Add()
         AlphaValue(255)
         Size(900)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 120)
     label(1)
     sprite('null', 6)
     ConstantAlphaModifier(-40)
     SetScaleSpeed(50)
+
 
 @State
 def EffAssaultZan():
@@ -4355,6 +4434,7 @@ def EffAssaultZan():
     sprite('vrrlef402zan_01', 5)
     physicsXImpulse(-5000)
 
+
 @State
 def KaihiMcircle():
 
@@ -4366,11 +4446,12 @@ def KaihiMcircle():
         AlphaValue(255)
         Size(800)
         AddX(-20000)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 120)
     label(1)
     sprite('null', 4)
     ConstantAlphaModifier(-60)
+
 
 @State
 def rl404_Shot():
@@ -4401,7 +4482,7 @@ def rl404_Shot():
         def upon_34():
             AddX(1320000)
         HitsPerCall(1, 0, 0, 1, 1, 0, 1, 1)
-        sendToLabelUpon(54, 580)
+        uponSendToLabel(54, 580)
     sprite('null', 1)
     sprite('null', 1)
     SpriteIfNot0(17, 2, 51)
@@ -4419,6 +4500,7 @@ def rl404_Shot():
     sprite('vrrlef404_05', 2)
     sprite('vrrlef404_06', 2)
 
+
 @State
 def rl404EnterEff():
 
@@ -4428,6 +4510,7 @@ def rl404EnterEff():
     sprite('null', 2)
     sprite('null', 55)
     LinkParticle('rlef_404enter_tubu')
+
 
 @State
 def rl404Gear():
@@ -4454,6 +4537,7 @@ def rl404Gear():
     sprite('vrrlef400_05', 5)
     ConstantAlphaModifier(-30)
 
+
 @State
 def __404Manto():
 
@@ -4466,6 +4550,7 @@ def __404Manto():
     sprite('rl404_05ex', 2)
     sprite('rl404_06ex', 4)
 
+
 @State
 def UltimateFieldFire():
 
@@ -4476,6 +4561,7 @@ def UltimateFieldFire():
         RenderLayer(1)
     sprite('null', 33)
 
+
 @State
 def UltimateFieldFireOver():
 
@@ -4485,6 +4571,7 @@ def UltimateFieldFireOver():
         IgnoreScreenfreeze(1)
         RenderLayer(1)
     sprite('null', 51)
+
 
 @State
 def UltimateFieldGears():
@@ -4497,7 +4584,7 @@ def UltimateFieldGears():
         E0EAEffectPosition(3)
         BlendMode_Normal()
         Size(1000)
-        sendToLabelUpon(33, 0)
+        uponSendToLabel(33, 0)
     sprite('null', 20)
     ConstantAlphaModifier(12)
     AlphaValue(0)
@@ -4513,6 +4600,7 @@ def UltimateFieldGears():
     label(0)
     sprite('null', 6)
     ConstantAlphaModifier(-40)
+
 
 @State
 def UltimateFieldGearsBlack():
@@ -4536,6 +4624,7 @@ def UltimateFieldGearsBlack():
     sprite('null', 6)
     ConstantAlphaModifier(-40)
 
+
 @State
 def UltimateFieldMcircleA():
 
@@ -4544,7 +4633,7 @@ def UltimateFieldMcircleA():
         IgnoreScreenfreeze(1)
         RemoveOnCallStateEnd(3)
         BlendMode_Add()
-        sendToLabelUpon(33, 0)
+        uponSendToLabel(33, 0)
     sprite('null', 39)
     sprite('null', 9)
     sprite('null', 12)
@@ -4556,6 +4645,7 @@ def UltimateFieldMcircleA():
     sprite('null', 12)
     ConstantAlphaModifier(-20)
     SetScaleSpeed(10)
+
 
 @State
 def UltimateFieldMcircleLight():
@@ -4570,6 +4660,7 @@ def UltimateFieldMcircleLight():
     sprite('null', 12)
     ConstantAlphaModifier(-20)
 
+
 @State
 def UltimateFieldMcUnderLight():
 
@@ -4581,6 +4672,7 @@ def UltimateFieldMcUnderLight():
     sprite('null', 9)
     sprite('null', 6)
     ConstantAlphaModifier(-30)
+
 
 @State
 def UltimateFieldGearsTowerStart():
@@ -4595,6 +4687,7 @@ def UltimateFieldGearsTowerStart():
         AbsoluteY(0)
     sprite('null', 29)
 
+
 @State
 def UltimateFieldGearsTowerAtk():
 
@@ -4607,6 +4700,7 @@ def UltimateFieldGearsTowerAtk():
         Size(1000)
         AbsoluteY(0)
     sprite('null', 30)
+
 
 @State
 def UltimateFieldGearsTowerDel():
@@ -4621,6 +4715,7 @@ def UltimateFieldGearsTowerDel():
     sprite('null', 30)
     sprite('null', 29)
     ConstantAlphaModifier(-20)
+
 
 @State
 def UltimateFieldGearsTowerEff():
@@ -4638,6 +4733,7 @@ def UltimateFieldGearsTowerEff():
     AlphaValue(200)
     sprite('null', 10)
     ConstantAlphaModifier(-20)
+
 
 @State
 def UltimateFieldGearsTowerFront():
@@ -4659,6 +4755,7 @@ def UltimateFieldGearsTowerFront():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def UltimateFieldGearsBlackAtk():
 
@@ -4677,6 +4774,7 @@ def UltimateFieldGearsBlackAtk():
     sprite('null', 6)
     ConstantAlphaModifier(-40)
 
+
 @State
 def UltimateFieldMcircleB():
 
@@ -4691,6 +4789,7 @@ def UltimateFieldMcircleB():
     ConstantAlphaModifier(-20)
     SetScaleSpeed(15)
 
+
 @State
 def UltFieldHitReverse():
 
@@ -4699,6 +4798,7 @@ def UltFieldHitReverse():
         IgnoreScreenfreeze(1)
         Flip()
     sprite('null', 30)
+
 
 @State
 def UltFieldHitReverseS():
@@ -4709,6 +4809,7 @@ def UltFieldHitReverseS():
         Flip()
     sprite('null', 30)
     Size(700)
+
 
 @State
 def UltFieldHitEff():
@@ -4742,6 +4843,7 @@ def UltFieldHitEff():
     CreateObject('UltFieldHitReverse', 0)
     CallCustomizableParticle('rlef_ultimatefield_hit', 4)
     Visibility(1)
+
 
 @State
 def UltimateFieldAtkObj():
@@ -4788,7 +4890,7 @@ def UltimateFieldAtkObj():
     label(0)
     sprite('vrrlef430atk_01', 10)
     Damage(200)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     TeleportToObject(22)
     AbsoluteY(0)
     Visibility(1)
@@ -4796,8 +4898,8 @@ def UltimateFieldAtkObj():
     CreateObject('UltimateFieldMcircleB', -1)
     CreateObject('UltimateFieldGearsTowerFront', -1)
     CreateObject('UltimateFieldGearsTowerStart', -1)
-    PassbackAddActionMarkToFunction('UltimateFieldGears', 33)
-    PassbackAddActionMarkToFunction('UltimateFieldMcircleA', 33)
+    TriggerUponForState('UltimateFieldGears', 33)
+    TriggerUponForState('UltimateFieldMcircleA', 33)
     PrivateSE('rlse_07')
     sprite('vrrlef430atk_01', 5)
     CreateObject('UltFieldHitEff', -1)
@@ -4833,6 +4935,7 @@ def UltimateFieldAtkObj():
     Visibility(1)
     loopRest()
 
+
 @State
 def UltimateFieldAtkObjOD():
 
@@ -4859,7 +4962,7 @@ def UltimateFieldAtkObjOD():
         IgnoreScreenfreeze(1)
 
         def upon_OPPONENT_HIT():
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             sendToLabel(0)
     sprite('vrrlef430atk_00', 41)
     StartMultihit()
@@ -4889,8 +4992,8 @@ def UltimateFieldAtkObjOD():
     CreateObject('UltimateFieldMcircleB', -1)
     CreateObject('UltimateFieldGearsTowerFront', -1)
     CreateObject('UltimateFieldGearsTowerStart', -1)
-    PassbackAddActionMarkToFunction('UltimateFieldGears', 33)
-    PassbackAddActionMarkToFunction('UltimateFieldMcircleA', 33)
+    TriggerUponForState('UltimateFieldGears', 33)
+    TriggerUponForState('UltimateFieldMcircleA', 33)
     PrivateSE('rlse_07')
     sprite('vrrlef430atk_01', 5)
     CreateObject('UltFieldHitEff', -1)
@@ -4932,6 +5035,7 @@ def UltimateFieldAtkObjOD():
     RefreshMultihit()
     loopRest()
 
+
 @State
 def UltimateFieldMcircleB_Over():
 
@@ -4946,6 +5050,7 @@ def UltimateFieldMcircleB_Over():
     sprite('null', 12)
     ConstantAlphaModifier(-20)
     SetScaleSpeed(15)
+
 
 @State
 def UltimateFieldGearsTowerFrontOve():
@@ -4967,6 +5072,7 @@ def UltimateFieldGearsTowerFrontOve():
     sprite('null', 10)
     ConstantAlphaModifier(-25)
 
+
 @State
 def UltFieldHitEffOver():
     sprite('vrrlef430hit_00', 15)
@@ -4978,6 +5084,7 @@ def UltFieldHitEffOver():
     CallCustomizableParticle('rlef_ultimatefield_hit', 1)
     CreateObject('UltFieldHitReverseS', 2)
     Visibility(1)
+
 
 @State
 def UltimateFieldAtkObjOver():
@@ -4995,7 +5102,7 @@ def UltimateFieldAtkObjOver():
     CreateObject('UltimateFieldMcircleLight', -1)
     ScreenShake(0, 20000)
     sprite('null', 10)
-    clearUponHandler(12)
+    clearUponHandler(OPPONENT_HIT)
     TeleportToObject(22)
     AbsoluteY(0)
     Visibility(1)
@@ -5003,8 +5110,8 @@ def UltimateFieldAtkObjOver():
     CreateObject('UltimateFieldMcircleB_Over', -1)
     CreateObject('UltimateFieldGearsTowerFrontOve', -1)
     CreateObject('UltimateFieldGearsTowerStart', -1)
-    PassbackAddActionMarkToFunction('UltimateFieldGears', 33)
-    PassbackAddActionMarkToFunction('UltimateFieldMcircleA', 33)
+    TriggerUponForState('UltimateFieldGears', 33)
+    TriggerUponForState('UltimateFieldMcircleA', 33)
     PrivateSE('rlse_07')
     sprite('null', 5)
     CreateObject('UltFieldHitEffOver', -1)
@@ -5015,6 +5122,7 @@ def UltimateFieldAtkObjOver():
     CreateObject('UltimateFieldGearsTowerDel', -1)
     PrivateSE('rlse_07')
     sprite('null', 15)
+
 
 @State
 def AstStartMc():
@@ -5027,13 +5135,14 @@ def AstStartMc():
         BlendMode_Add()
         Size(1200)
         AbsoluteY(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 280)
     label(1)
     sprite('null', 20)
     ConstantAlphaModifier(-12)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AstStartAura():
@@ -5045,13 +5154,14 @@ def AstStartAura():
         BlendMode_Add()
         Size(1200)
         AbsoluteY(0)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 280)
     label(1)
     sprite('null', 20)
     ConstantAlphaModifier(-12)
     sprite('null', 1)
     AlphaValue(0)
+
 
 @State
 def AstChair():
@@ -5065,6 +5175,7 @@ def AstChair():
     sprite('rl450_24ex02', 8)
     sprite('rl450_24ex03', 8)
     sprite('rl450_24ex04', 32767)
+
 
 @State
 def AstClosingDoor():
@@ -5081,6 +5192,7 @@ def AstClosingDoor():
     PrivateSE('rlse_10')
     PrivateSE('rlse_10')
 
+
 @State
 def AstClosedDoor():
 
@@ -5093,6 +5205,7 @@ def AstClosedDoor():
         BlendMode_Normal()
     sprite('null', 32767)
     XPositionRelativeFacing(0)
+
 
 @State
 def AstHitRing():
@@ -5109,10 +5222,11 @@ def AstHitRing():
     SetScaleSpeed(80)
     Unknown3059(-3200)
 
+
 @State
 def DIST_TEST():
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         ParticleTransparency(1)
         PlayerTransparency(20000)
         Unknown3059(-1000)
@@ -5128,6 +5242,7 @@ def DIST_TEST():
     SetScaleXPerFrame(0)
     ConstantAlphaModifier(-25)
 
+
 @State
 def zan_5D():
 
@@ -5141,6 +5256,7 @@ def zan_5D():
     sprite('vrrlef820_01', 6)
     E0EAEffectPosition(0)
     ConstantAlphaModifier(-30)
+
 
 @State
 def air_5D():
@@ -5162,6 +5278,7 @@ def air_5D():
     ConstantAlphaModifier(-30)
     sprite('vrrlef830_02', 2)
 
+
 @State
 def air_2D():
 
@@ -5182,6 +5299,7 @@ def air_2D():
     ConstantAlphaModifier(-30)
     sprite('vrrlef831_02', 2)
 
+
 @State
 def air_6D():
 
@@ -5201,6 +5319,7 @@ def air_6D():
     ConstantAlphaModifier(-30)
     sprite('vrrlef832_02', 2)
 
+
 @State
 def IgActSignalLight():
 
@@ -5211,6 +5330,7 @@ def IgActSignalLight():
     sprite('null', 12)
     AddRotationPerFrame(3000)
 
+
 @State
 def SpAttack01Eff():
 
@@ -5219,7 +5339,7 @@ def SpAttack01Eff():
         E0EAEffectPosition(2)
         SetZVal(499)
         BlendMode_Normal()
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('vrrlef840_00', 1)
     CreateObject('SpAttack01Par', -1)
     label(0)
@@ -5229,10 +5349,11 @@ def SpAttack01Eff():
     gotoLabel(0)
     label(1)
     sprite('vrrlef840_00', 3)
-    PassbackAddActionMarkToFunction('SpAttack01Par', 33)
+    TriggerUponForState('SpAttack01Par', 33)
     ConstantAlphaModifier(-80)
     sprite('vrrlef840_01', 3)
     AlphaValue(0)
+
 
 @State
 def SpAttack01Par():
@@ -5241,11 +5362,12 @@ def SpAttack01Par():
         RemoveOnCallStateEnd(2)
         E0EAEffectPosition(2)
         LinkParticle('rlef_igRolling')
-        sendToLabelUpon(33, 1)
+        uponSendToLabel(33, 1)
     sprite('null', 50)
     label(1)
     sprite('null', 5)
     ConstantAlphaModifier(-50)
+
 
 @State
 def SpAttack02zan():
@@ -5271,6 +5393,7 @@ def SpAttack02zan():
     E0EAEffectPosition(0)
     AddAlpha(-100)
 
+
 @State
 def SpAttack02zan01():
 
@@ -5292,6 +5415,7 @@ def SpAttack02zan01():
     sprite('vrrlef841zan_01', 18)
     E0EAEffectPosition(0)
     AddAlpha(-100)
+
 
 @State
 def SpAttack03zan00():
@@ -5316,6 +5440,7 @@ def SpAttack03zan00():
     E0EAEffectPosition(0)
     AddAlpha(-100)
 
+
 @State
 def SpAttack03zan01():
 
@@ -5338,6 +5463,7 @@ def SpAttack03zan01():
     sprite('vrrlef842zan_01', 18)
     E0EAEffectPosition(0)
     AddAlpha(-100)
+
 
 @State
 def SpAttack03zan02():
@@ -5362,6 +5488,7 @@ def SpAttack03zan02():
     E0EAEffectPosition(0)
     AddAlpha(-100)
 
+
 @State
 def DownFallMcA():
 
@@ -5375,6 +5502,7 @@ def DownFallMcA():
     sprite('null', 24)
     E0EAEffectPosition(0)
 
+
 @State
 def SpAttack04Wind():
 
@@ -5387,6 +5515,7 @@ def SpAttack04Wind():
     sprite('null', 24)
     E0EAEffectPosition(0)
 
+
 @State
 def AirSpAttackWind():
 
@@ -5398,6 +5527,7 @@ def AirSpAttackWind():
     RotationAngle(90000)
     sprite('null', 24)
     E0EAEffectPosition(0)
+
 
 @State
 def IgnisShot_HasseiObj():
@@ -5418,6 +5548,7 @@ def IgnisShot_HasseiObj():
     SetScaleSpeed(0)
     Size(1000)
 
+
 @State
 def IgnisShot_TosshinObj():
 
@@ -5428,7 +5559,7 @@ def IgnisShot_TosshinObj():
         LinkParticle('rlef_igshotball')
         physicsXImpulse(0)
         IgnoreScreenfreeze(1)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 1)
     label(0)
     sprite('null', 4)
@@ -5442,6 +5573,7 @@ def IgnisShot_TosshinObj():
     AddX(420000)
     AddY(-50000)
 
+
 @State
 def IgnisShot_AttackObj():
 
@@ -5453,8 +5585,8 @@ def IgnisShot_AttackObj():
         IgnoreScreenfreeze(1)
         LinkParticle('rlef_igshotball')
         physicsXImpulse(0)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 10)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 10)
     sprite('null', 30)
     label(1)
     sprite('null', 1)
@@ -5471,6 +5603,7 @@ def IgnisShot_AttackObj():
     AlphaValue(250)
     ConstantAlphaModifier(-10)
 
+
 @State
 def IgnisShotHitCharge():
 
@@ -5482,11 +5615,12 @@ def IgnisShotHitCharge():
         LinkParticle('rlef_igshot_charge')
         physicsXImpulse(0)
         Size(1200)
-        sendToLabelUpon(32, 1)
+        uponSendToLabel(32, 1)
     sprite('null', 120)
     label(1)
     sprite('null', 10)
     ConstantAlphaModifier(-25)
+
 
 @State
 def big_volante_3D():
@@ -5498,7 +5632,7 @@ def big_volante_3D():
         BlendMode_Add()
         Size(100)
         AlphaValue(0)
-        sendToLabelUpon(33, 10)
+        uponSendToLabel(33, 10)
     sprite('null', 15)
     SetScaleSpeed(65)
     ConstantAlphaModifier(20)
@@ -5521,6 +5655,7 @@ def big_volante_3D():
     CreateParticle('rlef_igshot_perge', -1)
     sprite('null', 1)
 
+
 @State
 def IgnisSparkReverse():
 
@@ -5529,6 +5664,7 @@ def IgnisSparkReverse():
         IgnoreScreenfreeze(1)
         Flip()
     sprite('null', 40)
+
 
 @State
 def zan_851a():
@@ -5543,6 +5679,7 @@ def zan_851a():
     ConstantAlphaModifier(-30)
     sprite('vrrlef851_21', 2)
 
+
 @State
 def zan_851b():
 
@@ -5556,6 +5693,7 @@ def zan_851b():
     sprite('vrrlef851_35', 6)
     sprite('vrrlef851_35', 10)
     ConstantAlphaModifier(-24)
+
 
 @State
 def IGAct_MatchWin1():
@@ -5572,6 +5710,7 @@ def IGAct_MatchWin1():
     BlendMode_Normal()
     ForceShadowOff(1)
     loopRest()
+
 
 @State
 def IGAct_EntryVsCa0():
@@ -5625,6 +5764,7 @@ def IGAct_EntryVsCa0():
     PrivateFunction2('IGAct_EntryVsCa0Wait', 100)
     loopRest()
 
+
 @State
 def IGAct_EntryVsCa0Wait():
 
@@ -5644,6 +5784,7 @@ def IGAct_EntryVsCa0Wait():
     sprite('rl800_07', 7)
     loopRest()
     gotoLabel(99)
+
 
 @State
 def IGAct_EntryVsCa1():
@@ -5676,6 +5817,7 @@ def IGAct_EntryVsCa1():
     sprite('rl800_07', 7)
     loopRest()
     gotoLabel(99)
+
 
 @State
 def IGAct_EntryVsRg0():
@@ -5765,7 +5907,7 @@ def IGAct_EntryVsRg0():
     sprite('rl843_00', 4)
     sprite('rl843_01', 3)
     sprite('rl843_02', 3)
-    SLOT_31 = (SLOT_31 + (-1000))
+    SLOT_31 = SLOT_31 + -1000
     sprite('rl843_03', 4)
     sprite('rl843_04', 3)
     CommonSE('005_swing_grap_2_2')
@@ -5789,6 +5931,7 @@ def IGAct_EntryVsRg0():
     sprite('keep', 100)
     PrivateFunction2('IGAct_EntryVsRg0Wait', 100)
 
+
 @State
 def IGAct_EntryVsRg0Wait():
 
@@ -5808,6 +5951,7 @@ def IGAct_EntryVsRg0Wait():
     sprite('rl800_07', 7)
     loopRest()
     gotoLabel(99)
+
 
 @State
 def IGAct_EntryVsHa0():
@@ -5878,6 +6022,7 @@ def IGAct_EntryVsHa0():
     sprite('keep', 100)
     PrivateFunction2('IGAct_EntryVsRg0Wait', 100)
 
+
 @State
 def IGAct_EntryVsHa0Wait():
 
@@ -5897,6 +6042,7 @@ def IGAct_EntryVsHa0Wait():
     sprite('rl800_07', 7)
     loopRest()
     gotoLabel(99)
+
 
 @State
 def IGAct_EntryVsVh0():
@@ -5967,6 +6113,7 @@ def IGAct_EntryVsVh0():
     sprite('keep', 100)
     PrivateFunction2('IGAct_EntryVsRg0Wait', 100)
 
+
 @State
 def RlAstralDamageIG():
 
@@ -5980,6 +6127,7 @@ def RlAstralDamageIG():
     CreateParticle('rlef_ig_break', 0)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def BurstDD_Wave():
@@ -5996,11 +6144,12 @@ def BurstDD_Wave():
     AddActionMark(-1)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 1)
     AddX(-50000)
     CreateObject('BurstDD_Arm', -1)
-    ObjectUpon(1, 32)
+    ObjectUpon(STATE_END, 32)
+
 
 @State
 def BurstDD_Arm():
@@ -6041,6 +6190,7 @@ def BurstDD_Arm():
     sprite('vrrlef440_13', 2)
     sprite('vrrlef440_14', 2)
 
+
 @State
 def BurstDD_BGEff():
 
@@ -6056,6 +6206,7 @@ def BurstDD_BGEff():
     ScreenShake(10000, 10000)
     sprite('null', 2)
     ScreenShake(5000, 5000)
+
 
 @State
 def BurstDD_BGEffEX():
@@ -6073,6 +6224,7 @@ def BurstDD_BGEffEX():
     ScreenShake(20000, 20000)
     sprite('null', 2)
     ScreenShake(10000, 10000)
+
 
 @State
 def BurstDD_ExEff():
@@ -6093,6 +6245,7 @@ def BurstDD_ExEff():
     physicsXImpulse(20000)
     sprite('vrrlef440_03', 2)
 
+
 @State
 def Act2Event_Yure():
     label(0)
@@ -6101,6 +6254,7 @@ def Act2Event_Yure():
     CommonSE('019_quake_0')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def IGAct_EventVsCA00():
@@ -6188,6 +6342,7 @@ def IGAct_EventVsCA00():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def IGAct_EventAct2_azvsrl():
 
@@ -6245,12 +6400,13 @@ def IGAct_EventAct2_azvsrl():
     sprite('keep', 100)
     PrivateFunction2('IGAct_SwitchFollow', 100)
 
+
 @State
 def Act3Event_IGCreate():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(41, 9)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(41, 9)
         SetZVal(500)
     sprite('rl800_00', 4)
     XPositionRelativeFacing(-100000)
@@ -6305,13 +6461,14 @@ def Act3Event_IGCreate():
     sprite('keep', 1)
     Visibility(1)
 
+
 @State
 def Act3Event_IGCreateYoin():
 
     def upon_IMMEDIATE():
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
-        sendToLabelUpon(41, 9)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
+        uponSendToLabel(41, 9)
         SetZVal(500)
         NoAttackDuringAction(1)
         XPositionRelativeFacing(-600000)
@@ -6393,7 +6550,7 @@ def Act3Event_IGCreateYoin():
     AddActionMark(-1)
     loopRest()
     if SLOT_2:
-        _gotolabel(3)
+        conditionalSendToLabel(3)
     sprite('rl801_00', 2)
     physicsXImpulse(0)
     loopRest()
@@ -6408,6 +6565,7 @@ def Act3Event_IGCreateYoin():
     sprite('keep', 1)
     Visibility(1)
 
+
 @State
 def Act3Event_IGCamera():
 
@@ -6417,19 +6575,20 @@ def Act3Event_IGCamera():
     sprite('null', 32767)
     CameraControlEnable(1)
 
+
 @State
 def Act3Event_lcvsrl_ig():
 
     def upon_IMMEDIATE():
 
-        def upon_FRAME_STEP():
-            if SLOT_IsInOverdrive2:
-                if (SLOT_19 < 200000):
+        def upon_EVERY_FRAME():
+            if SLOT_54:
+                if SLOT_19 < 200000:
                     sendToLabel(0)
                     SLOT_54 = 0
 
-        def upon_ON_HIT_OR_BLOCK():
-            PassbackAddActionMarkToFunction('Act_IG_AirAttack03', 32)
+        def upon_OPPONENT_HIT_OR_BLOCK():
+            TriggerUponForState('Act_IG_AirAttack03', 32)
         CreateDecalOn(1)
         FloorCollision(1)
 
@@ -6451,7 +6610,7 @@ def Act3Event_lcvsrl_ig():
     physicsXImpulse(7500)
     physicsYImpulse(-3750)
     sprite('rl831_01', 1)
-    SLOT_31 = (SLOT_31 + (-1000))
+    SLOT_31 = SLOT_31 + -1000
     sprite('rl831_02', 2)
     physicsXImpulse(30000)
     physicsYImpulse(-20000)
@@ -6465,7 +6624,7 @@ def Act3Event_lcvsrl_ig():
     physicsXImpulse(20000)
     physicsYImpulse(-10000)
     label(0)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('rl831_04', 1)
     CommonSE('006_swing_blade_2')
     sprite('rl831_05', 17)
@@ -6493,6 +6652,7 @@ def Act3Event_lcvsrl_ig():
     CreateObject('DIST_TEST', 0)
     SetScaleXPerFrame(-100)
 
+
 @State
 def Act3Event_lcvsrl_ig_eff():
 
@@ -6513,6 +6673,7 @@ def Act3Event_lcvsrl_ig_eff():
     ConstantAlphaModifier(-30)
     sprite('vrrlef831_02', 2)
 
+
 @State
 def IGAct_EntryVsCaAct3_0():
 
@@ -6520,9 +6681,9 @@ def IGAct_EntryVsCaAct3_0():
         AttackDefaults_SpecialProjectile()
         NoDamageAction(1)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
 
-            def upon_ON_HIT_OR_BLOCK():
+            def upon_OPPONENT_HIT_OR_BLOCK():
                 XImpulseAcceleration(25)
                 PushSpeedX()
                 EndMomentum(1)

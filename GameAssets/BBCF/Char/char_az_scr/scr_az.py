@@ -2,6 +2,7 @@
 def PreInit():
     CharacterID('az')
 
+
 @Subroutine
 def MatchInit():
     Health(12000)
@@ -145,21 +146,21 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(100000, 250000, 0, 200000, 1000, 50)
     Move_EndRegister()
-    Move_Register('Oiuchi', 0x2)
+    Move_Register('Oiuchi', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_22)
     Move_Input_(INPUT_PRESS_C)
     Move_Condition(0x307f)
     SkillEstimateRange(0, 250000, -200000, 300000, 150, 50)
     Move_EndRegister()
-    Move_Register('AZcombo1', 0x2)
+    Move_Register('AZcombo1', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
     DamageStunPriority(1500)
     SkillEstimateRange(0, 400000, -250000, 300000, 100, 0)
     Move_EndRegister()
-    Move_Register('AZcombo2', 0x2)
+    Move_Register('AZcombo2', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(0x78)
     Move_Input_(INPUT_PRESS_C)
@@ -168,21 +169,21 @@ def MatchInit():
     MoveCancellableFrames(24, 25)
     SkillEstimateRange(0, 400000, -250000, 200000, 250, 50)
     Move_EndRegister()
-    Move_Register('AZcombo3', 0x2)
+    Move_Register('AZcombo3', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(0x78)
     Move_Input_(INPUT_PRESS_C)
     FollowupOnly(1)
     SkillEstimateRange(0, 400000, -250000, 200000, 250, 50)
     Move_EndRegister()
-    Move_Register('Shinkyaku', 0x2)
+    Move_Register('Shinkyaku', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
     MoveComboPriority(1)
     SkillEstimateRange(0, 250000, -200000, 300000, 250, 0)
     Move_EndRegister()
-    Move_Register('DustAttack', 0x2)
+    Move_Register('DustAttack', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_D)
@@ -190,7 +191,7 @@ def MatchInit():
     GuardStunPriority(1500)
     SkillEstimateRange(0, 400000, -100000, 200000, 100, 50)
     Move_EndRegister()
-    Move_Register('HomingJump', 0x2)
+    Move_Register('HomingJump', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Condition(0x2000)
     Move_Input_(0x93)
@@ -199,7 +200,7 @@ def MatchInit():
     MoveComboPriority(50000)
     DamageStunPriority(50000)
     Move_EndRegister()
-    Move_Register('VanishingAttack', 0x2)
+    Move_Register('VanishingAttack', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_D)
@@ -207,7 +208,7 @@ def MatchInit():
     GuardStunPriority(1500)
     SkillEstimateRange(0, 400000, -100000, 200000, 100, 50)
     Move_EndRegister()
-    Move_Register('BoostDashStart', 0x2)
+    Move_Register('BoostDashStart', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(0x7b)
     AddChain(1)
@@ -215,20 +216,20 @@ def MatchInit():
     MoveComboPriority(50000)
     DamageStunPriority(50000)
     Move_EndRegister()
-    Move_Register('BoostDash', 0x2)
+    Move_Register('BoostDash', INPUT_SPECIALMOVE)
     FollowupOnly(1)
     Move_Input_(0x7b)
     MovePriority(50000)
     MoveComboPriority(50000)
     DamageStunPriority(50000)
     Move_EndRegister()
-    Move_Register('Assault', 0x2)
+    Move_Register('Assault', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_A)
     SkillEstimateRange(500000, 850000, -100000, 200000, 250, 50)
     Move_EndRegister()
-    Move_Register('ShotAtemi', 0x2)
+    Move_Register('ShotAtemi', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
@@ -236,7 +237,7 @@ def MatchInit():
     DamageStunPriority(1)
     SkillEstimateRange(600000, 1000000, -200000, 200000, 250, 1)
     Move_EndRegister()
-    Move_Register('Baigaeshi', 0x2)
+    Move_Register('Baigaeshi', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
@@ -244,7 +245,7 @@ def MatchInit():
     OpponentAttackPriority(2000)
     SkillEstimateRange(700000, 2000000, -200000, 300000, 150, 0)
     Move_EndRegister()
-    Move_Register('Dunk', 0x2)
+    Move_Register('Dunk', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_623)
     Move_Input_(INPUT_PRESS_B)
@@ -253,7 +254,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 350000, -200000, 350000, 250, 10)
     Move_EndRegister()
-    Move_Register('Baigaeshi_Easy', 0x2)
+    Move_Register('Baigaeshi_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_41236)
     Move_Input_(INPUT_PRESS_B)
@@ -261,7 +262,7 @@ def MatchInit():
     CallSkillConditions('CheckBaigaeshiAvailable')
     CPUUsable(0)
     Move_EndRegister()
-    Move_Register('Hikou', 0x606)
+    Move_Register('Hikou', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_214214)
@@ -270,7 +271,7 @@ def MatchInit():
     OpponentAttackPriority(6000)
     SkillEstimateRange(0, 300000, -200000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('Hikou_OD', 0x606)
+    Move_Register('Hikou_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_214214)
@@ -280,7 +281,7 @@ def MatchInit():
     OpponentAttackPriority(6000)
     SkillEstimateRange(0, 300000, -200000, 200000, 250, 0)
     Move_EndRegister()
-    Move_Register('SuperPunch', 0x606)
+    Move_Register('SuperPunch', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -288,7 +289,7 @@ def MatchInit():
     DamageStunPriority(50000)
     SkillEstimateRange(650000, 1500000, -200000, 0, 400, 1)
     Move_EndRegister()
-    Move_Register('SuperPunch_OD', 0x606)
+    Move_Register('SuperPunch_OD', INPUT_DISTORTION)
     Move_Condition(0x2000)
     Move_Condition(0x2002)
     Move_Input_(INPUT_236236)
@@ -297,7 +298,7 @@ def MatchInit():
     DamageStunPriority(50000)
     SkillEstimateRange(650000, 1500000, -200000, 0, 400, 1)
     Move_EndRegister()
-    Move_Register('AstralHeat', 0x607)
+    Move_Register('AstralHeat', INPUT_ASTRAL)
     Move_Condition(0x304a)
     Move_Condition(0x2000)
     Move_Input_(INPUT_632146)
@@ -306,12 +307,12 @@ def MatchInit():
     DamageStunPriority(3000)
     SkillEstimateRange(0, 400000, -200000, 700000, 500, 0)
     Move_EndRegister()
-    Move_Register('BurstDD_Easy', 0x2)
+    Move_Register('BurstDD_Easy', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
-    Move_Input_(0x1)
-    Move_Input_(0xa)
-    Move_Input_(0x13)
-    Move_Input_(0x1c)
+    Move_Input_(INPUT_HOLD_A)
+    Move_Input_(INPUT_HOLD_B)
+    Move_Input_(INPUT_HOLD_C)
+    Move_Input_(INPUT_HOLD_D)
     Move_Condition(0x3081)
     CallSkillConditions('Func_BurstDD_Easy')
     OpponentAttackPriority(6000)
@@ -319,7 +320,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 400000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD_Cancel', 0x2)
+    Move_Register('BurstDD_Cancel', INPUT_SPECIALMOVE)
     StateCall('BurstDD_Easy')
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
@@ -332,7 +333,7 @@ def MatchInit():
     GuardStunPriority(1)
     SkillEstimateRange(0, 400000, -200000, 200000, 500, 10)
     Move_EndRegister()
-    Move_Register('BurstDD', 0x2)
+    Move_Register('BurstDD', INPUT_SPECIALMOVE)
     Move_Condition(0x2000)
     Move_Input_(INPUT_PRESS_A)
     Move_Input_(INPUT_PRESS_B)
@@ -514,11 +515,13 @@ def MatchInit():
     CommonVoicelines(73, 'az402')
     CommonVoicelines(74, 'az403')
 
+
 @Subroutine
 def Func_BurstDD_Easy():
     SLOT_47 = 0
     if PreviousStateCheck('CmnActOverDriveEnd'):
         SLOT_47 = 1
+
 
 @Subroutine
 def OnEnemyComboBreak():
@@ -527,16 +530,17 @@ def OnEnemyComboBreak():
     SLOT_4 = 0
     SLOT_60 = 0
 
+
 @Subroutine
 def OnFrameStep():
-    if (not SLOT_81):
+    if not SLOT_81:
         if SLOT_21:
             if SLOT_4:
-                SLOT_4 = (SLOT_4 + (-1))
-                if (not SLOT_4):
+                SLOT_4 = SLOT_4 + -1
+                if not SLOT_4:
                     if SLOT_60:
                         SLOT_4 = 1
-                if SLOT_30:
+                if SLOT_IsInHitstun:
                     SLOT_4 = 0
                 EnableAfterimage(1)
                 AfterimageInterval(2)
@@ -545,36 +549,36 @@ def OnFrameStep():
                 AfterimageColor_2(100, 100, 0, 0)
                 AfterimageSize_1(1000)
                 AfterimageSize_2(1000)
-                if (SLOT_4 < 80):
+                if SLOT_4 < 80:
                     AfterimageColor_1(240, 255, 0, 0)
                     AfterimageColor_2(80, 100, 0, 0)
-                if (SLOT_4 < 70):
+                if SLOT_4 < 70:
                     AfterimageColor_1(210, 255, 0, 0)
                     AfterimageColor_2(70, 100, 0, 0)
-                if (SLOT_4 < 60):
+                if SLOT_4 < 60:
                     AfterimageColor_1(180, 255, 0, 0)
                     AfterimageColor_2(60, 100, 0, 0)
-                if (SLOT_4 < 50):
+                if SLOT_4 < 50:
                     AfterimageColor_1(150, 255, 0, 0)
                     AfterimageColor_2(50, 100, 0, 0)
-                if (SLOT_4 < 40):
+                if SLOT_4 < 40:
                     AfterimageColor_1(120, 255, 0, 0)
                     AfterimageColor_2(40, 100, 0, 0)
-                if (SLOT_4 < 30):
+                if SLOT_4 < 30:
                     AfterimageColor_1(90, 255, 0, 0)
                     AfterimageColor_2(30, 100, 0, 0)
-                if (SLOT_4 < 20):
+                if SLOT_4 < 20:
                     AfterimageColor_1(60, 255, 0, 0)
                     AfterimageColor_2(20, 100, 0, 0)
-                if (SLOT_4 < 10):
+                if SLOT_4 < 10:
                     AfterimageColor_1(30, 255, 0, 0)
                     AfterimageColor_2(10, 100, 0, 0)
-                if (SLOT_4 == 1):
+                if SLOT_4 == 1:
                     EnableAfterimage(0)
                     AfterimageType(0)
             if SLOT_5:
-                SLOT_5 = (SLOT_5 + (-1))
-                if SLOT_30:
+                SLOT_5 = SLOT_5 + -1
+                if SLOT_IsInHitstun:
                     SLOT_5 = 0
                 EnableAfterimage(1)
                 AfterimageInterval(2)
@@ -583,31 +587,31 @@ def OnFrameStep():
                 AfterimageColor_2(100, 255, 255, 0)
                 AfterimageSize_1(1000)
                 AfterimageSize_2(1000)
-                if (SLOT_5 < 40):
+                if SLOT_5 < 40:
                     AfterimageColor_1(240, 255, 255, 0)
                     AfterimageColor_2(80, 100, 100, 0)
-                if (SLOT_5 < 35):
+                if SLOT_5 < 35:
                     AfterimageColor_1(210, 255, 255, 0)
                     AfterimageColor_2(70, 100, 100, 0)
-                if (SLOT_5 < 30):
+                if SLOT_5 < 30:
                     AfterimageColor_1(180, 255, 255, 0)
                     AfterimageColor_2(60, 100, 100, 0)
-                if (SLOT_5 < 25):
+                if SLOT_5 < 25:
                     AfterimageColor_1(150, 255, 255, 0)
                     AfterimageColor_2(50, 100, 100, 0)
-                if (SLOT_5 < 20):
+                if SLOT_5 < 20:
                     AfterimageColor_1(120, 255, 255, 0)
                     AfterimageColor_2(40, 100, 100, 0)
-                if (SLOT_5 < 15):
+                if SLOT_5 < 15:
                     AfterimageColor_1(90, 255, 255, 0)
                     AfterimageColor_2(30, 100, 100, 0)
-                if (SLOT_5 < 10):
+                if SLOT_5 < 10:
                     AfterimageColor_1(60, 255, 255, 0)
                     AfterimageColor_2(20, 100, 100, 0)
-                if (SLOT_5 < 5):
+                if SLOT_5 < 5:
                     AfterimageColor_1(30, 255, 255, 0)
                     AfterimageColor_2(10, 100, 100, 0)
-                if (SLOT_5 == 0):
+                if SLOT_5 == 0:
                     EnableAfterimage(0)
                     AfterimageType(0)
         else:
@@ -617,132 +621,138 @@ def OnFrameStep():
             SLOT_32 = 0
             SLOT_33 = 0
         if SLOT_31:
-            SLOT_31 = (SLOT_31 + (-100))
-            if (not SLOT_31):
-                if SLOT_110:
+            SLOT_31 = SLOT_31 + -100
+            if not SLOT_31:
+                if SLOT_OverdriveTimer:
                     SLOT_31 = 1
         if SLOT_32:
-            SLOT_32 = (SLOT_32 + (-100))
-            if (not SLOT_32):
-                if SLOT_110:
+            SLOT_32 = SLOT_32 + -100
+            if not SLOT_32:
+                if SLOT_OverdriveTimer:
                     SLOT_32 = 1
         if SLOT_31:
-            if (not CheckObjectPresence(4)):
+            if not CheckObjectPresence(4):
                 CreateObject('weakpoint01', -1)
                 RegisterObject(4, 1)
         elif CheckObjectPresence(4):
-            ObjectUpon(4, 32)
+            ObjectUpon(FALLING, 32)
         if SLOT_32:
-            if (not CheckObjectPresence(5)):
+            if not CheckObjectPresence(5):
                 CreateObject('weakpoint00', -1)
                 RegisterObject(5, 1)
         elif CheckObjectPresence(5):
             ObjectUpon(5, 32)
         if SLOT_33:
-            SLOT_33 = (SLOT_33 + (-100))
-            if (not SLOT_4):
-                if (not SLOT_5):
+            SLOT_33 = SLOT_33 + -100
+            if not SLOT_4:
+                if not SLOT_5:
                     EnableAfterimage(1)
                     AfterimageBlendMode(1)
                     AfterimageCount(4)
                     AfterimageInterval(4)
                     AfterimageColor_1(200, 255, 0, 0)
                     AfterimageColor_2(0, 255, 0, 0)
-                    if (SLOT_33 == 0):
+                    if SLOT_33 == 0:
                         EnableAfterimage(0)
                         AfterimageType(0)
         TrainingModeSLOT('TRI_AzraelWeakPoint', 2, 67)
-        if (SLOT_67 == 1):
-            if SLOT_90:
-                if (not SLOT_33):
+        if SLOT_67 == 1:
+            if SLOT_InNeutral:
+                if not SLOT_33:
                     SLOT_31 = 100000
                     SLOT_32 = 0
-        if (SLOT_67 == 2):
-            if SLOT_90:
-                if (not SLOT_33):
+        if SLOT_67 == 2:
+            if SLOT_InNeutral:
+                if not SLOT_33:
                     SLOT_31 = 0
                     SLOT_32 = 100000
-        if (SLOT_67 == 3):
-            if SLOT_90:
-                if (not SLOT_33):
+        if SLOT_67 == 3:
+            if SLOT_InNeutral:
+                if not SLOT_33:
                     SLOT_31 = 100000
                     SLOT_32 = 100000
-        if (SLOT_67 == 4):
-            if SLOT_90:
+        if SLOT_67 == 4:
+            if SLOT_InNeutral:
                 SLOT_31 = 100000
                 SLOT_32 = 100000
                 SLOT_33 = 100000
         TrainingModeSLOT('TRI_AzraelShotStock', 2, 67)
-        if (SLOT_67 == 1):
-            if SLOT_90:
+        if SLOT_67 == 1:
+            if SLOT_InNeutral:
                 SLOT_59 = 3
+
 
 @Subroutine
 def SpecialWeakPointSet():
     SLOT_31 = 0
     SLOT_32 = 0
-    SLOT_31 = (SLOT_31 + SLOT_33)
-    SLOT_32 = (SLOT_32 + SLOT_33)
+    SLOT_31 = SLOT_31 + SLOT_33
+    SLOT_32 = SLOT_32 + SLOT_33
+
 
 @Subroutine
 def MidWeakPoint():
     CreateObject('weakhit00', -1)
-    if (not SLOT_31):
-        if (not SLOT_33):
+    if not SLOT_31:
+        if not SLOT_33:
             SLOT_31 = 100000
             ScreenShake(4000, 4000)
             Voiceline('az210')
             PrivateSE('azse_01')
             PrivateSE('azse_01')
     else:
-        if (not SLOT_110):
+        if not SLOT_OverdriveTimer:
             SLOT_31 = 0
         ScreenShake(32000, 32000)
-        ObjectUpon(4, 32)
+        ObjectUpon(FALLING, 32)
         Voiceline('az212')
         PrivateSE('azse_02')
+
 
 @Subroutine
 def MidWeakPointOverDrive():
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        if SLOT_110:
-            if (not SLOT_31):
-                if (not SLOT_33):
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        if SLOT_OverdriveTimer:
+            if not SLOT_31:
+                if not SLOT_33:
                     CreateObject('weakhit00', -1)
                     PrivateSE('azse_01')
                     PrivateSE('azse_01')
                     SLOT_31 = 100000
 
+
 @Subroutine
 def LowWeakPoint():
     CreateObject('weakhit01', -1)
-    if (not SLOT_32):
-        if (not SLOT_33):
+    if not SLOT_32:
+        if not SLOT_33:
             SLOT_32 = 100000
             ScreenShake(8000, 8000)
             Voiceline('az211')
             PrivateSE('azse_01')
             PrivateSE('azse_01')
     else:
-        if (not SLOT_110):
+        if not SLOT_OverdriveTimer:
             SLOT_32 = 0
         ScreenShake(32000, 32000)
         ObjectUpon(5, 32)
         Voiceline('az212')
         PrivateSE('azse_02')
 
+
 @Subroutine
 def LowWeakPointOverDrive():
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
-        if SLOT_110:
-            if (not SLOT_32):
-                if (not SLOT_33):
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+        if SLOT_OverdriveTimer:
+            if not SLOT_32:
+                if not SLOT_33:
                     CreateObject('weakhit01', -1)
                     PrivateSE('azse_01')
                     PrivateSE('azse_01')
                     SLOT_32 = 100000
+
 
 @Subroutine
 def HomingCancel():
@@ -768,12 +778,13 @@ def HomingCancel():
         AirPushbackX(5000)
         AirPushbackY(26000)
 
+
 @Subroutine
 def BoostCancel():
     if SLOT_4:
         PopSpeedX()
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             XImpulseAcceleration(98)
 
         def upon_OPPONENT_HIT():
@@ -788,13 +799,13 @@ def BoostCancel():
                 Wallstick(1)
                 WallstickDuration(30)
                 AirHitstunAfterWallbounce(-1)
-                if (SLOT_25 < 200000):
-                    if (SLOT_4 == 1):
+                if SLOT_XDistanceFromFowardCorner < 200000:
+                    if SLOT_4 == 1:
                         BounceOffWall(1)
                         AttackDirection(2)
                     else:
                         pass
-                if (SLOT_4 > 1):
+                if SLOT_4 > 1:
                     HitOrBlockCancel('BoostDash')
                     AirUntechableTime(30)
                     AirHitstunAfterWallbounce(30)
@@ -802,13 +813,16 @@ def BoostCancel():
                     AirHitstunAnimation(17)
                     PushSpeedX()
 
+
 @Subroutine
 def CheckShotCatch():
     CallPrivateFunction('AzShotCatch', 0, 0, 0, 0, 0, 0, 0, 0)
 
+
 @Subroutine
 def CheckBaigaeshiAvailable():
     SLOT_47 = SLOT_59
+
 
 @State
 def CmnActStand():
@@ -824,15 +838,12 @@ def CmnActStand():
     sprite('az000_08', 7)
     sprite('az000_09', 7)
     loopRest()
-    random_(1, 2, 87)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(0, 2, 124)
-    if SLOT_0:
-        _gotolabel(0)
-    random_(2, 0, 90)
-    if SLOT_0:
-        _gotolabel(0)
+    if random_(1, 2, 87):
+        conditionalSendToLabel(0)
+    if random_(0, 2, 124):
+        conditionalSendToLabel(0)
+    if random_(2, 0, 90):
+        conditionalSendToLabel(0)
     sprite('az001_00', 6)
     SLOT_88 = 960
     Voiceline('az000')
@@ -851,6 +862,7 @@ def CmnActStand():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStandTurn():
     sprite('az003_00ex', 3)
@@ -858,11 +870,13 @@ def CmnActStandTurn():
     sprite('az003_01', 3)
     sprite('az003_00', 3)
 
+
 @State
 def CmnActStand2Crouch():
     sprite('az010_00', 4)
     PrivateSE('rgse_00')
     sprite('az010_01', 4)
+
 
 @State
 def CmnActCrouch():
@@ -880,28 +894,32 @@ def CmnActCrouch():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchTurn():
     sprite('az013_00ex', 3)
     sprite('az013_01', 3)
     sprite('az013_00', 3)
 
+
 @State
 def CmnActCrouch2Stand():
     sprite('az010_01', 4)
     sprite('az010_00', 4)
+
 
 @State
 def CmnActJumpPre():
     sprite('az023_00', 2)
     sprite('az023_01', 2)
 
+
 @State
 def CmnActJumpUpper():
-    if SLOT_16:
-        _gotolabel(1)
-    if SLOT_15:
-        _gotolabel(2)
+    if SLOT_IsMovingBackward:
+        conditionalSendToLabel(1)
+    if SLOT_IsMovingForward:
+        conditionalSendToLabel(2)
     sprite('az020_00', 3)
     sprite('az020_01', 3)
     SmartVoiceline('az002')
@@ -922,11 +940,13 @@ def CmnActJumpUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpUpperEnd():
     sprite('az020_02', 3)
     sprite('az020_03', 3)
     sprite('az020_04', 3)
+
 
 @State
 def CmnActJumpDown():
@@ -938,6 +958,7 @@ def CmnActJumpDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActJumpLanding():
     sprite('az024_00', 3)
@@ -946,16 +967,19 @@ def CmnActJumpLanding():
     sprite('az024_03', 3)
     sprite('az024_04', 3)
 
+
 @State
 def CmnActLandingStiffLoop():
     sprite('az024_00', 2)
     sprite('az024_01', 2)
     sprite('az024_02', 32767)
 
+
 @State
 def CmnActLandingStiffEnd():
     sprite('az024_03', 3)
     sprite('az024_04', 3)
+
 
 @State
 def CmnActFWalk():
@@ -978,6 +1002,7 @@ def CmnActFWalk():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBWalk():
     sprite('az031_00', 7)
@@ -998,6 +1023,7 @@ def CmnActBWalk():
     sprite('az031_12', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActFDash():
@@ -1046,9 +1072,11 @@ def CmnActFDash():
     sprite('az032_06', 2)
     sprite('az032_07', 2)
 
+
 @State
 def CmnActFDashStop():
     pass
+
 
 @State
 def CmnActBDash():
@@ -1093,9 +1121,11 @@ def CmnActBDash():
     sprite('az033_06', 3)
     sprite('az033_07', 3)
 
+
 @State
 def CmnActBDashLanding():
     pass
+
 
 @State
 def CmnActAirFDash():
@@ -1111,6 +1141,7 @@ def CmnActAirFDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBDash():
     sprite('az036_00', 3)
@@ -1125,11 +1156,13 @@ def CmnActAirBDash():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActHitStandLv1():
     sprite('az050_00', 1)
     sprite('az050_01', 1)
     sprite('az050_00', 2)
+
 
 @State
 def CmnActHitStandLv2():
@@ -1137,6 +1170,7 @@ def CmnActHitStandLv2():
     sprite('az050_02', 1)
     sprite('az050_01', 2)
     sprite('az050_00', 2)
+
 
 @State
 def CmnActHitStandLv3():
@@ -1146,6 +1180,7 @@ def CmnActHitStandLv3():
     sprite('az050_01', 2)
     sprite('az050_00', 2)
 
+
 @State
 def CmnActHitStandLv4():
     sprite('az050_03', 1)
@@ -1154,6 +1189,7 @@ def CmnActHitStandLv4():
     sprite('az050_02', 2)
     sprite('az050_01', 2)
     sprite('az050_00', 2)
+
 
 @State
 def CmnActHitStandLv5():
@@ -1165,11 +1201,13 @@ def CmnActHitStandLv5():
     sprite('az050_01', 2)
     sprite('az050_00', 2)
 
+
 @State
 def CmnActHitStandLowLv1():
     sprite('az052_00', 1)
     sprite('az052_01', 1)
     sprite('az052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv2():
@@ -1177,6 +1215,7 @@ def CmnActHitStandLowLv2():
     sprite('az052_02', 1)
     sprite('az052_01', 2)
     sprite('az052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv3():
@@ -1186,6 +1225,7 @@ def CmnActHitStandLowLv3():
     sprite('az052_01', 2)
     sprite('az052_00', 2)
 
+
 @State
 def CmnActHitStandLowLv4():
     sprite('az052_03', 1)
@@ -1194,6 +1234,7 @@ def CmnActHitStandLowLv4():
     sprite('az052_02', 2)
     sprite('az052_01', 2)
     sprite('az052_00', 2)
+
 
 @State
 def CmnActHitStandLowLv5():
@@ -1205,11 +1246,13 @@ def CmnActHitStandLowLv5():
     sprite('az052_01', 2)
     sprite('az052_00', 2)
 
+
 @State
 def CmnActHitCrouchLv1():
     sprite('az054_00', 1)
     sprite('az054_01', 1)
     sprite('az054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv2():
@@ -1217,6 +1260,7 @@ def CmnActHitCrouchLv2():
     sprite('az054_02', 1)
     sprite('az054_01', 2)
     sprite('az054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv3():
@@ -1226,6 +1270,7 @@ def CmnActHitCrouchLv3():
     sprite('az054_01', 2)
     sprite('az054_00', 2)
 
+
 @State
 def CmnActHitCrouchLv4():
     sprite('az054_03', 1)
@@ -1234,6 +1279,7 @@ def CmnActHitCrouchLv4():
     sprite('az054_02', 2)
     sprite('az054_01', 2)
     sprite('az054_00', 2)
+
 
 @State
 def CmnActHitCrouchLv5():
@@ -1245,6 +1291,7 @@ def CmnActHitCrouchLv5():
     sprite('az054_01', 2)
     sprite('az054_00', 2)
 
+
 @State
 def CmnActBDownUpper():
     sprite('az060_00', 4)
@@ -1254,9 +1301,11 @@ def CmnActBDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownUpperEnd():
     sprite('az060_03', 4)
+
 
 @State
 def CmnActBDownDown():
@@ -1267,10 +1316,12 @@ def CmnActBDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBDownCrash():
     sprite('az060_07', 2)
     sprite('az060_08', 2)
+
 
 @State
 def CmnActBDownBound():
@@ -1280,9 +1331,11 @@ def CmnActBDownBound():
     sprite('az060_12', 3)
     sprite('az060_13', 3)
 
+
 @State
 def CmnActBDownLoop():
     sprite('az060_14', 1)
+
 
 @State
 def CmnActBDown2Stand():
@@ -1298,13 +1351,16 @@ def CmnActBDown2Stand():
     sprite('az061_08', 2)
     sprite('az061_09', 2)
 
+
 @State
 def CmnActFDownUpper():
     sprite('az063_00', 3)
 
+
 @State
 def CmnActFDownUpperEnd():
     sprite('az063_01', 3)
+
 
 @State
 def CmnActFDownDown():
@@ -1314,10 +1370,12 @@ def CmnActFDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFDownCrash():
     sprite('az063_04', 3)
     sprite('az063_05', 3)
+
 
 @State
 def CmnActFDownBound():
@@ -1327,9 +1385,11 @@ def CmnActFDownBound():
     sprite('az063_09', 3)
     sprite('az063_10', 3)
 
+
 @State
 def CmnActFDownLoop():
     sprite('az063_11', 3)
+
 
 @State
 def CmnActFDown2Stand():
@@ -1346,6 +1406,7 @@ def CmnActFDown2Stand():
     sprite('az064_09', 2)
     sprite('az064_10', 2)
 
+
 @State
 def CmnActVDownUpper():
     sprite('az062_00', 3)
@@ -1355,10 +1416,12 @@ def CmnActVDownUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownUpperEnd():
     sprite('az062_03', 3)
     sprite('az062_04', 3)
+
 
 @State
 def CmnActVDownDown():
@@ -1370,15 +1433,18 @@ def CmnActVDownDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActVDownCrash():
     sprite('az062_09', 2)
     sprite('az062_10', 2)
 
+
 @State
 def CmnActZSpinCrash():
     sprite('az062_09', 2)
     sprite('az062_10', 2)
+
 
 @State
 def CmnActBlowoff():
@@ -1391,6 +1457,7 @@ def CmnActBlowoff():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActKirimomiUpper():
     label(0)
@@ -1401,6 +1468,7 @@ def CmnActKirimomiUpper():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSkeleton():
     label(0)
@@ -1409,14 +1477,17 @@ def CmnActSkeleton():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActFreeze():
     sprite('az071_04', 1)
+
 
 @State
 def CmnActWallBound():
     sprite('az073_00', 3)
     sprite('az073_01', 3)
+
 
 @State
 def CmnActWallBoundDown():
@@ -1427,12 +1498,14 @@ def CmnActWallBoundDown():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActStaggerLoop():
     sprite('az070_00', 3)
     sprite('az070_01', 3)
     sprite('az070_02', 4)
     sprite('az070_03', 4)
+
 
 @State
 def CmnActStaggerDown():
@@ -1443,12 +1516,14 @@ def CmnActStaggerDown():
     sprite('az070_08', 4)
     sprite('az070_09', 4)
 
+
 @State
 def CmnActUkemiStagger():
     sprite('az070_10', 2)
     sprite('az070_11', 2)
     sprite('az070_12', 2)
     sprite('az070_13', 2)
+
 
 @State
 def CmnActUkemiAirF():
@@ -1457,6 +1532,7 @@ def CmnActUkemiAirF():
     PrivateSE('rgse_00')
     sprite('az113_02', 3)
 
+
 @State
 def CmnActUkemiAirB():
     sprite('az113_00', 3)
@@ -1464,12 +1540,14 @@ def CmnActUkemiAirB():
     PrivateSE('rgse_00')
     sprite('az113_02', 3)
 
+
 @State
 def CmnActUkemiAirN():
     sprite('az113_00', 3)
     sprite('az113_01', 3)
     PrivateSE('rgse_00')
     sprite('az113_02', 3)
+
 
 @State
 def CmnActUkemiLandF():
@@ -1486,6 +1564,7 @@ def CmnActUkemiLandF():
     sprite('az110_10', 2)
     sprite('az110_11', 2)
 
+
 @State
 def CmnActUkemiLandB():
     sprite('az111_00', 2)
@@ -1501,6 +1580,7 @@ def CmnActUkemiLandB():
     sprite('az111_10', 2)
     sprite('az111_11', 2)
 
+
 @State
 def CmnActUkemiLandN():
     sprite('az112_00', 2)
@@ -1515,6 +1595,7 @@ def CmnActUkemiLandN():
     sprite('az112_08', 2)
     sprite('az112_09', 2)
 
+
 @State
 def CmnActUkemiLandNLanding():
     sprite('az024_00', 3)
@@ -1523,10 +1604,12 @@ def CmnActUkemiLandNLanding():
     sprite('az024_03', 3)
     sprite('az024_04', 3)
 
+
 @State
 def CmnActMidGuardPre():
     sprite('az040_00', 3)
     sprite('az040_01', 3)
+
 
 @State
 def CmnActMidGuardLoop():
@@ -1536,49 +1619,59 @@ def CmnActMidGuardLoop():
     sprite('az040_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActMidGuardEnd():
     sprite('az040_01', 3)
     sprite('az040_00', 3)
+
 
 @State
 def CmnActMidHeavyGuardLoop():
     sprite('az040_03', 3)
     sprite('az040_02', 3)
 
+
 @State
 def CmnActMidHeavyGuardEnd():
     sprite('az040_01', 3)
     sprite('az040_00', 3)
+
 
 @State
 def CmnActHighGuardPre():
     sprite('az041_00', 3)
     sprite('az041_01', 3)
 
+
 @State
 def CmnActHighGuardLoop():
     sprite('az041_02', 3)
+
 
 @State
 def CmnActHighGuardEnd():
     sprite('az041_01', 3)
     sprite('az041_00', 3)
 
+
 @State
 def CmnActHighHeavyGuardLoop():
     sprite('az041_03', 3)
     sprite('az041_02', 3)
+
 
 @State
 def CmnActHighHeavyGuardEnd():
     sprite('az041_01', 3)
     sprite('az041_00', 3)
 
+
 @State
 def CmnActCrouchGuardPre():
     sprite('az043_00', 3)
     sprite('az043_01', 3)
+
 
 @State
 def CmnActCrouchGuardLoop():
@@ -1588,25 +1681,30 @@ def CmnActCrouchGuardLoop():
     sprite('az043_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActCrouchGuardEnd():
     sprite('az043_01', 3)
     sprite('az043_00', 3)
+
 
 @State
 def CmnActCrouchHeavyGuardLoop():
     sprite('az043_03', 3)
     sprite('az043_02', 3)
 
+
 @State
 def CmnActCrouchHeavyGuardEnd():
     sprite('az043_01', 3)
     sprite('az043_00', 3)
 
+
 @State
 def CmnActAirGuardPre():
     sprite('az045_00', 3)
     sprite('az045_01', 3)
+
 
 @State
 def CmnActAirGuardLoop():
@@ -1616,20 +1714,24 @@ def CmnActAirGuardLoop():
     sprite('az045_04', 3)
     gotoLabel(0)
 
+
 @State
 def CmnActAirGuardEnd():
     sprite('az045_01', 3)
     sprite('az045_00', 3)
+
 
 @State
 def CmnActAirHeavyGuardLoop():
     sprite('az045_03', 3)
     sprite('az045_02', 3)
 
+
 @State
 def CmnActAirHeavyGuardEnd():
     sprite('az045_01', 3)
     sprite('az045_00', 3)
+
 
 @State
 def CmnActGuardBreakStand():
@@ -1640,6 +1742,7 @@ def CmnActGuardBreakStand():
     sprite('az090_03', 6)
     sprite('az090_04', 6)
 
+
 @State
 def CmnActGuardBreakCrouch():
     sprite('az091_00', 2)
@@ -1648,6 +1751,7 @@ def CmnActGuardBreakCrouch():
     SetCommonActionMark(1)
     sprite('az091_03', 6)
     sprite('az091_04', 6)
+
 
 @State
 def CmnActGuardBreakAir():
@@ -1658,17 +1762,20 @@ def CmnActGuardBreakAir():
     sprite('az092_03', 6)
     sprite('az092_04', 6)
 
+
 @State
 def CmnActAirTurn():
     sprite('az025_00ex', 4)
     sprite('az025_01', 4)
     sprite('az025_00', 4)
 
+
 @State
 def CmnActLockWait():
     sprite('az040_02', 1)
     sprite('az040_01', 3)
     sprite('az040_00', 3)
+
 
 @State
 def CmnActLockReject():
@@ -1682,11 +1789,13 @@ def CmnActLockReject():
     sprite('az312_07', 2)
     sprite('az312_08', 2)
 
+
 @State
 def CmnActAirLockWait():
     sprite('az045_02', 1)
     sprite('az045_01', 3)
     sprite('az045_00', 3)
+
 
 @State
 def CmnActAirLockReject():
@@ -1699,6 +1808,7 @@ def CmnActAirLockReject():
     sprite('az322_06', 2)
     sprite('az322_07', 2)
     sprite('az322_08', 2)
+
 
 @State
 def CmnActLandSpin():
@@ -1716,11 +1826,13 @@ def CmnActLandSpin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActLandSpinDown():
     sprite('az071_10', 6)
     sprite('az071_11', 5)
     sprite('az071_12', 5)
+
 
 @State
 def CmnActVertSpin():
@@ -1735,6 +1847,7 @@ def CmnActVertSpin():
     sprite('az071_09', 2)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActSlideAir():
@@ -1763,6 +1876,7 @@ def CmnActSlideAir():
     sprite('az062_09', 4)
     sprite('az062_10', 3)
 
+
 @State
 def CmnActSlideKeep():
     sprite('az077_02', 4)
@@ -1772,10 +1886,12 @@ def CmnActSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActSlideEnd():
     sprite('az077_05', 5)
     sprite('az077_06', 4)
+
 
 @State
 def CmnActAomukeSlideKeep():
@@ -1784,10 +1900,12 @@ def CmnActAomukeSlideKeep():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAomukeSlideEnd():
     sprite('az060_11', 4)
     sprite('az060_13', 5)
+
 
 @State
 def CmnActBurstBegin():
@@ -1798,6 +1916,7 @@ def CmnActBurstBegin():
     sprite('az331_03', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActBurstLoop():
@@ -1810,10 +1929,12 @@ def CmnActBurstLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActBurstEnd():
     sprite('az331_09', 3)
     sprite('az331_10', 3)
+
 
 @State
 def CmnActAirBurstBegin():
@@ -1825,6 +1946,7 @@ def CmnActAirBurstBegin():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirBurstLoop():
     sprite('az331_04', 2)
@@ -1835,6 +1957,7 @@ def CmnActAirBurstLoop():
     sprite('az331_08', 3)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def CmnActAirBurstEnd():
@@ -1848,6 +1971,7 @@ def CmnActAirBurstEnd():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveBegin():
     sprite('az333_00', 3)
@@ -1856,6 +1980,7 @@ def CmnActOverDriveBegin():
     CharacterFlash(16639, 20, 1)
     sprite('az333_03', 32767)
     CreateObject('EMB_AZ_OD', -1)
+
 
 @State
 def CmnActOverDriveLoop():
@@ -1869,11 +1994,13 @@ def CmnActOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActOverDriveEnd():
     sprite('az333_08', 4)
     sprite('az333_09', 4)
     sprite('az333_10', 4)
+
 
 @State
 def CmnActAirOverDriveBegin():
@@ -1883,6 +2010,7 @@ def CmnActAirOverDriveBegin():
     CharacterFlash(16639, 20, 1)
     sprite('az333_14', 32767)
     CreateObject('EMB_AZ_OD', -1)
+
 
 @State
 def CmnActAirOverDriveLoop():
@@ -1896,11 +2024,13 @@ def CmnActAirOverDriveLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def CmnActAirOverDriveEnd():
     sprite('az333_16', 4)
     sprite('az333_17', 4)
     sprite('az333_18', 4)
+
 
 @State
 def NmlAtk5A():
@@ -1919,12 +2049,12 @@ def NmlAtk5A():
         AttackP2(85)
         callSubroutine('BoostCancel')
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SLOT_58 = 9
 
             def upon_45():
                 if SLOT_58:
-                    SLOT_58 = (SLOT_58 + (-1))
+                    SLOT_58 = SLOT_58 + -1
                 else:
                     BeginBuffer('NmlAtk5A')
                     BeginBuffer('NmlAtk5B')
@@ -1957,6 +2087,7 @@ def NmlAtk5A():
     sprite('az200_05', 3)
     sprite('az200_06', 3)
 
+
 @State
 def NmlAtk5B():
 
@@ -1969,12 +2100,12 @@ def NmlAtk5B():
         HitOrBlockJumpCancel(1)
         callSubroutine('BoostCancel')
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SLOT_58 = 10
 
             def upon_45():
                 if SLOT_58:
-                    SLOT_58 = (SLOT_58 + (-1))
+                    SLOT_58 = SLOT_58 + -1
                 else:
                     BeginBuffer('NmlAtk2C')
                     BeginBuffer('NmlAtk3C')
@@ -2003,6 +2134,7 @@ def NmlAtk5B():
     sprite('az201_06', 4)
     sprite('az201_07', 4)
     DisallowGoto('Atk5B_2nd')
+
 
 @State
 def Atk5B_2nd():
@@ -2035,6 +2167,7 @@ def Atk5B_2nd():
     sprite('az201_13', 3)
     sprite('az201_14', 3)
 
+
 @State
 def NmlAtk5C():
 
@@ -2050,12 +2183,12 @@ def NmlAtk5C():
         HitOrBlockCancel('NmlAtk6C')
         callSubroutine('BoostCancel')
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SLOT_58 = 11
 
             def upon_45():
                 if SLOT_58:
-                    SLOT_58 = (SLOT_58 + (-1))
+                    SLOT_58 = SLOT_58 + -1
                 else:
                     BeginBuffer('NmlAtk6D')
                     BeginBuffer('NmlAtk3D')
@@ -2089,6 +2222,7 @@ def NmlAtk5C():
     DisallowGoto('NmlAtk3D')
     sprite('az202_12', 3)
 
+
 @State
 def NmlAtk5D():
 
@@ -2108,7 +2242,7 @@ def NmlAtk5D():
         SameMoveProration(1)
         SpecialCancel(0)
         callSubroutine('MidWeakPointOverDrive')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SpecialCancel(1)
 
         def upon_OPPONENT_HIT():
@@ -2160,6 +2294,7 @@ def NmlAtk5D():
     sprite('az203_14', 2)
     sprite('az203_15', 2)
 
+
 @State
 def NmlAtk2A():
 
@@ -2179,12 +2314,12 @@ def NmlAtk2A():
         StarterRating(2)
         callSubroutine('BoostCancel')
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SLOT_58 = 9
 
             def upon_45():
                 if SLOT_58:
-                    SLOT_58 = (SLOT_58 + (-1))
+                    SLOT_58 = SLOT_58 + -1
                 else:
                     BeginBuffer('NmlAtk5A')
                     BeginBuffer('NmlAtk2B')
@@ -2216,6 +2351,7 @@ def NmlAtk2A():
     sprite('az230_05', 1)
     sprite('az230_06', 3)
 
+
 @State
 def NmlAtk2B():
 
@@ -2226,12 +2362,12 @@ def NmlAtk2B():
         Damage(750)
         callSubroutine('BoostCancel')
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             SLOT_58 = 10
 
             def upon_45():
                 if SLOT_58:
-                    SLOT_58 = (SLOT_58 + (-1))
+                    SLOT_58 = SLOT_58 + -1
                 else:
                     BeginBuffer('NmlAtk2C')
                     BeginBuffer('NmlAtk5D')
@@ -2268,6 +2404,7 @@ def NmlAtk2B():
     sprite('az231_11', 3)
     SetXCollisionFromOrigin(-1)
 
+
 @State
 def NmlAtk2C():
 
@@ -2285,7 +2422,7 @@ def NmlAtk2C():
         AirPushbackY(43000)
         AttackP1(90)
         SpecialCancel(0)
-        if (SLOT_4 > 1):
+        if SLOT_4 > 1:
             HitCancel('BoostDash')
         SetActionMark(0)
 
@@ -2294,7 +2431,7 @@ def NmlAtk2C():
 
             def upon_45():
                 if SLOT_58:
-                    SLOT_58 = (SLOT_58 + (-1))
+                    SLOT_58 = SLOT_58 + -1
                 else:
                     BeginBuffer('NmlAtk3C')
                     BeginBuffer('NmlAtk6D')
@@ -2343,6 +2480,7 @@ def NmlAtk2C():
     DisallowGoto('NmlAtk3D')
     sprite('az232_12', 6)
 
+
 @State
 def NmlAtk3C():
 
@@ -2360,7 +2498,7 @@ def NmlAtk3C():
         AirUntechableTime(42)
         HardKnockdown(22)
         EnableEmergencyTechAirHit(1)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
         SpecialCancel(0)
         callSubroutine('BoostCancel')
     sprite('az235_00', 2)
@@ -2396,6 +2534,7 @@ def NmlAtk3C():
     sprite('az235_12', 3)
     sprite('az235_13', 3)
 
+
 @State
 def NmlAtk2D():
 
@@ -2416,7 +2555,7 @@ def NmlAtk2D():
         PushbackX(15300)
         SameMoveProration(1)
         callSubroutine('LowWeakPointOverDrive')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SpecialCancel(1)
 
         def upon_OPPONENT_HIT():
@@ -2440,6 +2579,7 @@ def NmlAtk2D():
     sprite('az233_06', 2)
     sprite('az233_07', 3)
     sprite('az233_08', 3)
+
 
 @State
 def NmlAtkAIR5A():
@@ -2471,6 +2611,7 @@ def NmlAtkAIR5A():
     Unknown2063()
     sprite('az250_05', 3)
     sprite('az250_06', 3)
+
 
 @State
 def NmlAtkAIR5B():
@@ -2505,6 +2646,7 @@ def NmlAtkAIR5B():
     sprite('az251_10', 3)
     sprite('az251_11', 2)
 
+
 @State
 def NmlAtkAIR5C():
 
@@ -2537,6 +2679,7 @@ def NmlAtkAIR5C():
     sprite('az252_09', 3)
     sprite('az252_10', 3)
 
+
 @State
 def NmlAtkAIR2C():
 
@@ -2559,7 +2702,7 @@ def NmlAtkAIR2C():
     setGravity(1500)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(1)
     sprite('az254_02', 2)
     sprite('az254_03', 2)
@@ -2587,6 +2730,7 @@ def NmlAtkAIR2C():
     sprite('az024_02', 2)
     sprite('az024_03', 2)
     sprite('az024_04', 2)
+
 
 @State
 def NmlAtkAIR5D():
@@ -2638,6 +2782,7 @@ def NmlAtkAIR5D():
     sprite('az253_12', 3)
     sprite('az253_13', 3)
 
+
 @State
 def NmlAtkAIR2D():
 
@@ -2687,6 +2832,7 @@ def NmlAtkAIR2D():
     sprite('az255_11', 3)
     sprite('az255_12', 3)
 
+
 @State
 def NmlAtk6A():
 
@@ -2735,6 +2881,7 @@ def NmlAtk6A():
     physicsXImpulse(0)
     sprite('az210_10', 2)
     sprite('az210_11', 2)
+
 
 @State
 def NmlAtk6B():
@@ -2790,6 +2937,7 @@ def NmlAtk6B():
     physicsXImpulse(0)
     sprite('az211_15', 3)
 
+
 @State
 def NmlAtk6C():
 
@@ -2808,7 +2956,7 @@ def NmlAtk6C():
         CHGroundBounce(1)
         FatalCounter(1)
         MoveAttributes(1, 0, 0, 0, 0)
-        sendToLabelUpon(2, 9)
+        uponSendToLabel(LANDING, 9)
         SpecialCancel(0)
         callSubroutine('BoostCancel')
     sprite('az212_00', 4)
@@ -2842,6 +2990,7 @@ def NmlAtk6C():
     sprite('az212_11', 3)
     sprite('az212_12', 3)
 
+
 @State
 def NmlAtk6D():
 
@@ -2866,7 +3015,7 @@ def NmlAtk6D():
         SameMoveProration(1)
         SpecialCancel(0)
         callSubroutine('MidWeakPointOverDrive')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SpecialCancel(1)
 
         def upon_OPPONENT_HIT():
@@ -2910,14 +3059,14 @@ def NmlAtk6D():
     CreateParticle('azef_blood_01', 1)
     CreateParticle('azef_blood_01', 2)
     CreateObject('213rock', 3)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    RotationAngle(10000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        RotationAngle(10000)
     CreateObject('213rock', 4)
-    ApplyFunctionsToObjects(1)
-    RotationAngle(10000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        RotationAngle(10000)
     ScreenShake(6000, 6000)
     sprite('az213_09', 4)
     Recovery()
@@ -2926,6 +3075,7 @@ def NmlAtk6D():
     sprite('az213_10', 4)
     sprite('az213_11', 4)
     sprite('az213_12', 2)
+
 
 @State
 def NmlAtk3D():
@@ -2950,7 +3100,7 @@ def NmlAtk3D():
         SameMoveProration(1)
         SpecialCancel(0)
         callSubroutine('LowWeakPointOverDrive')
-        if SLOT_110:
+        if SLOT_OverdriveTimer:
             SpecialCancel(1)
 
         def upon_OPPONENT_HIT():
@@ -2984,10 +3134,10 @@ def NmlAtk3D():
     XImpulseAcceleration(80)
     sprite('az234_03', 3)
     CreateObject('213rock', 0)
-    ApplyFunctionsToObjects(1)
-    Flip()
-    AddX(-15000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        Flip()
+        AddX(-15000)
     ScreenShake(10000, 10000)
     SmartVoiceline('az107')
     physicsXImpulse(0)
@@ -3002,6 +3152,7 @@ def NmlAtk3D():
     sprite('az234_07', 3)
     sprite('az234_08', 3)
     sprite('az234_09', 3)
+
 
 @State
 def NmlAtkExcite():
@@ -3048,6 +3199,7 @@ def NmlAtkExcite():
     sprite('az300_16', 6)
     sprite('az300_00', 6)
 
+
 @State
 def NmlAtkDeadAngle():
 
@@ -3078,6 +3230,7 @@ def NmlAtkDeadAngle():
     sprite('az210_10', 5)
     sprite('az210_11', 5)
 
+
 @State
 def NmlAtkGuardCrush():
 
@@ -3096,11 +3249,11 @@ def NmlAtkGuardCrush():
         HitBackReturnIgnore(1)
         StarterRating(2)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_FRAME_STEP():
-            if (SLOT_18 == 10):
+        def upon_EVERY_FRAME():
+            if SLOT_StateDuration == 10:
                 SetActionMark(481)
                 GuardCrushHitstun(32)
                 AttackP2(60)
@@ -3108,8 +3261,8 @@ def NmlAtkGuardCrush():
                     sendToLabel(0)
                 elif CheckInput(0xe):
                     sendToLabel(0)
-            if (SLOT_18 >= 20):
-                clearUponHandler(61)
+            if SLOT_StateDuration >= 20:
+                clearUponHandler(OPPONENT_BLOCKS)
                 SetActionMark(0)
                 GuardCrushHitstun(60)
                 AttackP2(100)
@@ -3126,7 +3279,7 @@ def NmlAtkGuardCrush():
                 AfterimageMask_2(0, 8, 48, 255)
                 AfterimageSize_1(1010)
                 AfterimageSize_2(900)
-            if (SLOT_18 >= 50):
+            if SLOT_StateDuration >= 50:
                 sendToLabel(0)
     sprite('az406_00', 3)
     sprite('az406_01', 1)
@@ -3146,7 +3299,7 @@ def NmlAtkGuardCrush():
     gotoLabel(100)
     label(0)
     sprite('az406_00', 2)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     DespawnEAEffect('azef_guardcrash_hold')
     sprite('az401_00', 2)
     AddX(10000)
@@ -3175,6 +3328,7 @@ def NmlAtkGuardCrush():
     sprite('az401_08', 3)
     sprite('az401_09', 3)
 
+
 @State
 def NmlAtkThrow():
 
@@ -3190,6 +3344,7 @@ def NmlAtkThrow():
     sprite('az310_04', 9)
     sprite('az310_05', 5)
     sprite('az310_06', 5)
+
 
 @State
 def ThrowExe():
@@ -3250,6 +3405,7 @@ def ThrowExe():
     sprite('az311_13', 3)
     sprite('az311_14', 3)
 
+
 @State
 def NmlAtkBackThrow():
 
@@ -3265,6 +3421,7 @@ def NmlAtkBackThrow():
     sprite('az310_04', 9)
     sprite('az310_05', 5)
     sprite('az310_06', 5)
+
 
 @State
 def BackThrowExe():
@@ -3340,6 +3497,7 @@ def BackThrowExe():
     sprite('az313_09', 3)
     sprite('az313_10', 3)
 
+
 @State
 def NmlAtkAirThrow():
 
@@ -3357,6 +3515,7 @@ def NmlAtkAirThrow():
     sprite('az320_05', 3)
     sprite('az320_06', 4)
     sprite('az320_07', 4)
+
 
 @State
 def AirThrowExe():
@@ -3376,8 +3535,8 @@ def AirThrowExe():
         StarterRating(2)
         OppPositionOnHit(1, 10000, 0)
         ForcedLandingRecovery(0, 0)
-        clearUponHandler(2)
-        sendToLabelUpon(2, 9)
+        clearUponHandler(LANDING)
+        uponSendToLabel(LANDING, 9)
     sprite('az320_02', 3)
     OppThrowAnimation(9, 0)
     OppThrowPosition(0, 5, 5, 0, 0)
@@ -3388,9 +3547,9 @@ def AirThrowExe():
     OppThrowAnimation(25, 0)
     OppThrowPosition(0, 0, 0, 0, 0)
     SetZLine(0, 50)
-    ApplyFunctionsToObjects(22)
-    Flip()
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Flip()
     physicsXImpulse(3000)
     physicsYImpulse(28000)
     setGravity(1500)
@@ -3431,6 +3590,7 @@ def AirThrowExe():
     sprite('az321_11', 3)
     sprite('az321_12', 3)
     sprite('az321_13', 3)
+
 
 @State
 def AZcombo1():
@@ -3478,6 +3638,7 @@ def AZcombo1():
     sprite('az400_09', 2)
     sprite('az400_10', 2)
     sprite('az400_11', 2)
+
 
 @State
 def AZcombo2():
@@ -3528,6 +3689,7 @@ def AZcombo2():
     sprite('az401_08', 3)
     sprite('az401_09', 3)
     SetYCollisionFromOrigin(-1)
+
 
 @State
 def AZcombo3():
@@ -3586,6 +3748,7 @@ def AZcombo3():
     sprite('az402_15', 3)
     SetYCollisionFromOrigin(-1)
 
+
 @State
 def DustAttack():
 
@@ -3635,7 +3798,7 @@ def DustAttack():
     GuardpointHitstop(-2, -1)
     sprite('az403_04', 2)
     sprite('az403_04', 1)
-    sendToLabelUpon(26, 0)
+    uponSendToLabel(RELEASE_D, 0)
     sprite('az403_02', 3)
     sprite('az403_03', 3)
     sprite('az403_04', 3)
@@ -3652,7 +3815,7 @@ def DustAttack():
     FatalCounter(1)
     CounterHitSetting(2)
     label(0)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     sprite('az403_05', 3)
     setInvincible(0)
     DespawnEAEffect('azef_dustattack_hold')
@@ -3683,6 +3846,7 @@ def DustAttack():
     sprite('az403_15', 3)
     sprite('az403_16', 3)
 
+
 @State
 def HomingJump():
 
@@ -3700,14 +3864,14 @@ def HomingJump():
     physicsXImpulse(10000)
     physicsYImpulse(40000)
     setGravity(850)
-    SLOT_67 = SLOT_20
-    if (SLOT_67 > 420000):
+    SLOT_67 = SLOT_YRelativeToOpponent
+    if SLOT_67 > 420000:
         physicsYImpulse(44000)
-    SLOT_67 = SLOT_20
-    if (SLOT_67 > 450000):
+    SLOT_67 = SLOT_YRelativeToOpponent
+    if SLOT_67 > 450000:
         physicsYImpulse(48000)
     SLOT_68 = SLOT_19
-    if (SLOT_68 > 380000):
+    if SLOT_68 > 380000:
         physicsXImpulse(12000)
     WhiffCancel('NmlAtkAIR5A')
     WhiffCancel('NmlAtkAIR5B')
@@ -3762,6 +3926,7 @@ def HomingJump():
     sprite('az020_07', 3)
     sprite('az020_08', 3)
 
+
 @State
 def VanishingAttack():
 
@@ -3813,7 +3978,7 @@ def VanishingAttack():
     sprite('az404_01', 3)
     sprite('az404_02', 2)
     sprite('az404_02', 1)
-    sendToLabelUpon(26, 0)
+    uponSendToLabel(RELEASE_D, 0)
     sprite('az404_03', 3)
     sprite('az404_01', 3)
     PrivateSE('azse_11')
@@ -3830,12 +3995,12 @@ def VanishingAttack():
     AttackP2(80)
     FatalCounter(1)
     CounterHitSetting(2)
-    Comment('VanishingAttack_Tame')
+    GotoState('VanishingAttack_Tame')
     label(0)
-    clearUponHandler(26)
+    clearUponHandler(RELEASE_D)
     sprite('az404_04', 3)
     setInvincible(0)
-    PassbackAddActionMarkToFunction('404tame', 32)
+    TriggerUponForState('404tame', 32)
     sprite('az404_05', 3)
     PrivateSE('azse_14')
     CreateObject('404swing', -1)
@@ -3860,17 +4025,19 @@ def VanishingAttack():
     sprite('az404_16', 4)
     sprite('az404_17', 4)
 
+
 @State
 def BoostDashStart():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackOff()
-        if (not SLOT_4):
+        if not SLOT_4:
             if SLOT_60:
                 SLOT_4 = 90
     sprite('az035_00', 1)
     enterState('BoostDash')
+
 
 @State
 def BoostDash():
@@ -3942,6 +4109,7 @@ def BoostDash():
     sprite('az035_02', 2)
     sprite('az035_03', 2)
 
+
 @State
 def Assault():
 
@@ -3962,17 +4130,17 @@ def Assault():
         CHStagger(50)
         CHCrumple(40)
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_51:
-                if (SLOT_19 < 400000):
+                if SLOT_19 < 400000:
                     sendToLabel(0)
                     SLOT_51 = 0
 
         def upon_OPPONENT_HIT():
             CommonSE('025_cleanhit_grap')
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
-            if (SLOT_19 < 200000):
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
+            if SLOT_19 < 200000:
                 PushbackX(52000)
             else:
                 SetInertia(10000)
@@ -3999,7 +4167,7 @@ def Assault():
     sprite('az405_06', 1)
     label(0)
     DespawnEAEffect('405smoke')
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     sprite('az405_07', 1)
     CommonSE('005_swing_grap_2_2')
     PrivateSE('azse_05')
@@ -4009,9 +4177,9 @@ def Assault():
     StartMultihit()
     XImpulseAcceleration(50)
     CreateObject('405punch', -1)
-    ApplyFunctionsToObjects(1)
-    AddX(80000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        AddX(80000)
     CreateParticle('azef_blood_01', 0)
     CreateParticle('azef_blood_01', 1)
     CreateParticle('azef_blood_01', 2)
@@ -4030,6 +4198,7 @@ def Assault():
     sprite('az405_15', 4)
     sprite('az405_16', 3)
 
+
 @State
 def Shinkyaku():
 
@@ -4040,7 +4209,7 @@ def Shinkyaku():
         setInvincible(1)
         GuardPoint_(1)
         GuardpointHitstop(-2, -1)
-        if (SLOT_4 > 1):
+        if SLOT_4 > 1:
             HitCancel('BoostDash')
     sprite('az406_00', 4)
     sprite('az406_01', 2)
@@ -4054,8 +4223,8 @@ def Shinkyaku():
     physicsYImpulse(30000)
     setGravity(2800)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         sendToLabel(0)
     loopRest()
     label(0)
@@ -4064,7 +4233,7 @@ def Shinkyaku():
     Voiceline('az206')
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(9)
     sprite('az406_07', 2)
     sprite('az406_08', 2)
@@ -4072,7 +4241,7 @@ def Shinkyaku():
     PerGravity(400)
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(9)
     loopRest()
     label(9)
@@ -4087,6 +4256,7 @@ def Shinkyaku():
     sprite('az406_13', 2)
     sprite('az406_14', 2)
 
+
 @State
 def Oiuchi():
 
@@ -4095,7 +4265,7 @@ def Oiuchi():
         AttackLevel_(3)
         Damage(600)
         setInvincible(1)
-        if (SLOT_4 > 1):
+        if SLOT_4 > 1:
             HitCancel('BoostDash')
     sprite('az406_00', 2)
     sprite('az406_01', 2)
@@ -4104,16 +4274,16 @@ def Oiuchi():
     sprite('az406_04', 2)
     sprite('az406_05', 32767)
     SLOT_67 = SLOT_19
-    if (SLOT_67 > 750000):
+    if SLOT_67 > 750000:
         SLOT_67 = 750000
-    SLOT_12 = SLOT_67
+    SLOT_XVelocity = SLOT_67
     XImpulseAcceleration(5)
     setInvincible(0)
     physicsYImpulse(40000)
     setGravity(4500)
 
-    def upon_4():
-        clearUponHandler(4)
+    def upon_FALLING():
+        clearUponHandler(FALLING)
         sendToLabel(0)
     loopRest()
     label(0)
@@ -4121,7 +4291,7 @@ def Oiuchi():
     Voiceline('az206')
 
     def upon_LANDING():
-        clearUponHandler(2)
+        clearUponHandler(LANDING)
         sendToLabel(9)
     PushCollisionHeightLow(80000)
     sprite('az406_07', 2)
@@ -4141,6 +4311,7 @@ def Oiuchi():
     sprite('az406_13', 6)
     sprite('az406_14', 7)
 
+
 @State
 def ShotAtemi():
 
@@ -4158,21 +4329,21 @@ def ShotAtemi():
 
         def upon_GUARDPOINT_ACTIVATION():
             if GuardpointProjectileCheck():
-                SLOT_59 = (SLOT_59 + 1)
-                if (SLOT_59 >= 3):
+                SLOT_59 = SLOT_59 + 1
+                if SLOT_59 >= 3:
                     SLOT_59 = 3
                 sendToLabel(0)
                 PrivateSE('azse_04')
                 EndSE()
                 SpecificInvincibility(1, 1, 1, 1, 1)
                 DollInvincibility(1)
-                if (not CheckObjectPresence(7)):
+                if not CheckObjectPresence(7):
                     CreateObject('407Kyushu', -1)
                     RegisterObject(7, 1)
             else:
                 pass
 
-        def upon_FRAME_STEP():
+        def upon_EVERY_FRAME():
             if SLOT_59:
                 callSubroutine('CheckShotCatch')
 
@@ -4204,7 +4375,7 @@ def ShotAtemi():
     sprite('az407_05', 4)
     sprite('az407_02', 4)
     sprite('az407_03', 4)
-    sendToLabelUpon(24, 1)
+    uponSendToLabel(RELEASE_B, 1)
     sprite('az407_04', 4)
     sprite('az407_05', 3)
     sprite('az407_05', 1)
@@ -4223,11 +4394,11 @@ def ShotAtemi():
     sprite('az407_02', 4)
     sprite('az407_03', 4)
     sprite('az407_04', 4)
-    PassbackAddActionMarkToFunction('407aura', 32)
+    TriggerUponForState('407aura', 32)
     sprite('az407_05', 4)
     gotoLabel(1)
     label(0)
-    clearUponHandler(24)
+    clearUponHandler(RELEASE_B)
     sprite('az407_06', 5)
     WhiffCancelEnable(1)
     WhiffCancel('Baigaeshi')
@@ -4237,14 +4408,14 @@ def ShotAtemi():
     SmartVoiceline('az208')
     GuardPoint_(0)
     sprite('az407_10', 5)
-    PassbackAddActionMarkToFunction('407aura', 32)
+    TriggerUponForState('407aura', 32)
     sprite('az407_02', 3)
     sprite('az407_01', 3)
     gotoLabel(2)
     label(1)
-    clearUponHandler(24)
+    clearUponHandler(RELEASE_B)
     sprite('az407_02', 4)
-    PassbackAddActionMarkToFunction('407aura', 32)
+    TriggerUponForState('407aura', 32)
     setInvincible(0)
     EndSE()
     sprite('az407_01', 3)
@@ -4253,12 +4424,13 @@ def ShotAtemi():
     label(2)
     sprite('az407_00', 3)
 
+
 @State
 def Baigaeshi():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        if (SLOT_4 > 1):
+        if SLOT_4 > 1:
             HitCancel('BoostDash')
     sprite('az408_00', 2)
     sprite('az408_01', 2)
@@ -4267,10 +4439,10 @@ def Baigaeshi():
     SmartVoiceline('az209')
     CreateObject('408sphereStart', -1)
     CreateObject('408sphere', -1)
-    if (SLOT_59 >= 1):
+    if SLOT_59 >= 1:
         RegisterObject(6, 1)
         ObjectUpon(6, 32)
-        SLOT_59 = (SLOT_59 + (-1))
+        SLOT_59 = SLOT_59 + -1
     if PreviousStateCheck('ShotAtemi'):
         ObjectUpon(6, 33)
     sprite('az408_03', 3)
@@ -4280,6 +4452,7 @@ def Baigaeshi():
     sprite('az408_07', 3)
     sprite('az408_08', 2)
     sprite('az408_09', 2)
+
 
 @State
 def Dunk():
@@ -4299,7 +4472,7 @@ def Dunk():
         StarterRating(0)
         Hitstop(14)
 
-        def upon_ON_HIT_OR_BLOCK():
+        def upon_OPPONENT_HIT_OR_BLOCK():
             XImpulseAcceleration(60)
 
         def upon_OPPONENT_HIT():
@@ -4337,7 +4510,7 @@ def Dunk():
     XImpulseAcceleration(20)
     setGravity(3000)
 
-    def upon_FRAME_STEP():
+    def upon_EVERY_FRAME():
         if CheckInput(0x79):
             XSpeed(200)
     sprite('az409_08', 2)
@@ -4350,7 +4523,7 @@ def Dunk():
     Voiceline('az219')
     CreateObject('azef_409_fall', 0)
     physicsYImpulse(-38000)
-    clearUponHandler(3)
+    clearUponHandler(EVERY_FRAME)
     RefreshMultihit()
     AttackP1(80)
     GroundedHitstunAnimation(11)
@@ -4396,6 +4569,7 @@ def Dunk():
     sprite('az409_20', 3)
     sprite('az409_21', 3)
 
+
 @State
 def Hikou():
 
@@ -4418,10 +4592,10 @@ def Hikou():
         OppPositionOnHit(1, 110000, 0)
 
         def upon_OPPONENT_HIT():
-            SLOT_51 = SLOT_126
+            SLOT_51 = SLOT_IsOppAirborne
             ForceFaceSprite()
             EnableRapidCancel(0)
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             sendToLabel(0)
         setInvincible(1)
     sprite('az430_00', 5)
@@ -4477,7 +4651,7 @@ def Hikou():
     sprite('az430_18', 3)
     sprite('az430_18', 3)
     ScreenShake(25000, 0)
-    PassbackAddActionMarkToFunction('430aura', 32)
+    TriggerUponForState('430aura', 32)
     sprite('az430_19', 5)
     XSpeed(90000)
     sprite('az430_20', 3)
@@ -4547,6 +4721,7 @@ def Hikou():
     sprite('az430_30', 4)
     Voiceline('az254')
 
+
 @State
 def Hikou_OD():
 
@@ -4570,10 +4745,10 @@ def Hikou_OD():
         AttackType(4)
 
         def upon_OPPONENT_HIT():
-            SLOT_51 = SLOT_126
+            SLOT_51 = SLOT_IsOppAirborne
             ForceFaceSprite()
             EnableRapidCancel(0)
-            clearUponHandler(12)
+            clearUponHandler(OPPONENT_HIT)
             sendToLabel(0)
         setInvincible(1)
     sprite('az430_00', 5)
@@ -4629,7 +4804,7 @@ def Hikou_OD():
     sprite('az430_18', 3)
     sprite('az430_18', 3)
     ScreenShake(25000, 0)
-    PassbackAddActionMarkToFunction('430aura', 32)
+    TriggerUponForState('430aura', 32)
     sprite('az430_19', 5)
     XSpeed(90000)
     sprite('az430_20', 3)
@@ -4706,6 +4881,7 @@ def Hikou_OD():
     sprite('az430_29', 4)
     sprite('az430_30', 4)
     Voiceline('az254')
+
 
 @State
 def SuperPunch():
@@ -4828,6 +5004,7 @@ def SuperPunch():
     sprite('az431_27', 6)
     sprite('az431_28', 6)
 
+
 @State
 def SuperPunch_OD():
 
@@ -4940,7 +5117,7 @@ def SuperPunch_OD():
     ScreenShake(25000, 0)
     CommonSE('019_quake_1')
     CommonSE('019_quake_0')
-    PassbackAddActionMarkToFunction('431ODAura', 32)
+    TriggerUponForState('431ODAura', 32)
     sprite('az431_13', 4)
     sprite('az431_14', 4)
     sprite('az431_15', 4)
@@ -4977,6 +5154,7 @@ def SuperPunch_OD():
     sprite('az431_27', 6)
     sprite('az431_28', 6)
 
+
 @State
 def AstralHeat():
 
@@ -5010,68 +5188,68 @@ def AstralHeat():
         def upon_OPPONENT_HIT():
             enterState('AstralHeatExe')
             AstralHeatCleanup(1, 1)
-sprite('az450_00', 3)
-CreateObject('AHaura', -1)
-Voiceline('az290')
-sprite('az450_01', 3)
-CreateObject('IrezumiRay', -1)
-sprite('az450_01_a', 45)
-DistortionSettings(55, -1, 2)
-EmptyHeat()
-E0EAEffect('aura', 65535)
-CreateObject('EMB_AZ_AH', -1)
-sprite('az450_02', 3)
-sprite('az450_03', 3)
-PassbackAddActionMarkToFunction('AHaura', 32)
-sprite('az450_04', 3)
-sprite('az450_05', 3)
-sprite('az450_06', 3)
-sprite('az450_07', 4)
-PrivateSE('azse_07')
-PrivateSE('azse_07')
-PrivateSE('azse_05')
-CreateObject('nepparock', -1)
-CreateObject('450swing', -1)
-ScreenShake(25000, 0)
-StartMultihit()
-sprite('az450_08', 5)
-Voiceline('az291')
-CreateObject('450neppaMatome', -1)
-ScreenShake(25000, 0)
-sprite('az450_09', 5)
-ScreenShake(25000, 0)
-sprite('az450_10', 5)
-ScreenShake(25000, 0)
-sprite('az450_11', 5)
-AttackOff()
-setInvincible(0)
-sprite('az450_08', 5)
-sprite('az450_09', 5)
-sprite('az450_10', 5)
-sprite('az450_11', 5)
-sprite('az450_08', 5)
-AttackOff()
-sprite('az450_09', 5)
-sprite('az450_10', 5)
-sprite('az450_11', 5)
-sprite('az450_36', 7)
-Recovery()
-sprite('az450_37', 7)
-sprite('az450_38', 7)
-sprite('az450_39', 6)
-sprite('az450_40', 7)
-sprite('az450_41', 7)
-sprite('az450_42', 6)
-CommonSE('004_swing_grap_1_0')
-sprite('az450_43', 6)
-sprite('az450_44', 6)
-sprite('az450_42', 6)
-sprite('az450_43', 6)
-CommonSE('004_swing_grap_1_0')
-sprite('az450_44', 6)
-sprite('az450_45', 6)
-AddX(-68000)
-endState()
+    sprite('az450_00', 3)
+    CreateObject('AHaura', -1)
+    Voiceline('az290')
+    sprite('az450_01', 3)
+    CreateObject('IrezumiRay', -1)
+    sprite('az450_01_a', 45)
+    DistortionSettings(55, -1, 2)
+    EmptyHeat()
+    E0EAEffect('aura', 65535)
+    CreateObject('EMB_AZ_AH', -1)
+    sprite('az450_02', 3)
+    sprite('az450_03', 3)
+    TriggerUponForState('AHaura', 32)
+    sprite('az450_04', 3)
+    sprite('az450_05', 3)
+    sprite('az450_06', 3)
+    sprite('az450_07', 4)
+    PrivateSE('azse_07')
+    PrivateSE('azse_07')
+    PrivateSE('azse_05')
+    CreateObject('nepparock', -1)
+    CreateObject('450swing', -1)
+    ScreenShake(25000, 0)
+    StartMultihit()
+    sprite('az450_08', 5)
+    Voiceline('az291')
+    CreateObject('450neppaMatome', -1)
+    ScreenShake(25000, 0)
+    sprite('az450_09', 5)
+    ScreenShake(25000, 0)
+    sprite('az450_10', 5)
+    ScreenShake(25000, 0)
+    sprite('az450_11', 5)
+    AttackOff()
+    setInvincible(0)
+    sprite('az450_08', 5)
+    sprite('az450_09', 5)
+    sprite('az450_10', 5)
+    sprite('az450_11', 5)
+    sprite('az450_08', 5)
+    AttackOff()
+    sprite('az450_09', 5)
+    sprite('az450_10', 5)
+    sprite('az450_11', 5)
+    sprite('az450_36', 7)
+    Recovery()
+    sprite('az450_37', 7)
+    sprite('az450_38', 7)
+    sprite('az450_39', 6)
+    sprite('az450_40', 7)
+    sprite('az450_41', 7)
+    sprite('az450_42', 6)
+    CommonSE('004_swing_grap_1_0')
+    sprite('az450_43', 6)
+    sprite('az450_44', 6)
+    sprite('az450_42', 6)
+    sprite('az450_43', 6)
+    CommonSE('004_swing_grap_1_0')
+    sprite('az450_44', 6)
+    sprite('az450_45', 6)
+    AddX(-68000)
+
 
 @State
 def AstralHeatExe():
@@ -5092,9 +5270,9 @@ def AstralHeatExe():
         HUDVisibillity(1)
         AttackOff()
     sprite('az450_08', 5)
-    ApplyFunctionsToObjects(22)
-    RenderLayer(1)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        RenderLayer(1)
     sprite('az450_09', 5)
     sprite('az450_10', 5)
     sprite('az450_11', 5)
@@ -5106,9 +5284,9 @@ def AstralHeatExe():
     sprite('az450_13', 8)
     sprite('az450_14', 10)
     ScreenShake(25000, 0)
-    ApplyFunctionsToObjects(22)
-    AddY(-15000)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AddY(-15000)
     PrivateSE('azse_08')
     CommonSE('019_quake_1')
     CommonSE('019_quake_0')
@@ -5214,11 +5392,11 @@ def AstralHeatExe():
     PrivateSE('azse_07')
     PrivateSE('azse_07')
     sprite('az450_22', 8)
-    ApplyFunctionsToObjects(22)
-    Visibility(1)
-    AbsoluteY(40000000)
-    setGravity(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        Visibility(1)
+        AbsoluteY(40000000)
+        setGravity(0)
     sprite('az450_23', 7)
     sprite('az450_24', 7)
     sprite('az450_25', 7)
@@ -5229,12 +5407,12 @@ def AstralHeatExe():
     sprite('az450_28', 6)
     Unknown20010(-4075, -50, 0)
     XPositionRelativeFacing(0)
-    ApplyFunctionsToObjects(22)
-    AbsoluteY(0)
-    EnableCollision(0)
-    WallCollisionDetection(0)
-    ScreenCollision(0)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_22():
+        AbsoluteY(0)
+        EnableCollision(0)
+        WallCollisionDetection(0)
+        ScreenCollision(0)
     sprite('az450_29', 6)
     sprite('az450_30', 6)
     sprite('az450_31', 6)
@@ -5313,6 +5491,7 @@ def AstralHeatExe():
     Unknown20010(-16000, 0, 0)
     loopRest()
 
+
 @State
 def RlAstralDamage():
 
@@ -5320,7 +5499,7 @@ def RlAstralDamage():
         ScriptEndGroundBounce_()
         EnableCollision(0)
 
-        def upon_PLAYER_HIT():
+        def upon_14():
             Voiceline('az054')
     sprite('az900_00', 32767)
     EnableCollision(0)
@@ -5335,6 +5514,7 @@ def RlAstralDamage():
     EndMomentum(1)
     CreateObject('azef_rlah_circle', 0)
     loopRest()
+
 
 @State
 def AmAstralDamage():
@@ -5355,11 +5535,12 @@ def AmAstralDamage():
     physicsYImpulse(150)
     gotoLabel(0)
 
+
 @State
 def BurstDD():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(300)
@@ -5376,10 +5557,10 @@ def BurstDD():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -5404,11 +5585,12 @@ def BurstDD():
     sprite('az313_09ex01', 3)
     sprite('az313_10ex01', 4)
 
+
 @State
 def BurstDD_Easy():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage1ExceedAccel('')
+        AttackDefaults_Stage1ExceedAccel()
         AirHitstunAnimation(2)
         GroundedHitstunAnimation(2)
         Stagger(300)
@@ -5425,10 +5607,10 @@ def BurstDD_Easy():
             enterState('BurstDDAdd')
             SetBackground(1)
 
-        def upon_OPPONENT_BLOCK():
+        def upon_OPPONENT_BLOCKS():
             PushbackX(39900)
 
-        def upon_OPPONENT_HIT_OR_BLOCK():
+        def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
             ScreenShake(10000, 50000)
 
         def upon_STATE_END():
@@ -5455,11 +5637,12 @@ def BurstDD_Easy():
     sprite('az313_09ex01', 3)
     sprite('az313_10ex01', 4)
 
+
 @State
 def BurstDDAdd():
 
     def upon_IMMEDIATE():
-        AttackDefaults_Stage2ExceedAccel('')
+        AttackDefaults_Stage2ExceedAccel()
         AttackLevel_(5)
         Damage(600)
         AirHitstunAnimation(17)
@@ -5500,7 +5683,7 @@ def BurstDDAdd():
     CreateObject('BrustDD_SlashEff', -1)
     physicsXImpulse(0)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         ScreenShake(5000, 50000)
     sprite('az401_04ex01', 4)
     sprite('az401_05ex01', 4)
@@ -5571,7 +5754,7 @@ def BurstDDAdd():
     HardKnockdown(1)
     DefeatOpponentBehavior(0)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         ScreenShake(10000, 100000)
     CommonSE('025_cleanhit_grap')
     CommonSE('025_cleanhit_grap')
@@ -5609,7 +5792,7 @@ def BurstDDAdd():
     PrivateSE('azse_02')
     PrivateSE('azse_07')
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         ScreenShake(5000, 50000)
     sprite('az401_04ex01', 4)
     sprite('az401_05ex01', 4)
@@ -5700,14 +5883,14 @@ def BurstDDAdd():
     HardKnockdown(1)
     DefeatOpponentBehavior(0)
 
-    def upon_OPPONENT_HIT_OR_BLOCK():
+    def upon_OPPONENT_CHAR_HIT_OR_BLOCK():
         ScreenShake(10000, 100000)
     CommonSE('025_cleanhit_grap')
     CommonSE('025_cleanhit_grap')
     sprite('az440_18', 3)
     ScreenCollision(1)
     WallCollisionDetection(1)
-    PassbackAddActionMarkToFunction('440Aura', 32)
+    TriggerUponForState('440Aura', 32)
     CameraPosition(1000)
     physicsYImpulse(1000)
     sprite('az440_19', 3)
@@ -5724,10 +5907,10 @@ def BurstDDAdd():
     label(1)
     sprite('az020_04', 4)
     ForceFaceSprite()
-    clearUponHandler(2)
-    sendToLabelUpon(2, 9)
-    if (SLOT_23 <= 10000):
-        SLOT_23 = 10000
+    clearUponHandler(LANDING)
+    uponSendToLabel(LANDING, 9)
+    if SLOT_YDistanceFromFloor <= 10000:
+        SLOT_YDistanceFromFloor = 10000
     physicsYImpulse(10000)
     EndYPhysicsImpulse()
     PerGravity(150)
@@ -5740,7 +5923,7 @@ def BurstDDAdd():
     gotoLabel(101)
     label(9)
     sprite('az024_00', 4)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     EndMomentum(1)
     sprite('az024_01', 4)
@@ -5748,86 +5931,302 @@ def BurstDDAdd():
     sprite('az024_03', 4)
     sprite('az024_04', 4)
 
+
 @Subroutine
 def MouthTableInit():
-    Unknown18011('az000', 14177, 14179, 14177, 12899, 24880, 25399, 24887, 25399, 24887, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az055', 14177, 14179, 14177, 14179, 13665, 13667, 13665, 13667, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 12641, 25394, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az401', 14177, 14179, 13409, 13411, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az405', 13153, 25392, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az406', 14435, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az450', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az407', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az412', 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25392, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az413', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az414', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az415', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    Unknown18011('az417', 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az000', 14177, 14179, 14177, 12899, 24880, 25399, 24887, 
+        25399, 24887, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az055', 14177, 14179, 14177, 14179, 13665, 13667, 13665, 
+        13667, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+        14435, 14433, 14435, 12641, 25394, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az401', 14177, 14179, 13409, 13411, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+        14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az405', 13153, 25392, 12340, 14177, 14179, 14177, 14179, 
+        14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az406', 14435, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('az450', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+        14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az407', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('az408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('az411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('az412', 14177, 14179, 14177, 14179, 14177, 14179, 12641, 
+        25392, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az413', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+        14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+        14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az414', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('az415', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+        14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Unknown18011('az416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0)
+    Unknown18011('az417', 14177, 14179, 14177, 14179, 14177, 13667, 24880, 
+        25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 
+        24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0)
     if SLOT_44:
-        Unknown18011('az000', 14177, 14179, 14177, 12899, 24880, 25399, 24887, 25399, 24887, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az400', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az401', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24882, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az404', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az405', 12643, 24880, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az406', 14435, 12641, 12341, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az407', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az412', 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az413', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 24885, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az414', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az415', 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Unknown18011('az417', 12643, 12341, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    if (not SLOT_86):
+        Unknown18011('az000', 14177, 14179, 14177, 12899, 24880, 25399, 
+            24887, 25399, 24887, 25400, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az400', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 14435, 14433, 14435, 14177, 14179, 14177, 14179, 12641, 
+            25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az401', 13921, 13923, 13921, 13923, 13921, 13923, 
+            13921, 13411, 24882, 25399, 24887, 25399, 24887, 25399, 55, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0)
+        Unknown18011('az404', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+            14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az405', 12643, 24880, 25400, 24888, 25400, 24888, 
+            25400, 24888, 25400, 24888, 25400, 24888, 25400, 24888, 25400, 
+            56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az406', 14435, 12641, 12341, 12643, 48, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az407', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az408', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az411', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az412', 14433, 14435, 14433, 14435, 14433, 14435, 
+            14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+            14435, 14433, 14435, 14433, 14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az413', 14177, 14179, 14177, 14179, 14177, 14179, 
+            14177, 14179, 24885, 25400, 24888, 25400, 24888, 25400, 24888, 
+            25400, 24888, 25400, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az414', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az415', 14177, 14179, 14177, 14179, 14177, 13923, 
+            24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 
+            25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az416', 13923, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('az417', 12643, 12341, 14433, 14435, 14433, 14435, 
+            14433, 14435, 14433, 14435, 14433, 14435, 14433, 14435, 14433, 
+            14435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0)
+    if not SLOT_86:
         if CharacterIDCheck('tg'):
-            Unknown18011('az000', 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('az400', 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('az401', 12643, 24880, 12337, 12643, 24880, 12337, 14691, 24880, 12338, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 12339, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az000', 12641, 25392, 12337, 12641, 25392, 12337,
+                12641, 25392, 12337, 12641, 25392, 12337, 12641, 25392, 
+                12337, 12641, 25392, 12337, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az400', 12643, 24880, 12337, 12643, 24880, 12337,
+                12643, 24880, 12337, 12643, 24880, 12337, 12643, 24880, 
+                12337, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az401', 12643, 24880, 12337, 12643, 24880, 12337,
+                14691, 24880, 12338, 12643, 24880, 12337, 12643, 24880, 
+                12337, 12643, 24880, 12337, 12643, 24880, 12337, 12643, 
+                24880, 12339, 12643, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('rg'):
             if SLOT_138:
-                Unknown18011('az500', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14691, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('az501', 14433, 14179, 14433, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25401, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az500', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14691, 24880, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az501', 14433, 14179, 14433, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25401, 24887,
+                    25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             else:
-                Unknown18011('az500', 14433, 14435, 14433, 14435, 14433, 13923, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25398, 24886, 25398, 24886, 25398, 24886, 25398, 24886, 12337, 13923, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('az501', 14177, 14179, 12641, 25392, 12343, 12897, 25392, 24887, 12337, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az500', 14433, 14435, 14433, 14435, 14433, 
+                    13923, 24885, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25398, 24886,
+                    25398, 24886, 25398, 24886, 25398, 24886, 12337, 13923,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az501', 14177, 14179, 12641, 25392, 12343, 
+                    12897, 25392, 24887, 12337, 14179, 14177, 14179, 14177,
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0)
         if CharacterIDCheck('tg'):
-            Unknown18011('az510', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24885, 25399, 12342, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('az511', 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12342, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az510', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 13667, 24885, 25399, 12342, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az511', 14177, 13923, 24880, 25399, 24887, 25399,
+                24887, 25399, 24887, 25399, 24887, 25399, 12342, 14177, 
+                14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('bn'):
-            Unknown18011('az516', 12641, 25394, 12342, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 13923, 14433, 12643, 12336, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('az517', 12643, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az516', 12641, 25394, 12342, 14433, 13923, 14433,
+                13923, 14433, 13923, 14433, 13923, 14433, 12643, 12336, 
+                14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az517', 12643, 12338, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('kg'):
-            Unknown18011('az546', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 12342, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('az547', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az546', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 
+                12342, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az547', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0)
         if CharacterIDCheck('kk'):
-            Unknown18011('az548', 12641, 25392, 24886, 12337, 13923, 12641, 25392, 24886, 12337, 14435, 24880, 25400, 24886, 25400, 24886, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('az549', 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az548', 12641, 25392, 24886, 12337, 13923, 12641,
+                25392, 24886, 12337, 14435, 24880, 25400, 24886, 25400, 
+                24886, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az549', 13921, 13923, 13921, 13923, 13921, 13923,
+                13921, 13923, 13921, 13411, 24885, 25398, 24886, 25398, 
+                24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             if SLOT_140:
-                Unknown18011('az548', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('az549', 12643, 12342, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 24885, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az548', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177,
+                    13923, 24885, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az549', 12643, 12342, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 13155, 24885,
+                    25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('mi'):
             if SLOT_138:
                 pass
             else:
-                Unknown18011('az562', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13667, 24884, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12345, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                Unknown18011('az563', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az562', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 14179, 14177, 13667, 24884,
+                    25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887,
+                    25399, 24887, 25399, 12345, 14177, 14179, 14177, 14179,
+                    14177, 14179, 14177, 14179, 14177, 13411, 24880, 25399,
+                    24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                Unknown18011('az563', 14177, 14179, 14177, 14179, 14177, 
+                    14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887,
+                    25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 if SLOT_140:
-                    Unknown18011('az562', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-                    Unknown18011('az563', 14177, 14179, 13921, 13923, 13921, 13923, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25398, 24886, 25398, 24886, 25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('az562', 14177, 14179, 14177, 14179, 14177,
+                        14179, 14177, 14179, 14177, 14179, 14177, 14179, 
+                        14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                        14179, 14177, 14179, 14177, 13923, 24880, 25399, 
+                        24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    Unknown18011('az563', 14177, 14179, 13921, 13923, 13921,
+                        13923, 24880, 25399, 24887, 25399, 24887, 25399, 
+                        24887, 25399, 24887, 25398, 24886, 25398, 24886, 
+                        25398, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         if CharacterIDCheck('su'):
-            Unknown18011('az564', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14691, 24882, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-            Unknown18011('az565', 14177, 14179, 14177, 14179, 14177, 13667, 24880, 25399, 24887, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            Unknown18011('az564', 14177, 14179, 14177, 14179, 14177, 14179,
+                14177, 14179, 14177, 14691, 24882, 25399, 24887, 25399, 
+                24887, 25399, 24887, 25399, 12340, 14177, 14179, 14177, 
+                14179, 14177, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0)
+            Unknown18011('az565', 14177, 14179, 14177, 14179, 14177, 13667,
+                24880, 25399, 24887, 25399, 24887, 25399, 12340, 14177, 
+                14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 
+                14179, 14177, 14179, 14177, 14179, 12641, 25394, 55, 0, 0, 
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 
 @State
 def CmnActEntry():
     if SLOT_86:
-        _gotolabel(482)
-    if Unknown60('rg'):
+        conditionalSendToLabel(482)
+    if CharacterIDCheck('su'):
         SyncEntry()
         if SLOT_138:
             gotoLabel(100)
@@ -5858,18 +6257,16 @@ def CmnActEntry():
         SyncEntry()
         gotoLabel(420)
     label(482)
-    random_(2, 0, 34)
-    if SLOT_0:
-        _gotolabel(10)
-    random_(2, 0, 60)
-    if SLOT_0:
-        _gotolabel(20)
+    if random_(2, 0, 34):
+        conditionalSendToLabel(10)
+    if random_(2, 0, 60):
+        conditionalSendToLabel(20)
     label(0)
     sprite('az600_00', 7)
     sprite('az600_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('az600_01', 7)
     sprite('az600_02', 7)
     sprite('az600_03', 7)
@@ -5900,7 +6297,7 @@ def CmnActEntry():
     sprite('az601_00', 7)
     loopRest()
     if SLOT_17:
-        _gotolabel(10)
+        conditionalSendToLabel(10)
     sprite('az601_00', 90)
     Voiceline('az414')
     sprite('az601_01', 7)
@@ -5929,7 +6326,7 @@ def CmnActEntry():
     sprite('az601_00', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(20)
+        conditionalSendToLabel(20)
     sprite('az601_00', 130)
     Voiceline('az416')
     sprite('az601_01', 7)
@@ -5961,7 +6358,7 @@ def CmnActEntry():
     label(101)
     sprite('null', 1)
     if SLOT_17:
-        _gotolabel(101)
+        conditionalSendToLabel(101)
     sprite('null', 15)
     sprite('null', 5)
     TeleportToObject(22)
@@ -6032,7 +6429,7 @@ def CmnActEntry():
     sprite('az402_15', 3)
     EndMomentum(1)
     XPositionRelativeFacing(-260000)
-    sendToLabelUpon(32, 103)
+    uponSendToLabel(32, 103)
     label(102)
     sprite('az000_00', 7)
     sprite('az000_01', 7)
@@ -6075,11 +6472,11 @@ def CmnActEntry():
     Visibility(1)
     XPositionRelativeFacing(-320000)
     AbsoluteY(700000)
-    sendToLabelUpon(32, 1101)
+    uponSendToLabel(32, 1101)
     loopRest()
     label(1101)
     sprite('az602_00', 2)
-    sendToLabelUpon(2, 1102)
+    uponSendToLabel(LANDING, 1102)
     Visibility(0)
     physicsYImpulse(-60000)
     setGravity(2500)
@@ -6088,7 +6485,7 @@ def CmnActEntry():
     sprite('az602_00', 6)
     label(1102)
     sprite('az602_02', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -6113,7 +6510,7 @@ def CmnActEntry():
     sprite('az404_02', 3)
     sprite('az404_03', 3)
     sprite('az404_04', 3)
-    PassbackAddActionMarkToFunction('404tame', 32)
+    TriggerUponForState('404tame', 32)
     sprite('az404_05', 3)
     PrivateSE('azse_14')
     CreateObject('404swing', -1)
@@ -6176,7 +6573,7 @@ def CmnActEntry():
     sprite('az000_09', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(1103)
+        conditionalSendToLabel(1103)
     sprite('az000_00', 7)
     sprite('az000_01', 7)
     sprite('az000_02', 7)
@@ -6196,10 +6593,10 @@ def CmnActEntry():
     AbsoluteY(700000)
     loopRest()
     if SLOT_17:
-        _gotolabel(150)
+        conditionalSendToLabel(150)
     sprite('null', 30)
     sprite('az602_00', 2)
-    sendToLabelUpon(2, 151)
+    uponSendToLabel(LANDING, 151)
     Visibility(0)
     physicsYImpulse(-40000)
     EndYPhysicsImpulse()
@@ -6207,7 +6604,7 @@ def CmnActEntry():
     sprite('az602_01', 6)
     label(151)
     sprite('az602_02', 6)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -6284,7 +6681,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
     label(180)
-    sendToLabelUpon(32, 182)
+    uponSendToLabel(32, 182)
     label(181)
     sprite('az600_00', 7)
     loopRest()
@@ -6315,20 +6712,20 @@ def CmnActEntry():
     ExitState()
     label(330)
     sprite('null', 1)
-    sendToLabelUpon(32, 331)
+    uponSendToLabel(32, 331)
     Visibility(1)
     XPositionRelativeFacing(-100000)
     AbsoluteY(700000)
     loopRest()
     if SLOT_17:
-        _gotolabel(330)
+        conditionalSendToLabel(330)
     sprite('null', 32767)
     loopRest()
     label(331)
     sprite('az409_14', 3)
     AttackDefaults_StandingSpecial()
     Visibility(0)
-    sendToLabelUpon(2, 333)
+    uponSendToLabel(LANDING, 333)
     CreateObject('azef_409_fall', 0)
     physicsYImpulse(-40000)
     setGravity(3000)
@@ -6417,14 +6814,14 @@ def CmnActEntry():
     sprite('az000_09', 7)
     loopRest()
     if SLOT_2:
-        _gotolabel(334)
+        conditionalSendToLabel(334)
     loopRest()
     ExitState()
     label(340)
     sprite('az600_00', 7)
     loopRest()
     if SLOT_17:
-        _gotolabel(340)
+        conditionalSendToLabel(340)
     sprite('az600_01', 7)
     sprite('az600_02', 7)
     sprite('az600_03', 7)
@@ -6453,11 +6850,11 @@ def CmnActEntry():
     AbsoluteY(700000)
     loopRest()
     if SLOT_17:
-        _gotolabel(2340)
+        conditionalSendToLabel(2340)
     sprite('null', 30)
     sprite('az602_00', 2)
-    sendToLabelUpon(2, 2341)
-    sendToLabelUpon(32, 2343)
+    uponSendToLabel(LANDING, 2341)
+    uponSendToLabel(32, 2343)
     Visibility(0)
     physicsYImpulse(-40000)
     EndYPhysicsImpulse()
@@ -6465,7 +6862,7 @@ def CmnActEntry():
     sprite('az602_01', 6)
     label(2341)
     sprite('az602_02', 6)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -6529,11 +6926,11 @@ def CmnActEntry():
     sprite('null', 6)
     loopRest()
     if SLOT_17:
-        _gotolabel(350)
+        conditionalSendToLabel(350)
     sprite('az602_00', 3)
     AbsoluteY(640000)
     physicsYImpulse(-52000)
-    sendToLabelUpon(2, 352)
+    uponSendToLabel(LANDING, 352)
     sprite('az602_01', 3)
     label(351)
     sprite('az602_00', 3)
@@ -6542,7 +6939,7 @@ def CmnActEntry():
     gotoLabel(351)
     label(352)
     sprite('az602_02', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -6651,19 +7048,19 @@ def CmnActEntry():
     ExitState()
     label(2350)
     sprite('null', 1)
-    sendToLabelUpon(32, 2356)
+    uponSendToLabel(32, 2356)
     Visibility(1)
     AbsoluteY(1000000)
     label(2351)
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(2351)
+        conditionalSendToLabel(2351)
     label(2352)
     sprite('null', 20)
     sprite('az409_14', 3)
     Visibility(0)
-    sendToLabelUpon(2, 2354)
+    uponSendToLabel(LANDING, 2354)
     CreateObject('azef_409_fall', 0)
     physicsYImpulse(-40000)
     setGravity(2000)
@@ -6734,12 +7131,12 @@ def CmnActEntry():
     sprite('null', 1)
     Visibility(1)
     AbsoluteY(700000)
-    sendToLabelUpon(2, 423)
+    uponSendToLabel(LANDING, 423)
     label(421)
     sprite('null', 1)
     loopRest()
     if SLOT_17:
-        _gotolabel(421)
+        conditionalSendToLabel(421)
     sprite('null', 30)
     sprite('az602_00', 3)
     Visibility(0)
@@ -6753,7 +7150,7 @@ def CmnActEntry():
     gotoLabel(422)
     label(423)
     sprite('az602_02', 3)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -6833,6 +7230,7 @@ def CmnActEntry():
     loopRest()
     ExitState()
 
+
 @State
 def CmnActRoundWin():
     sprite('az615_00', 6)
@@ -6855,26 +7253,24 @@ def CmnActRoundWin():
     sprite('az615_12', 32767)
     loopRest()
 
+
 @State
 def CmnActMatchWin():
     if SLOT_61:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     if SLOT_86:
-        _gotolabel(482)
+        conditionalSendToLabel(482)
     if CharacterIDCheck('rg'):
         if SLOT_138:
             gotoLabel(100)
         else:
             gotoLabel(1100)
-    CharacterIDCheck('tg')
-    if SLOT_0:
-        _gotolabel(150)
-    CharacterIDCheck('bn')
-    if SLOT_0:
-        _gotolabel(180)
-    CharacterIDCheck('kg')
-    if SLOT_0:
-        _gotolabel(330)
+    if CharacterIDCheck('tg'):
+        conditionalSendToLabel(150)
+    if CharacterIDCheck('bn'):
+        conditionalSendToLabel(180)
+    if CharacterIDCheck('kg'):
+        conditionalSendToLabel(330)
     if CharacterIDCheck('kk'):
         if SLOT_140:
             gotoLabel(2340)
@@ -6885,19 +7281,15 @@ def CmnActMatchWin():
             gotoLabel(2410)
         else:
             gotoLabel(1410)
-    CharacterIDCheck('su')
-    if SLOT_0:
-        _gotolabel(420)
-    CharacterIDCheck('ta')
-    if SLOT_0:
-        _gotolabel(666)
+    if CharacterIDCheck('su'):
+        conditionalSendToLabel(420)
+    if CharacterIDCheck('ta'):
+        conditionalSendToLabel(666)
     label(482)
-    random_(2, 0, 33)
-    if SLOT_0:
-        _gotolabel(10)
-    random_(2, 0, 50)
-    if SLOT_0:
-        _gotolabel(20)
+    if random_(2, 0, 33):
+        conditionalSendToLabel(10)
+    if random_(2, 0, 50):
+        conditionalSendToLabel(20)
     label(0)
     sprite('az610_00', 6)
     if SLOT_43:
@@ -7428,6 +7820,7 @@ def CmnActMatchWin():
     sprite('az611_11', 32767)
     loopRest()
 
+
 @State
 def CmnActLose():
     StayAfterMovement(1, 0)
@@ -7452,6 +7845,7 @@ def CmnActLose():
         DemoTimer(170)
     loopRest()
 
+
 @State
 def EventDefEntryWait():
     label(0)
@@ -7470,11 +7864,13 @@ def EventDefEntryWait():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventDefEntryStand():
     sprite('keep', 2)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDefWin():
@@ -7482,13 +7878,16 @@ def EventDefWin():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventDefLose():
     sprite('rg620_05', 32767)
 
+
 @State
 def EventEntry():
     sprite('az601_00', 32767)
+
 
 @State
 def EventEntryStart():
@@ -7510,6 +7909,7 @@ def EventEntryStart():
     sprite('az601_13', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventChouhatsu():
@@ -7541,6 +7941,7 @@ def EventChouhatsu():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventRound():
     sprite('az615_00', 6)
@@ -7557,6 +7958,7 @@ def EventRound():
     sprite('az615_11', 6)
     sprite('az615_12', 32767)
 
+
 @State
 def EventRoundToStand():
     sprite('az615_12', 7)
@@ -7566,6 +7968,7 @@ def EventRoundToStand():
     sprite('az615_00', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventWarp():
@@ -7582,6 +7985,7 @@ def EventWarp():
     XPositionRelativeFacing(-500000)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def EventWalkOutOpposite():
@@ -7624,6 +8028,7 @@ def EventWalkOutOpposite():
     sprite('az030_12', 7)
     loopRest()
 
+
 @State
 def EventVSHA1():
     sprite('null', 32767)
@@ -7631,6 +8036,7 @@ def EventVSHA1():
     ScreenCollision(0)
     EnableCollision(0)
     loopRest()
+
 
 @State
 def EventVSHA2():
@@ -7668,10 +8074,12 @@ def EventVSHA2():
     sprite('az000_00', 1)
     enterState('CmnActStand')
 
+
 @State
 def EventVSHA3():
     sprite('az602_12', 32767)
     loopRest()
+
 
 @State
 def EventVSHA4():
@@ -7679,10 +8087,12 @@ def EventVSHA4():
     sprite('az601_13', 7)
     loopRest()
 
+
 @State
 def EventNoDisp():
     sprite('null', 32767)
     Visibility(1)
+
 
 @State
 def EventAZTGEntry():
@@ -7696,14 +8106,14 @@ def EventAZTGEntry():
     if SLOT_17:
         gotoLabel(0)
     sprite('az602_00', 2)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     Visibility(0)
     physicsYImpulse(-40000)
     sprite('az602_00', 6)
     sprite('az602_01', 6)
     label(1)
     sprite('az602_02', 6)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -7735,12 +8145,14 @@ def EventAZTGEntry():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventvsJN1():
     sprite('keep', 32767)
     XPositionRelativeFacing(-960000)
     ScreenCollision(0)
     Visibility(1)
+
 
 @State
 def EventvsJN2():
@@ -7778,6 +8190,7 @@ def EventvsJN2():
     sprite('az000_00', 1)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventvsJN3():
@@ -7827,6 +8240,7 @@ def EventvsJN3():
     SFX_FOOTSTEP_(100, 1, 1)
     loopRest()
 
+
 @State
 def EventBNVsAZ_EntryDrink0():
     ForceFaceSprite()
@@ -7837,6 +8251,7 @@ def EventBNVsAZ_EntryDrink0():
     sprite('az600_02', 6)
     sprite('az600_01', 5)
     gotoLabel(0)
+
 
 @State
 def EventBNVsAZ_EntryDrink1():
@@ -7862,6 +8277,7 @@ def EventBNVsAZ_EntryDrink1():
     sprite('az003_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventTGVSAZTeni():
@@ -7909,6 +8325,7 @@ def EventTGVSAZTeni():
     sprite('az610_00', 7)
     enterState('CmnActStand')
 
+
 @State
 def EventBLvsAZWait():
 
@@ -7926,6 +8343,7 @@ def EventBLvsAZWait():
     sprite('az000_08', 7)
     sprite('az000_09', 7)
     gotoLabel(0)
+
 
 @State
 def EventBLvsAZAction01():
@@ -7945,7 +8363,7 @@ def EventBLvsAZAction01():
     sprite('az404_03', 3)
     sprite('az404_04', 3)
     setInvincible(0)
-    PassbackAddActionMarkToFunction('404tame', 32)
+    TriggerUponForState('404tame', 32)
     sprite('az404_05', 3)
     PrivateSE('azse_14')
     CreateObject('404swing', -1)
@@ -7975,6 +8393,7 @@ def EventBLvsAZAction01():
     XPositionRelativeFacing(-260000)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventvsAZvsARFlameOut1():
@@ -8009,6 +8428,7 @@ def EventvsAZvsARFlameOut1():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def EventvsAZvsARFlameOut2():
 
@@ -8035,6 +8455,7 @@ def EventvsAZvsARFlameOut2():
     gotoLabel(0)
     loopRest()
 
+
 @State
 def EventAZGrowerLoop():
     label(0)
@@ -8044,6 +8465,7 @@ def EventAZGrowerLoop():
     sprite('az407_05', 6)
     gotoLabel(0)
 
+
 @State
 def EventAZGrowerLoopEnd():
     sprite('az407_02', 4)
@@ -8052,6 +8474,7 @@ def EventAZGrowerLoopEnd():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventvsAZvsKKAction01():
 
@@ -8059,12 +8482,12 @@ def EventvsAZvsKKAction01():
         ScreenCollision(0)
     SetActionMark(1)
 
-    def upon_FRAME_STEP():
-        if SLOT_38:
-            if (SLOT_22 < 0):
+    def upon_EVERY_FRAME():
+        if SLOT_IsFacingRight:
+            if SLOT_XDistanceFromCenterOfStage < 0:
                 SetActionMark(0)
                 sendToLabel(1)
-        elif (SLOT_22 > 0):
+        elif SLOT_XDistanceFromCenterOfStage > 0:
             sendToLabel(1)
     sprite('az030_00', 7)
     physicsXImpulse(2300)
@@ -8091,6 +8514,7 @@ def EventvsAZvsKKAction01():
     XPositionRelativeFacing(0)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventDustAttackLoop():
@@ -8121,6 +8545,7 @@ def EventDustAttackLoop():
     sprite('az403_04', 4)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventSuperPunchLoop():
@@ -8155,6 +8580,7 @@ def EventSuperPunchLoop():
     CommonSE('019_quake_1')
     loopRest()
     gotoLabel(0)
+
 
 @State
 def EventSuperPunchLoopEnd():
@@ -8192,6 +8618,7 @@ def EventSuperPunchLoopEnd():
     sprite('az431_28', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def EventGrower():
@@ -8257,16 +8684,17 @@ def EventGrower():
     sprite('az407_05', 4)
     AttackOff()
     sprite('az407_04', 4)
-    PassbackAddActionMarkToFunction('407aura', 32)
+    TriggerUponForState('407aura', 32)
     sprite('az407_05', 4)
-    clearUponHandler(24)
+    clearUponHandler(RELEASE_B)
     sprite('az407_02', 4)
-    PassbackAddActionMarkToFunction('407aura', 32)
+    TriggerUponForState('407aura', 32)
     setInvincible(0)
     EndSE()
     sprite('az407_01', 3)
     sprite('az407_01', 1)
     sprite('az407_00', 3)
+
 
 @State
 def EventReaction():
@@ -8285,6 +8713,7 @@ def EventReaction():
     sprite('az001_00', 6)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_grow2Start():
@@ -8337,11 +8766,12 @@ def Act2Event_grow2Start():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2Event_grow2End():
     sprite('az610_06', 6)
     EnableAfterimage(0)
-    PassbackAddActionMarkToFunction('610aura', 32)
+    TriggerUponForState('610aura', 32)
     sprite('az610_05', 6)
     LandingEffects(100, 1, 1)
     sprite('az602_07', 6)
@@ -8354,11 +8784,13 @@ def Act2Event_grow2End():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_NoDisp():
     sprite('null', 32767)
     Visibility(1)
     loopRest()
+
 
 @State
 def Act2Event_tyakuti():
@@ -8366,7 +8798,7 @@ def Act2Event_tyakuti():
     XPositionRelativeFacing(-260000)
     AbsoluteY(700000)
     Visibility(0)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsYImpulse(-60000)
     setGravity(2500)
     label(0)
@@ -8376,7 +8808,7 @@ def Act2Event_tyakuti():
     gotoLabel(0)
     label(1)
     sprite('az602_02', 7)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -8400,6 +8832,7 @@ def Act2Event_tyakuti():
     sprite('az602_13', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_Chouhatsu():
@@ -8425,6 +8858,7 @@ def Act2Event_Chouhatsu():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_RoundWin1():
     sprite('az615_00', 6)
@@ -8441,6 +8875,7 @@ def Act2Event_RoundWin1():
     sprite('az615_11', 6)
     sprite('az615_12', 32767)
 
+
 @State
 def Act2Event_RoundWin2():
     sprite('az615_12', 7)
@@ -8450,6 +8885,7 @@ def Act2Event_RoundWin2():
     sprite('az615_00', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_TimeUp():
@@ -8473,6 +8909,7 @@ def Act2Event_TimeUp():
     sprite('az620_11', 32767)
     loopRest()
 
+
 @State
 def Act2Event_vhvsaz_00():
 
@@ -8489,6 +8926,7 @@ def Act2Event_vhvsaz_00():
     sprite('az070_03', 32767)
     loopRest()
 
+
 @State
 def Act2Event_vhvsaz_01():
     sprite('az070_10', 5)
@@ -8497,6 +8935,7 @@ def Act2Event_vhvsaz_01():
     sprite('az070_13', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_ptvsaz_00():
@@ -8508,6 +8947,7 @@ def Act2Event_ptvsaz_00():
     CreateObject('Act2Event_Yure', -1)
     sprite('keep', 32767)
     loopRest()
+
 
 @State
 def Act2Event_kgvsaz_00():
@@ -8523,6 +8963,7 @@ def Act2Event_kgvsaz_00():
     sprite('az404_17', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_kgvsaz_01():
@@ -8544,6 +8985,7 @@ def Act2Event_kgvsaz_01():
     sprite('az000_09', 7)
     loopRest()
     gotoLabel(0)
+
 
 @State
 def Act2Event_kgvsaz_02():
@@ -8572,11 +9014,12 @@ def Act2Event_kgvsaz_02():
     sprite('az030_12', 8)
     loopRest()
     if SLOT_2:
-        _gotolabel(0)
+        conditionalSendToLabel(0)
     sprite('null', 32767)
     EndMomentum(1)
     Visibility(1)
     loopRest()
+
 
 @State
 def Act2Event_kgvsaz_03():
@@ -8587,6 +9030,7 @@ def Act2Event_kgvsaz_03():
     CreateObject('Act2Event_Yure', -1)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def Act2Event_hbvsaz_00():
@@ -8606,6 +9050,7 @@ def Act2Event_hbvsaz_00():
     sprite('az404_17', 4)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2Event_hbvsaz_01():
@@ -8628,6 +9073,7 @@ def Act2Event_hbvsaz_01():
     sprite('az620_11', 32767)
     loopRest()
 
+
 @State
 def Act2Event_azvsny_00():
 
@@ -8638,15 +9084,17 @@ def Act2Event_azvsny_00():
     sprite('null', 32767)
     loopRest()
 
+
 @State
 def Act2Event_azvsny_01():
 
     def upon_IMMEDIATE():
         Visibility(1)
     sprite('null', 2)
-    ObjectUpon(11, 32)
+    ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 32)
     sprite('null', 32767)
     loopRest()
+
 
 @State
 def Act2Event_azvsny_02():
@@ -8655,13 +9103,13 @@ def Act2Event_azvsny_02():
         XPositionRelativeFacing(-200000)
         AbsoluteY(700000)
         Visibility(0)
-        sendToLabelUpon(2, 1)
+        uponSendToLabel(LANDING, 1)
 
         def upon_33():
-            ObjectUpon(11, 33)
+            ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 33)
 
         def upon_34():
-            ObjectUpon(11, 34)
+            ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 34)
     sprite('az602_00', 2)
     physicsYImpulse(-60000)
     setGravity(2500)
@@ -8672,7 +9120,7 @@ def Act2Event_azvsny_02():
     gotoLabel(0)
     label(1)
     sprite('az602_02', 7)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -8709,6 +9157,7 @@ def Act2Event_azvsny_02():
     loopRest()
     gotoLabel(9)
 
+
 @State
 def Act2Event_azvsny_03():
     sprite('az041_00', 4)
@@ -8730,14 +9179,15 @@ def Act2Event_azvsny_03():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventAct2TKVSAZ01():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         ScreenCollision(0)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         XPositionRelativeFacing(-50000)
         setInvincible(1)
     label(0)
@@ -8791,14 +9241,15 @@ def EventAct2TKVSAZ01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def EventAct2TKVSAZ02():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         ScreenCollision(0)
-        sendToLabelUpon(32, 1)
-        sendToLabelUpon(33, 2)
+        uponSendToLabel(32, 1)
+        uponSendToLabel(33, 2)
         XPositionRelativeFacing(-100000)
         setInvincible(1)
     label(0)
@@ -8839,6 +9290,7 @@ def EventAct2TKVSAZ02():
     setInvincible(0)
     EndMomentum(1)
     enterState('EventVanishingAttack')
+
 
 @State
 def EventVanishingAttack():
@@ -8881,6 +9333,7 @@ def EventVanishingAttack():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act2Event_2mkuraiWalk():
     sprite('az030_00', 5)
@@ -8901,6 +9354,7 @@ def Act2Event_2mkuraiWalk():
     sprite('az030_12', 5)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2EventWalkLoop():
@@ -8926,12 +9380,13 @@ def Act2EventWalkLoop():
     loopRest()
     gotoLabel(0)
 
+
 @State
 def Act2EventGrow():
     label(1)
     sprite('az407_00', 1)
     setInvincible(1)
-    sendToLabelUpon(32, 3)
+    uponSendToLabel(32, 3)
 
     def upon_STATE_END():
         EndSE()
@@ -8971,11 +9426,12 @@ def Act2EventGrow():
     sprite('az407_03', 4)
     sprite('az407_04', 4)
     sprite('az407_05', 4)
-    PassbackAddActionMarkToFunction('407aura', 32)
+    TriggerUponForState('407aura', 32)
     sprite('az407_01', 3)
     sprite('az407_00', 3)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act2_azvsrl_DustAttack():
@@ -9033,13 +9489,14 @@ def Act2_azvsrl_DustAttack():
     sprite('az403_15', 3)
     sprite('az403_16', 3)
 
+
 @State
 def Act2Event_tyakuti_azvsrl():
     sprite('az602_00', 2)
     XPositionRelativeFacing(-299000)
     AbsoluteY(700000)
     Visibility(0)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsYImpulse(-60000)
     setGravity(2500)
     label(0)
@@ -9049,7 +9506,7 @@ def Act2Event_tyakuti_azvsrl():
     gotoLabel(0)
     label(1)
     sprite('az602_02', 7)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -9074,13 +9531,14 @@ def Act2Event_tyakuti_azvsrl():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_azvsar_00():
     sprite('az602_00', 2)
     XPositionRelativeFacing(-260000)
     AbsoluteY(700000)
     Visibility(0)
-    sendToLabelUpon(2, 1)
+    uponSendToLabel(LANDING, 1)
     physicsYImpulse(-60000)
     setGravity(2500)
     label(0)
@@ -9090,7 +9548,7 @@ def Act3Event_azvsar_00():
     gotoLabel(0)
     label(1)
     sprite('az602_02', 17)
-    clearUponHandler(2)
+    clearUponHandler(LANDING)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
     LandingEffects(100, 1, 0)
@@ -9115,6 +9573,7 @@ def Act3Event_azvsar_00():
     sprite('az602_13', 7)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_azvsar_01():
@@ -9144,6 +9603,7 @@ def Act3Event_azvsar_01():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_azvsar_02():
 
@@ -9151,9 +9611,9 @@ def Act3Event_azvsar_02():
 
         def upon_32():
 
-            def upon_FRAME_STEP():
-                if (SLOT_19 < 350000):
-                    clearUponHandler(3)
+            def upon_EVERY_FRAME():
+                if SLOT_19 < 350000:
+                    clearUponHandler(EVERY_FRAME)
                     sendToLabel(1)
     sprite('az615_12', 32767)
     label(1)
@@ -9187,9 +9647,9 @@ def Act3Event_azvsar_02():
     PrivateSE('azse_01')
     PrivateSE('azse_01')
     CreateObject('weakhit00', -1)
-    ApplyFunctionsToObjects(1)
-    TeleportToObject(22)
-    ApplyFunctionsToSelf()
+
+    def RunOnObject_1():
+        TeleportToObject(22)
     sprite('az203_08', 3)
     CreateParticle('azef_blood_01', 0)
     CreateParticle('azef_blood_01', 1)
@@ -9204,6 +9664,7 @@ def Act3Event_azvsar_02():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_azvsar_03():
 
@@ -9211,45 +9672,45 @@ def Act3Event_azvsar_03():
         physicsXImpulse(5000)
         SetZVal(500)
 
-        def upon_FRAME_STEP():
-            if (SLOT_19 < 150000):
-                clearUponHandler(3)
+        def upon_EVERY_FRAME():
+            if SLOT_19 < 150000:
+                clearUponHandler(EVERY_FRAME)
                 sendToLabel(1)
-label(0)
-sprite('az030_01', 8)
-sprite('az030_02', 8)
-SFX_FOOTSTEP_(100, 1, 1)
-sprite('az030_03', 8)
-sprite('az030_04', 8)
-sprite('az030_05', 8)
-sprite('az030_06', 8)
-sprite('az030_07', 8)
-sprite('az030_08', 8)
-sprite('az030_09', 8)
-SFX_FOOTSTEP_(100, 1, 1)
-sprite('az030_10', 8)
-sprite('az030_11', 8)
-sprite('az030_12', 8)
-loopRest()
-gotoLabel(0)
-label(1)
-sprite('az310_00', 3)
-EndMomentum(1)
-sprite('az310_01', 2)
-CommonSE('005_swing_grap_2_2')
-sprite('az310_01', 1)
-ObjectUpon(22, 32)
-SetZVal(-1000)
-sprite('az310_02', 2)
-sprite('az310_02', 1)
-ObjectUpon(22, 33)
-sprite('az311_00', 2)
-CommonSE('107_throw_catch')
-sprite('az311_00', 1)
-ObjectUpon(22, 34)
-sprite('az311_01', 32767)
-loopRest()
-endState()
+    label(0)
+    sprite('az030_01', 8)
+    sprite('az030_02', 8)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('az030_03', 8)
+    sprite('az030_04', 8)
+    sprite('az030_05', 8)
+    sprite('az030_06', 8)
+    sprite('az030_07', 8)
+    sprite('az030_08', 8)
+    sprite('az030_09', 8)
+    SFX_FOOTSTEP_(100, 1, 1)
+    sprite('az030_10', 8)
+    sprite('az030_11', 8)
+    sprite('az030_12', 8)
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    sprite('az310_00', 3)
+    EndMomentum(1)
+    sprite('az310_01', 2)
+    CommonSE('005_swing_grap_2_2')
+    sprite('az310_01', 1)
+    ObjectUpon(22, 32)
+    SetZVal(-1000)
+    sprite('az310_02', 2)
+    sprite('az310_02', 1)
+    ObjectUpon(22, 33)
+    sprite('az311_00', 2)
+    CommonSE('107_throw_catch')
+    sprite('az311_00', 1)
+    ObjectUpon(22, 34)
+    sprite('az311_01', 32767)
+    loopRest()
+
 
 @State
 def Act3Event_azvsbn_00():
@@ -9261,6 +9722,7 @@ def Act3Event_azvsbn_00():
     sprite('keep', 1)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_azvsbn_01():
@@ -9283,7 +9745,7 @@ def Act3Event_azvsbn_01():
     sprite('az401_03ex', 13)
     CreateObject('401swing', -1)
     XImpulseAcceleration(30)
-    ObjectUpon(11, 32)
+    ObjectUpon(OPPONENT_CHAR_HIT_OR_BLOCK, 32)
     sprite('az401_04', 6)
     physicsXImpulse(0)
     sprite('az401_05', 4)
@@ -9306,6 +9768,7 @@ def Act3Event_azvsbn_01():
     sprite('az000_09', 7)
     gotoLabel(0)
 
+
 @State
 def Act3Event_azvsbn_02():
     sprite('az003_00ex', 3)
@@ -9315,6 +9778,7 @@ def Act3Event_azvsbn_02():
     XPositionRelativeFacing(-260000)
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_azvsbn_03():
@@ -9336,12 +9800,13 @@ def Act3Event_azvsbn_03():
     sprite('az000_09', 7)
     gotoLabel(0)
 
+
 @State
 def Act3Event_azvsbn_04():
 
     def upon_IMMEDIATE():
         CreateObject('Act3Event_ar_01', -1)
-        ObjectUpon(1, 32)
+        ObjectUpon(STATE_END, 32)
     label(0)
     sprite('az000_00', 7)
     sprite('az000_01', 7)
@@ -9354,6 +9819,7 @@ def Act3Event_azvsbn_04():
     sprite('az000_08', 7)
     sprite('az000_09', 7)
     gotoLabel(0)
+
 
 @State
 def Act3Event_azvsbn_05():
@@ -9387,10 +9853,11 @@ def Act3Event_azvsbn_05():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_azvsbn_06():
     sprite('az000_00', 7)
-    PassbackAddActionMarkToFunction('Act3Event_ar_01', 33)
+    TriggerUponForState('Act3Event_ar_01', 33)
     sprite('az000_01', 7)
     sprite('az000_02', 7)
     sprite('az000_03', 7)
@@ -9403,10 +9870,11 @@ def Act3Event_azvsbn_06():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3Event_azvsbn_07():
     sprite('keep', 25)
-    PassbackAddActionMarkToFunction('Act3Event_ar_01', 36)
+    TriggerUponForState('Act3Event_ar_01', 36)
     AltKnockdownEffects(100, 1, 1)
     CommonSE('012_stab_middle')
     CommonSE('006_swing_blade_2')
@@ -9424,6 +9892,7 @@ def Act3Event_azvsbn_07():
     CommonSE('006_swing_blade_2')
     loopRest()
     enterState('CmnActStand')
+
 
 @State
 def Act3Event_azvsny_00():
@@ -9447,12 +9916,14 @@ def Act3Event_azvsny_00():
     loopRest()
     enterState('CmnActStand')
 
+
 @State
 def Act3_Event_azvstm_00():
     sprite('az601_00ex00', 32767)
     CreateObject('Act3Event_ar_03', 100)
     AddX(120000)
     loopRest()
+
 
 @State
 def Act3_Event_azvstm_01():
@@ -9463,7 +9934,7 @@ def Act3_Event_azvstm_01():
     sprite('az601_04ex00', 7)
     sprite('az601_05ex00', 7)
     sprite('az601_06ex00', 7)
-    PassbackAddActionMarkToFunction('Act3Event_ar_03', 32)
+    TriggerUponForState('Act3Event_ar_03', 32)
     sprite('az601_07ex00', 11)
     sprite('az601_08ex00', 7)
     sprite('az601_09ex00', 7)
