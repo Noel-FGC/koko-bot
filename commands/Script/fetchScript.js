@@ -281,12 +281,11 @@ module.exports = {
 
     }
     const embed = new EmbedBuilder()
-      // temp urls until everything is uploaded to github
       .setColor(0x65a4f2)
       .setTitle(character + ' - ' + state)
-      .setAuthor({ name: game, iconURL: `https://www.dustloop.com/wiki/images/5/5e/${game}_Logo.png`, url: wikiurl })
+      .setAuthor({ name: game, iconURL: `https://github.com/Noel-FGC/koko-bot/GameAssets/${game}/${game}_Logo.png`, url: wikiurl })
       .setDescription(response)
-      .setThumbnail(`https://media.discordapp.net/attachments/1338214605750800444/1338217725704671315/${id}_chsele_icon.png`)
+      .setThumbnail(`https://github.com/Noel-FGC/koko-bot/GameAssets/${game}/chsele/${id}_chsele_icon.png?raw=true`)
       .setFooter( { text: footer } )  
 
     await interaction.reply({ embeds : [embed] });
