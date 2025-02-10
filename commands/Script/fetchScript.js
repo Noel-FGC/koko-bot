@@ -21,7 +21,6 @@ module.exports = {
             { name: "BBCF1", value: "BBCF1" },
             { name: "BBCF", value: "BBCF" },
             { name: "BBCPEX", value: "BBCPEX" },
-            { name: "BBCP2", value: "BBCP2" },
             { name: "BBCP", value: "BBCP" },
             { name: "BBCSE", value: "BBCSE" },
             { name: "BBCS2", value: "BBCS2" },
