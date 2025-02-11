@@ -2,6 +2,47 @@ const { SlashCommandBuilder, InteractionContextType, EmbedBuilder, RichPresenceA
 const fs = require('node:fs');
 const path = require('node:path');
 
+
+const bbcharacters = [
+  {name: 'Ragna The Bloodedge', id: 'rg', url: 'Ragna_the_Bloodedge', color: 0xC30000},
+  {name: 'Jin Kisaragi', id: 'jn', url: 'Jin_Kisaragi', color: 0x0A44F1},
+  {name: 'Noel Vermillion', id: 'no', url: 'Noel_Vermillion', color: 0x0C9DEB},
+  {name: 'Rachel Alucard', id: 'rc', url: 'Rachel_Alucard', color: 0xE34A46},
+  {name: 'Taokaka', id: 'tk', url: 'Taokaka', color: 0xFFDB65},
+  {name: 'Iron Tager', id: 'tg', url: 'Iron_Tager', color: 0xE26644},
+  {name: 'Litchi Faye-Ling', id: 'lc', url: 'Litchi_Faye_Ling', color: 0xD03535},
+  {name: 'Arakune', id: 'ar', url: 'Arakune', color: 0x746E62},
+  {name: 'Bang Shishigami', id: 'bn', url: 'Bang_Shishigami', color: 0x555E1E},
+  {name: 'Carl Clover', id: 'ca', url: 'Carl_Clover', color: 0x8058A4},
+  {name: 'Hakumen', id: 'ha', url: 'Hakumen', color: 0xFFFFFF},
+  {name: 'Nu-13', id: 'ny', url: 'Nu-13', color: 0x8D9EF1},
+  {name: 'Lambda-11', id: 'rm', url: 'Lambda-11', color: 0xFFFCDB},
+  {name: 'Tsubaki Yayoi', id: 'tb', url: 'Tsubaki_Yayoi', color: 0xFCD31A},
+  {name: 'Hazama', id: 'hz', url: 'Hazama', color: 0x436B32},
+  {name: 'Mu-12', id: 'mu', url: 'Mu-12', color: 0x5457C0},
+  {name: 'Makoto Nanaya', id: 'mk', url: 'Makoto_Nanaya', color: 0xFF7B2E},
+  {name: 'Valkenhayn R. Hellsing', id: 'vh', url: 'Valkenhayn_R._Hellsing', color: 0xC4BDAF},
+  {name: 'Platinum The Trinity', id: 'pt', url: 'Platinum_the_Trinity', color: 0xEE9990},
+  {name: 'Relius Clover', id: 'rl', url: 'Relius_Clover', color: 0xA33969},
+  {name: 'Izayoi', id: 'iz', url: 'Izayoi', color: 0xFFC31E},
+  {name: 'Amane Nishiki', id: 'am', url: 'Amane_Nishiki', color: 0xD41682},
+  {name: 'Bullet', id: 'bl', url: 'Bullet', color: 0xA53716},
+  {name: 'Azrael', id: 'az', url: 'Azrael', color: 0x627EC6},
+  {name: 'Kagura Mutsuki', id: 'kg', url: 'Kagura_Mutsuki', color: 0x4E4743},
+  {name: 'Yuuki Terumi', id: 'tm', url: 'Yuuki_Terumi', color: 0xEFCC42},
+  {name: 'Kokonoe', id: 'kk', url: 'Kokonoe', color: 0xEF8091},
+  {name: 'Celica A. Mercury', id: 'ce', url: 'Celica_A._Mercury', color: 0xD76253},
+  {name: 'Hibiki Kohaku', id: 'hb', url: 'Hibiki_Kohaku', color: 0x5761EB},
+  {name: 'Naoto Kurogane', id: 'nt', url: 'Naoto_Kurogane', color: 0xBB1A17},
+  {name: 'Nine The Phantom', id: 'ph', url: 'Nine_the_Phantom', color: 0xA127A5},
+  {name: 'Izanami', id: 'mi', url: 'Izanami', color: 0x552286},
+  {name: 'Susano\'o', id: 'su', url: 'Susano\'o', color: 0x00A10E},
+  {name: 'Es', id: 'es', url: 'Es', color: 0x4948E8},
+  {name: 'Mai Natsume', id: 'ma', url: 'Mai_Natsume', color: 0x7173D4},
+  {name: 'Jubei', id: 'jb', url: 'Jubei', color: 0xE0C37C}
+];
+
+
 require.extensions['.py'] = function (module, filename) {
 	module.exports = fs.readFileSync(filename, 'utf8');
 };
@@ -43,186 +84,54 @@ module.exports = {
 		),
 
 	async autocomplete(interaction) {
-		const choices = ['Ragna The Bloodedge', 'Jin Kisiragi', 'Noel Vermillion', 'Rachel Alucard', 'Taokaka', 'Iron Tager', 'Litchi Faye-Ling', 'Arakune', 'Bang Shishigami', 'Carl Clover', 'Hakumen', 'Nu-13', 'Lambda-11', 'Tsubaki Yayoi', 'Hazama', 'Mu-12', 'Makoto Nanaya', 'Valkenhayn R. Hellsing', 'Platinum The Trinity', 'Relius Clover', 'Izayoi', 'Amane Nishiki', 'Bullet', 'Azrael', 'Kagura Mutsuki', 'Yuuki Terumi', 'Kokonoe', 'Celica A. Mercury', 'Hibiki Kohaku', 'Naoto Kurogane', 'Nine The Phantom', 'Izanami', 'Susano\'o', 'Es', 'Mai Natsume', 'Jubei'];
-		const focusedValue = interaction.options.getFocused();
-		const realfiltered = choices.filter(choice => choice.toLowerCase().startsWith(focusedValue.toLowerCase()));
+    const game = interaction.options.getString('game')
 
-		const	filtered = realfiltered.slice(0, 25);
-			try {
-			await interaction.respond(
-				filtered.map(choice => ({ name: choice, value: choice })),
-			);
-		} catch (error) {
-			console.error(error);
-		}
+    console.log(game)
+		
+    if (game != "BBTAG") {
+
+    var choices = bbcharacters.map(char => char.name); // return array with name property of each object in characters array
+
+    if (game == "BBCT") { choices = choices.slice(0, 12) } else
+    if (game == "BBCS") { choices = choices.splice(12, 1).slice(0, 15) } else // splice 12 to remove Nu-13
+    if (game == "BBCS2") { choies = choices.splice(12, 1).slice(0, 18) } else
+    if (game == "BBCSE" ) { choices = choices.splice(12, 1).slice(0, 19) } else
+    if (game == "BBCP" ) { choices = choices.splice(13, 1).slice(0, 25) } else // splice 13 to remove Lambda-11
+    if (game == "BBCPE" ) { choices = choices.slice(0, 28) } else
+    if (game == "BBCF1" ) { choices = choices.slice(0, 35) } else
+    if (game == "BBCF" ) { choices = choices }
+   }
+      const focusedValue = interaction.options.getFocused();
+      const realfiltered = choices.filter(choice => choice.toLowerCase().startsWith(focusedValue.toLowerCase()));
+
+      const	filtered = realfiltered.slice(0, 25);
+        try {
+        await interaction.respond(
+          filtered.map(choice => ({ name: choice, value: choice })),
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    
+    
+
 	},
 	async execute(interaction) {
-		//const game = interaction.options.getSubcommand().toUpperCase()
-
     const game = interaction.options.getString('game')
 
     const character = interaction.options.getString('character')
+
+    const characterobj = bbcharacters.filter(item => item.name === character)[0]
 
     const state = `${interaction.options.getString('name')}`
 		const statedef = `def ${state}\\(\\):`
 
     let wikiurl = `https://dustloop.com/w/${game}`
-    let page = 'Ragna_the_Bloodedge'
+    let page = characterobj.page
+    let id = characterobj.id
+    let color = characterobj.color
 
 		console.log('state ' + state)
-
-		let id = 'rg';
-		switch(character) {
-		case 'Ragna The Bloodedge':
-      page='Ragna_the_Bloodedge'
-			id='rg'
-			break;
-		case 'Jin Kisiragi':
-      page='Jin_Kisiragi'
-			id='jn'
-			break;
-		case 'Noel Vermillion':
-      page='Noel_Vermillion'
-			id='no'
-			break;
-		case 'Rachel Alucard':
-      page='Rachel_Alucard'
-			id='rc'
-			break;
-		case 'Taokaka':
-      page='Taokaka'
-			id='tk'
-			break;
-		case 'Iron Tager':
-			page='Iron_Tager'
-      id='tg'
-			break;
-		case 'Litchi Faye-Ling':
-			page='Litchi_Faye_Ling'
-      id='lc'
-			break;
-		case 'Arakune':
-      page='Arakune'
-			id='ar'
-			break;
-		case 'Bang Shishigami':
-			page='Bang_Shishigami'
-      id='bn'
-			break;
-		case 'Carl Clover':
-      page='Carl_Clover'
-			id='ca'
-			break;
-		case 'Hakumen':
-      page='Hakumen'
-			id='ha'
-			break;
-		case 'Nu-13':
-      page='Nu-13'
-			id='ny'
-			break;
-
-		case 'Lambda-11':
-      page='Lambda-11'
-			id='rm'
-			break;
-		case 'Tsubaki Yayoi':
-      page='Tsubaki_Yayoi'
-			id='tb'
-			break;
-		case 'Hazama':
-      page='Hazama'
-			id='hz'
-			break;
-		case 'Mu-12':
-      page='Mu-12'
-			id='mu'
-		case 'Makoto Nanaya':
-      page='Makoto_Nanaya'
-			id='mk'
-			break;
-		case 'Valkenhayn R. Hellsing':
-      page='Valkenhayn_R._Hellsing'
-			id='vh'
-			break;
-		case 'Platinum The Trinity':
-      page='Platinum_the_Trinity'
-			id='pt'
-			break;
-		case 'Relius Clover':
-      page='Relius_Clover'
-			id='rl'
-			break;
-
-		case 'Izayoi':
-      page='Izayoi'
-			id='iz'
-			break;
-		case 'Amane Nishiki':
-      page='Amane_Nishiki'
-			id='am'
-			break;
-		case 'Bullet':
-      page='Bullet'
-			id='bl'
-			break;
-		case 'Azrael':
-      page='Azrael'
-			id='az'
-			break;
-		case 'Kagura Mutsuki':
-      page='Kagura_Mutsuki'
-			id='kg'
-			break;
-		case 'Yuuki Terumi':
-      page='Yuuki_Terumi'
-			id='tm'
-			break;
-		case 'Kokonoe':
-      page='Kokonoe'
-			id='kk'
-			break;
-		case 'Celica A. Mercury':
-      page='Celica_A._Mercury'
-			id='ce'
-			break;
-
-		case 'Hibiki Kohaku':
-      page='Hibiki_Kohaku'
-			id='hb'
-			break;
-		case 'Naoto Kurogane':
-      page='Naoto_Kurogane'
-			id='nt'
-			break;
-		case 'Nine The Phantom':
-      page='Nine_the_Phantom'
-			id='ph'
-			break;
-		case 'Izanami':
-      page='Izanami'
-			id='mi'
-			break;
-		case 'Susano\'o':
-      page='Susano\'o'
-			id='su'
-			break;
-		case 'Es':
-      page='Es'
-			id='es'
-			break;
-		case 'Mai Natsume':
-      page='Mai_Natsume'
-			id='ma'
-			break;
-		case 'Jubei':
-      page='Jubei'
-			id='jb'
-			break;
-	}	
-
-
-
 
     // I Am So Sorry To Whoever's Trying To Debug This
     // I Dont Know How It Works Either I Like Blacked Out For 6 Hours And Woke Up With This
@@ -256,16 +165,12 @@ module.exports = {
       decoratorChar += decoratorOffset
 
       console.log('decoratorChar ' + decoratorChar)
-      
-      tempdecorator = (decoratorChar + 1)
-
-      console.log('tempdecorator', tempdecorator)
 
       console.log('tempscript.length', tempscript.length)
 
       tempscript = tempscript.slice(tempdec, tempscript.length)
 
-      endDecoratorChar = script.slice((decoratorChar + 1), script.length).search('\@');
+      endDecoratorChar = script.slice((decoratorChar + 1), script.length).search('@');
 
       endDecoratorChar += decoratorChar
 
@@ -280,11 +185,11 @@ module.exports = {
 
     }
     const embed = new EmbedBuilder()
-      .setColor(0x65a4f2)
+      .setColor(color)
       .setTitle(character + ' - ' + state)
-      .setAuthor({ name: game, iconURL: `https://github.com/Noel-FGC/koko-bot/GameAssets/${game}/${game}_Logo.png`, url: wikiurl })
+      .setAuthor({ name: game, iconURL: `https://raw.githubusercontent.com/Noel-FGC/koko-bot/refs/heads/master/GameAssets/${game}/${game}_Logo.png`, url: wikiurl })
       .setDescription(response)
-      .setThumbnail(`https://github.com/Noel-FGC/koko-bot/GameAssets/${game}/chsele/${id}_chsele_icon.png?raw=true`)
+      .setThumbnail(`https://raw.githubusercontent.com/Noel-FGC/koko-bot/refs/heads/master/GameAssets/${game}/chsele/${id}_chsele_icon.png`)
       .setFooter( { text: footer } )  
 
     await interaction.reply({ embeds : [embed] });
