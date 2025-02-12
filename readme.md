@@ -10,6 +10,10 @@
 
 2. Enable both User Install and Guild Install in the installation tab
 
+3. Ensure "application.commands" scope is selected for both
+
+4. Optionally enable the bot scope for guild install, this isnt neccesary but allows the bot to show up in the member list
+
 ### Actual Hosting:
 
 1. Clone the repo:
