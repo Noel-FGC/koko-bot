@@ -36,7 +36,7 @@
 
 4. Update Commands:
     ```
-    node deploytoallguilds.js
+    node miscscripts/deploytoallguilds.js
     ```
 
 5. Run The Bot:
