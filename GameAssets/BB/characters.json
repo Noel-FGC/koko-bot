@@ -1,0 +1,221 @@
+[
+  {
+    "name": "Ragna The Bloodedge",
+    "id": "rg",
+    "url": "Ragna_the_Bloodedge",
+    "color": 12779520
+  },
+  {
+    "name": "Jin Kisaragi",
+    "id": "jn",
+    "url": "Jin_Kisaragi",
+    "color": 673009
+  },
+  {
+    "name": "Noel Vermillion",
+    "id": "no",
+    "url": "Noel_Vermillion",
+    "color": 826859
+  },
+  {
+    "name": "Rachel Alucard",
+    "id": "rc",
+    "url": "Rachel_Alucard",
+    "color": 14895686
+  },
+  {
+    "name": "Taokaka",
+    "id": "tk",
+    "url": "Taokaka",
+    "color": 16767845
+  },
+  {
+    "name": "Iron Tager",
+    "id": "tg",
+    "url": "Iron_Tager",
+    "color": 14837316
+  },
+  {
+    "name": "Litchi Faye-Ling",
+    "id": "lc",
+    "url": "Litchi_Faye_Ling",
+    "color": 13645109
+  },
+  {
+    "name": "Arakune",
+    "id": "ar",
+    "url": "Arakune",
+    "color": 7630434
+  },
+  {
+    "name": "Bang Shishigami",
+    "id": "bn",
+    "url": "Bang_Shishigami",
+    "color": 5594654
+  },
+  {
+    "name": "Carl Clover",
+    "id": "ca",
+    "url": "Carl_Clover",
+    "color": 8411300
+  },
+  {
+    "name": "Hakumen",
+    "id": "ha",
+    "url": "Hakumen",
+    "color": 16777215
+  },
+  {
+    "name": "Nu-13",
+    "id": "ny",
+    "url": "Nu-13",
+    "color": 9281265,
+    "displayName": "ν-No.13-"
+  },
+  {
+    "name": "Lambda-11",
+    "id": "rm",
+    "url": "Lambda-11",
+    "color": 16776411,
+    "displayName": "Λ-No.11-"
+  },
+  {
+    "name": "Tsubaki Yayoi",
+    "id": "tb",
+    "url": "Tsubaki_Yayoi",
+    "color": 16569114
+  },
+  {
+    "name": "Hazama",
+    "id": "hz",
+    "url": "Hazama",
+    "color": 4418354
+  },
+  {
+    "name": "Mu-12",
+    "id": "mu",
+    "url": "Mu-12",
+    "color": 5527488,
+    "displayName": "μ-No.12-"
+  },
+  {
+    "name": "Makoto Nanaya",
+    "id": "mk",
+    "url": "Makoto_Nanaya",
+    "color": 16743214
+  },
+  {
+    "name": "Valkenhayn R. Hellsing",
+    "id": "vh",
+    "url": "Valkenhayn_R._Hellsing",
+    "color": 12893615
+  },
+  {
+    "name": "Platinum The Trinity",
+    "id": "pt",
+    "url": "Platinum_the_Trinity",
+    "color": 15636880
+  },
+  {
+    "name": "Relius Clover",
+    "id": "rl",
+    "url": "Relius_Clover",
+    "color": 10697065
+  },
+  {
+    "name": "Izayoi",
+    "id": "iz",
+    "url": "Izayoi",
+    "color": 16761630
+  },
+  {
+    "name": "Amane Nishiki",
+    "id": "am",
+    "url": "Amane_Nishiki",
+    "color": 13899394
+  },
+  {
+    "name": "Bullet",
+    "id": "bl",
+    "url": "Bullet",
+    "color": 10827542
+  },
+  {
+    "name": "Azrael",
+    "id": "az",
+    "url": "Azrael",
+    "color": 6454982
+  },
+  {
+    "name": "Kagura Mutsuki",
+    "id": "kg",
+    "url": "Kagura_Mutsuki",
+    "color": 5130051
+  },
+  {
+    "name": "Yuuki Terumi",
+    "id": "tm",
+    "url": "Yuuki_Terumi",
+    "color": 15715394
+  },
+  {
+    "name": "Kokonoe",
+    "id": "kk",
+    "url": "Kokonoe",
+    "color": 15696017
+  },
+  {
+    "name": "Celica A. Mercury",
+    "id": "ce",
+    "url": "Celica_A._Mercury",
+    "color": 14115411
+  },
+  {
+    "name": "Hibiki Kohaku",
+    "id": "hb",
+    "url": "Hibiki_Kohaku",
+    "color": 5726699
+  },
+  {
+    "name": "Naoto Kurogane",
+    "id": "nt",
+    "url": "Naoto_Kurogane",
+    "color": 12261911
+  },
+  {
+    "name": "Nine The Phantom",
+    "id": "ph",
+    "url": "Nine_the_Phantom",
+    "color": 10561445
+  },
+  {
+    "name": "Izanami",
+    "id": "mi",
+    "url": "Izanami",
+    "color": 5579398
+  },
+  {
+    "name": "Susano'o",
+    "id": "su",
+    "url": "Susano'o",
+    "color": 41230
+  },
+  {
+    "name": "Es",
+    "id": "es",
+    "url": "Es",
+    "color": 4802792
+  },
+  {
+    "name": "Mai Natsume",
+    "id": "ma",
+    "url": "Mai_Natsume",
+    "color": 7435220
+  },
+  {
+    "name": "Jubei",
+    "id": "jb",
+    "url": "Jubei",
+    "color": 14730108
+  }
+]
