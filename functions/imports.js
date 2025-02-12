@@ -35,19 +35,19 @@ function fetchCharacters (gameorjson, filter) {
       characters = characters.slice(0, 12);
       break;
     case "BBCS":
-      characters.splice(12, 1) // Splice 12 to remove Nu-13
+      characters.splice(11, 1) // Splice 11 to remove Nu-13
       characters = characters.slice(0, 15);
       break;
     case "BBCS2":
-      characters.splice(12, 1);
+      characters.splice(11, 1);
       characters = characters.slice(0, 18)
       break;
     case "BBCSE":
-      characters.splice(12, 1);
+      characters.splice(11, 1);
       characters = characters.slice(0, 19)
       break;
     case "BBCP":
-      characters.splice(13, 1) // Splice 13 to remove Lambda-11
+      characters.splice(12, 1) // Splice 13 to remove Lambda-11
       characters.slice(0, 25);
       break;
     case "BBCPE":
