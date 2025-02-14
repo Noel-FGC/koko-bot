@@ -18,7 +18,7 @@ module.exports = {
     if (interaction.isButton()) {
       try {
         let id = interaction.customId;
-        await command.execite(interaction, id)
+        await command.execute(interaction, id)
       } catch (error) {
         console.error(error);
         if (interaction.replied || interaction.deferred) {
