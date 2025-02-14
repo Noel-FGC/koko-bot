@@ -108,8 +108,8 @@ function fetchCharacterObj(character, gameorjson) {
 }
 
 
-function updateJson (characters) {
-  fs.writeFile(path.resolve(path.join(__dirname, '/../GameAssets/BB/characters.json')), JSON.stringify(characters, null, 2), err => { 
+function updateJson (newjson) {
+  fs.writeFile(path.resolve(path.join(__dirname, '/../GameAssets/BB/characters.json')), JSON.stringify(newjson, null, 2), err => { 
     if (err) {
       console.error(err);
       return err;
@@ -118,5 +118,7 @@ function updateJson (characters) {
     }
   })
 }
+
+
 
 module.exports = { fetchJson, fetchCharacters, fetchCharacterObj, fetchCharacter, updateJson }

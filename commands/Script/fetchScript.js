@@ -1,7 +1,10 @@
-const { SlashCommandBuilder, InteractionContextType, EmbedBuilder, RichPresenceAssets } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, InteractionContextType, EmbedBuilder, RichPresenceAssets } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const charfuncs = require('../../functions/imports.js');
+const charfuncs = require('../../functions/characters.js');
+
+const { makeScriptEmbed } = require('../../functions/makeScriptEmbed.js')
+
 require.extensions['.py'] = function (module, filename) {
 	module.exports = fs.readFileSync(filename, 'utf8');
 };
@@ -61,83 +64,74 @@ module.exports = {
        console.error(error);
     }
   }, 
-    async execute(interaction) {
-      const game = interaction.options.getString('game');
-      const state = `${interaction.options.getString('name')}` 
-      const optCharacter = interaction.options.getString('character');
+    async execute(interaction, button) {
+      if (button === undefined) {
       
-
-      const json = charfuncs.fetchJson(game);
-      const characters = charfuncs.fetchCharacters(json); 
-      const character = charfuncs.fetchCharacter(optCharacter, characters);
-      const characterobj = charfuncs.fetchCharacterObj(character, json);
+        const game = interaction.options.getString('game');
+        const state = `${interaction.options.getString('name')}` 
+        const optCharacter = interaction.options.getString('character');
 
 
-      let input = ' '
-      const statedef = `def ${state}\\(\\):`
-
-      if (state.startsWith('NmlAtk')) {
-        input = state.slice(6, state.length)
-      }
-      
-      let wikiurl = `https://dustloop.com/w/${game}`
-      let url = characterobj.url
-      let id = characterobj.id
-      let color = characterobj.color
-      let displayName = characterobj.displayName
-
-      // I Am So Sorry To Whoever's Trying To Debug This
-      // I Dont Know How It Works Either I Like Blacked Out For 6 Hours And Woke Up With This
-
-      const script = require(path.resolve(path.join(__dirname, `../../GameAssets/${game}/scripts/char_${id}_scr/scr_${id}.py`))); 
-
-      let tempscript = script
-
-      const stateChar = script.search(statedef);
-
-      let response = 'Unknown Error Has Occured'; // just incase it doesnt get set somehow
-      let footer = ' ';
-
-      if (stateChar == -1) {
-        response = ('```\n' + `Definition Not Found In scr_${id}.py` + '\n```')
-      } else {
-        let endDecoratorChar = 0
+        const json = charfuncs.fetchJson(game);
+        const characters = charfuncs.fetchCharacters(json); 
+        const character = charfuncs.fetchCharacter(optCharacter, characters);
+        const characterobj = charfuncs.fetchCharacterObj(character, json);
 
 
-        let decoratorChar = (stateChar - 12);
+        let input = ' '
+        const statedef = `def ${state}\\(\\):`
 
-        tempscript = script.slice(decoratorChar, script.length);
-
-        const decoratorOffset = (tempscript.search('@'))
-
-        let tempdec = (decoratorChar + 1)
-
-        decoratorChar += decoratorOffset
-
-        tempscript = tempscript.slice(tempdec, tempscript.length)
-
-        endDecoratorChar = script.slice((decoratorChar + 1), script.length).search('@');
-
-        endDecoratorChar += decoratorChar
-
-        responseNoSlice = ('```py\n' + script.slice(decoratorChar, endDecoratorChar - 1) + '\n```');
-        response = ('```py\n' + script.slice(decoratorChar, (endDecoratorChar - 1)).slice(0, 4086) + '\n```');
-
-        if (response.length < responseNoSlice.length) {
-          footer = ('⚠️ Warning: Script Has Been Truncated To Fit In Character Limit');
+        if (state.startsWith('NmlAtk')) {
+          input = state.slice(6, state.length)
         }
+        
+        let wikiurl = `https://dustloop.com/w/${game}`
+        let url = characterobj.url
+        let id = characterobj.id
+        let color = characterobj.color
+        let displayName = characterobj.displayName
 
-      }
-      const embed = new EmbedBuilder()
-        .setColor(color)
-        .setTitle(displayName + ' -- ' + state)
-        .setURL(wikiurl + '/' + url + '#' + input)
-        .setAuthor({ name: game, iconURL: `https://raw.githubusercontent.com/Noel-FGC/koko-bot/refs/heads/master/GameAssets/${game}/${game}_Logo.png`, url: wikiurl })
-        .setDescription(response)
-        .setThumbnail(`https://raw.githubusercontent.com/Noel-FGC/koko-bot/refs/heads/master/GameAssets/${game}/chsele/${id}_chsele_icon.png`)
-        .setFooter( { text: footer } )  
+        // I Am So Sorry To Whoever's Trying To Debug This
+        // I Dont Know How It Works Either I Like Blacked Out For 6 Hours And Woke Up With This
 
-      await interaction.reply({ embeds : [embed] });
+        const script = require(path.resolve(path.join(__dirname, `../../GameAssets/${game}/scripts/char_${id}_scr/scr_${id}.py`))); 
+
+        let tempscript = script
+
+        const stateChar = script.search(statedef);
+
+        let response = 'Unknown Error Has Occured'; // just incase it doesnt get set somehow
+        let footer = ' ';
+
+        if (stateChar == -1) {
+          response = ('```\n' + `Definition Not Found In scr_${id}.py` + '\n```')
+        } else {
+          let endDecoratorChar = 0
+
+
+          let decoratorChar = (stateChar - 12);
+
+          tempscript = script.slice(decoratorChar, script.length);
+
+          const decoratorOffset = (tempscript.search('@'))
+
+          let tempdec = (decoratorChar + 1)
+
+          decoratorChar += decoratorOffset
+
+          tempscript = tempscript.slice(tempdec, tempscript.length)
+
+          endDecoratorChar = script.slice((decoratorChar + 1), script.length).search('@');
+
+          endDecoratorChar += decoratorChar
+
+          responseNoSlice = (script.slice(decoratorChar, endDecoratorChar - 1));
+        }
+        const reply = makeScriptEmbed(responseNoSlice, characterobj, state, game)
+        await interaction.reply(reply);
+    } else {
+
+    }
   },
 };
 
